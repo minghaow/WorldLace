@@ -10,16 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class HelloController {
 
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String printWelcome(ModelMap model) {
-//		model.addAttribute("message", "Hello world!");
-//		return "hello";
-//	}
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView printWelcomeTest(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
-		return new ModelAndView("test");
+		return new ModelAndView("hello");
 	}
 
 }

@@ -1,0 +1,179 @@
+#parse("header.vm")
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div id="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- breadcrumbs -->
+<ul class="breadcrumbs">
+    <li ><a href="/"><i class="fi-home"></i> 订单管理</a></li>
+    <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 订单认领</a></li>
+</ul>
+
+<!-- error box -->
+#if ($!{error})
+<div data-alert class="row alert-box alert radius margin-top">
+    $!{error}
+    <a href="#" class="close">&times;</a>
+</div>
+#end
+
+<!-- page contents -->
+<div class="page-content">
+
+    <table class="all-list row" cellpadding=0 cellspacing=0>
+        <thead>
+        <tr>
+            <th scope="column" width="17%">订单号</th>
+            <th scope="column" width="16%">用户ID</th>
+            <th scope="column" width="15%">海淘平台</th>
+            <th scope="column" width="18%">下单时间</th>
+            <th scope="column" width="14%">订单币种</th>
+            <th scope="column" width="20%">操作</th>
+        </tr>
+        </thead>
+        <tbody class="all-list-tbody">
+            #foreach($order in $!{orderList})
+                <tr id="order-$!{order.globalOrder.orderId}">
+                    <td title="$!{order.globalOrder.orderId}">$!{order.globalOrder.showOrderId}</td>
+                    <td>$!{order.globalOrder.userId}</td>
+                    <td>$!{order.globalOrder.domain}</td>
+                    <td>$!{order.globalOrder.convertedCreateTime}</td>
+                    <td>$!{order.globalOrder.goodsPriceUnit.name}</td>
+                    <td>
+                        <ul class="button-group">
+                            <li id="-order-take-$!{order.globalOrder.orderId}"
+                                class="-order-take">
+                                <a href="#" id="$!{order.globalOrder.orderId}"
+                                   class="tiny button -order-take-button">认领
+                                </a>
+                            </li>
+                            <li id="-order-release-$!{order.globalOrder.orderId}"
+                                class="-order-release">
+                                <a href="#" id="$!{order.globalOrder.orderId}"
+                                   class="tiny button secondary">已认领
+                                </a>
+                            </li>
+                            #if ($!{adminUser})
+                                <li>
+                                    <a href="#" id="$!{order.globalOrder.orderId}" class="tiny
+                                 button -order-info-button" target="_blank">详情</a>
+                                </li>
+                            #end
+                        </ul>
+                    </td>
+                </tr>
+
+                #if ($!{adminUser})
+                    <!-- 商品详情信息 -->
+                    <tr id="order-detail-$!{order.globalOrder.orderId}"
+                        class="-order-detail -order-detail-$!{order.globalOrder.orderId} table-top-divider">
+                        <td></td>
+                        <td>图片</td>
+                        <td>商品名称</td>
+                        <td>商家</td>
+                        <td>商品价格  数量  合计</td>
+                        <td></td>
+                    </tr>
+                        #foreach($goods in $!{order.globalOrder.goodsList})
+                        <tr id="order-detail-$!{order.globalOrder.orderId}" class="-order-detail
+                        -order-detail-$!{order.globalOrder.orderId}">
+                            <td></td>
+                            <td><img src="$!{goods.imgUrl}" class="detail-img" alt=""/></td>
+                            <td><a href="$!{goods.url}" target="_blank">$!{goods.title}</a></td>
+                            <td>$!{goods.shop}</td>
+                            <td>
+                                $!{goods.goodsConvertedPriceUnit}$!{goods.goodsConvertedPrice} * $!{goods.goodsCount} =  $!{goods.goodsConvertedPriceUnit}$!{goods.total}
+                            </td>
+                            <td></td>
+                        </tr>
+                        #end
+                    <tr id="order-detail-$!{order.globalOrder.orderId}" class="-order-detail
+                            -order-detail-$!{order.globalOrder.orderId} table-bottom-divider">
+                        <td></td>
+                        <td></td>
+                        <td>
+                        <div class="row">
+                            <div class="small-4 columns">
+                                <label for="right-label" class="right inline">报错</label>
+                            </div>
+                            <div class="small-8 columns">
+                                <select id="$!{order.globalOrder.orderId}" data-id="$!{order.globalOrder.showOrderId}"
+                                        class="problem">
+                                    <option value=0> - </option>
+                                    <option value="LACK">缺货/下架</option>
+                                    <option value="RISE">涨价</option>
+                                    <option value="THIRD_PARTY">海外三方</option>
+                                    <option value="LIMIT_SELLING">限购</option>
+                                    <option value="OTHER">其他</option>
+                                </select>
+                            </div>
+                        </div>
+                        <td><a href="/order?id=$!{order.globalOrder.orderId}" class="tiny
+                            button" target="_blank">查看详情</a></td>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                #end
+            #end
+        </tbody>
+    </table>
+    <table class="row" cellpadding=0 cellspacing=0>
+        <thead>
+        <tr class="empty-info-tr"
+            #if ($!{orderList} != "[]")
+            style="display:none"
+            #end>
+            <th scope="column" class="empty-info-th">抱歉，暂无可认领的订单。</th>
+        </tr>
+        </thead>
+    </table>
+
+    <!-- 报错 弹出框 -->
+    <div id="problemModal" class="reveal-modal small" data-reveal>
+        <h2 class="greenText">请填入报错原因</h2>
+
+        <div class="row">
+            <div class="large-4 columns">
+                <label for="right-label" class="right inline">原因</label>
+            </div>
+            <div class="large-8 columns">
+                <input type="text" placeholder="如：加入购物车后发现限购" id="problem-reason"/>
+            </div>
+        </div>
+
+        <div class="row center margin-top">
+            <a href="" class="button tiny problem-confirm-button">确认</a>
+            <a href="javascript:void(0)" class="button secondary tiny problem-cancel-button">取消</a>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <!-- 分页 -->
+    <div class="row margin-top">
+        <div class="large-12 large-text-center">
+            <ul class="pagination" role="menubar" aria-label="Pagination">
+                #set($pageBefore = $!{page} - 1)
+                #set($pageAfter = $!{page} + 1)
+                #if ($!{pageBefore} == 0)
+                    <li class="arrow unavailable" aria-disabled="true"><a>&laquo;上一页</a></li>
+                #else
+                    <li class="arrow" aria-disabled="true"><a href="/list?page=$!{pageBefore}">&laquo;
+                        上一页</a></li>
+                #end
+                <li class="unavailable" aria-disabled="true"><a>&hellip;</a></li>
+                <li class="current"><a href="/list?page=$!{page}">$!{page}</a></li>
+                <li class="unavailable" aria-disabled="true"><a>&hellip;</a></li>
+                <li class="arrow"><a href="/list?page=$!{pageAfter}">下一页 &raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script src="/script/index.js"></script>
+#include("footer.vm")

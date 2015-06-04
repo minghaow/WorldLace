@@ -1,0 +1,100 @@
+#parse("header.vm")
+
+#if ($!{error})
+<div data-alert class="row alert-box alert radius margin-top">
+    密码错误，登陆失败！
+    <a href="#" class="close">&times;</a>
+</div>
+#end
+
+<div class="page-content">
+    <form action="/auth/login" method="post" id="login-form">
+        <fieldset class="panel row margin-top">
+            <legend>登陆</legend>
+            <div class="large-6 small-12 column large-centered">
+                <div class="row collapse prefix-radius">
+                    <div class="small-3 columns">
+                        <span class="prefix">邮箱</span>
+                    </div>
+                    <div class="small-9 columns">
+                        <input id="username" name="username" type="text" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row collapse prefix-radius">
+                    <div class="small-3 columns">
+                        <span class="prefix">密码</span>
+                    </div>
+                    <div class="small-9 columns">
+                        <input id="password" name="password" type="password" placeholder="password">
+                    </div>
+                </div>
+                <input type="submit" class="button postfix" id="login-button" value="登录">
+            </div>
+        </fieldset>
+    </form>
+
+    <dl class="accordion row selector margin-top" data-accordion>
+        <dd class="accordion-navigation">
+            <a href="#panel0">修改密码</a>
+            <div id="panel0" class="content">
+                <form action="/auth/change-pwd" method="post" id="change-pwd-form">
+                    <div class="panel row margin-top">
+                        <div class="large-6 small-12 column large-centered">
+                            <div class="row collapse prefix-radius ">
+                                <div class="small-3 columns">
+                                    <span class="prefix">邮箱</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="username_c" name="email" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row collapse prefix-radius">
+                                <div class="small-3 columns">
+                                    <span class="prefix">旧密码</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="pwd_o" name="pwd_o" type="password" placeholder="origin
+                                    password">
+                                </div>
+                            </div>
+                            <div class="row collapse prefix-radius">
+                                <div class="small-3 columns">
+                                    <span class="prefix">新密码</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="pwd_n" name="pwd_n" type="password" placeholder="new password">
+                                </div>
+                            </div>
+                            <div class="row collapse prefix-radius">
+                                <div class="small-3 columns">
+                                    <span class="prefix">新密码确认</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="pwd_n2" name="pwd_n2" type="password" placeholder="confirm
+                                    password">
+                                </div>
+                            </div>
+                            <input type="submit" class="button postfix" id="change-pwd-button" value="提交">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </dd>
+    </dl>
+
+    <div id="successModal" class="small reveal-modal" data-reveal>
+        <h2 class="greenText">修改密码成功!</h2>
+        <p>欢迎您使用买手系统！请登陆！</p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div id="failModal" class="small reveal-modal" data-reveal>
+        <h2 class="redText">修改密码失败!</h2>
+        <p id="fail-reason"></p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+</div>
+
+<script src="/script/login.js"></script>
+#include("footer.vm")

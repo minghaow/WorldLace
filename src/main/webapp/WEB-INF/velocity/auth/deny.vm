@@ -1,0 +1,5 @@
+#parse("header.vm")
+<div class="row alert-box alert radius margin-top">
+    权限不足
+</div>
+#include("footer.vm")

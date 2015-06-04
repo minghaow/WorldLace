@@ -1,0 +1,7 @@
+#parse("header.vm")
+<!-- end of header -->
+
+Hello Velocity! ${message}!
+
+<!-- start of footer-->
+#include("footer.vm")

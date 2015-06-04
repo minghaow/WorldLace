@@ -1,0 +1,18 @@
+<div class="row margin-top">
+    <div class="large-12 large-text-center">
+        <ul class="pagination" role="menubar" aria-label="Pagination">
+            #set($pageBefore = $!{page} - 1)
+            #set($pageAfter = $!{page} + 1)
+            #if ($!{pageBefore} == 0)
+                <li class="arrow unavailable" aria-disabled="true"><a>&laquo;上一页</a></li>
+            #else
+                <li class="arrow" aria-disabled="true"><a class="previous-page">&laquo;
+                    上一页</a></li>
+            #end
+            <li class="unavailable" aria-disabled="true"><a>&hellip;</a></li>
+            <li class="current"><a href="#">$!{page}</a></li>
+            <li class="unavailable" aria-disabled="true"><a>&hellip;</a></li>
+            <li class="arrow"><a class="next-page">下一页 &raquo;</a></li>
+        </ul>
+    </div>
+</div>

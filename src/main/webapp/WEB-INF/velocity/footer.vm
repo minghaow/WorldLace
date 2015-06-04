@@ -1,0 +1,58 @@
+<!-- footer -->
+<section class="top-footer">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="property">
+                <div class="medium-2 columns">
+                    <div class="property-info">
+                        <h3><i class="fi-lightbulb"></i> 注意事项</h3>
+                    </div>
+                </div>
+
+                <div class="medium-10 columns">
+                    <div class="learn-links lightGreyText">
+                        <p class="margin-top-small">欢迎您使用惠惠海淘平台。目前该平台处于测试阶段，如有任何bug，请尽快通知我们，谢谢！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bottom-footer">
+    <div class="row">
+        <div class="medium-12 large-12 columns white center margin-top">
+            <div>
+                <a href="http://www.youdao.com/about">关于有道</a>
+                <span>|</span>
+                <a href="http://dsp.youdao.com/">有道智选</a>
+                <span>|</span>
+                <a href="http://i.youdao.com">官方博客</a>
+                <span>|</span>
+                <a href="http://techblog.youdao.com/">技术博客</a>
+                <span>|</span>
+                <a href="http://campus.youdao.com/index.php?t1=index">诚聘英才</a>
+                <span>|</span>
+                <a href="/contactus/contactus-page.html">关于我们</a>
+            </div>
+            <div>
+                <a href="http://www.163.com/">网易公司</a>
+                <a href="http://www.youdao.com/terms/privacy.html">隐私政策</a>
+                <a href="http://www.youdao.com/terms/index.html">服务条款</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 侧边栏截止处    -->
+<a class="exit-off-canvas"></a>
+</div>
+</div>
+
+<script src="/script/vendor/modernizr.js"></script>
+<script src="/script/vendor/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

@@ -27,4 +27,65 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>resin-file</servlet-name>
+		<servlet-class>com.caucho.servlets.FileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/robots.txt</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/favicon.ico</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/images/*.jpg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/images/*.png</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/images/*.gif</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/images/*.ico</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/static/*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/css/*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/css/*.woff</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/css/*.ttf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/css/*.svg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/css/*.eot</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/script/*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/script/*.swf</url-pattern>
+	</servlet-mapping>
+
 </web-app>

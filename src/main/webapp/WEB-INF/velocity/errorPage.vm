@@ -1,0 +1,28 @@
+#parse("header.vm")
+
+<!-- error box -->
+#if ($!{error})
+<div data-alert class="row alert-box alert radius margin-top">
+    $!{error}
+    <a href="#" class="close">&times;</a>
+</div>
+#end
+#if ($!{success})
+<div data-alert class="row alert-box success radius margin-top">
+    $!{success}
+    <a href="#" class="close">&times;</a>
+</div>
+#end
+
+<div id="page-info">
+    <div id="error-info">$!{info}</div>
+</div>
+
+<div class="page-content">
+    <div class="center margin-top">
+        <h1><i class="fi-megaphone redText"></i> <span class="error-info"> </span></h1>
+    </div>
+</div>
+
+<script src="/script/errorPage.js"></script>
+#include("footer.vm")

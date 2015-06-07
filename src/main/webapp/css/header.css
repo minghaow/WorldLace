@@ -1,0 +1,91 @@
+/*
+ *  Header.css
+ *  @author: WANG Minghao
+*/
+header {
+    background: url("/images/banner.png") #074e68;
+    background-size: cover;
+    padding: 22px 0;
+}
+.top-bar {
+    background: white !important;
+    height: auto !important;
+}
+.tab-bar-section img {
+    height: 30px;
+}
+.image-logo {
+    width: 100%;
+    margin: 2rem auto 1.5rem auto;
+    text-align: center;
+}
+.image-logo img {
+    max-height: 50px;
+}
+.row {
+    max-width: 90% !important;
+}
+.main-menu {
+    text-align: center;
+    border-bottom: 5px double #CBCBCA;
+}
+.main-menu ul li {
+    margin: 20px;
+    font-size: 0.9rem;
+}
+.main-menu-content {
+    display: inline;
+}
+.main-menu-content a {
+    color: grey;
+}
+.main-menu-content a:hover {
+    color: darkgrey;
+}
+.account-zone {
+    width: 100%;
+    height: 1rem;
+    padding: 0 2rem 0 2rem;
+}
+.account-zone-left {
+    float: left;
+    font-size: 0.8rem;
+    color: grey;
+}
+.account-zone-right {
+    float: right;
+    font-size: 0.8rem;
+}
+.account-zone-anchor {
+    color: grey;
+}
+.inline-divider {
+    margin: 0 1rem 0 1rem;
+}
+.fixedBtns {
+    z-index: 100;
+    position: fixed;
+    height: 3rem;
+    width: 3rem;
+    bottom: 4.5rem;
+    right: 1rem;
+}
+.fixedUp {
+    margin-bottom: 0.5rem;
+}
+.fixedCart,
+.fixedUp {
+    background-color: lightgrey;
+    opacity: 0.4;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 2rem;
+    color: gray;
+    border-radius: 4px;
+}
+.fixedUp:hover,
+.fixedCart:hover {
+    opacity: 0.8;
+}
+

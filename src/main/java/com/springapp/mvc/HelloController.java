@@ -13,6 +13,8 @@ public class HelloController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView printWelcomeTest(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
+		model.addAttribute("goodsCartCount", 0);
+		model.addAttribute("userName", "Minghao");
 		return new ModelAndView("hello");
 	}
 

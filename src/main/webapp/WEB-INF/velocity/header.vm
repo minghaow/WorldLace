@@ -4,275 +4,112 @@
 <!-- header start -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="惠惠海淘平台" />
-    <meta name="description" content="惠惠网（www.huihui.cn）是网易旗下购物搜索和网购推荐平台，继承有道购物公正中立的态度， 提供主流购物网站的商品比价和购物返现服务，每天推荐高性价比的网购产品，为用户打造超值网购体验" />
+    <meta name="keywords" content="男神梦工厂" />
+    <meta name="description" content="男神梦工厂（www.IamNanShen.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="nofollow">
-    <title>惠惠海淘平台</title>
+    <title>男神梦工厂</title>
 
     <!-- style stuff -->
     <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/tool.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/foundation-icons.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css"/>
 
     <!-- js stuff -->
     <script src="script/vendor/jquery.js"></script>
+    <script src="script/vendor/jquery.bxslider.min.js"></script>
 </head>
 
 <!-- body start -->
 <body>
 
 <!-- top bar start -->
-<!-- header -->
 <div class="off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
-        <!-- smaller header-->
+<div class="inner-wrap">
+
+    <!-- left menu for mobile devices -->
+    <div class="left-menu">
         <aside class="left-off-canvas-menu">
             <ul class="off-canvas-list">
-                <li><label class="first">惠惠海淘平台</label></li>
-                <li><a href="/list">订单列表</a></li>
-            </ul>
-
-            <hr>
-            <ul class="off-canvas-list">
-                <li><label class="first">我的账户</label></li>
-                <li><a href="/order/myorders">我的订单列表</a></li>
-                <li><a href="/settle?buyerOrderStatus=DELIVER">结算申请</a></li>
-                <li><a href="/buyer/statistics">结算统计</a></li>
-                #if ($!{adminUser} == true)
-                    <li><a href="/admin/all" class="top-button">所有订单列表</a></li>
-                    <li><a href="/admin/audit" class="top-button">审核表</a></li>
-                    <li><a href="/admin/checking/buyer" class="top-button">对账表</a></li>
-                    <li><a class="drop-remove drop-options" href="/admin/statistics/order">订单统计</a></li>
-                    <li><a class="drop-remove drop-options" href="/admin/statistics/buyer">买手信息统计</a></li>
-                #end
-                <li class="gs"><p>
-                #if ($!{realName})
-                    <a href="#" data-reveal-id="logoutModal" class="small button">退出登陆</a>
-                #else
-                    <a href="/auth/login" class="small button">登陆</a>
-                #end
-            </ul>
-
-            <hr>
-            <ul class="off-canvas-list">
-                <li><label>买手管理员账号切换</label></li>
-                #if ($!{adminUser} == true)
-                    <li>
-                        <a href="/admin/all" class="top-button">
-                            <div class="menu-text" id="exchange">系统切换</div>
-                        </a>
-                    </li>
-                #end
-                #foreach ($buyerInfo in $!{buyerInfoList})
-                    <li><a href="/auth/switch?username=$!{buyerInfo.username}">$!{buyerInfo.realName}</a></li>
-                #end
-            </ul>
-
-            <hr>
-            <ul class="off-canvas-list">
-                <li><label>友情链接</label></li>
-                <li><a href="http://www.huihui.cn/" class="">惠惠</a></li>
-                <li><a href="http://dict.youdao.com/" class="">有道词典</a></li>
-                <li><a href="http://note.youdao.com/" class="">有道云笔记</a></li>
+                <li><label class="first">男神梦工厂</label></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
             </ul>
         </aside>
-
-        <title>惠惠海淘平台</title><meta name="description" content="惠惠海淘平台">
-
+        <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
         <nav class="tab-bar show-for-small">
             <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#"
-                        ><span style="margin-left:1rem;">Youdao</span></a>
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
             </section>
+            <div class="middle tab-bar-section"><img src="images/logo6.png"></div>
         </nav>
+    </div>
 
-        <!-- bigger header -->
-        <nav class="top-bar hide-for-small" data-topbar="">
-            <ul class="title-area">
-                <li class="name">
-                    <h1><a href="/">
-                        <img src="images/logo.png">
-                    </a></h1>
-                </li>
-            </ul>
-
-            <section class="top-bar-section">
-                #if (!$!{adminPage})
-                    <ul class="right-section right">
-                        #if ($!{adminUser} == true)
-                            <li>
-                                <a href="/admin/all" class="top-button">
-                                    <img class="menu-icon" src="images/admin.png" alt="icon">
-                                    <div class="menu-text" id="exchange"><i class="fi-torso exchange"></i></div>
-                                </a>
-                            </li>
-                        #end
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/list" class="top-button">
-                                <img class="menu-icon" src="images/icon-home.png" alt="icon">
-                                <div class="menu-text" id="orders">订单列表</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/order/myorders" class="top-button">
-                                <img class="menu-icon" src="images/icon-recruit.png" alt="icon">
-                                <div class="menu-text" id="myorders">我的订单列表</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/customer-service?eventStatus=PROCESSING" class="top-button">
-                                <img class="menu-icon" src="images/icon-recruit.png" alt="icon">
-                                <div class="menu-text" id="cs-list">客服表</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/settle?buyerOrderStatus=DELIVER" class="top-button">
-                                <img class="menu-icon" src="images/icon-product.png" alt="icon">
-                                <div class="menu-text" id="apply-clearing">结算中心</div>
-                            </a>
-                        </li>
-
-                        #if ($!{realName})
-                            <li class="divider"></li>
-                            <li class="drop-remove has-dropdown not-click height-definer">
-                                <a href="#" class="drop-remove drop-anchor">Hi, $!{realName}</a>
-                                <ul class="dropdown drop-remove"
-                                    #set ($part = 12 / ($!{buyerInfoList.size()} / 10 + 1))
-                                    #if ($!{buyerInfoList.size()} >= 10)
-                                        #set ($width = ($!{buyerInfoList.size()} / 10 * 100 + 120))
-                                        style="width: ${width}px"
-                                    #end
-                                        >
-                                    <li class="title back js-generated">
-                                    <h5><a href="javascript:void(0)">Back</a></h5>
-                                    #if ($!{buyerInfoList.size()} > 10)
-                                        <li class="center"><label>子用户列表 Sub User List</label></li>
-                                    #end
-                                    <li>
-                                        <span class="row drop-remove">
-                                            #foreach ($buyerInfo in $!{buyerInfoList})
-                                            <span class="large-${part} columns drop-remove center">
-                                                <a class="drop-remove drop-options"
-                                                   href="/auth/switch?username=$!{buyerInfo.username}">$!{buyerInfo.realName}</a>
-                                            </span>
-                                            #end
-                                        </span>
-                                    </li>
-                                    <li class="active"><a class="drop-remove drop-options" href="#"
-                                           data-reveal-id="logoutModal">退出登录</a></li>
-                                </ul>
-                            </li>
-                        #end
-                    </ul>
-                #else
-                    <ul class="right-section">
-                        #if ($!{adminUser} == true)
-                            <li>
-                                <a href="/list" class="top-button">
-                                    <img class="menu-icon" src="images/buyer.png" alt="icon">
-                                    <div class="menu-text" id="exchange"><i class="fi-torso-business exchange"></i></div>
-                                </a>
-                            </li>
-                        #end
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/admin/all" class="top-button">
-                                <img class="menu-icon" src="images/icon-home.png" alt="icon">
-                                <div class="menu-text" id="admin-list">所有订单</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/admin/audit" class="top-button">
-                                <img class="menu-icon" src="images/icon-about.png" alt="icon">
-                                <div class="menu-text" id="audit-list">审核表</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/admin/customer-service?eventStatus=PROCESSING" class="top-button">
-                                <img class="menu-icon" src="images/icon-recruit.png" alt="icon">
-                                <div class="menu-text" id="admin-cs-list">客服表</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/admin/checking/buyer" class="top-button">
-                                <img class="menu-icon" src="images/icon-product.png" alt="icon">
-                                <div class="menu-text" id="checking-list">对账表</div>
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li class="drop-remove has-dropdown not-click height-definer higher-index">
-                            <a href="#" class="drop-remove drop-anchor" id="statistics-info">统计信息</a>
-                            <ul class="dropdown"><li class="title back js-generated">
-                                <h5><a href="javascript:void(0)">Back</a></h5>
-                                <li><a class="drop-remove drop-options" href="/admin/statistics/order">订单统计</a></li>
-                                <li><a class="drop-remove drop-options" href="/admin/statistics/transport">转运统计</a></li>
-                                <li><a class="drop-remove drop-options" href="/admin/statistics/buyer">买手信息统计</a></li>
-                                <li><a class="drop-remove drop-options"
-                                       href="/admin/statistics/over-limit-order">超时订单统计</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li class="has-form">
-                            #if ($!{realName})
-                                <a href="#" data-reveal-id="logoutModal" class="small button">退出登陆</a>
-                            #else
-                                <a href="/auth/login" class="small button">登陆</a>
-                            #end
-
-                            <div id="logoutModal" class="reveal-modal small center" data-reveal>
-                                <p>您真的想登出吗？</p>
-                                <a href="/auth/logout" class="small button">确定</a>
-                                <a class="close-reveal-modal">&#215;</a>
-                            </div>
-                        </li>
-                    </ul>
-                #end
-            </section>
-        </nav>
-
-        <nav class="bottom-line"></nav>
-
-        <header>
-            <div class="row">
-                <div class="large-10 columns">
-                    <h1>
-                        惠惠海淘平台
-                        <span style="color: cornflowerblue;font-size: 1rem;letter-spacing:0.5px;">
-                            Do one thing at a time and do well.
-                        </span>
-                    </h1>
-                </div>
-                <div class="large-1 columns">
-                    #if (${adminPage})
-                        <div class="">
-                            <img src="images/adminBig.png" alt="" class="margin-top-small"/>
-                        </div>
-                    #end
-                </div>
+    <!-- bigger menu with centered logo -->
+    <nav class="top-bar hide-for-small" data-topbar="">
+        <div class="account-zone">
+            <div class="account-zone-left">
+                <i class="fi-magnifying-glass"> </i> 搜索
             </div>
-        </header>
 
-        <div id="logoutModal" class="reveal-modal tiny center" data-reveal>
-            <p>Hi, $!{realName}！您真的想登出吗？</p>
-            <a href="/auth/logout" class="small button margin-top">确定</a>
-            <a class="close-reveal-modal">&#215;</a>
+            <div class="account-zone-right">
+                <span>
+                    <a href="#" class="account-zone-anchor">
+                        <i class="fi-shopping-cart"></i>
+                        购物车 (${goodsCartCount})
+                    </a>
+                </span>
+                <span class="inline-divider"> | </span>
+                <span>
+                    <a href="#" class="account-zone-anchor" data-reveal-id="userAccountModal">
+                        Hi, ${userName}
+                    </a>
+                </span>
+            </div>
         </div>
+
+        <div class="image-logo">
+            <a href="/">
+                <img src="images/logo6.png">
+            </a>
+        </div>
+
+        <div data-magellan-expedition="fixed" class="main-menu">
+            <dl class="sub-nav main-menu-list">
+                <dd data-magellan-arrival="lookbook" class="main-menu-content"><a href="#build">搭配 LOOKBOOK</a></dd>
+                <dd data-magellan-arrival="category" class="main-menu-content"><a href="#js">分类 CATEGORY</a></dd>
+                <dd data-magellan-arrival="proshelp" class="main-menu-content"><a href="#js">帮你搭 Pro's HELP</a></dd>
+                <dd data-magellan-arrival="improvement" class="main-menu-content"><a href="#js">气质提升
+                    IMPROVEMENT</a></dd>
+            </dl>
+        </div>
+    </nav>
+
+    <div class="fixedBtns">
+        <div class="fixedUp">
+            <i class="fi-arrow-up"></i>
+        </div>
+        <div class="fixedCart">
+            <i class="fi-shopping-cart"></i>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="userAccountModal" class="reveal-modal" data-reveal aria-labelledby="accountCenter" aria-hidden="true"
+         role="dialog">
+        <h2 id="accountCenter" class="greenText"><i class="fi-thumbnails"></i> 用户账户中心</h2>
+        <p class="subheader">Hi, ${userName}, 您好，有什么能帮助您的？</p>
+
+        <h6 class="margin-top"><i class="fi-widget"></i> 账户相关 Account Settings</h6>
+        <hr>
+
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>

@@ -1,3 +1,14 @@
 .page-content {
-    min-height: 2000px;
+    min-height: 300px;
+}
+.row {
+    max-width: 95% !important;
+}
+.row .row {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.all-list tr th,
+.all-list tr td {
+    text-align: center !important;
 }

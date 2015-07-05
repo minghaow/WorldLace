@@ -1,7 +1,6 @@
 package nanshen.web.controller;
 
 import nanshen.dao.AdminUserInfoDao;
-import nanshen.data.AdminUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,7 +24,6 @@ public class HelpCtrl {
 	 */
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
 	public ModelAndView printWelcomeTest(ModelMap model) {
-		adminUserInfoDao.insert(new AdminUserInfo("abc"));
 		model.addAttribute("AdminUserInfoList", adminUserInfoDao.getAll());
 		model.addAttribute("message", "Hello world!");
 		model.addAttribute("goodsCartCount", 0);

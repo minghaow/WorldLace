@@ -29,7 +29,7 @@
 
     <div class="row" data-equalizer>
         <div class="login-wrapper large-8 columns" data-equalizer-watch>
-            <form action="/admin/auth/signin" method="post" id="login-form">
+            <form action="/auth/login" method="post" id="login-form">
                 <fieldset class="panel row margin-top">
                     <legend>登陆 Log In</legend>
                     <div class="large-9 small-12 column large-centered margin-top">
@@ -113,5 +113,5 @@
         $('.bxslider').bxSlider();
     });
 </script>
-<script src="/script/home.js"></script>
+<script src="script/home.js"></script>
 #include("footer.vm")

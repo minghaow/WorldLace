@@ -10,9 +10,9 @@
     <title></title>
 
     <!-- style stuff -->
-    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+    <link type="image/x-icon" href="/images/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/admin/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/tool.css">
     <link rel="stylesheet" href="/css/common.css">
@@ -49,7 +49,7 @@
             <section class="left-small">
                 <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
             </section>
-            <div class="middle tab-bar-section"><img src="images/logo6.png"></div>
+            <div class="middle tab-bar-section"><img src="/images/logo.png"></div>
         </nav>
     </div>
 
@@ -59,7 +59,9 @@
         <ul class="title-area">
             <li class="name">
                 <h1>
-                    <a href="/">LanZhuJue.com</a>
+                    <a href="/">
+                        LanZhuJue.com
+                    </a>
                 </h1>
             </li>
         </ul>
@@ -67,26 +69,28 @@
         <section class="top-bar-section">
             <ul class="right-section">
                 <li>
-                    <a href="/list" class="top-button">
+                    <a href="/" class="top-button">
                         <img class="menu-icon" src="/images/buyer.png" alt="icon">
                         <div class="menu-text" id="exchange"><i class="fi-torso-business exchange"></i></div>
                     </a>
                 </li>
 
                 <li class="divider"></li>
-                <li>
-                    <a href="/admin/all" class="top-button">
-                        <img class="menu-icon" src="/images/icon-home.png" alt="icon">
-                        <div class="menu-text" id="admin-list">所有订单</div>
-                    </a>
+                <li class="drop-remove has-dropdown not-click height-definer higher-index">
+                    <a href="#" class="drop-remove drop-anchor chosen" id="audit-list">运营系统</a>
+                    <ul class="dropdown"><li class="title back js-generated">
+                        <h5><a href="javascript:void(0)">Back</a></h5>
+                        <li><a class="drop-remove drop-options" href="/admin/looks">搭配列表</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/upload-looks">上传搭配</a></li>
+                    </ul>
                 </li>
 
                 <li class="divider"></li>
                 <li class="drop-remove has-dropdown not-click height-definer higher-index">
-                    <a href="#" class="drop-remove drop-anchor" id="audit-list">审核表</a>
+                    <a href="#" class="drop-remove drop-anchor" id="audit-list">审核系统</a>
                     <ul class="dropdown"><li class="title back js-generated">
                         <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/admin/audit">订单审核表</a></li>
+                        <li><a class="drop-remove drop-options" href="/">订单审核表</a></li>
                         <li><a class="drop-remove drop-options"
                                href="/account/appliers">买手申请审核表</a></li>
                     </ul>
@@ -96,7 +100,7 @@
                 <li>
                     <a href="/admin/customer-service?eventStatus=PROCESSING" class="top-button">
                         <img class="menu-icon" src="/images/icon-recruit.png" alt="icon">
-                        <div class="menu-text" id="admin-cs-list">客服表</div>
+                        <div class="menu-text" id="admin-cs-list">客服系统</div>
                     </a>
                 </li>
 
@@ -104,20 +108,20 @@
                 <li>
                     <a href="/admin/checking/buyer" class="top-button">
                         <img class="menu-icon" src="/images/icon-product.png" alt="icon">
-                        <div class="menu-text" id="checking-list">对账表</div>
+                        <div class="menu-text" id="checking-list">对账系统</div>
                     </a>
                 </li>
 
                 <li class="divider"></li>
                 <li class="drop-remove has-dropdown not-click height-definer higher-index">
-                    <a href="#" class="drop-remove drop-anchor" id="statistics-info">统计信息</a>
+                    <a href="#" class="drop-remove drop-anchor" id="statistics-info">统计系统</a>
                     <ul class="dropdown"><li class="title back js-generated">
                         <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/admin/statistics/order">订单统计</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/statistics/transport">转运统计</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/statistics/buyer">买手信息统计</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/">订单统计</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/">转运统计</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/">信息统计</a></li>
                         <li><a class="drop-remove drop-options"
-                               href="/admin/statistics/over-limit-order">超时订单统计</a></li>
+                               href="/admin/">超时订单统计</a></li>
                     </ul>
                 </li>
 
@@ -144,8 +148,8 @@
     <header>
         <div class="row">
             <div class="large-10 columns">
-                <h1>
-                    <span style="color: cornflowerblue;">
+                <h1 class="margin-left">
+                    <span class="blueText">
                         蓝主角管理系统
                     </span>
                     <span class="greyText" style="font-size: 1rem;letter-spacing:0.5px;">
@@ -154,11 +158,9 @@
                 </h1>
             </div>
             <div class="large-1 columns">
-                #if (${adminPage})
-                    <div class="">
-                        <img src="/images/adminBig.png" alt="" class="margin-top-small"/>
-                    </div>
-                #end
+                <div class="">
+                    <img src="/images/adminBig.png" alt="" class="margin-top-small"/>
+                </div>
             </div>
         </div>
     </header>

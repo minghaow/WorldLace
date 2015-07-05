@@ -1,8 +1,7 @@
 <!-- footer -->
 <section class="top-footer">
     <blockquote>
-        " 全身心致力于中国男性生活品质的提升。DO ONE THING AND DO IT WELL. "
-        <cite>Daniel WANG</cite>
+        " 全身心致力于中国男性生活品质的提升。"<cite>LanZhuJue.com</cite>
     </blockquote>
 </section>
 
@@ -15,25 +14,25 @@
 </div>
 </div>
 
-<script src="script/vendor/modernizr.js"></script>
-<script src="script/vendor/foundation.js"></script>
-<script src="script/vendor/foundation.reveal.js"></script>
-<script src="script/vendor/foundation.abide.js"></script>
-<script src="script/vendor/foundation.accordion.js"></script>
-<script src="script/vendor/foundation.alert.js"></script>
-<script src="script/vendor/foundation.clearing.js"></script>
-<script src="script/vendor/foundation.dropdown.js"></script>
-<script src="script/vendor/foundation.equalizer.js"></script>
-<script src="script/vendor/foundation.interchange.js"></script>
-<script src="script/vendor/foundation.joyride.js"></script>
-<script src="script/vendor/foundation.magellan.js"></script>
-<script src="script/vendor/foundation.offcanvas.js"></script>
-<script src="script/vendor/foundation.orbit.js"></script>
-<script src="script/vendor/foundation.reveal.js"></script>
-<script src="script/vendor/foundation.slider.js"></script>
-<script src="script/vendor/foundation.tab.js"></script>
-<script src="script/vendor/foundation.tooltip.js"></script>
-<script src="script/vendor/foundation.topbar.js"></script>
+<script src="/script/vendor/modernizr.js"></script>
+<script src="/script/vendor/foundation.js"></script>
+<script src="/script/vendor/foundation.reveal.js"></script>
+<script src="/script/vendor/foundation.abide.js"></script>
+<script src="/script/vendor/foundation.accordion.js"></script>
+<script src="/script/vendor/foundation.alert.js"></script>
+<script src="/script/vendor/foundation.clearing.js"></script>
+<script src="/script/vendor/foundation.dropdown.js"></script>
+<script src="/script/vendor/foundation.equalizer.js"></script>
+<script src="/script/vendor/foundation.interchange.js"></script>
+<script src="/script/vendor/foundation.joyride.js"></script>
+<script src="/script/vendor/foundation.magellan.js"></script>
+<script src="/script/vendor/foundation.offcanvas.js"></script>
+<script src="/script/vendor/foundation.orbit.js"></script>
+<script src="/script/vendor/foundation.reveal.js"></script>
+<script src="/script/vendor/foundation.slider.js"></script>
+<script src="/script/vendor/foundation.tab.js"></script>
+<script src="/script/vendor/foundation.tooltip.js"></script>
+<script src="/script/vendor/foundation.topbar.js"></script>
 <script>
     $(document).foundation();
 </script>

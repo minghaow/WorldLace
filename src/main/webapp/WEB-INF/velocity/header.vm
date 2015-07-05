@@ -11,18 +11,18 @@
 
     <!-- style stuff -->
     <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/tool.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/foundation-icons.css">
-    <link rel="stylesheet" href="css/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/tool.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/foundation-icons.css">
+    <link rel="stylesheet" href="/css/jquery.bxslider.css"/>
 
     <!-- js stuff -->
-    <script src="script/vendor/jquery.js"></script>
-    <script src="script/vendor/jquery.bxslider.min.js"></script>
+    <script src="/script/vendor/jquery.js"></script>
+    <script src="/script/vendor/jquery.bxslider.min.js"></script>
 </head>
 
 <!-- body start -->
@@ -49,7 +49,7 @@
             <section class="left-small">
                 <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
             </section>
-            <div class="middle tab-bar-section"><img src="images/logo6.png"></div>
+            <div class="middle tab-bar-section"><img src="images/logo.png"></div>
         </nav>
     </div>
 
@@ -78,7 +78,7 @@
 
         <div class="image-logo">
             <a href="/">
-                <img src="images/logo6.png">
+                <img src="/images/logo.png">
             </a>
         </div>
 

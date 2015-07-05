@@ -13,9 +13,6 @@
 <!-- page contents -->
 <div class="page-content">
 
-    #foreach ($adminUserInfo in $!{AdminUserInfoList})
-        <div>$adminUserInfo.username</div>
-    #end
     <ul class="bxslider">
         <li><img src="images/slider/slider1.png" /></li>
         <li><img src="images/slider/slider1.png" /></li>
@@ -26,7 +23,7 @@
     <div class="item-list row" data-equalizer>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item1-1.jpg" alt="商品1图1"/>
+                <img src="/images/items/item1-1.jpg" alt="商品1图1"/>
             </div>
             <div class="item-description">
                 藏蓝色立领 POLO
@@ -37,7 +34,7 @@
         </div>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item2-1.jpg" alt="商品2图1"/>
+                <img src="/images/items/item2-1.jpg" alt="商品2图1"/>
             </div>
             <div class="item-description">
                 藏蓝色立领 POLO
@@ -48,7 +45,7 @@
         </div>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item4-1.jpg" alt="商品4图1"/>
+                <img src="/images/items/item4-1.jpg" alt="商品4图1"/>
             </div>
             <div class="item-description">
                 藏蓝色立领 POLO
@@ -59,22 +56,22 @@
         </div>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item5-1.jpg" alt="商品5图1"/>
+                <img src="/images/items/item5-1.jpg" alt="商品5图1"/>
             </div>
         </div>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item6-1.jpg" alt="商品6图1"/>
+                <img src="/images/items/item6-1.jpg" alt="商品6图1"/>
             </div>
         </div>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item7-1.jpg" alt="商品7图1"/>
+                <img src="/images/items/item7-1.jpg" alt="商品7图1"/>
             </div>
         </div>
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
             <div class="item-image-wrapper">
-                <img src="images/items/item3-1.jpg" alt="商品3图1"/>
+                <img src="/images/items/item3-1.jpg" alt="商品3图1"/>
             </div>
         </div>
     </div>

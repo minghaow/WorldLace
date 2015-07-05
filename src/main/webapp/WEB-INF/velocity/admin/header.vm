@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- header start -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="男神梦工厂" />
+    <meta name="description" content="男神梦工厂（www.IamNanShen.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <!-- style stuff -->
+    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/tool.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/foundation.min.css">
+    <link rel="stylesheet" href="/css/foundation-icons.css">
+    <link rel="stylesheet" href="/css/jquery.bxslider.css"/>
+
+    <!-- js stuff -->
+    <script src="/script/vendor/jquery.js"></script>
+    <script src="/script/vendor/jquery.bxslider.min.js"></script>
+</head>
+
+<!-- body start -->
+<body>
+
+<!-- top bar start -->
+<div class="off-canvas-wrap" data-offcanvas>
+<div class="inner-wrap">
+
+    <!-- left menu for mobile devices -->
+    <div class="left-menu">
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label class="first">男神梦工厂</label></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+                <li><a href="/list">男装</a></li>
+            </ul>
+        </aside>
+        <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
+        <nav class="tab-bar show-for-small">
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
+            </section>
+            <div class="middle tab-bar-section"><img src="images/logo6.png"></div>
+        </nav>
+    </div>
+
+    <!-- bigger menu with centered logo -->
+    <!-- bigger header -->
+    <nav class="top-bar hide-for-small" data-topbar="">
+        <ul class="title-area">
+            <li class="name">
+                <h1>
+                    <a href="/">LanZhuJue.com</a>
+                </h1>
+            </li>
+        </ul>
+
+        <section class="top-bar-section">
+            <ul class="right-section">
+                <li>
+                    <a href="/list" class="top-button">
+                        <img class="menu-icon" src="/images/buyer.png" alt="icon">
+                        <div class="menu-text" id="exchange"><i class="fi-torso-business exchange"></i></div>
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                    <a href="/admin/all" class="top-button">
+                        <img class="menu-icon" src="/images/icon-home.png" alt="icon">
+                        <div class="menu-text" id="admin-list">所有订单</div>
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li class="drop-remove has-dropdown not-click height-definer higher-index">
+                    <a href="#" class="drop-remove drop-anchor" id="audit-list">审核表</a>
+                    <ul class="dropdown"><li class="title back js-generated">
+                        <h5><a href="javascript:void(0)">Back</a></h5>
+                        <li><a class="drop-remove drop-options" href="/admin/audit">订单审核表</a></li>
+                        <li><a class="drop-remove drop-options"
+                               href="/account/appliers">买手申请审核表</a></li>
+                    </ul>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                    <a href="/admin/customer-service?eventStatus=PROCESSING" class="top-button">
+                        <img class="menu-icon" src="/images/icon-recruit.png" alt="icon">
+                        <div class="menu-text" id="admin-cs-list">客服表</div>
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                    <a href="/admin/checking/buyer" class="top-button">
+                        <img class="menu-icon" src="/images/icon-product.png" alt="icon">
+                        <div class="menu-text" id="checking-list">对账表</div>
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li class="drop-remove has-dropdown not-click height-definer higher-index">
+                    <a href="#" class="drop-remove drop-anchor" id="statistics-info">统计信息</a>
+                    <ul class="dropdown"><li class="title back js-generated">
+                        <h5><a href="javascript:void(0)">Back</a></h5>
+                        <li><a class="drop-remove drop-options" href="/admin/statistics/order">订单统计</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/statistics/transport">转运统计</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/statistics/buyer">买手信息统计</a></li>
+                        <li><a class="drop-remove drop-options"
+                               href="/admin/statistics/over-limit-order">超时订单统计</a></li>
+                    </ul>
+                </li>
+
+                <li class="divider"></li>
+                <li class="has-form">
+                    #if ($!{realName})
+                        <a href="#" data-reveal-id="logoutModal" class="small button">退出登陆</a>
+                    #else
+                        <a href="/auth/login" class="small button">登陆</a>
+                    #end
+
+                    <div id="logoutModal" class="reveal-modal small center" data-reveal>
+                        <p>您真的想登出吗？</p>
+                        <a href="/auth/logout" class="small button">确定</a>
+                        <a class="close-reveal-modal">&#215;</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </nav>
+
+    <nav class="bottom-line"></nav>
+
+    <header>
+        <div class="row">
+            <div class="large-10 columns">
+                <h1>
+                    <span style="color: cornflowerblue;">
+                        蓝主角管理系统
+                    </span>
+                    <span class="greyText" style="font-size: 1rem;letter-spacing:0.5px;">
+                        Let's make things done.
+                    </span>
+                </h1>
+            </div>
+            <div class="large-1 columns">
+                #if (${adminPage})
+                    <div class="">
+                        <img src="/images/adminBig.png" alt="" class="margin-top-small"/>
+                    </div>
+                #end
+            </div>
+        </div>
+    </header>
+
+    <div id="logoutModal" class="reveal-modal tiny center" data-reveal>
+        <p>Hi, $!{realName}！您真的想登出吗？</p>
+        <a href="/auth/logout" class="small button margin-top">确定</a>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>

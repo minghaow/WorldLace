@@ -220,7 +220,7 @@
   <!-- Application Server Libraries -->
   
   <path id="library.resin_4.0.38.classpath">
-    <pathelement location="/Users/minghaowang/Documents/Works/Youdao/resin-4.0.38/lib/javaee-16.jar"/>
+    <pathelement location="${resin.home}/lib/javaee-16.jar"/>
   </path>
   <!-- Register Custom Compiler Taskdefs -->
   <property name="javac2.home" value="${idea.home}/lib"/>

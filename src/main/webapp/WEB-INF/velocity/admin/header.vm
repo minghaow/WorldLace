@@ -80,7 +80,7 @@
                     <a href="#" class="drop-remove drop-anchor chosen" id="audit-list">运营系统</a>
                     <ul class="dropdown"><li class="title back js-generated">
                         <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/admin/looks">搭配列表</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/operation/look-list">搭配列表</a></li>
                         <li><a class="drop-remove drop-options" href="/admin/upload-looks">上传搭配</a></li>
                     </ul>
                 </li>

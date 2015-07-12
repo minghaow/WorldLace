@@ -4,10 +4,8 @@
   
   <property file="nanshen.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
-  <!-- 
   <property name="skip.tests" value="true"/>
-   -->
-  
+
   <!-- Compiler options -->
   
   <property name="compiler.debug" value="on"/>
@@ -222,18 +220,6 @@
   <path id="library.resin_4.0.38.classpath">
     <pathelement location="${resin.home}/lib/javaee-16.jar"/>
   </path>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <pathelement location="${javac2.home}/javac2.jar"/>
-    <pathelement location="${javac2.home}/jdom.jar"/>
-    <pathelement location="${javac2.home}/asm-all.jar"/>
-    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
-  </target>
   
   <!-- Modules -->
   

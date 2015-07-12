@@ -33,7 +33,7 @@ public class LookInfo {
     @Column
     private String subTitle;
 
-    /** 描述 */
+    /** 描述, html页面 */
     @Column
     private String desc;
 

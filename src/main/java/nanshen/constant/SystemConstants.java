@@ -22,4 +22,8 @@ public class SystemConstants {
     /** 买手系统每页默认显示数量 */
     public static final int DEFAULT_PAGE_SIZE = 30;
 
+    /** OSS related */
+    public static String ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
+    public static String BUCKET_NAME = "nanshen";
+
 }

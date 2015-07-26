@@ -38,10 +38,6 @@
             <ul class="off-canvas-list">
                 <li><label class="first">男神梦工厂</label></li>
                 <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
             </ul>
         </aside>
         <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
@@ -81,7 +77,7 @@
                     <ul class="dropdown"><li class="title back js-generated">
                         <h5><a href="javascript:void(0)">Back</a></h5>
                         <li><a class="drop-remove drop-options" href="/admin/operation/look-list">搭配列表</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/upload-looks">上传搭配</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/operation/look-upload">上传搭配</a></li>
                     </ul>
                 </li>
 

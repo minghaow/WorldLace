@@ -12,95 +12,130 @@
 
 <!-- breadcrumbs -->
 <ul class="breadcrumbs">
-    <li ><a href="/"><i class="fi-home"></i> 未登录用户</a></li>
-    <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 登陆/注册</a></li>
+    <li ><a href="/"><i class="fi-home"></i> 运营系统</a></li>
+    <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 搭配列表</a></li>
 </ul>
 
-<!-- alert info -->
-#if ($!{error})
-<div data-alert class="row alert-box alert radius margin-top">
-    密码错误，登陆失败！
-    <a href="#" class="close">&times;</a>
-</div>
-#end
-
 <!-- page contents -->
-<div class="page-content margin-top-large">
+<div class="page-content margin-top">
 
-    <div class="row" data-equalizer>
-        <div class="login-wrapper large-8 columns" data-equalizer-watch>
-            <form action="/auth/login" method="post" id="login-form">
-                <fieldset class="panel row margin-top">
-                    <legend>登陆 Log In</legend>
-                    <div class="large-9 small-12 column large-centered margin-top">
-                        <div class="row collapse prefix-radius margin-top-small">
-                            <div class="small-3 columns">
-                                <span class="prefix">邮箱</span>
+    <dl class="accordion row selector margin-top" data-accordion >
+        <dd class="accordion-navigation">
+            <a href="#panel0">添加新搭配</a>
+            <div id="panel0" class="content active">
+                <div class="row margin-top">
+                    <div class="large-3 medium-6 small-12 columns leftAlign" data-equalizer-watch>
+                        <div class="row collapse prefix-radius ">
+                            <label class="tag-label">搭配文字</label>
+                            <div class="small-2 columns">
+                                <span class="prefix">标题</span>
                             </div>
-                            <div class="small-9 columns">
-                                <input id="username" name="username" type="text" placeholder="Email">
+                            <div class="small-10 columns">
+                                <input id="username" name="username" type="text" placeholder="Title">
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">子标题</span>
+                            </div>
+                            <div class="small-10 columns">
+                                <input name="phone" type="text" placeholder="SubTitle">
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">描述</span>
+                            </div>
+                            <div class="small-10 columns">
+                                <textarea id="email" name="email" type="" placeholder="Descriptions"></textarea>
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">标签</span>
+                            </div>
+                            <div class="small-10 columns">
+                                <input id="email" name="email" type="text" placeholder="Tags">
                             </div>
                         </div>
-                        <div class="row collapse prefix-radius">
-                            <div class="small-3 columns">
-                                <span class="prefix">密码</span>
-                            </div>
-                            <div class="small-9 columns">
-                                <input id="password" name="password" type="password" placeholder="password">
-                            </div>
-                        </div>
-                        <input type="submit" class="button postfix margin-top-small" id="login-button" value="登录">
-                        <div class="margin-bottom"></div>
                     </div>
-                </fieldset>
-            </form>
-        </div>
 
-        <div class="register-wrapper large-4 columns" data-equalizer-watch>
-            <form action="/auth/register" method="post" id="register-form">
-                <fieldset class="panel row margin-top">
-                    <legend>注册 Register</legend>
-                    <div class="large-12 small-12 column large-centered margin-top">
-                        <div class="row collapse prefix-radius margin-top-small">
-                            <div class="small-3 columns">
-                                <span class="prefix">邮箱</span>
-                            </div>
-                            <div class="small-9 columns">
-                                <input id="username_r" name="username" type="text" placeholder="Email">
-                            </div>
+                    <div class="large-3 small-12 columns" data-equalizer-watch>
+                        <div class="account-image-wrapper">
+                            <img src="/images/accountDefault3.png" alt="" class="margin-top-small"/>
                         </div>
-                        <div class="row collapse prefix-radius">
-                            <div class="small-3 columns">
-                                <span class="prefix">种类</span>
-                            </div>
-                            <div class="small-9 columns">
-                                <select name="type">
-                                    <option value="OPERATION">运营人员</option>
-                                    <option value="SERVICE">客服人员</option>
-                                    <option value="ADMIN">管理员</option>
-                                    <option value="SUPER">超级管理员</option>
-                                </select>
-                            </div>
+                        <div class="margin-top-small greyText">
+                            买手申请信息
                         </div>
-                        <input type="submit" class="button postfix margin-top-small" id="register-button" value="注册">
-                        <div class="margin-bottom"></div>
                     </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+                </div>
+                <form action="/auth/activate" method="post" id="activate-form" class="row margin-top" data-equalizer>
+                    <div class="large-3 small-12 columns" data-equalizer-watch>
+                        &nbsp;
+                    </div>
+                    <div class="large-9 small-12 columns leftAlign" data-equalizer-watch>
+                        <div class="row collapse prefix-radius ">
+                            <label class="tag-label">待填个人信息</label>
+                            <input id="group" name="group" class="hide" value="$!{buyerApplyInfo.isGroupBuyer()}">
+                            <div class="small-2 columns">
+                                <span class="prefix">身份证号</span>
+                            </div>
+                            <div class="small-4 columns">
+                                <input id="idcard" name="idcard" type="text" placeholder="150203****">
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">常用手机号</span>
+                            </div>
+                            <div class="small-4 columns">
+                                <input id="phone" name="phone" type="text" value="$!{buyerInfo.phone}"
+                                       placeholder="13811112222">
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">网易宝账号</span>
+                            </div>
+                            <div class="small-10 columns">
+                                <input id="settleEmail" name="settleEmail" type="text" placeholder="example@163.com"
+                                    #if ($!{buyerApplyInfo.isGroupBuyer()} == "true")
+                                       value="团队买手，无需填入结算账号" disabled
+                                    #else
+                                       value="$!{buyerInfo.account}"
+                                    #end>
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">新登陆密码</span>
+                            </div>
+                            <div class="small-4 columns">
+                                <input id="password_1" name="password_1" type="password" placeholder="****">
+                            </div>
+                            <div class="small-2 columns">
+                                <span class="prefix">登陆密码确认</span>
+                            </div>
+                            <div class="small-4 columns">
+                                <input id="password_2" name="password_2" type="password" placeholder="****">
+                            </div>
+                        </div>
 
-    <div id="successModal" class="small reveal-modal" data-reveal>
-        <h2 class="greenText">修改密码成功!</h2>
-        <p>欢迎您使用买手系统！请登陆！</p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
+                        <div class="row collapse leftAlign margin-top">
+                            <div class="large-12 columns">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">
+                                    我已阅读<a href="/howTo" target="_blank">惠惠海淘买手注意事项书</a>，并同意其中所有条款。
+                                </label>
+                            </div>
+                            <div class="large-12 columns">
+                                <input type="checkbox" id="checkbox2"/>
+                                <label for="checkbox2">
+                                    我已下载<a target="_blank" href="https://chrome.google.com/webstore/detail/%E6%83%A0%E6%83%A0%E8%87%AA%E5%8A%A9%E6%B5%B7%E6%B7%98/haolonnlelpkbepmllkgoimcbeehfmim">
+                                    惠惠自助海淘插件（需要翻墙，无法翻墙请联系管理员）</a>
+                                </label>
+                            </div>
+                        </div>
 
-    <div id="failModal" class="small reveal-modal" data-reveal>
-        <h2 class="redText">修改密码失败!</h2>
-        <p id="fail-reason"></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
+                        <div class="row collapse prefix-radius margin-top margin-bottom">
+                            <div class="large-6 columns large-centered">
+                                <input type="submit" class="button tiny postfix" id="activate-button" value="提交并激活账号">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </dd>
+    </dl>
 
 </div>
 <!-- end of this page contents -->
@@ -113,5 +148,5 @@
         $('.bxslider').bxSlider();
     });
 </script>
-<script src="script/home.js"></script>
+<script src="/script/home.js"></script>
 #include("footer.vm")

@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Controller的基类，定义了Controller使用的基本方法，所有Controller都应该继承该基类
  *
- * @author KONG Xiangxin
+ * @author WANG Minghao
  */
 public abstract class BaseController {
 

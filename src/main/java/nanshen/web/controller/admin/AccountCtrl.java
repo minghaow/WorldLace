@@ -30,11 +30,12 @@ public class AccountCtrl extends BaseController {
 	@RequestMapping(value = "/auth/signin", method = RequestMethod.POST)
 	public ModelAndView orderDetailJson(HttpServletRequest request, HttpServletResponse response, ModelMap model,
 								@RequestParam(defaultValue = "b", required = true) String username,
+								@RequestParam(defaultValue = "1", required = true) String password,
 								@RequestParam(defaultValue = "123321", required = true) long id) throws IOException {
 //		model.put("sessionId", request.getSession().getId());
 //		responseJson(response, model);
 		boolean success = true;
-		if (success && username.equals("b")) {
+		if (success && username.equals("b") && password.equals("1")) {
 			response.sendRedirect("/admin/operation/look-list");
 			return null;
 		} else {

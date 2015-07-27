@@ -1,5 +1,6 @@
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 
 #parse("admin/header.vm")
 <!-- end of header -->
@@ -40,9 +41,9 @@
     <div class="row">
         <dl class="sub-nav">
             <dt class="blueText">过滤器：</dt>
-            <dd><a href="#">线上搭配</a></dd>
-            <dd class="active"><a href="#">线下搭配</a></dd>
-            <dd><a href="#">未完成搭配</a></dd>
+            <dd #if ($!{status} == "ONLINE") class="active" #end><a href="?status=ONLINE">线上搭配</a></dd>
+            <dd #if ($!{status} == "OFFLINE") class="active" #end><a href="?status=OFFLINE">线下搭配</a></dd>
+            <dd #if ($!{status} == "NEW") class="active" #end><a href="?status=NEW">未完成搭配</a></dd>
         </dl>
     </div>
 
@@ -57,81 +58,22 @@
         </thead>
 
         <tbody class="all-list-tbody center">
+        #foreach ($lookInfo in $lookInfoList)
             <tr id="order-1">
                 <td>1</td>
                 <td>
-                    <img src="$!{imgUrl}" alt=""/></td>
+                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt="搭配配图"/></td>
                 <td>
-                    $!{title}
-                    <div class="greyText">$!{subTitle}</div>
+                    $lookInfo.title
+                    <div class="greyText">$lookInfo.subTitle</div>
                 </td>
                 <td>
-                    <a href="#" class="tiny button -order-info-button">置顶</a>
-                    <a href="#" class="tiny button -order-info-button">上线</a>
-                    <a href="#" class="tiny button -order-info-button">详情</a>
-                    <a href="#" class="tiny button -order-info-button">删除</a>
+                    <a href="/admin/operation/look/online?lookId=$lookInfo.id" class="tiny button">上线</a>
+                    <a href="/admin/operation/look/delete" class="tiny button -order-info-button">删除</a>
                 </td>
             </tr>
-
-            <tr id="order-1">
-                <td>2</td>
-                <td>
-                    <img src="$!{imgUrl}" alt=""/></td>
-                <td>
-                    $!{title}
-                    <div class="greyText">$!{subTitle}</div>
-                </td>
-                <td>
-                    <a href="#" class="tiny button -order-info-button">置顶</a>
-                    <a href="#" class="tiny button -order-info-button">上线</a>
-                    <a href="#" class="tiny button -order-info-button">详情</a>
-                    <a href="#" class="tiny button -order-info-button">删除</a>
-                </td>
-            </tr>
-
-            <tr id="order-1">
-                <td>3</td>
-                <td>
-                    <img src="$!{imgUrl}" alt=""/></td>
-                <td>
-                    $!{title}
-                    <div class="greyText">$!{subTitle}</div>
-                </td>
-                <td>
-                    <a href="#" class="tiny button -order-info-button">置顶</a>
-                    <a href="#" class="tiny button -order-info-button">上线</a>
-                    <a href="#" class="tiny button -order-info-button">详情</a>
-                    <a href="#" class="tiny button -order-info-button">删除</a>
-                </td>
-            </tr>
-
-            <tr id="order-1">
-                <td>4</td>
-                <td>
-                    <img src="$!{imgUrl}" alt=""/></td>
-                <td>
-                    $!{title}
-                    <div class="greyText">$!{subTitle}</div>
-                </td>
-                <td>
-                    <a href="#" class="tiny button -order-info-button">置顶</a>
-                    <a href="#" class="tiny button -order-info-button">上线</a>
-                    <a href="#" class="tiny button -order-info-button">详情</a>
-                    <a href="#" class="tiny button -order-info-button">删除</a>
-                </td>
-            </tr>
+        #end
         </tbody>
-    </table>
-
-    <table class="row margin-top" cellpadding=0 cellspacing=0>
-        <thead>
-        <tr class="empty-info-tr"
-            #if ($!{eventList} != "[]")
-            style="display:none"
-            #end>
-            <th scope="column" class="empty-info-th">抱歉，暂无客服事件。</th>
-        </tr>
-        </thead>
     </table>
 
     <!-- 翻页模块 -->

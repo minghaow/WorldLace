@@ -23,7 +23,7 @@ public class SystemConstants {
     public static final int DEFAULT_PAGE_SIZE = 30;
 
     /** OSS related */
-    public static String ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
+    public static String OSS_BASE_HTTP = "http://nanshen.oss-cn-beijing.aliyuncs.com";
     public static String BUCKET_NAME = "nanshen";
 
 }

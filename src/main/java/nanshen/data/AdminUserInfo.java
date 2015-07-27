@@ -20,13 +20,17 @@ public class AdminUserInfo {
     @Column
     private String username;
 
+    /** 密码 */
+    @Column
+    private String password;
+
     /** 添加时间 */
     @Column
     private Date createTime = new Date();
 
-    public AdminUserInfo(Date createTime, String username) {
-        this.createTime = createTime;
+    public AdminUserInfo(String username, String password) {
         this.username = username;
+        this.password = password;
     }
 
     public AdminUserInfo(String username) {
@@ -58,5 +62,13 @@ public class AdminUserInfo {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

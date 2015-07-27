@@ -23,6 +23,12 @@ public class AdminUserInfoDaoImpl extends BaseDao implements AdminUserInfoDao {
     }
 
     @Override
+    public AdminUserInfo get(String username) {
+        Condition cnd = Cnd.where("username", "=", username);
+        return dao.fetch(AdminUserInfo.class, cnd);
+    }
+
+    @Override
     public List<AdminUserInfo> getAll() {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01");
         return dao.query(AdminUserInfo.class, cnd);

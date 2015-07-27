@@ -1,6 +1,8 @@
 package nanshen.web.controller.admin;
 
 import nanshen.dao.AdminUserInfoDao;
+import nanshen.data.AdminUserInfo;
+import nanshen.utils.EncryptUtils;
 import nanshen.web.common.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,15 +30,14 @@ public class AccountCtrl extends BaseController {
 	}
 
 	@RequestMapping(value = "/auth/signin", method = RequestMethod.POST)
-	public ModelAndView orderDetailJson(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+	public ModelAndView signin(HttpServletRequest request, HttpServletResponse response, ModelMap model,
 								@RequestParam(defaultValue = "b", required = true) String username,
 								@RequestParam(defaultValue = "1", required = true) String password,
 								@RequestParam(defaultValue = "123321", required = true) long id) throws IOException {
-//		model.put("sessionId", request.getSession().getId());
-//		responseJson(response, model);
-		boolean success = true;
-		if (success && username.equals("b") && password.equals("1")) {
-			response.sendRedirect("/admin/operation/look-list");
+		AdminUserInfo adminUserInfo = adminUserInfoDao.get(username);
+		if (adminUserInfo != null && EncryptUtils.isPasswordValid(adminUserInfo.getPassword(), password)) {
+            request.getSession().setAttribute("current_user", username);
+			response.sendRedirect("/admin/operation/look/look-list");
 			return null;
 		} else {
 			model.addAttribute("orderId", id);
@@ -45,4 +46,11 @@ public class AccountCtrl extends BaseController {
 			return new ModelAndView("admin/signIn");
 		}
 	}
+
+    @RequestMapping(value = "/auth/signout", method = RequestMethod.GET)
+    public ModelAndView signout(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
+        request.getSession().invalidate();
+        response.sendRedirect("/admin");
+        return null;
+    }
 }

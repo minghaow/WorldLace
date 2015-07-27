@@ -8,12 +8,14 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * SkuInfo 商品信息数据
+ *
  * @author WANG Minghao
  */
-@Table("LookInfo")
-public class LookInfo {
+@Table("SkuType")
+public class SkuType {
 
-    /** ID */
+    /** 上衣，裤装，鞋靴，配饰 */
     @Id
     private long id;
 
@@ -29,7 +31,7 @@ public class LookInfo {
     @Column
     private String subTitle;
 
-    /** 描述, html页面 */
+    /** 描述 */
     @Column
     private String description;
 
@@ -39,28 +41,17 @@ public class LookInfo {
 
     /** 价格，单位：人民币分 */
     @Column
-    private long price = 0L;
-
-    /** 商品sku数量 */
-    @Column
-    private long skuCount = 0L;
+    private long price;
 
     /** 图片数量 */
     @Column
     private long imgCount = 0L;
 
-    /** 图片数量 */
-    @Column
-    private ContentStatus status = ContentStatus.NEW;
-
-    /** 图片列表, 1-2 */
+    /** 图片列表 */
     private List<String> imgUrlList;
 
-    /** 商品sku列表, 2 */
-    private List<SkuInfo> skuInfoList;
-
     /** 标签列表 */
-    private List<SkuTag> lookTagList;
+    private List<SkuTag> skuTagList;
 
     /** 添加时间 */
     @Column
@@ -70,26 +61,19 @@ public class LookInfo {
     @Column
     private Date updateTime = new Date();
 
-    public LookInfo(Date createTime, String description, long imgCount, long price, String subTitle, String title,
-                    Date updateTime, long uploadUserId) {
+    public SkuType(Date createTime, String description, long price, String subTitle, String title, Date updateTime,
+                   long uploadUserId, String tags) {
         this.createTime = createTime;
         this.description = description;
-        this.imgCount = imgCount;
         this.price = price;
         this.subTitle = subTitle;
         this.title = title;
         this.updateTime = updateTime;
         this.uploadUserId = uploadUserId;
+        this.tags = tags;
     }
 
-    public LookInfo(long uploadUserId) {
-        this.description = "";
-        this.subTitle = "";
-        this.title = "";
-        this.uploadUserId = uploadUserId;
-    }
-
-    public LookInfo() {
+    public SkuType() {
     }
 
     public Date getCreateTime() {
@@ -164,20 +148,12 @@ public class LookInfo {
         this.uploadUserId = uploadUserId;
     }
 
-    public long getSkuCount() {
-        return skuCount;
+    public String getTags() {
+        return tags;
     }
 
-    public void setSkuCount(long skuCount) {
-        this.skuCount = skuCount;
-    }
-
-    public List<SkuInfo> getSkuInfoList() {
-        return skuInfoList;
-    }
-
-    public void setSkuInfoList(List<SkuInfo> skuInfoList) {
-        this.skuInfoList = skuInfoList;
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public long getImgCount() {
@@ -188,27 +164,11 @@ public class LookInfo {
         this.imgCount = imgCount;
     }
 
-    public String getTags() {
-        return tags;
+    public List<SkuTag> getSkuTagList() {
+        return skuTagList;
     }
 
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public List<SkuTag> getLookTagList() {
-        return lookTagList;
-    }
-
-    public void setLookTagList(List<SkuTag> lookTagList) {
-        this.lookTagList = lookTagList;
-    }
-
-    public ContentStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ContentStatus status) {
-        this.status = status;
+    public void setSkuTagList(List<SkuTag> skuTagList) {
+        this.skuTagList = skuTagList;
     }
 }

@@ -76,8 +76,8 @@
                     <a href="#" class="drop-remove drop-anchor chosen" id="audit-list">运营系统</a>
                     <ul class="dropdown"><li class="title back js-generated">
                         <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/admin/operation/look-list">搭配列表</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/operation/look-upload">上传搭配</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/operation/look/look-list">搭配列表</a></li>
+                        <li><a class="drop-remove drop-options" href="/admin/operation/look/look-upload">上传搭配</a></li>
                     </ul>
                 </li>
 
@@ -123,7 +123,7 @@
 
                 <li class="divider"></li>
                 <li class="has-form">
-                    #if ($!{realName})
+                    #if ($!{adminUserInfo})
                         <a href="#" data-reveal-id="logoutModal" class="small button">退出登陆</a>
                     #else
                         <a href="/auth/login" class="small button">登陆</a>
@@ -145,7 +145,7 @@
         <div class="row">
             <div class="large-10 columns">
                 <h1 class="margin-left">
-                    <span class="blueText">
+                    <span class="lightgreyText">
                         蓝主角管理系统
                     </span>
                     <span class="greyText" style="font-size: 1rem;letter-spacing:0.5px;">

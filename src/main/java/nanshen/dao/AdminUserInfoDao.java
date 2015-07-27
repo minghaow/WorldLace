@@ -11,6 +11,8 @@ public interface AdminUserInfoDao {
 
     AdminUserInfo insert(AdminUserInfo userInfo);
 
+    AdminUserInfo get(String username);
+
     List<AdminUserInfo> getAll();
 
 }

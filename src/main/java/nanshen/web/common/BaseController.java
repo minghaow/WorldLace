@@ -1,8 +1,13 @@
 package nanshen.web.common;
 
 import nanshen.constant.SystemConstants;
+import nanshen.dao.AdminUserInfoDao;
+import nanshen.data.AdminUserInfo;
 import nanshen.utils.JsonUtils;
 import nanshen.utils.ViewUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
@@ -17,6 +22,9 @@ import java.io.IOException;
  * @author WANG Minghao
  */
 public abstract class BaseController {
+
+    @Autowired
+    protected AdminUserInfoDao adminUserInfoDao;
 
     class StringEscapeEditor extends PropertyEditorSupport {
 
@@ -74,6 +82,26 @@ public abstract class BaseController {
      */
     protected String getRequestIp(HttpServletRequest request) {
         return request.getRemoteAddr();
+    }
+
+    /**
+     * 获取当前已登录管理员用户的信息
+     *
+     * @param request
+     * @return
+     */
+    protected AdminUserInfo getLoginedUser(HttpServletRequest request) {
+        String username = (String)request.getSession().getAttribute("current_user");
+        if (StringUtils.isBlank(username)) {
+            return null;
+        }
+        return adminUserInfoDao.get(username);
+    }
+
+    protected AdminUserInfo prepareLoginUserInfo(HttpServletRequest request, ModelMap model) {
+        AdminUserInfo adminUserInfo = getLoginedUser(request);
+        model.addAttribute("adminUserInfo", adminUserInfo);
+        return adminUserInfo;
     }
 
     /**

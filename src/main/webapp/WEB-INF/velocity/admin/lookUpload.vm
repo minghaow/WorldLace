@@ -1,13 +1,19 @@
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookTagList" type="java.util.List" *#
+#* @vtlvariable name="lookTag" type="nanshen.data.LookTag" *#
 
 
 #parse("admin/header.vm")
+<link rel="stylesheet" href="/css/admin/lookUpload.css"/>
+<script src="/script/vendor/jquery.uploadify.min.js" type="text/javascript"></script>
 <!-- end of header -->
 
 <!-- some hidden infos -->
 <div id="page-info">
     <div id="this-tag">orders</div>
+    <div id="sessionId">$!{sessionId}</div>
+    <div id="lookId">$!{lookId}</div>
 </div>
 
 <!-- breadcrumbs -->
@@ -17,136 +23,81 @@
 </ul>
 
 <!-- page contents -->
-<div class="page-content margin-top">
+<div class="page-content margin-top-small">
 
-    <dl class="accordion row selector margin-top" data-accordion >
-        <dd class="accordion-navigation">
-            <a href="#panel0">添加新搭配</a>
-            <div id="panel0" class="content active">
-                <div class="row margin-top">
-                    <div class="large-3 medium-6 small-12 columns leftAlign" data-equalizer-watch>
-                        <div class="row collapse prefix-radius ">
-                            <label class="tag-label">搭配文字</label>
-                            <div class="small-2 columns">
-                                <span class="prefix">标题</span>
-                            </div>
-                            <div class="small-10 columns">
-                                <input id="username" name="username" type="text" placeholder="Title">
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">子标题</span>
-                            </div>
-                            <div class="small-10 columns">
-                                <input name="phone" type="text" placeholder="SubTitle">
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">描述</span>
-                            </div>
-                            <div class="small-10 columns">
-                                <textarea id="email" name="email" type="" placeholder="Descriptions"></textarea>
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">标签</span>
-                            </div>
-                            <div class="small-10 columns">
-                                <input id="email" name="email" type="text" placeholder="Tags">
-                            </div>
+    <div class="row">
+        <form action="/admin/operation/look/upload" method="get" id="activate-form"
+              class="large-12 medium-6 small-12 row collapse prefix-radius leftAlign">
+            <input id="lookId-form" name="lookId" type="hidden" value="$!{lookId}">
+            <div class="small-12 columns">
+                <label class="tag-label">标题信息</label>
+            </div>
+            <div class="small-2 columns">
+                <span class="prefix">标题</span>
+            </div>
+            <div class="small-10 columns">
+                <input id="title" name="title" type="text" placeholder="Title">
+            </div>
+            <div class="small-2 columns">
+                <span class="prefix">子标题</span>
+            </div>
+            <div class="small-10 columns">
+                <input name="subTitle" type="text" placeholder="SubTitle">
+            </div>
+            <div class="small-12 columns">
+                <label class="tag-label">标签</label>
+                <div class="row">
+                    #foreach ($lookTag in ${lookTagList})
+                        <div class="small-2 columns end">
+                            <input id="checkbox-$lookTag.id" type="checkbox">
+                            <label for="checkbox-$lookTag.id">$lookTag.tagName</label>
                         </div>
-                    </div>
+                    #end
+                </div>
+            </div>
+            <div class="small-12 columns">
+                <label class="tag-label">简要描述</label>
+                <textarea id="desc" name="desc" type="" style="height:100px" placeholder="Descriptions"></textarea>
+            </div>
+            <div class="small-12 columns">
+                <label class="tag-label">搭配配图列表</label>
+                <a href="#" data-reveal-id="uploadModal" class="button tiny" id="upload-btn">上传</a>
+                <div class="image-wrapper" data-equalizer></div>
+            </div>
+            <div class="small-12 columns margin-top">
+                <input id="checkbox0" type="checkbox">
+                <label for="checkbox0">
+                    我已阅读<a href="/howTo" target="_blank">上传搭配注意事项书</a>，并同意其中所有条款。
+                </label>
+            </div>
+            <div class="row collapse prefix-radius margin-top margin-bottom">
+                <div class="large-6 columns large-centered">
+                    <input type="submit" class="button tiny postfix" id="activate-button" value="提交搭配">
+                </div>
+            </div>
+        </form>
+    </div>
 
-                    <div class="large-3 small-12 columns" data-equalizer-watch>
-                        <div class="account-image-wrapper">
-                            <img src="/images/accountDefault3.png" alt="" class="margin-top-small"/>
-                        </div>
-                        <div class="margin-top-small greyText">
-                            买手申请信息
-                        </div>
+    <!-- 上传图片 弹出框 -->
+    <div id="uploadModal" class="reveal-modal" data-reveal>
+        <h2>请点击上传配图</h2>
+        <p class="redText">注意：暂不支持IE以及其他类IE浏览器，十分抱歉！上传支持不大于5MB的JPG、GIF、PNG格式图片。</p>
+
+        <div class="row clearfix">
+            <div class="large-5 col-content columns">
+                <div class="clearfix upload-file-box">
+                    <div class="upload-con zm">
+                        <input type="file" class="upload-file" id="uploadify" node-type="file-cart">
                     </div>
                 </div>
-                <form action="/auth/activate" method="post" id="activate-form" class="row margin-top" data-equalizer>
-                    <div class="large-3 small-12 columns" data-equalizer-watch>
-                        &nbsp;
-                    </div>
-                    <div class="large-9 small-12 columns leftAlign" data-equalizer-watch>
-                        <div class="row collapse prefix-radius ">
-                            <label class="tag-label">待填个人信息</label>
-                            <input id="group" name="group" class="hide" value="$!{buyerApplyInfo.isGroupBuyer()}">
-                            <div class="small-2 columns">
-                                <span class="prefix">身份证号</span>
-                            </div>
-                            <div class="small-4 columns">
-                                <input id="idcard" name="idcard" type="text" placeholder="150203****">
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">常用手机号</span>
-                            </div>
-                            <div class="small-4 columns">
-                                <input id="phone" name="phone" type="text" value="$!{buyerInfo.phone}"
-                                       placeholder="13811112222">
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">网易宝账号</span>
-                            </div>
-                            <div class="small-10 columns">
-                                <input id="settleEmail" name="settleEmail" type="text" placeholder="example@163.com"
-                                    #if ($!{buyerApplyInfo.isGroupBuyer()} == "true")
-                                       value="团队买手，无需填入结算账号" disabled
-                                    #else
-                                       value="$!{buyerInfo.account}"
-                                    #end>
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">新登陆密码</span>
-                            </div>
-                            <div class="small-4 columns">
-                                <input id="password_1" name="password_1" type="password" placeholder="****">
-                            </div>
-                            <div class="small-2 columns">
-                                <span class="prefix">登陆密码确认</span>
-                            </div>
-                            <div class="small-4 columns">
-                                <input id="password_2" name="password_2" type="password" placeholder="****">
-                            </div>
-                        </div>
-
-                        <div class="row collapse leftAlign margin-top">
-                            <div class="large-12 columns">
-                                <input id="checkbox1" type="checkbox">
-                                <label for="checkbox1">
-                                    我已阅读<a href="/howTo" target="_blank">惠惠海淘买手注意事项书</a>，并同意其中所有条款。
-                                </label>
-                            </div>
-                            <div class="large-12 columns">
-                                <input type="checkbox" id="checkbox2"/>
-                                <label for="checkbox2">
-                                    我已下载<a target="_blank" href="https://chrome.google.com/webstore/detail/%E6%83%A0%E6%83%A0%E8%87%AA%E5%8A%A9%E6%B5%B7%E6%B7%98/haolonnlelpkbepmllkgoimcbeehfmim">
-                                    惠惠自助海淘插件（需要翻墙，无法翻墙请联系管理员）</a>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="row collapse prefix-radius margin-top margin-bottom">
-                            <div class="large-6 columns large-centered">
-                                <input type="submit" class="button tiny postfix" id="activate-button" value="提交并激活账号">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
             </div>
-        </dd>
-    </dl>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
 </div>
 <!-- end of this page contents -->
 
 <script src="/script/login.js"></script>
-
-<!-- start of footer-->
-<script>
-    $(document).ready(function(){
-        $('.bxslider').bxSlider();
-    });
-</script>
-<script src="/script/home.js"></script>
+<script src="/script/admin/lookUpload.js"></script>
 #include("footer.vm")

@@ -5,7 +5,7 @@ import nanshen.dao.AdminUserInfoDao;
 import nanshen.dao.LookInfoDao;
 import nanshen.dao.LookTagDao;
 import nanshen.data.*;
-import nanshen.service.api.oss.OssImageApi;
+import nanshen.service.api.oss.OssFormalApi;
 import nanshen.web.common.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +38,7 @@ public class LookCtrl extends BaseController {
     private LookTagDao lookTagDao;
 
 	@Autowired
-	private OssImageApi ossImageApi;
+	private OssFormalApi ossFormalApi;
 
 	@RequestMapping(value = "/look-list", method = RequestMethod.GET)
 	public ModelAndView lookList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
@@ -141,7 +141,7 @@ public class LookCtrl extends BaseController {
         }
         imgKey = "images/look/" + lookInfo.getId() + "/" + lookInfo.getImgCount();
         System.out.println("type : " + file.getContentType());
-        ExecInfo execInfo = ossImageApi.putObject(SystemConstants.BUCKET_NAME, imgKey, is, file.getSize());
+        ExecInfo execInfo = ossFormalApi.putObject(SystemConstants.BUCKET_NAME, imgKey, is, file.getSize());
         if (execInfo.isSucc()) {
             lookInfo.setImgCount(lookInfo.getImgCount() + 1);
             setSuccessfully = lookInfoDao.update(lookInfo);
@@ -149,7 +149,7 @@ public class LookCtrl extends BaseController {
         model.addAttribute("success", execInfo.isSucc() && setSuccessfully);
         model.addAttribute("id", lookInfo.getImgCount() - 1);
         model.addAttribute("lookId", lookInfo.getId());
-        model.addAttribute("url", ossImageApi.getLookImgUrl(lookInfo.getId(), lookInfo.getImgCount() - 1));
+        model.addAttribute("url", ossFormalApi.getLookImgUrl(lookInfo.getId(), lookInfo.getImgCount() - 1));
         responseJson(response, model);
     }
 

@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * ossApi
+ * OssFormalApi
  *
  * @Author WANG Minghao
  */
-public interface OssApi {
+public interface OssFormalApi {
 
     String accessKeyId = "WE75bQnberCYgnN8";
     String accessKeySecret = "yls5Yk5aFOSirBJHT0Y5pbnW6J2ik4";

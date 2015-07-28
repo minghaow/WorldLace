@@ -12,12 +12,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * ossApiImpl
+ * OssFormalApiImpl
  *
  * @Author WANG Minghao
  */
 @Service
-public class OssImageApiImpl implements OssImageApi {
+public class OssFormalApiImpl implements OssFormalApi {
 
     private static ClientConfiguration conf;
 

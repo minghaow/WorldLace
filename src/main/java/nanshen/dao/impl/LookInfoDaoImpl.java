@@ -2,8 +2,8 @@ package nanshen.dao.impl;
 
 import nanshen.dao.LookInfoDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.ContentStatus;
 import nanshen.data.LookInfo;
+import nanshen.data.PublicationStatus;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;
@@ -45,7 +45,7 @@ public class LookInfoDaoImpl extends BaseDao implements LookInfoDao {
     }
 
     @Override
-    public List<LookInfo> getAll(ContentStatus status) {
+    public List<LookInfo> getAll(PublicationStatus status) {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01")
                 .and("status", "=", status).desc("id");
         return dao.query(LookInfo.class, cnd);

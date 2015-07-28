@@ -1,7 +1,7 @@
 package nanshen.dao;
 
-import nanshen.data.ContentStatus;
 import nanshen.data.LookInfo;
+import nanshen.data.PublicationStatus;
 
 import java.util.List;
 
@@ -20,5 +20,5 @@ public interface LookInfoDao {
 
     List<LookInfo> getAll();
 
-    List<LookInfo> getAll(ContentStatus status);
+    List<LookInfo> getAll(PublicationStatus status);
 }

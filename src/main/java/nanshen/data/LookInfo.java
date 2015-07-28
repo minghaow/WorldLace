@@ -51,7 +51,7 @@ public class LookInfo {
 
     /** 图片数量 */
     @Column
-    private ContentStatus status = ContentStatus.NEW;
+    private PublicationStatus status = PublicationStatus.NEW;
 
     /** 图片列表, 1-2 */
     private List<String> imgUrlList;
@@ -204,11 +204,11 @@ public class LookInfo {
         this.lookTagList = lookTagList;
     }
 
-    public ContentStatus getStatus() {
+    public PublicationStatus getStatus() {
         return status;
     }
 
-    public void setStatus(ContentStatus status) {
+    public void setStatus(PublicationStatus status) {
         this.status = status;
     }
 }

@@ -7,7 +7,7 @@ import org.nutz.castor.FailToCastObjectException;
 /**
  * @author WANG Minghao
  */
-public enum ContentStatus {
+public enum PublicationStatus {
 
     NEW("新添加"),
 
@@ -19,7 +19,7 @@ public enum ContentStatus {
 
     private String desc;
 
-    ContentStatus(String desc) {
+    PublicationStatus(String desc) {
         this.desc = desc;
     }
 
@@ -27,7 +27,7 @@ public enum ContentStatus {
         return desc;
     }
 
-    public static ContentStatus get(String name) {
+    public static PublicationStatus get(String name) {
         try {
             return valueOf(name);
         } catch (Exception e) {
@@ -38,10 +38,10 @@ public enum ContentStatus {
     /**
      * 当数据库中出现未知的状态时，该转换器会自动将其转换为{@link #UNKNOWN}，而不会报错
      */
-    public static class StringToArrivalStatus extends Castor<String, ContentStatus> {
+    public static class StringToArrivalStatus extends Castor<String, PublicationStatus> {
         @Override
-        public ContentStatus cast(String src, Class<?> toType, String... args) throws FailToCastObjectException {
-            return ContentStatus.get(src);
+        public PublicationStatus cast(String src, Class<?> toType, String... args) throws FailToCastObjectException {
+            return PublicationStatus.get(src);
         }
 
     }

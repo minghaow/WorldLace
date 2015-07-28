@@ -5,7 +5,7 @@ import nanshen.dao.AdminUserInfoDao;
 import nanshen.dao.LookInfoDao;
 import nanshen.dao.LookTagDao;
 import nanshen.data.*;
-import nanshen.service.api.oss.OssApi;
+import nanshen.service.api.oss.OssImageApi;
 import nanshen.web.common.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,11 +38,11 @@ public class LookCtrl extends BaseController {
     private LookTagDao lookTagDao;
 
 	@Autowired
-	private OssApi ossApi;
+	private OssImageApi ossImageApi;
 
 	@RequestMapping(value = "/look-list", method = RequestMethod.GET)
 	public ModelAndView lookList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-							   @RequestParam(defaultValue = "ONLINE", required = true) ContentStatus status) {
+							   @RequestParam(defaultValue = "ONLINE", required = true) PublicationStatus status) {
         prepareLoginUserInfo(request, model);
 		String imgUrl = "/images/slider/slider1.png";
 		String title = "男神必备搭配";
@@ -80,7 +80,7 @@ public class LookCtrl extends BaseController {
             lookInfo.setTitle(title);
             lookInfo.setSubTitle(subTitle);
             lookInfo.setDescription(desc);
-            lookInfo.setStatus(ContentStatus.OFFLINE);
+            lookInfo.setStatus(PublicationStatus.OFFLINE);
             lookInfoDao.update(lookInfo);
             response.sendRedirect("/admin/operation/look/look-list");
         } else {
@@ -108,7 +108,7 @@ public class LookCtrl extends BaseController {
         prepareLoginUserInfo(request, model);
         if (lookId != 0) {
             LookInfo lookInfo = lookInfoDao.get(lookId);
-            lookInfo.setStatus(ContentStatus.ONLINE);
+            lookInfo.setStatus(PublicationStatus.ONLINE);
             lookInfoDao.update(lookInfo);
             response.sendRedirect("/admin/operation/look/look-list");
         } else {
@@ -141,7 +141,7 @@ public class LookCtrl extends BaseController {
         }
         imgKey = "images/look/" + lookInfo.getId() + "/" + lookInfo.getImgCount();
         System.out.println("type : " + file.getContentType());
-        ExecInfo execInfo = ossApi.putObject(SystemConstants.BUCKET_NAME, imgKey, is, file.getSize());
+        ExecInfo execInfo = ossImageApi.putObject(SystemConstants.BUCKET_NAME, imgKey, is, file.getSize());
         if (execInfo.isSucc()) {
             lookInfo.setImgCount(lookInfo.getImgCount() + 1);
             setSuccessfully = lookInfoDao.update(lookInfo);
@@ -149,7 +149,7 @@ public class LookCtrl extends BaseController {
         model.addAttribute("success", execInfo.isSucc() && setSuccessfully);
         model.addAttribute("id", lookInfo.getImgCount() - 1);
         model.addAttribute("lookId", lookInfo.getId());
-        model.addAttribute("url", ossApi.getLookImgUrl(lookInfo.getId(), lookInfo.getImgCount() - 1));
+        model.addAttribute("url", ossImageApi.getLookImgUrl(lookInfo.getId(), lookInfo.getImgCount() - 1));
         responseJson(response, model);
     }
 

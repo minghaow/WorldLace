@@ -14,7 +14,7 @@ import java.sql.Connection;
  * @Author Minghao Wang <wangmh@rd.netease.com>
  */
 @Repository
-public class SpringDaoRunner implements DaoRunner {
+public class SpringDaoRunnerForNutz implements DaoRunner {
 
     @Override
     public void run(DataSource dataSource, ConnCallback callback) {

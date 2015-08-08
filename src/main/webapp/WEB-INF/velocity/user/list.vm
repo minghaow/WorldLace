@@ -1,5 +1,7 @@
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
 
 #parse("user/header.vm")
@@ -16,64 +18,24 @@
     <ul class="bxslider">
         <li><img src="images/slider/slider1.png" /></li>
         <li><img src="images/slider/slider1.png" /></li>
-        <li><img src="images/slider/slider1.png" /></li>
-        <li><img src="images/slider/slider1.png" /></li>
     </ul>
 
     <div class="item-list row" data-equalizer>
+        #foreach ($lookInfo in $lookInfoList)
         <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item1-1.jpg" alt="商品1图1"/>
-            </div>
-            <div class="item-description">
-                藏蓝色立领 POLO
-                <div>
-                    ￥349
+            <a href="/look?lookId=$lookInfo.id">
+                <div class="item-image-wrapper">
+                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
                 </div>
-            </div>
-        </div>
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item2-1.jpg" alt="商品2图1"/>
-            </div>
-            <div class="item-description">
-                藏蓝色立领 POLO
-                <div>
-                    ￥349
+                <div class="item-description">
+                    $lookInfo.title
+                    <div>
+                        $lookInfo.subTitle
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item4-1.jpg" alt="商品4图1"/>
-            </div>
-            <div class="item-description">
-                藏蓝色立领 POLO
-                <div>
-                    ￥349
-                </div>
-            </div>
-        </div>
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item5-1.jpg" alt="商品5图1"/>
-            </div>
-        </div>
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item6-1.jpg" alt="商品6图1"/>
-            </div>
-        </div>
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item7-1.jpg" alt="商品7图1"/>
-            </div>
-        </div>
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="/images/items/item3-1.jpg" alt="商品3图1"/>
-            </div>
-        </div>
+        #end
     </div>
 </div>
 <!-- end of this page contents -->

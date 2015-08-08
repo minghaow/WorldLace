@@ -3,22 +3,21 @@ package nanshen.web.controller.user;
 import nanshen.constant.SystemConstants;
 import nanshen.dao.AdminUserInfoDao;
 import nanshen.data.LookInfo;
-import nanshen.data.PageInfo;
-import nanshen.data.PublicationStatus;
 import nanshen.service.LookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
-import java.util.List;
 
 @Controller
-@RequestMapping("/")
-public class IndexCtrl {
+@RequestMapping("/look")
+public class LookDetailCtrl {
 
 	@Autowired
 	private AdminUserInfoDao adminUserInfoDao;
@@ -26,12 +25,14 @@ public class IndexCtrl {
 	@Autowired
 	private LookService lookService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView printWelcomeTest(ModelMap model) {
-		List<LookInfo> lookInfoList = lookService.getAll(PublicationStatus.ONLINE, new PageInfo(0));
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView lookDetail(HttpServletRequest request, ModelMap model,
+								   @RequestParam(defaultValue = "1", required = true) int lookId) {
+		LookInfo lookInfo = lookService.get(lookId);
+		model.addAttribute("success", lookInfo != null);
+		model.addAttribute("lookInfo", lookInfo);
 		prepareHelloMsg(model);
-		model.addAttribute("lookInfoList", lookInfoList);
-		return new ModelAndView("user/list");
+		return new ModelAndView("user/lookDetail");
 	}
 
 	private void prepareHelloMsg(ModelMap model) {

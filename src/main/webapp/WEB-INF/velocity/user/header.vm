@@ -84,10 +84,10 @@
 
         <div data-magellan-expedition="fixed" class="main-menu">
             <dl class="sub-nav main-menu-list">
-                <dd data-magellan-arrival="lookbook" class="main-menu-content"><a href="#build">搭配 LOOKBOOK</a></dd>
-                <dd data-magellan-arrival="category" class="main-menu-content"><a href="#js">分类 CATEGORY</a></dd>
-                <dd data-magellan-arrival="proshelp" class="main-menu-content"><a href="#js">帮你搭 Pro's HELP</a></dd>
-                <dd data-magellan-arrival="improvement" class="main-menu-content"><a href="#js">气质提升
+                <dd data-magellan-arrival="lookbook" class="main-menu-content"><a href="/">搭配 LOOKBOOK</a></dd>
+                <dd data-magellan-arrival="category" class="main-menu-content"><a href="/">分类 CATEGORY</a></dd>
+                <dd data-magellan-arrival="proshelp" class="main-menu-content"><a href="/">帮你搭 Pro's HELP</a></dd>
+                <dd data-magellan-arrival="improvement" class="main-menu-content"><a href="/">气质提升
                     IMPROVEMENT</a></dd>
             </dl>
         </div>

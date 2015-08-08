@@ -1,0 +1,78 @@
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="/css/user/lookDetail.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div id="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content">
+
+    <div class="row">
+        <div class="large-5 columns">
+            <ul class="look-detail-slider">
+                #set ($totalCnt = $lookInfo.imgCount - 1)
+                #foreach ($imgId in [0..$totalCnt])
+                    <li><img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId" /></li>
+                #end
+            </ul>
+        </div>
+        <div class="large-1 columns">
+            <div id="bx-pager">
+            #set ($totalCnt = $lookInfo.imgCount - 1)
+            #foreach ($imgId in [0..$totalCnt])
+                #set ($index = $velocityCount - 1)
+                <a data-slide-index="$index" class="thumbnail">
+                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId"
+                         class="thumbnail"/>
+                </a>
+            #end
+            </div>
+        </div>
+        <div class="large-1 columns">&nbsp;</div>
+        <div class="large-5 columns">
+            <h3 class="margin-top greyText">搭配：$lookInfo.title</h3>
+            <div class="margin-top greyText">$lookInfo.subTitle</div>
+            <div class="margin-top greyText">$lookInfo.description</div>
+            <div class="margin-top greyText">$lookInfo.tags</div>
+        </div>
+    </div>
+
+
+    <div class="item-list row" data-equalizer>
+        #foreach ($lookInfo in $lookInfoList)
+        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
+            <div class="item-image-wrapper">
+                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
+            </div>
+            <div class="item-description">
+                $lookInfo.title
+                <div>
+                    $lookInfo.subTitle
+                </div>
+            </div>
+        </div>
+        #end
+    </div>
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script>
+    $(document).ready(function(){
+        $('.look-detail-slider').bxSlider({
+            pagerCustom: '#bx-pager',
+            controls: false
+        });
+    });
+</script>
+<script src="script/home.js"></script>
+#include("user/footer.vm")

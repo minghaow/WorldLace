@@ -100,6 +100,11 @@ public class LookServiceImpl extends ScheduledService implements LookService {
         return updateLookInfo(lookInfo);
     }
 
+    @Override
+    public LookInfo get(long lookId) {
+        return lookInfoDao.get(lookId);
+    }
+
     private boolean updateLookInfo(LookInfo lookInfo) {
         if (lookInfoDao.update(lookInfo)) {
             update();

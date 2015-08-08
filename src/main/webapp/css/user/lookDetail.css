@@ -1,0 +1,18 @@
+.look-detail-slider {
+    left: -17px !important;
+}
+#bx-pager {
+    margin-top: 3rem;
+}
+.thumbnail {
+    margin: 10px;
+}
+.thumbnail:hover img,
+.active img {
+    border: solid lightgrey 1px;
+}
+.thumbnail img {
+    border: solid white 1px;
+    padding: 3px;
+    max-height: 150px;
+}

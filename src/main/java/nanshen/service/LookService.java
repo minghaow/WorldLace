@@ -60,6 +60,14 @@ public interface LookService {
     boolean changeStatus(long lookId, PublicationStatus status);
 
     /**
+     * Get look info by lookId
+     *
+     * @param lookId lookId
+     * @return
+     */
+    LookInfo get(long lookId);
+
+    /**
      * Get look info by lookId. Create one if find nothing.
      *
      * @param lookId lookId

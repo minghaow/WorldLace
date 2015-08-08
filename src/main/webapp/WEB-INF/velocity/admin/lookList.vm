@@ -1,6 +1,14 @@
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="idAndAdminUserInfoMap" type="java.util.Map" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="status" type="nanshen.data.PublicationStatus" *#
+#* @vtlvariable name="Publication" type="nanshen.data.PublicationStatus" *#
+#* @vtlvariable name="onlineCnt" type="java.lang.Long" *#
+#* @vtlvariable name="offlineCnt" type="java.lang.Long" *#
+#* @vtlvariable name="onlineNewCnt" type="java.lang.Long" *#
+#* @vtlvariable name="offlineNewCnt" type="java.lang.Long" *#
 
 #parse("admin/header.vm")
 <!-- end of header -->
@@ -22,16 +30,16 @@
     <div class="row panel">
         <div class="row">
             <div class="large-3 column left-align">线上搭配数:
-                <span class="redText">0</span>
+                <span class="greenText"> $onlineCnt</span>
             </div>
             <div class="large-3 column left-align">线下搭配数:
-                <span class="blueText">4</span>
+                <span class="redText"> $offlineCnt</span>
             </div>
             <div class="large-3 column left-align">本周新上线搭配数:
-                <span class="greenText">0</span>
+                <span class="greenText"> $onlineNewCnt</span>
             </div>
             <div class="large-3 columns left-align">本周新搭配数:
-                <span class="greenText">4</span>
+                <span class="redText"> $offlineNewCnt</span>
             </div>
         </div>
     </div>
@@ -43,7 +51,6 @@
             <dt class="blueText">过滤器：</dt>
             <dd #if ($!{status} == "ONLINE") class="active" #end><a href="?status=ONLINE">线上搭配</a></dd>
             <dd #if ($!{status} == "OFFLINE") class="active" #end><a href="?status=OFFLINE">线下搭配</a></dd>
-            <dd #if ($!{status} == "NEW") class="active" #end><a href="?status=NEW">未完成搭配</a></dd>
         </dl>
     </div>
 
@@ -51,8 +58,11 @@
         <thead>
         <tr class="center">
             <th scope="column" width="50px">序号</th>
-            <th scope="column" width="70%">搭配配图</th>
             <th scope="column">搭配名称</th>
+            <th scope="column">搭配简述</th>
+            <th scope="column" width="10%">上传人</th>
+            <th scope="column" width="10%">上传时间</th>
+            <th scope="column" width="10%">搭配配图</th>
             <th scope="column">操作</th>
         </tr>
         </thead>
@@ -60,16 +70,31 @@
         <tbody class="all-list-tbody center">
         #foreach ($lookInfo in $lookInfoList)
             <tr id="order-1">
-                <td>1</td>
-                <td>
-                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt="搭配配图"/></td>
+                <td>$velocityCount</td>
                 <td>
                     $lookInfo.title
                     <div class="greyText">$lookInfo.subTitle</div>
                 </td>
                 <td>
-                    <a href="/admin/operation/look/online?lookId=$lookInfo.id" class="tiny button">上线</a>
-                    <a href="/admin/operation/look/delete" class="tiny button -order-info-button">删除</a>
+                    $lookInfo.description
+                </td>
+                <td>
+                    $idAndAdminUserInfoMap.get($lookInfo.uploadUserId).getUsername()
+                </td>
+                <td>
+                    $lookInfo.convertedCreateTime
+                </td>
+                <td>
+                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt="搭配配图"/>
+                </td>
+                <td>
+                    #if ($lookInfo.status == "ONLINE")
+                    <a href="#" data-id="$lookInfo.id" class="tiny button offline-btn">下线</a>
+                    #else
+                    <a href="#" data-id="$lookInfo.id" class="tiny button online-btn">上线</a>
+                    #end
+                    <a href="/admin/operation/look/look-upload?lookId=$lookInfo.id" class="tiny button" target="_blank">修改</a>
+                    <a href="#" data-id="$lookInfo.id" class="tiny button delete-btn">删除</a>
                 </td>
             </tr>
         #end
@@ -78,9 +103,11 @@
 
     <!-- 翻页模块 -->
     #parse("pager.vm")
+    #include("msgModal.vm")
 
 </div>
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-#include("footer.vm")
+<script src="/script/admin/lookList.js"></script>
+#include("admin/footer.vm")

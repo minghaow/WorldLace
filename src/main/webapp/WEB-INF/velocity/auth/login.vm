@@ -1,4 +1,4 @@
-#parse("header.vm")
+#parse("auth/header.vm")
 
 #if ($!{error})
 <div data-alert class="row alert-box alert radius margin-top">
@@ -97,4 +97,4 @@
 </div>
 
 <script src="/script/login.js"></script>
-#include("footer.vm")
+#include("auth/footer.vm")

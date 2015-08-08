@@ -2,7 +2,7 @@
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 
 
-#parse("header.vm")
+#parse("user/header.vm")
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -85,4 +85,4 @@
     });
 </script>
 <script src="script/home.js"></script>
-#include("footer.vm")
+#include("user/footer.vm")

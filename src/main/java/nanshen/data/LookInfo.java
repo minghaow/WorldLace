@@ -1,5 +1,6 @@
 package nanshen.data;
 
+import nanshen.utils.ViewUtils;
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
@@ -8,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * LookInfo
+ * <br>
+ * <strong>Note:</strong> Basic data for lanzhujue.com. Still need to optimize.
+ *
  * @author WANG Minghao
  */
 @Table("LookInfo")
@@ -17,56 +22,56 @@ public class LookInfo {
     @Id
     private long id;
 
-    /** 用户名 */
+    /** the one who upload this look, updater will not update this value */
     @Column
     private long uploadUserId;
 
-    /** 搭配名称 */
+    /** title, attractive information */
     @Column
     private String title;
 
-    /** 搭配子名称 */
+    /** sub title for the look, explaining the title normally */
     @Column
     private String subTitle;
 
-    /** 描述, html页面 */
+    /** description, to be designed */
     @Column
     private String description;
 
-    /** 标签 */
+    /** tags */
     @Column
     private String tags;
 
-    /** 价格，单位：人民币分 */
+    /** price, price unit: RMB */
     @Column
     private long price = 0L;
 
-    /** 商品sku数量 */
+    /** sku count, default 0 when this look create */
     @Column
     private long skuCount = 0L;
 
-    /** 图片数量 */
+    /** image count, for displaying the image(the first one will be 0 and then 1, etc.) */
     @Column
     private long imgCount = 0L;
 
-    /** 图片数量 */
+    /** online status {@code nanshen.data.PublicationStatus} */
     @Column
     private PublicationStatus status = PublicationStatus.NEW;
 
-    /** 图片列表, 1-2 */
+    /** image url list, default for 1 to 2 images */
     private List<String> imgUrlList;
 
-    /** 商品sku列表, 2 */
+    /** sku list, default for 1 to 2 skus */
     private List<SkuInfo> skuInfoList;
 
-    /** 标签列表 */
+    /** tag list {@code nanshen.data.SkuTag} */
     private List<SkuTag> lookTagList;
 
-    /** 添加时间 */
+    /** create time for this look, will fill when create */
     @Column
     private Date createTime = new Date();
 
-    /** 更新时间 */
+    /** update time for this look, all operator will update this value */
     @Column
     private Date updateTime = new Date();
 
@@ -94,6 +99,10 @@ public class LookInfo {
 
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public String getConvertedCreateTime() {
+        return ViewUtils.convertDateToString(createTime);
     }
 
     public void setCreateTime(Date createTime) {

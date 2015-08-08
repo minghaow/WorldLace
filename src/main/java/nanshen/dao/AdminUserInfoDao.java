@@ -15,4 +15,6 @@ public interface AdminUserInfoDao {
 
     List<AdminUserInfo> getAll();
 
+    AdminUserInfo get(Long adminUserId);
+
 }

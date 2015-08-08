@@ -114,4 +114,4 @@
     });
 </script>
 <script src="/script/home.js"></script>
-#include("footer.vm")
+#include("admin/footer.vm")

@@ -45,5 +45,24 @@ jQuery( document ).ready(function( $ ) {
         });
     }
 
+    $("#finish-btn").click(function(event){
+        event.preventDefault();
+        var url = "/admin/operation/look/upload"
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: $("#upload-form").serialize(),
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true) {
+                    presentSuccessModal("上传成功！", "即将为您跳转到线下搭配列表页...");
+                    setTimeout(function(){windows.location.href = "/admin/operation/look/look-list"}, 1000);
+                } else {
+                    presentFailModal("上传失败", "错误原因：" + data.message);
+                }
+            }
+        });
+    })
+
 });
 

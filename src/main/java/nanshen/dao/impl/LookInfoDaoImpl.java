@@ -3,11 +3,13 @@ package nanshen.dao.impl;
 import nanshen.dao.LookInfoDao;
 import nanshen.dao.common.BaseDao;
 import nanshen.data.LookInfo;
+import nanshen.data.PageInfo;
 import nanshen.data.PublicationStatus;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,8 +48,34 @@ public class LookInfoDaoImpl extends BaseDao implements LookInfoDao {
 
     @Override
     public List<LookInfo> getAll(PublicationStatus status) {
+        Condition cnd = Cnd.where("status", "=", status).desc("id");
+        return dao.query(LookInfo.class, cnd);
+    }
+
+    @Override
+    public long getCnt(PublicationStatus status) {
+        Condition cnd = Cnd.where("status", "=", status).desc("id");
+        return dao.count(LookInfo.class, cnd);
+    }
+
+    @Override
+    public long getCnt(PublicationStatus status, Date startDate) {
+        Condition cnd = Cnd.where("status", "=", status)
+                            .and("createTime", ">", startDate)
+                            .desc("id");
+        return dao.count(LookInfo.class, cnd);
+    }
+
+    @Override
+    public List<LookInfo> getAll(PublicationStatus status, PageInfo pageInfo) {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01")
                 .and("status", "=", status).desc("id");
-        return dao.query(LookInfo.class, cnd);
+        return dao.query(LookInfo.class, cnd, genaratePager(pageInfo));
+    }
+
+    @Override
+    public boolean remove(long lookId, long operatorId) {
+        Condition cnd = Cnd.where("id", "=", lookId);
+        return dao.clear(LookInfo.class, cnd) == 1;
     }
 }

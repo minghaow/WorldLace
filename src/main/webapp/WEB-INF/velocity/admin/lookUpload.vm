@@ -26,7 +26,7 @@
 <div class="page-content margin-top-small">
 
     <div class="row">
-        <form action="/admin/operation/look/upload" method="get" id="activate-form"
+        <form action="#" method="get" id="upload-form"
               class="large-12 medium-6 small-12 row collapse prefix-radius leftAlign">
             <input id="lookId-form" name="lookId" type="hidden" value="$!{lookId}">
             <div class="small-12 columns">
@@ -72,14 +72,14 @@
             </div>
             <div class="row collapse prefix-radius margin-top margin-bottom">
                 <div class="large-6 columns large-centered">
-                    <input type="submit" class="button tiny postfix" id="activate-button" value="提交搭配">
+                    <input type="submit" class="button tiny postfix" id="finish-btn" value="提交搭配">
                 </div>
             </div>
         </form>
     </div>
 
     <!-- 上传图片 弹出框 -->
-    <div id="uploadModal" class="reveal-modal" data-reveal>
+    <div id="uploadModal" class="reveal-modal tiny" data-reveal>
         <h2>请点击上传配图</h2>
         <p class="redText">注意：暂不支持IE以及其他类IE浏览器，十分抱歉！上传支持不大于5MB的JPG、GIF、PNG格式图片。</p>
 
@@ -95,9 +95,12 @@
         <a class="close-reveal-modal">&#215;</a>
     </div>
 
+    #include("msgModal.vm")
+
 </div>
 <!-- end of this page contents -->
 
 <script src="/script/login.js"></script>
 <script src="/script/admin/lookUpload.js"></script>
-#include("footer.vm")
+<script src="/script/msgModal.js"></script>
+#include("admin/footer.vm")

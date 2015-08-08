@@ -61,16 +61,16 @@
             </div>
 
             <div class="account-zone-right">
-                <span>
-                    <a href="#" class="account-zone-anchor">
-                        <i class="fi-shopping-cart"></i>
-                        购物车 (${goodsCartCount})
-                    </a>
-                </span>
-                <span class="inline-divider"> | </span>
+##                <span>
+##                    <a href="#" class="account-zone-anchor">
+##                        <i class="fi-shopping-cart"></i>
+##                        购物车 (${goodsCartCount})
+##                    </a>
+##                </span>
+##                <span class="inline-divider"> | </span>
                 <span>
                     <a href="#" class="account-zone-anchor" data-reveal-id="userAccountModal">
-                        Hi, ${userName}
+                        Hi, ${helloMsg}
                     </a>
                 </span>
             </div>
@@ -94,12 +94,12 @@
     </nav>
 
     <div class="fixedBtns">
-        <div class="fixedUp">
-            <i class="fi-arrow-up"></i>
-        </div>
-        <div class="fixedCart">
-            <i class="fi-shopping-cart"></i>
-        </div>
+##        <div class="fixedUp">
+##            <i class="fi-arrow-up"></i>
+##        </div>
+##        <div class="fixedCart">
+##            <i class="fi-shopping-cart"></i>
+##        </div>
     </div>
 
     <!-- Modals -->

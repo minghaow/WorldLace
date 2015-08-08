@@ -1,4 +1,4 @@
-#parse("header.vm")
+#parse("user/header.vm")
 
 <!-- error box -->
 #if ($!{error})
@@ -25,4 +25,4 @@
 </div>
 
 <script src="/script/errorPage.js"></script>
-#include("footer.vm")
+#include("user/footer.vm")

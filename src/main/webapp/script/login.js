@@ -25,7 +25,7 @@ jQuery( document ).ready(function( $ ) {
             success: function() {
             }
         });
-    })
+    });
 
     $("#change-pwd-button").click(function(event){
         event.preventDefault(); // 阻止默认的表单提交行为

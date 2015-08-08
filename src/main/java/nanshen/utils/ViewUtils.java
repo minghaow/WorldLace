@@ -1,6 +1,8 @@
 package nanshen.utils;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  * 页面显示工具类
@@ -8,6 +10,11 @@ import java.math.BigDecimal;
  * @author WANG Minghao
  */
 public class ViewUtils {
+
+    public static String convertDateToString(Date date) {
+        DateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return format.format(date);
+    }
 
     public static String convertToDisplayRate(long rate) {
         BigDecimal a = BigDecimal.valueOf(rate);

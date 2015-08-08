@@ -28,7 +28,7 @@ public class HelpCtrl {
 		model.addAttribute("message", "Hello world!");
 		model.addAttribute("goodsCartCount", 0);
 		model.addAttribute("userName", "Minghao");
-		return new ModelAndView("hello");
+		return new ModelAndView("user/list");
 	}
 
 }

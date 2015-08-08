@@ -34,4 +34,9 @@ public class AdminUserInfoDaoImpl extends BaseDao implements AdminUserInfoDao {
         return dao.query(AdminUserInfo.class, cnd);
     }
 
+    @Override
+    public AdminUserInfo get(Long adminUserId) {
+        return dao.fetch(AdminUserInfo.class, adminUserId);
+    }
+
 }

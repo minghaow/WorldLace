@@ -1,5 +1,5 @@
 /*
- * @(#)SystemConstants.java, 2014-12-20.
+ * @(#)SystemConstants.java, 2015-08-01.
  *
  * Copyright 2014 Yodao, Inc. All rights reserved.
  * YODAO PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -7,23 +7,28 @@
 package nanshen.constant;
 
 /**
- * 系统常量
+ * SystemConstants
  *
  * @author WANG Minghao
  */
 public class SystemConstants {
 
-    /** 默认的系统编码 */
+    /** base encode type */
     public static final String SYS_ENC = "utf-8";
 
-    /** 买手系统的域名 */
+    /** base domain */
     public static final String BASE_URL = "http://www.lanzhujue.com";
 
-    /** 买手系统每页默认显示数量 */
+    /** default page length for lists */
     public static final int DEFAULT_PAGE_SIZE = 30;
 
     /** OSS related */
     public static String OSS_BASE_HTTP = "http://nanshen.oss-cn-beijing.aliyuncs.com";
     public static String BUCKET_NAME = "nanshen";
+
+    /** hello Message */
+    public static String HELLO_MSG_MORNING = "早上好";
+    public static String HELLO_MSG_AFTERNOON = "下午好";
+    public static String HELLO_MSG_EVENING = "晚上好";
 
 }

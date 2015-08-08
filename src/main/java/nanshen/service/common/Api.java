@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 /**
  * Api层bean注解，Api层是Service的子层，用于实现在多个Service中均需要的组件
  *
- * @author KONG Xiangxin
+ * @author WANG Minghao
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

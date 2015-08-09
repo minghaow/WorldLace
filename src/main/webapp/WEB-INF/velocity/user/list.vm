@@ -5,6 +5,7 @@
 
 
 #parse("user/header.vm")
+<link rel="stylesheet" href="/css/user/list.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -20,22 +21,26 @@
         <li><img src="images/slider/slider1.png" /></li>
     </ul>
 
-    <div class="item-list row" data-equalizer>
-        #foreach ($lookInfo in $lookInfoList)
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <a href="/look?lookId=$lookInfo.id">
-                <div class="item-image-wrapper">
-                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
-                </div>
-                <div class="item-description">
-                    $lookInfo.title
-                    <div>
-                        $lookInfo.subTitle
+    <div class="item-list row" >
+
+        <ul class="large-block-grid-3" data-equalizer>
+            #foreach ($lookInfo in $lookInfoList)
+            <li data-equalizer-watch>
+                <a href="/look?lookId=$lookInfo.id">
+                    <div class="item-image-wrapper">
+                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
                     </div>
-                </div>
-            </a>
-        </div>
-        #end
+                    <div class="item-description">
+                        $lookInfo.title
+                        <div>
+                            $lookInfo.subTitle
+                        </div>
+                    </div>
+                </a>
+            </li>
+            #end
+        </ul>
+
     </div>
 </div>
 <!-- end of this page contents -->

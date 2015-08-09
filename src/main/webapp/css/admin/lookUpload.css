@@ -6,3 +6,12 @@
 }
 .image-wrapper img {
 }
+.upload-file-box {
+    background-color: lightgrey;
+}
+.uploadify-button-text {
+    cursor: pointer;
+}
+.uploadify-button {
+    text-align: center;
+}

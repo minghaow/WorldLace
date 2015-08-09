@@ -31,6 +31,10 @@ public class SkuInfo {
     @Column
     private String subTitle;
 
+    /** sku link for outside domains */
+    @Column
+    private String url;
+
     /** 描述，html */
     @Column
     private String description;
@@ -61,13 +65,14 @@ public class SkuInfo {
     @Column
     private Date updateTime = new Date();
 
-    public SkuInfo(Date createTime, String description, long price, String subTitle, String title, Date updateTime,
-                   long uploadUserId, String tags) {
+    public SkuInfo(Date createTime, String description, long price, String subTitle, String title, String url, Date
+            updateTime, long uploadUserId, String tags) {
         this.createTime = createTime;
         this.description = description;
         this.price = price;
         this.subTitle = subTitle;
         this.title = title;
+        this.url = url;
         this.updateTime = updateTime;
         this.uploadUserId = uploadUserId;
         this.tags = tags;
@@ -170,5 +175,13 @@ public class SkuInfo {
 
     public void setSkuTagList(List<SkuTag> skuTagList) {
         this.skuTagList = skuTagList;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

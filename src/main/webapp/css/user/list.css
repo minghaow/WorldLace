@@ -1,0 +1,8 @@
+.item-image-wrapper {
+    border: solid lightgrey 5px;
+    text-align: center;
+}
+.item-image-wrapper img {
+    padding: 5px;
+    max-height: 100%;
+}

@@ -62,11 +62,15 @@ public class LookCtrl extends BaseController {
     }
 
     @RequestMapping(value = "/look-upload", method = RequestMethod.GET)
-	public ModelAndView lookUpload(HttpServletRequest request, HttpServletResponse response, ModelMap model){
+	public ModelAndView lookUpload(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                                   @RequestParam(defaultValue = "0", required = true) long lookId){
         String sessionId = request.getSession().getId();
         prepareLoginUserInfo(request, model);
+        if (lookId != 0) {
+            model.addAttribute("lookInfo", lookService.get(lookId));
+        }
         List<LookTag> lookTagList = lookService.getAllTag();
-        model.addAttribute("lookId", 0);
+        model.addAttribute("lookId", lookId);
         model.addAttribute("lookTagList", lookTagList);
         model.addAttribute("sessionId", sessionId);
 		return new ModelAndView("admin/lookUpload");

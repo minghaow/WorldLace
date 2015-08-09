@@ -168,13 +168,7 @@ public class LookServiceImpl extends ScheduledService implements LookService {
     }
 
     private String getImgKey(MultipartFile file, LookInfo lookInfo) {
-        String fileName = file.getOriginalFilename();
-        String fileType = "";
-        int fileTypeIndex = fileName.lastIndexOf(".");
-        if (fileTypeIndex > 0) {
-            fileType = fileName.substring(fileTypeIndex);
-        }
-        String imgKey = "images/look/" + lookInfo.getId() + "/" + lookInfo.getImgCount() + fileType;
+        String imgKey = "images/look/" + lookInfo.getId() + "/" + lookInfo.getImgCount();
         System.out.println("imgKey : " + imgKey);
         return imgKey;
     }

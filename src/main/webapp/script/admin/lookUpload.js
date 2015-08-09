@@ -12,10 +12,50 @@ jQuery( document ).ready(function( $ ) {
         var isErrorEd = false;
         var $imgInput = $("#look-img-ids");
         $("#uploadify").uploadify({
-            'height'        : 240,
+            'height'        : 50,
             'swf'           : '/script/vendor/uploadify.swf',
             'uploader'      : '/admin/operation/look/uploadImage;jsessionid=' + sessionId + "?lookId=" + lookId,
-            'width'         : 360,
+            'width'         : "100%",
+            'fileSizeLimit' : '5MB',
+            'fileTypeDesc' : 'Image Files',
+            'fileTypeExts' : '*.gif; *.jpg; *.png',
+            'buttonText' : '点我上传',
+            'successTimeout' : 2000,
+            'overrideEvents' : ['onDialogClose', 'onUploadSuccess', 'onUploadError', 'onSelectError'],
+            'onFallback':function(){
+                if(!isErrorEd){
+                    alert('您未安装FLASH控件，无法上传图片！请<a href="http://get.adobe.com/cn/flashplayer/" target="_blank">安装FLASH</a>控件后再试。');
+                    isErrorEd = true;
+                }
+            },
+            'onUploadSuccess' : function(file, data, response) {
+                var _res = eval('(' + data + ')');
+                var $wrapper = $(".image-wrapper");
+                var src = _res.url;
+                $('#uploadModal').foundation('reveal', 'close');
+                $('#lookId').html(_res.lookId);
+                $('#lookId-form').val(_res.lookId);
+                lookId = _res.lookId;
+                $wrapper.append('<div class="large-4 columns end" data-equalizer-watch><img src="' + src + ' " class="look-img"/></div>');
+                uploadInit();
+            },
+            'onSelectError' : function(file, errorCode, errorMsg) {
+                alert("fail!");
+            }
+        });
+    }
+
+    uploadSkuInit();
+
+    function uploadSkuInit(){
+        var sessionId = $("#sessionId").html();
+        var isErrorEd = false;
+        var $imgInput = $("#look-img-ids");
+        $("#uploadifySku").uploadify({
+            'height'        : 50,
+            'swf'           : '/script/vendor/uploadify.swf',
+            'uploader'      : '/admin/operation/sku/uploadImage;jsessionid=' + sessionId + "?lookId=" + lookId,
+            'width'         : "100%",
             'fileSizeLimit' : '5MB',
             'fileTypeDesc' : 'Image Files',
             'fileTypeExts' : '*.gif; *.jpg; *.png',
@@ -56,7 +96,7 @@ jQuery( document ).ready(function( $ ) {
             success: function(data) {
                 if (data.success == true) {
                     presentSuccessModal("上传成功！", "即将为您跳转到线下搭配列表页...");
-                    setTimeout(function(){windows.location.href = "/admin/operation/look/look-list"}, 1000);
+                    setTimeout(function(){window.location.href = "/admin/operation/look/look-list"}, 1000);
                 } else {
                     presentFailModal("上传失败", "错误原因：" + data.message);
                 }

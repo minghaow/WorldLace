@@ -27,7 +27,7 @@ public class LoginInterceptor extends BaseController implements HandlerIntercept
             return true;
         }
         AdminUserInfo adminUserInfo = getLoginedUser(request);
-        if (adminUserInfo == null) {
+        if (adminUserInfo == null && request.getRequestURI().contains(adminPage)) {
             response.sendRedirect("/admin");
         }
         return true;

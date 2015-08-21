@@ -134,6 +134,15 @@ public class OssFormalApiImpl implements OssFormalApi {
         }
     }
 
+    @Override
+    public String getSkuImgUrl(long skuId, long imgId) {
+        try {
+            return new URL(SystemConstants.OSS_BASE_HTTP + "/images/sku/" + skuId + "/" + imgId).toString();
+        } catch (MalformedURLException e) {
+            return "";
+        }
+    }
+
     private static void inputstreamtofile(InputStream ins,File file) {
         try {
             OutputStream os = new FileOutputStream(file);

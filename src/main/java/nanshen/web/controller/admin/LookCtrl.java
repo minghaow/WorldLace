@@ -3,6 +3,7 @@ package nanshen.web.controller.admin;
 import nanshen.data.*;
 import nanshen.service.AccountService;
 import nanshen.service.LookService;
+import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
 import nanshen.web.common.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class LookCtrl extends BaseController {
 
     @Autowired
     private OssFormalApi ossFormalApi;
+
+    @Autowired
+    private SkuService skuService;
 
 	@RequestMapping(value = "/look-list", method = RequestMethod.GET)
 	public ModelAndView lookList(HttpServletRequest request, ModelMap model,
@@ -67,7 +71,11 @@ public class LookCtrl extends BaseController {
         String sessionId = request.getSession().getId();
         prepareLoginUserInfo(request, model);
         if (lookId != 0) {
-            model.addAttribute("lookInfo", lookService.get(lookId));
+            LookInfo lookInfo = lookService.get(lookId);
+            List<SkuInfo> skuInfoList = skuService.getByLookId(lookId);
+            lookInfo.setSkuInfoList(skuInfoList);
+            lookInfo.setSkuCount(skuInfoList.size());
+            model.addAttribute("lookInfo", lookInfo);
         }
         List<LookTag> lookTagList = lookService.getAllTag();
         model.addAttribute("lookId", lookId);
@@ -81,10 +89,26 @@ public class LookCtrl extends BaseController {
                                @RequestParam(defaultValue = "0", required = true) long lookId,
                                @RequestParam(defaultValue = "", required = true) String title,
                                @RequestParam(defaultValue = "", required = true) String subTitle,
+                               @RequestParam(defaultValue = "", required = true) String skuIdList,
                                @RequestParam(defaultValue = "", required = true) String desc) throws IOException {
         prepareLoginUserInfo(request, model);
         AdminUserInfo adminUserInfo = getLoginedUser(request);
         boolean isSucc = lookService.update(lookId, title, subTitle, desc, PublicationStatus.OFFLINE, adminUserInfo.getId());
+        String[] skuIdArray = skuIdList.split(",");
+        for (String skuId : skuIdArray) {
+            System.out.println("SkuId: " + skuId);
+            if (skuId.equals("")) {
+                continue;
+            }
+            Long skuIdLong = Long.parseLong(skuId);
+            System.out.println("skuIdLong: " + skuIdLong);
+            SkuInfo skuInfo = skuService.get(skuIdLong);
+            if (skuInfo != null) {
+                System.out.println("skuInfoSetLLoadsfa: " + skuIdLong);
+                skuInfo.setLookId(lookId);
+                skuService.update(skuInfo);
+            }
+        }
         model.addAttribute("success", isSucc);
         responseJson(response, model);
     }

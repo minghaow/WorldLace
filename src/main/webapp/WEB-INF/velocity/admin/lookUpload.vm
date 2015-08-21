@@ -68,6 +68,7 @@
             </div>
             <div class="small-12 columns">
                 <label class="tag-label">搭配配图列表</label>
+                <input id="look-form" name="lookId" type="hidden" value="$!{lookId}">
                 <a href="#" data-reveal-id="uploadModal" class="button tiny" id="upload-btn">上传</a>
                 <div class="image-wrapper" data-equalizer>
                 #if ($!{lookInfo.imgCount} > 0)
@@ -83,7 +84,13 @@
             </div>
             <div class="small-12 columns">
                 <label class="tag-label">单品列表</label>
+                <div class="redText">
+                    #if ($!{lookInfo.getSkuCount()} != 0)
+                        目前已经上传$!{lookInfo.getSkuCount()}个单品，无法查看是因为懒得随便写个页面了，等窦设计好了吧。= =!
+                    #end
+                </div>
                 <a href="#" data-reveal-id="addSkuModal" class="button tiny" id="add-sku-btn">上传</a>
+                <input id="sku-form" name="skuIdList" type="hidden" value="$!{skuIdList}">
                 <div class="sku-image-wrapper" data-equalizer>
                 </div>
             </div>
@@ -123,58 +130,73 @@
         <h2>商品搭配单品</h2>
         <p class="redText">注意：上传图片暂不支持IE以及其他类IE浏览器，十分抱歉！上传支持不大于2MB的JPG、GIF、PNG格式图片。</p>
 
-        <div class="small-5 columns">
-            <label class="tag-label">标题信息</label>
-            <div class="row prefix-radius collapse">
-                <div class="small-3 columns">
-                    <span class="prefix">标题</span>
-                </div>
-                <div class="small-9 columns">
-                    <input id="title" name="title" type="text" placeholder="Title">
-                </div>
-                <div class="small-3 columns">
-                    <span class="prefix">子标题</span>
-                </div>
-                <div class="small-9 columns">
-                    <input name="subTitle" type="text" placeholder="SubTitle">
-                </div>
-            </div>
-        </div>
-
-        <div class="small-1 columns">&nbsp;</div>
-        <div class="small-6 columns">
-            <label class="tag-label">标签</label>
+        <form action="#" method="get" id="sku-upload-form"
+              class="collapse prefix-radius leftAlign">
             <div class="row">
-                #foreach ($lookTag in ${lookTagList})
-                    <div class="small-3 columns end">
-                        <input id="checkbox-$lookTag.id" type="checkbox">
-                        <label for="checkbox-$lookTag.id" data-tooltip aria-haspopup="true"
-                               class="has-tip" title="$lookTag.description">$lookTag.tagName</label>
+                <input name="skuId" id="skuId" type="hidden" value="0">
+                <div class="small-5 columns">
+                    <label class="tag-label">标题信息</label>
+                    <div class="row prefix-radius collapse">
+                        <div class="small-3 columns">
+                            <span class="prefix">标题</span>
+                        </div>
+                        <div class="small-9 columns">
+                            <input id="title" name="title" type="text" placeholder="Title">
+                        </div>
+                        <div class="small-3 columns">
+                            <span class="prefix">子标题</span>
+                        </div>
+                        <div class="small-9 columns">
+                            <input name="subTitle" type="text" placeholder="SubTitle">
+                        </div>
                     </div>
-                #end
-            </div>
-        </div>
-        <div class="small-12 columns row collapse">
-            <label class="tag-label">购买链接</label>
-            <input name="url" type="text" placeholder="Links">
-        </div>
-        <div class="small-12 columns">
-            <label class="tag-label">简要描述</label>
-            <textarea id="desc" name="desc" type="" style="height:100px" placeholder="Descriptions"></textarea>
-        </div>
+                </div>
 
-        <div class="small-12 columns clearfix">
-            <label class="tag-label">上传图片</label>
+                <div class="small-1 columns">&nbsp;</div>
+                <div class="small-6 columns">
+                    <label class="tag-label">标签</label>
+                    <div class="row">
+                        #foreach ($lookTag in ${lookTagList})
+                            <div class="small-3 columns end">
+                                <input id="checkbox-$lookTag.id" type="checkbox">
+                                <label for="checkbox-$lookTag.id" data-tooltip aria-haspopup="true"
+                                       class="has-tip" title="$lookTag.description">$lookTag.tagName</label>
+                            </div>
+                        #end
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="large-5 col-content columns">
-                    <div class="clearfix upload-file-box">
-                        <div class="upload-con zm">
-                            <input type="file" class="upload-file" id="uploadifySku" node-type="file-cart">
+                <div class="small-12 columns collapse">
+                    <label class="tag-label">购买链接</label>
+                    <input name="url" type="text" placeholder="Links">
+                </div>
+                <div class="small-12 columns">
+                    <label class="tag-label">简要描述</label>
+                    <textarea id="desc" name="desc" type="" style="height:100px" placeholder="Descriptions"></textarea>
+                </div>
+
+                <div class="small-12 columns clearfix">
+                    <label class="tag-label">上传图片</label>
+                    <div class="row">
+                        <div class="large-5 col-content columns">
+                            <div class="clearfix upload-file-box">
+                                <div class="upload-con zm">
+                                    <input type="file" class="upload-file" id="uploadifySku" node-type="file-cart">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="row collapse prefix-radius margin-top margin-bottom">
+                <div class="large-6 columns large-centered">
+                    <input type="submit" class="button tiny postfix" id="sku-finish-btn" value="提交单品">
+                </div>
+            </div>
+        </form>
         <a class="close-reveal-modal">&#215;</a>
     </div>
 

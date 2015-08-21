@@ -19,15 +19,19 @@ public class SkuInfo {
     @Id
     private long id;
 
+    /** 搭配ID */
+    @Column
+    private long lookId = 0;
+
     /** 用户名 */
     @Column
-    private long uploadUserId;
+    private long uploadUserId = 0;
 
     /** 搭配名称 */
     @Column
     private String title;
 
-    /** 搭配子名称 */
+    /** 单品子名称 */
     @Column
     private String subTitle;
 
@@ -76,6 +80,13 @@ public class SkuInfo {
         this.updateTime = updateTime;
         this.uploadUserId = uploadUserId;
         this.tags = tags;
+    }
+
+    public SkuInfo(long uploadUserId) {
+        this.description = "";
+        this.subTitle = "";
+        this.title = "";
+        this.uploadUserId = uploadUserId;
     }
 
     public SkuInfo() {
@@ -183,5 +194,13 @@ public class SkuInfo {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public long getLookId() {
+        return lookId;
+    }
+
+    public void setLookId(long lookId) {
+        this.lookId = lookId;
     }
 }

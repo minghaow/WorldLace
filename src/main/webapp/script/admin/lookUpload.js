@@ -3,6 +3,9 @@ jQuery( document ).ready(function( $ ) {
     // initialization
     var thisTag = $("#this-tag").html();
     var lookId = $('#lookId').html();
+    var $skuId = $('#skuId');
+    var skuId = $skuId.val();
+    var $skuForm = $('#sku-form');
     $("#" + thisTag).addClass("chosen");
 
     uploadInit();
@@ -50,11 +53,10 @@ jQuery( document ).ready(function( $ ) {
     function uploadSkuInit(){
         var sessionId = $("#sessionId").html();
         var isErrorEd = false;
-        var $imgInput = $("#look-img-ids");
         $("#uploadifySku").uploadify({
             'height'        : 50,
             'swf'           : '/script/vendor/uploadify.swf',
-            'uploader'      : '/admin/operation/sku/uploadImage;jsessionid=' + sessionId + "?lookId=" + lookId,
+            'uploader'      : '/admin/operation/sku/uploadImage;jsessionid=' + sessionId + "?skuId=" + skuId,
             'width'         : "100%",
             'fileSizeLimit' : '5MB',
             'fileTypeDesc' : 'Image Files',
@@ -70,20 +72,40 @@ jQuery( document ).ready(function( $ ) {
             },
             'onUploadSuccess' : function(file, data, response) {
                 var _res = eval('(' + data + ')');
-                var $wrapper = $(".image-wrapper");
+                var $wrapper = $(".sku-image-wrapper");
                 var src = _res.url;
-                $('#uploadModal').foundation('reveal', 'close');
-                $('#lookId').html(_res.lookId);
-                $('#lookId-form').val(_res.lookId);
-                lookId = _res.lookId;
+                $skuForm.val($skuForm.val() + "," +  _res.skuId);
+                $skuId.val(_res.skuId);
+                skuId = _res.skuId;
+                alert(skuId);
                 $wrapper.append('<div class="large-4 columns end" data-equalizer-watch><img src="' + src + ' " class="look-img"/></div>');
-                uploadInit();
+                uploadSkuInit();
             },
             'onSelectError' : function(file, errorCode, errorMsg) {
                 alert("fail!");
             }
         });
     }
+
+    $("#sku-finish-btn").click(function(event){
+        event.preventDefault();
+        var url = "/admin/operation/sku/upload"
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: $("#sku-upload-form").serialize(),
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true) {
+                    //$skuForm.val($skuForm.val() + "," +  _res.skuId);
+                    presentSuccessModal("上传成功！", "请继续编辑搭配...");
+                    $('#addSkuModal').foundation('reveal', 'close');
+                } else {
+                    presentFailModal("上传失败", "错误原因：" + data.message);
+                }
+            }
+        });
+    })
 
     $("#finish-btn").click(function(event){
         event.preventDefault();

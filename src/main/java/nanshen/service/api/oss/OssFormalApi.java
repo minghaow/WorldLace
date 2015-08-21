@@ -29,4 +29,6 @@ public interface OssFormalApi {
 
     String getLookImgUrl(long lookId, long imgId);
 
+    String getSkuImgUrl(long skuId, long imgId);
+
 }

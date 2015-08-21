@@ -77,7 +77,6 @@ jQuery( document ).ready(function( $ ) {
                 $skuForm.val($skuForm.val() + "," +  _res.skuId);
                 $skuId.val(_res.skuId);
                 skuId = _res.skuId;
-                alert(skuId);
                 $wrapper.append('<div class="large-4 columns end" data-equalizer-watch><img src="' + src + ' " class="look-img"/></div>');
                 uploadSkuInit();
             },
@@ -118,7 +117,7 @@ jQuery( document ).ready(function( $ ) {
             success: function(data) {
                 if (data.success == true) {
                     presentSuccessModal("上传成功！", "即将为您跳转到线下搭配列表页...");
-                    setTimeout(function(){window.location.href = "/admin/operation/look/look-list"}, 1000);
+                    setTimeout(function(){window.location.href = "/admin/operation/look/look-list?status=OFFLINE"}, 1000);
                 } else {
                     presentFailModal("上传失败", "错误原因：" + data.message);
                 }

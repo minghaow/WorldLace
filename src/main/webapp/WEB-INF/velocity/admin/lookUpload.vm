@@ -3,6 +3,7 @@
 #* @vtlvariable name="lookTagList" type="java.util.List" *#
 #* @vtlvariable name="lookTag" type="nanshen.data.LookTag" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
 
 
 #parse("admin/header.vm")
@@ -87,6 +88,23 @@
                 <div class="redText">
                     #if ($!{lookInfo.getSkuCount()} != 0)
                         目前已经上传$!{lookInfo.getSkuCount()}个单品，无法查看是因为懒得随便写个页面了，等窦设计好了吧。= =!
+                        #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
+                            <div>Title: ${skuInfo.title}</div>
+                            <div>SubTitle: ${skuInfo.subTitle}</div>
+                            <div>Url: ${skuInfo.url}</div>
+                            <div>Description: ${skuInfo.description}</div>
+                            <div>
+                                #if ($!{skuInfo.imgCount} > 0)
+                                    #set ($totalCnt = $skuInfo.imgCount - 1)
+                                    #foreach ($imgId in [0..$totalCnt])
+                                        #set ($index = $velocityCount - 1)
+                                        <div class="columns end" data-equalizer-watch>
+                                            <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/$index" class="look-img"/>
+                                        </div>
+                                    #end
+                                #end
+                            </div>
+                        #end
                     #end
                 </div>
                 <a href="#" data-reveal-id="addSkuModal" class="button tiny" id="add-sku-btn">上传</a>

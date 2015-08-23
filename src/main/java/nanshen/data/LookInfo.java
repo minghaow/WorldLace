@@ -1,5 +1,6 @@
 package nanshen.data;
 
+import nanshen.utils.StringUtils;
 import nanshen.utils.ViewUtils;
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
@@ -64,8 +65,8 @@ public class LookInfo {
     /** sku list, default for 1 to 2 skus */
     private List<SkuInfo> skuInfoList;
 
-    /** tag list {@code nanshen.data.SkuTag} */
-    private List<SkuTag> lookTagList;
+    /** tag id list */
+    private String[] tagIdList;
 
     /** create time for this look, will fill when create */
     @Column
@@ -205,12 +206,12 @@ public class LookInfo {
         this.tags = tags;
     }
 
-    public List<SkuTag> getLookTagList() {
-        return lookTagList;
+    public String[] getTagIdList() {
+        return StringUtils.getStringListFromString(tags, ",");
     }
 
-    public void setLookTagList(List<SkuTag> lookTagList) {
-        this.lookTagList = lookTagList;
+    public void setTagIdList(String[] tagIdList) {
+        this.tagIdList = tagIdList;
     }
 
     public PublicationStatus getStatus() {

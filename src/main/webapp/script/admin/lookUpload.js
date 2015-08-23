@@ -74,7 +74,7 @@ jQuery( document ).ready(function( $ ) {
                 var _res = eval('(' + data + ')');
                 var $wrapper = $(".sku-image-wrapper");
                 var src = _res.url;
-                $skuForm.val($skuForm.val() + "," +  _res.skuId);
+                $skuForm.val($skuForm.val() + _res.skuId + ",");
                 $skuId.val(_res.skuId);
                 skuId = _res.skuId;
                 $wrapper.append('<div class="large-4 columns end" data-equalizer-watch><img src="' + src + ' " class="look-img"/></div>');
@@ -88,7 +88,7 @@ jQuery( document ).ready(function( $ ) {
 
     $("#sku-finish-btn").click(function(event){
         event.preventDefault();
-        var url = "/admin/operation/sku/upload"
+        var url = "/admin/operation/sku/upload";
         $.ajax({
             url: url,
             type: "GET",
@@ -108,11 +108,17 @@ jQuery( document ).ready(function( $ ) {
 
     $("#finish-btn").click(function(event){
         event.preventDefault();
+        var tagIdList = "";
+        $(".look-tag").each(function(){
+            if ($(this).is(":checked") == true) {
+                tagIdList += $(this).data("tag-id") + ",";
+            }
+        });
         var url = "/admin/operation/look/upload"
         $.ajax({
             url: url,
             type: "GET",
-            data: $("#upload-form").serialize(),
+            data: $("#upload-form").serialize() + "&tagIdList=" + tagIdList,
             dataType: 'json',
             success: function(data) {
                 if (data.success == true) {

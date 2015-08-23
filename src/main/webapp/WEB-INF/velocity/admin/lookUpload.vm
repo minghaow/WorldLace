@@ -4,6 +4,7 @@
 #* @vtlvariable name="lookTag" type="nanshen.data.LookTag" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 #* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
+#* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 
 #parse("admin/header.vm")
@@ -54,10 +55,12 @@
                 <label class="tag-label">标签</label>
                 <div class="row">
                     #foreach ($lookTag in ${lookTagList})
-                        <div class="small-2 columns end">
-                            <input id="checkbox-$lookTag.id" type="checkbox">
-                            <label for="checkbox-$lookTag.id" data-tooltip aria-haspopup="true"
-                                   class="has-tip" title="$lookTag.description">$lookTag.tagName</label>
+                        <div class="small-2 columns end margin-top-tiny">
+                            <input type="checkbox" name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
+                                   data-labelauty="$lookTag.tagName"
+                                    #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
+                                        checked
+                                    #end>
                         </div>
                     #end
                 </div>
@@ -111,12 +114,6 @@
                 <input id="sku-form" name="skuIdList" type="hidden" value="$!{skuIdList}">
                 <div class="sku-image-wrapper" data-equalizer>
                 </div>
-            </div>
-            <div class="small-12 columns margin-top">
-                <input id="checkbox0" type="checkbox" checked>
-                <label for="checkbox0">
-                    我已阅读<a href="/howTo" target="_blank">上传搭配注意事项书</a>，并同意其中所有条款。
-                </label>
             </div>
             <div class="row collapse prefix-radius margin-top margin-bottom">
                 <div class="large-6 columns large-centered">

@@ -2,6 +2,8 @@
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 
 #parse("user/header.vm")
@@ -40,9 +42,21 @@
         <div class="large-1 columns">&nbsp;</div>
         <div class="large-5 columns">
             <h3 class="margin-top greyText">搭配：$lookInfo.title</h3>
-            <div class="margin-top greyText">$lookInfo.subTitle</div>
-            <div class="margin-top greyText">$lookInfo.description</div>
-            <div class="margin-top greyText">$lookInfo.tags</div>
+            <div class="greyText"><i class="fi-torso-business"></i> $!{uploader.realName}</div>
+            <div class="row margin-top-small">&nbsp;</div>
+            <div class="margin-top-small row">
+                #foreach ($lookTag in ${lookTagList})
+                    <span class="margin-top-tiny look-tag-list">
+                        #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
+                            <input type="checkbox" name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
+                                   data-labelauty="$lookTag.tagName">
+                        #end
+                    </span>
+                #end
+            </div>
+            <div class="margin-top-small greyText">$!{lookInfo.subTitle}</div>
+            <div class="margin-top-small greyText">$!{lookInfo.description}</div>
+
         </div>
     </div>
 

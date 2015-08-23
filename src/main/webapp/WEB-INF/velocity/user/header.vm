@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/css/foundation.css">
     <link rel="stylesheet" href="/css/foundation-icons.css">
     <link rel="stylesheet" href="/css/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="/css/jquery-labelauty.css">
 
     <!-- js stuff -->
     <script src="/script/vendor/jquery.js"></script>

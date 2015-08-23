@@ -5,6 +5,7 @@ import nanshen.service.AccountService;
 import nanshen.service.LookService;
 import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
+import nanshen.utils.StringUtils;
 import nanshen.web.common.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,16 +68,12 @@ public class LookCtrl extends BaseController {
     }
 
     @RequestMapping(value = "/look-upload", method = RequestMethod.GET)
-	public ModelAndView lookUpload(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+	public ModelAndView lookUpload(HttpServletRequest request, ModelMap model,
                                    @RequestParam(defaultValue = "0", required = true) long lookId){
         String sessionId = request.getSession().getId();
         prepareLoginUserInfo(request, model);
         if (lookId != 0) {
-            LookInfo lookInfo = lookService.get(lookId);
-            List<SkuInfo> skuInfoList = skuService.getByLookId(lookId);
-            lookInfo.setSkuInfoList(skuInfoList);
-            lookInfo.setSkuCount(skuInfoList.size());
-            model.addAttribute("lookInfo", lookInfo);
+            prepareExistedLookInfo(model, lookId);
         }
         List<LookTag> lookTagList = lookService.getAllTag();
         model.addAttribute("lookId", lookId);
@@ -84,33 +82,52 @@ public class LookCtrl extends BaseController {
 		return new ModelAndView("admin/lookUpload");
 	}
 
+    private void prepareExistedLookInfo(ModelMap model, @RequestParam(defaultValue = "0", required = true) long lookId) {
+        LookInfo lookInfo = lookService.get(lookId);
+        List<SkuInfo> skuInfoList = skuService.getByLookId(lookId);
+        lookInfo.setSkuInfoList(skuInfoList);
+        lookInfo.setSkuCount(skuInfoList.size());
+        model.addAttribute("lookInfo", lookInfo);
+        prepareLookTagIdMap(model, lookInfo);
+    }
+
+    private void prepareLookTagIdMap(ModelMap model, LookInfo lookInfo) {
+        Map<String, Boolean> tagIdMap = new HashMap<String, Boolean>();
+        String[] tagIdList = lookInfo.getTagIdList();
+        for (String tag : tagIdList) {
+            tagIdMap.put(tag, true);
+        }
+        model.addAttribute("tagIdMap", tagIdMap);
+    }
+
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public void upload(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                                @RequestParam(defaultValue = "0", required = true) long lookId,
                                @RequestParam(defaultValue = "", required = true) String title,
                                @RequestParam(defaultValue = "", required = true) String subTitle,
                                @RequestParam(defaultValue = "", required = true) String skuIdList,
+                               @RequestParam(defaultValue = "", required = true) String tagIdList,
                                @RequestParam(defaultValue = "", required = true) String desc) throws IOException {
         prepareLoginUserInfo(request, model);
         AdminUserInfo adminUserInfo = getLoginedUser(request);
-        boolean isSucc = lookService.update(lookId, title, subTitle, desc, PublicationStatus.OFFLINE, adminUserInfo.getId());
-        String[] skuIdArray = skuIdList.split(",");
+        boolean isSucc = lookService.update(lookId, title, subTitle, desc, PublicationStatus.OFFLINE,
+                tagIdList, adminUserInfo.getId());
+        addRelatedSku(lookId, skuIdList);
+        model.addAttribute("success", isSucc);
+        responseJson(response, model);
+    }
+
+    private void addRelatedSku(@RequestParam(defaultValue = "0", required = true) long lookId,
+                               @RequestParam(defaultValue = "", required = true) String skuIdList) {
+        String[] skuIdArray = StringUtils.getStringListFromString(skuIdList, ",");
         for (String skuId : skuIdArray) {
-            System.out.println("SkuId: " + skuId);
-            if (skuId.equals("")) {
-                continue;
-            }
             Long skuIdLong = Long.parseLong(skuId);
-            System.out.println("skuIdLong: " + skuIdLong);
             SkuInfo skuInfo = skuService.get(skuIdLong);
             if (skuInfo != null) {
-                System.out.println("skuInfoSetLLoadsfa: " + skuIdLong);
                 skuInfo.setLookId(lookId);
                 skuService.update(skuInfo);
             }
         }
-        model.addAttribute("success", isSucc);
-        responseJson(response, model);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -160,7 +177,8 @@ public class LookCtrl extends BaseController {
         model.addAttribute("message", execResult.getMsg());
         model.addAttribute("id", execResult.getValue().getImgCount() - 1);
         model.addAttribute("lookId", execResult.getValue().getId());
-        model.addAttribute("url", ossFormalApi.getLookImgUrl(execResult.getValue().getId(), execResult.getValue().getImgCount() - 1));
+        model.addAttribute("url", ossFormalApi.getLookImgUrl(execResult.getValue().getId(),
+                execResult.getValue().getImgCount() - 1));
         responseJson(response, model);
     }
 

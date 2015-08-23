@@ -57,13 +57,13 @@
     <table class="all-list row center" cellpadding=0 cellspacing=0>
         <thead>
         <tr class="center">
-            <th scope="column" width="50px">序号</th>
-            <th scope="column">搭配名称</th>
-            <th scope="column">搭配简述</th>
-            <th scope="column" width="10%">上传人</th>
-            <th scope="column" width="10%">上传时间</th>
-            <th scope="column" width="10%">搭配配图</th>
-            <th scope="column">操作</th>
+            <th scope="col" width="50px">序号</th>
+            <th scope="col">搭配名称</th>
+            <th scope="col">搭配简述</th>
+            <th scope="col" width="10%">上传人</th>
+            <th scope="col" width="10%">上传时间</th>
+            <th scope="col" width="10%">搭配配图</th>
+            <th scope="col">操作</th>
         </tr>
         </thead>
 

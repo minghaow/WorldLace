@@ -29,10 +29,12 @@ public interface LookService {
      * @param subTitle the look subtitle
      * @param desc the look description
      * @param status publication status
+     * @param tagIdList tag id list
      * @param operatorId the uploader
      * @return boolean
      */
-    boolean update(long lookId, String title, String subTitle, String desc, PublicationStatus status, long operatorId);
+    boolean update(long lookId, String title, String subTitle, String desc, PublicationStatus status,
+                   String tagIdList, long operatorId);
 
     /**
      * 根据搭配id删除搭配

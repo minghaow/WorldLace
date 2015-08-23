@@ -68,13 +68,14 @@ public class LookServiceImpl extends ScheduledService implements LookService {
     @Override
     @Transactional
     public boolean update(long lookId, String title, String subTitle, String desc, PublicationStatus status,
-                          long operatorId) {
+                          String tagIdList, long operatorId) {
         LookInfo lookInfo = lookInfoDao.get(lookId);
         lookInfo.setTitle(title);
         lookInfo.setSubTitle(subTitle);
         lookInfo.setDescription(desc);
         lookInfo.setStatus(status);
         lookInfo.setUploadUserId(operatorId);
+        lookInfo.setTags(tagIdList);
         lookInfo.setCreateTime(new Date());
         return updateLookInfo(lookInfo);
     }

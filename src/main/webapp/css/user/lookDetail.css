@@ -16,3 +16,6 @@
     padding: 3px;
     max-height: 150px;
 }
+.look-tag-list input.labelauty + label {
+    display: inline-block;
+}

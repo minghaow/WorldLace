@@ -20,6 +20,10 @@ public class AdminUserInfo {
     @Column
     private String username;
 
+    /** 昵称 */
+    @Column
+    private String realName;
+
     /** 密码 */
     @Column
     private String password;
@@ -28,8 +32,9 @@ public class AdminUserInfo {
     @Column
     private Date createTime = new Date();
 
-    public AdminUserInfo(String username, String password) {
+    public AdminUserInfo(String username, String realName, String password) {
         this.username = username;
+        this.realName = realName;
         this.password = password;
     }
 
@@ -70,5 +75,13 @@ public class AdminUserInfo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }

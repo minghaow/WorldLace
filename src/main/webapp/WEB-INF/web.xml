@@ -11,6 +11,10 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/993eb7f473e652a1a5992e21a97830d1.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
 		<url-pattern>/robots.txt</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

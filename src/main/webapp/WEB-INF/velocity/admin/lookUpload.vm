@@ -32,7 +32,7 @@
         <form action="#" method="get" id="upload-form"
               class="large-12 medium-6 small-12 row collapse prefix-radius leftAlign">
             <input id="lookId-form" name="lookId" type="hidden" value="$!{lookId}">
-            <div class="small-5 columns">
+            <div class="small-4 columns">
                 <label class="tag-label">标题信息</label>
                 <div class="row prefix-radius collapse">
                     <div class="small-3 columns">
@@ -51,7 +51,7 @@
             </div>
             <div class="small-1 columns">&nbsp;</div>
 
-            <div class="small-6 columns">
+            <div class="small-7 columns">
                 <label class="tag-label">标签</label>
                 <div class="row">
                     #foreach ($lookTag in ${lookTagList})

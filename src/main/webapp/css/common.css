@@ -1,5 +1,11 @@
+#body {
+    background-color: #e2e2e2;
+}
 .page-content {
     min-height: 300px;
+}
+#page-info {
+    display: none;
 }
 .row {
     max-width: 95% !important;

@@ -1,42 +1,64 @@
+#* @velocityproperties path="/WEB-INF/velocity" *#
+#* @vtlvariable name="pageType" type="nanshen.data.PageType" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
-
 #parse("user/header.vm")
 <link rel="stylesheet" href="/css/user/list.css"/>
-<!-- end of header -->
 
 <!-- some hidden infos -->
 <div id="page-info">
-    <div id="this-tag">orders</div>
+    <div id="this-tag">$!{pageType}</div>
 </div>
 
 <!-- page contents -->
 <div class="page-content">
 
-    <ul class="bxslider">
-        <li><img src="images/slider/slider1.png" /></li>
-        <li><img src="images/slider/slider1.png" /></li>
+    <ul data-orbit
+        data-options="animation:slide;
+                  pause_on_hover:true;
+                  timer_speed:4000;
+                  animation_speed:500;
+                  navigation_arrows:true;
+                  bullets:true;
+                  slide_number:false;
+                  resume_on_mouseout:true;">
+        <li>
+            <img src="images/slider/slider1.png" alt="slide 1" />
+            <div class="orbit-caption">
+                活力男装搭配
+            </div>
+        </li>
+        <li class="active">
+            <img src="images/slider/slider1.png" alt="slide 2" />
+            <div class="orbit-caption">
+                品牌推广专题
+            </div>
+        </li>
     </ul>
 
-    <div class="item-list row" >
+    <nav class="sub-category">
 
-        <ul class="large-block-grid-3" data-equalizer>
+    </nav>
+
+    <div class="sub-filter"></div>
+
+    <div class="item-list" >
+
+        <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2" data-equalizer>
             #foreach ($lookInfo in $lookInfoList)
             <li data-equalizer-watch>
-                <a href="/look?lookId=$lookInfo.id">
-                    <div class="item-image-wrapper">
-                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
-                    </div>
-                    <div class="item-description">
-                        $lookInfo.title
-                        <div>
-                            $lookInfo.subTitle
-                        </div>
-                    </div>
+                <a href="/look?lookId=$lookInfo.id" class="item-image-wrapper">
+                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
                 </a>
+                <div class="item-description">
+                    $lookInfo.title
+                    <div>
+                        $lookInfo.subTitle
+                    </div>
+                </div>
             </li>
             #end
         </ul>
@@ -46,10 +68,5 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-<script>
-    $(document).ready(function(){
-        $('.bxslider').bxSlider();
-    });
-</script>
 <script src="script/home.js"></script>
 #include("user/footer.vm")

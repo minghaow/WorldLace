@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import java.io.IOException;
 import java.util.Map;
@@ -133,4 +134,14 @@ public class JsonUtils {
         return null;
     }
 
+    /**
+     * 将对象转换为jsonp字符串
+     *
+     * @param functionName jsonp名称
+     * @param object 要转换的对象
+     * @return
+     */
+    public static String toJsonP(String functionName, Object object) {
+        return toJson(new JSONPObject(functionName, object));
+    }
 }

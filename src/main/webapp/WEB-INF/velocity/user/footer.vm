@@ -6,13 +6,14 @@
 </section>
 
 <section class="bottom-footer">
-
+    <div>
+        <img src="/images/user/logo-lan.png" alt="蓝"/>
+    </div>
+    <div class="greyText margin-top-small">
+        Copyright @ 2015, LanZhuJue Co., Ltd. All rights Reserved.
+    </div>
+    <div class="greyText">京ICP备15043668号-1</div>
 </section>
-
-<!-- 侧边栏截止处    -->
-<a class="exit-off-canvas"></a>
-</div>
-</div>
 
 <script src="/script/vendor/modernizr.js"></script>
 <script src="/script/vendor/foundation.js"></script>
@@ -33,11 +34,18 @@
 <script src="/script/vendor/foundation.tab.js"></script>
 <script src="/script/vendor/foundation.tooltip.js"></script>
 <script src="/script/vendor/foundation.topbar.js"></script>
-<script src="/script/vendor/jquery-labelauty.js"></script>
 <script>
-    $(document).foundation();
-    $(function(){
-        $(':input').labelauty();
+    $(document).foundation({
+        orbit: {
+            animation: 'slide',
+            timer_speed: 4000,
+            pause_on_hover: true,
+            animation_speed: 500,
+            navigation_arrows: true,
+            bullets: true,
+            slide_number: false,
+            resume_on_mouseout: true
+        }
     });
 </script>
 </body>

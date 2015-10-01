@@ -1,116 +1,108 @@
+#* @vtlvariable name="LOOK" type="java.lang.String" *#
+#* @vtlvariable name="CATEGORY" type="java.lang.String" *#
+#* @vtlvariable name="TOPIC" type="java.lang.String" *#
+#* @vtlvariable name="ABOUT" type="java.lang.String" *#
 <!DOCTYPE html>
 <html lang="en">
 
 <!-- header start -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="男神梦工厂" />
-    <meta name="description" content="男神梦工厂（www.IamNanShen.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
+    <meta name="keywords" content="蓝主角" />
+    <meta name="description" content="蓝主角（www.LanZhuJue.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>蓝主角</title>
 
     <!-- style stuff -->
-    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/tool.css">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/foundation.css">
-    <link rel="stylesheet" href="/css/foundation-icons.css">
-    <link rel="stylesheet" href="/css/jquery.bxslider.css"/>
-    <link rel="stylesheet" href="/css/jquery-labelauty.css">
+    <link type="image/x-icon" href="/images/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="/css/home.css"/>
+    <link rel="stylesheet" href="/css/user/header.css"/>
+    <link rel="stylesheet" href="/css/user/footer.css"/>
+    <link rel="stylesheet" href="/css/tool.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/foundation.min.css"/>
+    <link rel="stylesheet" href="/css/foundation-icons.css"/>
 
     <!-- js stuff -->
     <script src="/script/vendor/jquery.js"></script>
-    <script src="/script/vendor/jquery.bxslider.min.js"></script>
 </head>
 
 <!-- body start -->
-<body>
+<body id="body">
 
-<!-- top bar start -->
-<div class="off-canvas-wrap" data-offcanvas>
-<div class="inner-wrap">
+    <!-- top bar start -->
+    <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
 
-    <!-- left menu for mobile devices -->
-    <div class="left-menu">
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><label class="first">男神梦工厂</label></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-                <li><a href="/list">男装</a></li>
-            </ul>
-        </aside>
-        <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
-        <nav class="tab-bar show-for-small">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
-            </section>
-            <div class="middle tab-bar-section"><img src="images/logo.png"></div>
-        </nav>
+            <!-- left menu for mobile devices -->
+            <div class="left-menu">
+                <aside class="left-off-canvas-menu">
+                    <ul class="off-canvas-list">
+                        <li><label class="first">蓝主角</label></li>
+                        <li><a href="/list">搭配</a></li>
+                    </ul>
+                </aside>
+                <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
+                <nav class="tab-bar show-for-small">
+                    <section class="left-small">
+                        <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
+                    </section>
+                    <div class="middle tab-bar-section"><img src="/images/user/logo-black.png"></div>
+                </nav>
+            </div>
+
+            <a class="exit-off-canvas"></a>
+
+        </div>
     </div>
 
     <!-- bigger menu with centered logo -->
-    <nav class="top-bar hide-for-small" data-topbar="">
-        <div class="account-zone">
-            <div class="account-zone-left">
-                <i class="fi-magnifying-glass"> </i> 搜索
-            </div>
-
-            <div class="account-zone-right">
-##                <span>
-##                    <a href="#" class="account-zone-anchor">
-##                        <i class="fi-shopping-cart"></i>
-##                        购物车 (${goodsCartCount})
-##                    </a>
-##                </span>
-##                <span class="inline-divider"> | </span>
-                <span>
-                    <a href="#" class="account-zone-anchor" data-reveal-id="userAccountModal">
-                        Hi, ${helloMsg}
-                    </a>
+    <!-- bigger header -->
+    <nav id="top-bar" class="top-menu-bar hide-for-small">
+        <div id="top-bar-content">
+            <span class="title-area">
+                <span class="logo">
+                    <img src="/images/user/logo-black.png" alt="LanZhuJue.com"/>
                 </span>
+            </span>
+
+            <div class="top-bar-section">
+                <ul class="menu-section">
+                    <li>
+                        <div class="selected-sign $!{LOOK}">
+                            <img src="/images/user/header/selected.png" alt=""/>
+                        </div>
+                        <a href="/" class="top-button">
+                            <div class="menu-text">搭配</div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="selected-sign $!{CATEGORY}">
+                            <img src="/images/user/header/selected.png" alt=""/>
+                        </div>
+                        <a href="/category" class="top-button">
+                            <div class="menu-text">分类</div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="selected-sign $!{TOPIC}">
+                            <img src="/images/user/header/selected.png" alt=""/>
+                        </div>
+                        <a href="/topic" class="top-button">
+                            <div class="menu-text">专题</div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="selected-sign $!{ABOUT}">
+                            <img src="/images/user/header/selected.png" alt=""/>
+                        </div>
+                        <a href="/about" class="top-button">
+                            <div class="menu-text">我们</div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-
-        <div class="image-logo">
-            <a href="/">
-                <img src="/images/logo.png">
-            </a>
-        </div>
-
-        <div data-magellan-expedition="fixed" class="main-menu">
-            <dl class="sub-nav main-menu-list">
-                <dd data-magellan-arrival="lookbook" class="main-menu-content"><a href="/">搭配 LOOKBOOK</a></dd>
-                <dd data-magellan-arrival="category" class="main-menu-content"><a href="/">分类 CATEGORY</a></dd>
-                <dd data-magellan-arrival="proshelp" class="main-menu-content"><a href="/">帮你搭 Pro's HELP</a></dd>
-                <dd data-magellan-arrival="improvement" class="main-menu-content"><a href="/">气质提升
-                    IMPROVEMENT</a></dd>
-            </dl>
         </div>
     </nav>
 
-    <div class="fixedBtns">
-##        <div class="fixedUp">
-##            <i class="fi-arrow-up"></i>
-##        </div>
-##        <div class="fixedCart">
-##            <i class="fi-shopping-cart"></i>
-##        </div>
-    </div>
-
-    <!-- Modals -->
-    <div id="userAccountModal" class="reveal-modal" data-reveal aria-labelledby="accountCenter" aria-hidden="true"
-         role="dialog">
-        <h2 id="accountCenter" class="greenText"><i class="fi-thumbnails"></i> 用户账户中心</h2>
-        <p class="subheader">Hi, ${userName}, 您好，有什么能帮助您的？</p>
-
-        <h6 class="margin-top"><i class="fi-widget"></i> 账户相关 Account Settings</h6>
-        <hr>
-
-        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-    </div>
+    <nav class="bottom-line"></nav>

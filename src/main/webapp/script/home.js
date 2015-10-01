@@ -5,4 +5,3 @@ jQuery( document ).ready(function( $ ) {
     $("#" + thisTag).addClass("chosen");
 
 });
-

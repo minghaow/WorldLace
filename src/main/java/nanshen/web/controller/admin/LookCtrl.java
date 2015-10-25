@@ -84,9 +84,6 @@ public class LookCtrl extends BaseController {
 
     private void prepareExistedLookInfo(ModelMap model, @RequestParam(defaultValue = "0", required = true) long lookId) {
         LookInfo lookInfo = lookService.get(lookId);
-        List<SkuInfo> skuInfoList = skuService.getByLookId(lookId);
-        lookInfo.setSkuInfoList(skuInfoList);
-        lookInfo.setSkuCount(skuInfoList.size());
         model.addAttribute("lookInfo", lookInfo);
         prepareLookTagIdMap(model, lookInfo);
     }

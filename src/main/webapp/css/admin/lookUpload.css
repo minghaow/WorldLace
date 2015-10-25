@@ -15,3 +15,47 @@
 .uploadify-button {
     text-align: center;
 }
+
+
+#look-detail-page-content {
+    width: 90%;
+    max-width: 1200px;
+}
+@media only screen and (max-width: 40.063em) {
+    #look-detail-page-content .row .columns {
+        padding: 0;
+    }
+}
+.look-detail-slider {
+    left: 0 !important;
+}
+#bx-pager {
+    margin-top: 3rem;
+}
+.thumbnail-wrapper {
+    margin: 10px;
+}
+.thumbnail-wrapper img {
+    padding: 3px;
+}
+.look-tag-list input.labelauty + label {
+    display: inline-block;
+}
+.look-detail-slider li img {
+    text-align: center;
+    margin: auto;
+}
+.detail-image-slider {
+    background-color: white;
+    padding: 10px;
+}
+.detail-description {
+    background-color: white;
+    padding: 2rem;
+}
+input.labelauty + label {
+    padding: 7px;
+}
+input.labelauty + label .labelauty-unchecked {
+    color: black;
+}

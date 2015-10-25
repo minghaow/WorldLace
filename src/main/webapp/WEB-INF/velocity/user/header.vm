@@ -19,9 +19,10 @@
     <link rel="stylesheet" href="/css/user/header.css"/>
     <link rel="stylesheet" href="/css/user/footer.css"/>
     <link rel="stylesheet" href="/css/tool.css"/>
-    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/user/common.css"/>
     <link rel="stylesheet" href="/css/foundation.min.css"/>
     <link rel="stylesheet" href="/css/foundation-icons.css"/>
+    <link rel="stylesheet" href="/css/jquery-labelauty.css">
 
     <!-- js stuff -->
     <script src="/script/vendor/jquery.js"></script>
@@ -30,40 +31,39 @@
 <!-- body start -->
 <body id="body">
 
-    <!-- top bar start -->
-    <div class="off-canvas-wrap" data-offcanvas>
-        <div class="inner-wrap">
+<!-- top bar start -->
+<div class="off-canvas-wrap" data-offcanvas>
+<div class="inner-wrap">
 
-            <!-- left menu for mobile devices -->
-            <div class="left-menu">
-                <aside class="left-off-canvas-menu">
-                    <ul class="off-canvas-list">
-                        <li><label class="first">蓝主角</label></li>
-                        <li><a href="/list">搭配</a></li>
-                    </ul>
-                </aside>
-                <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
-                <nav class="tab-bar show-for-small">
-                    <section class="left-small">
-                        <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
-                    </section>
-                    <div class="middle tab-bar-section"><img src="/images/user/logo-black.png"></div>
-                </nav>
+    <!-- left menu for mobile devices -->
+    <div class="left-menu">
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label class="first">蓝主角</label></li>
+                <li><a href="/list">搭配</a></li>
+            </ul>
+        </aside>
+        <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
+        <nav class="tab-bar show-for-small">
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
+            </section>
+            <div class="middle tab-bar-section">
+                <img src="/images/user/logo-black.png">
             </div>
-
-            <a class="exit-off-canvas"></a>
-
-        </div>
+        </nav>
     </div>
+
+    <a class="exit-off-canvas"></a>
 
     <!-- bigger menu with centered logo -->
     <!-- bigger header -->
     <nav id="top-bar" class="top-menu-bar hide-for-small">
         <div id="top-bar-content">
             <span class="title-area">
-                <span class="logo">
+                <a class="logo" href="/">
                     <img src="/images/user/logo-black.png" alt="LanZhuJue.com"/>
-                </span>
+                </a>
             </span>
 
             <div class="top-bar-section">
@@ -80,7 +80,7 @@
                         <div class="selected-sign $!{CATEGORY}">
                             <img src="/images/user/header/selected.png" alt=""/>
                         </div>
-                        <a href="/category" class="top-button">
+                        <a href="/category" class="top-button unsupported-section">
                             <div class="menu-text">分类</div>
                         </a>
                     </li>
@@ -88,7 +88,7 @@
                         <div class="selected-sign $!{TOPIC}">
                             <img src="/images/user/header/selected.png" alt=""/>
                         </div>
-                        <a href="/topic" class="top-button">
+                        <a href="/topic" class="top-button unsupported-section">
                             <div class="menu-text">专题</div>
                         </a>
                     </li>
@@ -96,7 +96,7 @@
                         <div class="selected-sign $!{ABOUT}">
                             <img src="/images/user/header/selected.png" alt=""/>
                         </div>
-                        <a href="/about" class="top-button">
+                        <a href="/about" class="top-button unsupported-section">
                             <div class="menu-text">我们</div>
                         </a>
                     </li>

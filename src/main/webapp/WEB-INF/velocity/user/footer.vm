@@ -15,6 +15,11 @@
     <div class="greyText">京ICP备15043668号-1</div>
 </section>
 
+<!-- end of mobile header -->
+</div>
+</div>
+
+<script src="/script/msgModal.js"></script>
 <script src="/script/vendor/modernizr.js"></script>
 <script src="/script/vendor/foundation.js"></script>
 <script src="/script/vendor/foundation.reveal.js"></script>
@@ -34,6 +39,8 @@
 <script src="/script/vendor/foundation.tab.js"></script>
 <script src="/script/vendor/foundation.tooltip.js"></script>
 <script src="/script/vendor/foundation.topbar.js"></script>
+<script src="/script/vendor/jquery-labelauty.js"></script>
+<script src="/script/user/common.js"></script>
 <script>
     $(document).foundation({
         orbit: {
@@ -46,6 +53,9 @@
             slide_number: false,
             resume_on_mouseout: true
         }
+    });
+    $(function(){
+        $(".look-tag").labelauty();
     });
 </script>
 </body>

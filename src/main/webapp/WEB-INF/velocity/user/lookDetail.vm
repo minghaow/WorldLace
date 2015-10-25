@@ -1,10 +1,10 @@
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 #* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
-
 
 #parse("user/header.vm")
 <link rel="stylesheet" href="/css/user/lookDetail.css"/>
@@ -16,77 +16,101 @@
 </div>
 
 <!-- page contents -->
-<div class="page-content">
-
+<div class="page-content margin-top" id="look-detail-page-content">
     <div class="row">
-        <div class="large-5 columns">
-            <ul class="look-detail-slider">
+        <div class="large-5 medium-5 small-12 columns detail-image-slider">
+            <ul data-orbit class="look-detail-slider"
+                data-options="animation:slide;
+                  pause_on_hover:true;
+                  animation_speed:500;
+                  navigation_arrows:true;
+                  bullets:true;">
                 #set ($totalCnt = $lookInfo.imgCount - 1)
                 #foreach ($imgId in [0..$totalCnt])
-                    <li><img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId" /></li>
+                    <li data-orbit-slide="slide-$imgId">
+                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId" />
+                    </li>
                 #end
             </ul>
         </div>
-        <div class="large-1 columns">
-            <div id="bx-pager">
-            #set ($totalCnt = $lookInfo.imgCount - 1)
-            #foreach ($imgId in [0..$totalCnt])
-                #set ($index = $velocityCount - 1)
-                <a data-slide-index="$index" class="thumbnail">
-                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId"
-                         class="thumbnail"/>
-                </a>
-            #end
+        <div class="large-7 medium-7 small-12 columns">
+            <div class="detail-description text-left">
+                <h3 class="greyText">$lookInfo.title</h3>
+                <div class="greyText"><i class="fi-torso-business"></i> $!{uploader.realName}</div>
+                <div class="row margin-top-small">&nbsp;</div>
+                <div class="margin-top-small greyText">$!{lookInfo.subTitle}</div>
+                <div class="margin-top-small greyText">$!{lookInfo.description}</div>
             </div>
-        </div>
-        <div class="large-1 columns">&nbsp;</div>
-        <div class="large-5 columns">
-            <h3 class="margin-top greyText">搭配：$lookInfo.title</h3>
-            <div class="greyText"><i class="fi-torso-business"></i> $!{uploader.realName}</div>
-            <div class="row margin-top-small">&nbsp;</div>
-            <div class="margin-top-small row">
-                #foreach ($lookTag in ${lookTagList})
-                    <span class="margin-top-tiny look-tag-list">
-                        #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
-                            <input type="checkbox" name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
-                                   data-labelauty="$lookTag.tagName">
-                        #end
-                    </span>
-                #end
-            </div>
-            <div class="margin-top-small greyText">$!{lookInfo.subTitle}</div>
-            <div class="margin-top-small greyText">$!{lookInfo.description}</div>
 
-        </div>
-    </div>
-
-
-    <div class="item-list row" data-equalizer>
-        #foreach ($lookInfo in $lookInfoList)
-        <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-            <div class="item-image-wrapper">
-                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
-            </div>
-            <div class="item-description">
-                $lookInfo.title
-                <div>
-                    $lookInfo.subTitle
+            <div class="detail-description margin-top-small text-left">
+                <h4 class="greyText">标签</h4>
+                <div class="margin-top-small row">
+                    #foreach ($lookTag in ${lookTagList})
+                        <span class="margin-top-tiny look-tag-list">
+                            #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
+                                <input type="checkbox" disabled name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
+                                       data-labelauty="$lookTag.tagName">
+                            #end
+                        </span>
+                    #end
+                    #if (${tagIdMap.size()} == 0)
+                        <span class="margin-top-tiny look-tag-list">
+                            <input type="checkbox" disabled name="checkbox-1" class="look-tag" data-tag-id="1"
+                                       data-labelauty="无">
+                        </span>
+                    #end
                 </div>
             </div>
+
+            <div class="detail-description margin-top-small text-left">
+                <h4 class="greyText">搭配单品</h4>
+                <ul class="margin-top-small row thumbnail-wrapper small-block-grid-3">
+                    #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
+                        <li>
+                            <a class="th radius " href="${skuInfo.url}" target="_blank" title="${skuInfo.title}">
+                                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="th radius " href="${skuInfo.url}" target="_blank"  title="${skuInfo.title}">
+                                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="th radius " href="${skuInfo.url}" target="_blank" title="${skuInfo.title}">
+                                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0"/>
+                            </a>
+                        </li>
+                    #end
+                    #if ($!{lookInfo.getSkuInfoList().size()} == 0)
+                        <a class="th radius" href="#">
+                            <img src="" alt="暂无图片"/>
+                        </a>
+                    #end
+                </ul>
+            </div>
         </div>
-        #end
+
+        <div class="item-list row" data-equalizer>
+            #foreach ($lookInfo in $lookInfoList)
+                <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
+                    <div class="item-image-wrapper">
+                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
+                    </div>
+                    <div class="item-description">
+                        $lookInfo.title
+                        <div>
+                            $lookInfo.subTitle
+                        </div>
+                    </div>
+                </div>
+            #end
+        </div>
     </div>
+    #include("msgModal.vm")
+
 </div>
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-<script>
-    $(document).ready(function(){
-        $('.look-detail-slider').bxSlider({
-            pagerCustom: '#bx-pager',
-            controls: false
-        });
-    });
-</script>
-<script src="script/home.js"></script>
 #include("user/footer.vm")

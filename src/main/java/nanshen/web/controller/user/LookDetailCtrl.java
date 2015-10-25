@@ -1,9 +1,9 @@
 package nanshen.web.controller.user;
 
-import nanshen.constant.SystemConstants;
 import nanshen.data.AdminUserInfo;
 import nanshen.data.LookInfo;
 import nanshen.data.LookTag;
+import nanshen.data.PageType;
 import nanshen.service.AccountService;
 import nanshen.service.LookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/look")
-public class LookDetailCtrl {
+public class LookDetailCtrl extends BaseCtrl {
 
 	@Autowired
 	private AccountService accountService;
@@ -42,6 +41,7 @@ public class LookDetailCtrl {
 			model.addAttribute("uploader", uploader);
 		}
 		model.addAttribute("success", lookInfo != null);
+		prepareHeader(model, PageType.LOOK);
 		prepareHelloMsg(model);
 		return new ModelAndView("user/lookDetail");
 	}
@@ -54,18 +54,5 @@ public class LookDetailCtrl {
         }
         model.addAttribute("tagIdMap", tagIdMap);
     }
-
-	private void prepareHelloMsg(ModelMap model) {
-		String helloMsg = "";
-		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-		if (hour >= 0 && hour < 12) {
-			helloMsg = SystemConstants.HELLO_MSG_MORNING;
-		} else if (hour >= 12 && hour < 18) {
-			helloMsg = SystemConstants.HELLO_MSG_AFTERNOON;
-		} else {
-			helloMsg = SystemConstants.HELLO_MSG_EVENING;
-		}
-		model.addAttribute("helloMsg", helloMsg);
-	}
 
 }

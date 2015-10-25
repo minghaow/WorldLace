@@ -28,7 +28,7 @@ jQuery( document ).ready(function( $ ) {
                 }
             }
         });
-    })
+    });
 
     $(".online-btn").click(function(event){
         event.preventDefault();
@@ -48,7 +48,7 @@ jQuery( document ).ready(function( $ ) {
                 }
             }
         });
-    })
+    });
 
     $(".offline-btn").click(function(event){
         event.preventDefault();
@@ -68,19 +68,7 @@ jQuery( document ).ready(function( $ ) {
                 }
             }
         });
-    })
-
-    function presentSuccessModal(header, message) {
-        $successHdr.html(header);
-        $successMsg.html(message);
-        $successModal.foundation('reveal', 'open');
-    }
-
-    function presentFailModal(header, message) {
-        $failHdr.html(header);
-        $failMsg.html(message);
-        $failModal.foundation('reveal', 'open');
-    }
+    });
 
 });
 

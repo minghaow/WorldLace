@@ -14,6 +14,7 @@
 </div>
 </div>
 
+<script src="/script/msgModal.js"></script>
 <script src="/script/vendor/modernizr.js"></script>
 <script src="/script/vendor/foundation.js"></script>
 <script src="/script/vendor/foundation.reveal.js"></script>

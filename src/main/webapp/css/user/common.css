@@ -1,0 +1,38 @@
+#body {
+    background-color: #e2e2e2;
+}
+@media only screen and (min-width: 40.063em) {
+    .page-content {
+        width: 90%;
+        max-width: 1200px;
+        min-height: 300px;
+        text-align: center;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 40em) {
+    .page-content {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 300px;
+        text-align: center;
+        margin: auto;
+    }
+}
+#page-info {
+    display: none;
+}
+.row {
+    max-width: 95% !important;
+}
+.row .row {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.all-list tr th,
+.all-list tr td {
+    text-align: center !important;
+}
+input.labelauty + label {
+    display: inline !important;
+}

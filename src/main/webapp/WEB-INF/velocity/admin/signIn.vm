@@ -113,5 +113,5 @@
         $('.bxslider').bxSlider();
     });
 </script>
-<script src="/script/home.js"></script>
+<script src="/script/user/common.js"></script>
 #include("admin/footer.vm")

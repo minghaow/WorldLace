@@ -28,6 +28,9 @@
 .center {
     text-align: center !important;
 }
+.left-align {
+    text-align: left !important;
+}
 .higher-index {
     z-index: 100 !important;
 }

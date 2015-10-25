@@ -7,6 +7,12 @@ header {
     background-size: cover;
     padding: 22px 0;
 }
+.left-menu .tab-bar {
+    background-color: #121212;
+}
+.tab-bar-section.middle {
+    overflow: hidden;
+}
 #top-bar {
     background: #121212 !important;
     height: 70px !important;

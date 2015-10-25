@@ -39,14 +39,7 @@
         </li>
     </ul>
 
-    <nav class="sub-category">
-
-    </nav>
-
-    <div class="sub-filter"></div>
-
     <div class="item-list" >
-
         <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2" data-equalizer>
             #foreach ($lookInfo in $lookInfoList)
             <li data-equalizer-watch>
@@ -62,11 +55,12 @@
             </li>
             #end
         </ul>
-
     </div>
+
+    #include("msgModal.vm")
+
 </div>
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-<script src="script/home.js"></script>
 #include("user/footer.vm")

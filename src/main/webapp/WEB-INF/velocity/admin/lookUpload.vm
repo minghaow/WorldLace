@@ -30,9 +30,42 @@
 
     <div class="row">
         <form action="#" method="get" id="upload-form"
-              class="large-12 medium-6 small-12 row collapse prefix-radius leftAlign">
-            <input id="lookId-form" name="lookId" type="hidden" value="$!{lookId}">
-            <div class="small-4 columns">
+              class="large-12 medium-6 small-12 row leftAlign">
+            <div class="small-5 columns">
+                <label class="tag-label">搭配配图列表</label>
+                <input id="look-form" name="lookId" type="hidden" value="$!{lookId}">
+                <a href="#" data-reveal-id="uploadModal" class="button tiny" id="upload-btn">上传</a>
+                <div class="image-wrapper" data-equalizer>
+                    #if ($!{lookInfo.imgCount} > 0)
+                        #set ($totalCnt = $lookInfo.imgCount - 1)
+                        #foreach ($imgId in [0..$totalCnt])
+                            <div class="small-4 columns end" data-equalizer-watch>
+                                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId" class="look-img"/>
+                            </div>
+                        #end
+                    #end
+                </div>
+                <span class="detail-image-slider">
+                    <ul data-orbit class="look-detail-slider"
+                        data-options="animation:slide;
+                                      pause_on_hover:true;
+                                      animation_speed:500;
+                                      navigation_arrows:true;
+                                      bullets:true;">
+                        #if ($!{lookInfo.imgCount} > 0)
+                            #set ($totalCnt = $lookInfo.imgCount - 1)
+                            #foreach ($imgId in [0..$totalCnt])
+                                #set ($index = $velocityCount - 1)
+                                <li data-orbit-slide="slide-$imgId">
+                                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId" class="look-img"/>
+                                </li>
+                            #end
+                        #end
+                    </ul>
+                </span>
+            </div>
+            <div class="small-7 columns">
+                <input id="lookId-form" name="lookId" type="hidden" value="$!{lookId}">
                 <label class="tag-label">标题信息</label>
                 <div class="row prefix-radius collapse">
                     <div class="small-3 columns">
@@ -48,49 +81,28 @@
                         <input name="subTitle" type="text" placeholder="SubTitle" value="$!{lookInfo.subTitle}">
                     </div>
                 </div>
-            </div>
-            <div class="small-1 columns">&nbsp;</div>
 
-            <div class="small-7 columns">
                 <label class="tag-label">标签</label>
-                <div class="row">
+                <div>
                     #foreach ($lookTag in ${lookTagList})
-                        <div class="small-2 columns end margin-top-tiny">
-                            <input type="checkbox" name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
-                                   data-labelauty="$lookTag.tagName"
-                                    #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
-                                        checked
-                                    #end>
-                        </div>
+                        <input type="checkbox" name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
+                               data-labelauty="$lookTag.tagName"
+                            #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
+                               checked
+                            #end>
                     #end
                 </div>
-            </div>
-            <div class="small-12 columns">
+
                 <label class="tag-label">简要描述</label>
                 <textarea id="desc" name="desc" type="" style="height:100px" placeholder="Descriptions"
-                          >$!{lookInfo.description}</textarea>
+                    >$!{lookInfo.description}</textarea>
             </div>
-            <div class="small-12 columns">
-                <label class="tag-label">搭配配图列表</label>
-                <input id="look-form" name="lookId" type="hidden" value="$!{lookId}">
-                <a href="#" data-reveal-id="uploadModal" class="button tiny" id="upload-btn">上传</a>
-                <div class="image-wrapper" data-equalizer>
-                #if ($!{lookInfo.imgCount} > 0)
-                    #set ($totalCnt = $lookInfo.imgCount - 1)
-                    #foreach ($imgId in [0..$totalCnt])
-                        #set ($index = $velocityCount - 1)
-                    <div class="large-4 columns end" data-equalizer-watch>
-                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$index" class="look-img"/>
-                    </div>
-                    #end
-                #end
-                </div>
-            </div>
+
+
             <div class="small-12 columns">
                 <label class="tag-label">单品列表</label>
                 <div class="redText">
                     #if ($!{lookInfo.getSkuCount()} != 0)
-                        目前已经上传$!{lookInfo.getSkuCount()}个单品，无法查看是因为懒得随便写个页面了，等窦设计好了吧。= =!
                         #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
                             <div>Title: ${skuInfo.title}</div>
                             <div>SubTitle: ${skuInfo.subTitle}</div>
@@ -115,9 +127,10 @@
                 <div class="sku-image-wrapper" data-equalizer>
                 </div>
             </div>
-            <div class="row collapse prefix-radius margin-top margin-bottom">
-                <div class="large-6 columns large-centered">
-                    <input type="submit" class="button tiny postfix" id="finish-btn" value="提交搭配">
+
+            <div class="small-12 columns">
+                <div class="center">
+                    <input type="submit" class="button expended success radius" id="finish-btn" value="提交搭配">
                 </div>
             </div>
         </form>
@@ -172,11 +185,11 @@
                     <label class="tag-label">标签</label>
                     <div class="row">
                         #foreach ($lookTag in ${lookTagList})
-                            <div class="small-3 columns end">
-                                <input id="checkbox-$lookTag.id" type="checkbox">
-                                <label for="checkbox-$lookTag.id" data-tooltip aria-haspopup="true"
-                                       class="has-tip" title="$lookTag.description">$lookTag.tagName</label>
-                            </div>
+                            <input type="checkbox" name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
+                                   data-labelauty="$lookTag.tagName"
+                                #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
+                                   checked
+                                #end>
                         #end
                     </div>
                 </div>
@@ -219,8 +232,6 @@
 
 </div>
 <!-- end of this page contents -->
-
-<script src="/script/login.js"></script>
 <script src="/script/admin/lookUpload.js"></script>
 <script src="/script/msgModal.js"></script>
 #include("admin/footer.vm")

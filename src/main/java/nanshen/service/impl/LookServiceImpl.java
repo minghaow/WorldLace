@@ -6,6 +6,7 @@ import nanshen.dao.LookInfoDao;
 import nanshen.dao.LookTagDao;
 import nanshen.data.*;
 import nanshen.service.LookService;
+import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
 import nanshen.service.common.ScheduledService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class LookServiceImpl extends ScheduledService implements LookService {
 
     @Autowired
     private OssFormalApi ossFormalApi;
+
+    @Autowired
+    private SkuService skuService;
 
     private Map<PublicationStatus, Long> statusCntMap = new HashMap<PublicationStatus, Long>();
     private Map<PublicationStatus, Long> newStatusCntMap = new HashMap<PublicationStatus, Long>();
@@ -103,7 +107,11 @@ public class LookServiceImpl extends ScheduledService implements LookService {
 
     @Override
     public LookInfo get(long lookId) {
-        return lookInfoDao.get(lookId);
+        LookInfo lookInfo = lookInfoDao.get(lookId);
+        List<SkuInfo> skuInfoList = skuService.getByLookId(lookId);
+        lookInfo.setSkuInfoList(skuInfoList);
+        lookInfo.setSkuCount(skuInfoList.size());
+        return lookInfo;
     }
 
     private boolean updateLookInfo(LookInfo lookInfo) {

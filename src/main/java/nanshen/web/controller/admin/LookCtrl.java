@@ -47,12 +47,13 @@ public class LookCtrl extends BaseController {
         prepareLoginUserInfo(request, model);
         List<LookInfo> lookInfoList = lookService.getAll(status, new PageInfo(page));
 
-        Map<Long, AdminUserInfo> idAndAdminUserInfoMap = accountService.getAdminUserInfoBy(lookInfoList);
+        Map<Long, AdminUserInfo> idAndAdminUserInfoMap = accountService.getAdminUserInfoByLookInfoList(lookInfoList);
         prepareLookCntInfo(model);
 		model.addAttribute("lookInfoList", lookInfoList);
 		model.addAttribute("idAndAdminUserInfoMap", idAndAdminUserInfoMap);
 		model.addAttribute("status", status);
 		model.addAttribute("page", page);
+		model.addAttribute("pageType", "look-list-page");
 		return new ModelAndView("admin/lookList");
 	}
 
@@ -79,6 +80,7 @@ public class LookCtrl extends BaseController {
         model.addAttribute("lookId", lookId);
         model.addAttribute("lookTagList", lookTagList);
         model.addAttribute("sessionId", sessionId);
+        model.addAttribute("pageType", "look-upload-page");
 		return new ModelAndView("admin/lookUpload");
 	}
 

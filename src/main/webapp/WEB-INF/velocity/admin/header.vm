@@ -1,3 +1,4 @@
+#* @vtlvariable name="pageType" type="java.lang.String" *#
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="/css/foundation.min.css">
     <link rel="stylesheet" href="/css/foundation-icons.css">
     <link rel="stylesheet" href="/css/jquery.bxslider.css"/>
-    <link rel="stylesheet" href="/css/jquery-labelauty.css">
+##    <link rel="stylesheet" href="/css/jquery-labelauty.css">
 
     <!-- js stuff -->
     <script src="/script/vendor/jquery.js"></script>
@@ -73,39 +74,34 @@
                 </li>
 
                 <li class="divider"></li>
-                <li class="drop-remove has-dropdown not-click height-definer higher-index">
-                    <a href="#" class="drop-remove drop-anchor chosen" id="audit-list">运营系统</a>
-                    <ul class="dropdown"><li class="title back js-generated">
-                        <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/admin/operation/look/look-list">搭配列表</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/operation/look/look-upload">上传搭配</a></li>
-                    </ul>
-                </li>
-
-                <li class="divider"></li>
-                <li class="drop-remove has-dropdown not-click height-definer higher-index">
-                    <a href="#" class="drop-remove drop-anchor" id="audit-list">审核系统</a>
-                    <ul class="dropdown"><li class="title back js-generated">
-                        <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/">订单审核表</a></li>
-                        <li><a class="drop-remove drop-options"
-                               href="/account/appliers">买手申请审核表</a></li>
-                    </ul>
-                </li>
-
-                <li class="divider"></li>
                 <li>
-                    <a href="/admin/customer-service?eventStatus=PROCESSING" class="top-button">
+                    <a href="/admin/operation/look/look-list" class="top-button">
                         <img class="menu-icon" src="/images/icon-recruit.png" alt="icon">
-                        <div class="menu-text" id="admin-cs-list">客服系统</div>
+                        <div class="menu-text" id="look-list-page">搭配列表</div>
                     </a>
                 </li>
 
                 <li class="divider"></li>
                 <li>
-                    <a href="/admin/checking/buyer" class="top-button">
+                    <a href="/admin/operation/look/look-upload" class="top-button">
+                        <img class="menu-icon" src="/images/icon-recruit.png" alt="icon">
+                        <div class="menu-text" id="look-upload-page">上传搭配</div>
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                    <a href="/admin/operation/sku/sku-list" class="top-button">
                         <img class="menu-icon" src="/images/icon-product.png" alt="icon">
-                        <div class="menu-text" id="checking-list">对账系统</div>
+                        <div class="menu-text" id="sku-list-page">单品列表</div>
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                    <a href="/admin/operation/sku/sku-upload" class="top-button">
+                        <img class="menu-icon" src="/images/icon-product.png" alt="icon">
+                        <div class="menu-text" id="sku-upload-page">上传单品</div>
                     </a>
                 </li>
 
@@ -161,6 +157,11 @@
             </div>
         </div>
     </header>
+
+    <!-- some hidden infos -->
+    <div class="page-info">
+        <div id="page-type">$!{pageType}</div>
+    </div>
 
     <div id="logoutModal" class="reveal-modal tiny center" data-reveal>
         <p>Hi, $!{realName}！您真的想登出吗？</p>

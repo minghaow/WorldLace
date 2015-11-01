@@ -1,3 +1,5 @@
+#* @vtlvariable name="skuInfoList" type="java.util.ArrayList<nanshen.data.SkuInfo>" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
@@ -19,7 +21,7 @@
 <!-- breadcrumbs -->
 <ul class="breadcrumbs">
     <li ><a href="/"><i class="fi-home"></i> 运营系统</a></li>
-    <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 搭配列表</a></li>
+    <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 单品列表</a></li>
 </ul>
 
 <!-- page contents -->
@@ -56,43 +58,41 @@
         <thead>
         <tr class="center">
             <th scope="col" width="50px">序号</th>
-            <th scope="col">搭配名称</th>
-            <th scope="col">搭配简述</th>
+            <th scope="col" width="90px">单品ID</th>
+            <th scope="col">单品名称(类别)</th>
+            <th scope="col">单品简述</th>
             <th scope="col" width="10%">上传人</th>
             <th scope="col" width="10%">上传时间</th>
-            <th scope="col" width="10%">搭配配图</th>
+            <th scope="col" width="10%">单品配图</th>
             <th scope="col">操作</th>
         </tr>
         </thead>
 
         <tbody class="all-list-tbody center">
-        #foreach ($lookInfo in $lookInfoList)
+        #foreach ($skuInfo in $skuInfoList)
             <tr id="order-1">
                 <td>$velocityCount</td>
+                <td>$skuInfo.id</td>
                 <td>
-                    $lookInfo.title
-                    <div class="greyText">$lookInfo.subTitle</div>
+                    <div class="greyText">【$skuInfo.detailType.desc】</div>
+                    $skuInfo.title
+                    <div class="greyText">$skuInfo.subTitle</div>
                 </td>
                 <td>
-                    $lookInfo.description
+                    $skuInfo.description
                 </td>
                 <td>
-                    $idAndAdminUserInfoMap.get($lookInfo.uploadUserId).getUsername()
+                    $idAndAdminUserInfoMap.get($skuInfo.uploadUserId).getUsername()
                 </td>
                 <td>
-                    $lookInfo.convertedCreateTime
+                    $skuInfo.convertedCreateTime
                 </td>
                 <td>
-                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt="搭配配图"/>
+                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0" alt="单品配图"/>
                 </td>
                 <td>
-                    #if ($lookInfo.status == "ONLINE")
-                    <a href="#" data-id="$lookInfo.id" class="tiny button offline-btn">下线</a>
-                    #else
-                    <a href="#" data-id="$lookInfo.id" class="tiny button online-btn">上线</a>
-                    #end
-                    <a href="/admin/operation/look/look-upload?lookId=$lookInfo.id" class="tiny button" target="_blank">修改</a>
-                    <a href="#" data-id="$lookInfo.id" class="tiny button delete-btn">删除</a>
+                    <a href="/admin/operation/sku/sku-upload?skuId=$skuInfo.id" class="tiny button" target="_blank">修改</a>
+                    <a href="#" data-id="$skuInfo.id" class="tiny button delete-btn">删除</a>
                 </td>
             </tr>
         #end

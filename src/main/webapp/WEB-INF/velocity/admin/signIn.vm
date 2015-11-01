@@ -6,7 +6,7 @@
 <!-- end of header -->
 
 <!-- some hidden infos -->
-<div id="page-info">
+<div class="page-info">
     <div id="this-tag">orders</div>
 </div>
 

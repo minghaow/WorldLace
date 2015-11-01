@@ -33,7 +33,7 @@ public class LookDetailCtrl extends BaseCtrl {
 								   @RequestParam(defaultValue = "1", required = true) int lookId) {
 		LookInfo lookInfo = lookService.get(lookId);
 		if (lookInfo != null) {
-			AdminUserInfo uploader = accountService.getAdminUserInfoBy(lookInfo.getUploadUserId());
+			AdminUserInfo uploader = accountService.getAdminUserInfoByUserId(lookInfo.getUploadUserId());
             List<LookTag> lookTagList = lookService.getAllTag();
             prepareLookTagIdMap(model, lookInfo);
 			model.addAttribute("lookInfo", lookInfo);

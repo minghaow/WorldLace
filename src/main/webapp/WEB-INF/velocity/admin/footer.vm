@@ -34,12 +34,9 @@
 <script src="/script/vendor/foundation.tab.js"></script>
 <script src="/script/vendor/foundation.tooltip.js"></script>
 <script src="/script/vendor/foundation.topbar.js"></script>
-<script src="/script/vendor/jquery-labelauty.js"></script>
+<script src="/script/admin/common.js"></script>
 <script>
     $(document).foundation();
-    $(function(){
-        $(':input').labelauty();
-    });
 </script>
 </body>
 </html>

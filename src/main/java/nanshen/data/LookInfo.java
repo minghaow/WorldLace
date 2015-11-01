@@ -221,4 +221,16 @@ public class LookInfo {
     public void setStatus(PublicationStatus status) {
         this.status = status;
     }
+
+    public String getSkuIdList() {
+        if (skuInfoList == null || skuInfoList.size() <= 0) {
+            return "";
+        }
+        StringBuilder skuIdList = new StringBuilder();
+        for (SkuInfo skuInfo : skuInfoList) {
+            skuIdList.append(skuInfo.getId());
+            skuIdList.append(",");
+        }
+        return skuIdList.substring(0, skuIdList.length() - 1);
+    }
 }

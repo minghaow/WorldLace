@@ -1,5 +1,6 @@
 package nanshen.data;
 
+import nanshen.utils.ViewUtils;
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
@@ -8,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * SkuInfo 商品信息数据
+ * SkuInfo
  *
  * @author WANG Minghao
  */
@@ -19,19 +20,19 @@ public class SkuInfo {
     @Id
     private long id;
 
-    /** 搭配ID */
+    /** look ID */
     @Column
     private long lookId = 0;
 
-    /** 用户名 */
+    /** the one who upload this look, updater will not update this value */
     @Column
     private long uploadUserId = 0;
 
-    /** 搭配名称 */
+    /** title, attractive information */
     @Column
     private String title;
 
-    /** 单品子名称 */
+    /** sub title for the look, explaining the title normally */
     @Column
     private String subTitle;
 
@@ -39,33 +40,41 @@ public class SkuInfo {
     @Column
     private String url;
 
-    /** 描述，html */
+    /** sku detail type that uploader decides */
+    @Column
+    private SkuDetailType detailType;
+
+    /** description, to be designed */
     @Column
     private String description;
 
-    /** 标签 */
+    /** tags */
     @Column
     private String tags;
 
-    /** 价格，单位：人民币分 */
+    /** price, price unit: RMB */
     @Column
     private long price;
 
-    /** 图片数量 */
+    /** image count, for displaying the image(the first one will be 0 and then 1, etc.) */
     @Column
     private long imgCount = 0L;
 
-    /** 图片列表 */
+    /** online status {@code nanshen.data.PublicationStatus} */
+    @Column
+    private PublicationStatus status = PublicationStatus.NEW;
+
+    /** image url list, default for 1 to 2 images */
     private List<String> imgUrlList;
 
-    /** 标签列表 */
+    /** sku list, default for 1 to 2 skus */
     private List<SkuTag> skuTagList;
 
-    /** 添加时间 */
+    /** create time for this look, will fill when create */
     @Column
     private Date createTime = new Date();
 
-    /** 更新时间 */
+    /** update time for this look, all operator will update this value */
     @Column
     private Date updateTime = new Date();
 
@@ -94,6 +103,10 @@ public class SkuInfo {
 
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public String getConvertedCreateTime() {
+        return ViewUtils.convertDateToString(createTime);
     }
 
     public void setCreateTime(Date createTime) {
@@ -202,5 +215,21 @@ public class SkuInfo {
 
     public void setLookId(long lookId) {
         this.lookId = lookId;
+    }
+
+    public PublicationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PublicationStatus status) {
+        this.status = status;
+    }
+
+    public SkuDetailType getDetailType() {
+        return detailType;
+    }
+
+    public void setDetailType(SkuDetailType detailType) {
+        this.detailType = detailType;
     }
 }

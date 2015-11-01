@@ -21,6 +21,8 @@ public class SystemConstants {
 
     /** default page length for lists */
     public static final int DEFAULT_PAGE_SIZE = 30;
+    public static final int DEFAULT_CACHED_LOOK_SIZE = 100;
+    public static final int DEFAULT_CACHED_SKU_SIZE = 3 * DEFAULT_CACHED_LOOK_SIZE;
 
     /** OSS related */
     public static String OSS_BASE_HTTP = "http://nanshen.oss-cn-beijing.aliyuncs.com";

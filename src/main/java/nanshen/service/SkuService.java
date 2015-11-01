@@ -23,16 +23,19 @@ public interface SkuService {
 
     /**
      * Update sku info
+     * <strong>NOTE:</strong> The function will also change status to
+     * {@link nanshen.data.PublicationStatus#OFFLINE}
      *
      * @param skuId skuId
      * @param title the sku title
      * @param subTitle the sku subtitle
      * @param url the sku link
      * @param desc the sku description
+     * @param category the sku category {@link nanshen.data.SkuDetailType}
      * @param operatorId the uploader
      * @return boolean
      */
-    boolean update(long skuId, String title, String subTitle, String url, String desc, long operatorId);
+    boolean update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId);
 
     /**
      * Remove sku according to skuId

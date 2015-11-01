@@ -77,14 +77,6 @@
                         </a>
                     </li>
                     <li>
-                        <div class="selected-sign $!{CATEGORY}">
-                            <img src="/images/user/header/selected.png" alt=""/>
-                        </div>
-                        <a href="/category" class="top-button unsupported-section">
-                            <div class="menu-text">分类</div>
-                        </a>
-                    </li>
-                    <li>
                         <div class="selected-sign $!{TOPIC}">
                             <img src="/images/user/header/selected.png" alt=""/>
                         </div>

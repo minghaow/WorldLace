@@ -19,7 +19,7 @@
         margin: auto;
     }
 }
-#page-info {
+.page-info {
     display: none;
 }
 .row {

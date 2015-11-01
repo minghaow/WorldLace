@@ -1,174 +1,71 @@
 package nanshen.data;
 
-import org.nutz.dao.entity.annotation.Column;
-import org.nutz.dao.entity.annotation.Id;
-import org.nutz.dao.entity.annotation.Table;
-
-import java.util.Date;
-import java.util.List;
+import org.nutz.castor.Castor;
+import org.nutz.castor.Castors;
+import org.nutz.castor.FailToCastObjectException;
 
 /**
- * SkuInfo 商品信息数据
+ * SkuType
  *
  * @author WANG Minghao
  */
-@Table("SkuType")
-public class SkuType {
+public enum SkuType {
 
-    /** 上衣，裤装，鞋靴，配饰 */
-    @Id
-    private long id;
+    UPWEAR("上衣", new SkuDetailType[]{SkuDetailType.OUTWEAR, SkuDetailType.SHIRTS, SkuDetailType.SUITS,
+            SkuDetailType.SWEATERS, SkuDetailType.TEE}),
 
-    /** 用户名 */
-    @Column
-    private long uploadUserId;
+    DOWNWEAR("裤子", new SkuDetailType[]{SkuDetailType.PANTS, SkuDetailType.JEANS, SkuDetailType.SHORTS}),
 
-    /** 搭配名称 */
-    @Column
-    private String title;
+    SHOES("鞋靴", new SkuDetailType[]{SkuDetailType.SHOES}),
 
-    /** 搭配子名称 */
-    @Column
-    private String subTitle;
+    ACCESSORIES("配饰", new SkuDetailType[]{SkuDetailType.ACCESSORIES}),
 
-    /** 描述 */
-    @Column
-    private String description;
+    UNKNOWN("未知种类", new SkuDetailType[]{});
 
-    /** 标签 */
-    @Column
-    private String tags;
+    private String desc;
 
-    /** 价格，单位：人民币分 */
-    @Column
-    private long price;
+    private SkuDetailType[] relatedDetailType;
 
-    /** 图片数量 */
-    @Column
-    private long imgCount = 0L;
-
-    /** 图片列表 */
-    private List<String> imgUrlList;
-
-    /** 标签列表 */
-    private List<SkuTag> skuTagList;
-
-    /** 添加时间 */
-    @Column
-    private Date createTime = new Date();
-
-    /** 更新时间 */
-    @Column
-    private Date updateTime = new Date();
-
-    public SkuType(Date createTime, String description, long price, String subTitle, String title, Date updateTime,
-                   long uploadUserId, String tags) {
-        this.createTime = createTime;
-        this.description = description;
-        this.price = price;
-        this.subTitle = subTitle;
-        this.title = title;
-        this.updateTime = updateTime;
-        this.uploadUserId = uploadUserId;
-        this.tags = tags;
+    SkuType(String desc, SkuDetailType[] SkuDetailTypeList) {
+        this.desc = desc;
+        this.relatedDetailType = SkuDetailTypeList;
     }
 
-    public SkuType() {
+    public String getDesc() {
+        return desc;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public SkuDetailType[] getRelatedDetailType() {
+        return relatedDetailType;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setRelatedDetailType(SkuDetailType[] relatedDetailType) {
+        this.relatedDetailType = relatedDetailType;
     }
 
-    public String getDescription() {
-        return description;
+    public static SkuType get(String name) {
+        try {
+            return valueOf(name);
+        } catch (Exception e) {
+            return UNKNOWN;
+        }
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    /**
+     * 当数据库中出现未知的状态时，该转换器会自动将其转换为{@link #UNKNOWN}，而不会报错
+     */
+    public static class StringToSkuType extends Castor<String, SkuType> {
+        @Override
+        public SkuType cast(String src, Class<?> toType, String... args) throws FailToCastObjectException {
+            return SkuType.get(src);
+        }
+
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public List<String> getImgUrlList() {
-        return imgUrlList;
-    }
-
-    public void setImgUrlList(List<String> imgUrlList) {
-        this.imgUrlList = imgUrlList;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public long getUploadUserId() {
-        return uploadUserId;
-    }
-
-    public void setUploadUserId(long uploadUserId) {
-        this.uploadUserId = uploadUserId;
-    }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public long getImgCount() {
-        return imgCount;
-    }
-
-    public void setImgCount(long imgCount) {
-        this.imgCount = imgCount;
-    }
-
-    public List<SkuTag> getSkuTagList() {
-        return skuTagList;
-    }
-
-    public void setSkuTagList(List<SkuTag> skuTagList) {
-        this.skuTagList = skuTagList;
+    /**
+     * 将转换器添加到Nutz
+     */
+    static {
+        Castors.me().addCastor(StringToSkuType.class);
     }
 }

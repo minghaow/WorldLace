@@ -1,8 +1,5 @@
 jQuery( document ).ready(function( $ ) {
 
-    // initialization
-    var thisTag = $("#this-tag").html();
-    $("#" + thisTag).addClass("chosen");
     var $successModal = $("#successModal"),
         $successHdr = $("#successHdr"),
         $successMsg = $("#successMsg"),

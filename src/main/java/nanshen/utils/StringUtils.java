@@ -26,7 +26,9 @@ public class StringUtils {
         if (org.apache.commons.lang.StringUtils.isBlank(src)) {
             return new String[]{};
         }
-        src = src.substring(0, src.length() - 1);
+        if (src.endsWith(",")) {
+            src = src.substring(0, src.length() - 1);
+        }
         return src.split(regex);
     }
 

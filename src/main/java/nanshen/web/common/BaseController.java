@@ -1,8 +1,8 @@
 package nanshen.web.common;
 
 import nanshen.constant.SystemConstants;
-import nanshen.dao.AdminUserInfoDao;
 import nanshen.data.AdminUserInfo;
+import nanshen.service.AccountService;
 import nanshen.utils.JsonUtils;
 import nanshen.utils.ViewUtils;
 import org.apache.commons.lang.StringUtils;
@@ -24,7 +24,7 @@ import java.io.IOException;
 public abstract class BaseController {
 
     @Autowired
-    protected AdminUserInfoDao adminUserInfoDao;
+    protected AccountService accountService;
 
     class StringEscapeEditor extends PropertyEditorSupport {
 
@@ -95,7 +95,7 @@ public abstract class BaseController {
         if (StringUtils.isBlank(username)) {
             return null;
         }
-        return adminUserInfoDao.get(username);
+        return accountService.getAdminUserInfoByUsername(username);
     }
 
     protected AdminUserInfo prepareLoginUserInfo(HttpServletRequest request, ModelMap model) {

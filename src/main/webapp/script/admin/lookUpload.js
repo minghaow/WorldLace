@@ -1,12 +1,10 @@
 jQuery( document ).ready(function( $ ) {
 
     // initialization
-    var thisTag = $("#this-tag").html();
     var lookId = $('#lookId').html();
     var $skuId = $('#skuId');
     var skuId = $skuId.val();
     var $skuForm = $('#sku-form');
-    $("#" + thisTag).addClass("chosen");
 
     uploadInit();
 

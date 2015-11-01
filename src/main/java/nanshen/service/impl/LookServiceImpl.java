@@ -3,10 +3,10 @@ package nanshen.service.impl;
 import nanshen.constant.SystemConstants;
 import nanshen.constant.TimeConstants;
 import nanshen.dao.LookInfoDao;
-import nanshen.dao.LookTagDao;
 import nanshen.data.*;
 import nanshen.service.LookService;
 import nanshen.service.SkuService;
+import nanshen.service.TagService;
 import nanshen.service.api.oss.OssFormalApi;
 import nanshen.service.common.ScheduledService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * 搭配的相关服务
+ * LookServiceImpl
  *
- * @Author WANG Minghao
+ * @author WANG Minghao
  */
 @Service
 public class LookServiceImpl extends ScheduledService implements LookService {
@@ -34,7 +31,7 @@ public class LookServiceImpl extends ScheduledService implements LookService {
     private LookInfoDao lookInfoDao;
 
     @Autowired
-    private LookTagDao lookTagDao;
+    private TagService tagService;
 
     @Autowired
     private OssFormalApi ossFormalApi;
@@ -44,6 +41,8 @@ public class LookServiceImpl extends ScheduledService implements LookService {
 
     private Map<PublicationStatus, Long> statusCntMap = new HashMap<PublicationStatus, Long>();
     private Map<PublicationStatus, Long> newStatusCntMap = new HashMap<PublicationStatus, Long>();
+    List<LookInfo> onlineLookInfoList = new ArrayList<LookInfo>();
+    List<LookInfo> offlineLookInfoList = new ArrayList<LookInfo>();
 
     @Override
     public int updatePeriod() {
@@ -57,8 +56,10 @@ public class LookServiceImpl extends ScheduledService implements LookService {
         Date startDate = new Date(startTime - 7 * TimeConstants.DAY_IN_MILLISECONDS);
         statusCntMap.put(PublicationStatus.ONLINE, lookInfoDao.getCnt(PublicationStatus.ONLINE));
         statusCntMap.put(PublicationStatus.OFFLINE, lookInfoDao.getCnt(PublicationStatus.OFFLINE));
+        newStatusCntMap.put(PublicationStatus.ONLINE, lookInfoDao.getCnt(PublicationStatus.ONLINE, startDate));
         newStatusCntMap.put(PublicationStatus.OFFLINE, lookInfoDao.getCnt(PublicationStatus.OFFLINE, startDate));
-        newStatusCntMap.put(PublicationStatus.OFFLINE, lookInfoDao.getCnt(PublicationStatus.OFFLINE, startDate));
+        onlineLookInfoList = lookInfoDao.getAll(PublicationStatus.ONLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_LOOK_SIZE));
+        offlineLookInfoList = lookInfoDao.getAll(PublicationStatus.OFFLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_LOOK_SIZE));
 
         long totalTime = System.currentTimeMillis() - startTime;
         System.out.println("[LookService] Update in " + totalTime + "ms");
@@ -147,22 +148,29 @@ public class LookServiceImpl extends ScheduledService implements LookService {
 
     @Override
     public List<LookInfo> getAll(PublicationStatus status, PageInfo pageInfo) {
+        if (pageInfo != null && pageInfo.getPage() <= 1) {
+            if (status == PublicationStatus.ONLINE) {
+                return onlineLookInfoList;
+            } else {
+                return offlineLookInfoList;
+            }
+        }
         return lookInfoDao.getAll(status, pageInfo);
     }
 
     @Override
     public List<LookTag> getAllTag() {
-        return lookTagDao.getAll();
+        return tagService.getAll();
     }
 
     @Override
     public long getCnt(PublicationStatus status) {
-        return statusCntMap.get(status);
+        return statusCntMap.get(status) == null ? 0 : statusCntMap.get(status);
     }
 
     @Override
     public long getThisWeekCnt(PublicationStatus status) {
-        return statusCntMap.get(status);
+        return newStatusCntMap.get(status) == null ? 0 : newStatusCntMap.get(status);
     }
 
     private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, LookInfo lookInfo) {

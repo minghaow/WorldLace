@@ -32,7 +32,7 @@
 }
 .bottom-footer {
     width: 100%;
-    background: url("/images/user/footer-bg.png") #080808;
+    background: url("http://static.lanzhujue.com/image/user/footer-bg.png") #080808;
     height: 180px;
     text-align: center;
     position: relative;

@@ -50,7 +50,7 @@
             #foreach ($lookInfo in $lookInfoList)
             <li data-equalizer-watch>
                 <a href="/look?lookId=$lookInfo.id" class="item-image-wrapper">
-                    <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
+                    <img src="http://image.lanzhujue.com/images/look/$lookInfo.id/0" alt=""/>
                 </a>
                 <div class="item-description">
                     $lookInfo.title

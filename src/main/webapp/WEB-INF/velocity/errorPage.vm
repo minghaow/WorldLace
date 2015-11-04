@@ -24,5 +24,5 @@
     </div>
 </div>
 
-<script src="/script/errorPage.js"></script>
+<script src="http://static.lanzhujue.com/script/errorPage.js"></script>
 #include("user/footer.vm")

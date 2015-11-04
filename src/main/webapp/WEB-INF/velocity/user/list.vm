@@ -6,7 +6,7 @@
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="/css/user/list.css"/>
+<link rel="stylesheet" href="http://static.lanzhujue.com/css/user/list.css"/>
 
 <!-- some hidden infos -->
 <div class="page-info">
@@ -26,19 +26,19 @@
                   slide_number:false;
                   resume_on_mouseout:true;">
         <li class="active">
-            <img src="images/slider/slider2.png" alt="slide 2" />
+            <img src="http://static.lanzhujue.com/image/slider/slider2.jpg" alt="slide 2" />
             <div class="orbit-caption">
                 品牌推广专题
             </div>
         </li>
         <li>
-            <img src="images/slider/slider1.png" alt="slide 1" />
+            <img src="http://static.lanzhujue.com/image/slider/slider1.jpg" alt="slide 1" />
             <div class="orbit-caption">
                 活力男装搭配
             </div>
         </li>
         <li>
-            <img src="images/slider/slider3.png" alt="slide 3" />
+            <img src="http://static.lanzhujue.com/image/slider/slider3.jpg" alt="slide 3" />
             <div class="orbit-caption">
                 品牌推广专题2
             </div>

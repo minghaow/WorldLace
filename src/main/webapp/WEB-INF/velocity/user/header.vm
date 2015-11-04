@@ -15,11 +15,8 @@
 
     <!-- style stuff -->
     <link type="image/x-icon" href="http://static.lanzhujue.com/images/favicon.ico" rel="shortcut icon"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/home.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/user/header.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/user/footer.css"/>
+    <link rel="stylesheet" href="http://static.lanzhujue.com/css/style.css"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/tool.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/user/common.css"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/foundation.min.css"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/foundation-icons.css"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/jquery-labelauty.css">

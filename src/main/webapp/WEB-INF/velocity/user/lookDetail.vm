@@ -7,7 +7,7 @@
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="/css/user/lookDetail.css"/>
+<link rel="stylesheet" href="http://static.lanzhujue.com/css/user/lookDetail.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -28,7 +28,7 @@
                 #set ($totalCnt = $lookInfo.imgCount - 1)
                 #foreach ($imgId in [0..$totalCnt])
                     <li data-orbit-slide="slide-$imgId">
-                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/$imgId" />
+                        <img src="http://image.lanzhujue.com/images/look/$lookInfo.id/$imgId" />
                     </li>
                 #end
             </ul>
@@ -67,7 +67,7 @@
                     #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
                         <li>
                             <a class="th radius " href="${skuInfo.url}" target="_blank" title="${skuInfo.title}">
-                                <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0"/>
+                                <img src="http://image.lanzhujue.com/images/sku/$skuInfo.id/0"/>
                             </a>
                         </li>
                     #end
@@ -84,7 +84,7 @@
             #foreach ($lookInfo in $lookInfoList)
                 <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
                     <div class="item-image-wrapper">
-                        <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/look/$lookInfo.id/0" alt=""/>
+                        <img src="http://image.lanzhujue.com/images/look/$lookInfo.id/0" alt=""/>
                     </div>
                     <div class="item-description">
                         $lookInfo.title

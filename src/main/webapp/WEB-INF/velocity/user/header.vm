@@ -23,6 +23,17 @@
 
     <!-- js stuff -->
     <script src="http://static.lanzhujue.com/script/vendor/jquery.js"></script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e8f34e3fd1fa08a41dc89b55f48835dc";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 </head>
 
 <!-- body start -->

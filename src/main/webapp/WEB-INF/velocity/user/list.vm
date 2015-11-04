@@ -16,7 +16,7 @@
 <!-- page contents -->
 <div class="page-content">
 
-    <ul data-orbit
+    <ul data-orbit class="list-banner"
         data-options="animation:slide;
                   pause_on_hover:true;
                   timer_speed:4000;
@@ -31,13 +31,13 @@
                 品牌推广专题
             </div>
         </li>
-        <li>
+        <li class="pre-hidden">
             <img src="http://static.lanzhujue.com/image/slider/slider1.jpg" alt="slide 1" />
             <div class="orbit-caption">
                 活力男装搭配
             </div>
         </li>
-        <li>
+        <li class="pre-hidden">
             <img src="http://static.lanzhujue.com/image/slider/slider3.jpg" alt="slide 3" />
             <div class="orbit-caption">
                 品牌推广专题2

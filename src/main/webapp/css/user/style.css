@@ -178,6 +178,9 @@ input.labelauty + label {
     transform: scale(1.03);
     box-shadow: 0px 5px 10px 5px #707070;
 }
+.list-banner li {
+    list-style:none;
+}
 #look-detail-page-content {
     width: 90%;
     max-width: 1200px;

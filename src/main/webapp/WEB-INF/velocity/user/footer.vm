@@ -19,11 +19,7 @@
 </div>
 </div>
 
-<script src="http://static.lanzhujue.com/script/msgModal.js"></script>
-<script src="http://static.lanzhujue.com/script/vendor/modernizr.js"></script>
 <script src="http://static.lanzhujue.com/script/vendor/foundation.min.js"></script>
-<script src="http://static.lanzhujue.com/script/vendor/jquery-labelauty.js"></script>
-<script src="http://static.lanzhujue.com/script/user/common.js"></script>
 <script>
     $(document).foundation({
         orbit: {
@@ -37,9 +33,15 @@
             resume_on_mouseout: true
         }
     });
+    $(".pre-hidden").show();
     $(function(){
         $(".look-tag").labelauty();
     });
 </script>
+<script src="http://static.lanzhujue.com/script/msgModal.js"></script>
+<script src="http://static.lanzhujue.com/script/vendor/modernizr.js"></script>
+<script src="http://static.lanzhujue.com/script/vendor/jquery-labelauty.js"></script>
+<script src="http://static.lanzhujue.com/script/user/common.js"></script>
+
 </body>
 </html>

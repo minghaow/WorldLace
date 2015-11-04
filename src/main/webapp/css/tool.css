@@ -37,6 +37,9 @@
 .height-definer {
     height: 45px !important;
 }
+.hidden {
+    display: none;
+}
 
 /* 颜色配置 */
 .greenText {

@@ -16,3 +16,11 @@ function presentFailModal(header, message) {
     $failMsg.html(message);
     $failModal.foundation('reveal', 'open');
 }
+
+function hideSuccessModal() {
+    $successModal.foundation('reveal', 'close');
+}
+
+function hideFailModal() {
+    $failModal.foundation('reveal', 'close');
+}

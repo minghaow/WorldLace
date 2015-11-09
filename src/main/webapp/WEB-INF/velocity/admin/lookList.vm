@@ -87,9 +87,9 @@
                 </td>
                 <td>
                     #if ($lookInfo.status == "ONLINE")
-                    <a href="#" data-id="$lookInfo.id" class="tiny button offline-btn">下线</a>
+                        <a href="#" data-id="$lookInfo.id" class="tiny button offline-btn">下线</a>
                     #else
-                    <a href="#" data-id="$lookInfo.id" class="tiny button online-btn">上线</a>
+                        <a href="#" data-id="$lookInfo.id" class="tiny button online-btn">上线</a>
                     #end
                     <a href="/admin/operation/look/look-upload?lookId=$lookInfo.id" class="tiny button" target="_blank">修改</a>
                     <a href="#" data-id="$lookInfo.id" class="tiny button delete-btn">删除</a>

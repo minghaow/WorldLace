@@ -109,11 +109,38 @@ public class LookCtrl extends BaseController {
                                @RequestParam(defaultValue = "", required = true) String desc) throws IOException {
         prepareLoginUserInfo(request, model);
         AdminUserInfo adminUserInfo = getLoginedUser(request);
-        boolean isSucc = lookService.update(lookId, title, subTitle, desc, PublicationStatus.OFFLINE,
-                tagIdList, adminUserInfo.getId());
-        addRelatedSku(lookId, skuIdList);
-        model.addAttribute("success", isSucc);
+        ExecInfo inputCheck = uploadInputCheck(title, subTitle, desc);
+        if (inputCheck.isSucc()) {
+            inputCheck = lookService.update(lookId, title, subTitle, desc, PublicationStatus.OFFLINE,
+                    tagIdList, adminUserInfo.getId());
+            addRelatedSku(lookId, skuIdList);
+        }
+        model.addAttribute("success", inputCheck.isSucc());
+        model.addAttribute("reason", inputCheck.getMsg());
         responseJson(response, model);
+    }
+
+    private ExecInfo uploadInputCheck(@RequestParam(defaultValue = "", required = true) String title,
+                                      @RequestParam(defaultValue = "", required = true) String subTitle,
+                                      @RequestParam(defaultValue = "", required = true) String desc) {
+        String failReason = "";
+        if (title == null || title.trim().equals("")) {
+            failReason += "标题不能为空 ";
+        } else if (title.trim().length() > 20) {
+            failReason += "标题过长 ";
+        }
+        if (subTitle != null && subTitle.trim().length() > 30) {
+            failReason += "子标题过长 ";
+        }
+        if (desc == null || desc.trim().equals("")) {
+            failReason += "描述不能为空 ";
+        } else if (desc.trim().length() > 200) {
+            failReason += "描述过长 ";
+        }
+        if (failReason.equals("")) {
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail(failReason);
     }
 
     private void addRelatedSku(@RequestParam(defaultValue = "0", required = true) long lookId,

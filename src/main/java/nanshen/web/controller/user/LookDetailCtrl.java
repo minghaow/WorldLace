@@ -41,7 +41,7 @@ public class LookDetailCtrl extends BaseCtrl {
 			model.addAttribute("uploader", uploader);
 		}
 		model.addAttribute("success", lookInfo != null);
-		prepareHeader(model, PageType.LOOK);
+		prepareHeader(model, PageType.LOOK_DETAIL);
 		prepareHelloMsg(model);
 		return new ModelAndView("user/lookDetail");
 	}

@@ -72,7 +72,7 @@ public class LookServiceImpl extends ScheduledService implements LookService {
 
     @Override
     @Transactional
-    public boolean update(long lookId, String title, String subTitle, String desc, PublicationStatus status,
+    public ExecInfo update(long lookId, String title, String subTitle, String desc, PublicationStatus status,
                           String tagIdList, long operatorId) {
         LookInfo lookInfo = lookInfoDao.get(lookId);
         lookInfo.setTitle(title);
@@ -82,7 +82,10 @@ public class LookServiceImpl extends ScheduledService implements LookService {
         lookInfo.setUploadUserId(operatorId);
         lookInfo.setTags(tagIdList);
         lookInfo.setCreateTime(new Date());
-        return updateLookInfo(lookInfo);
+        if (updateLookInfo(lookInfo)) {
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("数据库更新失败");
     }
 
     @Override

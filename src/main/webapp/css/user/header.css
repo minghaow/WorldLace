@@ -10,8 +10,8 @@ header {
 .left-menu .tab-bar {
     background-color: #121212;
 }
-.tab-bar-section.middle {
-    overflow: hidden;
+.tab-bar-section img {
+    height: 2.6rem;
 }
 #top-bar {
     background: #121212 !important;

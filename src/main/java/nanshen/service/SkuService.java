@@ -33,9 +33,9 @@ public interface SkuService {
      * @param desc the sku description
      * @param category the sku category {@link nanshen.data.SkuDetailType}
      * @param operatorId the uploader
-     * @return boolean
+     * @return ExecInfo
      */
-    boolean update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId);
+    ExecInfo update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId);
 
     /**
      * Remove sku according to skuId
@@ -102,18 +102,18 @@ public interface SkuService {
     /**
      * Get the count of looks for the specified publication status
      *
-     * @param status publication status
+     * @param publicationStatus publication status
      * @return long
      */
-    long getCnt(PublicationStatus status);
+    long getCnt(PublicationStatus publicationStatus);
 
     /**
      * Get the count of this week new looks for the specified publication status
      *
-     * @param status publication status
+     * @param publicationStatus publication status
      * @return long
      */
-    long getThisWeekCnt(PublicationStatus status);
+    long getThisWeekCnt(PublicationStatus publicationStatus);
 
     /**
      * Get all of the sku info by lookId
@@ -121,4 +121,13 @@ public interface SkuService {
      * @return
      */
     List<SkuInfo> getByLookId(long lookId);
+
+    /**
+     * Change the publication status of a sku item
+     *
+     * @param skuId the id of sku
+     * @param publicationStatus publication status
+     * @return
+     */
+    boolean changeStatus(long skuId, PublicationStatus publicationStatus);
 }

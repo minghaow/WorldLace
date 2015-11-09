@@ -1,3 +1,82 @@
+#body {
+    background-color: #e2e2e2;
+}
+@media only screen and (min-width: 40.063em) {
+    .page-content {
+        width: 90%;
+        max-width: 1200px;
+        min-height: 300px;
+        text-align: center;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 40em) {
+    .page-content {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 300px;
+        text-align: center;
+        margin: auto;
+    }
+}
+.page-info {
+    display: none;
+}
+.row {
+    max-width: 95% !important;
+}
+.row .row {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.all-list tr th,
+.all-list tr td {
+    text-align: center !important;
+}
+input.labelauty + label {
+    display: inline !important;
+}
+/*
+ *  user/footer.css
+ *  @author: WANG Minghao
+*/
+.top-footer {
+    width: 100%;
+    margin-top: 80px;
+    text-align: center;
+    background: lightgrey;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+    font-style: normal;
+    padding-top: 1.5rem;
+}
+.top-footer h3 {
+    font-weight: normal;
+    color: lightgrey;
+}
+.learn-links {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 40px;
+}
+.learn-links ul li {
+    font-size: 13px;
+}
+.learn-links p {
+    margin-left: 3rem;
+    font-size: 13px;
+    font-weight: lighter;
+}
+.bottom-footer {
+    width: 100%;
+    background: url("http://static.lanzhujue.com/image/user/footer-bg.png") #080808;
+    height: 180px;
+    text-align: center;
+    position: relative;
+    padding: 50px 20px 0 20px;
+    overflow: hidden;
+}
 /*
  *  user/header.css
  *  @author: WANG Minghao
@@ -10,8 +89,8 @@ header {
 .left-menu .tab-bar {
     background-color: #121212;
 }
-.tab-bar-section.middle {
-    overflow: hidden;
+.tab-bar-section img {
+    height: 2.6rem;
 }
 #top-bar {
     background: #121212 !important;
@@ -69,85 +148,6 @@ header {
     height: 3px;
     background-color: #595959;
     z-index: 100;
-}
-/*
- *  user/footer.css
- *  @author: WANG Minghao
-*/
-.top-footer {
-    width: 100%;
-    margin-top: 80px;
-    text-align: center;
-    background: lightgrey;
-    position: relative;
-    overflow: hidden;
-    color: white;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
-    font-style: normal;
-    padding-top: 1.5rem;
-}
-.top-footer h3 {
-    font-weight: normal;
-    color: lightgrey;
-}
-.learn-links {
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-    min-height: 40px;
-}
-.learn-links ul li {
-    font-size: 13px;
-}
-.learn-links p {
-    margin-left: 3rem;
-    font-size: 13px;
-    font-weight: lighter;
-}
-.bottom-footer {
-    width: 100%;
-    background: url("http://static.lanzhujue.com/image/user/footer-bg.png") #080808;
-    height: 180px;
-    text-align: center;
-    position: relative;
-    padding: 50px 20px 0 20px;
-    overflow: hidden;
-}
-#body {
-    background-color: #e2e2e2;
-}
-@media only screen and (min-width: 40.063em) {
-    .page-content {
-        width: 90%;
-        max-width: 1200px;
-        min-height: 300px;
-        text-align: center;
-        margin: auto;
-    }
-}
-@media only screen and (max-width: 40em) {
-    .page-content {
-        width: 100%;
-        max-width: 1200px;
-        min-height: 300px;
-        text-align: center;
-        margin: auto;
-    }
-}
-.page-info {
-    display: none;
-}
-.row {
-    max-width: 95% !important;
-}
-.row .row {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-.all-list tr th,
-.all-list tr td {
-    text-align: center !important;
-}
-input.labelauty + label {
-    display: inline !important;
 }
 .page-content {
     margin: 10px auto;

@@ -38,13 +38,13 @@
                         <span class="prefix">标题</span>
                     </div>
                     <div class="small-9 columns">
-                        <input id="title" name="title" type="text" placeholder="Title" value="$!{lookInfo.title}">
+                        <input id="title" name="title" type="text" placeholder="必填，最长10个字" value="$!{lookInfo.title}">
                     </div>
                     <div class="small-3 columns">
                         <span class="prefix">子标题</span>
                     </div>
                     <div class="small-9 columns">
-                        <input name="subTitle" type="text" placeholder="SubTitle" value="$!{lookInfo.subTitle}">
+                        <input name="subTitle" type="text" placeholder="选填，最长15个字" value="$!{lookInfo.subTitle}">
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                 </div>
 
                 <label class="tag-label">简要描述</label>
-                <textarea id="desc" name="desc" type="" style="height:100px" placeholder="Descriptions"
+                <textarea id="desc" name="desc" type="" style="height:100px" placeholder="必填，最长100个字"
                     >$!{lookInfo.description}</textarea>
             </div>
 

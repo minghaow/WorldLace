@@ -2,12 +2,12 @@ jQuery( document ).ready(function( $ ) {
 
     $(".delete-btn").click(function(event){
         event.preventDefault();
-        var lookId = $(this).data("id");
-        var url = "/admin/operation/look/delete"
+        var skuId = $(this).data("id");
+        var url = "/admin/operation/sku/delete"
         $.ajax({
             url: url,
             type: "GET",
-            data: {lookId: lookId},
+            data: {skuId: skuId},
             dataType: 'json',
             success: function(data) {
                 if (data.success == true) {
@@ -22,12 +22,12 @@ jQuery( document ).ready(function( $ ) {
 
     $(".online-btn").click(function(event){
         event.preventDefault();
-        var lookId = $(this).data("id");
-        var url = "/admin/operation/look/online"
+        var skuId = $(this).data("id");
+        var url = "/admin/operation/sku/online"
         $.ajax({
             url: url,
             type: "GET",
-            data: {lookId: lookId},
+            data: {skuId: skuId},
             dataType: 'json',
             success: function(data) {
                 if (data.success == true) {
@@ -42,12 +42,12 @@ jQuery( document ).ready(function( $ ) {
 
     $(".offline-btn").click(function(event){
         event.preventDefault();
-        var lookId = $(this).data("id");
-        var url = "/admin/operation/look/offline"
+        var skuId = $(this).data("id");
+        var url = "/admin/operation/sku/offline"
         $.ajax({
             url: url,
             type: "GET",
-            data: {lookId: lookId},
+            data: {skuId: skuId},
             dataType: 'json',
             success: function(data) {
                 if (data.success == true) {

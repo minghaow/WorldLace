@@ -2,19 +2,26 @@
 #* @vtlvariable name="CATEGORY" type="java.lang.String" *#
 #* @vtlvariable name="TOPIC" type="java.lang.String" *#
 #* @vtlvariable name="ABOUT" type="java.lang.String" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 <!DOCTYPE html>
 <html lang="en">
 
 <!-- header start -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="蓝主角" />
-    <meta name="description" content="蓝主角（www.LanZhuJue.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
+    #if ($!{pageType} == "LOOK_DETAIL")
+        <title>$!{lookInfo.title}</title>
+        <meta name="keywords" content="男装搭配，约会搭配，服装搭配，穿衣搭配，生活品质，颜色搭配，搭配服装技巧" />
+        <meta name="description" content="$!{lookInfo.description}" />
+    #else
+        <title>蓝主角—男生的服装搭配顾问</title>
+        <meta name="keywords" content="男装搭配，约会搭配，服装搭配，穿衣搭配，生活品质，颜色搭配，搭配服装技巧" />
+        <meta name="description" content="男士蓝主角助力男士提升服饰及配件搭配品质，不止是时尚享受的获取，更多的是生活方式与自身价值的输出。我们有理由相信当好的剧本出现时，每位男士都将扮演好自己生活中的男主角。" />
+    #end
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>蓝主角</title>
 
     <!-- style stuff -->
-    <link type="image/x-icon" href="http://static.lanzhujue.com/images/favicon.ico" rel="shortcut icon"/>
+    <link type="image/x-icon" href="http://static.lanzhujue.com/image/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/style.css"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/tool.css"/>
     <link rel="stylesheet" href="http://static.lanzhujue.com/css/foundation.min.css"/>
@@ -45,18 +52,21 @@
 
     <!-- left menu for mobile devices -->
     <div class="left-menu">
-        <aside class="left-off-canvas-menu">
+        <title>蓝主角</title>
+        <meta name="description" content="蓝主角—男生的服装搭配顾问">
+        <aside class="right-off-canvas-menu">
             <ul class="off-canvas-list">
                 <li><label class="first">蓝主角</label></li>
-                <li><a href="/list">搭配</a></li>
+                <li><a href="/">搭配</a></li>
+                <li><a href="/topic">专题</a></li>
+                <li><a href="/about">关于我们</a></li>
             </ul>
         </aside>
-        <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
         <nav class="tab-bar show-for-small">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
+            <section class="right-small">
+                <a class="right-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
             </section>
-            <div class="middle tab-bar-section">
+            <div class="tab-bar-section">
                 <img src="http://static.lanzhujue.com/image/user/logo-black.png">
             </div>
         </nav>

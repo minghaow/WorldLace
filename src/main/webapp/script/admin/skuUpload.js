@@ -52,9 +52,10 @@ jQuery( document ).ready(function( $ ) {
             success: function(data) {
                 if (data.success == true) {
                     presentSuccessModal("上传成功！", "请继续编辑搭配...");
-                    $('#addSkuModal').foundation('reveal', 'close');
+                    setTimeout(function(){hideSuccessModal();}, 1000);
+
                 } else {
-                    presentFailModal("上传失败", "错误原因：" + data.message);
+                    presentFailModal("上传失败", "错误原因：" + data.reason);
                 }
             }
         });

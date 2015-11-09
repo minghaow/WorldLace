@@ -13,6 +13,8 @@ public enum PageType {
 
     LOOK("搭配", true),
 
+    LOOK_DETAIL("搭配详情", false),
+
     CATEGORY("分类", true),
 
     TOPIC("专题", true),

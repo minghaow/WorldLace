@@ -70,7 +70,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public boolean update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
+    public ExecInfo update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
         SkuInfo skuInfo = skuInfoDao.get(skuId);
         skuInfo.setStatus(PublicationStatus.OFFLINE);
         skuInfo.setDetailType(category);
@@ -80,7 +80,11 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
         skuInfo.setDescription(desc);
         skuInfo.setUploadUserId(operatorId);
         skuInfo.setCreateTime(new Date());
-        return update(skuInfo);
+        if (update(skuInfo)) {
+            update();
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("更新失败");
     }
 
     @Override
@@ -157,6 +161,17 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     @Override
     public List<SkuInfo> getByLookId(long lookId) {
         return skuInfoDao.getByLookId(lookId);
+    }
+
+    @Override
+    public boolean changeStatus(long skuId, PublicationStatus publicationStatus) {
+        SkuInfo skuInfo = skuInfoDao.get(skuId);
+        skuInfo.setStatus(publicationStatus);
+        if (update(skuInfo)) {
+            update();
+            return true;
+        }
+        return false;
     }
 
     private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, SkuInfo skuInfo) {

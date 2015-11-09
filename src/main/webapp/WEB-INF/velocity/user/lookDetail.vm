@@ -42,26 +42,6 @@
             </div>
 
             <div class="detail-description margin-top-small text-left">
-                <h4 class="greyText">标签</h4>
-                <div class="margin-top-small row">
-                    #foreach ($lookTag in ${lookTagList})
-                        <span class="margin-top-tiny look-tag-list">
-                            #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
-                                <input type="checkbox" disabled name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
-                                       data-labelauty="$lookTag.tagName">
-                            #end
-                        </span>
-                    #end
-                    #if (${tagIdMap.size()} == 0)
-                        <span class="margin-top-tiny look-tag-list">
-                            <input type="checkbox" disabled name="checkbox-1" class="look-tag" data-tag-id="1"
-                                       data-labelauty="无">
-                        </span>
-                    #end
-                </div>
-            </div>
-
-            <div class="detail-description margin-top-small text-left">
                 <h4 class="greyText">搭配单品</h4>
                 <ul class="margin-top-small row thumbnail-wrapper small-block-grid-3">
                     #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
@@ -77,6 +57,26 @@
                         </a>
                     #end
                 </ul>
+            </div>
+
+            <div class="detail-description margin-top-small text-left">
+                <h4 class="greyText">标签</h4>
+                <div class="margin-top-small row">
+                    #foreach ($lookTag in ${lookTagList})
+                        <span class="margin-top-tiny look-tag-list">
+                            #if (${tagIdMap.get("$lookTag.id")} != "" && ${tagIdMap.get("$lookTag.id")} == true)
+                                <input type="checkbox" disabled name="checkbox-$lookTag.id" class="look-tag" data-tag-id="$lookTag.id"
+                                       data-labelauty="$lookTag.tagName">
+                            #end
+                        </span>
+                    #end
+                    #if (${tagIdMap.size()} == 0)
+                        <span class="margin-top-tiny look-tag-list">
+                            <input type="checkbox" disabled name="checkbox-1" class="look-tag" data-tag-id="1"
+                                   data-labelauty="无">
+                        </span>
+                    #end
+                </div>
             </div>
         </div>
 

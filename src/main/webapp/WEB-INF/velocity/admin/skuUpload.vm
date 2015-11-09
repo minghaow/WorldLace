@@ -40,19 +40,19 @@
                             <span class="prefix">标题</span>
                         </div>
                         <div class="small-9 columns">
-                            <input id="title" name="title" type="text" placeholder="Title" value="$!skuInfo.title">
+                            <input id="title" name="title" type="text" placeholder="必填，最长10个字" value="$!skuInfo.title">
                         </div>
                         <div class="small-3 columns">
                             <span class="prefix">子标题</span>
                         </div>
                         <div class="small-9 columns">
-                            <input name="subTitle" type="text" placeholder="SubTitle" value="$!skuInfo.subTitle">
+                            <input name="subTitle" type="text" placeholder="选填，最长15个字" value="$!skuInfo.subTitle">
                         </div>
                         <div class="small-3 columns">
                             <span class="prefix">购买链接</span>
                         </div>
                         <div class="small-9 columns">
-                            <input name="url" type="text" placeholder="Links" value="$!skuInfo.url">
+                            <input name="url" type="text" placeholder="必填" value="$!skuInfo.url">
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@
                     </div>
 
                     <label class="tag-label">简要描述</label>
-                    <textarea id="desc" name="desc" type="" style="height:300px" placeholder="Descriptions"></textarea>
+                    <textarea id="desc" name="desc" type="" style="height:300px" placeholder="必填，最长100个字">$!skuInfo.description</textarea>
                 </div>
 
                 <div class="small-6 columns">

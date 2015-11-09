@@ -74,9 +74,13 @@
                 <td>$velocityCount</td>
                 <td>$skuInfo.id</td>
                 <td>
-                    <div class="greyText">【$skuInfo.detailType.desc】</div>
+                    #if ("$!{skuInfo.detailType.desc}" != "")
+                        <div class="greyText">【$!{skuInfo.detailType.desc}】</div>
+                    #else
+                        <div class="greyText">【暂无分类】</div>
+                    #end
                     $skuInfo.title
-                    <div class="greyText">$skuInfo.subTitle</div>
+                    <div class="greyText">$!{skuInfo.subTitle}</div>
                 </td>
                 <td>
                     $skuInfo.description
@@ -91,6 +95,11 @@
                     <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0" alt="单品配图"/>
                 </td>
                 <td>
+                    #if ($skuInfo.status == "ONLINE")
+                        <a href="#" data-id="$skuInfo.id" class="tiny button offline-btn">下线</a>
+                    #else
+                        <a href="#" data-id="$skuInfo.id" class="tiny button online-btn">上线</a>
+                    #end
                     <a href="/admin/operation/sku/sku-upload?skuId=$skuInfo.id" class="tiny button" target="_blank">修改</a>
                     <a href="#" data-id="$skuInfo.id" class="tiny button delete-btn">删除</a>
                 </td>
@@ -107,5 +116,5 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-<script src="/script/admin/lookList.js"></script>
+<script src="/script/admin/skuList.js"></script>
 #include("admin/footer.vm")

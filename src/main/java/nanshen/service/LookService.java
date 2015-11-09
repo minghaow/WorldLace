@@ -31,9 +31,9 @@ public interface LookService {
      * @param status publication status
      * @param tagIdList tag id list
      * @param operatorId the uploader
-     * @return boolean
+     * @return ExecInfo
      */
-    boolean update(long lookId, String title, String subTitle, String desc, PublicationStatus status,
+    ExecInfo update(long lookId, String title, String subTitle, String desc, PublicationStatus status,
                    String tagIdList, long operatorId);
 
     /**

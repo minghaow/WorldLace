@@ -105,7 +105,66 @@ public class SkuCtrl extends BaseController {
                                @RequestParam(defaultValue = "", required = true) String desc) throws IOException {
         prepareLoginUserInfo(request, model);
         AdminUserInfo adminUserInfo = getLoginedUser(request);
-        boolean isSucc = skuService.update(skuId, title, subTitle, url, category, desc, adminUserInfo.getId());
+        ExecInfo inputCheck = uploadInputCheck(title, subTitle, url, category, desc);
+        if (inputCheck.isSucc()) {
+            inputCheck = skuService.update(skuId, title, subTitle, url, category, desc, adminUserInfo.getId());
+        }
+        model.addAttribute("success", inputCheck.isSucc());
+        model.addAttribute("reason", inputCheck.getMsg());
+        responseJson(response, model);
+    }
+
+    private ExecInfo uploadInputCheck(@RequestParam(defaultValue = "", required = true) String title, @RequestParam(defaultValue = "", required = true) String subTitle, @RequestParam(defaultValue = "", required = true) String url, @RequestParam(defaultValue = "", required = true) SkuDetailType category, @RequestParam(defaultValue = "", required = true) String desc) {
+        String failReason = "";
+        if (title == null || title.trim().equals("")) {
+            failReason += "标题不能为空 ";
+        } else if (title.trim().length() > 20) {
+            failReason += "标题过长 ";
+        }
+        if (subTitle != null && subTitle.trim().length() > 30) {
+            failReason += "子标题过长 ";
+        }
+        if (desc == null || desc.trim().equals("")) {
+            failReason += "描述不能为空 ";
+        } else if (desc.trim().length() > 200) {
+            failReason += "描述过长 ";
+        }
+        if (url ==null || url.trim().equals("")) {
+            failReason += "外链url不能为空 ";
+        }
+        if (category == null || category == SkuDetailType.UNKNOWN) {
+            failReason += "类别不能为空或不能识别 ";
+        }
+        if (failReason.equals("")) {
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail(failReason);
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public void delete(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                       @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
+        AdminUserInfo adminUserInfo = getLoginedUser(request);
+        ExecInfo execInfo = skuService.remove(skuId, adminUserInfo);
+        model.addAttribute("success", execInfo.isSucc());
+        model.addAttribute("message", execInfo.getMsg());
+        responseJson(response, model);
+    }
+
+    @RequestMapping(value = "/online", method = RequestMethod.GET)
+    public void online(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                       @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
+        prepareLoginUserInfo(request, model);
+        boolean isSucc = skuService.changeStatus(skuId, PublicationStatus.ONLINE);
+        model.addAttribute("success", isSucc);
+        responseJson(response, model);
+    }
+
+    @RequestMapping(value = "/offline", method = RequestMethod.GET)
+    public void offline(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                        @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
+        prepareLoginUserInfo(request, model);
+        boolean isSucc = skuService.changeStatus(skuId, PublicationStatus.OFFLINE);
         model.addAttribute("success", isSucc);
         responseJson(response, model);
     }

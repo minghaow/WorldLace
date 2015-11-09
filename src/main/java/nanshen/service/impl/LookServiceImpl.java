@@ -97,6 +97,7 @@ public class LookServiceImpl extends ScheduledService implements LookService {
     public ExecInfo removeLook(long lookId, AdminUserInfo adminUserInfo) {
         boolean isSucc = lookInfoDao.remove(lookId, adminUserInfo.getId());
         if (isSucc) {
+            update();
             return ExecInfo.succ();
         }
         return ExecInfo.fail("非上传人，禁止删除");

@@ -1,0 +1,167 @@
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="http://static.lanzhujue.com/css/user/topicList.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- page contents -->
+<div class="margin-top" id="topic-page-content">
+    <div class="row">
+        <div class="large-12">
+            <img src="http://static.lanzhujue.com/images/topic/1/head-pic.jpg"></img>
+        </div>
+        <div class="large-12 columns" style="background-color:#ffffff;">
+            <div class="row" style="padding-top:40px;">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 派克大衣—Parka Jacket
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">
+                        北极地区的爱斯基摩人需要对抗极端的低温和风雪，还要在冰冷的水上打猎作业，于是他们发明了最早的风雪派克大衣。因为它在欧洲和美国被广泛地叫做“parka”，在中国亦有派克大衣的叫法。
+                        爱斯基摩人的风雪大衣原型，是没有前开襟的套头式厚重兽皮大衣（以驯鹿和海豹皮为主），它的标志是连在大衣上、围着一圈皮毛的帽子，可以为头部和脸颊抵御严寒。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">
+                        Parka大衣的外形同时也应用于军装系列当中，二战期间，美国和英国都采用了Parka型大衣来当作军装，并且改良了爱斯基摩人使用皮草的材质而改换成了更为廉价的布料，但是帽子的皮草还是继续延续了下来！</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-6 small-6 large-offset-1 columns">
+                    <img src="http://static.lanzhujue.com/images/topic/1/parka-pic.jpg" style="margin-bottom:20px;"></img>
+                </div>
+                <div class="large-4 small-4 columns end">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        Parka可以套在正装外外，保暖而不失时尚，同样还可以内搭圆领或开襟毛衫、衬衫等多种单品，我们很少看到有勇敢的骚年像下图小哥那样将parka的毛绒兜帽的保暖性发挥的如此淋漓尽致，除非对自己的发型或发胶足够自信(*^__^*）....</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">
+                        当代的Parka大衣已经没有了曾经的爱斯基摩的雏形，而是从军装中演化过来的非套头式前开襟大衣，在设计师们不断的演绎之下，Parka大衣已经与最初的服装南辕北辙！但其百搭的特性及兜帽旁边粘着的那一圈毛，永远是Parka大衣不可磨灭的一部分。</p>
+                </div>
+            </div>
+
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 单宁外套-—Denim Coat
+                    </h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">“丹宁”是个外来语，英语原词是“DENIM”，意思就是斜纹织法的，靛蓝染色的粗斜纹布，现在也叫做牛仔布。也就是说，所有的牛仔服都是丹宁布。
+                        JEAN和DENIM其实指的是一种布料，JEAN是因为意大利的裁缝而得名，而DENIM则是从法语里SERGE DE
+                        NIMES而来。所以jean和denim是不同地区对牛仔面料的各自习惯性叫法。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <img src="http://static.lanzhujue.com/images/topic/1/denim-pic.jpeg"
+                         style="margin-bottom:20px;max-width:500px;"></img>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        从来不曾缺席众多时髦男女时尚衣橱里的单宁元素，其颜色及款式的丰富也超过了任意一种服装类单品。除了常见的外搭穿法，内搭以及中层搭配都有出众的效果。可与blazer西装，羽绒棉袄等多类型服饰完美相搭。设计师们还赋予了单宁元素更多的生命力，白色翻毛衣领最为常见，既增加了保暖性，色差还使单宁外套更具活力。</p>
+                </div>
+            </div>
+
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 棒球衫-—Varsity
+                        Jacket</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">
+                        棒球衫，最早出现在1849年的Knickerbockers棒球俱乐部，目的是为了标明不同的队伍。作为简约又好搭的基本款，标准美式范儿棒球衫最突出的特点就是在左胸口处有标志性的英文字母点缀。学院风近几年在时尚圈愈发风生水起，无论你是否还是在校学生，在这个拼嫩的年代，拥有一款学生气十足的棒球外套绝对是非常必要的。棒球外套可以说是日常必备的外套单品，不仅可以展现出你年轻活力的一面，而且款式多样，十分好搭配，各种风格都能统统hold住。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <img src="img/varsity-pic.jpeg" style="margin-bottom:20px;max-width:500px;"></img>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        如果提到和棒球衫最搭的单品，那么棒球帽一定是首选。看看下面这位小哥，身着纯黑皮质改良varsity jacket，头戴相同材质的boston棒球帽，简直是逼格帅气直冲云霄~</p>
+                </div>
+            </div>
+
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 单排扣风衣—Single
+                        Breasted Coat</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">
+                        女人都有一条小黑裙作为衣柜中的不变应万变的法宝，男人的单排扣大衣也正如女人的小黑裙一样，很少有男人穿上它不好看。修身利落的版型没有一分多余的杂质，始终是时髦男性的有型装扮。较双排扣大衣而言，单排扣更显简约，阳刚之气，通常是英汉型男外出必备。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <img src="http://static.lanzhujue.com/images/topic/1/single-pic.jpeg"
+                         style="margin-bottom:20px;max-width:500px;"></img>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        除了内搭正装，你也可以像贝克汉姆一样，把羊绒单排扣大衣穿得很休闲但不懒散。在黑色的单排扣大衣里穿上简单的灰色毛衣，下半身选择深色的牛仔裤和Chukka靴。颜色上偏向深色的统一让即使是休闲款的单品也不会显得太松垮;海军蓝+牛皮棕是经典“低调精致”的颜色搭配。当然，那条绿色围巾也是画龙点睛之笔。</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">长款或短款的单排扣大衣可以根据各自身高实际情况来挑选，短款也同样能凸显长腿欧巴的优势。但需要注意的是，衣长最好不要过膝，否则。。。</p>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 总结回顾</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-8 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">让我们回顾一下本节课蓝主角老师给同学们介绍的四款外套品类，Parka Jacket、Denim Coat、Varsity Jacket、Single
+                        Breasted
+                        Coat，希望大家能够记牢背熟，当然理论需要与实践相结合，除了走在路上能够逼格满满的在女票面前熟练的叫出各类秋冬外套的所属品类外，更希望大家能够入手些自己认为合适自己风格的单品。主页君为了给各位省些流量（上方高清大图高能预警），小编将在下篇中介绍更多的外套品类给大家，敬请期待。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+#include("user/footer.vm")

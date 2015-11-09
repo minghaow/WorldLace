@@ -181,9 +181,13 @@ header {
 .list-banner li {
     list-style:none;
 }
-#look-detail-page-content {
+#look-detail-page-content,
+#topic-page-content {
     width: 90%;
     max-width: 1200px;
+}
+#topic-page-content {
+    margin: auto;
 }
 @media only screen and (max-width: 40.063em) {
     #look-detail-page-content .row .columns {

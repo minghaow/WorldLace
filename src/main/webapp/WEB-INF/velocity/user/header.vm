@@ -98,7 +98,7 @@
                         <div class="selected-sign $!{TOPIC}">
                             <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
                         </div>
-                        <a href="/topic" class="top-button unsupported-section">
+                        <a href="/topic" class="top-button">
                             <div class="menu-text">专题</div>
                         </a>
                     </li>

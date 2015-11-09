@@ -1,6 +1,4 @@
-
 #parse("user/header.vm")
-<link rel="stylesheet" href="http://static.lanzhujue.com/css/user/topicList.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -17,7 +15,8 @@
         <div class="large-12 columns" style="background-color:#ffffff;">
             <div class="row" style="padding-top:40px;">
                 <div class="large-8 small-12 large-centered small-centered columns">
-                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 派克大衣—Parka Jacket
+                    <h5 style="color:#777;">
+                        <span style="background-color:#3A67DB;color:#3A67DB;">1</span> 派克大衣—Parka Jacket
                     </h5>
                 </div>
             </div>
@@ -100,7 +99,7 @@
 
             <div class="row">
                 <div class="large-8 small-12 large-centered small-centered columns">
-                    <img src="img/varsity-pic.jpeg" style="margin-bottom:20px;max-width:500px;"></img>
+                    <img src="http://static.lanzhujue.com/images/topic/1/varsity-pic.jpeg" style="margin-bottom:20px;max-width:500px;"></img>
                 </div>
             </div>
 

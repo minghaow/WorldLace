@@ -5,7 +5,6 @@ import nanshen.service.AccountService;
 import nanshen.service.LookService;
 import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
-import nanshen.utils.StringUtils;
 import nanshen.web.common.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -113,7 +112,7 @@ public class LookCtrl extends BaseController {
         if (inputCheck.isSucc()) {
             inputCheck = lookService.update(lookId, title, subTitle, desc, PublicationStatus.OFFLINE,
                     tagIdList, adminUserInfo.getId());
-            addRelatedSku(lookId, skuIdList);
+            skuService.addRelatedSku(lookId, skuIdList);
         }
         model.addAttribute("success", inputCheck.isSucc());
         model.addAttribute("reason", inputCheck.getMsg());
@@ -141,19 +140,6 @@ public class LookCtrl extends BaseController {
             return ExecInfo.succ();
         }
         return ExecInfo.fail(failReason);
-    }
-
-    private void addRelatedSku(@RequestParam(defaultValue = "0", required = true) long lookId,
-                               @RequestParam(defaultValue = "", required = true) String skuIdList) {
-        String[] skuIdArray = StringUtils.getStringListFromString(skuIdList, ",");
-        for (String skuId : skuIdArray) {
-            Long skuIdLong = Long.parseLong(skuId);
-            SkuInfo skuInfo = skuService.get(skuIdLong);
-            if (skuInfo != null) {
-                skuInfo.setLookId(lookId);
-                skuService.update(skuInfo);
-            }
-        }
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)

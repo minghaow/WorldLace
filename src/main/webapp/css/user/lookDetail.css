@@ -21,6 +21,7 @@
 }
 .look-tag-list input.labelauty + label {
     display: inline-block;
+    cursor: default;
 }
 .look-detail-slider li img {
     text-align: center;

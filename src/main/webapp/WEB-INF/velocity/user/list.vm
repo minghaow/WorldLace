@@ -54,9 +54,6 @@
                 </a>
                 <div class="item-description">
                     $lookInfo.title
-                    <div>
-                        $lookInfo.subTitle
-                    </div>
                 </div>
             </li>
             #end

@@ -45,6 +45,9 @@
 .greenText {
     color: green;
 }
+.darkGreyText {
+    color: #555;
+}
 .greyText {
     color: grey;
 }

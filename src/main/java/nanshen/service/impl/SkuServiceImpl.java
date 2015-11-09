@@ -7,8 +7,10 @@ import nanshen.data.*;
 import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
 import nanshen.service.common.ScheduledService;
+import nanshen.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
@@ -172,6 +174,43 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    @Transactional
+    public ExecInfo addRelatedSku(long lookId, String skuIdList) {
+        String[] skuIdArray = StringUtils.getStringListFromString(skuIdList, ",");
+        List<SkuInfo> resultSkuInfoList = new ArrayList<SkuInfo>();
+
+        for (String skuId : skuIdArray) {
+            Long skuIdLong = Long.parseLong(skuId);
+            SkuInfo skuInfo = get(skuIdLong);
+            if (skuInfo == null) {
+                return ExecInfo.fail("抱歉，根据所提供的ID: " + skuId + "，未找到该单品");
+            }
+            resultSkuInfoList.add(skuInfo);
+        }
+
+        clearSkuLookInfo(lookId);
+        updateSkuLookInfo(lookId, resultSkuInfoList);
+        return ExecInfo.succ();
+    }
+
+    private void updateSkuLookInfo(long lookId, List<SkuInfo> resultSkuInfoList) {
+        for (SkuInfo skuInfo : resultSkuInfoList) {
+            if (skuInfo.getLookId() == 0 || skuInfo.getLookId() == lookId) {
+                skuInfo.setLookId(lookId);
+                update(skuInfo);
+            }
+        }
+    }
+
+    private void clearSkuLookInfo(long lookId) {
+        List<SkuInfo> skuInfoList = getByLookId(lookId);
+        for (SkuInfo skuInfo : skuInfoList) {
+            skuInfo.setLookId(0);
+            update(skuInfo);
+        }
     }
 
     private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, SkuInfo skuInfo) {

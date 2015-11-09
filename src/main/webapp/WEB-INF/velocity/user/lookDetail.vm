@@ -23,7 +23,8 @@
                 data-options="animation:slide;
                   pause_on_hover:true;
                   animation_speed:500;
-                  navigation_arrows:true;
+                  navigation_arrows:false;
+                  timer:false;
                   bullets:true;">
                 #set ($totalCnt = $lookInfo.imgCount - 1)
                 #foreach ($imgId in [0..$totalCnt])
@@ -35,8 +36,7 @@
         </div>
         <div class="large-7 medium-7 small-12 columns">
             <div class="detail-description text-left">
-                <h3 class="greyText">$lookInfo.title</h3>
-                <div class="row margin-top-small">&nbsp;</div>
+                <h3 class="greyText"><span style="width: 3px;background-color:#4c8bf2;"></span>$lookInfo.title</h3>
                 <div class="margin-top-small greyText">$!{lookInfo.subTitle}</div>
                 <div class="margin-top-small greyText">$!{lookInfo.description}</div>
             </div>

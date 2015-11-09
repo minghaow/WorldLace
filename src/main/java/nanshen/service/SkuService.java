@@ -130,4 +130,13 @@ public interface SkuService {
      * @return
      */
     boolean changeStatus(long skuId, PublicationStatus publicationStatus);
+
+    /**
+     * Add look id for each sku
+     *
+     * @param lookId look id
+     * @param skuIdList sku id list, split by ','
+     * @return ExecInfo
+     */
+    ExecInfo addRelatedSku(long lookId, String skuIdList);
 }

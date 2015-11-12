@@ -7,7 +7,6 @@
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="http://static.lanzhujue.com/css/user/lookDetail.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -16,7 +15,7 @@
 </div>
 
 <!-- page contents -->
-<div class="page-content margin-top" id="look-detail-page-content">
+<div class="page-content margin-top-small" id="look-detail-page-content">
     <div class="row">
         <div class="large-5 medium-5 small-12 columns detail-image-slider">
             <ul data-orbit class="look-detail-slider"
@@ -43,10 +42,10 @@
                     <div class="jiathis_style">
                         <a class="jiathis_button_weixin">微信</a>
                         <a class="jiathis_button_cqq">QQ</a>
+                        <a class="jiathis_button_ydnote">有道</a>
+                        <a class="jiathis_button_renren">人人</a>
+                        <a class="jiathis_button_tsina">微博</a>
                         <a class="jiathis_button_douban">豆瓣</a>
-                        <a class="jiathis_button_ydnote">有道云笔记</a>
-                        <a class="jiathis_button_tsina">新浪微博</a>
-                        <a class="jiathis_button_renren">人人网</a>
                         <a href="http://www.jiathis.com/share?uid=2070144" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
                         <a class="jiathis_counter_style"></a>
                     </div>
@@ -69,7 +68,7 @@
 
             <div class="detail-description margin-top-small text-left">
                 <h4 class="greyText">搭配单品</h4>
-                <ul class="margin-top-small row thumbnail-wrapper small-block-grid-3">
+                <ul class="margin-top-small row thumbnail-wrapper small-block-grid-2 medium-block-grid-3 medium-block-grid-3">
                     #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
                         <li>
                             <a class="th radius " href="${skuInfo.url}" target="_blank" title="${skuInfo.title}">

@@ -49,16 +49,6 @@
                         <a href="http://www.jiathis.com/share?uid=2070144" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
                         <a class="jiathis_counter_style"></a>
                     </div>
-                    <script type="text/javascript">
-                        var jiathis_config = {
-                            summary:"",
-                            shortUrl:false,
-                            hideMore:false,
-                            data_track_clickback:'true'
-                        }
-                    </script>
-                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
-                    <!-- JiaThis Button END -->
                 </div>
 
                 <div class="hidden-for-small-down">&nbsp;</div>
@@ -127,4 +117,14 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
+<script type="text/javascript">
+    var jiathis_config = {
+        summary:"",
+        shortUrl:false,
+        hideMore:false,
+        data_track_clickback:'true'
+    }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 #include("user/footer.vm")

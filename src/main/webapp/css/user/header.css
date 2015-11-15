@@ -11,14 +11,15 @@ header {
     background-color: #121212;
 }
 .tab-bar-section img {
-    height: 2.6rem;
+    margin-bottom: 1rem;
+    display: block;
 }
 #top-bar {
     background: #121212 !important;
     height: 70px !important;
 }
 #top-bar #top-bar-content {
-    width: 75%;
+    width: 80%;
     height: 100%;
     margin: auto;
     background: #121212;
@@ -50,7 +51,7 @@ header {
     text-align: center;
     background: #121212;
 }
-#top-bar-content .menu-section li img {
+#top-bar-content .menu-section li .selected-sign img {
     height: 5px;
     padding: 0;
     margin: 0 auto;
@@ -69,4 +70,7 @@ header {
     height: 3px;
     background-color: #595959;
     z-index: 100;
+}
+ul {
+    list-style: none;
 }

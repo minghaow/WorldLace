@@ -97,10 +97,16 @@ header {
     height: 70px !important;
 }
 #top-bar #top-bar-content {
-    width: 75%;
+    width: 80%;
     height: 100%;
     margin: auto;
     background: #121212;
+}
+#top-bar #top-bar-content .title-area span {
+    vertical-align: bottom;
+    color: #707070;
+    position: relative;
+    top: 35px;
 }
 #top-bar #top-bar-content .title-area {
     float: left;
@@ -119,7 +125,7 @@ header {
     background: #121212;
     height: 65px;
     line-height: 65px;
-    padding: 0 3rem;
+    padding: 0 2.5rem;
     font-size: 0.85rem;
     top: 0;
 }
@@ -129,7 +135,7 @@ header {
     text-align: center;
     background: #121212;
 }
-#top-bar-content .menu-section li img {
+#top-bar-content .menu-section li .selected-sign img {
     height: 5px;
     padding: 0;
     margin: 0 auto;
@@ -142,12 +148,16 @@ header {
     color: #4c8bf2 !important;
 }
 .top-bar-section img {
-    /*height: 30px;*/
+    margin-bottom: 1rem;
+    display: block;
 }
 .bottom-line {
     height: 3px;
     background-color: #595959;
     z-index: 100;
+}
+ul {
+    list-style: none;
 }
 .page-content {
     margin: 10px auto;

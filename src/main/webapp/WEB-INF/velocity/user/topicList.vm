@@ -159,6 +159,9 @@
             </div>
         </div>
     </div>
+
+    #include("msgModal.vm")
+
 </div>
 <!-- end of this page contents -->
 

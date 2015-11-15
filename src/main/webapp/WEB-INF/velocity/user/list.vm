@@ -26,22 +26,20 @@
                   slide_number:false;
                   resume_on_mouseout:true;">
         <li class="active">
-            <img src="http://static.lanzhujue.com/image/slider/slider2.jpg" alt="slide 2" />
-            <div class="orbit-caption">
-                品牌推广专题
-            </div>
+            <a href="/topic" target="_blank">
+                <img src="http://static.lanzhujue.com/image/slider/slider2.jpg" alt="slide 2" />
+                <div class="orbit-caption">
+                    冬天男士大衣
+                </div>
+            </a>
         </li>
         <li class="pre-hidden">
-            <img src="http://static.lanzhujue.com/image/slider/slider1.jpg" alt="slide 1" />
-            <div class="orbit-caption">
-                活力男装搭配
-            </div>
-        </li>
-        <li class="pre-hidden">
-            <img src="http://static.lanzhujue.com/image/slider/slider3.jpg" alt="slide 3" />
-            <div class="orbit-caption">
-                品牌推广专题2
-            </div>
+            <a href="/topic" target="_blank">
+                <img src="http://static.lanzhujue.com/image/slider/slider3.jpg" alt="slide 3" />
+                <div class="orbit-caption">
+                    商务男士西装
+                </div>
+            </a>
         </li>
     </ul>
 

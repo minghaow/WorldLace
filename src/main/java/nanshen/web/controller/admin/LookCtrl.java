@@ -75,9 +75,9 @@ public class LookCtrl extends BaseController {
         if (lookId != 0) {
             prepareExistedLookInfo(model, lookId);
         }
-        List<LookTag> lookTagList = lookService.getAllTag();
+        List<StyleTag> styleTagList = lookService.getAllTag();
         model.addAttribute("lookId", lookId);
-        model.addAttribute("lookTagList", lookTagList);
+        model.addAttribute("lookTagList", styleTagList);
         model.addAttribute("sessionId", sessionId);
         model.addAttribute("pageType", "look-upload-page");
 		return new ModelAndView("admin/lookUpload");

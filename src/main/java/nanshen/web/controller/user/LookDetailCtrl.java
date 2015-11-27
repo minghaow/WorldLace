@@ -2,8 +2,8 @@ package nanshen.web.controller.user;
 
 import nanshen.data.AdminUserInfo;
 import nanshen.data.LookInfo;
-import nanshen.data.LookTag;
 import nanshen.data.PageType;
+import nanshen.data.StyleTag;
 import nanshen.service.AccountService;
 import nanshen.service.LookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +29,10 @@ public class LookDetailCtrl extends BaseCtrl {
 	private LookService lookService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ModelAndView lookDetail(ModelMap model,
-								   @RequestParam(defaultValue = "1", required = true) int lookId) {
+	public ModelAndView lookDetail(ModelMap model, @RequestParam(defaultValue = "1", required = true) int lookId) {
 		LookInfo lookInfo = lookService.get(lookId);
 		if (lookInfo != null) {
-			AdminUserInfo uploader = accountService.getAdminUserInfoByUserId(lookInfo.getUploadUserId());
-            List<LookTag> lookTagList = lookService.getAllTag();
-            prepareLookTagIdMap(model, lookInfo);
-			model.addAttribute("lookInfo", lookInfo);
-			model.addAttribute("lookTagList", lookTagList);
-			model.addAttribute("uploader", uploader);
+			prepareExistingLookInfo(model, lookInfo);
 		}
 		model.addAttribute("success", lookInfo != null);
 		prepareHeader(model, PageType.LOOK_DETAIL);
@@ -46,13 +40,22 @@ public class LookDetailCtrl extends BaseCtrl {
 		return new ModelAndView("user/lookDetail");
 	}
 
-    private void prepareLookTagIdMap(ModelMap model, LookInfo lookInfo) {
-        Map<String, Boolean> tagIdMap = new HashMap<String, Boolean>();
-        String[] tagIdList = lookInfo.getTagIdList();
-        for (String tag : tagIdList) {
-            tagIdMap.put(tag, true);
-        }
-        model.addAttribute("tagIdMap", tagIdMap);
-    }
+	private void prepareExistingLookInfo(ModelMap model, LookInfo lookInfo) {
+		AdminUserInfo uploader = accountService.getAdminUserInfoByUserId(lookInfo.getUploadUserId());
+		List<StyleTag> styleTagList = lookService.getAllTag();
+		prepareLookTagIdMap(model, lookInfo);
+		model.addAttribute("lookInfo", lookInfo);
+		model.addAttribute("lookTagList", styleTagList);
+		model.addAttribute("uploader", uploader);
+	}
+
+	private void prepareLookTagIdMap(ModelMap model, LookInfo lookInfo) {
+		Map<String, Boolean> tagIdMap = new HashMap<String, Boolean>();
+		String[] tagIdList = lookInfo.getTagIdList();
+		for (String tag : tagIdList) {
+			tagIdMap.put(tag, true);
+		}
+		model.addAttribute("tagIdMap", tagIdMap);
+	}
 
 }

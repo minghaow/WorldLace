@@ -1,8 +1,8 @@
 package nanshen.dao.impl;
 
-import nanshen.dao.LookTagDao;
+import nanshen.dao.ClothTypeTagDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.LookTag;
+import nanshen.data.ClothTypeTag;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;
@@ -15,16 +15,17 @@ import java.util.List;
  * @Author WANG Minghao
  */
 @Repository
-public class LookTagDaoImpl extends BaseDao implements LookTagDao {
+public class ClothTypeTagDaoImpl extends BaseDao implements ClothTypeTagDao {
 
     @Override
-    public LookTag insert(LookTag lookTag) {
-        return dao.insert(lookTag);
+    public ClothTypeTag insert(ClothTypeTag clothTypeTag) {
+        return dao.insert(clothTypeTag);
     }
 
     @Override
-    public List<LookTag> getAll() {
+    public List<ClothTypeTag> getAll() {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01");
-        return dao.query(LookTag.class, cnd);
+        return dao.query(ClothTypeTag.class, cnd);
     }
+
 }

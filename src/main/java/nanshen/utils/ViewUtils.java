@@ -22,11 +22,6 @@ public class ViewUtils {
         return a.divide(b).toString();
     }
 
-    public static String priceConverter(long price) {
-        BigDecimal a = BigDecimal.valueOf(price);
-        return a.toString();
-    }
-
     public static long priceConverter(String priceString) {
         BigDecimal price = new BigDecimal(priceString);
         price = price.multiply(BigDecimal.valueOf(100));
@@ -39,6 +34,12 @@ public class ViewUtils {
         price = price.multiply(BigDecimal.valueOf(100));
         price = price.setScale(0, BigDecimal.ROUND_HALF_UP);
         return Long.parseLong(price.toString());
+    }
+
+    public static String priceConverter(long priceLong) {
+        BigDecimal a = BigDecimal.valueOf(priceLong);
+        BigDecimal b = BigDecimal.valueOf(100);
+        return a.divide(b).toString();
     }
 
     public static long priceDoubleToLong(double priceDouble) {

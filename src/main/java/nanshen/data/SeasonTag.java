@@ -7,10 +7,12 @@ import org.nutz.dao.entity.annotation.Table;
 import java.util.Date;
 
 /**
+ * Note: Multi-select available
+ *
  * @author WANG Minghao
  */
-@Table("LookTag")
-public class LookTag {
+@Table("SeasonTag")
+public class SeasonTag {
 
     /** ID */
     @Id
@@ -32,14 +34,14 @@ public class LookTag {
     @Column
     private Date updateTime = new Date();
 
-    public LookTag(Date createTime, String description, String tagName, Date updateTime) {
+    public SeasonTag(Date createTime, String description, String tagName, Date updateTime) {
         this.createTime = createTime;
         this.tagName = tagName;
         this.description = description;
         this.updateTime = updateTime;
     }
 
-    public LookTag() {
+    public SeasonTag() {
     }
 
     public Date getCreateTime() {

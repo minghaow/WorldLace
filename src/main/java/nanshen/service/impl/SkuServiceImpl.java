@@ -146,7 +146,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public List<LookTag> getAllTag() {
+    public List<StyleTag> getAllTag() {
         return null;
     }
 

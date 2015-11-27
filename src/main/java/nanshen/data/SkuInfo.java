@@ -141,6 +141,10 @@ public class SkuInfo {
         return price;
     }
 
+    public String getViewPrice() {
+        return ViewUtils.priceConverter(price);
+    }
+
     public void setPrice(long price) {
         this.price = price;
     }

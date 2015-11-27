@@ -2,7 +2,7 @@ package nanshen.web.controller.admin;
 
 import nanshen.dao.AdminUserInfoDao;
 import nanshen.dao.LookInfoDao;
-import nanshen.dao.LookTagDao;
+import nanshen.dao.StyleTagDao;
 import nanshen.data.*;
 import nanshen.service.AccountService;
 import nanshen.service.SkuService;
@@ -35,7 +35,7 @@ public class SkuCtrl extends BaseController {
     private LookInfoDao lookInfoDao;
 
     @Autowired
-    private LookTagDao lookTagDao;
+    private StyleTagDao styleTagDao;
 
 	@Autowired
 	private OssFormalApi ossFormalApi;
@@ -77,14 +77,14 @@ public class SkuCtrl extends BaseController {
 	public ModelAndView lookUpload(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                                    @RequestParam(defaultValue = "0", required = true) long skuId){
         prepareLoginUserInfo(request, model);
-        List<LookTag> lookTagList = lookTagDao.getAll();
+        List<StyleTag> styleTagList = styleTagDao.getAll();
         if (skuId != 0) {
             prepareExistedSkuInfo(model, skuId);
         }
 		String sessionId = request.getSession().getId();
         model.addAttribute("skuDetailTypeList", SkuDetailType.values());
         model.addAttribute("lookId", 0);
-        model.addAttribute("lookTagList", lookTagList);
+        model.addAttribute("lookTagList", styleTagList);
         model.addAttribute("sessionId", sessionId);
         model.addAttribute("pageType", "sku-upload-page");
 		return new ModelAndView("admin/skuUpload");

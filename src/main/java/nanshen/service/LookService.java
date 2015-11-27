@@ -105,7 +105,7 @@ public interface LookService {
      *
      * @return List<LookTag>
      */
-    List<LookTag> getAllTag();
+    List<StyleTag> getAllTag();
 
     /**
      * Get the count of looks for the specified publication status

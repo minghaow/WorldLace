@@ -13,8 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class TopicCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ModelAndView topicList(ModelMap model,
-								   @RequestParam(defaultValue = "1", required = true) int lookId) {
+	public ModelAndView topicList(ModelMap model, @RequestParam(defaultValue = "1", required = true) int lookId) {
 		prepareHeader(model, PageType.TOPIC);
 		prepareHelloMsg(model);
 		return new ModelAndView("user/topicList");

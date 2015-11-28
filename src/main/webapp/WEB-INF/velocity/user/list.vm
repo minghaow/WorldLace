@@ -18,13 +18,13 @@
     <div class="banner-slider">
         <ul>
             <li>
-                <img src="images/slider/slider3.jpg">
+                <img src="${imageUrlPrefix}images/slider/slider3.jpg">
             </li>
             <li>
-                <img src="images/slider/slider2.jpg">
+                <img src="${imageUrlPrefix}images/slider/slider2.jpg">
             </li>
             <li>
-                <img src="images/slider/slider1.jpg">
+                <img src="${imageUrlPrefix}images/slider/slider1.jpg">
             </li>
         </ul>
     </div>
@@ -39,7 +39,7 @@
             #foreach ($imgId in [1..22])
                 <li class="column" data-equalizer-watch>
                     <a href="/item?itemId=1" class="item-image-wrapper">
-                        <img src="images/item/${imgId}.jpg" alt=""/>
+                        <img src="${imageUrlPrefix}images/item/${imgId}.jpg" alt=""/>
                     </a>
                     <div class="item-description">
                         Tescoma

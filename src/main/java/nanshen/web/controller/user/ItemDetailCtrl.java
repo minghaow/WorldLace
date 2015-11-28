@@ -37,6 +37,7 @@ public class ItemDetailCtrl extends BaseCtrl {
 //		model.addAttribute("success", lookInfo != null);
 		prepareHeader(model, PageType.LOOK_DETAIL);
 		prepareHelloMsg(model);
+		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan/");
 		return new ModelAndView("user/itemDetail");
 	}
 

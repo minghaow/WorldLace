@@ -34,7 +34,7 @@
                 <ul>
                     #foreach ($imgId in [1..3])
                         <li>
-                            <img src="images/item/${imgId}.jpg" alt=""/>
+                            <img src="${imageUrlPrefix}images/item/${imgId}.jpg" alt=""/>
                         </li>
                     #end
                 </ul>
@@ -74,21 +74,6 @@
 
         </div>
 
-        <div class="item-list row" data-equalizer>
-            #foreach ($lookInfo in $lookInfoList)
-                <div class="large-4 medium-6 small-12 columns" data-equalizer-watch>
-                    <div class="item-image-wrapper">
-                        <img src="http://image.lanzhujue.com/images/look/$lookInfo.id/0" alt=""/>
-                    </div>
-                    <div class="item-description">
-                        $lookInfo.title
-                        <div>
-                            $lookInfo.subTitle
-                        </div>
-                    </div>
-                </div>
-            #end
-        </div>
     </div>
 
 </div>

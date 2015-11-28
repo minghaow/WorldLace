@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- style stuff -->
-    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon"/>
+    <link type="image/x-icon" href="${imageUrlPrefix}images/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="css/user/header.css"/>
     <link rel="stylesheet" href="css/user/footer.css"/>
     <link rel="stylesheet" href="css/user/common.css"/>
@@ -65,7 +65,7 @@
 
                             <ul class="submenu menu vertical" data-submenu>
                                 <li>
-                                    <img src="images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+                                    <img src="${imageUrlPrefix}images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
                                 </li>
                             </ul>
                         </li>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="logo-wrapper row center">
-            <img src="images/user/logo.png" alt="桃源网"/>
+            <img src="${imageUrlPrefix}images/user/logo.png" alt="桃源网"/>
         </div>
 
 

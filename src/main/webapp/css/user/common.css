@@ -1,10 +1,14 @@
+input[type=search] {
+    height: 1.5rem;
+    font-size: 0.8rem;
+}
 #body {
-    background-color: #e2e2e2;
+    background-color: white;
 }
 @media only screen and (min-width: 40.063em) {
     .page-content {
         width: 90%;
-        max-width: 1200px;
+        max-width: 1400px;
         min-height: 300px;
         text-align: center;
         margin: auto;

@@ -1,16 +1,13 @@
 <!-- footer -->
 <section class="top-footer">
     <blockquote>
-        " 三分钟搞定男装搭配。"<cite>LanZhuJue.com</cite>
+        "做中国最有良心的餐厨用品平台。"<cite>ZaiTaoYuan.com</cite>
     </blockquote>
 </section>
 
 <section class="bottom-footer">
-    <div>
-        <img src="http://static.lanzhujue.com/image/user/logo-lan.png" alt="蓝"/>
-    </div>
     <div class="greyText margin-top-small">
-        Copyright @ 2015, LanZhuJue Co., Ltd. All rights Reserved.
+        Copyright @ 2015, ZaiTaoYuan Co., Ltd. All rights Reserved.
     </div>
     <div class="greyText">京ICP备15043668号-1</div>
 </section>
@@ -18,29 +15,25 @@
 <!-- end of mobile header -->
 </div>
 </div>
+</div>
 
-<script src="http://static.lanzhujue.com/script/vendor/foundation.min.js"></script>
+
+<script src="script/vendor/jquery.min.js"></script>
+<script src="script/vendor/foundation.js"></script>
+<script src="script/vendor/unslider-min.js"></script>
 <script>
-    $(document).foundation({
-        orbit: {
-            animation: 'slide',
-            timer_speed: 4000,
-            pause_on_hover: true,
-            animation_speed: 500,
-            bullets: true,
-            slide_number: false,
-            resume_on_mouseout: true
-        }
-    });
-    $(".pre-hidden").show();
-    $(function(){
-        $(".look-tag").labelauty();
+    $(document).foundation();
+    jQuery(document).ready(function($) {
+        $('.banner-slider').unslider({
+            autoplay: true,
+            delay: 4000,
+            keys: true,
+            arrows: false
+        });
     });
 </script>
-<script src="http://static.lanzhujue.com/script/msgModal.js"></script>
-<script src="http://static.lanzhujue.com/script/vendor/modernizr.js"></script>
-<script src="http://static.lanzhujue.com/script/vendor/jquery-labelauty.js"></script>
-<script src="http://static.lanzhujue.com/script/user/common.js"></script>
-
+<script src="script/vendor/what-input.min.js"></script>
+<script src="script/msgModal.js"></script>
+<script src="script/user/common.js"></script>
 </body>
 </html>

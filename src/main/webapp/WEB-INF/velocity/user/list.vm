@@ -6,59 +6,50 @@
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="http://static.lanzhujue.com/css/user/list.css"/>
+<link rel="stylesheet" href="css/user/list.css"/>
 
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">$!{pageType}</div>
 </div>
 
+<div class="banner">
+
+    <div class="banner-slider">
+        <ul>
+            <li>
+                <img src="images/slider/slider3.jpg">
+            </li>
+            <li>
+                <img src="images/slider/slider2.jpg">
+            </li>
+            <li>
+                <img src="images/slider/slider1.jpg">
+            </li>
+        </ul>
+    </div>
+
+</div>
+
 <!-- page contents -->
 <div class="page-content">
 
-    <ul data-orbit class="list-banner"
-        data-options="animation:slide;
-                  pause_on_hover:true;
-                  timer_speed:4000;
-                  animation_speed:500;
-                  navigation_arrows:true;
-                  bullets:true;
-                  slide_number:false;
-                  resume_on_mouseout:true;">
-        <li class="active">
-            <a href="/topic" target="_blank">
-                <img src="http://static.lanzhujue.com/image/slider/slider2.jpg" alt="slide 2" />
-                <div class="orbit-caption">
-                    冬天男士大衣
-                </div>
-            </a>
-        </li>
-        <li class="pre-hidden">
-            <a href="/topic" target="_blank">
-                <img src="http://static.lanzhujue.com/image/slider/slider3.jpg" alt="slide 3" />
-                <div class="orbit-caption">
-                    商务男士西装
-                </div>
-            </a>
-        </li>
-    </ul>
-
     <div class="item-list" >
-        <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2" data-equalizer>
-            #foreach ($lookInfo in $lookInfoList)
-            <li data-equalizer-watch>
-                <a href="/look?lookId=$lookInfo.id" class="item-image-wrapper">
-                    <img src="http://image.lanzhujue.com/images/look/$lookInfo.id/0" alt=""/>
-                </a>
-                <div class="item-description">
-                    $lookInfo.title
-                </div>
-            </li>
+        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
+            #foreach ($imgId in [1..22])
+                <li class="column" data-equalizer-watch>
+                    <a href="/item?itemId=1" class="item-image-wrapper">
+                        <img src="images/item/${imgId}.jpg" alt=""/>
+                    </a>
+                    <div class="item-description">
+                        Tescoma
+                    </div>
+                </li>
             #end
         </ul>
     </div>
 
-    #include("msgModal.vm")
+##    #include("msgModal.vm")
 
 </div>
 <!-- end of this page contents -->

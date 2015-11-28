@@ -164,7 +164,7 @@ public class LookServiceImpl extends ScheduledService implements LookService {
 
     @Override
     public List<StyleTag> getAllTag() {
-        return tagService.getAll();
+        return null;
     }
 
     @Override

@@ -8,38 +8,29 @@
 
 <!-- header start -->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     #if ($!{pageType} == "LOOK_DETAIL")
         <title>$!{lookInfo.title}</title>
-        <meta name="keywords" content="男装搭配，约会搭配，服装搭配，穿衣搭配，生活品质，颜色搭配，搭配服装技巧" />
+        <meta name="keywords" content="桃源网，高端大气上档次的餐厨用品专家" />
         <meta name="description" content="$!{lookInfo.description}" />
     #else
-        <title>蓝主角—男生的服装搭配顾问</title>
-        <meta name="keywords" content="男装搭配，约会搭配，服装搭配，穿衣搭配，生活品质，颜色搭配，搭配服装技巧" />
-        <meta name="description" content="男士蓝主角助力男士提升服饰及配件搭配品质，不止是时尚享受的获取，更多的是生活方式与自身价值的输出。我们有理由相信当好的剧本出现时，每位男士都将扮演好自己生活中的男主角。" />
+        <title>桃源网 - 首页</title>
+        <meta name="keywords" content="桃源网，高端大气上档次的餐厨用品专家" />
+        <meta name="description" content="桃源网，高端大气上档次的餐厨用品专家。" />
     #end
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- style stuff -->
-    <link type="image/x-icon" href="http://static.lanzhujue.com/image/favicon.ico" rel="shortcut icon"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/user/style.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/tool.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/foundation.min.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/foundation-icons.css"/>
-    <link rel="stylesheet" href="http://static.lanzhujue.com/css/jquery-labelauty.css">
-
-    <!-- js stuff -->
-    <script src="http://static.lanzhujue.com/script/vendor/jquery.js"></script>
-
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?e8f34e3fd1fa08a41dc89b55f48835dc";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="css/user/header.css"/>
+    <link rel="stylesheet" href="css/user/footer.css"/>
+    <link rel="stylesheet" href="css/user/common.css"/>
+    <link rel="stylesheet" href="css/tool.css"/>
+    <link rel="stylesheet" href="css/foundation-icons.css"/>
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="css/unslider.css">
+    <link rel="stylesheet" href="css/unslider-dots.css">
 
 </head>
 
@@ -47,99 +38,109 @@
 <body id="body">
 
 <!-- top bar start -->
-<div class="off-canvas-wrap" data-offcanvas>
-<div class="inner-wrap">
-
-    <!-- left menu for mobile devices -->
-    <div class="left-menu">
-        <title>蓝主角</title>
-        <meta name="description" content="蓝主角—男生的服装搭配顾问">
-        <aside class="right-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><label class="first">蓝主角</label></li>
-                <li><a href="/">搭配</a></li>
-                <li><a href="/topic">专题</a></li>
-                <li><a href="/about">关于我们</a></li>
-            </ul>
-        </aside>
-        <nav class="tab-bar show-for-small">
-            <section class="right-small">
-                <a class="right-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
-            </section>
-            <div class="tab-bar-section">
-                <img src="http://static.lanzhujue.com/image/user/logo-black.png">
-            </div>
-        </nav>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+        <ul class="off-canvas-list">
+            <li><label class="first">桃源</label></li>
+            <li><a href="/">首页</a></li>
+            <li><a href="/topic">品牌馆</a></li>
+            <li><a href="/about">关于我们</a></li>
+        </ul>
     </div>
 
-    <a class="exit-off-canvas"></a>
+    <div class="off-canvas-content" data-off-canvas-content>
 
-    <!-- bigger menu with centered logo -->
-    <!-- bigger header -->
-    <nav id="top-bar" class="top-menu-bar hide-for-small">
-        <div id="top-bar-content">
-            <span class="title-area">
-                <a class="logo" href="/">
-                    <img src="http://static.lanzhujue.com/image/user/logo-black.png" alt="LanZhuJue.com"/>
-                </a>
-            </span>
-            <span class="title-area">
-                <span>三分钟搞定男装搭配</span>
-            </span>
+        <div class="superHeader hide-for-small-only">
+            <div class="top-bar" id="top-bar">
+                <div class="top-bar-left">
+                    <ul class="menu">
+                        <li class="menu-text">有我相伴，家似桃源！</li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="has-submenu is-dropdown-submenu-parent opens-left">
+                            <a href="#"><i class="fi-star"></i> 关注我们</a>
 
-            <div class="top-bar-section">
-                <ul class="menu-section">
-                    <li>
-                        <div class="selected-sign $!{LOOK}">
-                            <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
-                        </div>
-                        <a href="/" class="top-button">
-                            <div class="menu-text">搭配</div>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="selected-sign $!{TOPIC}">
-                            <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
-                        </div>
-                        <a href="/topic" class="top-button">
-                            <div class="menu-text">专题</div>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="selected-sign $!{ABOUT}">
-                            <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
-                        </div>
-                        <a href="/about" class="top-button unsupported-section">
-                            <div class="menu-text">我们</div>
-                        </a>
-                    </li>
-
-                    <li class="selected-sign drop-remove has-dropdown not-click higher-index">
-                        <div class="selected-sign">
-                            <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
-                        </div>
-                        <a href="/about" class="top-button unsupported-section">
-                            <div class="menu-text">关注 & 分享</div>
-                        </a>
-                        <ul class="dropdown"><li class="title back js-generated">
-                            <h5><a href="javascript:void(0)">Back</a></h5>
-                            <li>
-                                <a class="drop-remove drop-options" href="#">
-                                    公众号 &nbsp;
-                                    <img src="images/user/qrcode-gongzhonghao.jpg" alt="LanZhuJue.com"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="drop-remove drop-options" href="#">
-                                    微信分享 &nbsp;
-                                    <img src="images/user/qrcode-home.png" alt="LanZhuJue.com"/>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                            <ul class="submenu menu vertical" data-submenu>
+                                <li>
+                                    <img src="images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fi-shopping-cart"></i> 购物车</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <nav class="bottom-line"></nav>
+        <div class="logo-wrapper row center">
+            <img src="images/user/logo.png" alt="桃源网"/>
+        </div>
+
+
+##        <a class="right-off-canvas-toggle menu-icon redText" data-toggle="offCanvas" href="#">
+##            <span style="margin-left:1rem;"></span>
+##        </a>
+##        <button type="button" class="button" data-toggle="offCanvas">Open Menu</button>
+
+
+
+
+##    <!-- left menu for mobile devices -->
+##    <div class="left-menu">
+##
+##        <nav class="tab-bar show-for-small">
+##            <section class="right-small">
+##                <a class="right-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
+##            </section>
+##            <div class="tab-bar-section">
+##                <img src="images/user/logo2.png">
+##            </div>
+##        </nav>
+##    </div>
+
+
+##        <!-- bigger menu with centered logo -->
+##        <!-- bigger header -->
+##        <nav id="top-bar" class="top-menu-bar hide-for-small">
+##            <div id="top-bar-content">
+##            <span class="title-area">
+##                <a class="logo" href="/">
+##                    <img src="images/user/logo2.png" alt="ZaiTaoYuan.com"/>
+##                </a>
+##            </span>
+##
+##                <div class="top-bar-section">
+##                    <ul class="menu-section">
+##                        <li>
+##                            <div class="selected-sign $!{LOOK}">
+##                                <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
+##                            </div>
+##                            <a href="/" class="top-button $!{LOOK}">
+##                                <div class="menu-text">首页</div>
+##                            </a>
+##                        </li>
+##                        <li>
+##                            <div class="selected-sign $!{TOPIC}">
+##                                <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
+##                            </div>
+##                            <a href="/topic" class="top-button $!{TOPIC}">
+##                                <div class="menu-text">品牌馆</div>
+##                            </a>
+##                        </li>
+##                        <li>
+##                            <div class="selected-sign $!{ABOUT}">
+##                                <img src="http://static.lanzhujue.com/image/user/header/selected.png" alt=""/>
+##                            </div>
+##                            <a href="/about" class="top-button unsupported-section $!{ABOUT}">
+##                                <div class="menu-text">我们</div>
+##                            </a>
+##                        </li>
+##                    </ul>
+##                </div>
+##            </div>
+##        </nav>
+
+        <nav class="bottom-line"></nav>

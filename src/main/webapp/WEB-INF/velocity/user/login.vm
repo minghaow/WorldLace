@@ -1,0 +1,110 @@
+#* @velocityproperties path="/WEB-INF/velocity" *#
+#* @vtlvariable name="pageType" type="nanshen.data.PageType" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+
+#parse("user/header.vm")
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small" id="look-detail-page-content">
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText">未登录用户</a></li>
+                <li><a href="/" class="brandColorText">登陆/注册</a></li>
+                <li>
+                    <span class="show-for-sr">餐具: </span> 高档简约家用套装
+                </li>
+            </ul>
+        </nav>
+
+        #if ($!{error})
+            <div data-alert class="row callout alert radius margin-top" data-closable>
+                <h5>密码错误，登陆失败！</h5>
+                <p>请重试。如果确认密码没有错误，请联系管理员。谢谢您对桃源的支持！</p>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        #end
+
+        <div class="row" data-equalizer>
+            <div class="login-wrapper large-8 columns" data-equalizer-watch>
+                <form action="/auth/login" method="post" id="login-form">
+                    <fieldset class="callout secondary row margin-top">
+                        <legend>登陆 Log In</legend>
+                        <div class="small-12 column large-centered margin-top">
+                            <div class="row collapse prefix-radius margin-top-small">
+                                <div class="small-3 columns">
+                                    <span class="prefix">邮箱</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="email" name="email" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row collapse prefix-radius">
+                                <div class="small-3 columns">
+                                    <span class="prefix">密码</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="password" name="password" type="password" placeholder="password">
+                                </div>
+                            </div>
+                            <input type="submit" class="button postfix margin-top-small" id="login-button" value="登录">
+                            <div class="margin-bottom"></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="register-wrapper large-4 columns" data-equalizer-watch>
+                <form action="/auth/register" method="post" id="register-form">
+                    <fieldset class="callout secondary row margin-top">
+                        <legend>注册 Register</legend>
+                        <div class="large-12 small-12 column large-centered margin-top">
+                            <div class="row collapse prefix-radius margin-top-small">
+                                <div class="small-3 columns">
+                                    <span class="prefix">邮箱</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input id="username_r" name="username" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row collapse prefix-radius">
+                                <div class="small-3 columns">
+                                    <span class="prefix">种类</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <select name="type">
+                                    ##                                    <option value="PRO">职业买手</option>
+                                        <option value="AMATEUR">自由买手</option>
+                                    </select>
+                                </div>
+                            </div>
+                        ##                        <input class="button postfix margin-top-small disabled" value="注册" data-tooltip aria-haspopup="true"
+                        ##                               type="submit" id="register-button"
+                        ##                               data-options="disable_for_touch:true;" title="注意，目前暂时停止注册。如有特殊需求，请联系管理员。">
+                        ##                        <div class="margin-bottom"></div>
+                            <input type="submit" class="button postfix margin-top-small" id="register-button" value="注册">
+                            <div class="margin-bottom"></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+#parse("user/footer.vm")

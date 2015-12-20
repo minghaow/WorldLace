@@ -8,7 +8,7 @@ input[type=search] {
 @media only screen and (min-width: 40.063em) {
     .page-content {
         width: 90%;
-        max-width: 1400px;
+        max-width: 1500px;
         min-height: 300px;
         text-align: center;
         margin: auto;

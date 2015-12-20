@@ -10,8 +10,8 @@
     <import resource="classpath:database/database.xml" />
 
     <!-- security config -->
-    <!--<context:property-placeholder location="classpath:security/security.properties" system-properties-mode="OVERRIDE" ignore-unresolvable="true" />-->
-    <!--<import resource="classpath:security/security.xml" />-->
+    <context:property-placeholder location="classpath:security/security.properties" system-properties-mode="OVERRIDE" ignore-unresolvable="true" />
+    <import resource="classpath:security/security.xml" />
 
     <!-- 加载除Controller以外的其他bean -->
     <context:component-scan base-package="nanshen">

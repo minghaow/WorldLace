@@ -1,12 +1,10 @@
 package nanshen.web.controller.user;
 
 import nanshen.dao.AdminUserInfoDao;
-import nanshen.data.LookInfo;
-import nanshen.data.PageInfo;
-import nanshen.data.PageType;
-import nanshen.data.PublicationStatus;
+import nanshen.data.*;
 import nanshen.service.LookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
+@Secured({AccessAuthority.AUTHORITY_ADMIN})
 public class IndexCtrl extends BaseCtrl {
 
 	@Autowired
@@ -31,7 +30,8 @@ public class IndexCtrl extends BaseCtrl {
 		prepareHeader(model, PageType.LOOK);
 		prepareHelloMsg(model);
 		model.addAttribute("lookInfoList", lookInfoList);
-		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan/");
+//		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan");
+		model.addAttribute("imageUrlPrefix", "");
 		return new ModelAndView("user/list");
 	}
 

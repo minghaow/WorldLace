@@ -6,7 +6,7 @@
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="css/user/list.css"/>
+<link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/list.css"/>
 
 <!-- some hidden infos -->
 <div class="page-info">
@@ -18,13 +18,13 @@
     <div class="banner-slider">
         <ul>
             <li>
-                <img src="${imageUrlPrefix}images/slider/slider3.jpg">
+                <img src="$!{imageUrlPrefix}/images/slider/slider3.jpg">
             </li>
             <li>
-                <img src="${imageUrlPrefix}images/slider/slider2.jpg">
+                <img src="$!{imageUrlPrefix}/images/slider/slider2.jpg">
             </li>
             <li>
-                <img src="${imageUrlPrefix}images/slider/slider1.jpg">
+                <img src="$!{imageUrlPrefix}/images/slider/slider1.jpg">
             </li>
         </ul>
     </div>
@@ -42,7 +42,15 @@
                         <img src="${imageUrlPrefix}images/item/${imgId}.jpg" alt=""/>
                     </a>
                     <div class="item-description">
-                        Tescoma
+                        <div class="item-title">Tescoma Kitchen Stuff</div>
+                        <div class="item-price margin-top-tiny">
+                            <p class="item-price-num-wrapper">
+                                <span class="item-price-num">
+                                    <span class="item-price-num-current">￥199</span>
+                                </span>
+                            </p>
+                            <hr class="item-price-hr">
+                        </div>
                     </div>
                 </li>
             #end
@@ -55,4 +63,4 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-#include("user/footer.vm")
+#parse("user/footer.vm")

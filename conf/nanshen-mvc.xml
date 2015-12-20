@@ -9,7 +9,7 @@
 
     <import resource="classpath:view/view.xml" />
 
-    <!--<import resource="classpath:security/security-mvc.xml" />-->
+    <import resource="classpath:security/security-mvc.xml" />
 
     <mvc:annotation-driven/>
 

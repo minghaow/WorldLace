@@ -39,7 +39,7 @@
             #foreach ($imgId in [1..22])
                 <li class="column" data-equalizer-watch>
                     <a href="/item?itemId=1" class="item-image-wrapper">
-                        <img src="${imageUrlPrefix}images/item/${imgId}.jpg" alt=""/>
+                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
                     </a>
                     <div class="item-description">
                         <div class="item-title">Tescoma Kitchen Stuff</div>

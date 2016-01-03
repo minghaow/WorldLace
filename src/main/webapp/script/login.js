@@ -17,7 +17,7 @@ jQuery( document ).ready(function( $ ) {
             event.preventDefault(); // 阻止默认的表单提交行为
             return;
         }
-        var url = "/auth/login"
+        var url = "/auth/login-check"
         $.ajax({
             url: url,
             type: "POST",

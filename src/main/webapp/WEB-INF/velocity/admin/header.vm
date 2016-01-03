@@ -122,7 +122,7 @@
                     #if ($!{adminUserInfo})
                         <a href="#" data-reveal-id="logoutModal" class="small button">退出登陆</a>
                     #else
-                        <a href="/auth/login" class="small button">登陆</a>
+                        <a href="/auth/login-check" class="small button">登陆</a>
                     #end
 
                     <div id="logoutModal" class="reveal-modal small center" data-reveal>

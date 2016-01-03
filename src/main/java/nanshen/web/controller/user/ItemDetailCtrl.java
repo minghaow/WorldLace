@@ -32,8 +32,8 @@ public class ItemDetailCtrl extends BaseCtrl {
 	public ModelAndView itemDetail(ModelMap model, @RequestParam(defaultValue = "1", required = true) int itemId) {
 		prepareHeader(model, PageType.LOOK_DETAIL);
 		prepareHelloMsg(model);
-		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan/");
-//		model.addAttribute("imageUrlPrefix", "");
+//		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan/");
+		model.addAttribute("imageUrlPrefix", "");
 		return new ModelAndView("user/itemDetail");
 	}
 

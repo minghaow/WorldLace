@@ -32,8 +32,8 @@ public class IndexCtrl extends BaseCtrl {
 		prepareHeader(model, PageType.LOOK);
 		prepareHelloMsg(model);
 		model.addAttribute("lookInfoList", lookInfoList);
-		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan");
-//		model.addAttribute("imageUrlPrefix", "");
+//		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan");
+		model.addAttribute("imageUrlPrefix", "");
 		return new ModelAndView("user/list");
 	}
 

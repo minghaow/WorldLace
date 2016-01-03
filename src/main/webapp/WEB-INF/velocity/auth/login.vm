@@ -8,7 +8,7 @@
 #end
 
 <div class="page-content">
-    <form action="/auth/login" method="post" id="login-form">
+    <form action="/auth/login-check" method="post" id="login-form">
         <fieldset class="panel row margin-top">
             <legend>登陆</legend>
             <div class="large-6 small-12 column large-centered">

@@ -39,7 +39,7 @@
 
         <div class="row" data-equalizer>
             <div class="login-wrapper large-8 columns" data-equalizer-watch>
-                <form action="/auth/login" method="post" id="login-form">
+                <form action="/auth/login-check" method="post" id="login-form">
                     <fieldset class="callout secondary row margin-top">
                         <legend>登陆 Log In</legend>
                         <div class="small-12 column large-centered margin-top">

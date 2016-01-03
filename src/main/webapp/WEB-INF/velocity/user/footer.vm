@@ -19,7 +19,7 @@
 
 
 <script src="$!{imageUrlPrefix}/script/vendor/jquery.min.js"></script>
-<script src="$!{imageUrlPrefix}/script/vendor/foundation.js"></script>
+<script src="/script/vendor/foundation.js"></script>
 <script src="$!{imageUrlPrefix}/script/vendor/unslider-min.js"></script>
 <script>
     $(document).foundation();
@@ -32,8 +32,8 @@
         });
     });
 </script>
-<script src="$!{imageUrlPrefix}/script/vendor/what-input.min.js"></script>
-<script src="$!{imageUrlPrefix}/script/msgModal.js"></script>
-<script src="$!{imageUrlPrefix}/script/user/common.js"></script>
+<script src="/script/vendor/what-input.min.js"></script>
+<script src="/script/msgModal.js"></script>
+<script src="/script/user/common.js"></script>
 </body>
 </html>

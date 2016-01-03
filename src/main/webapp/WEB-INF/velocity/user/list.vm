@@ -6,7 +6,7 @@
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/list.css"/>
+<link rel="stylesheet" href="/css/user/list.css"/>
 
 <!-- some hidden infos -->
 <div class="page-info">

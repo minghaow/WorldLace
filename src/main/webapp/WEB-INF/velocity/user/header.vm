@@ -23,14 +23,14 @@
 
     <!-- style stuff -->
     <link type="image/x-icon" href="$!{imageUrlPrefix}/images/favicon.ico" rel="shortcut icon"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/header.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/footer.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/common.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/tool.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation-icons.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation.min.css" />
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider.css">
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider-dots.css">
+    <link rel="stylesheet" href="/css/user/header.css"/>
+    <link rel="stylesheet" href="/css/user/footer.css"/>
+    <link rel="stylesheet" href="/css/user/common.css"/>
+    <link rel="stylesheet" href="/css/tool.css"/>
+    <link rel="stylesheet" href="/css/foundation-icons.css"/>
+    <link rel="stylesheet" href="/css/foundation.min.css" />
+    <link rel="stylesheet" href="/css/unslider.css">
+    <link rel="stylesheet" href="/css/unslider-dots.css">
 
 </head>
 

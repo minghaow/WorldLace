@@ -1,5 +1,5 @@
 #parse("user/header.vm")
-<link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/topic.css"/>
+<link rel="stylesheet" href="/css/user/topic.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->

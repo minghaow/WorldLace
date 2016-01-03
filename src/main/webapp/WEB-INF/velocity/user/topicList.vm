@@ -229,4 +229,4 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-#include("user/footer.vm")
+#parse("user/footer.vm")

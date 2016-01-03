@@ -18,7 +18,7 @@ public class UserAuthority {
 
     /** 买手ID */
     @Column
-    private long buyerId;
+    private long userId;
 
     /** 添加该权限的人的ID */
     @Column
@@ -34,11 +34,11 @@ public class UserAuthority {
     @ColDefine(type = ColType.VARCHAR)
     private AccessAuthority authority;
 
-    public UserAuthority(long adderId, Date addTime, AccessAuthority authority, long buyerId) {
+    public UserAuthority(long adderId, Date addTime, AccessAuthority authority, long userId) {
         this.adderId = adderId;
         this.addTime = addTime;
         this.authority = authority;
-        this.buyerId = buyerId;
+        this.userId = userId;
     }
 
     public UserAuthority() {
@@ -52,12 +52,12 @@ public class UserAuthority {
         this.id = id;
     }
 
-    public long getBuyerId() {
-        return buyerId;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setBuyerId(long buyerId) {
-        this.buyerId = buyerId;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getAdderId() {

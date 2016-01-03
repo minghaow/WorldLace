@@ -10,7 +10,7 @@
     }
     .detail-description {
         background-color: white;
-        padding: 2rem;
+        padding: 1rem;
     }
 }
 @media only screen and (max-width: 40em) {
@@ -24,6 +24,17 @@
         background-color: white;
         padding: 1.3rem;
     }
+}
+.detail-description img {
+    padding: 0;
+    width: 100%;
+}
+.detail-description ul li a {
+    font-size: 14px;
+    font-weight: 600;
+}
+.detail-description .tabs, .tabs-content {
+    border: 1px solid #A7866A;
 }
 .price-wrapper .price-before {
     text-decoration: line-through;

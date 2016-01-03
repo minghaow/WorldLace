@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/footer.css"/>
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/common.css"/>
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/tool.css"/>
-    <link rel="stylesheet" href="/css/foundation-icons.css"/>
+    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation-icons.css"/>
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation.min.css" />
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider.css">
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider-dots.css">
@@ -55,7 +55,7 @@
             <div class="top-bar" id="top-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
-                        <li class="menu-text">有我相伴，家似桃源！</li>
+##                        <li class="menu-text">有我相伴，家似桃源！</li>
                     </ul>
                 </div>
                 <div class="top-bar-right">
@@ -75,8 +75,18 @@
             </div>
         </div>
 
-        <div class="logo-wrapper row center">
-            <img src="$!{imageUrlPrefix}/images/user/logo.png" alt="桃源网"/>
+        <div class="menu-wrapper clearfix">
+            <div class="logo-wrapper float-left">
+                <img src="$!{imageUrlPrefix}/images/user/logo3.png" alt="桃源网"/>
+            </div>
+
+            <div class="header-menu float-right hide-for-small-only">
+                <ul class="menu align-right">
+                    <li><a href="/">我们</a></li>
+                    <li><a href="/topic">专题</a></li>
+                    <li><a href="/">首页</a></li>
+                </ul>
+            </div>
         </div>
 
         <nav class="bottom-line"></nav>

@@ -1,4 +1,5 @@
 #parse("user/header.vm")
+<link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/topic.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -7,154 +8,216 @@
 </div>
 
 <!-- page contents -->
-<div class="margin-top" id="topic-page-content">
+<div class="page-content margin-top-small" id="topic-page-content">
+
     <div class="row">
-        <div class="large-12">
-            <img src="http://static.lanzhujue.com/images/topic/1/head-pic.jpg"></img>
+        <div class="large-11 small-12 large-centered small-centered columns">
+            <nav aria-label="You are here:" role="navigation">
+                <ul class="breadcrumbs">
+                    <li><a href="/" class="brandColorText">专题列表页</a></li>
+                    <li>
+                        <span class="show-for-sr">餐具: </span> 红酒专题
+                    </li>
+                </ul>
+            </nav>
         </div>
+
+        <div class="large-10 columns large-centered">
+            <img src="$!{imageUrlPrefix}/images/topic/0/0.jpg"></img>
+        </div>
+
         <div class="large-12 columns" style="background-color:#ffffff;">
             <div class="row" style="padding-top:40px;">
-                <div class="large-8 small-12 large-centered small-centered columns">
+                <div class="large-10 small-12 large-centered small-centered columns">
                     <h5 style="color:#777;">
-                        <span style="background-color:#3A67DB;color:#3A67DB;">1</span> 派克大衣—Parka Jacket
+                        <span style="background-color:#A7866A;color:#A7866A;">1</span> 几百块的葡萄酒，你却在用一次性杯子喝。
                     </h5>
                 </div>
             </div>
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
+                <div class="large-10 small-12 large-centered small-centered columns">
                     <p style="color:#aaa;">
-                        北极地区的爱斯基摩人需要对抗极端的低温和风雪，还要在冰冷的水上打猎作业，于是他们发明了最早的风雪派克大衣。因为它在欧洲和美国被广泛地叫做“parka”，在中国亦有派克大衣的叫法。
-                        爱斯基摩人的风雪大衣原型，是没有前开襟的套头式厚重兽皮大衣（以驯鹿和海豹皮为主），它的标志是连在大衣上、围着一圈皮毛的帽子，可以为头部和脸颊抵御严寒。</p>
+                        这几款高脚杯，让你把一百的红酒喝出一千的味道。前几天去朋友家吃饭，朋友开了瓶不错的红酒，但却没有红酒杯。结果竟然用纸杯给我们喝酒。500块的红酒瞬间喝成了50块的感觉。
+                        今天就来推荐几款红酒杯。
+                    </p>
+                    <p style="color:#aaa;">
+                        说葡萄酒杯，先帮你区分一下市面上的玻璃杯和水晶杯吧。玻璃杯就是普通的玻璃制作的杯子。普通一点的采用拼接的工艺，玻璃透明度也不高，售价几块到十几块。好一点的玻璃杯会采用一体成型的工艺，玻璃材料可能也经过钢化处理。售价一般在十几元到二三十元不等。
+                        比玻璃杯好一点的就是水晶杯了。但是水晶杯并不是水晶做的杯子，水晶杯指的是用水晶玻璃做的杯子。水晶玻璃是在普通玻璃中加入含量较高的铅，使得杯子的通透度得到极大的提升，清澈度接近玻璃，所以叫做水晶杯。
+                    </p>
+                    <p style="color:#aaa;">
+                        现在人们越来越重视餐具安全，因此传统的水晶杯中的铅收到了环保人士的质疑，所以现在比较好的水晶杯品牌都逐渐用钡、锆、锌、钛等元素代替铅生产更健康的无铅水晶。
+                    </p>
+                    <p style="color:#aaa;">
+                        我们如果去买红酒杯，一般会看到一排的高脚杯，估计你又开始眼花了。我在这里还是先普及一下这一串红酒杯是做什么的。
+                    </p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="color:#aaa;">
-                        Parka大衣的外形同时也应用于军装系列当中，二战期间，美国和英国都采用了Parka型大衣来当作军装，并且改良了爱斯基摩人使用皮草的材质而改换成了更为廉价的布料，但是帽子的皮草还是继续延续了下来！</p>
+                <div class="large-8 small-6 large-offset-1 columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/1.jpg" style="margin-bottom:20px;"></img>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="large-6 small-6 large-offset-1 columns">
-                    <img src="http://static.lanzhujue.com/images/topic/1/parka-pic.jpg" style="margin-bottom:20px;"></img>
-                </div>
-                <div class="large-4 small-4 columns end">
+                <div class="large-2 small-4 columns end">
                     <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
-                        Parka可以套在正装外外，保暖而不失时尚，同样还可以内搭圆领或开襟毛衫、衬衫等多种单品，我们很少看到有勇敢的骚年像下图小哥那样将parka的毛绒兜帽的保暖性发挥的如此淋漓尽致，除非对自己的发型或发胶足够自信(*^__^*）....</p>
+                        一般来说最大的两个一个是波尔多杯，一个是勃艮第杯。单看杯身：杯身较高，杯口较窄的是波尔多杯。杯身较矮，肚子大而圆的是勃艮第杯。除去最突出的两个杯子剩下最大的一个杯子就是红酒杯了，一般这种杯子都是中规中矩，但是基本能盛装各种类型的红酒。再下面一个比红酒杯矮一点，肚子瘦一点的就是白葡萄酒杯。剩下一个杯身细长，就是香槟杯了，标准的香槟杯杯底会有一个尖的凹点，当装入香槟时，气泡好像是从这个点冒出来的一样。</p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
+                <div class="large-10 small-12 large-centered small-centered columns">
                     <p style="color:#aaa;">
-                        当代的Parka大衣已经没有了曾经的爱斯基摩的雏形，而是从军装中演化过来的非套头式前开襟大衣，在设计师们不断的演绎之下，Parka大衣已经与最初的服装南辕北辙！但其百搭的特性及兜帽旁边粘着的那一圈毛，永远是Parka大衣不可磨灭的一部分。</p>
+                        最后给大家推荐几款高脚杯。
+                    </p>
                 </div>
             </div>
-
 
             <div class="row" style="padding-top:40px;">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 单宁外套-—Denim Coat
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;">
+                        <span style="background-color:#A7866A;color:#A7866A;">1</span> 诗杯客乐 雅典娜
                     </h5>
                 </div>
             </div>
 
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="color:#aaa;">“丹宁”是个外来语，英语原词是“DENIM”，意思就是斜纹织法的，靛蓝染色的粗斜纹布，现在也叫做牛仔布。也就是说，所有的牛仔服都是丹宁布。
-                        JEAN和DENIM其实指的是一种布料，JEAN是因为意大利的裁缝而得名，而DENIM则是从法语里SERGE DE
-                        NIMES而来。所以jean和denim是不同地区对牛仔面料的各自习惯性叫法。</p>
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">诗杯客乐：SPIEGELAU创立于1521年，与德国巴伐利亚森林里的诗杯客乐小镇同名。是世界上最古老的，也是最著名的水晶酒具生产商之一。</p>
+                    <p style="color:#aaa;">先来说说诗杯客乐的高端系列：雅典娜，这个系列的酒杯都是人工吹制的无铅水晶杯，造型优美。</p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <img src="http://static.lanzhujue.com/images/topic/1/denim-pic.jpeg"
-                         style="margin-bottom:20px;max-width:500px;"></img>
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/2.jpg"
+                         style="margin-bottom:20px;max-width:800px;"></img>
                 </div>
             </div>
 
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
+                <div class="large-10 small-12 large-centered small-centered columns">
                     <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
-                        从来不曾缺席众多时髦男女时尚衣橱里的单宁元素，其颜色及款式的丰富也超过了任意一种服装类单品。除了常见的外搭穿法，内搭以及中层搭配都有出众的效果。可与blazer西装，羽绒棉袄等多类型服饰完美相搭。设计师们还赋予了单宁元素更多的生命力，白色翻毛衣领最为常见，既增加了保暖性，色差还使单宁外套更具活力。</p>
+                        诗杯客乐的高端系列：雅典娜
+                    </p>
                 </div>
             </div>
-
 
             <div class="row" style="padding-top:40px;">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 棒球衫-—Varsity
-                        Jacket</h5>
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;">
+                        <span style="background-color:#A7866A;color:#A7866A;">1</span> 诗杯客乐 文艺复兴
+                    </h5>
                 </div>
             </div>
 
             <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">诗杯客乐旗下还有一个我自己非常喜欢的系列。文艺复兴系列酒杯是酒具行业中唯一一款利用激光在水晶杯上雕花的产品，诗杯客乐顶级的制造工艺在这款杯型上体现得淋漓尽致，非常值得收藏而且能体现个人品味。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/3.jpg"
+                         style="margin-bottom:20px;max-width:800px;"></img>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        诗杯客乐的高端系列：文艺复兴
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;">
+                        <span style="background-color:#A7866A;color:#A7866A;">1</span> Chef&Sommelier 绽放系列
+                    </h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">Chef&Sommelier   是100%为餐厅与红酒专业人士量身定制。全新采用的Kwarx材质制成的酒杯，是完全透明的，可以让你领略葡萄酒的无穷魅力。绽放系列向上收口的造型，令香气释放更集中。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/4.jpg"
+                         style="margin-bottom:20px;max-width:800px;"></img>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        Chef&Sommelier 绽放系列
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">下图中，可以看到在《奔跑吧，兄弟中》，原SHE成员Eva手拿此杯，酒杯中虽然只是水，但是依然可以感觉到其晶莹剔透的感觉。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/7.jpg"
+                         style="margin-bottom:20px;max-width:800px;"></img>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;">
+                        <span style="background-color:#A7866A;color:#A7866A;">1</span> CRISTAL DARQUES 情迷钻石系列
+                    </h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="color:#aaa;">CRISTAL DARQUES  情迷钻石系列，不用过多描述，国宴专用，习近平、彭丽媛专享。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-6 small-12 columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/5.jpg"
+                         style="margin-bottom:20px;"></img>
+                </div>
+                <div class="large-6 small-12 columns">
+                    <img src="$!{imageUrlPrefix}/images/topic/0/6.jpg"
+                         style="margin-bottom:20px;"></img>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
+                        CRISTAL DARQUES 情迷钻石系列
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top:40px;">
+                <div class="large-10 small-12 large-centered small-centered columns">
+                    <h5 style="color:#777;">
+                        <span style="background-color:#A7866A;color:#A7866A;">1</span> 总结回顾
+                    </h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-10 small-12 large-centered small-centered columns">
                     <p style="color:#aaa;">
-                        棒球衫，最早出现在1849年的Knickerbockers棒球俱乐部，目的是为了标明不同的队伍。作为简约又好搭的基本款，标准美式范儿棒球衫最突出的特点就是在左胸口处有标志性的英文字母点缀。学院风近几年在时尚圈愈发风生水起，无论你是否还是在校学生，在这个拼嫩的年代，拥有一款学生气十足的棒球外套绝对是非常必要的。棒球外套可以说是日常必备的外套单品，不仅可以展现出你年轻活力的一面，而且款式多样，十分好搭配，各种风格都能统统hold住。</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <img src="http://static.lanzhujue.com/images/topic/1/varsity-pic.jpeg" style="margin-bottom:20px;max-width:500px;"></img>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
-                        如果提到和棒球衫最搭的单品，那么棒球帽一定是首选。看看下面这位小哥，身着纯黑皮质改良varsity jacket，头戴相同材质的boston棒球帽，简直是逼格帅气直冲云霄~</p>
-                </div>
-            </div>
-
-
-            <div class="row" style="padding-top:40px;">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 单排扣风衣—Single
-                        Breasted Coat</h5>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="color:#aaa;">
-                        女人都有一条小黑裙作为衣柜中的不变应万变的法宝，男人的单排扣大衣也正如女人的小黑裙一样，很少有男人穿上它不好看。修身利落的版型没有一分多余的杂质，始终是时髦男性的有型装扮。较双排扣大衣而言，单排扣更显简约，阳刚之气，通常是英汉型男外出必备。</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <img src="http://static.lanzhujue.com/images/topic/1/single-pic.jpeg"
-                         style="margin-bottom:20px;max-width:500px;"></img>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
-                        除了内搭正装，你也可以像贝克汉姆一样，把羊绒单排扣大衣穿得很休闲但不懒散。在黑色的单排扣大衣里穿上简单的灰色毛衣，下半身选择深色的牛仔裤和Chukka靴。颜色上偏向深色的统一让即使是休闲款的单品也不会显得太松垮;海军蓝+牛皮棕是经典“低调精致”的颜色搭配。当然，那条绿色围巾也是画龙点睛之笔。</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="color:#aaa;">长款或短款的单排扣大衣可以根据各自身高实际情况来挑选，短款也同样能凸显长腿欧巴的优势。但需要注意的是，衣长最好不要过膝，否则。。。</p>
-                </div>
-            </div>
-
-            <div class="row" style="padding-top:40px;">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <h5 style="color:#777;"><span style="background-color:#3A67DB;color:#3A67DB;">1</span> 总结回顾</h5>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-8 small-12 large-centered small-centered columns">
-                    <p style="color:#aaa;">让我们回顾一下本节课蓝主角老师给同学们介绍的四款外套品类，Parka Jacket、Denim Coat、Varsity Jacket、Single
-                        Breasted
-                        Coat，希望大家能够记牢背熟，当然理论需要与实践相结合，除了走在路上能够逼格满满的在女票面前熟练的叫出各类秋冬外套的所属品类外，更希望大家能够入手些自己认为合适自己风格的单品。主页君为了给各位省些流量（上方高清大图高能预警），小编将在下篇中介绍更多的外套品类给大家，敬请期待。</p>
+                        今天介绍了几款酒杯，都是提升逼格的利器，乃是请客送礼必备之良品。大家是否get到？赶快联系我们购买吧。
+                    </p>
                 </div>
             </div>
         </div>

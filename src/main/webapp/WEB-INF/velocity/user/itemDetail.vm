@@ -71,8 +71,48 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
+        <div class="row"></div>
+
+        <div class="detail-description">
+            <ul class="tabs" data-tabs id="detail-tabs">
+                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true" class="brandColorText">商品详情</a></li>
+                <li class="tabs-title"><a href="#panel2" class="brandColorText">用户评论</a></li>
+                <li class="tabs-title"><a href="#panel3" class="brandColorText">下单必读</a></li>
+            </ul>
+
+            <div class="tabs-content" data-tabs-content="detail-tabs">
+                <div class="tabs-panel is-active" id="panel1">
+                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/0.jpg" alt=""/>
+                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/1.jpg" alt=""/>
+                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/2.jpg" alt=""/>
+                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/3.jpg" alt=""/>
+                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/4.jpg" alt=""/>
+                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/5.jpg" alt=""/>
+                </div>
+
+                <div class="tabs-panel" id="panel2">
+                    <div class="row">
+                        <div class="large-3 columns">
+                            User Information
+                        </div>
+                        <div class="large-9 columns">
+                            User Comments
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs-panel" id="panel3">
+                    <div class="row">
+                        <p>
+                            <div class="margin-top-small greyText">硬质瓷其实是我们中国最传统的陶瓷，我们的五大名窑，明清的宫廷瓷器都属于硬质瓷。硬质瓷的组分中高岭土含量较多，长石及其他熔剂物质较少，成瓷温度比较高，一般在1320-1450之间，瓷及釉面硬度比其他瓷高一点。</div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
@@ -90,4 +130,4 @@
 </script>
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
 <!-- JiaThis Button END -->
-#include("user/footer.vm")
+#parse("user/footer.vm")

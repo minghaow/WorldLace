@@ -8,7 +8,7 @@ header {
     padding: 22px 0;
 }
 .logo-wrapper img {
-    height: 120px;
+    height: 80px;
 }
 .top-bar#top-bar {
     background-color: white;
@@ -36,4 +36,27 @@ header {
     height: 3px;
     background-color: #A7866A;
     z-index: 100;
+}
+.header-menu ul li a {
+    color: #A7866A;
+    margin: 0 40px;
+    font-weight: 600;
+}
+.header-menu ul {
+    margin-top: 2.5rem;
+}
+@media only screen and (min-width: 40.063em) {
+    .menu-wrapper {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 40em) {
+    .menu-wrapper .row .columns {
+        padding: 0;
+    }
+    .menu-wrapper {
+        width: 99%;
+    }
 }

@@ -30,14 +30,10 @@ public class ItemDetailCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView itemDetail(ModelMap model, @RequestParam(defaultValue = "1", required = true) int itemId) {
-//		LookInfo lookInfo = lookService.get(itemId);
-//		if (lookInfo != null) {
-//			prepareExistingLookInfo(model, lookInfo);
-//		}
-//		model.addAttribute("success", lookInfo != null);
 		prepareHeader(model, PageType.LOOK_DETAIL);
 		prepareHelloMsg(model);
 		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan/");
+//		model.addAttribute("imageUrlPrefix", "");
 		return new ModelAndView("user/itemDetail");
 	}
 

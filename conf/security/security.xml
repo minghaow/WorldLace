@@ -13,8 +13,8 @@
         <security:intercept-url pattern="/**" requires-channel="any"/>
         <security:session-management />
         <security:form-login
-                login-page="/auth/login"
-                login-processing-url="/auth/login"
+                login-page="/auth/login_page"
+                login-processing-url="/auth/login-check"
                 authentication-success-handler-ref="springAuthenticationSuccessHandler"
                 authentication-failure-handler-ref="springAuthenticationFailureHandler"
                 username-parameter="email"

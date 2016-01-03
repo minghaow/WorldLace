@@ -26,9 +26,6 @@ input[type=search] {
 .page-info {
     display: none;
 }
-.row {
-    max-width: 95% !important;
-}
 .row .row {
     margin-left: auto !important;
     margin-right: auto !important;

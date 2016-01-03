@@ -34,7 +34,7 @@
                 <ul>
                     #foreach ($imgId in [1..3])
                         <li>
-                            <img src="${imageUrlPrefix}images/item/${imgId}.jpg" alt=""/>
+                            <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
                         </li>
                     #end
                 </ul>

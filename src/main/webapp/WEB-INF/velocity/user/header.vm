@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/footer.css"/>
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/common.css"/>
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/tool.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation-icons.css"/>
+    <link rel="stylesheet" href="/css/foundation-icons.css"/>
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation.min.css" />
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider.css">
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider-dots.css">

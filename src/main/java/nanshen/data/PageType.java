@@ -11,9 +11,9 @@ public enum PageType {
 
     HOME("首页", false),
 
-    LOOK("搭配", true),
+    ITEM_LIST("列表页", true),
 
-    LOOK_DETAIL("搭配详情", false),
+    ITEM_DETAIL("详情页", false),
 
     CATEGORY("分类", true),
 

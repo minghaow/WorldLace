@@ -29,7 +29,7 @@ public class IndexCtrl extends BaseCtrl {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView printWelcomeTest(ModelMap model) {
 		List<LookInfo> lookInfoList = lookService.getAll(PublicationStatus.ONLINE, new PageInfo(0));
-		prepareHeader(model, PageType.LOOK);
+		prepareHeader(model, PageType.ITEM_LIST);
 		prepareHelloMsg(model);
 		model.addAttribute("lookInfoList", lookInfoList);
 		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan");

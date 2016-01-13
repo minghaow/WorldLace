@@ -10,13 +10,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    #if ($!{pageType} == "LOOK_DETAIL")
+    #if ($!{pageType} == "ITEM_DETAIL")
         <title>$!{lookInfo.title}</title>
-        <meta name="keywords" content="桃源网，高端大气上档次的餐厨用品专家" />
-        <meta name="description" content="$!{lookInfo.description}" />
+        <meta name="keywords" content="餐厨用品，高端餐具，高端厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子" />
+        <meta name="description" content="$!{skuInfo.description}" />
     #else
         <title>桃源网 - 首页</title>
-        <meta name="keywords" content="桃源网，高端大气上档次的餐厨用品专家" />
+        <meta name="keywords" content="餐厨用品，高端餐具，高端厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子" />
         <meta name="description" content="桃源网，高端大气上档次的餐厨用品专家。" />
     #end
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,6 +31,16 @@
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation.min.css" />
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider.css">
     <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider-dots.css">
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?0046db19a6dddc653c19626e40dcc59b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 </head>
 

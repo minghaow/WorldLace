@@ -38,10 +38,12 @@
 }
 .price-wrapper .price-before {
     text-decoration: line-through;
+    letter-spacing: -1px;
     color: grey;
 }
 .price-wrapper .price-after {
-    color: red;
+    letter-spacing: -1px;
+    color: #ec5840;
 }
 .look-detail-slider {
     left: 0 !important;
@@ -56,12 +58,6 @@
     text-align: center;
     margin: auto;
 }
-input.labelauty + label {
-    padding: 7px;
-}
-input.labelauty + label .labelauty-unchecked {
-    color: black;
-}
 #detail-jiathis .jiathis_style .jiathis_counter.jiathis_bubble_style {
     width: 36px !important;
 }
@@ -69,4 +65,7 @@ input.labelauty + label .labelauty-unchecked {
     display: inline-block !important;
     line-height: 1.2rem !important;
     float: none;
+}
+.detail-image-slider .banner-slider ul li:not(:first-child) {
+    display: none;
 }

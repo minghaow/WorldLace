@@ -59,7 +59,15 @@ public interface SkuService {
      * @param skuId skuId
      * @return
      */
-    SkuInfo get(long skuId);
+    SkuInfo getSkuInfo(long skuId);
+
+    /**
+     * Get sku detail by skuId
+     *
+     * @param skuId skuId
+     * @return
+     */
+    SkuDetail getSkuDetail(long skuId);
 
     /**
      * Get sku info by skuId. Create one if find nothing.

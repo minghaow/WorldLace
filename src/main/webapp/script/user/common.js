@@ -9,4 +9,6 @@ jQuery( document ).ready(function( $ ) {
         presentSuccessModal("抱歉！", "本功能仍然处于开发状态，敬请期待！");
     });
 
+    $(".detail-image-slider .banner-slider ul li").show();
+
 });

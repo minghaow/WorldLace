@@ -2,10 +2,7 @@ package nanshen.web.controller.user;
 
 import nanshen.dao.AdminUserInfoDao;
 import nanshen.data.LookInfo;
-import nanshen.data.PageInfo;
 import nanshen.data.PageType;
-import nanshen.data.PublicationStatus;
-import nanshen.service.LookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,16 +20,13 @@ public class IndexCtrl extends BaseCtrl {
 	@Autowired
 	private AdminUserInfoDao adminUserInfoDao;
 
-	@Autowired
-	private LookService lookService;
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView printWelcomeTest(ModelMap model) {
-		List<LookInfo> lookInfoList = lookService.getAll(PublicationStatus.ONLINE, new PageInfo(0));
+		List<LookInfo> lookInfoList = null;
 		prepareHeader(model, PageType.ITEM_LIST);
 		prepareHelloMsg(model);
 		model.addAttribute("lookInfoList", lookInfoList);
-		model.addAttribute("imageUrlPrefix", "http://static.lanzhujue.com/taoyuan");
+		model.addAttribute("imageUrlPrefix", "http://image.zaitaoyuan.com");
 //		model.addAttribute("imageUrlPrefix", "");
 		return new ModelAndView("user/list");
 	}

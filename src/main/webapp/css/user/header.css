@@ -8,48 +8,50 @@ header {
     padding: 22px 0;
 }
 .logo-wrapper img {
-    height: 80px;
-}
-.top-bar#top-bar {
-    background-color: white;
-    padding: .2rem;
-}
-.top-bar#top-bar ul {
-    background-color: white;
-}
-.top-bar#top-bar ul .menu-text {
-    font-family:STXingkai,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
-    font-size: 1.2rem;
-    padding: .2rem 1rem;
-    font-weight: 400;
-    color: #A7866A;
-}
-.top-bar#top-bar ul li a {
-    padding: .2rem 1rem;
-    font-size: small;
-    color: #A7866A;
-}
-.top-bar-right .dropdown.menu .has-submenu.is-down-arrow>a::after {
-    display: none;
+    height: 140px;
 }
 .bottom-line {
     height: 3px;
     background-color: #A7866A;
     z-index: 100;
 }
-.header-menu ul li a {
-    color: #A7866A;
-    margin: 0 40px;
-    font-weight: 600;
-}
 .header-menu ul {
-    margin-top: 2.5rem;
+    margin-top: 4.5rem;
 }
 @media only screen and (min-width: 40.063em) {
     .menu-wrapper {
         width: 90%;
         max-width: 1200px;
         margin: auto;
+        text-align: center;
+        padding: 1rem 0 0.5rem 0;
+    }
+    .superHeader,
+    .top-bar#top-bar,
+    .top-bar#top-bar ul {
+        background-color: rgb(225, 210, 198);
+    }
+    .top-bar#top-bar {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        padding: .2rem;
+    }
+    .top-bar#top-bar ul .menu-text {
+        font-family:STXingkai,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+        font-size: 1rem;
+        padding: .2rem 1rem;
+        font-weight: 300;
+        color: #A7866A;
+    }
+    .top-bar#top-bar ul li a {
+        padding: .2rem 0.7rem;
+        font-weight: 300;
+        font-size: 0.8rem;
+        color: #A7866A;
+    }
+    .top-bar-right .dropdown.menu .has-submenu.is-down-arrow>a::after {
+        display: none;
     }
 }
 @media only screen and (max-width: 40em) {

@@ -18,13 +18,19 @@
     <div class="banner-slider">
         <ul>
             <li>
-                <img src="$!{imageUrlPrefix}/images/slider/slider3.jpg">
+                <a href="/topic" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider4.jpg">
+                </a>
             </li>
             <li>
-                <img src="$!{imageUrlPrefix}/images/slider/slider2.jpg">
+                <a href="/topic" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider5.jpg">
+                </a>
             </li>
             <li>
-                <img src="$!{imageUrlPrefix}/images/slider/slider1.jpg">
+                <a href="/topic" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider6.jpg">
+                </a>
             </li>
         </ul>
     </div>
@@ -34,9 +40,64 @@
 <!-- page contents -->
 <div class="page-content">
 
-    <div class="item-list" >
+    <div class="row list-tagger clearfix">
+        <div class="center">
+            -------------------------- [ 新上精品 ] --------------------------
+        </div>
+        <div class="float-right">
+        </div>
+    </div>
+    <div class="item-list margin-top-tiny">
         <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
-            #foreach ($imgId in [1..22])
+            #foreach ($imgId in [1..1])
+                <li class="column" data-equalizer-watch>
+                    <a href="/item?itemId=1" class="item-image-wrapper">
+                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
+                    </a>
+                    <div class="item-description">
+                        <div class="item-title">樱花线条碗【四碗四筷精装套装】</div>
+                        <div class="item-price margin-top-tiny">
+                            <p class="item-price-num-wrapper">
+                                <span class="item-price-num">
+                                    <span class="item-price-num-current">￥280</span>
+                                </span>
+                            </p>
+                            <hr class="item-price-hr">
+                        </div>
+                    </div>
+                </li>
+            #end
+            #foreach ($imgId in [2..4])
+                <li class="column" data-equalizer-watch>
+                    <a href="/item?itemId=1" class="item-image-wrapper">
+                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
+                    </a>
+                    <div class="item-description">
+                        <div class="item-title">Tescoma Kitchen Stuff</div>
+                        <div class="item-price margin-top-tiny">
+                            <p class="item-price-num-wrapper">
+                                <span class="item-price-num">
+                                    <span class="item-price-num-current">￥199</span>
+                                </span>
+                            </p>
+                            <hr class="item-price-hr">
+                        </div>
+                    </div>
+                </li>
+            #end
+        </ul>
+    </div>
+
+    <div class="row list-tagger clearfix">
+        <div class="center">
+            -------------------------- [ 经典款 ] --------------------------
+        </div>
+        <div class="float-right">
+        </div>
+    </div>
+    <div class="item-list margin-top-tiny">
+        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
+            #foreach ($imgId in [5..22])
                 <li class="column" data-equalizer-watch>
                     <a href="/item?itemId=1" class="item-image-wrapper">
                         <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>

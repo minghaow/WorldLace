@@ -2,7 +2,7 @@
 #* @vtlvariable name="CATEGORY" type="java.lang.String" *#
 #* @vtlvariable name="TOPIC" type="java.lang.String" *#
 #* @vtlvariable name="ABOUT" type="java.lang.String" *#
-#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     #if ($!{pageType} == "ITEM_DETAIL")
-        <title>$!{lookInfo.title}</title>
+        <title>$!{skuInfo.title}</title>
         <meta name="keywords" content="餐厨用品，高端餐具，高端厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子" />
         <meta name="description" content="$!{skuInfo.description}" />
     #else
@@ -55,7 +55,7 @@
             <li><label class="first">桃源</label></li>
             <li><a href="/">首页</a></li>
             <li><a href="/topic">品牌馆</a></li>
-            <li><a href="/about">关于我们</a></li>
+            <li><a href="/">关于我们</a></li>
         </ul>
     </div>
 
@@ -65,11 +65,13 @@
             <div class="top-bar" id="top-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
-##                        <li class="menu-text">有我相伴，家似桃源！</li>
+                        <li class="menu-text">幸福生活，从桃源餐厨用品开始！</li>
                     </ul>
                 </div>
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu>
+                        <li><a href="#"><i class="fi-torso"></i> 登陆</a></li>
+                        <li><a href="#"><i class="fi-check"></i> 注册</a></li>
                         <li class="has-submenu is-dropdown-submenu-parent opens-left">
                             <a href="#"><i class="fi-star"></i> 关注我们</a>
 
@@ -79,23 +81,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="fi-shopping-cart"></i> 购物车</a></li>
+                        <li><a href="#"><i class="fi-shopping-cart"></i> 购物车(0)</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="menu-wrapper clearfix">
-            <div class="logo-wrapper float-left">
-                <img src="$!{imageUrlPrefix}/images/user/logo3.png" alt="桃源网"/>
-            </div>
-
-            <div class="header-menu float-right hide-for-small-only">
-                <ul class="menu align-right">
-                    <li><a href="/">我们</a></li>
-                    <li><a href="/topic">专题</a></li>
-                    <li><a href="/">首页</a></li>
-                </ul>
+        <div class="menu-wrapper">
+            <div class="logo-wrapper">
+                <a href="/">
+                    <img src="$!{imageUrlPrefix}/images/user/logo.png" alt="桃源网"/>
+                </a>
             </div>
         </div>
 

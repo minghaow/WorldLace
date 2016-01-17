@@ -2,6 +2,7 @@ package nanshen.service.impl;
 
 import nanshen.constant.SystemConstants;
 import nanshen.constant.TimeConstants;
+import nanshen.dao.SkuDetailDao;
 import nanshen.dao.SkuInfoDao;
 import nanshen.data.*;
 import nanshen.service.SkuService;
@@ -28,6 +29,9 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Autowired
     private SkuInfoDao skuInfoDao;
+
+    @Autowired
+    private SkuDetailDao skuDetailDao;
 
     @Autowired
     private OssFormalApi ossFormalApi;
@@ -75,7 +79,6 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     public ExecInfo update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
         SkuInfo skuInfo = skuInfoDao.get(skuId);
         skuInfo.setStatus(PublicationStatus.OFFLINE);
-        skuInfo.setDetailType(category);
         skuInfo.setTitle(title);
         skuInfo.setSubTitle(subTitle);
         skuInfo.setUrl(url);
@@ -106,17 +109,27 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public SkuInfo get(long skuId) {
-        return skuInfoDao.get(skuId);
+    public SkuInfo getSkuInfo(long skuId) {
+        SkuDetail skuDetail = getSkuDetail(skuId);
+        SkuInfo skuInfo = skuInfoDao.get(skuId);
+        if (skuInfo != null) {
+            skuInfo.setSkuDetail(skuDetail);
+        }
+        return skuInfo;
+    }
+
+    @Override
+    public SkuDetail getSkuDetail(long skuId) {
+        return skuDetailDao.get(skuId);
     }
 
     @Override
     public SkuInfo getOrCreateSkuInfo(long skuId, long operatorId) {
-        if (skuId == 0) {
-            return skuInfoDao.insert(new SkuInfo(operatorId));
-        } else {
+//        if (skuId == 0) {
+//            return skuInfoDao.insert(new SkuInfo(operatorId));
+//        } else {
             return skuInfoDao.get(skuId);
-        }
+//        }
     }
 
     @Override
@@ -184,7 +197,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
         for (String skuId : skuIdArray) {
             Long skuIdLong = Long.parseLong(skuId);
-            SkuInfo skuInfo = get(skuIdLong);
+            SkuInfo skuInfo = getSkuInfo(skuIdLong);
             if (skuInfo == null) {
                 return ExecInfo.fail("抱歉，根据所提供的ID: " + skuId + "，未找到该单品");
             }
@@ -197,20 +210,20 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     private void updateSkuLookInfo(long lookId, List<SkuInfo> resultSkuInfoList) {
-        for (SkuInfo skuInfo : resultSkuInfoList) {
-            if (skuInfo.getLookId() == 0 || skuInfo.getLookId() == lookId) {
-                skuInfo.setLookId(lookId);
-                update(skuInfo);
-            }
-        }
+//        for (SkuInfo skuInfo : resultSkuInfoList) {
+//            if (skuInfo.getLookId() == 0 || skuInfo.getLookId() == lookId) {
+//                skuInfo.setLookId(lookId);
+//                update(skuInfo);
+//            }
+//        }
     }
 
     private void clearSkuLookInfo(long lookId) {
-        List<SkuInfo> skuInfoList = getByLookId(lookId);
-        for (SkuInfo skuInfo : skuInfoList) {
-            skuInfo.setLookId(0);
-            update(skuInfo);
-        }
+//        List<SkuInfo> skuInfoList = getByLookId(lookId);
+//        for (SkuInfo skuInfo : skuInfoList) {
+//            skuInfo.setLookId(0);
+//            update(skuInfo);
+//        }
     }
 
     private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, SkuInfo skuInfo) {

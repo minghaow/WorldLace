@@ -1,7 +1,7 @@
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
-#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 #* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
@@ -32,9 +32,9 @@
         <div class="large-6 medium-6 small-12 columns detail-image-slider">
             <div class="banner-slider">
                 <ul>
-                    #foreach ($imgId in [1..3])
+                    #foreach ($imgId in [0..1])
                         <li>
-                            <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
+                            <img src="${imageUrlPrefix}/images/item/itemHead/${imgId}.jpg" alt=""/>
                         </li>
                     #end
                 </ul>
@@ -45,29 +45,37 @@
             <div class="detail-description text-left">
                 <div class="clearfix">
                     <div class="float-left">
-                        <h3 class="greyText"><span style="color:#454545;">高档家用套装</span></h3>
-                    </div>
-                    <div class="price-wrapper float-right">
-                        <h3 class="brandColorText">
-                            <span class="price-before">￥299</span>
-                            <span class="price-after">￥299</span>
-                        </h3>
+                        <h3 class="greyText"><span style="color:#454545;">$!{skuInfo.title}</span></h3>
+                        <div class="redText">$!{skuInfo.subTitle}</div>
                     </div>
                 </div>
 
-##                <span class="success label round"><i class="fi-like"> </i>店长推荐</span>
-                <span class="warning label"><i class="fi-alert"> </i>最后 3 套</span>
-##                <span class="alert label"><i class="fi-burst-sale"> </i>有优惠</span>
-
-                <div class="margin-top-small greyText">24头家用餐具套装，供2-3人使用，强质感冲击。</div>
-
                 <hr class="hidden-for-small-down"/>
-                <div class="margin-top-small greyText">硬质瓷其实是我们中国最传统的陶瓷，我们的五大名窑，明清的宫廷瓷器都属于硬质瓷。硬质瓷的组分中高岭土含量较多，长石及其他熔剂物质较少，成瓷温度比较高，一般在1320-1450之间，瓷及釉面硬度比其他瓷高一点。</div>
+
+                <div class="clearfix">
+                    <div class="float-left">
+                        <span class="success label round"><i class="fi-like"> </i>全站包邮</span>
+                        <span class="alert label"><i class="fi-burst-sale"> </i>正品保证</span>
+                        <span class="warning label"><i class="fi-alert"> </i>假一赔十</span>
+                    </div>
+                    <div class="price-wrapper float-right">
+                        <h4 class="brandColorText">
+                            <span class="price-before">￥$!{skuInfo.skuDetail.displayOriginPrice}</span>
+                            <span class="price-after">￥$!{skuInfo.skuDetail.displayPrice}</span>
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="margin-top-small greyText">
+                    <p>$!{skuInfo.description}</p>
+                    <p>材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
+                    <p>该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
+                </div>
 
                 <div class="buy-button-wrapper margin-top clearfix">
                     <div class="float-right">
-                        <button class="button" href="#">&nbsp;一键购买&nbsp;</button>
-                        <button class="alert button" href="#">加入购物车</button>
+                        <button class="secondary hollow button" href="#"><i class="fi-star"> </i>&nbsp;收藏商品&nbsp;</button>
+                        <button class="alert button" href="#"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -83,13 +91,46 @@
             </ul>
 
             <div class="tabs-content" data-tabs-content="detail-tabs">
-                <div class="tabs-panel is-active" id="panel1">
-                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/0.jpg" alt=""/>
-                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/1.jpg" alt=""/>
+                <div class="tabs-panel is-active row" id="panel1">
+                    <table class="scroll">
+                        <thead>
+                            <tr>
+                                <th width="15%">品牌</th>
+                                <th width="15%">生产商</th>
+                                <th width="15%">生产地</th>
+                                <th width="15%">材质</th>
+                                <th width="15%">材质详情</th>
+                                <th width="15%">重量</th>
+                                <th width="15%">体积</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$!{skuInfo.skuDetail.brand}</td>
+                                <td>$!{skuInfo.skuDetail.company}</td>
+                                <td>$!{skuInfo.skuDetail.productArea}</td>
+                                <td>$!{skuInfo.skuDetail.materialType.desc}</td>
+                                <td>$!{skuInfo.skuDetail.materialDetailType.desc}</td>
+                                <td>$!{skuInfo.skuDetail.weight}克</td>
+                                <td>$!{skuInfo.skuDetail.volumeInDb}cm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <p>品牌：千峰翠品牌是浙江楠宋瓷业有限公司创立的国内高端硬质瓷品牌。其产品多用于五星就酒店。豪华精选（Luxury Collection）、威斯汀（Westin）、喜来登（Sheraton）、希尔顿（HILTON ）、JW万豪（JW.Marriott）都是其客户。</p>
+                    </div>
+
+##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/0.jpg" alt=""/>
+##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/9.jpg" alt=""/>
+                    <p>这款产品由景德镇专业陶瓷设计师设计，器形线条利落，特别做了高脚防烫设计。图案选用了樱花和线条搭配，亦中亦日。让你感受除了极简风格之外的日本气息。</p>
                     <img src="$!{imageUrlPrefix}/images/item/itemDetail/2.jpg" alt=""/>
+                    <p>精致的造型，清爽的画面，让你的食物更有味道。</p>
                     <img src="$!{imageUrlPrefix}/images/item/itemDetail/3.jpg" alt=""/>
-                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/4.jpg" alt=""/>
-                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/5.jpg" alt=""/>
+                    <p>工艺：樱花线条碗的材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
+                    <p>安全：该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
+##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/4.jpg" alt=""/>
+##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/5.jpg" alt=""/>
                 </div>
 
                 <div class="tabs-panel" id="panel2">
@@ -106,8 +147,17 @@
                 <div class="tabs-panel" id="panel3">
                     <div class="row">
                         <p>
-                            <div class="margin-top-small greyText">硬质瓷其实是我们中国最传统的陶瓷，我们的五大名窑，明清的宫廷瓷器都属于硬质瓷。硬质瓷的组分中高岭土含量较多，长石及其他熔剂物质较少，成瓷温度比较高，一般在1320-1450之间，瓷及釉面硬度比其他瓷高一点。</div>
+                            <div class="margin-top-small">
+                                硬质瓷其实是我们中国最传统的陶瓷，我们的五大名窑，明清的宫廷瓷器都属于硬质瓷。硬质瓷的组分中高
+                                岭土含量较多，长石及其他熔剂物质较少，成瓷温度比较高，一般在1320-1450之间，瓷及釉面硬度比其他
+                                瓷高一点。
+                            </div>
                         </p>
+                        <p>品牌：千峰翠品牌是浙江楠宋瓷业有限公司创立的国内高端硬质瓷品牌。其产品多用于五星就酒店。豪华精选（Luxury Collection）、威斯汀（Westin）、喜来登（Sheraton）、希尔顿（HILTON ）、JW万豪（JW.Marriott）都是其客户。</p>
+                        <p>工艺：樱花线条碗的材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
+                        <p>安全：该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
+                        <p>功能：精致的造型，清爽的画面，让你的食物更有味道。</p>
+                        <p>设计：这款产品由景德镇专业陶瓷设计师设计，器形线条利落，特别做了高脚防烫设计。图案选用了樱花和线条搭配，亦中亦日。让你感受除了极简风格之外的日本气息。</p>
                     </div>
                 </div>
             </div>

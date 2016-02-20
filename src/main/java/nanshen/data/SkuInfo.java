@@ -56,6 +56,10 @@ public class SkuInfo {
     @Column
     private long imgCount = 0L;
 
+    /** description image count, for displaying the image(the first one will be 0 and then 1, etc.) */
+    @Column
+    private long contentImgCount = 0L;
+
     /** online status {@code nanshen.data.PublicationStatus} */
     @Column
     private PublicationStatus status = PublicationStatus.NEW;
@@ -230,5 +234,13 @@ public class SkuInfo {
 
     public void setSkuDetail(SkuDetail skuDetail) {
         this.skuDetail = skuDetail;
+    }
+
+    public long getContentImgCount() {
+        return contentImgCount;
+    }
+
+    public void setContentImgCount(long contentImgCount) {
+        this.contentImgCount = contentImgCount;
     }
 }

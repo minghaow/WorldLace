@@ -19,6 +19,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/item")
+//@Secured({AccessAuthority.AUTHORITY_ADMIN})
 public class ItemDetailCtrl extends BaseCtrl {
 
 	@Autowired

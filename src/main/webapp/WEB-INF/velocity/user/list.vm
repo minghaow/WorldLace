@@ -1,3 +1,4 @@
+#* @vtlvariable name="skuInfoList" type="java.util.List<nanshen.data.SkuInfo>" *#
 #* @velocityproperties path="/WEB-INF/velocity" *#
 #* @vtlvariable name="pageType" type="nanshen.data.PageType" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
@@ -18,8 +19,8 @@
     <div class="banner-slider">
         <ul>
             <li>
-                <a href="/topic" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider4.jpg">
+                <a href="/item?itemId=1" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider7.jpg">
                 </a>
             </li>
             <li>
@@ -32,6 +33,11 @@
                     <img src="$!{imageUrlPrefix}/images/slider/slider6.jpg">
                 </a>
             </li>
+            <li>
+                <a href="/topic" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider4.jpg">
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -42,42 +48,24 @@
 
     <div class="row list-tagger clearfix">
         <div class="center">
-            -------------------------- [ 新上精品 ] --------------------------
+            - - - [ 桃源 优选 ] - - -
         </div>
         <div class="float-right">
         </div>
     </div>
     <div class="item-list margin-top-tiny">
         <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
-            #foreach ($imgId in [1..1])
+            #foreach ($skuInfo in $skuInfoList)
                 <li class="column" data-equalizer-watch>
-                    <a href="/item?itemId=1" class="item-image-wrapper">
-                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
+                    <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
+                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg" alt=""/>
                     </a>
                     <div class="item-description">
-                        <div class="item-title">樱花线条碗【四碗四筷精装套装】</div>
+                        <div class="item-title">$skuInfo.getTitle()</div>
                         <div class="item-price margin-top-tiny">
                             <p class="item-price-num-wrapper">
                                 <span class="item-price-num">
-                                    <span class="item-price-num-current">￥280</span>
-                                </span>
-                            </p>
-                            <hr class="item-price-hr">
-                        </div>
-                    </div>
-                </li>
-            #end
-            #foreach ($imgId in [2..4])
-                <li class="column" data-equalizer-watch>
-                    <a href="/item?itemId=1" class="item-image-wrapper">
-                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
-                    </a>
-                    <div class="item-description">
-                        <div class="item-title">Tescoma Kitchen Stuff</div>
-                        <div class="item-price margin-top-tiny">
-                            <p class="item-price-num-wrapper">
-                                <span class="item-price-num">
-                                    <span class="item-price-num-current">￥199</span>
+                                    <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
                                 </span>
                             </p>
                             <hr class="item-price-hr">
@@ -90,14 +78,14 @@
 
     <div class="row list-tagger clearfix">
         <div class="center">
-            -------------------------- [ 经典款 ] --------------------------
+            - - - [ 桃源 经典 ] - - -
         </div>
         <div class="float-right">
         </div>
     </div>
     <div class="item-list margin-top-tiny">
         <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
-            #foreach ($imgId in [5..22])
+            #foreach ($imgId in [3..22])
                 <li class="column" data-equalizer-watch>
                     <a href="/item?itemId=1" class="item-image-wrapper">
                         <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>

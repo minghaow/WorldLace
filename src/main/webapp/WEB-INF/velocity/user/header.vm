@@ -1,3 +1,5 @@
+#* @vtlvariable name="helloMsg" type="java.lang.String" *#
+#* @vtlvariable name="userInfo" type="nanshen.data.UserInfo" *#
 #* @vtlvariable name="LOOK" type="java.lang.String" *#
 #* @vtlvariable name="CATEGORY" type="java.lang.String" *#
 #* @vtlvariable name="TOPIC" type="java.lang.String" *#
@@ -22,15 +24,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- style stuff -->
-    <link type="image/x-icon" href="$!{imageUrlPrefix}/images/favicon.ico" rel="shortcut icon"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/header.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/footer.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/user/common.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/tool.css"/>
+    <link type="image/x-icon" href="$!{cssUrlPrefix}/images/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/header.css"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/footer.css"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/common.css"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/tool.css"/>
     <link rel="stylesheet" href="/css/foundation-icons.css"/>
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/foundation.min.css" />
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider.css">
-    <link rel="stylesheet" href="$!{imageUrlPrefix}/css/unslider-dots.css">
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/foundation.min.css" />
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider.css">
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider-dots.css">
 
     <script>
         var _hmt = _hmt || [];
@@ -70,8 +72,24 @@
                 </div>
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu>
-                        <li><a href="#"><i class="fi-torso"></i> 登陆</a></li>
-                        <li><a href="#"><i class="fi-check"></i> 注册</a></li>
+                        #if ("$!{userInfo}" != "")
+                        <li><a href="#"><i class="fi-torso"></i>
+                            <span id="username-section">$userInfo.getUsername()，$helloMsg</span></a>
+                        </li>
+                        <li><a href="#"> | </a></li>
+                        <li><a id="login-decide-url" href="/auth/logout"><i class="fi-torso"></i>
+                            <span id="login-decide-content">登出</span></a>
+                        </li>
+                        #else
+                        <li><a href="#" data-toggle="animatedModal1"><i class="fi-torso"></i>
+                            <span id="username-section">登陆</span></a>
+                        </li>
+                        <li><a href="#"> | </a></li>
+                        <li><a id="login-decide-url" href="#" class="register-btn"><i class="fi-check"></i>
+                            <span id="login-decide-content">注册</span></a>
+                        </li>
+                        #end
+                        <li><a href="#"> | </a></li>
                         <li class="has-submenu is-dropdown-submenu-parent opens-left">
                             <a href="#"><i class="fi-star"></i> 关注我们</a>
 
@@ -81,6 +99,7 @@
                                 </li>
                             </ul>
                         </li>
+                        <li><a href="#"> | </a></li>
                         <li><a href="#"><i class="fi-shopping-cart"></i> 购物车(0)</a></li>
                     </ul>
                 </div>
@@ -96,3 +115,56 @@
         </div>
 
         <nav class="bottom-line"></nav>
+
+        <div class="reveal lr-container large" id="animatedModal1" data-reveal data-close-on-click="true">
+            <div class="card"></div>
+            <div class="card">
+                <h1 class="lr-title">登陆</h1>
+                <form id="login-form">
+                    <div class="input-container">
+                        <input type="text" id="Username" required="required" name="email"/>
+                        <label for="Username">手机号</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="Password" required="required" name="password"/>
+                        <label for="Password">密码</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button id="login-confirm"><span>确定</span></button>
+                    </div>
+                    <div class="footer"><a href="#">忘记密码?</a></div>
+                </form>
+            </div>
+            <div class="card alt">
+                <div class="lr-toggle shake-crazy">
+                    <i class="fi-pencil"></i>
+                </div>
+                <h1 class="lr-title">注册
+                    <div class="lr-close">
+                        <i class="fi-x"></i>
+                    </div>
+                </h1>
+                <form id="register-form">
+                    <div class="input-container">
+                        <input type="text" id="Username" required="required" name="email"/>
+                        <label for="Username">手机号</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="Password" required="required" name="password1"/>
+                        <label for="Password">密码</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="Repeat Password" required="required" name="password2"/>
+                        <label for="Repeat Password">密码</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="button-container">
+                        <button><span>下一步</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>

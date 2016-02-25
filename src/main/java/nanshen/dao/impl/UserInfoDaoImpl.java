@@ -27,7 +27,7 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
     }
 
     @Override
-    public UserInfo getBuyerInfo(long id) {
+    public UserInfo getUserInfo(long id) {
         UserInfo info =  dao.fetch(UserInfo.class, id);
         return dao.fetchLinks(info, "authoritiesInDb");
     }
@@ -44,12 +44,13 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
 
     @Override
     public UserInfo getBuyerInfoByEmail(String email) {
-        return dao.fetch(UserInfo.class, Cnd.where("username", "=", email));
+        UserInfo info = dao.fetch(UserInfo.class, Cnd.where("email", "=", email));
+        return dao.fetchLinks(info, "authoritiesInDb");
     }
 
     @Override
     public boolean login(String username, String ip, Date loginTime) {
-        Sql sql = Sqls.create("UPDATE BuyerInfo " +
+        Sql sql = Sqls.create("UPDATE UserInfo " +
                 "SET loginCount = loginCount + 1, loginIp = @loginIp, loginTime = @loginTime " +
                 "WHERE username = @username");
         sql.params().set("loginIp", ip);
@@ -66,7 +67,7 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
     }
 
     @Override
-    public List<UserInfo> getBuyerInfo(List<Long> buyerIds) {
+    public List<UserInfo> getUserInfo(List<Long> buyerIds) {
         Condition condition = Cnd
                 .where("id", "in", buyerIds);
         return dao.query(UserInfo.class, condition);

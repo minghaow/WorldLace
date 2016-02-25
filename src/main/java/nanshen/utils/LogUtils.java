@@ -53,13 +53,13 @@ public class LogUtils {
     }
 
     private static void log(Level level, String msg, Throwable e) {
-        log(level, "{" + RequestUtils.loginedBuyerId() + "} " + msg + EXCEPTION_PREFIX + e.toString());
+        log(level, "{" + RequestUtils.loginedUserInfo() + "} " + msg + EXCEPTION_PREFIX + e.toString());
         e.printStackTrace();
     }
 
     private static void log(Level level, String msg) {
         msg = StringUtils.replaceChars(msg, '\n', '\t');
-        LOG.log(level, "{" + RequestUtils.loginedBuyerId() + "} " + msg);
+        LOG.log(level, "{" + RequestUtils.loginedUserInfo() + "} " + msg);
     }
 
 }

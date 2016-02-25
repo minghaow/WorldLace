@@ -33,7 +33,7 @@ header {
     }
     .top-bar#top-bar {
         width: 90%;
-        max-width: 1200px;
+        max-width: 1500px;
         margin: auto;
         padding: .2rem;
     }
@@ -61,4 +61,619 @@ header {
     .menu-wrapper {
         width: 99%;
     }
+}
+/* lr-Container */
+.lr-container {
+    position: relative;
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto 100px;
+}
+.lr-container.active .card:first-child {
+    background: #f2f2f2;
+    margin: 0 15px;
+}
+.lr-container.active .card:nth-child(2) {
+    background: #fafafa;
+    margin: 0 10px;
+}
+.lr-container.active .card.alt {
+    top: 20px;
+    right: 0;
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    padding: 60px 0 40px;
+    overflow: hidden;
+}
+.lr-container.active .card.alt .lr-toggle {
+    position: absolute;
+    top: 40px;
+    right: -70px;
+    box-shadow: none;
+    -webkit-transform: scale(10);
+    transform: scale(10);
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease, -webkit-transform .3s ease;
+}
+.lr-container.active .card.alt .lr-title,
+.lr-container.active .card.alt .input-container,
+.lr-container.active .card.alt .button-container {
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.lr-container.active .card.alt .lr-title {
+    -webkit-transition-delay: .3s;
+    transition-delay: .3s;
+}
+.lr-container.active .card.alt .input-container {
+    -webkit-transition-delay: .4s;
+    transition-delay: .4s;
+}
+.lr-container.active .card.alt .input-container:nth-child(2) {
+    -webkit-transition-delay: .5s;
+    transition-delay: .5s;
+}
+.lr-container.active .card.alt .input-container:nth-child(3) {
+    -webkit-transition-delay: .6s;
+    transition-delay: .6s;
+}
+.lr-container.active .card.alt .button-container {
+    -webkit-transition-delay: .7s;
+    transition-delay: .7s;
+}
+
+/* Card */
+.card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 60px 0 40px 0;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    /* Title */
+    /* Inputs */
+    /* Button */
+    /* Footer */
+    /* Alt Card */
+}
+.card:first-child {
+    background: #fafafa;
+    height: 10px;
+    border-radius: 5px 5px 0 0;
+    margin: 0 10px;
+    padding: 0;
+}
+.card .lr-title {
+    position: relative;
+    z-index: 1;
+    border-left: 5px solid #A7866A;
+    margin: 0 0 35px;
+    padding: 10px 0 10px 50px;
+    color: #A7866A;
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.card .input-container {
+    position: relative;
+    margin: 0 60px 50px;
+}
+.card .input-container input {
+    outline: none;
+    z-index: 1;
+    position: relative;
+    background: none;
+    width: 100%;
+    height: 60px;
+    border: 0;
+    color: #212121;
+    font-size: 24px;
+    font-weight: 400;
+}
+.card .input-container input:focus ~ label {
+    color: #9d9d9d;
+    -webkit-transform: translate(-12%, -50%) scale(0.75);
+    transform: translate(-12%, -50%) scale(0.75);
+}
+.card .input-container input:focus ~ .bar:before, .card .input-container input:focus ~ .bar:after {
+    width: 50%;
+}
+.card .input-container input:valid ~ label {
+    color: #9d9d9d;
+    -webkit-transform: translate(-12%, -50%) scale(0.75);
+    transform: translate(-12%, -50%) scale(0.75);
+}
+.card .input-container label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #757575;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 60px;
+    -webkit-transition: 0.2s ease;
+    transition: 0.2s ease;
+}
+.card .input-container .bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #757575;
+    width: 100%;
+    height: 1px;
+}
+.card .input-container .bar:before, .card .input-container .bar:after {
+    content: '';
+    position: absolute;
+    background: #A7866A;
+    width: 0;
+    height: 2px;
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+}
+.card .input-container .bar:before {
+    left: 50%;
+}
+.card .input-container .bar:after {
+    right: 50%;
+}
+.card .button-container {
+    margin: 0 60px;
+    text-align: center;
+}
+.card .button-container button {
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background: 0;
+    width: 240px;
+    border: 2px solid #e3e3e3;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    overflow: hidden;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.card .button-container button span {
+    position: relative;
+    z-index: 1;
+    color: #ddd;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.card .button-container button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background: #A7866A;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: -15px 0 0 -15px;
+    opacity: 0;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
+    border-color: #A7866A;
+}
+.card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
+    color: #A7866A;
+}
+.card .button-container button:active span, .card .button-container button:focus span {
+    color: #ffffff;
+}
+.card .button-container button:active:before, .card .button-container button:focus:before {
+    opacity: 1;
+    -webkit-transform: scale(10);
+    transform: scale(10);
+}
+.card .footer {
+    margin: 40px 0 0;
+    color: #d3d3d3;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+}
+.card .footer a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.card .footer a:hover {
+    color: #bababa;
+}
+.card.alt {
+    position: absolute;
+    top: 40px;
+    right: -70px;
+    z-index: 10;
+    width: 140px;
+    height: 140px;
+    background: none;
+    border-radius: 100%;
+    box-shadow: none;
+    padding: 0;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    /* Toggle */
+    /* Title */
+    /* Input */
+    /* Button */
+}
+.card.alt .lr-toggle {
+    position: relative;
+    background: #A7866A;
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    color: #ffffff;
+    font-size: 58px;
+    line-height: 140px;
+    text-align: center;
+    cursor: pointer;
+}
+.card.alt .lr-toggle:hover {
+
+}
+.card.alt .lr-toggle:before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+.card.alt .lr-title,
+.card.alt .input-container,
+.card.alt .button-container {
+    left: 100px;
+    opacity: 0;
+    visibility: hidden;
+}
+.card.alt .lr-title {
+    position: relative;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+.card.alt .lr-title .lr-close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 60px;
+    display: inline;
+    color: #A7866A;
+    font-size: 58px;
+    font-weight: 400;
+}
+
+.card.alt .input-container input {
+    color: #ffffff;
+}
+.card.alt .input-container input:focus ~ label {
+    color: #ffffff;
+}
+.card.alt .input-container input:focus ~ .bar:before, .card.alt .input-container input:focus ~ .bar:after {
+    background: #ffffff;
+}
+.card.alt .input-container input:valid ~ label {
+    color: #ffffff;
+}
+.card.alt .input-container label {
+    color: rgba(255, 255, 255, 0.8);
+}
+.card.alt .input-container .bar {
+    background: rgba(255, 255, 255, 0.8);
+}
+.card.alt .button-container button {
+    width: 100%;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+.card.alt .button-container button span {
+    color: #A7866A;
+}
+.card.alt .button-container button:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+.card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
+    display: none;
+}
+
+/* Keyframes */
+@-webkit-keyframes buttonFadeInUp {
+    0% {
+        bottom: 30px;
+        opacity: 0;
+    }
+}
+@keyframes buttonFadeInUp {
+    0% {
+        bottom: 30px;
+        opacity: 0;
+    }
+}
+#animatedModal1 {
+    border: none;
+    background: none;
+    overflow-y: inherit;
+    max-height: none !important;
+}
+.top-bar-right .before-login-hide {
+    display: none;
+}
+
+@keyframes shake-slow {
+    2% {
+        transform: translate(7px, 5px) rotate(-1.5deg); }
+    4% {
+        transform: translate(-7px, 1px) rotate(-0.5deg); }
+    6% {
+        transform: translate(-7px, -5px) rotate(2.5deg); }
+    8% {
+        transform: translate(4px, -2px) rotate(1.5deg); }
+    10% {
+        transform: translate(4px, 0px) rotate(3.5deg); }
+    12% {
+        transform: translate(10px, -8px) rotate(-1.5deg); }
+    14% {
+        transform: translate(-5px, -6px) rotate(3.5deg); }
+    16% {
+        transform: translate(5px, -7px) rotate(-0.5deg); }
+    18% {
+        transform: translate(1px, 3px) rotate(-1.5deg); }
+    20% {
+        transform: translate(-4px, 3px) rotate(-2.5deg); }
+    22% {
+        transform: translate(-4px, -3px) rotate(0.5deg); }
+    24% {
+        transform: translate(2px, 3px) rotate(3.5deg); }
+    26% {
+        transform: translate(-7px, -4px) rotate(-0.5deg); }
+    28% {
+        transform: translate(-7px, 7px) rotate(3.5deg); }
+    30% {
+        transform: translate(2px, 9px) rotate(0.5deg); }
+    32% {
+        transform: translate(10px, -8px) rotate(1.5deg); }
+    34% {
+        transform: translate(-2px, -8px) rotate(3.5deg); }
+    36% {
+        transform: translate(-6px, -2px) rotate(-0.5deg); }
+    38% {
+        transform: translate(2px, 6px) rotate(3.5deg); }
+    40% {
+        transform: translate(-2px, -9px) rotate(1.5deg); }
+    42% {
+        transform: translate(5px, -3px) rotate(-1.5deg); }
+    44% {
+        transform: translate(7px, 7px) rotate(-0.5deg); }
+    46% {
+        transform: translate(5px, -6px) rotate(2.5deg); }
+    48% {
+        transform: translate(7px, -2px) rotate(-0.5deg); }
+    50% {
+        transform: translate(2px, 2px) rotate(2.5deg); }
+    52% {
+        transform: translate(-1px, -2px) rotate(1.5deg); }
+    54% {
+        transform: translate(-4px, -6px) rotate(-1.5deg); }
+    56% {
+        transform: translate(7px, -3px) rotate(-1.5deg); }
+    58% {
+        transform: translate(-5px, 2px) rotate(-0.5deg); }
+    60% {
+        transform: translate(3px, 2px) rotate(-1.5deg); }
+    62% {
+        transform: translate(6px, 1px) rotate(-2.5deg); }
+    64% {
+        transform: translate(-4px, 9px) rotate(3.5deg); }
+    66% {
+        transform: translate(8px, -6px) rotate(-2.5deg); }
+    68% {
+        transform: translate(-2px, -4px) rotate(2.5deg); }
+    70% {
+        transform: translate(-5px, -3px) rotate(-0.5deg); }
+    72% {
+        transform: translate(-3px, 6px) rotate(-0.5deg); }
+    74% {
+        transform: translate(-9px, 9px) rotate(1.5deg); }
+    76% {
+        transform: translate(-5px, 9px) rotate(0.5deg); }
+    78% {
+        transform: translate(10px, -1px) rotate(1.5deg); }
+    80% {
+        transform: translate(-9px, 4px) rotate(1.5deg); }
+    82% {
+        transform: translate(-8px, 5px) rotate(-1.5deg); }
+    84% {
+        transform: translate(6px, -2px) rotate(0.5deg); }
+    86% {
+        transform: translate(0px, 5px) rotate(-2.5deg); }
+    88% {
+        transform: translate(7px, -8px) rotate(0.5deg); }
+    90% {
+        transform: translate(-7px, 9px) rotate(-0.5deg); }
+    92% {
+        transform: translate(5px, 0px) rotate(-2.5deg); }
+    94% {
+        transform: translate(-7px, 7px) rotate(3.5deg); }
+    96% {
+        transform: translate(-9px, -5px) rotate(-0.5deg); }
+    98% {
+        transform: translate(-8px, -6px) rotate(3.5deg); }
+    0%, 100% {
+        transform: translate(0, 0) rotate(0); } }
+.shake-slow:hover,
+.shake-trigger:hover .shake-slow,
+.shake-slow.shake-freeze,
+.shake-slow.shake-constant {
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: shake-slow;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes shake-hard {
+    2% {
+        transform: translate(-1px, -5px) rotate(-2.5deg); }
+    4% {
+        transform: translate(-5px, -8px) rotate(2.5deg); }
+    6% {
+        transform: translate(4px, 2px) rotate(-0.5deg); }
+    8% {
+        transform: translate(1px, 6px) rotate(-1.5deg); }
+    10% {
+        transform: translate(-3px, -6px) rotate(3.5deg); }
+    12% {
+        transform: translate(10px, 5px) rotate(-2.5deg); }
+    14% {
+        transform: translate(-5px, 8px) rotate(-0.5deg); }
+    16% {
+        transform: translate(7px, 6px) rotate(-2.5deg); }
+    18% {
+        transform: translate(4px, -7px) rotate(1.5deg); }
+    20% {
+        transform: translate(-2px, 2px) rotate(0.5deg); }
+    22% {
+        transform: translate(-1px, 9px) rotate(-0.5deg); }
+    24% {
+        transform: translate(1px, -2px) rotate(0.5deg); }
+    26% {
+        transform: translate(-7px, -9px) rotate(1.5deg); }
+    28% {
+        transform: translate(-5px, -2px) rotate(-2.5deg); }
+    30% {
+        transform: translate(-4px, 7px) rotate(3.5deg); }
+    32% {
+        transform: translate(8px, 2px) rotate(2.5deg); }
+    34% {
+        transform: translate(5px, -5px) rotate(0.5deg); }
+    36% {
+        transform: translate(-8px, -8px) rotate(2.5deg); }
+    38% {
+        transform: translate(-7px, -2px) rotate(2.5deg); }
+    40% {
+        transform: translate(8px, 0px) rotate(-1.5deg); }
+    42% {
+        transform: translate(0px, -2px) rotate(2.5deg); }
+    44% {
+        transform: translate(-1px, 1px) rotate(3.5deg); }
+    46% {
+        transform: translate(10px, -5px) rotate(2.5deg); }
+    48% {
+        transform: translate(-1px, 7px) rotate(0.5deg); }
+    50% {
+        transform: translate(-8px, -2px) rotate(1.5deg); }
+    52% {
+        transform: translate(-9px, 8px) rotate(2.5deg); }
+    54% {
+        transform: translate(2px, 9px) rotate(-2.5deg); }
+    56% {
+        transform: translate(-2px, 0px) rotate(2.5deg); }
+    58% {
+        transform: translate(1px, 1px) rotate(-2.5deg); }
+    60% {
+        transform: translate(10px, -9px) rotate(-0.5deg); }
+    62% {
+        transform: translate(5px, 4px) rotate(0.5deg); }
+    64% {
+        transform: translate(2px, -4px) rotate(0.5deg); }
+    66% {
+        transform: translate(-9px, -7px) rotate(2.5deg); }
+    68% {
+        transform: translate(-5px, -1px) rotate(0.5deg); }
+    70% {
+        transform: translate(9px, -1px) rotate(2.5deg); }
+    72% {
+        transform: translate(8px, 8px) rotate(-1.5deg); }
+    74% {
+        transform: translate(-1px, 4px) rotate(2.5deg); }
+    76% {
+        transform: translate(3px, -7px) rotate(1.5deg); }
+    78% {
+        transform: translate(-7px, 0px) rotate(-2.5deg); }
+    80% {
+        transform: translate(-5px, 5px) rotate(2.5deg); }
+    82% {
+        transform: translate(6px, 6px) rotate(-0.5deg); }
+    84% {
+        transform: translate(10px, 8px) rotate(-0.5deg); }
+    86% {
+        transform: translate(4px, 10px) rotate(-0.5deg); }
+    88% {
+        transform: translate(-5px, -9px) rotate(-1.5deg); }
+    90% {
+        transform: translate(-8px, 9px) rotate(1.5deg); }
+    92% {
+        transform: translate(6px, 6px) rotate(-1.5deg); }
+    94% {
+        transform: translate(-3px, -4px) rotate(-1.5deg); }
+    96% {
+        transform: translate(6px, -5px) rotate(0.5deg); }
+    98% {
+        transform: translate(10px, 4px) rotate(-0.5deg); }
+    0%, 100% {
+        transform: translate(0, 0) rotate(0); } }
+.shake-hard:hover, .shake-trigger:hover .shake-hard, .shake-hard.shake-freeze, .shake-hard.shake-constant {
+    animation-duration: 100ms;
+    animation-iteration-count: infinite;
+    animation-name: shake-hard;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes shake-crazy {
+    10% {
+        transform: translate(14px, 2px) rotate(3deg);
+        opacity: 0.22; }
+    20% {
+        transform: translate(-13px, -5px) rotate(2deg);
+        opacity: 0.07; }
+    30% {
+        transform: translate(10px, 7px) rotate(9deg);
+        opacity: 0.64; }
+    40% {
+        transform: translate(20px, -1px) rotate(-9deg);
+        opacity: 0.66; }
+    50% {
+        transform: translate(-11px, 18px) rotate(1deg);
+        opacity: 0.57; }
+    60% {
+        transform: translate(-16px, 15px) rotate(7deg);
+        opacity: 0.81; }
+    70% {
+        transform: translate(-6px, 5px) rotate(8deg);
+        opacity: 0.88; }
+    80% {
+        transform: translate(12px, 3px) rotate(1deg);
+        opacity: 0.76; }
+    90% {
+        transform: translate(18px, 7px) rotate(-9deg);
+        opacity: 0.92; }
+    0%, 100% {
+        transform: translate(0, 0) rotate(0); } }
+.shake-crazy:hover, .shake-trigger:hover .shake-crazy, .shake-crazy.shake-freeze, .shake-crazy.shake-constant {
+    animation-duration: 100ms;
+    animation-iteration-count: infinite;
+    animation-name: shake-crazy;
+    animation-timing-function: ease-in-out;
 }

@@ -14,10 +14,7 @@ public class TopicCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView topicList(ModelMap model, @RequestParam(defaultValue = "1", required = true) int lookId) {
-		prepareHeader(model, PageType.TOPIC);
-		prepareHelloMsg(model);
-		model.addAttribute("imageUrlPrefix", "http://image.zaitaoyuan.com");
-//		model.addAttribute("imageUrlPrefix", "");
+		prepareHeaderModel(model, PageType.TOPIC);
 		return new ModelAndView("user/topicList");
 	}
 

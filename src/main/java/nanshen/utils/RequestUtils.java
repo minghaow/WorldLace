@@ -20,7 +20,7 @@ public class RequestUtils {
      * @return
      */
     public static boolean isLogined() {
-        return loginedBuyerId() > 0;
+        return loginedUserInfo() > 0;
     }
 
     /**
@@ -28,7 +28,7 @@ public class RequestUtils {
      *
      * @return 用户ID，若未登录返回0
      */
-    public static long loginedBuyerId() {
+    public static long loginedUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return getBuyerId(authentication);
     }
@@ -52,7 +52,7 @@ public class RequestUtils {
         if (buyerId > 0) {
             return buyerId;
         }
-        return loginedBuyerId();
+        return loginedUserInfo();
     }
 
     private static long buyerIdBeforeSwitch() {

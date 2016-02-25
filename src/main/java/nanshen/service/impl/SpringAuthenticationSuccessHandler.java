@@ -35,6 +35,7 @@ public class SpringAuthenticationSuccessHandler extends SavedRequestAwareAuthent
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         recordLogin(request);
+        setDefaultTargetUrl("/auth/success");
         super.onAuthenticationSuccess(request, response, authentication);
     }
 

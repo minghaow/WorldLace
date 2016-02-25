@@ -18,9 +18,9 @@
 </div>
 
 
-<script src="$!{imageUrlPrefix}/script/vendor/jquery.min.js"></script>
-<script src="$!{imageUrlPrefix}/script/vendor/foundation.js"></script>
-<script src="$!{imageUrlPrefix}/script/vendor/unslider-min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/jquery.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/foundation.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/unslider-min.js"></script>
 <script>
     $(document).foundation();
     jQuery(document).ready(function($) {
@@ -32,8 +32,8 @@
         });
     });
 </script>
-<script src="$!{imageUrlPrefix}/script/vendor/what-input.min.js"></script>
-<script src="$!{imageUrlPrefix}/script/msgModal.js"></script>
-<script src="$!{imageUrlPrefix}/script/user/common.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/msgModal.js"></script>
+<script src="$!{cssUrlPrefix}/script/user/common.js"></script>
 </body>
 </html>

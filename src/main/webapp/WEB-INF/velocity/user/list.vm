@@ -54,9 +54,9 @@
         </div>
     </div>
     <div class="item-list margin-top-tiny">
-        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
+        <ul class="row large-up-4 medium-up-3 small-up-2">
             #foreach ($skuInfo in $skuInfoList)
-                <li class="column" data-equalizer-watch>
+                <li class="column">
                     <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
                         <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg" alt=""/>
                     </a>

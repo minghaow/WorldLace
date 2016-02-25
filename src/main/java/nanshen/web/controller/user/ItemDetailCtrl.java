@@ -34,10 +34,7 @@ public class ItemDetailCtrl extends BaseCtrl {
         if (skuInfo != null) {
             model.addAttribute("skuInfo", skuInfo);
         }
-		prepareHeader(model, PageType.ITEM_DETAIL);
-		prepareHelloMsg(model);
-		model.addAttribute("imageUrlPrefix", "http://image.zaitaoyuan.com");
-//		model.addAttribute("imageUrlPrefix", "");
+		prepareHeaderModel(model, PageType.ITEM_DETAIL);
 		return new ModelAndView("user/itemDetail");
 	}
 

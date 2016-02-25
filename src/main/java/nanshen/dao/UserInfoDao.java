@@ -26,7 +26,7 @@ public interface UserInfoDao {
      * @param id
      * @return
      */
-    public UserInfo getBuyerInfo(long id);
+    public UserInfo getUserInfo(long id);
 
     /**
      * 添加一个新买手
@@ -76,5 +76,5 @@ public interface UserInfoDao {
      * @param buyerIds
      * @return
      */
-    List<UserInfo> getBuyerInfo(List<Long> buyerIds);
+    List<UserInfo> getUserInfo(List<Long> buyerIds);
 }

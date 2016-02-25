@@ -1,6 +1,8 @@
 package nanshen.web.common;
 
+import nanshen.data.UserInfo;
 import nanshen.utils.LogUtils;
+import nanshen.web.controller.user.BaseCtrl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,19 +16,24 @@ import java.util.Map;
  *
  * @author WANG Minghao
  */
-public class ApiLogInterceptor extends BaseController implements HandlerInterceptor {
+public class ApiLogInterceptor extends BaseCtrl implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
-        printRequestLogWithParams(request);
+        UserInfo userInfo = getLoginedUser();
+        if (userInfo == null) {
+            userInfo = new UserInfo();
+            userInfo.setUsername("未登录用户");
+        }
+        printRequestLogWithParams(request, userInfo);
         return true;
     }
 
-    private void printRequestLogWithParams(HttpServletRequest request) {
+    private void printRequestLogWithParams(HttpServletRequest request, UserInfo userInfo) {
         StringBuilder content = new StringBuilder();
         content.append("[");
-        content.append("未登录用户");
+        content.append(userInfo.getUsername());
         content.append("] ");
         content.append(request.getRequestURI());
         String method = request.getMethod();

@@ -41,11 +41,11 @@ public class SpringUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserInfo buyerInfo = userInfoDao.getBuyerInfoByUsername(username);
-        if (null == buyerInfo) {
-            throw new UsernameNotFoundException("Username " + username + " not found!");
+        UserInfo userInfo = userInfoDao.getBuyerInfoByEmail(username);
+        if (null == userInfo) {
+            throw new UsernameNotFoundException("Email " + username + " not found!");
         }
-        return generateUserDetails(buyerInfo);
+        return generateUserDetails(userInfo);
     }
 
     private UserDetails generateUserDetails(UserInfo userInfo) {

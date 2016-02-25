@@ -53,7 +53,7 @@ public class UserInfo {
 
     /** user type */
     @Column
-    private UserType buyerType = UserType.AMATEUR;
+    private UserType userType = UserType.AMATEUR;
 
     /** user login count */
     @Column
@@ -68,7 +68,7 @@ public class UserInfo {
     private Date loginTime = new Date();
 
     /** user authority list {@link #authorities} */
-    @Many(target = UserAuthority.class, field = "buyerId")
+    @Many(target = UserAuthority.class, field = "userId")
     private List<UserAuthority> authoritiesInDb;
 
     /** 买手的权限列表 */
@@ -202,12 +202,12 @@ public class UserInfo {
         return authorityExtractor;
     }
 
-    public UserType getBuyerType() {
-        return buyerType;
+    public UserType getUserType() {
+        return userType;
     }
 
-    public void setBuyerType(UserType buyerType) {
-        this.buyerType = buyerType;
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     public String getEmail() {

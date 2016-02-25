@@ -25,11 +25,8 @@ public class IndexCtrl extends BaseCtrl {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage(ModelMap model, @RequestParam(defaultValue = "1", required = true) int page) {
 		List<SkuInfo> skuInfoList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(page));
-		prepareHeader(model, PageType.ITEM_LIST);
-		prepareHelloMsg(model);
+		prepareHeaderModel(model, PageType.ITEM_LIST);
 		model.addAttribute("skuInfoList", skuInfoList);
-		model.addAttribute("imageUrlPrefix", "http://image.zaitaoyuan.com");
-//		model.addAttribute("imageUrlPrefix", "");
 		return new ModelAndView("user/list");
 	}
 

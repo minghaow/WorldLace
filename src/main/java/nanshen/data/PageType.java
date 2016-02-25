@@ -13,6 +13,8 @@ public enum PageType {
 
     ITEM_LIST("列表页", true),
 
+    LOGIN_PAGE("登陆页", false),
+
     ITEM_DETAIL("详情页", false),
 
     CATEGORY("分类", true),

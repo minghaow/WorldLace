@@ -1,18 +1,26 @@
 package nanshen.service.impl;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import nanshen.constant.TimeConstants;
 import nanshen.dao.AdminUserInfoDao;
+import nanshen.dao.UserInfoDao;
 import nanshen.data.AdminUserInfo;
 import nanshen.data.LookInfo;
 import nanshen.data.SkuInfo;
+import nanshen.data.UserInfo;
 import nanshen.service.AccountService;
 import nanshen.service.common.ScheduledService;
+import nanshen.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Account Service Implementation
@@ -25,6 +33,21 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
 
     @Autowired
     private AdminUserInfoDao adminUserInfoDao;
+
+    @Autowired
+    private UserInfoDao userInfoDao;
+
+    /** 买手ID到买手信息的缓存 */
+    private final LoadingCache<Long, UserInfo> userCache = CacheBuilder.newBuilder()
+            .softValues()
+            .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
+            .build(
+                    new CacheLoader<Long, UserInfo>() {
+                        @Override
+                        public UserInfo load(Long id) throws Exception {
+                            return userInfoDao.getUserInfo(id);
+                        }
+                    });
 
     Map<Long, AdminUserInfo> adminIdUserInfoMap = new HashMap<Long, AdminUserInfo>();
     Map<String, AdminUserInfo> adminNameUserInfoMap = new HashMap<String, AdminUserInfo>();
@@ -64,6 +87,21 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     @Override
     public AdminUserInfo getAdminUserInfoByUsername(String username) {
         return adminNameUserInfoMap.get(username);
+    }
+
+    @Override
+    public UserInfo getUserInfo(long userId) {
+        try {
+            return userCache.get(userId);
+        } catch (ExecutionException e) {
+            LogUtils.warning("AccountService: get user info error!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void clearBuyerInfoCache() {
+        userCache.invalidateAll();
     }
 
     @Override

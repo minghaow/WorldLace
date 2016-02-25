@@ -2,8 +2,12 @@ package nanshen.web.controller.user;
 
 import nanshen.constant.SystemConstants;
 import nanshen.data.PageType;
+import nanshen.data.UserInfo;
+import nanshen.service.AccountService;
 import nanshen.utils.JsonUtils;
+import nanshen.utils.RequestUtils;
 import nanshen.utils.ViewUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -43,6 +47,9 @@ public abstract class BaseCtrl {
 
 	}
 
+	@Autowired
+	protected AccountService accountService;
+
 	/**
 	 * 默认对所有的输入字符串进行过滤，防止XSS攻击
 	 * <p />
@@ -67,6 +74,19 @@ public abstract class BaseCtrl {
 	 */
 	protected String html(String display) {
 		return ViewUtils.getHTMLValidText(display);
+	}
+
+	/**
+	 * 获取当前登录的用户的信息
+	 *
+	 * @return 用户信息，若未登录返回null
+	 */
+	protected UserInfo getLoginedUser() {
+		if (RequestUtils.isLogined()) {
+			long userId = RequestUtils.loginedUserInfo();
+			return accountService.getUserInfo(userId);
+		}
+		return null;
 	}
 
 	/**
@@ -115,14 +135,7 @@ public abstract class BaseCtrl {
 		response.getWriter().print(JsonUtils.toJsonP(jsonp, object));
 	}
 
-	protected void prepareHeader(ModelMap model, PageType pageType) {
-		for (PageType type : PageType.values()) {
-			model.addAttribute(type.name(), pageType == type && type.isNeedShow() ? "selected" : "");
-		}
-		model.addAttribute("pageType", pageType);
-	}
-
-	protected void prepareHelloMsg(ModelMap model) {
+	protected void prepareHeaderModel(ModelMap model, PageType pageType) {
 		String helloMsg;
 		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 		if (hour >= 0 && hour < 12) {
@@ -133,5 +146,14 @@ public abstract class BaseCtrl {
 			helloMsg = SystemConstants.HELLO_MSG_EVENING;
 		}
 		model.addAttribute("helloMsg", helloMsg);
+		for (PageType type : PageType.values()) {
+			model.addAttribute(type.name(), pageType == type && type.isNeedShow() ? "selected" : "");
+		}
+		model.addAttribute("pageType", pageType);
+		model.addAttribute("userInfo", getLoginedUser());
+		model.addAttribute("imageUrlPrefix", "http://image.zaitaoyuan.com");
+//		model.addAttribute("imageUrlPrefix", "");
+//		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");
+		model.addAttribute("cssUrlPrefix", "");
 	}
 }

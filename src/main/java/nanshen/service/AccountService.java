@@ -3,6 +3,7 @@ package nanshen.service;
 import nanshen.data.AdminUserInfo;
 import nanshen.data.LookInfo;
 import nanshen.data.SkuInfo;
+import nanshen.data.UserInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -45,4 +46,17 @@ public interface AccountService {
      * @return
      */
     AdminUserInfo getAdminUserInfoByUsername(String username);
+
+    /**
+     * According to userId to get userInfo in cache
+     *
+     * @param userId userId
+     * @return UserInfo
+     */
+    UserInfo getUserInfo(long userId);
+
+    /**
+     * Clear buyerInfo cache for all change actions
+     */
+    void clearBuyerInfoCache();
 }

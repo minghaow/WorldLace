@@ -15,13 +15,15 @@
         <security:form-login
                 login-page="/auth/login_page"
                 login-processing-url="/auth/login-check"
+                authentication-failure-url="/auth/fail"
+                default-target-url="/auth/success"
                 authentication-success-handler-ref="springAuthenticationSuccessHandler"
                 authentication-failure-handler-ref="springAuthenticationFailureHandler"
                 username-parameter="email"
                 password-parameter="password"/>
         <security:logout
                 logout-url="/auth/logout"
-                logout-success-url="/auth/login_page"
+                logout-success-url="/"
                 invalidate-session="true"/>
     </security:http>
 

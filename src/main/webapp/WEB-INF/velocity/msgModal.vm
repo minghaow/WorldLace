@@ -1,11 +1,15 @@
-<div id="successModal" class="small reveal-modal" data-reveal>
+<div id="successModal" class="small reveal" data-reveal>
     <h2 class="greenText" id="successHdr"></h2>
     <p id="successMsg"></p>
-    <a class="close-reveal-modal">&#215;</a>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
-<div id="failModal" class="small reveal-modal" data-reveal>
+<div id="failModal" class="small reveal" data-reveal>
     <h2 class="redText" id="failHdr"></h2>
     <p id="failMsg"></p>
-    <a class="close-reveal-modal">&#215;</a>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>

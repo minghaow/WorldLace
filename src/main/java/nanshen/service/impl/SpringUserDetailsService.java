@@ -41,9 +41,9 @@ public class SpringUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserInfo userInfo = userInfoDao.getBuyerInfoByEmail(username);
+        UserInfo userInfo = userInfoDao.getUserInfoByPhone(username);
         if (null == userInfo) {
-            throw new UsernameNotFoundException("Email " + username + " not found!");
+            throw new UsernameNotFoundException("Phone " + username + " not found!");
         }
         return generateUserDetails(userInfo);
     }

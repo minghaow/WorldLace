@@ -56,25 +56,33 @@
                     <div class="float-left">
                         <span class="success label round"><i class="fi-like"> </i>全站包邮</span>
                         <span class="alert label"><i class="fi-burst-sale"> </i>正品保证</span>
-                        <span class="warning label"><i class="fi-alert"> </i>假一赔十</span>
+                        <span class="warning label"><i class="fi-alert"> </i>破碎补发</span>
                     </div>
                     <div class="price-wrapper float-right">
                         <h4 class="brandColorText">
-                            <span class="price-before">￥$!{skuInfo.skuDetail.displayOriginPrice}</span>
-                            <span class="price-after">￥$!{skuInfo.skuDetail.displayPrice}</span>
+                            <span class="price-before">￥$!{skuInfo.displayOriginPrice}</span>
+                            <span class="price-after">￥$!{skuInfo.displayPrice}</span>
                         </h4>
                     </div>
                 </div>
 
                 <div class="margin-top-small greyText">
                     <p>$!{skuInfo.description}</p>
-                    <p>材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
                     <p>该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
                 </div>
 
+                #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} > 1)
+                <div class="option-button-wrapper margin-top clearfix">
+                    <span class="greyText">请选择：</span>
+                    #foreach ($sku in $skuInfo.getSkuDetailList())
+                    <button class="small hollow option button" href="#">$sku.option1</button>
+                    #end
+                </div>
+                #end
+
                 <div class="buy-button-wrapper margin-top clearfix">
                     <div class="float-right">
-                        <button class="secondary hollow button" href="#"><i class="fi-star"> </i>&nbsp;收藏商品&nbsp;</button>
+                        <button class="secondary hollow button" href="#"><i class="fi-star"> </i>&nbsp;分享商品&nbsp;</button>
                         <button class="alert button" href="#"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
                     </div>
                 </div>
@@ -105,15 +113,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} >= 1)
+                            #set ($sku = $skuInfo.getSkuDetailList().get(0))
                             <tr>
-                                <td>$!{skuInfo.skuDetail.brand}</td>
-                                <td>$!{skuInfo.skuDetail.company}</td>
-                                <td>$!{skuInfo.skuDetail.productArea}</td>
-                                <td>$!{skuInfo.skuDetail.materialType.desc}</td>
-                                <td>$!{skuInfo.skuDetail.materialDetailType.desc}</td>
-                                <td>$!{skuInfo.skuDetail.weight}克</td>
-                                <td>$!{skuInfo.skuDetail.volumeInDb}cm</td>
+                                <td>$!{sku.brand}</td>
+                                <td>$!{sku.company}</td>
+                                <td>$!{sku.productArea}</td>
+                                <td>$!{sku.materialType.desc}</td>
+                                <td>$!{sku.materialDetailType.desc}</td>
+                                <td>$!{sku.weight}克</td>
+                                <td>$!{sku.volumeInDb}cm</td>
                             </tr>
+                            #end
                         </tbody>
                     </table>
 

@@ -24,9 +24,9 @@ public class SkuDetailDaoImpl extends BaseDao implements SkuDetailDao {
     }
 
     @Override
-    public SkuDetail get(long skuId) {
+    public List<SkuDetail> get(long skuId) {
         Condition cnd = Cnd.where("skuId", "=", skuId);
-        return dao.fetch(SkuDetail.class, cnd);
+        return dao.query(SkuDetail.class, cnd);
     }
 
     @Override

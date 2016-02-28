@@ -8,19 +8,19 @@ var $successModal = $("#successModal"),
 function presentSuccessModal(header, message) {
     $successHdr.html(header);
     $successMsg.html(message);
-    $successModal.foundation('reveal', 'open');
+    $successModal.foundation("open");
 }
 
 function presentFailModal(header, message) {
     $failHdr.html(header);
     $failMsg.html(message);
-    $failModal.foundation('reveal', 'open');
+    $failModal.foundation('open');
 }
 
 function hideSuccessModal() {
-    $successModal.foundation('reveal', 'close');
+    $successModal.foundation("close");
 }
 
 function hideFailModal() {
-    $failModal.foundation('reveal', 'close');
+    $failModal.foundation('close');
 }

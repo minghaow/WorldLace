@@ -52,6 +52,10 @@ public class SkuInfo {
     @Column
     private long price;
 
+    /** price, price unit: RMB */
+    @Column
+    private long originPrice;
+
     /** image count, for displaying the image(the first one will be 0 and then 1, etc.) */
     @Column
     private long imgCount = 0L;
@@ -71,7 +75,7 @@ public class SkuInfo {
     private List<SkuTag> skuTagList;
 
     /** sku detail */
-    private SkuDetail skuDetail;
+    private List<SkuDetail> skuDetailList;
 
     /** create time for this look, will fill when create */
     @Column
@@ -228,12 +232,12 @@ public class SkuInfo {
         this.warning = warning;
     }
 
-    public SkuDetail getSkuDetail() {
-        return skuDetail;
+    public List<SkuDetail> getSkuDetailList() {
+        return skuDetailList;
     }
 
-    public void setSkuDetail(SkuDetail skuDetail) {
-        this.skuDetail = skuDetail;
+    public void setSkuDetailList(List<SkuDetail> skuDetailList) {
+        this.skuDetailList = skuDetailList;
     }
 
     public long getContentImgCount() {
@@ -242,5 +246,17 @@ public class SkuInfo {
 
     public void setContentImgCount(long contentImgCount) {
         this.contentImgCount = contentImgCount;
+    }
+
+    public long getOriginPrice() {
+        return originPrice;
+    }
+
+    public void setOriginPrice(long originPrice) {
+        this.originPrice = originPrice;
+    }
+
+    public String getDisplayOriginPrice() {
+        return ViewUtils.priceConverter(originPrice);
     }
 }

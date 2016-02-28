@@ -110,16 +110,16 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Override
     public SkuInfo getSkuInfo(long skuId) {
-        SkuDetail skuDetail = getSkuDetail(skuId);
+        List<SkuDetail> skuDetailList = getSkuDetail(skuId);
         SkuInfo skuInfo = skuInfoDao.get(skuId);
         if (skuInfo != null) {
-            skuInfo.setSkuDetail(skuDetail);
+            skuInfo.setSkuDetailList(skuDetailList);
         }
         return skuInfo;
     }
 
     @Override
-    public SkuDetail getSkuDetail(long skuId) {
+    public List<SkuDetail> getSkuDetail(long skuId) {
         return skuDetailDao.get(skuId);
     }
 

@@ -62,6 +62,22 @@ public class SkuDetail {
     @Column
     private String company;
 
+    /** option 1 type */
+    @Column
+    private OptionType option1Type;
+
+    /** option 2 type */
+    @Column
+    private OptionType option2Type;
+
+    /** option 1 */
+    @Column
+    private String option1;
+
+    /** option 2 */
+    @Column
+    private String option2;
+
     /** create time for this look, will fill when create */
     @Column
     private Date createTime = new Date();
@@ -210,5 +226,37 @@ public class SkuDetail {
 
     public void setWeight(long weight) {
         this.weight = weight;
+    }
+
+    public String getOption1() {
+        return option1;
+    }
+
+    public void setOption1(String option1) {
+        this.option1 = option1;
+    }
+
+    public OptionType getOption1Type() {
+        return option1Type;
+    }
+
+    public void setOption1Type(OptionType option1Type) {
+        this.option1Type = option1Type;
+    }
+
+    public String getOption2() {
+        return option2;
+    }
+
+    public void setOption2(String option2) {
+        this.option2 = option2;
+    }
+
+    public OptionType getOption2Type() {
+        return option2Type;
+    }
+
+    public void setOption2Type(OptionType option2Type) {
+        this.option2Type = option2Type;
     }
 }

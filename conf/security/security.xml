@@ -19,7 +19,7 @@
                 default-target-url="/auth/success"
                 authentication-success-handler-ref="springAuthenticationSuccessHandler"
                 authentication-failure-handler-ref="springAuthenticationFailureHandler"
-                username-parameter="email"
+                username-parameter="phone"
                 password-parameter="password"/>
         <security:logout
                 logout-url="/auth/logout"

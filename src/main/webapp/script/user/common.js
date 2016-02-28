@@ -40,7 +40,24 @@ jQuery( document ).ready(function( $ ) {
                     $("#login-decide-content").html("登出");
                     $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
                 } else {
-                    alert("登录失败，用户名错误！");
+                    presentFailModal("抱歉！", "用户名和密码的组合不正确，请重新输入。");
+                }
+            }
+        });
+    });
+
+    $("#register-confirm").on('click', function() {
+        event.preventDefault();
+        $.ajax({
+            url: "/auth/register",
+            type: "POST",
+            data: $("#register-form").serialize(),
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    presentSuccessModal("恭喜您！", "欢迎您加入桃源大家庭！请点击登陆。");
+                } else {
+                    presentFailModal("抱歉！", data.msg);
                 }
             }
         });

@@ -33,8 +33,12 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
     }
 
     @Override
-    public UserInfo addNewBuyer(UserInfo info) {
-        return dao.insert(info);
+    public UserInfo addNewUser(UserInfo info) {
+        try {
+            return dao.insert(info);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
@@ -45,6 +49,12 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
     @Override
     public UserInfo getBuyerInfoByEmail(String email) {
         UserInfo info = dao.fetch(UserInfo.class, Cnd.where("email", "=", email));
+        return dao.fetchLinks(info, "authoritiesInDb");
+    }
+
+    @Override
+    public UserInfo getUserInfoByPhone(String phone) {
+        UserInfo info = dao.fetch(UserInfo.class, Cnd.where("phone", "=", phone));
         return dao.fetchLinks(info, "authoritiesInDb");
     }
 

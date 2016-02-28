@@ -6,12 +6,10 @@ import com.google.common.cache.LoadingCache;
 import nanshen.constant.TimeConstants;
 import nanshen.dao.AdminUserInfoDao;
 import nanshen.dao.UserInfoDao;
-import nanshen.data.AdminUserInfo;
-import nanshen.data.LookInfo;
-import nanshen.data.SkuInfo;
-import nanshen.data.UserInfo;
+import nanshen.data.*;
 import nanshen.service.AccountService;
 import nanshen.service.common.ScheduledService;
+import nanshen.utils.EncryptUtils;
 import nanshen.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -102,6 +100,16 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     @Override
     public void clearBuyerInfoCache() {
         userCache.invalidateAll();
+    }
+
+    @Override
+    public ExecInfo createNewUser(String phone, String passwordOrigin) {
+        UserInfo userInfo = new UserInfo(phone, EncryptUtils.encodePassword(passwordOrigin));
+        userInfo = userInfoDao.addNewUser(userInfo);
+        if (userInfo == null) {
+            return ExecInfo.fail("手机号已注册，请找回密码或换新的手机号~");
+        }
+        return ExecInfo.succ();
     }
 
     @Override

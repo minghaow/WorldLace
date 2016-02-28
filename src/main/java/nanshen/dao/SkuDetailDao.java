@@ -15,7 +15,7 @@ public interface SkuDetailDao {
 
     SkuDetail insert(SkuDetail skuDetail);
 
-    SkuDetail get(long skuId);
+    List<SkuDetail> get(long skuId);
 
     boolean update(SkuInfo skuId);
 

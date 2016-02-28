@@ -45,7 +45,7 @@ public class SpringAuthenticationFailureHandler implements AuthenticationFailure
         } else if (exception instanceof LockedException) {
             loginError = LoginError.PASSWORD_ERROR_TOO_MUCH;
         }
-        response.sendRedirect("/auth/login_page?error=" + loginError.toString());
+        response.sendRedirect("/auth/fail");
     }
 
     private void increaseFailureCount(HttpServletRequest request) {

@@ -37,7 +37,7 @@ public class UserInfo {
 
     /** set for future use */
     @Column
-    private int priority;
+    private int priority = 0;
 
     /** set for future use */
     @Column
@@ -85,6 +85,8 @@ public class UserInfo {
 
     public UserInfo(String username, String password) {
         this.username = username;
+        this.phone = username;
+        this.email = username;
         this.password = password;
         this.available = true;
         this.points = 0L;

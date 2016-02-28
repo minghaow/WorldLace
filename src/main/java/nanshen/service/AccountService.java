@@ -1,9 +1,6 @@
 package nanshen.service;
 
-import nanshen.data.AdminUserInfo;
-import nanshen.data.LookInfo;
-import nanshen.data.SkuInfo;
-import nanshen.data.UserInfo;
+import nanshen.data.*;
 
 import java.util.List;
 import java.util.Map;
@@ -59,4 +56,13 @@ public interface AccountService {
      * Clear buyerInfo cache for all change actions
      */
     void clearBuyerInfoCache();
+
+    /**
+     * Create new user
+     *
+     * @param phone user's phone number
+     * @param passwordOrigin origin password
+     * @return ExecInfo
+     */
+    ExecInfo createNewUser(String phone, String passwordOrigin);
 }

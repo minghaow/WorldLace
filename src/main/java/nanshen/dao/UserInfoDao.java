@@ -29,12 +29,12 @@ public interface UserInfoDao {
     public UserInfo getUserInfo(long id);
 
     /**
-     * 添加一个新买手
+     * 添加一个新用户
      *
      * @param info
      * @return
      */
-    public UserInfo addNewBuyer(UserInfo info);
+    public UserInfo addNewUser(UserInfo info);
 
     /**
      * 更新买手的信息
@@ -51,6 +51,14 @@ public interface UserInfoDao {
      * @return
      */
     UserInfo getBuyerInfoByEmail(String email);
+
+    /**
+     * 获取指定用户手机号的买手信息
+     *
+     * @param phone 手机号
+     * @return
+     */
+    UserInfo getUserInfoByPhone(String phone);
 
     /**
      * 根据买手类型获取所有该类型买手的数据

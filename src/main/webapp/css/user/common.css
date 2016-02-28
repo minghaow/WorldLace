@@ -36,3 +36,15 @@ input[type=search] {
 input.labelauty + label {
     display: inline !important;
 }
+.option-button-wrapper .button.option {
+    border: 1px solid #af8e72;
+    color: #af8e72;
+    padding: 0.65em 1em;
+    margin-bottom: 0;
+}
+.option-button-wrapper .button.option:hover,
+.option-button-wrapper .button.option.active
+.option-button-wrapper .button.option:focus {
+    border: 1px solid #2e241e;
+    color: #2e241e;
+}

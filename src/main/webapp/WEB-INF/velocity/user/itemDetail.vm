@@ -68,7 +68,6 @@
 
                 <div class="margin-top-small greyText">
                     <p>$!{skuInfo.description}</p>
-                    <p>该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
                 </div>
 
                 #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} > 1)
@@ -103,13 +102,10 @@
                     <table class="scroll">
                         <thead>
                             <tr>
-                                <th width="15%">品牌</th>
-                                <th width="15%">生产商</th>
-                                <th width="15%">生产地</th>
-                                <th width="15%">材质</th>
-                                <th width="15%">材质详情</th>
-                                <th width="15%">重量</th>
-                                <th width="15%">体积</th>
+                                <th width="20%">品牌</th>
+                                <th width="20%">材质</th>
+                                <th width="20%">材质详情</th>
+                                <th width="20%">重量</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,39 +113,18 @@
                             #set ($sku = $skuInfo.getSkuDetailList().get(0))
                             <tr>
                                 <td>$!{sku.brand}</td>
-                                <td>$!{sku.company}</td>
-                                <td>$!{sku.productArea}</td>
                                 <td>$!{sku.materialType.desc}</td>
                                 <td>$!{sku.materialDetailType.desc}</td>
                                 <td>$!{sku.weight}克</td>
-                                <td>$!{sku.volumeInDb}cm</td>
                             </tr>
                             #end
                         </tbody>
                     </table>
 
-                    <div class="row">
-                        <p>品牌：千峰翠品牌是浙江楠宋瓷业有限公司创立的国内高端硬质瓷品牌。其产品多用于五星就酒店。豪华精选（Luxury Collection）、威斯汀（Westin）、喜来登（Sheraton）、希尔顿（HILTON ）、JW万豪（JW.Marriott）都是其客户。</p>
-                    </div>
-
-                    <p>工艺：樱花线条碗的材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
-
                     #foreach ($imgId in [0..$skuInfo.getContentImgCount()])
                         <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuInfo.getId()}/${imgId}.jpg" alt=""/>
-                        <p>这款产品由景德镇专业陶瓷设计师设计，器形线条利落，特别做了高脚防烫设计。图案选用了樱花和线条搭配，亦中亦日。让你感受除了极简风格之外的日本气息。</p>
+                        <p>&nbsp;</p>
                     #end
-                    <p>安全：该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
-
-                    <p>精致的造型，清爽的画面，让你的食物更有味道。</p>
-##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/0.jpg" alt=""/>
-##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/9.jpg" alt=""/>
-##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/2.jpg" alt=""/>
-##                    <p>精致的造型，清爽的画面，让你的食物更有味道。</p>
-##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/3.jpg" alt=""/>
-                    <p>工艺：樱花线条碗的材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
-                    <p>安全：该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
-##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/4.jpg" alt=""/>
-##                    <img src="$!{imageUrlPrefix}/images/item/itemDetail/5.jpg" alt=""/>
                 </div>
 
                 <div class="tabs-panel" id="panel2">

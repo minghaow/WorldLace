@@ -40,7 +40,7 @@ input.labelauty + label {
     border: 1px solid #af8e72;
     color: #af8e72;
     padding: 0.65em 1em;
-    margin-bottom: 0;
+    margin-bottom: 0.8rem;
 }
 .option-button-wrapper .button.option:hover,
 .option-button-wrapper .button.option.active

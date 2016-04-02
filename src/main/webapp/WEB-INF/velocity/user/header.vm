@@ -49,6 +49,9 @@
 <!-- body start -->
 <body id="body">
 
+<!-- for seo -->
+<img src="$!{imageUrlPrefix}/images/search.png" alt="桃源网 - 品质餐厨用品" class="hide"/>
+
 <!-- top bar start -->
 <div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>

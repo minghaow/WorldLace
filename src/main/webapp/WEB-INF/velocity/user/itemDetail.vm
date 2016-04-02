@@ -33,7 +33,7 @@
                 <ul>
                     #foreach ($imgId in [0..$skuInfo.getImgCount()])
                         <li>
-                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg" alt=""/>
+                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg" alt="${skuInfo.title}"/>
                         </li>
                     #end
                 </ul>
@@ -120,7 +120,7 @@
                     </table>
 
                     #foreach ($imgId in [0..$skuInfo.getContentImgCount()])
-                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuInfo.getId()}/${imgId}.jpg" alt=""/>
+                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuInfo.getId()}/${imgId}.jpg" alt="${skuInfo.title}"/>
                         <p>&nbsp;</p>
                     #end
                 </div>

@@ -7,6 +7,9 @@ header {
     background-size: cover;
     padding: 22px 0;
 }
+.logo-wrapper {
+    text-align: center;
+}
 .logo-wrapper img {
     height: 140px;
 }

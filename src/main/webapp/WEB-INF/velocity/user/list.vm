@@ -20,22 +20,27 @@
         <ul>
             <li>
                 <a href="/item?itemId=1" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider7.jpg">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg">
                 </a>
             </li>
             <li>
-                <a href="/topic" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider5.jpg">
+                <a href="/item?itemId=8" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg">
                 </a>
             </li>
             <li>
-                <a href="/topic" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider6.jpg">
+                <a href="/item?itemId=11" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider12.jpg">
                 </a>
             </li>
             <li>
-                <a href="/topic" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider4.jpg">
+                <a href="/item?itemId=10" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider11.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="/item?itemId=1" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider9.jpg">
                 </a>
             </li>
         </ul>
@@ -45,14 +50,7 @@
 
 <!-- page contents -->
 <div class="page-content">
-
-    <div class="row list-tagger clearfix">
-        <div class="center">
-            - - - [ 桃源 优选 ] - - -
-        </div>
-        <div class="float-right">
-        </div>
-    </div>
+    
     <div class="item-list margin-top-tiny">
         <ul class="row large-up-4 medium-up-3 small-up-2">
             #foreach ($skuInfo in $skuInfoList)
@@ -75,36 +73,36 @@
             #end
         </ul>
     </div>
-
-    <div class="row list-tagger clearfix">
-        <div class="center">
-            - - - [ 桃源 经典 ] - - -
-        </div>
-        <div class="float-right">
-        </div>
-    </div>
-    <div class="item-list margin-top-tiny">
-        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
-            #foreach ($imgId in [3..22])
-                <li class="column" data-equalizer-watch>
-                    <a href="/item?itemId=1" class="item-image-wrapper">
-                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
-                    </a>
-                    <div class="item-description">
-                        <div class="item-title">Tescoma Kitchen Stuff</div>
-                        <div class="item-price margin-top-tiny">
-                            <p class="item-price-num-wrapper">
-                                <span class="item-price-num">
-                                    <span class="item-price-num-current">￥199</span>
-                                </span>
-                            </p>
-                            <hr class="item-price-hr">
-                        </div>
-                    </div>
-                </li>
-            #end
-        </ul>
-    </div>
+##
+##    <div class="row list-tagger clearfix">
+##        <div class="center">
+##            - - - [ 桃源 经典 ] - - -
+##        </div>
+##        <div class="float-right">
+##        </div>
+##    </div>
+##    <div class="item-list margin-top-tiny">
+##        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
+##            #foreach ($imgId in [3..22])
+##                <li class="column" data-equalizer-watch>
+##                    <a href="/item?itemId=1" class="item-image-wrapper">
+##                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
+##                    </a>
+##                    <div class="item-description">
+##                        <div class="item-title">Tescoma Kitchen Stuff</div>
+##                        <div class="item-price margin-top-tiny">
+##                            <p class="item-price-num-wrapper">
+##                                <span class="item-price-num">
+##                                    <span class="item-price-num-current">￥199</span>
+##                                </span>
+##                            </p>
+##                            <hr class="item-price-hr">
+##                        </div>
+##                    </div>
+##                </li>
+##            #end
+##        </ul>
+##    </div>
 
 ##    #include("msgModal.vm")
 

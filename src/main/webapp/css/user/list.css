@@ -14,12 +14,25 @@
     max-width: 100%;
 }
 .item-description {
-    height: 6rem;
     padding: 1rem;
     text-align: center;
     color: grey;
     background-color: white;
     font-size: 0.8rem;
+}
+@media only screen and (max-width: 40em) {
+    .item-list ul li {
+        padding: 1px;
+    }
+    .list-tagger {
+        font-size: x-large;
+        font-weight: 300;
+        padding-left: 0.5rem;
+        color: #A7866A;
+    }
+    .item-description {
+        height: 6rem;
+    }
 }
 @media only screen and (min-width: 40.063em) {
     .item-list ul li {
@@ -32,11 +45,14 @@
         padding-left: 0.5rem;
         color: #A7866A;
     }
-}
-.item-list ul li:hover {
-    background-color: white;
-    transform: scale(1.03);
-    box-shadow: 0px 5px 10px 5px #707070;
+    .item-description {
+        height: 7rem;
+    }
+    .item-list ul li:hover {
+        background-color: white;
+        transform: scale(1.03);
+        box-shadow: 0px 5px 10px 5px #707070;
+    }
 }
 .list-banner li {
     list-style:none;

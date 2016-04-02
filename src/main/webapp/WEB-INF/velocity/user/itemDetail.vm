@@ -22,7 +22,6 @@
         <nav aria-label="You are here:" role="navigation">
             <ul class="breadcrumbs">
                 <li><a href="/" class="brandColorText">自营列表</a></li>
-                <li><a href="/" class="brandColorText">餐具套装</a></li>
                 <li>
                     <span class="show-for-sr">餐具: </span> 高档简约家用套装
                 </li>
@@ -72,7 +71,6 @@
 
                 #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} > 1)
                 <div class="option-button-wrapper margin-top clearfix">
-                    <span class="greyText">请选择：</span>
                     #foreach ($sku in $skuInfo.getSkuDetailList())
                     <button class="small hollow option button" href="#">$sku.option1</button>
                     #end
@@ -140,18 +138,9 @@
 
                 <div class="tabs-panel" id="panel3">
                     <div class="row">
-                        <p>
-                            <div class="margin-top-small">
-                                硬质瓷其实是我们中国最传统的陶瓷，我们的五大名窑，明清的宫廷瓷器都属于硬质瓷。硬质瓷的组分中高
-                                岭土含量较多，长石及其他熔剂物质较少，成瓷温度比较高，一般在1320-1450之间，瓷及釉面硬度比其他
-                                瓷高一点。
-                            </div>
-                        </p>
-                        <p>品牌：千峰翠品牌是浙江楠宋瓷业有限公司创立的国内高端硬质瓷品牌。其产品多用于五星就酒店。豪华精选（Luxury Collection）、威斯汀（Westin）、喜来登（Sheraton）、希尔顿（HILTON ）、JW万豪（JW.Marriott）都是其客户。</p>
-                        <p>工艺：樱花线条碗的材质为高温硬质瓷,主要成分为高岭土，在1360℃，还原气氛中烧制而成。瓷质细腻，釉面光滑耐磨。产品装饰为釉中彩工艺，在1200℃高温下，颜色沉入釉层中间，降温时釉层封闭，将颜料包裹在釉层中，保证永不褪色。</p>
-                        <p>安全：该产品经过了CERAM华夏陶瓷检测中心的专业检测，其铅镉溶出等安全指标少于全世界最严格美国加州65#标准的1%。由于采用了最先进的高温釉中彩工艺，也不存在长期使用会带来的褪色问题。</p>
-                        <p>功能：精致的造型，清爽的画面，让你的食物更有味道。</p>
-                        <p>设计：这款产品由景德镇专业陶瓷设计师设计，器形线条利落，特别做了高脚防烫设计。图案选用了樱花和线条搭配，亦中亦日。让你感受除了极简风格之外的日本气息。</p>
+                        <div class="margin-top-small">
+                            <p>$!{skuInfo.description}</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     #if ($!{pageType} == "ITEM_DETAIL")
-        <title>$!{skuInfo.title}</title>
+        <title>桃源网 - $!{skuInfo.title}</title>
         <meta name="keywords" content="餐厨用品，高端餐具，高端厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子" />
         <meta name="description" content="$!{skuInfo.description}" />
     #else

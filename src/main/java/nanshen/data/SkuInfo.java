@@ -32,6 +32,10 @@ public class SkuInfo {
     @Column
     private String subTitle;
 
+    /** order notice for the sku */
+    @Column
+    private String notice;
+
     /** warning for the sku */
     @Column
     private String warning;
@@ -87,7 +91,7 @@ public class SkuInfo {
 
     public SkuInfo(Date createTime, String description, long id, long imgCount, List<String> imgUrlList, long price,
                    List<SkuTag> skuTagList, PublicationStatus status, String subTitle, String tags, String title,
-                   Date updateTime, long uploadUserId, String url, String warning) {
+                   Date updateTime, long uploadUserId, String url, String warning, String notice) {
         this.createTime = createTime;
         this.description = description;
         this.id = id;
@@ -103,6 +107,7 @@ public class SkuInfo {
         this.uploadUserId = uploadUserId;
         this.url = url;
         this.warning = warning;
+        this.notice = notice;
     }
 
     public SkuInfo() {
@@ -258,5 +263,13 @@ public class SkuInfo {
 
     public String getDisplayOriginPrice() {
         return ViewUtils.priceConverter(originPrice);
+    }
+
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
     }
 }

@@ -21,9 +21,9 @@
 
         <nav aria-label="You are here:" role="navigation">
             <ul class="breadcrumbs">
-                <li><a href="/" class="brandColorText">自营列表</a></li>
+                <li><a href="/" class="brandColorText">首页列表</a></li>
                 <li>
-                    <span class="show-for-sr">餐具: </span> 高档简约家用套装
+                    $!{skuInfo.title}
                 </li>
             </ul>
         </nav>

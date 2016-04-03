@@ -33,7 +33,7 @@
                 <ul>
                     #foreach ($imgId in [0..$skuInfo.getImgCount()])
                         <li>
-                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg" alt="${skuInfo.title}"/>
+                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>
                         </li>
                     #end
                 </ul>
@@ -120,7 +120,7 @@
                     </table>
 
                     #foreach ($imgId in [0..$skuInfo.getContentImgCount()])
-                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuInfo.getId()}/${imgId}.jpg" alt="${skuInfo.title}"/>
+                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuInfo.getId()}/${imgId}.jpg@!item-detail" alt="${skuInfo.title}"/>
                         <p>&nbsp;</p>
                     #end
                 </div>
@@ -139,6 +139,11 @@
                 <div class="tabs-panel" id="panel3">
                     <div class="row">
                         <div class="margin-top-small">
+                            <h5>下单请注意：</h5>
+                            <p>$!{skuInfo.notice}</p>
+                        </div>
+                        <div class="margin-top">
+                            <h5>产品特点：</h5>
                             <p>$!{skuInfo.description}</p>
                         </div>
                     </div>

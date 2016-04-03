@@ -20,27 +20,27 @@
         <ul>
             <li>
                 <a href="/item?itemId=1" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg" alt="樱花线条碗【四碗四筷精装套装】">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
                 </a>
             </li>
             <li>
                 <a href="/item?itemId=8" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg" alt="钻石系列餐具套装">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg@!list-banner-s" alt="钻石系列餐具套装">
                 </a>
             </li>
             <li>
                 <a href="/item?itemId=11" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider12.jpg" alt="江南颂系列餐具套装">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider12.jpg@!list-banner-s" alt="江南颂系列餐具套装">
                 </a>
             </li>
             <li>
                 <a href="/item?itemId=10" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider11.jpg" alt="银河系列餐具套装">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider11.jpg@!list-banner-s" alt="银河系列餐具套装">
                 </a>
             </li>
             <li>
                 <a href="/item?itemId=1" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider9.jpg" alt="樱花线条碗【四碗四筷精装套装】">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider9.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
                 </a>
             </li>
         </ul>
@@ -56,7 +56,7 @@
             #foreach ($skuInfo in $skuInfoList)
                 <li class="column">
                     <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
-                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg" alt="$skuInfo.title"/>
+                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail" alt="$skuInfo.title"/>
                     </a>
                     <div class="item-description">
                         <div class="item-title">$skuInfo.getTitle()</div>

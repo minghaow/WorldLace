@@ -11,27 +11,11 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/baidu_verify_YnL8camIPv.html</url-pattern>
+		<url-pattern>/*.txt</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/root.txt</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/sogousiteverification.txt</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/15e122c2c2c87389a1b91264e9d4eda8.txt</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/993eb7f473e652a1a5992e21a97830d1.html</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/robots.txt</url-pattern>
+		<url-pattern>/*.html</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>

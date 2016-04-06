@@ -56,7 +56,7 @@
             #foreach ($skuInfo in $skuInfoList)
                 <li class="column">
                     <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
-                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail" alt="$skuInfo.title"/>
+                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail2" alt="$skuInfo.title"/>
                     </a>
                     <div class="item-description">
                         <div class="item-title">$skuInfo.getTitle()</div>

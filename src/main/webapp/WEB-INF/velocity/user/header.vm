@@ -11,6 +11,7 @@
 <!-- header start -->
 <head>
     <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="9e86244ed55803eb93cc371314c36f41"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     #if ($!{pageType} == "ITEM_DETAIL")
         <title>桃源网 - $!{skuInfo.title}</title>

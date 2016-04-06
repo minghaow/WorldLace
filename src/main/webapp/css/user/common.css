@@ -48,3 +48,6 @@ input.labelauty + label {
     border: 1px solid #2e241e;
     color: #2e241e;
 }
+.seo-content {
+    display: none;
+}

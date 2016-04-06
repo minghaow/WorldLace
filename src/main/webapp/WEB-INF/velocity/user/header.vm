@@ -51,9 +51,9 @@
 
 <!-- for seo -->
 #if ($!{pageType} == "ITEM_DETAIL")
-    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="桃源网 - 品质餐厨用品" class="hide"/>
+    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="桃源网" class="seo-content"/>
 #else
-    <img src="$!{imageUrlPrefix}/images/search.jpg" alt="桃源网 - 品质餐厨用品" class="hide"/>
+    <img src="$!{imageUrlPrefix}/images/search.jpg" alt="桃源网" class="seo-content"/>
 #end
 
 <!-- top bar start -->

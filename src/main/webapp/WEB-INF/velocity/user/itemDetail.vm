@@ -87,7 +87,7 @@
                 <div class="buy-button-wrapper margin-top clearfix">
                     <div class="float-right">
                         <div class="bdsharebuttonbox" data-tag="share_1" style="float:left">
-                            <button class="secondary hollow button" href="#">
+                            <button class="secondary hollow button hide-for-small-only" href="#">
                                 <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
                             </button>
                         </div>

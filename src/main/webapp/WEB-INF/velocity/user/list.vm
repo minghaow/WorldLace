@@ -16,8 +16,9 @@
 
 <div class="banner">
 
-    <div class="banner-slider">
-        <ul>
+##    <div class="banner-slider">
+    <div>
+        <ul id="banner-slider">
             <li>
                 <a href="/item?itemId=1" target="_blank">
                     <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">

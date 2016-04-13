@@ -30,6 +30,12 @@
             keys: true,
             arrows: false
         });
+        $('#banner-slider').lightSlider({
+            adaptiveHeight:true,
+            item:1,
+            slideMargin:0,
+            loop:true
+        });
         $('#lightSlider').lightSlider({
             gallery: true,
             vertical:true,

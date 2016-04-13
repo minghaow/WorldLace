@@ -1,5 +1,9 @@
-.banner-slider img {
+.banner-slider img,
+#banner-slider img {
     width: 100%;
+}
+.lSSlideOuter .lSPager.lSpg>li.active a {
+    background-color: #A7866A !important;
 }
 .page-content {
     margin: 10px auto;

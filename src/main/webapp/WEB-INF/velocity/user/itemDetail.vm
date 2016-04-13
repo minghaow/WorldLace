@@ -30,14 +30,14 @@
 
         <div class="large-6 medium-6 small-12 columns">
             <div class="item-slider">
-                <ul id="lightSlider" class="cS-hidden">
+                <ul id="lightSlider">
                 #foreach ($imgId in [0..$skuInfo.getImgCount()])
                     <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-detail-s">
                         <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>
                     </li>
                 #end
                 </ul>
-                <ul id="lightSlider-s" class="show-for-small-only cS-hidden">
+                <ul id="lightSlider-s">
                     #foreach ($imgId in [0..$skuInfo.getImgCount()])
                         <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-detail-s">
                             <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>

@@ -1,4 +1,4 @@
-<div id="successModal" class="small reveal" data-reveal>
+<div id="successModal" class="small reveal round" data-reveal>
     <h2 class="greenText" id="successHdr"></h2>
     <p id="successMsg"></p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -6,7 +6,7 @@
     </button>
 </div>
 
-<div id="failModal" class="small reveal" data-reveal>
+<div id="failModal" class="small reveal round" data-reveal>
     <h2 class="redText" id="failHdr"></h2>
     <p id="failMsg"></p>
     <button class="close-button" data-close aria-label="Close modal" type="button">

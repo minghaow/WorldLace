@@ -26,6 +26,11 @@ jQuery( document ).ready(function( $ ) {
         setTimeout(function(){$('.lr-toggle').trigger("click");}, 500);
     });
 
+    $('.login-btn').on('click', function() {
+        $("#animatedModal1").foundation("open");
+        setTimeout(function(){$('.lr-close').trigger("click");}, 300);
+    });
+
     $("#login-confirm").on('click', function() {
         event.preventDefault();
         $.ajax({

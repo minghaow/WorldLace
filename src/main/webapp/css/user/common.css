@@ -51,3 +51,10 @@ input.labelauty + label {
 .seo-content {
     display: none;
 }
+#body.is-reveal-open {
+    overflow: inherit;
+}
+#successModal,
+#failModal {
+    text-align: center;
+}

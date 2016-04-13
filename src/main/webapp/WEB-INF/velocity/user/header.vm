@@ -90,7 +90,7 @@
                             <span id="login-decide-content">登出</span></a>
                         </li>
                         #else
-                        <li><a href="#" data-toggle="animatedModal1"><i class="fi-torso"></i>
+                        <li><a href="#" class="login-btn"><i class="fi-torso"></i>
                             <span id="username-section">登陆</span></a>
                         </li>
                         <li><a href="#"> | </a></li>

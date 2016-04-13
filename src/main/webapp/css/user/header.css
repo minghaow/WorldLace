@@ -29,10 +29,9 @@ header {
         text-align: center;
         padding: 1rem 0 0.5rem 0;
     }
-    .superHeader,
-    .top-bar#top-bar,
-    .top-bar#top-bar ul {
-        background-color: rgb(225, 210, 198);
+    .superHeader .top-bar,
+    .superHeader .top-bar ul {
+        background: none;
     }
     .top-bar#top-bar {
         width: 90%;

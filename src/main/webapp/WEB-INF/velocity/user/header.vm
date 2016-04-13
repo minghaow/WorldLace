@@ -118,7 +118,11 @@
         <div class="menu-wrapper">
             <div class="logo-wrapper">
                 <a href="/">
-                    <img src="$!{imageUrlPrefix}/images/user/logo.png" alt="桃源网"/>
+                    #if ($!{pageType} == "ITEM_DETAIL")
+                        <img src="$!{imageUrlPrefix}/images/user/logo.png" alt="桃源网"/>
+                    #else
+                        <img src="$!{imageUrlPrefix}/images/user/logo2.png" alt="桃源网"/>
+                    #end
                 </a>
             </div>
         </div>

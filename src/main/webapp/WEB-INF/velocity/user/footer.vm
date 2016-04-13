@@ -30,6 +30,18 @@
             keys: true,
             arrows: false
         });
+        $('#lightSlider').lightSlider({
+            gallery: true,
+            vertical:true,
+            vThumbWidth:80,
+            item: 1,
+            loop: true,
+            slideMargin: 0,
+            thumbItem:6,
+            enableDrag: true,
+            controls: false,
+            auto: false
+        });
     });
     (function(){
         var bp = document.createElement('script');
@@ -42,7 +54,7 @@
             bdText : '桃源网 - $!{skuInfo.title}',
             bdDesc : '$!{skuInfo.subTitle}',
             bdUrl : window.location.href,
-            bdPic : '$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head'
+            bdPic : '$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/0.jpg@!item-head'
         },
         share : [{
             "bdSize" : 16,
@@ -54,5 +66,7 @@
 <script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/msgModal.js"></script>
 <script src="$!{cssUrlPrefix}/script/user/common.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
+##<script src="$!{cssUrlPrefix}/script/vendor/lightGallery.min.js"></script>
 </body>
 </html>

@@ -12,6 +12,9 @@
         background-color: white;
         padding: 1rem;
     }
+    .item-slider div .lSPager .active {
+        border: solid 1px #A7866A;
+    }
 }
 @media only screen and (max-width: 40em) {
     #look-detail-page-content .row .columns {

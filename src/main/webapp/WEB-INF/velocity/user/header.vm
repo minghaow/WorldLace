@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/foundation.min.css" />
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider.css">
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider-dots.css">
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightslider.css">
+##    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightGallery.min.css">
 
     <script>
         var _hmt = _hmt || [];

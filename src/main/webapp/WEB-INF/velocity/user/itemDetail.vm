@@ -28,14 +28,14 @@
             </ul>
         </nav>
 
-        <div class="large-6 medium-6 small-12 columns detail-image-slider">
-            <div class="banner-slider">
-                <ul>
-                    #foreach ($imgId in [0..$skuInfo.getImgCount()])
-                        <li>
-                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>
-                        </li>
-                    #end
+        <div class="large-6 medium-6 small-12 columns">
+            <div class="item-slider">
+                <ul id="lightSlider">
+                #foreach ($imgId in [0..$skuInfo.getImgCount()])
+                    <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-detail-s">
+                        <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>
+                    </li>
+                #end
                 </ul>
             </div>
         </div>

@@ -46,7 +46,20 @@
             thumbItem:6,
             enableDrag: true,
             controls: false,
-            auto: false
+            auto: false,
+            addClass: "hide-for-small-only"
+        });
+        $('#lightSlider-s').lightSlider({
+            gallery: true,
+            vThumbWidth:80,
+            item: 1,
+            loop: true,
+            slideMargin: 0,
+            thumbItem:6,
+            enableDrag: true,
+            controls: false,
+            auto: false,
+            addClass: "show-for-small-only"
         });
     });
     (function(){

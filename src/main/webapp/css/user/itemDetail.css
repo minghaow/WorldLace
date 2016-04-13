@@ -25,7 +25,10 @@
     }
     .detail-description {
         background-color: white;
-        padding: 1.3rem;
+        padding: 0.3rem;
+    }
+    .item-slider div .lSPager .active {
+        border: solid 2px #A7866A;
     }
 }
 .detail-description img {

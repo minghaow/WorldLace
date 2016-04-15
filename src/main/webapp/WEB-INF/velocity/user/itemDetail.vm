@@ -103,7 +103,7 @@
         <div class="detail-description">
             <ul class="tabs" data-tabs id="detail-tabs">
                 <li class="tabs-title is-active"><a href="#panel1" aria-selected="true" class="brandColorText">商品详情</a></li>
-                <li class="tabs-title"><a href="#panel2" class="brandColorText">用户评论</a></li>
+##                <li class="tabs-title"><a href="#panel2" class="brandColorText">用户评论</a></li>
                 <li class="tabs-title"><a href="#panel3" class="brandColorText">下单必读</a></li>
             </ul>
 
@@ -137,16 +137,16 @@
                     #end
                 </div>
 
-                <div class="tabs-panel" id="panel2">
-                    <div class="row">
-                        <div class="large-3 columns">
-                            User Information
-                        </div>
-                        <div class="large-9 columns">
-                            User Comments
-                        </div>
-                    </div>
-                </div>
+##                <div class="tabs-panel" id="panel2">
+##                    <div class="row">
+##                        <div class="large-3 columns">
+##                            User Information
+##                        </div>
+##                        <div class="large-9 columns">
+##                            User Comments
+##                        </div>
+##                    </div>
+##                </div>
 
                 <div class="tabs-panel" id="panel3">
                     <div class="row">

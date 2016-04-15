@@ -86,6 +86,5 @@
 <script src="$!{cssUrlPrefix}/script/msgModal.js"></script>
 <script src="$!{cssUrlPrefix}/script/user/common.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
-##<script src="$!{cssUrlPrefix}/script/vendor/lightGallery.min.js"></script>
 </body>
 </html>

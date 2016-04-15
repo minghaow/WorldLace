@@ -15,6 +15,14 @@
     .item-slider div .lSPager .active {
         border: solid 2px #A7866A;
     }
+    .item-slider div .lSPager .active,
+    .detail-description .tabs,
+    .tabs-content {
+        border: solid 2px #A7866A;
+    }
+    .detail-description .tabs {
+        border-bottom: none;
+    }
 }
 @media only screen and (max-width: 40em) {
     #look-detail-page-content .row .columns {
@@ -27,8 +35,8 @@
         background-color: white;
         padding: 0.3rem;
     }
-    .item-slider div .lSPager .active {
-        border: solid 2px #A7866A;
+    .detail-description .tabs, .tabs-content {
+        border: 1px solid #A7866A;
     }
 }
 .detail-description img {
@@ -38,9 +46,6 @@
 .detail-description ul li a {
     font-size: 14px;
     font-weight: 600;
-}
-.detail-description .tabs, .tabs-content {
-    border: 1px solid #A7866A;
 }
 .price-wrapper .price-before {
     text-decoration: line-through;

@@ -58,3 +58,7 @@ input.labelauty + label {
 #failModal {
     text-align: center;
 }
+.bdsharebuttonbox,
+.bdsharebuttonbox a {
+    color: #A7866A;
+}

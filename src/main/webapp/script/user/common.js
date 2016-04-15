@@ -68,4 +68,12 @@ jQuery( document ).ready(function( $ ) {
         });
     });
 
+    $(".option").on('click', function() {
+        var originPrice = $(this).data("origin");
+        var price = $(this).data("now");
+        var optionId = $(this).data("img");
+        $(".price-before").html("￥" + originPrice);
+        $(".price-after").html("￥" + price);
+    });
+
 });

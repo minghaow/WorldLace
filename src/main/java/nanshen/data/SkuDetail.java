@@ -62,6 +62,10 @@ public class SkuDetail {
     @Column
     private String company;
 
+    /** optionId */
+    @Column
+    private long optionId;
+
     /** option 1 type */
     @Column
     private OptionType option1Type;
@@ -88,7 +92,7 @@ public class SkuDetail {
 
     public SkuDetail(String brand, String company, long cost, Date createTime, MaterialDetailType materialDetailType,
                      MaterialType materialType, long price, String productArea, long skuId, Date updateTime,
-                     Volume volume, String volumeInDb, long weight, long originPrice) {
+                     Volume volume, String volumeInDb, long weight, long originPrice, long optionId) {
         this.brand = brand;
         this.company = company;
         this.cost = cost;
@@ -103,6 +107,7 @@ public class SkuDetail {
         this.volumeInDb = volumeInDb;
         this.weight = weight;
         this.originPrice = originPrice;
+        this.optionId = optionId;
     }
 
     public SkuDetail() {
@@ -258,5 +263,13 @@ public class SkuDetail {
 
     public void setOption2Type(OptionType option2Type) {
         this.option2Type = option2Type;
+    }
+
+    public long getOptionId() {
+        return optionId;
+    }
+
+    public void setOptionId(long optionId) {
+        this.optionId = optionId;
     }
 }

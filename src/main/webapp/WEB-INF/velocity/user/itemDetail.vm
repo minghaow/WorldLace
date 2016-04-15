@@ -79,7 +79,8 @@
                 #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} > 1)
                 <div class="option-button-wrapper margin-top clearfix">
                     #foreach ($sku in $skuInfo.getSkuDetailList())
-                    <button class="small hollow option button" href="#">$sku.option1</button>
+                    <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
+                            data-optionId="$sku.optionId">$sku.option1</button>
                     #end
                 </div>
                 #end

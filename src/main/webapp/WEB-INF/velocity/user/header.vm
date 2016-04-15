@@ -13,13 +13,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     #if ($!{pageType} == "ITEM_DETAIL")
-        <title>桃源网 - $!{skuInfo.title}</title>
-        <meta name="keywords" content="餐厨用品，高端餐具，高端厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子" />
+        <title>$!{skuInfo.title}|桃源网</title>
+        <meta name="keywords" content="餐厨用品，高端餐具，厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
         <meta name="description" content="$!{skuInfo.description}" />
     #else
-        <title>桃源网 - 首页</title>
-        <meta name="keywords" content="餐厨用品，高端餐具，高端厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子" />
-        <meta name="description" content="桃源网，品质餐厨用品专家。选礼物来桃源，高端大气上档次！" />
+        <title>首页|桃源网</title>
+        <meta name="keywords" content="餐厨用品，高端餐具，厨具，送父母，送老婆，送朋友，送领导，幸福感，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
+        <meta name="description" content="桃源网，品质餐厨用品专家。直接与厂家合作，没有中间商差价，以最低的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。选礼物来桃源，高端大气上档次！" />
     #end
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider.css">
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider-dots.css">
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightslider.css">
-##    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightGallery.min.css">
 
     <script>
         var _hmt = _hmt || [];
@@ -53,7 +52,7 @@
 
 <!-- for seo -->
 #if ($!{pageType} == "ITEM_DETAIL")
-    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="桃源网" class="seo-content"/>
+    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/0.jpg@!item-head" alt="桃源网" class="seo-content"/>
 #else
     <img src="$!{imageUrlPrefix}/images/search.jpg" alt="桃源网" class="seo-content"/>
 #end

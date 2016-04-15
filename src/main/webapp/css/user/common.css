@@ -62,3 +62,6 @@ input.labelauty + label {
 .bdsharebuttonbox a {
     color: #A7866A;
 }
+#body #bdshare_weixin_qrcode_dialog {
+    height:295px !important;
+}

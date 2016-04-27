@@ -1,5 +1,5 @@
-#* @vtlvariable name="skuInfoList" type="java.util.ArrayList<nanshen.data.SkuInfo>" *#
-#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
+#* @vtlvariable name="skuInfoList" type="java.util.ArrayList<nanshen.data.SkuItem>" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
@@ -100,7 +100,7 @@
                     #else
                         <a href="#" data-id="$skuInfo.id" class="tiny button online-btn">上线</a>
                     #end
-                    <a href="/admin/operation/sku/sku-upload?skuId=$skuInfo.id" class="tiny button" target="_blank">修改</a>
+                    <a href="/admin/operation/sku/sku-upload?itemId=$skuInfo.id" class="tiny button" target="_blank">修改</a>
                     <a href="#" data-id="$skuInfo.id" class="tiny button delete-btn">删除</a>
                 </td>
             </tr>

@@ -38,8 +38,8 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     private Map<PublicationStatus, Long> statusCntMap = new HashMap<PublicationStatus, Long>();
     private Map<PublicationStatus, Long> newStatusCntMap = new HashMap<PublicationStatus, Long>();
-    private List<SkuInfo> offlineSkuInfoList = new ArrayList<SkuInfo>();
-    private List<SkuInfo> onlineSkuInfoList = new ArrayList<SkuInfo>();
+    private List<SkuItem> offlineSkuItemList = new ArrayList<SkuItem>();
+    private List<SkuItem> onlineSkuItemList = new ArrayList<SkuItem>();
 
     @Override
     public void update() {
@@ -54,8 +54,8 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     private void updateSkuInfoList() {
-        offlineSkuInfoList = skuInfoDao.getAll(PublicationStatus.OFFLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
-        onlineSkuInfoList = skuInfoDao.getAll(PublicationStatus.ONLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
+        offlineSkuItemList = skuInfoDao.getAll(PublicationStatus.OFFLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
+        onlineSkuItemList = skuInfoDao.getAll(PublicationStatus.ONLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
     }
 
     private void updateStatusCntMap(Date startDate) {
@@ -71,21 +71,21 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public boolean update(SkuInfo skuInfo) {
-        return skuInfoDao.update(skuInfo);
+    public boolean update(SkuItem skuItem) {
+        return skuInfoDao.update(skuItem);
     }
 
     @Override
     public ExecInfo update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
-        SkuInfo skuInfo = skuInfoDao.get(skuId);
-        skuInfo.setStatus(PublicationStatus.OFFLINE);
-        skuInfo.setTitle(title);
-        skuInfo.setSubTitle(subTitle);
-        skuInfo.setUrl(url);
-        skuInfo.setDescription(desc);
-        skuInfo.setUploadUserId(operatorId);
-        skuInfo.setCreateTime(new Date());
-        if (update(skuInfo)) {
+        SkuItem skuItem = skuInfoDao.get(skuId);
+        skuItem.setStatus(PublicationStatus.OFFLINE);
+        skuItem.setTitle(title);
+        skuItem.setSubTitle(subTitle);
+        skuItem.setUrl(url);
+        skuItem.setDescription(desc);
+        skuItem.setUploadUserId(operatorId);
+        skuItem.setCreateTime(new Date());
+        if (update(skuItem)) {
             update();
             return ExecInfo.succ();
         }
@@ -109,13 +109,13 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public SkuInfo getSkuInfo(long skuId) {
+    public SkuItem getSkuInfo(long skuId) {
         List<SkuDetail> skuDetailList = getSkuDetail(skuId);
-        SkuInfo skuInfo = skuInfoDao.get(skuId);
-        if (skuInfo != null) {
-            skuInfo.setSkuDetailList(skuDetailList);
+        SkuItem skuItem = skuInfoDao.get(skuId);
+        if (skuItem != null) {
+            skuItem.setSkuDetailList(skuDetailList);
         }
-        return skuInfo;
+        return skuItem;
     }
 
     @Override
@@ -124,7 +124,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public SkuInfo getOrCreateSkuInfo(long skuId, long operatorId) {
+    public SkuItem getOrCreateSkuInfo(long skuId, long operatorId) {
 //        if (skuId == 0) {
 //            return skuInfoDao.insert(new SkuInfo(operatorId));
 //        } else {
@@ -133,26 +133,26 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public ExecResult<SkuInfo> uploadImage(long skuId, long operatorId, MultipartFile file) throws IOException {
+    public ExecResult<SkuItem> uploadImage(long skuId, long operatorId, MultipartFile file) throws IOException {
         InputStream is = file.getInputStream();
-        SkuInfo skuInfo = getOrCreateSkuInfo(skuId, operatorId);
-        ExecInfo execInfo = uploadImageToOss(file, is, skuInfo);
+        SkuItem skuItem = getOrCreateSkuInfo(skuId, operatorId);
+        ExecInfo execInfo = uploadImageToOss(file, is, skuItem);
 
         if (execInfo.isSucc()) {
-            skuInfo.setImgCount(skuInfo.getImgCount() + 1);
-            update(skuInfo);
-            return ExecResult.succ(skuInfo);
+            skuItem.setImgCount(skuItem.getImgCount() + 1);
+            update(skuItem);
+            return ExecResult.succ(skuItem);
         }
         return ExecResult.fail(execInfo.getMsg());
     }
 
     @Override
-    public List<SkuInfo> getAll(PublicationStatus status, PageInfo pageInfo) {
+    public List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo) {
         if (pageInfo != null && pageInfo.getPage() <= 1) {
             if (status == PublicationStatus.ONLINE) {
-                return onlineSkuInfoList;
+                return onlineSkuItemList;
             } else {
-                return offlineSkuInfoList;
+                return offlineSkuItemList;
             }
         }
         return skuInfoDao.getAll(status, pageInfo);
@@ -174,15 +174,15 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public List<SkuInfo> getByLookId(long lookId) {
+    public List<SkuItem> getByLookId(long lookId) {
         return skuInfoDao.getByLookId(lookId);
     }
 
     @Override
     public boolean changeStatus(long skuId, PublicationStatus publicationStatus) {
-        SkuInfo skuInfo = skuInfoDao.get(skuId);
-        skuInfo.setStatus(publicationStatus);
-        if (update(skuInfo)) {
+        SkuItem skuItem = skuInfoDao.get(skuId);
+        skuItem.setStatus(publicationStatus);
+        if (update(skuItem)) {
             update();
             return true;
         }
@@ -193,23 +193,23 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     @Transactional
     public ExecInfo addRelatedSku(long lookId, String skuIdList) {
         String[] skuIdArray = StringUtils.getStringListFromString(skuIdList, ",");
-        List<SkuInfo> resultSkuInfoList = new ArrayList<SkuInfo>();
+        List<SkuItem> resultSkuItemList = new ArrayList<SkuItem>();
 
         for (String skuId : skuIdArray) {
             Long skuIdLong = Long.parseLong(skuId);
-            SkuInfo skuInfo = getSkuInfo(skuIdLong);
-            if (skuInfo == null) {
+            SkuItem skuItem = getSkuInfo(skuIdLong);
+            if (skuItem == null) {
                 return ExecInfo.fail("抱歉，根据所提供的ID: " + skuId + "，未找到该单品");
             }
-            resultSkuInfoList.add(skuInfo);
+            resultSkuItemList.add(skuItem);
         }
 
         clearSkuLookInfo(lookId);
-        updateSkuLookInfo(lookId, resultSkuInfoList);
+        updateSkuLookInfo(lookId, resultSkuItemList);
         return ExecInfo.succ();
     }
 
-    private void updateSkuLookInfo(long lookId, List<SkuInfo> resultSkuInfoList) {
+    private void updateSkuLookInfo(long lookId, List<SkuItem> resultSkuItemList) {
 //        for (SkuInfo skuInfo : resultSkuInfoList) {
 //            if (skuInfo.getLookId() == 0 || skuInfo.getLookId() == lookId) {
 //                skuInfo.setLookId(lookId);
@@ -226,8 +226,8 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 //        }
     }
 
-    private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, SkuInfo skuInfo) {
-        String imgKey = getImgKey(file, skuInfo);
+    private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, SkuItem skuItem) {
+        String imgKey = getImgKey(file, skuItem);
         ExecInfo execInfo = ExecInfo.fail("上传云服务失败");
         try {
             execInfo = ossFormalApi.putObject(SystemConstants.BUCKET_NAME, imgKey, is, file.getSize());
@@ -237,8 +237,8 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
         return execInfo;
     }
 
-    private String getImgKey(MultipartFile file, SkuInfo skuInfo) {
-        String imgKey = "images/sku/" + skuInfo.getId() + "/" + skuInfo.getImgCount();
+    private String getImgKey(MultipartFile file, SkuItem skuItem) {
+        String imgKey = "images/sku/" + skuItem.getId() + "/" + skuItem.getImgCount();
         System.out.println("imgKey : " + imgKey);
         return imgKey;
     }

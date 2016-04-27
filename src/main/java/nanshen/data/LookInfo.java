@@ -63,7 +63,7 @@ public class LookInfo {
     private List<String> imgUrlList;
 
     /** sku list, default for 1 to 2 skus */
-    private List<SkuInfo> skuInfoList;
+    private List<SkuItem> skuItemList;
 
     /** tag id list */
     private String[] tagIdList;
@@ -182,12 +182,12 @@ public class LookInfo {
         this.skuCount = skuCount;
     }
 
-    public List<SkuInfo> getSkuInfoList() {
-        return skuInfoList;
+    public List<SkuItem> getSkuItemList() {
+        return skuItemList;
     }
 
-    public void setSkuInfoList(List<SkuInfo> skuInfoList) {
-        this.skuInfoList = skuInfoList;
+    public void setSkuItemList(List<SkuItem> skuItemList) {
+        this.skuItemList = skuItemList;
     }
 
     public long getImgCount() {
@@ -223,12 +223,12 @@ public class LookInfo {
     }
 
     public String getSkuIdList() {
-        if (skuInfoList == null || skuInfoList.size() <= 0) {
+        if (skuItemList == null || skuItemList.size() <= 0) {
             return "";
         }
         StringBuilder skuIdList = new StringBuilder();
-        for (SkuInfo skuInfo : skuInfoList) {
-            skuIdList.append(skuInfo.getId());
+        for (SkuItem skuItem : skuItemList) {
+            skuIdList.append(skuItem.getId());
             skuIdList.append(",");
         }
         return skuIdList.substring(0, skuIdList.length() - 1);

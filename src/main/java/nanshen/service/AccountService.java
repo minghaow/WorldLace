@@ -31,10 +31,10 @@ public interface AccountService {
     /**
      * 根据单品信息表得到管理员信息
      *
-     * @param skuInfoList
+     * @param skuItemList
      * @return
      */
-    Map<Long, AdminUserInfo> getAdminUserInfoBySkuInfoList(List<SkuInfo> skuInfoList);
+    Map<Long, AdminUserInfo> getAdminUserInfoBySkuInfoList(List<SkuItem> skuItemList);
 
     /**
      * 根据管理员名称获得管理员信息

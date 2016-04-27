@@ -74,10 +74,10 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     }
 
     @Override
-    public Map<Long, AdminUserInfo> getAdminUserInfoBySkuInfoList(List<SkuInfo> skuInfoList) {
+    public Map<Long, AdminUserInfo> getAdminUserInfoBySkuInfoList(List<SkuItem> skuItemList) {
         Map<Long, AdminUserInfo> idAndAdminUserInfoMap = new HashMap<Long, AdminUserInfo>();
-        for (SkuInfo skuInfo : skuInfoList) {
-            idAndAdminUserInfoMap.put(skuInfo.getUploadUserId(), getAdminUserInfoByUserId(skuInfo.getUploadUserId()));
+        for (SkuItem skuItem : skuItemList) {
+            idAndAdminUserInfoMap.put(skuItem.getUploadUserId(), getAdminUserInfoByUserId(skuItem.getUploadUserId()));
         }
         return idAndAdminUserInfoMap;
     }

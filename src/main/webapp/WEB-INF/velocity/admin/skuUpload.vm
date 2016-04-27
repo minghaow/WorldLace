@@ -4,7 +4,7 @@
 #* @vtlvariable name="lookTagList" type="java.util.List" *#
 #* @vtlvariable name="lookTag" type="nanshen.data.StyleTag" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
-#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 
@@ -32,7 +32,7 @@
         <form action="#" method="get" id="sku-upload-form"
               class="collapse prefix-radius leftAlign">
             <div class="row">
-                <input name="skuId" id="skuId" type="hidden" value="$!skuInfo.id">
+                <input name="itemId" id="itemId" type="hidden" value="$!skuInfo.id">
                 <div class="small-6 columns">
                     <label class="tag-label">标题信息</label>
                     <div class="row prefix-radius collapse">
@@ -111,7 +111,7 @@
                                 </li>
                             #end
                         #end
-                        #if ($!{lookInfo.getSkuInfoList().size()} == 0)
+                        #if ($!{lookInfo.getSkuItemList().size()} == 0)
                             <div>抱歉，暂无图片。</div>
                         #end
                     </ul>

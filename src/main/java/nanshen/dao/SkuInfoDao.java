@@ -2,7 +2,7 @@ package nanshen.dao;
 
 import nanshen.data.PageInfo;
 import nanshen.data.PublicationStatus;
-import nanshen.data.SkuInfo;
+import nanshen.data.SkuItem;
 
 import java.util.Date;
 import java.util.List;
@@ -12,19 +12,19 @@ import java.util.List;
  */
 public interface SkuInfoDao {
 
-    SkuInfo insert(SkuInfo skuInfo);
+    SkuItem insert(SkuItem skuItem);
 
-    SkuInfo get(long skuId);
+    SkuItem get(long skuId);
 
-    boolean update(SkuInfo skuId);
+    boolean update(SkuItem skuId);
 
     boolean remove(long skuId);
 
-    List<SkuInfo> getAll();
+    List<SkuItem> getAll();
 
-    List<SkuInfo> getAll(PublicationStatus status);
+    List<SkuItem> getAll(PublicationStatus status);
 
-    List<SkuInfo> getAll(PublicationStatus status, PageInfo pageInfo);
+    List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo);
 
     boolean remove(long skuId, long operatorId);
 
@@ -32,5 +32,5 @@ public interface SkuInfoDao {
 
     long getCnt(PublicationStatus status, Date startDate);
 
-    List<SkuInfo> getByLookId(long lookId);
+    List<SkuItem> getByLookId(long lookId);
 }

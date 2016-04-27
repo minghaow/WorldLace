@@ -16,10 +16,10 @@ public interface SkuService {
     /**
      * Update sku info
      *
-     * @param skuInfo the target sku info
+     * @param skuItem the target sku info
      * @return boolean
      */
-    boolean update(SkuInfo skuInfo);
+    boolean update(SkuItem skuItem);
 
     /**
      * Update sku info
@@ -59,7 +59,7 @@ public interface SkuService {
      * @param skuId skuId
      * @return
      */
-    SkuInfo getSkuInfo(long skuId);
+    SkuItem getSkuInfo(long skuId);
 
     /**
      * Get sku details by skuId
@@ -76,7 +76,7 @@ public interface SkuService {
      * @param operatorId uploader
      * @return
      */
-    SkuInfo getOrCreateSkuInfo(long skuId, long operatorId);
+    SkuItem getOrCreateSkuInfo(long skuId, long operatorId);
 
     /**
      * Upload the sku images
@@ -86,7 +86,7 @@ public interface SkuService {
      * @param file image file
      * @return ExecResult<SkuInfo>
      */
-    ExecResult<SkuInfo> uploadImage(long skuId, long operatorId, MultipartFile file) throws IOException;
+    ExecResult<SkuItem> uploadImage(long skuId, long operatorId, MultipartFile file) throws IOException;
 
     /**
      * Get all of the skus for specified publication status
@@ -97,7 +97,7 @@ public interface SkuService {
      * @param pageInfo page number
      * @return List<LookInfo>
      */
-    List<SkuInfo> getAll(PublicationStatus status, PageInfo pageInfo);
+    List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo);
 
     /**
      * Get the all of the tags in a list
@@ -128,7 +128,7 @@ public interface SkuService {
      * @param lookId look id
      * @return
      */
-    List<SkuInfo> getByLookId(long lookId);
+    List<SkuItem> getByLookId(long lookId);
 
     /**
      * Change the publication status of a sku item

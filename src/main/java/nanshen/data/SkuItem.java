@@ -9,12 +9,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * SkuInfo
+ * SkuItem
  *
  * @author WANG Minghao
  */
-@Table("SkuInfo")
-public class SkuInfo {
+@Table("SkuItem")
+public class SkuItem {
 
     /** ID */
     @Id
@@ -89,7 +89,7 @@ public class SkuInfo {
     @Column
     private Date updateTime = new Date();
 
-    public SkuInfo(Date createTime, String description, long id, long imgCount, List<String> imgUrlList, long price,
+    public SkuItem(Date createTime, String description, long id, long imgCount, List<String> imgUrlList, long price,
                    List<SkuTag> skuTagList, PublicationStatus status, String subTitle, String tags, String title,
                    Date updateTime, long uploadUserId, String url, String warning, String notice) {
         this.createTime = createTime;
@@ -110,7 +110,7 @@ public class SkuInfo {
         this.notice = notice;
     }
 
-    public SkuInfo() {
+    public SkuItem() {
     }
 
     public Date getCreateTime() {

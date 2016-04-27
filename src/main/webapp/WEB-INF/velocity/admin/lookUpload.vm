@@ -3,7 +3,7 @@
 #* @vtlvariable name="lookTagList" type="java.util.List" *#
 #* @vtlvariable name="lookTag" type="nanshen.data.StyleTag" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
-#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 
@@ -102,7 +102,7 @@
                 <input type="text" id="sku-form" name="skuIdList" value="$!{lookInfo.skuIdList}">
                 <ul class="margin-top-small row thumbnail-wrapper small-block-grid-6">
                     #if ($!{lookInfo.getSkuCount()} != 0)
-                        #foreach ($skuInfo in $!{lookInfo.getSkuInfoList()})
+                        #foreach ($skuInfo in $!{lookInfo.getSkuItemList()})
                             <li>
                                 <a class="th radius " href="${skuInfo.url}" target="_blank" title="${skuInfo.title}">
                                     <img src="http://nanshen.oss-cn-beijing.aliyuncs.com/images/sku/$skuInfo.id/0"/>

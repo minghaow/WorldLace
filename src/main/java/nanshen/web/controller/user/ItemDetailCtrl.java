@@ -1,9 +1,7 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.AdminUserInfo;
-import nanshen.data.LookInfo;
 import nanshen.data.PageType;
-import nanshen.data.SkuInfo;
+import nanshen.data.SkuItem;
 import nanshen.service.AccountService;
 import nanshen.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/item")
@@ -30,28 +28,22 @@ public class ItemDetailCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView itemDetail(ModelMap model, @RequestParam(defaultValue = "1", required = true) int itemId) {
-        SkuInfo skuInfo = skuService.getSkuInfo(itemId);
-        if (skuInfo != null) {
-            model.addAttribute("skuInfo", skuInfo);
+        SkuItem skuItem = skuService.getSkuInfo(itemId);
+        if (skuItem != null) {
+            model.addAttribute("skuInfo", skuItem);
         }
 		prepareHeaderModel(model, PageType.ITEM_DETAIL);
 		return new ModelAndView("user/itemDetail");
 	}
 
-	private void prepareExistingLookInfo(ModelMap model, LookInfo lookInfo) {
-		AdminUserInfo uploader = accountService.getAdminUserInfoByUserId(lookInfo.getUploadUserId());
-		prepareLookTagIdMap(model, lookInfo);
-		model.addAttribute("lookInfo", lookInfo);
-		model.addAttribute("uploader", uploader);
-	}
+	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+	public void addToCart(HttpServletResponse response, ModelMap model,
+						  @RequestParam(defaultValue = "1", required = true) int itemId)
+			throws IOException {
 
-	private void prepareLookTagIdMap(ModelMap model, LookInfo lookInfo) {
-		Map<String, Boolean> tagIdMap = new HashMap<String, Boolean>();
-		String[] tagIdList = lookInfo.getTagIdList();
-		for (String tag : tagIdList) {
-			tagIdMap.put(tag, true);
-		}
-		model.addAttribute("tagIdMap", tagIdMap);
+		model.put("success", "true");
+		prepareHeaderModel(model, PageType.ITEM_DETAIL);
+		responseJson(response, model);
 	}
 
 }

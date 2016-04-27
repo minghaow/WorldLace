@@ -1,4 +1,4 @@
-#* @vtlvariable name="skuInfoList" type="java.util.List<nanshen.data.SkuInfo>" *#
+#* @vtlvariable name="skuInfoList" type="java.util.List<nanshen.data.SkuItem>" *#
 #* @velocityproperties path="/WEB-INF/velocity" *#
 #* @vtlvariable name="pageType" type="nanshen.data.PageType" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#

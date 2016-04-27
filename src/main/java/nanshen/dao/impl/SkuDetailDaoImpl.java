@@ -24,19 +24,19 @@ public class SkuDetailDaoImpl extends BaseDao implements SkuDetailDao {
     }
 
     @Override
-    public List<SkuDetail> get(long skuId) {
-        Condition cnd = Cnd.where("skuId", "=", skuId);
+    public List<SkuDetail> get(long itemId) {
+        Condition cnd = Cnd.where("itemId", "=", itemId);
         return dao.query(SkuDetail.class, cnd);
     }
 
     @Override
-    public boolean update(SkuInfo skuInfo) {
-        return dao.delete(SkuDetail.class, skuInfo.getId()) == 1;
+    public boolean update(SkuItem skuItem) {
+        return dao.delete(SkuDetail.class, skuItem.getId()) == 1;
     }
 
     @Override
-    public boolean remove(long skuId) {
-        Condition cnd = Cnd.where("skuId", "=", skuId);
+    public boolean remove(long itemId) {
+        Condition cnd = Cnd.where("itemId", "=", itemId);
         return dao.clear(SkuDetail.class, cnd) == 1;
     }
 
@@ -63,9 +63,9 @@ public class SkuDetailDaoImpl extends BaseDao implements SkuDetailDao {
     }
 
     @Override
-    public boolean remove(long skuId, long operatorId) {
+    public boolean remove(long itemId, long operatorId) {
         Condition cnd = Cnd
-                .where("skuId", "=", skuId)
+                .where("itemId", "=", itemId)
                 .and("operatorId", "=", operatorId);
         return dao.clear(SkuDetail.class, cnd) == 1;
     }

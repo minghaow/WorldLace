@@ -3,7 +3,7 @@ package nanshen.dao;
 import nanshen.data.PageInfo;
 import nanshen.data.PublicationStatus;
 import nanshen.data.SkuDetail;
-import nanshen.data.SkuInfo;
+import nanshen.data.SkuItem;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +17,7 @@ public interface SkuDetailDao {
 
     List<SkuDetail> get(long skuId);
 
-    boolean update(SkuInfo skuId);
+    boolean update(SkuItem skuId);
 
     boolean remove(long skuId);
 

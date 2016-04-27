@@ -52,7 +52,7 @@ public class SkuCtrl extends BaseController {
                                  @RequestParam(defaultValue = "ONLINE", required = true) PublicationStatus status) {
         prepareLoginUserInfo(request, model);
         prepareSkuCntInfo(model);
-        List<SkuInfo> skuInfoList = skuService.getAll(status, new PageInfo(page));
+        List<SkuItem> skuInfoList = skuService.getAll(status, new PageInfo(page));
         Map<Long, AdminUserInfo> idAndAdminUserInfoMap = accountService.getAdminUserInfoBySkuInfoList(skuInfoList);
         model.addAttribute("idAndAdminUserInfoMap", idAndAdminUserInfoMap);
 		model.addAttribute("skuInfoList", skuInfoList);
@@ -91,8 +91,8 @@ public class SkuCtrl extends BaseController {
 	}
 
     private void prepareExistedSkuInfo(ModelMap model, @RequestParam(defaultValue = "0", required = true) long skuId) {
-        SkuInfo skuInfo = skuService.getSkuInfo(skuId);
-        model.addAttribute("skuInfo", skuInfo);
+        SkuItem skuItem = skuService.getSkuInfo(skuId);
+        model.addAttribute("skuInfo", skuItem);
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
@@ -174,9 +174,9 @@ public class SkuCtrl extends BaseController {
                        @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
         prepareLoginUserInfo(request, model);
         AdminUserInfo adminUserInfo = getLoginedUser(request);
-        SkuInfo skuInfo = skuService.getSkuInfo(skuId);
-        model.addAttribute("success", skuInfo != null);
-        model.addAttribute("skuInfo", skuInfo);
+        SkuItem skuItem = skuService.getSkuInfo(skuId);
+        model.addAttribute("success", skuItem != null);
+        model.addAttribute("skuInfo", skuItem);
         responseJson(response, model);
     }
 
@@ -194,7 +194,7 @@ public class SkuCtrl extends BaseController {
         AdminUserInfo adminUserInfo = prepareLoginUserInfo(request, model);
         MultipartFile file = request.getFile("Filedata");
 
-        ExecResult<SkuInfo> execResult = skuService.uploadImage(skuId, adminUserInfo.getId(), file);
+        ExecResult<SkuItem> execResult = skuService.uploadImage(skuId, adminUserInfo.getId(), file);
         model.addAttribute("success", execResult.isSucc());
         model.addAttribute("message", execResult.getMsg());
         model.addAttribute("id", execResult.getValue().getImgCount() - 1);

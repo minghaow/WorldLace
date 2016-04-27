@@ -15,9 +15,13 @@ import java.util.Date;
 @Table("SkuDetail")
 public class SkuDetail {
 
-    /** ID, {@link SkuInfo#id} */
+    /** ID */
     @Id
-    private long skuId;
+    private long id;
+
+    /** ID, {@link SkuItem#id} */
+    @Column
+    private long itemId;
 
     /** origin price, price unit: RMB */
     @Column
@@ -91,7 +95,7 @@ public class SkuDetail {
     private Date updateTime = new Date();
 
     public SkuDetail(String brand, String company, long cost, Date createTime, MaterialDetailType materialDetailType,
-                     MaterialType materialType, long price, String productArea, long skuId, Date updateTime,
+                     MaterialType materialType, long price, String productArea, long itemId, Date updateTime,
                      Volume volume, String volumeInDb, long weight, long originPrice, long optionId) {
         this.brand = brand;
         this.company = company;
@@ -101,7 +105,7 @@ public class SkuDetail {
         this.materialType = materialType;
         this.price = price;
         this.productArea = productArea;
-        this.skuId = skuId;
+        this.itemId = itemId;
         this.updateTime = updateTime;
         this.volume = volume;
         this.volumeInDb = volumeInDb;
@@ -193,12 +197,12 @@ public class SkuDetail {
         this.productArea = productArea;
     }
 
-    public long getSkuId() {
-        return skuId;
+    public long getItemId() {
+        return itemId;
     }
 
-    public void setSkuId(long skuId) {
-        this.skuId = skuId;
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
     }
 
     public Date getUpdateTime() {
@@ -271,5 +275,13 @@ public class SkuDetail {
 
     public void setOptionId(long optionId) {
         this.optionId = optionId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

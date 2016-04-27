@@ -4,7 +4,7 @@
 #* @vtlvariable name="CATEGORY" type="java.lang.String" *#
 #* @vtlvariable name="TOPIC" type="java.lang.String" *#
 #* @vtlvariable name="ABOUT" type="java.lang.String" *#
-#* @vtlvariable name="skuInfo" type="nanshen.data.SkuInfo" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
 <!DOCTYPE html>
 <html lang="en">
 

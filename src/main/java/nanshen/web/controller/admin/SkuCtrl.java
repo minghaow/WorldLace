@@ -91,7 +91,7 @@ public class SkuCtrl extends BaseController {
 	}
 
     private void prepareExistedSkuInfo(ModelMap model, @RequestParam(defaultValue = "0", required = true) long skuId) {
-        SkuItem skuItem = skuService.getSkuInfo(skuId);
+        SkuItem skuItem = skuService.getSkuItemInfo(skuId);
         model.addAttribute("skuInfo", skuItem);
     }
 
@@ -174,7 +174,7 @@ public class SkuCtrl extends BaseController {
                        @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
         prepareLoginUserInfo(request, model);
         AdminUserInfo adminUserInfo = getLoginedUser(request);
-        SkuItem skuItem = skuService.getSkuInfo(skuId);
+        SkuItem skuItem = skuService.getSkuItemInfo(skuId);
         model.addAttribute("success", skuItem != null);
         model.addAttribute("skuInfo", skuItem);
         responseJson(response, model);

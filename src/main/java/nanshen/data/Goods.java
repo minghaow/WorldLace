@@ -17,84 +17,83 @@ public class Goods {
 
     /** ID */
     @Id
-    private long id;
+    protected long id;
 
     /** skuId */
     @Column
-    private long skuId;
+    protected long skuId;
 
     /** the orderId */
     @Column
-    private long orderId = 0;
+    protected long orderId = 0;
 
     /** the id of Cart */
     @Column
-    private long cartId = 0;
+    protected long cartId = 0;
 
     /** the orderId of Cart */
     @Column
-    private long userId = 0;
+    protected long userId = 0;
 
     /** remark */
     @Column
-    private String remark = null;
+    protected String remark = null;
 
     /** admin remark */
     @Column
-    private String adminRemark = null;
+    protected String adminRemark = null;
 
     /** title, attractive information */
     @Column
-    private String title;
+    protected String title;
 
     /** sub title for the sku, explaining the title normally */
     @Column
-    private String subTitle;
+    protected String subTitle;
 
     /** warning for the sku */
     @Column
-    private String warning = null;
+    protected String warning = null;
 
     /** price, price unit: RMB */
     @Column
-    private long price = 0;
+    protected long price = 0;
 
     /** price, price unit: RMB */
     @Column
-    private long originPrice = 0;
+    protected long originPrice = 0;
 
     /** price, price unit: RMB */
     @Column
-    private long count = 0;
+    protected long count = 0;
 
     /** discount price, price unit: RMB */
     @Column
-    private long discountPrice = 0;
+    protected long discountPrice = 0;
 
     /** discount code */
     @Column
-    private String discountCode = null;
-
-    /** online status {@code nanshen.data.PublicationStatus} */
-    @Column
-    private PublicationStatus status = PublicationStatus.NEW;
+    protected String discountCode = null;
 
     /** image url list, default for 1 to 2 images */
-    private List<String> imgUrlList;
+    protected List<String> imgUrlList;
 
     /** sku list, default for 1 to 2 skus */
-    private List<SkuTag> skuTagList;
+    protected List<SkuTag> skuTagList;
 
     /** sku detail */
-    private List<SkuDetail> skuDetailList;
+    protected List<SkuDetail> skuDetailList;
 
     /** create time for this look, will fill when create */
     @Column
-    private Date createTime = new Date();
+    protected Date createTime = new Date();
 
     /** update time for this look, all operator will update this value */
     @Column
-    private Date updateTime = new Date();
+    protected Date updateTime = new Date();
+
+    /** is cart goods */
+    protected boolean isCartGoods = false;
 
     public Goods(String adminRemark, long cartId, long count, Date createTime, String discountCode, long discountPrice,
                   long id, List<String> imgUrlList, long orderId, long originPrice, long price, String remark,
@@ -114,7 +113,6 @@ public class Goods {
         this.remark = remark;
         this.skuDetailList = skuDetailList;
         this.skuTagList = skuTagList;
-        this.status = status;
         this.subTitle = subTitle;
         this.title = title;
         this.updateTime = updateTime;
@@ -123,7 +121,7 @@ public class Goods {
     }
 
     public Goods(long cartId, long count, String discountCode, long discountPrice, long originPrice, long price,
-                 String remark, String subTitle, String title, long userId) {
+                 String remark, String subTitle, String title, long userId, long skuId) {
         this.cartId = cartId;
         this.count = count;
         this.discountCode = discountCode;
@@ -134,6 +132,7 @@ public class Goods {
         this.subTitle = subTitle;
         this.title = title;
         this.userId = userId;
+        this.skuId = skuId;
     }
 
     public Goods() {
@@ -251,14 +250,6 @@ public class Goods {
         this.skuTagList = skuTagList;
     }
 
-    public PublicationStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(PublicationStatus status) {
-        this.status = status;
-    }
-
     public String getSubTitle() {
         return subTitle;
     }
@@ -305,5 +296,13 @@ public class Goods {
 
     public void setSkuId(long skuId) {
         this.skuId = skuId;
+    }
+
+    public boolean isCartGoods() {
+        return isCartGoods;
+    }
+
+    public void setIsCartGoods(boolean isCartGoods) {
+        this.isCartGoods = isCartGoods;
     }
 }

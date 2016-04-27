@@ -2,6 +2,7 @@ package nanshen.service;
 
 import nanshen.data.Cart;
 import nanshen.data.ExecInfo;
+import nanshen.data.ExecResult;
 
 import java.util.List;
 
@@ -18,9 +19,9 @@ public interface CartService {
      * @param userId user id
      * @param itemId goods id
      * @param count the goods count
-     * @return ExecInfo
+     * @return ExecResult
      */
-    ExecInfo addSku(long userId, long itemId, long count);
+    ExecResult<Long> addSku(long userId, long itemId, long count);
 
     /**
      * Add item to the cart

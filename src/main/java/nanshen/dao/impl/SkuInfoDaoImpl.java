@@ -26,8 +26,8 @@ public class SkuInfoDaoImpl extends BaseDao implements SkuInfoDao {
     }
 
     @Override
-    public SkuItem get(long skuId) {
-        return dao.fetch(SkuItem.class, skuId);
+    public SkuItem get(long itemId) {
+        return dao.fetch(SkuItem.class, itemId);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class SkuInfoDaoImpl extends BaseDao implements SkuInfoDao {
     }
 
     @Override
-    public boolean remove(long skuId) {
-        return dao.delete(SkuItem.class, skuId) == 1;
+    public boolean remove(long itemId) {
+        return dao.delete(SkuItem.class, itemId) == 1;
     }
 
     @Override
@@ -81,8 +81,8 @@ public class SkuInfoDaoImpl extends BaseDao implements SkuInfoDao {
     }
 
     @Override
-    public boolean remove(long lookId, long operatorId) {
-        Condition cnd = Cnd.where("id", "=", lookId);
+    public boolean remove(long itemId, long operatorId) {
+        Condition cnd = Cnd.where("id", "=", itemId);
         return dao.clear(SkuItem.class, cnd) == 1;
     }
 }

@@ -5,20 +5,17 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import nanshen.constant.TimeConstants;
 import nanshen.dao.CartDao;
-import nanshen.dao.GoodsCartDao;
+import nanshen.dao.CartGoodsDao;
 import nanshen.dao.OrderDao;
-import nanshen.data.Cart;
-import nanshen.data.ExecInfo;
-import nanshen.data.Goods;
+import nanshen.data.*;
 import nanshen.service.CartService;
+import nanshen.service.SkuService;
 import nanshen.service.common.ScheduledService;
 import nanshen.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -37,9 +34,10 @@ public class CartServiceImpl extends ScheduledService implements CartService {
     private OrderDao orderDao;
 
     @Autowired
-    private GoodsCartDao goodsCartDao;
+    private CartGoodsDao cartGoodsDao;
 
-    private Map<Long, Cart> userIdCartMap = new HashMap<Long, Cart>();
+    @Autowired
+    private SkuService skuService;
 
     /** 买手ID到买手信息的缓存 */
     private final LoadingCache<Long, Cart> userCache = CacheBuilder.newBuilder()
@@ -49,7 +47,11 @@ public class CartServiceImpl extends ScheduledService implements CartService {
                     new CacheLoader<Long, Cart>() {
                         @Override
                         public Cart load(Long userId) throws Exception {
-                            return cartDao.getByUserId(userId);
+                            Cart cart = cartDao.getByUserId(userId);
+                            if (cart != null) {
+                                cart.setGoodsList(cartGoodsDao.getByCartId(cart.getId()));
+                            }
+                            return cart;
                         }
                     });
 
@@ -67,22 +69,30 @@ public class CartServiceImpl extends ScheduledService implements CartService {
     }
 
     @Override
-    public ExecInfo addSku(long userId, long skuId, long count) {
+    public ExecResult<Long> addSku(long userId, long skuId, long count) {
         Cart cart = null;
         try {
             cart = userCache.get(userId);
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             LogUtils.warning("CartService: get user cart info error!", e);
-            throw new RuntimeException(e);
         }
         if (cart == null) {
             cart = cartDao.insert(new Cart(userId));
         }
-        if (!skuAlreadyHaveThenAdd(cart, skuId, count)) {
-//            SkuDetail
-//            goodsCartDao.insert(new Goods(cart.getId(), count));
+        ExecResult<Long> execResult = skuAlreadyHaveThenAdd(cart, skuId, count);
+        if (!execResult.isSucc()) {
+            SkuDetail skuDetail = skuService.getSkuDetail(skuId);
+            SkuItem skuItem = skuService.getSkuItemInfo(skuDetail.getItemId());
+            if (null != cartGoodsDao.insert(new CartGoods(cart.getId(), count, null, 0, skuDetail.getOriginPrice(),
+                    skuDetail.getPrice(), null, skuItem.getSubTitle(), skuItem.getTitle(), userId, skuDetail.getId()))) {
+                cart.setGoodsCount(cart.getGoodsCount() + count);
+                cartDao.update(cart);
+                userCache.invalidate(userId);
+                return ExecResult.succ(cart.getGoodsCount());
+            }
+            return ExecResult.fail("添加商品失败");
         }
-        return ExecInfo.fail("");
+        return execResult;
     }
 
     @Override
@@ -105,15 +115,19 @@ public class CartServiceImpl extends ScheduledService implements CartService {
         return null;
     }
 
-    private boolean skuAlreadyHaveThenAdd(Cart cart, long skuId, long count) {
-        List<Goods> cartGoodsList = cart.getGoodsList();
-        for (Goods goods : cartGoodsList) {
+    private ExecResult<Long> skuAlreadyHaveThenAdd(Cart cart, long skuId, long count) {
+        List<CartGoods> cartGoodsList = cart.getGoodsList();
+        for (CartGoods goods : cartGoodsList) {
             if (goods.getSkuId() == skuId) {
                 goods.setCount(goods.getCount() + count);
-                return goodsCartDao.update(goods);
+                cart.setGoodsCount(cart.getGoodsCount() + count);
+                cartDao.update(cart);
+                cartGoodsDao.update(goods);
+                userCache.invalidate(cart.getUserId());
+                return ExecResult.succ(cart.getGoodsCount());
             }
         }
-        return false;
+        return ExecResult.fail("更新购物车失败");
     }
 
 }

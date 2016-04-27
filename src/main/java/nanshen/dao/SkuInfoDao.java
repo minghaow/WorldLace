@@ -14,11 +14,11 @@ public interface SkuInfoDao {
 
     SkuItem insert(SkuItem skuItem);
 
-    SkuItem get(long skuId);
+    SkuItem get(long itemId);
 
-    boolean update(SkuItem skuId);
+    boolean update(SkuItem itemId);
 
-    boolean remove(long skuId);
+    boolean remove(long itemId);
 
     List<SkuItem> getAll();
 
@@ -32,5 +32,5 @@ public interface SkuInfoDao {
 
     long getCnt(PublicationStatus status, Date startDate);
 
-    List<SkuItem> getByLookId(long lookId);
+    List<SkuItem> getByLookId(long itemId);
 }

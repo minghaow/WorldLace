@@ -5,6 +5,7 @@
 #* @vtlvariable name="TOPIC" type="java.lang.String" *#
 #* @vtlvariable name="ABOUT" type="java.lang.String" *#
 #* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
+#* @vtlvariable name="cart" type="nanshen.data.Cart" *#
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,7 +109,19 @@
                             </ul>
                         </li>
                         <li><a href="#"> | </a></li>
-                        <li><a href="#"><i class="fi-shopping-cart"></i> 购物车(0)</a></li>
+                        <li>
+##                            <a href="#" data-toggle="cart-dropdown" class="hover">
+                            <a href="#">
+                                #if ("$!{cart.goodsCount}" != "")
+                                    <i class="fi-shopping-cart"></i> 购物车( <span class="cart-count redText">$!{cart.goodsCount}</span> )
+                                #else
+                                    <i class="fi-shopping-cart"></i> 购物车( <span class="cart-count redText">0</span> )
+                                #end
+                            </a>
+##                            <div class="dropdown-pane bottom" id="cart-dropdown" data-dropdown>
+##                                抱歉，您的购物车为空
+##                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

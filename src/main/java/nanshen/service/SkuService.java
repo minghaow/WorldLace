@@ -26,7 +26,7 @@ public interface SkuService {
      * <strong>NOTE:</strong> The function will also change status to
      * {@link nanshen.data.PublicationStatus#OFFLINE}
      *
-     * @param skuId skuId
+     * @param itemId itemId
      * @param title the sku title
      * @param subTitle the sku subtitle
      * @param url the sku link
@@ -35,23 +35,31 @@ public interface SkuService {
      * @param operatorId the uploader
      * @return ExecInfo
      */
-    ExecInfo update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId);
+    ExecInfo update(long itemId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId);
 
     /**
      * Remove sku according to skuId
      *
-     * @param skuId skuId
+     * @param itemId itemId
      * @return
      */
-    boolean remove(long skuId);
+    boolean remove(long itemId);
 
     /**
      * Remove sku according to skuId and admin user
      *
-     * @param skuId lookId
+     * @param itemId itemId
      * @return
      */
-    ExecInfo remove(long skuId, AdminUserInfo adminUserInfo);
+    ExecInfo remove(long itemId, AdminUserInfo adminUserInfo);
+
+    /**
+     * Get sku item info by itemId
+     *
+     * @param itemId itemId
+     * @return
+     */
+    SkuItem getSkuItemInfo(long itemId);
 
     /**
      * Get sku info by skuId
@@ -59,34 +67,34 @@ public interface SkuService {
      * @param skuId skuId
      * @return
      */
-    SkuItem getSkuInfo(long skuId);
+    SkuDetail getSkuDetail(long skuId);
 
     /**
      * Get sku details by skuId
      *
-     * @param skuId skuId
+     * @param itemId itemId
      * @return
      */
-    List<SkuDetail> getSkuDetail(long skuId);
+    List<SkuDetail> getSkuDetailByItemId(long itemId);
 
     /**
      * Get sku info by skuId. Create one if find nothing.
      *
-     * @param skuId skuId
+     * @param itemId itemId
      * @param operatorId uploader
      * @return
      */
-    SkuItem getOrCreateSkuInfo(long skuId, long operatorId);
+    SkuItem getOrCreateSkuInfo(long itemId, long operatorId);
 
     /**
      * Upload the sku images
      *
-     * @param skuId the sku of the image
+     * @param itemId the sku of the image
      * @param operatorId uploader
      * @param file image file
      * @return ExecResult<SkuInfo>
      */
-    ExecResult<SkuItem> uploadImage(long skuId, long operatorId, MultipartFile file) throws IOException;
+    ExecResult<SkuItem> uploadImage(long itemId, long operatorId, MultipartFile file) throws IOException;
 
     /**
      * Get all of the skus for specified publication status
@@ -125,26 +133,26 @@ public interface SkuService {
 
     /**
      * Get all of the sku info by lookId
-     * @param lookId look id
+     * @param itemId look id
      * @return
      */
-    List<SkuItem> getByLookId(long lookId);
+    List<SkuItem> getByLookId(long itemId);
 
     /**
      * Change the publication status of a sku item
      *
-     * @param skuId the id of sku
+     * @param itemId the id of item
      * @param publicationStatus publication status
      * @return
      */
-    boolean changeStatus(long skuId, PublicationStatus publicationStatus);
+    boolean changeStatus(long itemId, PublicationStatus publicationStatus);
 
     /**
      * Add look id for each sku
      *
-     * @param lookId look id
+     * @param itemId itemId
      * @param skuIdList sku id list, split by ','
      * @return ExecInfo
      */
-    ExecInfo addRelatedSku(long lookId, String skuIdList);
+    ExecInfo addRelatedSku(long itemId, String skuIdList);
 }

@@ -1,7 +1,7 @@
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
-#* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.SkuItem" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 #* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
@@ -23,7 +23,7 @@
             <ul class="breadcrumbs">
                 <li><a href="/" class="brandColorText">首页列表</a></li>
                 <li>
-                    $!{skuInfo.title}
+                    $!{skuItem.title}
                 </li>
             </ul>
         </nav>
@@ -31,16 +31,16 @@
         <div class="large-6 medium-6 small-12 columns">
             <div class="item-slider">
                 <ul id="lightSlider">
-                #foreach ($imgId in [0..$skuInfo.getImgCount()])
-                    <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-detail-s">
-                        <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>
+                #foreach ($imgId in [0..$skuItem.getImgCount()])
+                    <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-detail-s">
+                        <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
                     </li>
                 #end
                 </ul>
                 <ul id="lightSlider-s">
-                    #foreach ($imgId in [0..$skuInfo.getImgCount()])
-                        <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-detail-s">
-                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/${imgId}.jpg@!item-head" alt="${skuInfo.title}"/>
+                    #foreach ($imgId in [0..$skuItem.getImgCount()])
+                        <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-detail-s">
+                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
                         </li>
                     #end
                 </ul>
@@ -51,8 +51,8 @@
             <div class="detail-description text-left">
                 <div class="clearfix">
                     <div class="float-left">
-                        <h3 class="greyText"><span style="color:#454545;">$!{skuInfo.title}</span></h3>
-                        <div class="redText">$!{skuInfo.subTitle}</div>
+                        <h3 class="greyText"><span style="color:#454545;">$!{skuItem.title}</span></h3>
+                        <div class="redText">$!{skuItem.subTitle}</div>
                     </div>
                 </div>
 
@@ -66,21 +66,21 @@
                     </div>
                     <div class="price-wrapper float-right">
                         <h4 class="brandColorText">
-                            <span class="price-before">￥$!{skuInfo.displayOriginPrice}</span>
-                            <span class="price-after">￥$!{skuInfo.displayPrice}</span>
+                            <span class="price-before">￥$!{skuItem.displayOriginPrice}</span>
+                            <span class="price-after">￥$!{skuItem.displayPrice}</span>
                         </h4>
                     </div>
                 </div>
 
                 <div class="margin-top-small greyText">
-                    <p>$!{skuInfo.description}</p>
+                    <p>$!{skuItem.description}</p>
                 </div>
 
-                #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} > 1)
+                #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} > 1)
                 <div class="option-button-wrapper margin-top clearfix">
-                    #foreach ($sku in $skuInfo.getSkuDetailList())
+                    #foreach ($sku in $skuItem.getSkuDetailList())
                     <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
-                            data-optionId="$sku.optionId">$sku.option1</button>
+                            data-optionId="$sku.optionId" data-sku-id="$sku.id">$sku.option1</button>
                     #end
                 </div>
                 #end
@@ -92,7 +92,8 @@
                                 <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
                             </button>
                         </div>
-                        <button class="alert button" href="#"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
+                        <button class="alert button add-to-cart" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}"
+                                data-count="1"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -119,8 +120,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            #if ("$!{skuInfo.getSkuDetailList()}" != "" && $!{skuInfo.getSkuDetailList().size()} >= 1)
-                            #set ($sku = $skuInfo.getSkuDetailList().get(0))
+                            #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} >= 1)
+                            #set ($sku = $skuItem.getSkuDetailList().get(0))
                             <tr>
                                 <td>$!{sku.brand}</td>
                                 <td>$!{sku.materialType.desc}</td>
@@ -131,8 +132,8 @@
                         </tbody>
                     </table>
 
-                    #foreach ($imgId in [0..$skuInfo.getContentImgCount()])
-                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuInfo.getId()}/${imgId}.jpg@!item-detail" alt="${skuInfo.title}"/>
+                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
+                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
                         <p>&nbsp;</p>
                     #end
                 </div>
@@ -152,11 +153,11 @@
                     <div class="row">
                         <div class="margin-top-small">
                             <h5>下单请注意：</h5>
-                            <p>$!{skuInfo.notice}</p>
+                            <p>$!{skuItem.notice}</p>
                         </div>
                         <div class="margin-top">
                             <h5>产品特点：</h5>
-                            <p>$!{skuInfo.description}</p>
+                            <p>$!{skuItem.description}</p>
                         </div>
                     </div>
                 </div>

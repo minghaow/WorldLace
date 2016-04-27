@@ -43,6 +43,7 @@ jQuery( document ).ready(function( $ ) {
                     $("#animatedModal1").foundation("close");
                     $("#username-section").html(data.userInfo.username + ", " + data.helloMsg);
                     $("#login-decide-content").html("登出");
+                    $(".cart-count").html(data.cart.goodsCount);
                     $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
                 } else {
                     presentFailModal("抱歉！", "用户名和密码的组合不正确，请重新输入。");
@@ -71,9 +72,30 @@ jQuery( document ).ready(function( $ ) {
     $(".option").on('click', function() {
         var originPrice = $(this).data("origin");
         var price = $(this).data("now");
-        var optionId = $(this).data("img");
+        var skuId = $(this).data("skuId");
         $(".price-before").html("￥" + originPrice);
         $(".price-after").html("￥" + price);
+        $(".add-to-cart").data("sku-id", skuId);
+    });
+
+    $(".add-to-cart").on('click', function() {
+        event.preventDefault();
+        var skuId = $(this).data("sku-id");
+        var count = $(this).data("count");
+        $.ajax({
+            url: "/item/addToCart",
+            type: "POST",
+            data: {"skuId":skuId, "count": count},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    $(".cart-count").html(data.cnt);
+                    presentSuccessModal("干得漂亮！", "添加购物车成功");
+                } else {
+                    presentFailModal("抱歉！", data.msg);
+                }
+            }
+        });
     });
 
 });

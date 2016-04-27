@@ -76,8 +76,8 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public ExecInfo update(long skuId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
-        SkuItem skuItem = skuInfoDao.get(skuId);
+    public ExecInfo update(long itemId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
+        SkuItem skuItem = skuInfoDao.get(itemId);
         skuItem.setStatus(PublicationStatus.OFFLINE);
         skuItem.setTitle(title);
         skuItem.setSubTitle(subTitle);
@@ -93,9 +93,9 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public boolean remove(long skuId) {
+    public boolean remove(long itemId) {
         updateSkuInfoList();
-        return skuInfoDao.remove(skuId);
+        return skuInfoDao.remove(itemId);
     }
 
     @Override
@@ -109,9 +109,9 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public SkuItem getSkuInfo(long skuId) {
-        List<SkuDetail> skuDetailList = getSkuDetail(skuId);
-        SkuItem skuItem = skuInfoDao.get(skuId);
+    public SkuItem getSkuItemInfo(long itemId) {
+        List<SkuDetail> skuDetailList = getSkuDetailByItemId(itemId);
+        SkuItem skuItem = skuInfoDao.get(itemId);
         if (skuItem != null) {
             skuItem.setSkuDetailList(skuDetailList);
         }
@@ -119,23 +119,28 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public List<SkuDetail> getSkuDetail(long skuId) {
+    public SkuDetail getSkuDetail(long skuId) {
         return skuDetailDao.get(skuId);
     }
 
     @Override
-    public SkuItem getOrCreateSkuInfo(long skuId, long operatorId) {
+    public List<SkuDetail> getSkuDetailByItemId(long itemId) {
+        return skuDetailDao.getByItemId(itemId);
+    }
+
+    @Override
+    public SkuItem getOrCreateSkuInfo(long itemId, long operatorId) {
 //        if (skuId == 0) {
 //            return skuInfoDao.insert(new SkuInfo(operatorId));
 //        } else {
-            return skuInfoDao.get(skuId);
+            return skuInfoDao.get(itemId);
 //        }
     }
 
     @Override
-    public ExecResult<SkuItem> uploadImage(long skuId, long operatorId, MultipartFile file) throws IOException {
+    public ExecResult<SkuItem> uploadImage(long itemId, long operatorId, MultipartFile file) throws IOException {
         InputStream is = file.getInputStream();
-        SkuItem skuItem = getOrCreateSkuInfo(skuId, operatorId);
+        SkuItem skuItem = getOrCreateSkuInfo(itemId, operatorId);
         ExecInfo execInfo = uploadImageToOss(file, is, skuItem);
 
         if (execInfo.isSucc()) {
@@ -179,8 +184,8 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
-    public boolean changeStatus(long skuId, PublicationStatus publicationStatus) {
-        SkuItem skuItem = skuInfoDao.get(skuId);
+    public boolean changeStatus(long itemId, PublicationStatus publicationStatus) {
+        SkuItem skuItem = skuInfoDao.get(itemId);
         skuItem.setStatus(publicationStatus);
         if (update(skuItem)) {
             update();
@@ -197,7 +202,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
         for (String skuId : skuIdArray) {
             Long skuIdLong = Long.parseLong(skuId);
-            SkuItem skuItem = getSkuInfo(skuIdLong);
+            SkuItem skuItem = getSkuItemInfo(skuIdLong);
             if (skuItem == null) {
                 return ExecInfo.fail("抱歉，根据所提供的ID: " + skuId + "，未找到该单品");
             }

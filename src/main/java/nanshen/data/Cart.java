@@ -92,7 +92,7 @@ public class Cart {
     private Date finishTime = new Date();
 
     /** goods list */
-    private List<Goods> goodsList = new ArrayList<Goods>();
+    private List<CartGoods> goodsList = new ArrayList<CartGoods>();
 
     public Cart() {
     }
@@ -290,11 +290,11 @@ public class Cart {
         this.transportStatus = transportStatus;
     }
 
-    public List<Goods> getGoodsList() {
+    public List<CartGoods> getGoodsList() {
         return goodsList;
     }
 
-    public void setGoodsList(List<Goods> goodsList) {
+    public void setGoodsList(List<CartGoods> goodsList) {
         this.goodsList = goodsList;
     }
 }

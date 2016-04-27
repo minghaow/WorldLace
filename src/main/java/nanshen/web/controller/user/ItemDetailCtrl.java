@@ -1,8 +1,11 @@
 package nanshen.web.controller.user;
 
+import nanshen.data.ExecResult;
 import nanshen.data.PageType;
 import nanshen.data.SkuItem;
+import nanshen.data.UserInfo;
 import nanshen.service.AccountService;
+import nanshen.service.CartService;
 import nanshen.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +29,14 @@ public class ItemDetailCtrl extends BaseCtrl {
 	@Autowired
 	private SkuService skuService;
 
+	@Autowired
+	private CartService cartService;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView itemDetail(ModelMap model, @RequestParam(defaultValue = "1", required = true) int itemId) {
-        SkuItem skuItem = skuService.getSkuInfo(itemId);
+        SkuItem skuItem = skuService.getSkuItemInfo(itemId);
         if (skuItem != null) {
-            model.addAttribute("skuInfo", skuItem);
+            model.addAttribute("skuItem", skuItem);
         }
 		prepareHeaderModel(model, PageType.ITEM_DETAIL);
 		return new ModelAndView("user/itemDetail");
@@ -38,10 +44,17 @@ public class ItemDetailCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
 	public void addToCart(HttpServletResponse response, ModelMap model,
-						  @RequestParam(defaultValue = "1", required = true) int itemId)
+						  @RequestParam(defaultValue = "1", required = true) int skuId,
+						  @RequestParam(defaultValue = "1", required = true) int count)
 			throws IOException {
-
-		model.put("success", "true");
+		UserInfo userInfo = getLoginedUser();
+		ExecResult<Long> execResult = ExecResult.fail("请登陆后再加入购物车，谢谢");
+		if (userInfo != null) {
+			execResult= cartService.addSku(userInfo.getId(), skuId, count);
+		}
+		model.put("success", execResult.isSucc());
+		model.put("message", execResult.getMsg());
+		model.put("cnt", execResult.getValue());
 		prepareHeaderModel(model, PageType.ITEM_DETAIL);
 		responseJson(response, model);
 	}

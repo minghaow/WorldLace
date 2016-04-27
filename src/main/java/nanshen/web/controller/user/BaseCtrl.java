@@ -1,9 +1,11 @@
 package nanshen.web.controller.user;
 
 import nanshen.constant.SystemConstants;
+import nanshen.data.Cart;
 import nanshen.data.PageType;
 import nanshen.data.UserInfo;
 import nanshen.service.AccountService;
+import nanshen.service.CartService;
 import nanshen.utils.JsonUtils;
 import nanshen.utils.RequestUtils;
 import nanshen.utils.ViewUtils;
@@ -50,6 +52,9 @@ public abstract class BaseCtrl {
 	@Autowired
 	protected AccountService accountService;
 
+	@Autowired
+	protected CartService cartService;
+
 	/**
 	 * 默认对所有的输入字符串进行过滤，防止XSS攻击
 	 * <p />
@@ -85,6 +90,22 @@ public abstract class BaseCtrl {
 		if (RequestUtils.isLogined()) {
 			long userId = RequestUtils.loginedUserInfo();
 			return accountService.getUserInfo(userId);
+		}
+		return null;
+	}
+
+	/**
+	 * 获取当前登录的用户的购物车信息
+	 *
+	 * @return 用户信息，若未登录返回null
+	 */
+	protected Cart getCartInfo() {
+		if (RequestUtils.isLogined()) {
+			long userId = RequestUtils.loginedUserInfo();
+			if (userId == 0) {
+				return null;
+			}
+			return cartService.getByUserId(userId);
 		}
 		return null;
 	}
@@ -151,6 +172,7 @@ public abstract class BaseCtrl {
 		}
 		model.addAttribute("pageType", pageType);
 		model.addAttribute("userInfo", getLoginedUser());
+		model.addAttribute("cart", getCartInfo());
 		model.addAttribute("imageUrlPrefix", "http://image-cdn.zaitaoyuan.com");
 //		model.addAttribute("imageUrlPrefix", "");
 		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");

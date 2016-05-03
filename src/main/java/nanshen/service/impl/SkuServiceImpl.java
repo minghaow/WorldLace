@@ -3,7 +3,7 @@ package nanshen.service.impl;
 import nanshen.constant.SystemConstants;
 import nanshen.constant.TimeConstants;
 import nanshen.dao.SkuDetailDao;
-import nanshen.dao.SkuInfoDao;
+import nanshen.dao.SkuItemDao;
 import nanshen.data.*;
 import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
@@ -28,7 +28,7 @@ import java.util.*;
 public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Autowired
-    private SkuInfoDao skuInfoDao;
+    private SkuItemDao skuItemDao;
 
     @Autowired
     private SkuDetailDao skuDetailDao;
@@ -54,15 +54,15 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     private void updateSkuInfoList() {
-        offlineSkuItemList = skuInfoDao.getAll(PublicationStatus.OFFLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
-        onlineSkuItemList = skuInfoDao.getAll(PublicationStatus.ONLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
+        offlineSkuItemList = skuItemDao.getAll(PublicationStatus.OFFLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
+        onlineSkuItemList = skuItemDao.getAll(PublicationStatus.ONLINE, new PageInfo(1, SystemConstants.DEFAULT_CACHED_SKU_SIZE));
     }
 
     private void updateStatusCntMap(Date startDate) {
-        statusCntMap.put(PublicationStatus.ONLINE, skuInfoDao.getCnt(PublicationStatus.ONLINE));
-        statusCntMap.put(PublicationStatus.OFFLINE, skuInfoDao.getCnt(PublicationStatus.OFFLINE));
-        newStatusCntMap.put(PublicationStatus.ONLINE, skuInfoDao.getCnt(PublicationStatus.ONLINE, startDate));
-        newStatusCntMap.put(PublicationStatus.OFFLINE, skuInfoDao.getCnt(PublicationStatus.OFFLINE, startDate));
+        statusCntMap.put(PublicationStatus.ONLINE, skuItemDao.getCnt(PublicationStatus.ONLINE));
+        statusCntMap.put(PublicationStatus.OFFLINE, skuItemDao.getCnt(PublicationStatus.OFFLINE));
+        newStatusCntMap.put(PublicationStatus.ONLINE, skuItemDao.getCnt(PublicationStatus.ONLINE, startDate));
+        newStatusCntMap.put(PublicationStatus.OFFLINE, skuItemDao.getCnt(PublicationStatus.OFFLINE, startDate));
     }
 
     @Override
@@ -72,12 +72,12 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Override
     public boolean update(SkuItem skuItem) {
-        return skuInfoDao.update(skuItem);
+        return skuItemDao.update(skuItem);
     }
 
     @Override
     public ExecInfo update(long itemId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId) {
-        SkuItem skuItem = skuInfoDao.get(itemId);
+        SkuItem skuItem = skuItemDao.get(itemId);
         skuItem.setStatus(PublicationStatus.OFFLINE);
         skuItem.setTitle(title);
         skuItem.setSubTitle(subTitle);
@@ -95,12 +95,12 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     @Override
     public boolean remove(long itemId) {
         updateSkuInfoList();
-        return skuInfoDao.remove(itemId);
+        return skuItemDao.remove(itemId);
     }
 
     @Override
     public ExecInfo remove(long skuId, AdminUserInfo adminUserInfo) {
-        boolean isSucc = skuInfoDao.remove(skuId, adminUserInfo.getId());
+        boolean isSucc = skuItemDao.remove(skuId, adminUserInfo.getId());
         if (isSucc) {
             updateSkuInfoList();
             return ExecInfo.succ();
@@ -111,7 +111,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     @Override
     public SkuItem getSkuItemInfo(long itemId) {
         List<SkuDetail> skuDetailList = getSkuDetailByItemId(itemId);
-        SkuItem skuItem = skuInfoDao.get(itemId);
+        SkuItem skuItem = skuItemDao.get(itemId);
         if (skuItem != null) {
             skuItem.setSkuDetailList(skuDetailList);
         }
@@ -133,7 +133,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 //        if (skuId == 0) {
 //            return skuInfoDao.insert(new SkuInfo(operatorId));
 //        } else {
-            return skuInfoDao.get(itemId);
+            return skuItemDao.get(itemId);
 //        }
     }
 
@@ -160,7 +160,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
                 return offlineSkuItemList;
             }
         }
-        return skuInfoDao.getAll(status, pageInfo);
+        return skuItemDao.getAll(status, pageInfo);
     }
 
     @Override
@@ -180,12 +180,12 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Override
     public List<SkuItem> getByLookId(long lookId) {
-        return skuInfoDao.getByLookId(lookId);
+        return skuItemDao.getByLookId(lookId);
     }
 
     @Override
     public boolean changeStatus(long itemId, PublicationStatus publicationStatus) {
-        SkuItem skuItem = skuInfoDao.get(itemId);
+        SkuItem skuItem = skuItemDao.get(itemId);
         skuItem.setStatus(publicationStatus);
         if (update(skuItem)) {
             update();

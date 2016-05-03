@@ -25,16 +25,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- style stuff -->
+    <link rel="stylesheet" href="/css/foundation-icons.css"/>
     <link type="image/x-icon" href="$!{cssUrlPrefix}/images/favicon.ico" rel="shortcut icon"/>
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/header.css"/>
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/footer.css"/>
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/common.css"/>
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/tool.css"/>
-    <link rel="stylesheet" href="/css/foundation-icons.css"/>
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/foundation.min.css" />
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider.css">
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/unslider-dots.css">
     <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightslider.css">
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/motion-ui.min.css">
 
     <script>
         var _hmt = _hmt || [];

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author WANG Minghao
  */
-public interface SkuInfoDao {
+public interface SkuItemDao {
 
     SkuItem insert(SkuItem skuItem);
 

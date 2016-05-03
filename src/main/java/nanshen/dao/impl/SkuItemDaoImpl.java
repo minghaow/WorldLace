@@ -1,6 +1,6 @@
 package nanshen.dao.impl;
 
-import nanshen.dao.SkuInfoDao;
+import nanshen.dao.SkuItemDao;
 import nanshen.dao.common.BaseDao;
 import nanshen.data.PageInfo;
 import nanshen.data.PublicationStatus;
@@ -18,7 +18,7 @@ import java.util.List;
  * @Author WANG Minghao
  */
 @Repository
-public class SkuInfoDaoImpl extends BaseDao implements SkuInfoDao {
+public class SkuItemDaoImpl extends BaseDao implements SkuItemDao {
 
     @Override
     public SkuItem insert(SkuItem skuItem) {

@@ -92,7 +92,7 @@ jQuery( document ).ready(function( $ ) {
                     $(".cart-count").html(data.cnt);
                     presentSuccessModal("干得漂亮！", "添加购物车成功");
                 } else {
-                    presentFailModal("抱歉！", data.msg);
+                    presentFailModal(data.message, "[  抱歉  ]");
                 }
             }
         });

@@ -55,6 +55,33 @@ header {
     .top-bar-right .dropdown.menu .has-submenu.is-down-arrow>a::after {
         display: none;
     }
+    .sticky-bottom {
+        position: fixed;
+        bottom: 5%;
+        right: 1%;
+        z-index: 10000;
+    }
+    .sticky-bottom-btn {
+        width: 55px;
+        height: 55px;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 5px;
+        background-color: rgba(58, 58, 58, 0.45);
+        margin-bottom: 3px;
+    }
+    .sticky-bottom .sticky-bottom-content {
+        vertical-align: middle;
+        line-height: 55px;
+        color: white;
+        font-size: 2rem;
+    }
+    .sticky-bottom .badge {
+        cursor: pointer;
+        position: absolute;
+        right: -10px;
+        top: -10px;
+    }
 }
 @media only screen and (max-width: 40em) {
     .logo-wrapper img {
@@ -66,6 +93,9 @@ header {
     .menu-wrapper {
         width: 99%;
     }
+    .sticky-bottom {
+         display: none;
+     }
 }
 /* lr-Container */
 .lr-container {

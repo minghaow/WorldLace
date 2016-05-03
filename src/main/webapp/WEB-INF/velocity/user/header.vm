@@ -196,3 +196,17 @@
         </div>
 
         #include("msgModal.vm")
+
+        <div class="sticky-bottom">
+            <div class="sticky-bottom-btn">
+                #if ("$!{cart.goodsCount}" != "")
+                    <span class="alert badge">$!{cart.goodsCount}</span>
+                #else
+                    <span class="alert badge">0</span>
+                #end
+                <i class="fi-shopping-cart sticky-bottom-content"></i>
+            </div>
+            <div class="sticky-bottom-btn">
+                <i class="fi-arrow-up sticky-bottom-content scroll-to-top"></i>
+            </div>
+        </div>

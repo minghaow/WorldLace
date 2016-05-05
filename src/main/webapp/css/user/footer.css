@@ -6,7 +6,9 @@
     width: 100%;
     margin-top: 80px;
     text-align: center;
-    background: lightgrey;
+    background: url("http://image-cdn.zaitaoyuan.com/images/slider/slider9.jpg@!list-banner-s") no-repeat;
+    background-size: cover;
+    background-position: center;
     position: relative;
     overflow: hidden;
     color: white;
@@ -29,40 +31,31 @@
 .bottom-footer {
     width: 100%;
     background: url("http://static.lanzhujue.com/image/user/footer-bg.png") #080808;
-    height: 180px;
+    height: 200px;
     text-align: center;
     position: relative;
-    padding: 50px 20px 0 20px;
+    padding: 25px 20px 0 20px;
     overflow: hidden;
 }
-.middle-footer blockquote cite {
-    color: #e1d2c6;
+.bottom-footer blockquote cite {
+    color: #f4f4f4;
 }
-.middle-footer blockquote {
+.bottom-footer blockquote {
     font-size: 1.5rem;
-    color: #e1d2c6;
-}
-.middle-footer {
-    width: 100%;
-    text-align: center;
-    background: #606060;
-    overflow: hidden;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
-    font-style: normal;
-    padding: 1.5rem 0;
+    color: #f4f4f4;
 }
 .features {
     text-align: center;
     width: 70%;
-    color: grey;
+    color: white;
     margin-bottom: 2rem;
 }
 .features hr {
     width: 25%;
     margin: 1rem auto;
 }
-.features .round-icon h3 {
-    color: black;
+.features  h3 {
+    color: white;
 }
 .features .round-icon {
     background-color: #A7866A;

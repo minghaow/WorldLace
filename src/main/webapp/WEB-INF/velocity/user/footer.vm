@@ -3,7 +3,7 @@
     <div class="row features">
         <div class="medium-4 columns">
             <div class="round-icon">
-                <span class="fi-widget"></span>
+                <span class="fi-trophy"></span>
             </div>
             <h3>高品质</h3>
             <hr>
@@ -11,7 +11,7 @@
         </div>
         <div class="medium-4 columns">
             <div class="round-icon">
-                <span class="fi-graph-bar"></span>
+                <span class="fi-trees"></span>
             </div>
             <h3>安全环保</h3>
             <hr>
@@ -19,7 +19,7 @@
         </div>
         <div class="medium-4 columns">
             <div class="round-icon">
-                <span class="fi-download"></span>
+                <span class="fi-loop"></span>
             </div>
             <h3>七天无忧退换</h3>
             <hr>
@@ -28,13 +28,11 @@
     </div>
 </section>
 
-<section class="middle-footer">
-    <blockquote>
-        "做中国最有良心的餐厨用品平台。"<cite>明昊天地科技全体员工</cite>
-    </blockquote>
-</section>
-
 <section class="bottom-footer">
+    <blockquote>
+        "做中国最有良心的餐厨用品平台。"
+    </blockquote>
+
     <div class="greyText margin-top-small">
         Copyright @ 2015, 北京明昊天地科技有限公司 ZaiTaoYuan Co., Ltd. All rights Reserved.
     </div>

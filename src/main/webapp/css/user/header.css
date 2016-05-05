@@ -707,6 +707,7 @@ header {
 #animatedModal1 {
     overflow-y: inherit;
     max-height: none !important;
+    border-radius: 10px;
 }
 .auth-plain {
     padding-right: 0;

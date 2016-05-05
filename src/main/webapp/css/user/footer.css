@@ -14,10 +14,6 @@
     font-style: normal;
     padding-top: 1.5rem;
 }
-.top-footer h3 {
-    font-weight: normal;
-    color: lightgrey;
-}
 .learn-links {
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     min-height: 40px;
@@ -39,3 +35,48 @@
     padding: 50px 20px 0 20px;
     overflow: hidden;
 }
+.middle-footer blockquote cite {
+    color: #e1d2c6;
+}
+.middle-footer blockquote {
+    font-size: 1.5rem;
+    color: #e1d2c6;
+}
+.middle-footer {
+    width: 100%;
+    text-align: center;
+    background: #606060;
+    overflow: hidden;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+    font-style: normal;
+    padding: 1.5rem 0;
+}
+.features {
+    text-align: center;
+    width: 70%;
+    color: grey;
+    margin-bottom: 2rem;
+}
+.features hr {
+    width: 25%;
+    margin: 1rem auto;
+}
+.features .round-icon h3 {
+    color: black;
+}
+.features .round-icon {
+    background-color: #A7866A;
+    border-radius: 50%;
+    display: table;
+    height: 100px;
+    margin: 2rem auto 1rem;
+    width: 100px;
+    font-size: 3rem; }
+.features .round-icon span {
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle; }
+@media only screen and (max-width: 40em) {
+    .features .columns {
+        margin-bottom: 5rem; } }

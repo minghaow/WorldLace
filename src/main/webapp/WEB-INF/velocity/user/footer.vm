@@ -1,13 +1,42 @@
 <!-- footer -->
 <section class="top-footer">
+    <div class="row features">
+        <div class="medium-4 columns">
+            <div class="round-icon">
+                <span class="fi-widget"></span>
+            </div>
+            <h3>高品质</h3>
+            <hr>
+            <p>平台上的每一款产品，都是公司董事会成员亲自试用过后满意方才入选桃源精品库，您大可以闭眼选货，准保喜欢</p>
+        </div>
+        <div class="medium-4 columns">
+            <div class="round-icon">
+                <span class="fi-graph-bar"></span>
+            </div>
+            <h3>安全环保</h3>
+            <hr>
+            <p>每一款产品，都经过领域内10年经验的鉴定师，严格筛选，以确保商品的安全环保</p>
+        </div>
+        <div class="medium-4 columns">
+            <div class="round-icon">
+                <span class="fi-download"></span>
+            </div>
+            <h3>七天无忧退换</h3>
+            <hr>
+            <p>凡在桃源网购买的商品，全部七天无理由退换，并且我们已为用户承保退货险，完全不用担心邮费问题。</p>
+        </div>
+    </div>
+</section>
+
+<section class="middle-footer">
     <blockquote>
-        "做中国最有良心的餐厨用品平台。"<cite>ZaiTaoYuan.com</cite>
+        "做中国最有良心的餐厨用品平台。"<cite>明昊天地科技全体员工</cite>
     </blockquote>
 </section>
 
 <section class="bottom-footer">
     <div class="greyText margin-top-small">
-        Copyright @ 2015, ZaiTaoYuan Co., Ltd. All rights Reserved.
+        Copyright @ 2015, 北京明昊天地科技有限公司 ZaiTaoYuan Co., Ltd. All rights Reserved.
     </div>
     <div class="greyText">京ICP备15043668号-1</div>
 </section>
@@ -70,14 +99,14 @@
     })();
     window._bd_share_config = {
         common : {
-            bdText : '桃源网 - $!{skuInfo.title}',
-            bdDesc : '$!{skuInfo.subTitle}',
+            bdText : '桃源网 - $!{skuItem.title}',
+            bdDesc : '$!{skuItem.subTitle}',
             bdUrl : window.location.href,
-            bdPic : '$!{imageUrlPrefix}/images/item/itemHead/${skuInfo.getId()}/0.jpg@!item-head'
+            bdPic : '$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head'
         },
         share : [{
             "bdSize" : 16,
-            "bdCustomStyle" : "color:black"
+            "bdCustomStyle" : "javascript:void(0)"
         }]
     }
     with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];

@@ -80,3 +80,21 @@
 .detail-image-slider .banner-slider ul li:not(:first-child) {
     display: none;
 }
+.buy-button-wrapper .button {
+    border: 2px solid #ec5840;
+    letter-spacing: 2px;
+}
+.bdsharebuttonbox .hollow.button {
+    color: transparent;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, pink, skyblue);
+    border-image-slice: 1;
+    background: linear-gradient(45deg, pink, skyblue);
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    transition: all 0.2s ease;
+}
+.button:hover {
+    border-image: linear-gradient(45deg, #2ecc71, dodgerblue);
+    background: linear-gradient(45deg, #2ecc71, dodgerblue);
+}

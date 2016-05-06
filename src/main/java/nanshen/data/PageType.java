@@ -23,6 +23,8 @@ public enum PageType {
 
     ABOUT("关于", true),
 
+    CONTACT("联系", true),
+
     UNKNOWN("未知状态", false);
 
     private String desc;

@@ -81,7 +81,7 @@
 
 
 <script src="$!{cssUrlPrefix}/script/vendor/jquery.min.js"></script>
-<script src="$!{cssUrlPrefix}/script/vendor/foundation.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/foundation.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/unslider-min.js"></script>
 <script>
     $(document).foundation();

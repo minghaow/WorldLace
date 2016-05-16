@@ -1,0 +1,7 @@
+/*
+ *  user/cart.css
+ *  @author: WANG Minghao
+*/
+form [type=file], [type=checkbox], [type=radio] {
+    margin: 0;
+}

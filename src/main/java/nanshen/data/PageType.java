@@ -17,6 +17,8 @@ public enum PageType {
 
     ITEM_DETAIL("详情页", false),
 
+    CART("购物车", false),
+
     CATEGORY("分类", true),
 
     TOPIC("专题", true),

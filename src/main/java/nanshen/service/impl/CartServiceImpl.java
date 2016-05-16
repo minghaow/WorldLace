@@ -50,8 +50,9 @@ public class CartServiceImpl extends ScheduledService implements CartService {
                             Cart cart = cartDao.getByUserId(userId);
                             if (cart != null) {
                                 cart.setGoodsList(cartGoodsDao.getByCartId(cart.getId()));
+                                return cart;
                             }
-                            return cart;
+                            return cartDao.insert(new Cart(userId));
                         }
                     });
 
@@ -84,8 +85,10 @@ public class CartServiceImpl extends ScheduledService implements CartService {
             SkuDetail skuDetail = skuService.getSkuDetail(skuId);
             SkuItem skuItem = skuService.getSkuItemInfo(skuDetail.getItemId());
             if (null != cartGoodsDao.insert(new CartGoods(cart.getId(), count, null, 0, skuDetail.getOriginPrice(),
-                    skuDetail.getPrice(), null, skuItem.getSubTitle(), skuItem.getTitle(), userId, skuDetail.getId()))) {
+                    skuDetail.getPrice(), null, skuItem.getSubTitle(), skuItem.getTitle(), userId, skuDetail.getId(),
+                    skuDetail.getItemId(), skuDetail.getOption1(), skuDetail.getOption2()))) {
                 cart.setGoodsCount(cart.getGoodsCount() + count);
+                cart.setTotalPrice(cart.getTotalPrice() + count * skuDetail.getPrice());
                 cartDao.update(cart);
                 userCache.invalidate(userId);
                 return ExecResult.succ(cart.getGoodsCount());

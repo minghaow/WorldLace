@@ -1,5 +1,6 @@
 package nanshen.data;
 
+import nanshen.utils.ViewUtils;
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
@@ -95,6 +96,18 @@ public class Goods {
     /** is cart goods */
     protected boolean isCartGoods = false;
 
+    @Column
+    /** item id, which is equal to id */
+    protected long itemId = 0;
+
+    @Column
+    /** option 1 name */
+    protected String option1 = "";
+
+    @Column
+    /** option 2 name */
+    protected String option2 = "";
+
     public Goods(String adminRemark, long cartId, long count, Date createTime, String discountCode, long discountPrice,
                   long id, List<String> imgUrlList, long orderId, long originPrice, long price, String remark,
                   List<SkuDetail> skuDetailList, List<SkuTag> skuTagList, PublicationStatus status, String subTitle,
@@ -182,6 +195,10 @@ public class Goods {
         return discountPrice;
     }
 
+    public String getConvertedDiscountPrice() {
+        return ViewUtils.priceConverter(discountPrice);
+    }
+
     public void setDiscountPrice(long discountPrice) {
         this.discountPrice = discountPrice;
     }
@@ -220,6 +237,10 @@ public class Goods {
 
     public long getPrice() {
         return price;
+    }
+
+    public String getConvertedPrice() {
+        return ViewUtils.priceConverter(price);
     }
 
     public void setPrice(long price) {
@@ -304,5 +325,33 @@ public class Goods {
 
     public void setIsCartGoods(boolean isCartGoods) {
         this.isCartGoods = isCartGoods;
+    }
+
+    public String getConvertedTotalPrice() {
+        return ViewUtils.priceConverter(price * count);
+    }
+
+    public long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getOption1() {
+        return option1;
+    }
+
+    public void setOption1(String option1) {
+        this.option1 = option1;
+    }
+
+    public String getOption2() {
+        return option2;
+    }
+
+    public void setOption2(String option2) {
+        this.option2 = option2;
     }
 }

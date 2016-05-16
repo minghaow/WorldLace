@@ -11,7 +11,8 @@ import org.nutz.dao.entity.annotation.Table;
 public class CartGoods extends Goods {
 
     public CartGoods(long cartId, long count, String discountCode, long discountPrice, long originPrice, long price,
-                     String remark, String subTitle, String title, long userId, long skuId) {
+                     String remark, String subTitle, String title, long userId, long skuId, long itemId, String option1,
+                     String option2) {
         this.cartId = cartId;
         this.count = count;
         this.discountCode = discountCode;
@@ -24,6 +25,9 @@ public class CartGoods extends Goods {
         this.userId = userId;
         this.skuId = skuId;
         this.isCartGoods = false;
+        this.itemId = itemId;
+        this.option1 = option1;
+        this.option2 = option2;
     }
 
     public CartGoods() {}

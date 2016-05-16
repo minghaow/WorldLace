@@ -1,0 +1,111 @@
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.SkuItem" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="cart" type="nanshen.data.Cart" *#
+#* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="css/user/cart.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small" id="cart-page-content">
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText">首页列表</a></li>
+                <li>
+                    我的购物车
+                </li>
+            </ul>
+        </nav>
+
+        <div class="small-12 columns" data-sticky-container>
+            <div class="sticky" id="sticky-menu" data-sticky data-margin-top="0" style="width:100%;" data-margin-bottom="0"
+                 data-top-anchor="cart-page-content" data-btm-anchor="cart-content:bottom">
+                <nav data-magellan>
+                    <div class="row clearfix">
+                        <div class="float-left">
+                            <input class="checkbox-goods-all checkbox-goods" type="checkbox"> 全选
+                        </div>
+                        <div class="float-right">
+                            总金额：$!{cart.convertedTotalPrice}
+                        </div>
+                    </div>
+##                    <ul class="horizontal menu expanded">
+##                        <li><a href="#cart-goods-18">First Arrival</a></li>
+##                        <li><a href="#cart-goods-22">Second Arrival</a></li>
+##                        <li><a href="#third-goods-22">Third Arrival</a></li>
+##                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="small-12 columns" id="cart-content">
+            <table cellpadding="0" cellspacing="0" class="scroll center">
+                <thead>
+                <tr>
+                    <th scope="col" width="70px">
+                        <input class="checkbox-goods-all checkbox-goods" type="checkbox"> 全选
+                    </th>
+                    <th scope="col" width="20%">图片</th>
+                    <th scope="col" width="40%">商品名称</th>
+                    <th scope="col" width="70px">价格</th>
+                    <th scope="col" width="70px">数量</th>
+                    <th scope="col" width="70px">合计</th>
+                </tr>
+                </thead>
+
+                <tbody class="cart-tbody">
+                #foreach ($goods in $!{cart.goodsList})
+                    <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
+                        <td>
+                            <input id="checkbox-goods-$!{goods.id}" type="checkbox" class="checkbox-goods"><label for="checkbox-goods-$!{goods.id}"></label>
+                        </td>
+                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                        <td>
+                            <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
+                            <div>$!{goods.option1}</div>
+                        </td>
+                        <td>
+                            $!{goods.convertedPrice}
+                        </td>
+                        <td>
+                            $!{goods.count}
+                        </td>
+                        <td>
+                            $!{goods.convertedTotalPrice}
+                        </td>
+                    </tr>
+                #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script type="text/javascript">
+    var jiathis_config = {
+        summary:"",
+        shortUrl:false,
+        hideMore:false,
+        data_track_clickback:'true'
+    }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+#parse("user/footer.vm")

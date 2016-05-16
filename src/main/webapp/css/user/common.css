@@ -65,3 +65,12 @@ input.labelauty + label {
 #body #bdshare_weixin_qrcode_dialog {
     height:295px !important;
 }
+#body .button.brandColor {
+    background: #A7866A;
+}
+#body .tabs, #body .tabs-content {
+    border: solid 2px #A7866A;
+}
+#body .tabs {
+    border-bottom: none;
+}

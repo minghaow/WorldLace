@@ -23,7 +23,6 @@ jQuery( document ).ready(function( $ ) {
 
     $('.register-btn').on('click', function() {
         $("#animatedModal1").foundation("open");
-        setTimeout(function(){$('.lr-toggle').trigger("click");}, 500);
     });
 
     $('.login-btn').on('click', function() {
@@ -52,12 +51,19 @@ jQuery( document ).ready(function( $ ) {
         });
     });
 
+    $(".register-trigger").on('click', function() {
+        event.preventDefault();
+        $("#animatedModal1").foundation("close");
+        $("#animatedModal2").foundation("open");
+        setTimeout(function(){$('.lr-toggle').trigger("click");}, 500);
+    });
+
     $("#register-confirm").on('click', function() {
         event.preventDefault();
         $.ajax({
             url: "/auth/register",
             type: "POST",
-            data: $("#register-form").serialize(),
+            data: $("#register-form2").serialize(),
             dataType: 'json',
             success: function(data) {
                 if (data.success == true || data.success == "true") {
@@ -98,8 +104,30 @@ jQuery( document ).ready(function( $ ) {
         });
     });
 
+    $("#contact-us-btn").on('click', function() {
+        event.preventDefault();
+        $.ajax({
+            url: "/msg",
+            type: "POST",
+            data: $("#contact-us-form").serialize(),
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    $(".cart-count").html(data.cnt);
+                    presentSuccessModal("发送成功！", "我们已经收到您的消息，我们会尽快派专人处理，谢谢您的反馈！");
+                } else {
+                    presentFailModal(data.message, "[  抱歉  ]");
+                }
+            }
+        });
+    });
+
     $(".scroll-to-top").on('click', function() {
         $('html,body').animate({scrollTop: '0px'}, 800);
+    });
+
+    $(".checkbox-goods-all").on('change', function() {
+        $(".checkbox-goods").prop("checked", $(this).prop('checked'));
     });
 
 });

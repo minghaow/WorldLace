@@ -16,25 +16,25 @@
 </div>
 
 <!-- page contents -->
-<div class="page-content margin-top-small" id="look-detail-page-content">
+<div class="page-content margin-top-large" id="look-detail-page-content">
     <div class="row">
         <!-- Contact Details -->
         <div class="large-9 columns">
             <h3>联系我们</h3>
             <p>对于我们的产品感兴趣？有问题需要跟我们沟通？有意向加入我们？请使用下表给联系我们，我们会对<em>每一封</em>邮件进行恢复！谢谢您的支持。</p>
-            <ul class="tabs" data-tabs id="example-tabs">
+            <ul class="tabs" data-tabs id="contact-tabs">
                 <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">联系我们</a></li>
                 <li class="tabs-title"><a href="#panel2">具体人员</a></li>
             </ul>
-            <div class="tabs-content" data-tabs-content="example-tabs">
+            <div class="tabs-content" data-tabs-content="contact-tabs">
                 <div class="tabs-panel is-active" id="panel1">
-                    <form>
+                    <form id="contact-us-form">
                         <div class="row collapse">
                             <div class="large-2 columns">
                                 <label class="inline">名称</label>
                             </div>
                             <div class="large-10 columns">
-                                <input type="text" id="yourName" placeholder="李爸爸">
+                                <input type="text" id="yourName" name="name" placeholder="李爸爸">
                             </div>
                         </div>
                         <div class="row collapse">
@@ -42,12 +42,12 @@
                                 <label class="inline">你的邮箱</label>
                             </div>
                             <div class="large-10 columns">
-                                <input type="text" id="yourEmail" placeholder="aaa@bbb.com 我们会向这个邮箱回复您的邮件">
+                                <input type="text" id="yourEmail" name="email"  placeholder="aaa@bbb.com 我们会向这个邮箱回复您的邮件">
                             </div>
                         </div>
                         <label>要跟我们说的事？</label>
-                        <textarea rows="4"></textarea>
-                        <button type="submit" class="radius button">提交</button>
+                        <textarea rows="4" name="content" ></textarea>
+                        <button type="submit" class="radius button brandColor" id="contact-us-btn">提交</button>
                     </form>
                 </div>
                 <div class="tabs-panel row small-up-3 medium-up-4 large-up-5" id="panel2">
@@ -64,7 +64,7 @@
             <h5>Map</h5>
             <!-- Clicking this placeholder fires the mapModal Reveal modal -->
             <p>
-                <a data-open="mapModal"><img src="http://placehold.it/400x280"></a><br />
+                <a data-open="mapModal"><img src="$!{imageUrlPrefix}/images/map.png"></a><br />
                 <a data-open="mapModal">点击查看大图</a>
             </p>
             <p>

@@ -222,6 +222,10 @@ public class Cart {
         return totalPrice;
     }
 
+    public String getConvertedTotalPrice() {
+        return ViewUtils.priceConverter(totalPrice);
+    }
+
     public void setTotalPrice(long totalPrice) {
         this.totalPrice = totalPrice;
     }

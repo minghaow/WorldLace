@@ -1,10 +1,7 @@
 package nanshen.service;
 
 import nanshen.data.Cart;
-import nanshen.data.ExecInfo;
 import nanshen.data.ExecResult;
-
-import java.util.List;
 
 /**
  * Cart related services
@@ -27,10 +24,38 @@ public interface CartService {
      * Add item to the cart
      *
      * @param userId user id
-     * @param goodsCartId the goods id of the cart
+     * @param skuId the goods id of the cart
      * @return ExecInfo
      */
-    ExecInfo removeSku(long userId, long goodsCartId);
+    ExecResult<Long> removeSku(long userId, long skuId);
+
+    /**
+     * Add item count to the cart goods
+     *
+     * @param userId user id
+     * @param goodsId the goods id of the cart
+     * @return ExecResult with cart goods count
+     */
+    ExecResult<Long> addSkuCount(long userId, long goodsId);
+
+    /**
+     * Minus item count to the cart goods
+     *
+     * @param userId user id
+     * @param goodsId the goods id of the cart
+     * @return ExecResult with cart goods count
+     */
+    ExecResult<Long> minusSkuCount(long userId, long goodsId);
+
+    /**
+     * Minus item count to the cart goods
+     *
+     * @param userId user id
+     * @param skuId the goods id of the cart
+     * @param count the target goods count
+     * @return ExecResult with cart goods count
+     */
+    ExecResult<Long> setSkuCount(long userId, long skuId, long count);
 
     /**
      * get all the cart info
@@ -41,12 +66,11 @@ public interface CartService {
     Cart getByUserId(long userId);
 
     /**
-     * get all the cart info
+     * Delete the goods in cart
      *
      * @param userId user id
-     * @param idList goods id list
-     * @return ExecInfo
+     * @param goodsId the goods id of the cart
+     * @return ExecResult with cart goods count
      */
-    Cart createOrder(long userId, List<Long> idList);
-
+    ExecResult<Long> deleteGoods(long userId, long goodsId);
 }

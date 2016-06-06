@@ -6,7 +6,7 @@
     width: 100%;
     margin-top: 80px;
     text-align: center;
-    background: url("http://image-cdn.zaitaoyuan.com/images/slider/slider9.jpg@!list-banner-s") no-repeat;
+    background: url("http://image-cdn.zaitaoyuan.com/images/slider/slider13.jpg@!list-banner-s") no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -84,8 +84,7 @@
     text-shadow: 1px 1px 1px #000;
     padding: 1rem 0 0 1rem;
     margin: 0; }
-
-.row {
+.footer .row {
     max-width: 1200px; }
 
 .footer {

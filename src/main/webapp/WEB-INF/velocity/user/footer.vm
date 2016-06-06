@@ -7,7 +7,7 @@
             </div>
             <h3>高品质</h3>
             <hr>
-            <p>平台上的每一款产品，都是公司董事会成员亲自试用过后满意方才入选桃源精品库，您大可以闭眼选货，准保喜欢</p>
+            <p>平台上的每一款产品，都是公司员工长期试用过后满意方才入选桃源精品库，您大可以闭眼选货，准保喜欢</p>
         </div>
         <div class="medium-4 columns">
             <div class="round-icon">
@@ -15,7 +15,7 @@
             </div>
             <h3>安全环保</h3>
             <hr>
-            <p>每一款产品，都经过领域内10年经验的鉴定师，严格筛选，以确保商品的安全环保</p>
+            <p>每一款产品，都经过领域内10年+经验的专业人员严格筛选，以确保商品的安全环保</p>
         </div>
         <div class="medium-4 columns">
             <div class="round-icon">
@@ -27,17 +27,6 @@
         </div>
     </div>
 </section>
-
-##<section class="bottom-footer">
-##    <blockquote>
-##        "做中国最有良心的餐厨用品平台。"
-##    </blockquote>
-##
-##    <div class="greyText margin-top-small">
-##        Copyright @ 2015, 北京明昊天地科技有限公司 ZaiTaoYuan Co., Ltd. All rights Reserved.
-##    </div>
-##    <div class="greyText"></div>
-##</section>
 
 <section class=" footer">
     <div class="row">
@@ -80,7 +69,6 @@
 </div>
 
 
-<script src="$!{cssUrlPrefix}/script/vendor/jquery.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/foundation.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/unslider-min.js"></script>
 <script>

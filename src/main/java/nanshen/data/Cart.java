@@ -59,7 +59,7 @@ public class Cart {
 
     /** discountCode */
     @Column
-    private long discountCode;
+    private String discountCode;
 
     /** tags */
     @Column
@@ -101,7 +101,7 @@ public class Cart {
         this.userId = userId;
     }
 
-    public Cart(String adminRemark, Date createTime, long discountCode, long discountPrice, Date finishTime,
+    public Cart(String adminRemark, Date createTime, String discountCode, long discountPrice, Date finishTime,
                 long goodsCount, long goodsPrice, long id, OrderStatus orderStatus, String remark,
                 long shippingPrice, List<SkuDetail> skuDetailList, List<SkuTag> skuTagList,
                 String tags, long taxPrice, long totalPrice, TransportStatus transportStatus, Date updateTime, long userId) {
@@ -138,11 +138,11 @@ public class Cart {
         return ViewUtils.convertDateToString(createTime);
     }
 
-    public long getDiscountCode() {
+    public String getDiscountCode() {
         return discountCode;
     }
 
-    public void setDiscountCode(long discountCode) {
+    public void setDiscountCode(String discountCode) {
         this.discountCode = discountCode;
     }
 
@@ -180,6 +180,10 @@ public class Cart {
 
     public long getShippingPrice() {
         return shippingPrice;
+    }
+
+    public String getConvertedShippingPrice() {
+        return ViewUtils.priceConverter(shippingPrice);
     }
 
     public void setShippingPrice(long shippingPrice) {
@@ -224,6 +228,10 @@ public class Cart {
 
     public String getConvertedTotalPrice() {
         return ViewUtils.priceConverter(totalPrice);
+    }
+
+    public String getConvertedTotalPriceNo() {
+        return ViewUtils.priceConverterNo(totalPrice);
     }
 
     public void setTotalPrice(long totalPrice) {

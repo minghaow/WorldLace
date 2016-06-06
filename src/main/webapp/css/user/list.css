@@ -13,6 +13,7 @@
     height: auto;
     display: block;
     overflow: hidden;
+    position: relative;
 }
 .item-image-wrapper img {
     max-width: 100%;
@@ -54,8 +55,8 @@
     }
     .item-list ul li:hover {
         background-color: white;
-        transform: scale(1.03);
-        box-shadow: 0px 5px 10px 5px #707070;
+        transform: scale(1.02);
+        box-shadow: 0 5px 10px 5px #707070;
     }
 }
 .list-banner li {
@@ -90,4 +91,33 @@
     z-index: 0;
     width: 75%;
     border-top: 1px solid #cccccd;
+}
+.sale-box {
+    height: 100px;
+    right: -5px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    width: 100px;
+}
+.sale-box span.on_sale {
+    background: rgba(167, 106, 106, 0.48);
+    color: #FFF;
+    display: block;
+    font-size: 0.5em;
+    padding: 2px 0;
+    position: relative;
+    text-align: center;
+    top: 20px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 100px;
+    z-index: 2;
+    text-transform: uppercase;
+    border-bottom: 2px solid #A7866A;
+    right: -20px;
 }

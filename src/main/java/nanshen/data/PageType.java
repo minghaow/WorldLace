@@ -19,6 +19,10 @@ public enum PageType {
 
     CART("购物车", false),
 
+    ORDER_LIST("订单列表", false),
+
+    ORDER("订单详情", false),
+
     CATEGORY("分类", true),
 
     TOPIC("专题", true),

@@ -1,0 +1,184 @@
+#* @vtlvariable name="paymentHtml" type="java.lang.String" *#
+#* @vtlvariable name="order" type="nanshen.data.Order" *#
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/cart.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+    <div id="orderid">${order.orderId}</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small" id="cart-page-content">
+
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText">首页列表</a></li>
+                <li>
+                    我的购物车
+                </li>
+            </ul>
+        </nav>
+
+        <div id="global-step" node-type="mod" class="row margin-top">
+            <div class="step1 small-3 columns clearfix">
+                1. 我的购物车
+                <span class="icotips right"></span>
+                <span class="icotips-blank right"></span>
+                <span class="icotips-blank2 right"></span>
+            </div>
+            <div class="step2 small-3 columns current">
+                2. 修改地址信息
+                <span class="icotips"></span>
+                <span class="icotips-blank"></span>
+                <span class="icotips-blank2"></span>
+            </div>
+            <div class="step3 small-3 columns" _hover-ignore="1">
+                3. 选择物流/包装
+                <span class="icotips"></span>
+                <span class="icotips-blank"></span>
+                <span class="icotips-blank2"></span>
+            </div>
+            <div class="step4 small-3 columns">
+                4. 确认订单信息
+            </div>
+        </div>
+
+        <br/>
+
+        $!{paymentHtml}
+        <ul class="accordion" data-accordion data-multi-expand="true">
+            <li class="accordion-item is-active" data-accordion-item>
+                <a href="#" class="accordion-title">修改地址信息</a>
+                <div class="accordion-content" data-tab-content>
+                    <div class="row margin-top-small">
+                        <div class="small-6 columns">
+                            <label>收货人
+                                <input type="text" class="click-select" placeholder="收货人姓名" id="address-name" value="$!{globalOrder.userAddress.name}" aria-describedby="nameHelpText">
+                            </label>
+                            <p class="help-text" id="nameHelpText">收货人是指接收邮寄包裹的那个幸运的人</p>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>电话
+                                <input type="text" class="click-select" placeholder="收货人联系方式" id="address-phone" value="$!{globalOrder.userAddress.phone}" aria-describedby="phoneHelpText">
+                            </label>
+                            <p class="help-text" id="phoneHelpText">国内订单一般会在2-4天收货，请保持手机通畅</p>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom">
+                        <div class="small-2 columns">
+                            <select class="address-region" id="address-level1" data-next-level="address-level2" data-original-region-id="$!{globalOrder.userAddress.level1}">
+                            </select>
+                        </div>
+                        <div class="small-2 columns">
+                            <select class="address-region" id="address-level2" data-next-level="address-level3" data-original-region-id="$!{globalOrder.userAddress.level2}">
+                            </select>
+                        </div>
+                        <div class="small-2 columns">
+                            <select class="address-region" id="address-level3" data-next-level="" data-original-region-id="$!{globalOrder.userAddress.level3}">
+                            </select>
+                        </div>
+                        <div class="small-6 columns">
+                            <input type="text" class="click-select" placeholder="详细街道地址" id="address-detail" value="$!{globalOrder.userAddress.address}">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="accordion-item is-active" data-accordion-item>
+                <a href="#" class="accordion-title">选择物流/包装</a>
+                <div class="accordion-content" data-tab-content>
+                    <div class="row margin-top-small margin-bottom">
+                        <div class="small-12 columns">
+                            <h3>桃源网全站包邮</h3>
+                        </div>
+                        <div class="small-12 columns">
+                            <div>江浙沪1-2天；其他主要城市2-4天；偏远地区4-5天</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="accordion-item is-active" data-accordion-item>
+                <a href="#" class="accordion-title">确认订单信息</a>
+                <div class="accordion-content" data-tab-content>
+                    <div class="row margin-top-small">
+                        <div class="small-8 columns" id="cart-content">
+                            <table cellpadding="0" cellspacing="0" class="scroll">
+                                <thead class="cart-thead center">
+                                <tr>
+                                    <th class="center" scope="col" width="20%">图片</th>
+                                    <th class="center" scope="col" width="30%">商品名称</th>
+                                    <th class="center" scope="col" width="">价格</th>
+                                    <th class="center" scope="col" width="150px">数量</th>
+                                    <th class="center" scope="col" width="">合计</th>
+                                </tr>
+                                </thead>
+                                <tbody class="cart-tbody center">
+                                    #foreach ($goods in $!{order.goodsList})
+                                    <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
+                                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                                        <td>
+                                            <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
+                                            <div>$!{goods.option1}</div>
+                                        </td>
+                                        <td>
+                                            $!{goods.convertedPrice}
+                                        </td>
+                                        <td>
+                                            $!{goods.count}
+                                        </td>
+                                        <td>
+                                            <span class="item-total" id="item-total-$!{goods.id}" data-step="$!{goods.convertedPriceNo}">$!{goods.convertedTotalPriceNo}</span>元
+                                        </td>
+                                    </tr>
+                                    #end
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row callout secondary">
+        <div class="small-6 columns">&nbsp;</div>
+        <div class="small-2 columns center">
+            共计商品
+            <div>
+                <span id="total-count">$!{order.getGoodsCount()}</span>件
+            </div>
+        </div>
+        <div class="small-2 columns center">
+            合计(包邮):
+            <div>
+                <span id="total-price">$!{order.getTotalPriceString()}</span>元
+            </div>
+        </div>
+        <div class="small-2 columns">
+            <input type='submit' value='去支付' class="jz2" id="jz2">
+        </div>
+    </div>
+    </form>
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script type="text/javascript">
+    var jiathis_config = {
+        summary:"",
+        shortUrl:false,
+        hideMore:false,
+        data_track_clickback:'true'
+    }
+</script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/order-process.js"></script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+#parse("user/footer.vm")

@@ -1,0 +1,88 @@
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/cart.css"/>
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/game.css" />
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small">
+
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText">首页列表</a></li>
+                <li>
+                    支付成功
+                </li>
+            </ul>
+        </nav>
+
+        <br/>
+
+        #if ("$!{success}" != "" && $!{success} == "true")
+        <div class="small-12 game">
+            <div class="game-holder" id="gameHolder">
+                <div class="header">
+                    <h1 class="greenText">支付成功！</h1>
+                    <h2>您的包裹正准备坐上飞机去找您！</h2>
+                    <div class="score" id="score">
+                        <div class="score__content" id="level">
+                            <div class="score__label">等级</div>
+                            <div class="score__value score__value--level" id="levelValue">1</div>
+                            <svg class="level-circle" id="levelCircle" viewbox="0 0 200 200">
+                                <circle id="levelCircleBgr" r="80" cx="100" cy="100" fill="none" stroke="#d1b790" stroke-width="24px" />
+                                <circle id="levelCircleStroke" r="80" cx="100" cy="100" fill="none" #f25346 stroke="#68c3c0" stroke-width="14px" stroke-dasharray="502" />
+                            </svg>
+                        </div>
+                        <div class="score__content" id="dist">
+                            <div class="score__label">距离</div>
+                            <div class="score__value score__value--dist" id="distValue">000</div>
+                        </div>
+                        <div class="score__content" id="energy">
+                            <div class="score__label">生命值</div>
+                            <div class="score__value score__value--energy" id="energyValue">
+                                <div class="energy-bar" id="energyBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="world" id="world"></div>
+                <div class="message message--replay" id="replayMessage">点击重玩</div>
+            </div>
+        </div>
+        #else
+        <div class="small-12 columns margin-top-small callout center">
+            <h3 class="redText">抱歉，支付失败！</h3>
+            <div class="greyText margin-top-small">如有需要，请重新支付。如有任何问题，请联系我们客服。谢谢！</div>
+        </div>
+        #end
+    </div>
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script type="text/javascript">
+    var jiathis_config = {
+        summary:"",
+        shortUrl:false,
+        hideMore:false,
+        data_track_clickback:'true'
+    }
+</script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/cart.js"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/TweenMax.min.js"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/three.min.js"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/game.js" /></script>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+#parse("user/footer.vm")

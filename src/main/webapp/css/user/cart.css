@@ -5,3 +5,171 @@
 form [type=file], [type=checkbox], [type=radio] {
     margin: 0;
 }
+.total-title {
+    width: 5rem;
+}
+.total-amount {
+    width: 5rem;
+    display: inline-block;
+}
+.circlenumber {
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #0b4f69;
+    position: relative;
+}
+.circlenumber h3 {
+    line-height: 1px;
+    color: #0b4f69;
+    position: relative;
+    text-align: center;
+    font-weight: normal;
+}
+
+@media only screen and (min-width: 40em) {
+    .step-by-step-style-two .circlenumber {
+        width: 60px;
+        height: 60px;
+        margin: 30px auto 15px auto;
+    }
+    .step-by-step-style-two .circlenumber h3 {
+        padding-top: 25px;
+        font-size: 20px;
+    }
+    .step-by-step-style-two .path-item {
+        text-align: center;
+    }
+}
+@media only screen and (min-width: 0) and (max-width: 40em) {
+    .step-by-step-style-two .path-item {
+        padding-left: 55px;
+        position: relative;
+        text-align: center;
+    }
+    .step-by-step-style-two .path-item .circlenumber {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        margin-top: 6px;
+        left: 0;
+    }
+    .step-by-step-style-two .path-item .circlenumber h3 {
+        padding-top: 15px;
+        font-size: 16px;
+    }
+}
+
+
+#global-step {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    color: #333;
+    line-height: 35px;
+    border: 1px solid #eee;
+    background-color: #eee;
+    margin-top: 25px;
+    height: 35px;
+    overflow: hidden;
+}
+#global-step .step1 {
+     left: 0;
+     z-index: 9;
+}
+#global-step .current {
+    color: #fff;
+    background-color: #af8e72;
+}
+#global-step div {
+    position: inherit;
+    top: 0;
+    font-weight: normal;
+    text-align: center;
+}
+#global-step .current .icotips {
+    border-left: 18px solid #af8e72;
+}
+#global-step .icotips, #global-step .icotips-blank, #global-step .icotips-blank2 {
+    position: absolute;
+    right: -36px;
+    top: -1px;
+    z-index: 2;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    border: 18px dashed transparent;
+    border-left: 18px solid #eee;
+    overflow: hidden;
+}
+#global-step .icotips-blank {
+    z-index: 1;
+    border-left: 18px solid #fff;
+}
+#global-step .icotips-blank2 {
+    z-index: 1;
+    border-left: 18px solid #fff;
+}
+#global-step .step2 {
+    z-index: 8;
+}
+#global-step .step3 {
+    z-index: 7;
+}
+#global-step .step4 {
+    z-index: 6;
+}
+#global-step .icotips {
+    right: -33px;
+}
+.count-adjust {
+    height: 1.3rem;
+    line-height: 1.8rem;
+    vertical-align: middle;
+}
+.count-adjust i {
+    background: lightgray;
+    padding: 0.35rem 0.35rem;
+}
+#body .count-selector .columns {
+    padding: 0;
+}
+.count-minus {
+    text-align: right;
+}
+.count-plus {
+    text-align: left;
+}
+.count-wrapper input {
+    height: 1.8rem;
+    margin-bottom: 0;
+}
+#total-count,
+#total-price {
+    color:#ff5500;
+    font-weight:bold;
+}
+.cart-tbody tr {
+    border-bottom: #d0ac8d solid 1px;
+}
+.cart-tbody tr:nth-child(even) {
+    background-color: inherit;
+}
+.cart-thead {
+    border-top: #af8e72 solid 3px;
+}
+
+.gwc_tb3{ width:100%; border:1px solid #d2d2d2; background:#e7e7e7; height:46px; margin-top:20px; }
+.gwc_tb3 tr td{font-size:14px;}
+.tb3_td2{ text-align:center;}
+.tb3_td2 span{ color:#ff5500;font-size:14px; font-weight:bold; padding-left:5px; padding-right:5px; }
+.tb3_td3{ text-align:center;}
+.tb3_td3 span{ font-size:18px; font-weight:bold;}
+.tb3_td4{ width:110px;text-align:center;}
+.jz2{ width:100px; height:46px; line-height:46px; text-align:center; font-size:18px; color:#fff; background:#ee0000; display:block; float:right;}
+
+#body .accordion-title {
+    color: #af8e72;
+    border-top: 2px solid #af8e72;
+    font-size: 1rem;
+}

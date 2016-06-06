@@ -3,6 +3,11 @@ jQuery( document ).ready(function( $ ) {
     // initialization
     var thisTag = $("#this-tag").html();
     $("#" + thisTag).addClass("chosen");
+    var registerStep = 0;
+    var userId = 0;
+    var userName = "";
+    var phone = "";
+    var password = "";
 
     $(".unsupported-section").click(function(event){
         event.preventDefault();
@@ -27,8 +32,104 @@ jQuery( document ).ready(function( $ ) {
 
     $('.login-btn').on('click', function() {
         $("#animatedModal1").foundation("open");
-        setTimeout(function(){$('.lr-close').trigger("click");}, 300);
+        setTimeout(function(){
+            $('.lr-close').trigger("click");
+            $('#login-form .button').addClass("shake-crazy shake-constant");
+        }, 300);
+        setTimeout(function(){
+            $('#login-form .button').removeClass("shake-crazy shake-constant");
+        }, 1000);
     });
+
+    $('#animatedModal1').on('closed.zf.reveal', function() {
+        if (registerStep != 0) {
+            toggleRegisterContent(false);
+            registerStep = 0;
+            $('.register-trigger').html("点我注册").removeClass("final-step");
+        }
+    });
+
+    $('.register-trigger').on('click', function() {
+        event.preventDefault();
+        if (registerStep == 0) {
+            toggleRegisterContent(true, 1);
+            registerStep = 1;
+            $('.register-trigger').html("下一步").removeClass("final-step");
+        } else if (registerStep == 1) {
+            $.ajax({
+                url: "/auth/register",
+                type: "POST",
+                data: $("#register-form").serialize(),
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        password = $("#password2").val();
+                        phone = $("#phone2").val();
+                        userId = data.userId;
+                        $("#userId").val(userId);
+                        toggleRegisterContent(true, 2);
+                        registerStep = 2;
+                        $('.register-trigger').html("点我完成注册").addClass("final-step");
+                    } else {
+                        presentFailModal("抱歉！", data.msg);
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                url: "/auth/setName",
+                type: "POST",
+                data: $("#register-form").serialize(),
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        userName = $("#username").val();
+                        toggleRegisterContent(true, 3);
+                        registerStep = 3;
+                        $("#animatedModal1").foundation("close");
+                    } else {
+                        presentFailModal("抱歉！", data.msg);
+                    }
+                }
+            });
+            $.ajax({
+                url: "/auth/login-check",
+                type: "POST",
+                data: {"password":password, "phone":phone},
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        $("#animatedModal1").foundation("close");
+                        $("#username-section").html(data.userInfo.username + ", " + data.helloMsg);
+                        $("#login-decide-content").html("登出");
+                        $(".cart-count").html(data.cart.goodsCount);
+                        $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
+                    } else {
+                        presentFailModal("抱歉！", "用户名和密码的组合不正确，请重新输入。");
+                        setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
+                    }
+                }
+            });
+        }
+    });
+
+    function toggleRegisterContent(isUp, step) {
+        if (isUp) {
+            if (step == 1) {
+                $(".welcome-hide-after").animate({top:"-170px"});
+                $(".welcome-hide-before").animate({top:"0px"});
+                $(".welcome-hide-before-2").animate({top:"170px"});
+            } else {
+                $(".welcome-hide-after").animate({top:"-340px"});
+                $(".welcome-hide-before").animate({top:"-170px"});
+                $(".welcome-hide-before-2").animate({top:"0"});
+            }
+        } else {
+            $(".welcome-hide-after").animate({top:"0"});
+            $(".welcome-hide-before").animate({top:"170px"});
+            $(".welcome-hide-before-2").animate({top:"340px"});
+        }
+    }
 
     $("#login-confirm").on('click', function() {
         event.preventDefault();
@@ -46,16 +147,10 @@ jQuery( document ).ready(function( $ ) {
                     $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
                 } else {
                     presentFailModal("抱歉！", "用户名和密码的组合不正确，请重新输入。");
+                    setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
                 }
             }
         });
-    });
-
-    $(".register-trigger").on('click', function() {
-        event.preventDefault();
-        $("#animatedModal1").foundation("close");
-        $("#animatedModal2").foundation("open");
-        setTimeout(function(){$('.lr-toggle').trigger("click");}, 500);
     });
 
     $("#register-confirm").on('click', function() {
@@ -126,8 +221,27 @@ jQuery( document ).ready(function( $ ) {
         $('html,body').animate({scrollTop: '0px'}, 800);
     });
 
-    $(".checkbox-goods-all").on('change', function() {
-        $(".checkbox-goods").prop("checked", $(this).prop('checked'));
-    });
+    // Get a list of all svg elements
+    icons = document.querySelectorAll('.icon-hook');
+
+// Cycle through list
+    for (var i = 0; i < icons.length; i++) {
+        icons[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var icon = this;
+            var currentClass = icon.getAttribute('class'); // The starting class
+
+            console.log(icon);
+
+            if (currentClass.indexOf('active') > -1) {
+                // Remove .active
+                icon.setAttribute('class', currentClass.replace(' active', ''));
+            } else {
+                // Add .active
+                icon.setAttribute('class', currentClass + ' active');
+            }
+        }, false);
+    }
 
 });

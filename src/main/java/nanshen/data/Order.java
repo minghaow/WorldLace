@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author WANG Minghao
  */
-@Table("Order")
+@Table("taoyuan.Order")
 public class Order {
 
     /** ID */
@@ -28,6 +28,10 @@ public class Order {
     /** the one who create this order */
     @Column
     private long userId = 0;
+
+    /** the address id of the order, address may changed, so copy one piece for each order */
+    @Column
+    private long addressId = 0;
 
     /** user remark for the order */
     @Column
@@ -69,6 +73,10 @@ public class Order {
     @Column
     private String tags;
 
+    /** tradeNo */
+    @Column
+    private String tradeNo;
+
     /** online status {@code nanshen.data.OrderStatus} */
     @Column
     private OrderStatus orderStatus = OrderStatus.NEW;
@@ -96,13 +104,33 @@ public class Order {
     private Date finishTime = new Date();
 
     /** goods list */
-    private List<Goods> goodsList = new ArrayList<Goods>();
+    private List<OrderGoods> goodsList = new ArrayList<OrderGoods>();
 
     public Order() {
     }
 
+    public Order(Cart cart) {
+        this.transportStatus = TransportStatus.NEW;
+        this.orderStatus = OrderStatus.NEW;
+        this.userId = cart.getUserId();
+        this.remark = cart.getRemark();
+        this.shippingPrice = cart.getShippingPrice();
+        this.showOrderId = generateShowOrderId(System.currentTimeMillis(), cart.getUserId());
+        this.skuDetailList = cart.getSkuDetailList();
+        this.tags = cart.getTags();
+        this.taxPrice = 0;
+        this.totalPrice = 0;
+        this.adminRemark = cart.getAdminRemark();
+        this.discountCode = cart.getDiscountCode();
+        this.discountPrice = 0;
+        this.goodsCount = 0;
+        this.createTime = new Date();
+        this.updateTime = new Date();
+        this.finishTime = new Date();
+    }
+
     public Order(String adminRemark, Date createTime, String discountCode, long discountPrice, Date finishTime,
-                 long goodsCount, long goodsPrice, long orderId, OrderStatus orderStatus, String remark,
+                 long goodsCount, long goodsPrice, long orderId, OrderStatus orderStatus, String remark, long addressId,
                  long shippingPrice, long showOrderId, List<SkuDetail> skuDetailList, List<SkuTag> skuTagList,
                  String tags, long taxPrice, long totalPrice, TransportStatus transportStatus, Date updateTime, long userId) {
         this.adminRemark = adminRemark;
@@ -125,6 +153,22 @@ public class Order {
         this.transportStatus = transportStatus;
         this.updateTime = updateTime;
         this.userId = userId;
+        this.addressId = addressId;
+    }
+
+    private long generateShowOrderId(long timeMillis, long userId) {
+        if(userId<=0 || timeMillis<=0) {
+            return 0;
+        }
+        long showOrderId = timeMillis + userId * 1000001;
+        char[] c = String.valueOf(showOrderId).toCharArray();
+        for(int i = 0; i < c.length; i++) {
+            int number = c[i] - '0';
+            number = (number + 3) % 10;
+            c[i] = (char) ('0' + number);
+        }
+        String showOrderIdStr = new String(c);
+        return Long.parseLong(showOrderIdStr);
     }
 
     public Date getCreateTime() {
@@ -223,6 +267,10 @@ public class Order {
         return totalPrice;
     }
 
+    public String getTotalPriceString() {
+        return ViewUtils.priceConverterNo(totalPrice);
+    }
+
     public void setTotalPrice(long totalPrice) {
         this.totalPrice = totalPrice;
     }
@@ -299,11 +347,27 @@ public class Order {
         this.transportStatus = transportStatus;
     }
 
-    public List<Goods> getGoodsList() {
+    public List<OrderGoods> getGoodsList() {
         return goodsList;
     }
 
-    public void setGoodsList(List<Goods> goodsList) {
+    public void setGoodsList(List<OrderGoods> goodsList) {
         this.goodsList = goodsList;
+    }
+
+    public long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getTradeNo() {
+        return tradeNo;
+    }
+
+    public void setTradeNo(String tradeNo) {
+        this.tradeNo = tradeNo;
     }
 }

@@ -85,4 +85,12 @@ public interface UserInfoDao {
      * @return
      */
     List<UserInfo> getUserInfo(List<Long> buyerIds);
+
+    /**
+     * 设置用户名
+     *
+     * @param userId
+     * @return
+     */
+    boolean setUsername(long userId, String username);
 }

@@ -57,6 +57,9 @@
             #foreach ($skuInfo in $skuInfoList)
                 <li class="column">
                     <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
+                        #if ($velocityCount == 1 || $velocityCount == 2)
+                        <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
+                        #end
                         <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail2" alt="$skuInfo.title"/>
                     </a>
                     <div class="item-description">

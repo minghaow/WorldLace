@@ -5,6 +5,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import nanshen.constant.TimeConstants;
 import nanshen.dao.AdminUserInfoDao;
+import nanshen.dao.UserAddressDao;
 import nanshen.dao.UserInfoDao;
 import nanshen.data.*;
 import nanshen.service.AccountService;
@@ -34,6 +35,9 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
 
     @Autowired
     private UserInfoDao userInfoDao;
+
+    @Autowired
+    private UserAddressDao userAddressDao;
 
     /** 买手ID到买手信息的缓存 */
     private final LoadingCache<Long, UserInfo> userCache = CacheBuilder.newBuilder()
@@ -103,13 +107,31 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     }
 
     @Override
-    public ExecInfo createNewUser(String phone, String passwordOrigin) {
+    public ExecResult<UserInfo> createNewUser(String phone, String passwordOrigin) {
         UserInfo userInfo = new UserInfo(phone, EncryptUtils.encodePassword(passwordOrigin));
         userInfo = userInfoDao.addNewUser(userInfo);
         if (userInfo == null) {
-            return ExecInfo.fail("手机号已注册，请找回密码或换新的手机号~");
+            return ExecResult.fail("手机号已注册，请找回密码或换新的手机号~");
+        }
+        return ExecResult.succ(userInfo);
+    }
+
+    @Override
+    public ExecInfo setUsername(long userId, String username) {
+        if (!userInfoDao.setUsername(userId, username)) {
+            return ExecInfo.fail("用户名设置失败，请联系客服！");
         }
         return ExecInfo.succ();
+    }
+
+    @Override
+    public List<UserAddress> getUserAddressListByUserId(long userId) {
+        return userAddressDao.getUserAddressListByUserId(userId);
+    }
+
+    @Override
+    public UserAddress getUserAddress(long addressId) {
+        return userAddressDao.getUserAddress(addressId);
     }
 
     @Override

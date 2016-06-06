@@ -62,7 +62,32 @@ public interface AccountService {
      *
      * @param phone user's phone number
      * @param passwordOrigin origin password
+     * @return ExecResult<UserInfo>
+     */
+    ExecResult<UserInfo> createNewUser(String phone, String passwordOrigin);
+
+    /**
+     * set new user's username
+     *
+     * @param userId user's id number
+     * @param username origin password
      * @return ExecInfo
      */
-    ExecInfo createNewUser(String phone, String passwordOrigin);
+    ExecInfo setUsername(long userId, String username);
+
+    /**
+     * get user address list by userId
+     *
+     * @param userId user's id number
+     * @return List<UserAddress>
+     */
+    List<UserAddress> getUserAddressListByUserId(long userId);
+
+    /**
+     * get user address by addressId
+     *
+     * @param addressId addressId
+     * @return UserAddress
+     */
+    UserAddress getUserAddress(long addressId);
 }

@@ -46,6 +46,7 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+    <script src="$!{cssUrlPrefix}/script/vendor/jquery.min.js"></script>
 
 </head>
 
@@ -137,69 +138,16 @@
 
         <nav class="bottom-line"></nav>
 
-        <div class="reveal lr-container large" id="animatedModal2" data-reveal data-close-on-click="true">
-            <div class="card"></div>
-            <div class="card">
-                <h1 class="lr-title">登陆</h1>
-                <form id="login-form2">
-                    <div class="input-container">
-                        <input type="text" id="Username" required="required" name="phone"/>
-                        <label for="Username">手机号</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" id="Password" required="required" name="password"/>
-                        <label for="Password">密码</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="button-container">
-                        <button id="login-confirm2"><span>确定</span></button>
-                    </div>
-                    <div class="card-footer"><a href="#">忘记密码?</a></div>
-                </form>
-            </div>
-            <div class="card alt">
-                <div class="lr-toggle shake-crazy">
-                    <i class="fi-pencil"></i>
-                </div>
-                <h1 class="lr-title">注册
-                    <div class="lr-close">
-                        <i class="fi-x"></i>
-                    </div>
-                </h1>
-                <form id="register-form2">
-                    <div class="input-container">
-                        <input type="text" id="Username" required="required" name="phone"/>
-                        <label for="Username">手机号</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" id="Password" required="required" name="password1"/>
-                        <label for="Password">密码</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="input-container">
-                        <input type="password" id="Repeat Password" required="required" name="password2"/>
-                        <label for="Repeat Password">确认密码</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="button-container">
-                        <button id="register-confirm"><span>确定</span></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="animatedModal1" class="reveal small" data-reveal data-animation-out="fade-out" >
+        <div id="animatedModal1" class="reveal" data-reveal data-animation-out="fade-out" >
             <div class="row">
                 <div class="small-12 medium-6 large-6 columns auth-plain right-border">
                     <div class="signup-panel left-solid">
                         <p class="welcome">账户登录</p>
                         <form id="login-form">
-                            <div class="welcome-content">
+                            <div class="login-inputs">
                                 <div class="row collapse">
                                     <div class="small-2  columns">
-                                        <span class="prefix"><i class="fi-torso-female"></i></span>
+                                        <span class="prefix"><i class="fi-torso"></i></span>
                                     </div>
                                     <div class="small-10  columns">
                                         <input type="text" id="phone" name="phone"/>
@@ -214,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="button" id="login-confirm">登陆 </a>
+                            <a href="#" class="button shake-slow" id="login-confirm">登陆 </a>
                         </form>
                     </div>
                 </div>
@@ -223,31 +171,54 @@
                     <div class="signup-panel newusers">
                         <p class="welcome"> 新用户?</p>
                         <div class="welcome-content">
-                            <p class="welcome-hide-after">欢迎您来到桃源网！在这里您可以放心的买到高品质的餐具厨具，为平淡的生活增加几抹靓丽的色彩！</p>
-                            <p class="welcome-hide-after">快点击下面的按钮，加入我们！</p>
-                            <br class="welcome-hide-after">
+                            <form id="register-form">
+                                <div class="register-content">
+                                    <div class="welcome-hide-after">
+                                        <div>
+                                            欢迎您来到桃源网！在这里您可以放心的买到高品质的餐具厨具，为平淡的生活增加几抹靓丽的色彩！
+                                        </div>
+                                        <div>
+                                            快点击下面的按钮，加入我们！
+                                        </div>
+                                    </div>
+                                    <div class="welcome-hide-before">
+                                        <div class="row collapse">
+                                            <div class="small-2 columns">
+                                                <span class="prefix"><i class="fi-telephone"></i></span>
+                                            </div>
+                                            <div class="small-10 columns">
+                                                <input type="text" id="phone2" name="phone" placeholder="您的手机号"/>
+                                            </div>
+                                        </div>
+                                        <div class="row collapse">
+                                            <div class="small-2 columns ">
+                                                <span class="prefix"><i class="fi-lock"></i></span>
+                                            </div>
+                                            <div class="small-10 columns ">
+                                                <input type="password" id="password2" name="password" placeholder="密码"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="welcome-hide-before-2">
+                                        <div class="row collapse">
+                                            <div class="small-12 columns">
+                                                怎么称呼您？
+                                            </div>
+                                        </div>
+                                        <div class="row collapse">
+                                            <div class="small-2 columns ">
+                                                <span class="prefix"><i class="fi-torso"></i></span>
+                                            </div>
+                                            <div class="small-10 columns ">
+                                                <input type="hidden" id="userId" name="userId"/>
+                                                <input type="text" id="username" name="username" placeholder="用户名"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/cart" target="_blank" class="button register-trigger">点我注册</a>
+                            </form>
                         </div>
-                        <form id="register-form">
-                            <span class="welcome-hide-before">
-                                <div class="row collapse">
-                                    <div class="small-2 columns">
-                                        <span class="prefix"><i class="fi-torso-female"></i></span>
-                                    </div>
-                                    <div class="small-10 columns">
-                                        <input type="text" id="phone" name="phone"/>
-                                    </div>
-                                </div>
-                                <div class="row collapse">
-                                    <div class="small-2 columns ">
-                                        <span class="prefix"><i class="fi-lock"></i></span>
-                                    </div>
-                                    <div class="small-10 columns ">
-                                        <input type="password" id="password" name="password"/>
-                                    </div>
-                                </div>
-                            </span>
-                            <a href="/cart" target="_blank" class="button register-trigger">注册</a>
-                        </form>
                     </div>
                 </div>
 
@@ -265,9 +236,9 @@
             <div class="sticky-bottom-btn">
                 <a href="/cart" target="_blank">
                     #if ("$!{cart.goodsCount}" != "")
-                        <span class="alert badge">$!{cart.goodsCount}</span>
+                        <span class="alert badge cart-count">$!{cart.goodsCount}</span>
                     #else
-                        <span class="alert badge">0</span>
+                        <span class="alert badge cart-count">0</span>
                     #end
                     <i class="fi-shopping-cart sticky-bottom-content"></i>
                 </a>

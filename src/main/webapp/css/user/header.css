@@ -301,7 +301,7 @@ header {
     top: 50%;
     left: 50%;
     display: block;
-    background: #A7866A;
+    background: black;
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -753,25 +753,54 @@ header {
     text-align: center;
     margin-left: 0;
 }
-.signup-panel .welcome-content {
+.signup-panel .login-inputs {
     padding-top: 16px;
     height: 170px;
 }
-.signup-panel p {
-    font-size: 13px;
-    font-weight: 200;
-    text-align: center;
+.signup-panel .welcome-hide-after,
+.signup-panel .welcome-hide-before,
+.signup-panel .welcome-hide-before-2 {
+    position: absolute;
+    padding-top: 16px;
+    height: 170px;
+    width: 100%;;
+}
+.signup-panel .welcome-hide-before {
+    top: 170px;
+}
+.signup-panel .welcome-hide-before-2 {
+    top: 340px;
 }
 .newusers {
     background: #fff;
 }
+#animatedModal1 {
+    width: 80%;
+}
 #animatedModal1 .button {
-    background: #A7866A;
-    width: 5rem;
+    border: 2px solid #A7866A;
+    width: 9rem;
+    background: transparent;
+    color: #a7866a;
+}
+#animatedModal1 .button:hover {
+    border: 2px solid #A7866A;
+    width: 9rem;
+    background: transparent;
+    color: #a7866a;
 }
 #animatedModal1 .right-border {
     border-right: 1px solid #e8e8e8;
 }
-.welcome-hide-before {
-    display: none;
+.register-content {
+    height: 170px;
+    overflow: hidden;
+    position: relative;
+}
+#animatedModal1 .register-trigger.final-step {
+    background-color: #21b963;
+    color: white;
+    font-weight: bold;
+    width: 12rem;
+    border: 2px solid #21b963;
 }

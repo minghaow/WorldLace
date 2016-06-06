@@ -7,6 +7,7 @@
 package nanshen.service.impl;
 
 import nanshen.data.LoginError;
+import nanshen.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -45,6 +46,7 @@ public class SpringAuthenticationFailureHandler implements AuthenticationFailure
         } else if (exception instanceof LockedException) {
             loginError = LoginError.PASSWORD_ERROR_TOO_MUCH;
         }
+        LogUtils.info("login fail");
         response.sendRedirect("/auth/fail");
     }
 

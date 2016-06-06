@@ -1,8 +1,6 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.ExecInfo;
-import nanshen.data.LoginError;
-import nanshen.data.PageType;
+import nanshen.data.*;
 import nanshen.service.AccountService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,22 +75,49 @@ public class AuthorityCtrl extends BaseCtrl {
      *
      * @param response
      * @param model
-     * @param password1
-     * @param password2
+     * @param password
      * @param phone
      * @throws IOException
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(HttpServletResponse response, ModelMap model,
-                         @RequestParam(defaultValue = "") String password1,
-                         @RequestParam(defaultValue = "") String password2,
+                         @RequestParam(defaultValue = "") String password,
                          @RequestParam(defaultValue = "") String phone)
             throws IOException {
-        ExecInfo execInfo = registerInputValidCheck(phone, password1, password2);
+        ExecInfo execInfo = registerInputValidCheck(phone, password, password);
+        if (!execInfo.isSucc()) {
+            model.put("msg", execInfo.getMsg());
+            model.put("success", false);
+        } else {
+            ExecResult<UserInfo> execResult = accountService.createNewUser(phone, password);
+            model.put("success", execResult.isSucc());
+            model.put("msg", execResult.getMsg());
+            if (execResult.isSucc()) {
+                model.put("userId", execResult.getValue().getId());
+            }
+        }
+        responseJson(response, model);
+    }
+
+    /**
+     * Register new user
+     *
+     * @param response
+     * @param model
+     * @param username
+     * @param userId
+     * @throws IOException
+     */
+    @RequestMapping(value = "/setName", method = RequestMethod.POST)
+    public void setUserName(HttpServletResponse response, ModelMap model,
+                         @RequestParam(defaultValue = "") String username,
+                         @RequestParam(defaultValue = "") long userId)
+            throws IOException {
+        ExecInfo execInfo = userNameInputValidCheck(username);
         if (!execInfo.isSucc()) {
             model.put("msg", execInfo.getMsg());
         } else {
-            execInfo = accountService.createNewUser(phone, password1);
+            execInfo = accountService.setUsername(userId, username);
         }
         model.put("success", execInfo.isSucc());
         model.put("msg", execInfo.getMsg());
@@ -109,6 +134,16 @@ public class AuthorityCtrl extends BaseCtrl {
             execInfo = ExecInfo.fail("抱歉，两次密码输入不一致，请重新输入。");
         } else if (password1.equalsIgnoreCase(phone) || password1.equalsIgnoreCase("123456") || password1.length() < 6) {
             execInfo = ExecInfo.fail("抱歉，密码过于简单，请重新输入。");
+        }
+        return execInfo;
+    }
+
+    private ExecInfo userNameInputValidCheck(String username) {
+        ExecInfo execInfo = ExecInfo.succ();
+        if (StringUtils.isBlank(username)) {
+            execInfo = ExecInfo.fail("抱歉，用户名不能为空，请填写用户名。");
+        } else if (username.length() > 20) {
+            execInfo = ExecInfo.fail("抱歉，用户名过长，请重新选择。");
         }
         return execInfo;
     }

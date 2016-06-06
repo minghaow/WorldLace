@@ -243,6 +243,10 @@ public class Goods {
         return ViewUtils.priceConverter(price);
     }
 
+    public String getConvertedPriceNo() {
+        return ViewUtils.priceConverterNo(price);
+    }
+
     public void setPrice(long price) {
         this.price = price;
     }
@@ -329,6 +333,10 @@ public class Goods {
 
     public String getConvertedTotalPrice() {
         return ViewUtils.priceConverter(price * count);
+    }
+
+    public String getConvertedTotalPriceNo() {
+        return ViewUtils.priceConverterNo(price * count);
     }
 
     public long getItemId() {

@@ -2,6 +2,7 @@ package nanshen.service.impl;
 
 import nanshen.dao.UserInfoDao;
 import nanshen.data.UserInfo;
+import nanshen.utils.LogUtils;
 import nanshen.utils.RequestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,15 @@ public class SpringUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        LogUtils.info("username1: " + username);
         UserInfo userInfo = userInfoDao.getUserInfoByPhone(username);
         if (null == userInfo) {
             throw new UsernameNotFoundException("Phone " + username + " not found!");
         }
+        LogUtils.info("username2: " + username);
+        LogUtils.info("password: " + userInfo.getPassword());
+        LogUtils.info("id: " + userInfo.getId());
+        LogUtils.info("username: " + userInfo.getUsername());
         return generateUserDetails(userInfo);
     }
 

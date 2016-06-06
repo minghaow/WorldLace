@@ -42,6 +42,12 @@ public class ViewUtils {
         return a.divide(b).toString() + "元";
     }
 
+    public static String priceConverterNo(long priceLong) {
+        BigDecimal a = BigDecimal.valueOf(priceLong);
+        BigDecimal b = BigDecimal.valueOf(100);
+        return a.divide(b).toString();
+    }
+
     public static long priceDoubleToLong(double priceDouble) {
         BigDecimal price = new BigDecimal(priceDouble);
         price = price.setScale(0, BigDecimal.ROUND_FLOOR);

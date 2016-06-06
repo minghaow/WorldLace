@@ -51,6 +51,10 @@ public class EncryptUtils {
             return false;
         }
         String salt = encPass.substring(index + 1);
+        LogUtils.info("encPass: " + encPass);
+        LogUtils.info("rawPass: " + rawPass);
+        LogUtils.info("salt: " + salt);
+        LogUtils.info("encoded: " + encodePassword(rawPass, salt));
         return encPass.equals(encodePassword(rawPass, salt));
     }
 

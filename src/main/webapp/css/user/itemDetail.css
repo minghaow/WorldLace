@@ -98,3 +98,67 @@
     border-image: linear-gradient(45deg, #2ecc71, dodgerblue);
     background: linear-gradient(45deg, #2ecc71, dodgerblue);
 }
+/* 喜欢 */
+a.icon-hook {
+    position: relative;
+    display: block;
+    margin: auto;
+    padding-top: 0.5rem;
+    text-decoration: none;
+    color: darkgrey;
+    width: 3rem;
+    height: 3rem;
+}
+a.icon-hook:visited {
+    text-decoration: none;
+    color: darkgrey;
+}
+a.icon-hook:active {
+    text-decoration: none;
+    color: darkgrey;
+}
+.icon-hook {
+    position: relative;
+}
+.icon-hook:after {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.icon-hook > svg {
+    pointer-events: none;
+}
+.heart-3 {
+    -webkit-transform-origin: center;
+    stroke-dasharray: 135;
+    stroke: darkgrey;
+}
+.active .heart-3 {
+    -webkit-animation: draw-heart-3 2s forwards;
+    stroke: #ec6d46;
+}
+@-webkit-keyframes draw-heart-3 {
+    0% {
+        stroke-dashoffset: -135;
+        -webkit-transform: scale(.2) rotate(-280deg);
+        fill-opacity: 0;
+    }
+    30% {
+        stroke-dashoffset: 135;
+        -webkit-transform: scale(.4) rotate(280deg);
+        fill-opacity: .1;
+    }
+    60% {
+        stroke-dashoffset: -135;
+        -webkit-transform: scale(.6);
+        fill-opacity: .3;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        stroke: #ec6d46;
+        fill-opacity: 1;
+        fill: #f77049;
+    }
+}

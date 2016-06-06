@@ -9,7 +9,7 @@ import org.nutz.castor.FailToCastObjectException;
  */
 public enum OrderStatus {
 
-    NEW("新添加"),
+    NEW("待支付"),
 
     PAYING("正在支付"),
 

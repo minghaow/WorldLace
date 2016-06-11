@@ -90,4 +90,12 @@ public interface AccountService {
      * @return UserAddress
      */
     UserAddress getUserAddress(long addressId);
+
+    /**
+     * check if the phone number is registered
+     *
+     * @param phone
+     * @return
+     */
+    ExecResult<UserInfo> checkRegistered(String phone);
 }

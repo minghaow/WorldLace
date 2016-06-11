@@ -12,7 +12,7 @@ import java.util.Date;
 public class ViewUtils {
 
     public static String convertDateToString(Date date) {
-        DateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return format.format(date);
     }
 

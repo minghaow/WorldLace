@@ -51,7 +51,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     private SkuService skuService;
 
     /** 买手ID到买手信息的缓存 */
-    private final LoadingCache<Long, Order> userCache = CacheBuilder.newBuilder()
+    private final LoadingCache<Long, Order> orderCache = CacheBuilder.newBuilder()
             .softValues()
             .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
             .build(
@@ -67,9 +67,30 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
                         }
                     });
 
+    /** 买手ID到买手信息的缓存 */
+    private final LoadingCache<Long, List<Order>> orderUserIdCache = CacheBuilder.newBuilder()
+            .softValues()
+            .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
+            .build(
+                    new CacheLoader<Long, List<Order>>() {
+                        @Override
+                        public List<Order> load(Long userId) throws Exception {
+                            List<Order> orderList = orderDao.getByUserId(userId);
+                            if (orderList != null && orderList.size() > 0) {
+                                for (Order order : orderList) {
+                                    order.setGoodsList(orderGoodsDao.getByOrderId(order.getOrderId()));
+                                }
+                                return orderList;
+                            }
+                            return new ArrayList<Order>();
+                        }
+                    });
+
     @Override
     public void update() {
         long startTime = System.currentTimeMillis();
+
+//        closeInvalidPayingOrders();
 
         long totalTime = System.currentTimeMillis() - startTime;
         System.out.println("[CartService] Update in " + totalTime + "ms");
@@ -83,7 +104,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     @Override
     public Order getByOrderId(long orderId) {
         try {
-            return userCache.get(orderId);
+            return orderCache.get(orderId);
         } catch (ExecutionException e) {
             LogUtils.warning("OrderService: get user order info error!", e);
             throw new RuntimeException(e);
@@ -92,7 +113,12 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
 
     @Override
     public List<Order> getByUserId(long userId) {
-        return orderDao.getByUserId(userId);
+        try {
+            return orderUserIdCache.get(userId);
+        } catch (ExecutionException e) {
+            LogUtils.warning("OrderService: get user order info error!", e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -113,6 +139,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
         }
         order.setGoodsList(orderGoodsList);
         orderDao.update(order);
+        orderUserIdCache.invalidate(userId);
         return order;
     }
 
@@ -137,6 +164,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
             return ExecResult.fail("订单已经处于" + order.getOrderStatus().getDesc() + "状态！");
         }
         if (orderDao.updateStatus(orderId, Collections.singletonList(OrderStatus.NEW), OrderStatus.PAYING)) {
+            orderUserIdCache.invalidate(order.getUserId());
             return ExecResult.succ(order);
         }
         return ExecResult.fail("修改订单状态到支付中失败，请联系客服");
@@ -149,6 +177,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
             return ExecResult.fail("订单已经处于" + order.getOrderStatus().getDesc() + "状态！");
         }
         if (orderDao.updateStatus(orderId, Collections.singletonList(OrderStatus.PAYING), OrderStatus.PAYED)) {
+            orderUserIdCache.invalidate(order.getUserId());
             return ExecResult.succ(order);
         }
         return ExecResult.fail("修改订单状态到已支付失败，请联系客服");
@@ -177,9 +206,21 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     }
 
     @Override
+    public boolean updateOrderToPaying(long orderId) {
+        Order order = getByOrderId(orderId);
+        if (orderDao.updateStatusToPaying(orderId)) {
+            orderUserIdCache.invalidate(order.getUserId());
+            orderLogDao.log(orderId, 0, OrderOperation.ORDER_PAYING);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean updateOrderToPayed(String out_trade_no, String trade_no, Map<String, String> params) {
         Order order = getByShowOrderId(out_trade_no);
         if (orderDao.updateStatusToPayed(out_trade_no, trade_no)) {
+            orderUserIdCache.invalidate(order.getUserId());
             orderLogDao.log(order.getOrderId(), 0, OrderOperation.ORDER_PAYED, "Trade No. [" + trade_no + "]");
             orderLogDao.log(order.getOrderId(), 0, OrderOperation.ALIPAY_FEEDBACK, JsonUtils.toJson(params));
             return true;

@@ -1,3 +1,4 @@
+#* @vtlvariable name="userAddress" type="nanshen.data.UserAddress" *#
 #* @vtlvariable name="paymentHtml" type="java.lang.String" *#
 #* @vtlvariable name="order" type="nanshen.data.Order" *#
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
@@ -60,32 +61,32 @@
                     <div class="row margin-top-small">
                         <div class="small-6 columns">
                             <label>收货人
-                                <input type="text" class="click-select" placeholder="收货人姓名" id="address-name" value="$!{globalOrder.userAddress.name}" aria-describedby="nameHelpText">
+                                <input type="text" class="click-select" placeholder="收货人姓名" id="address-name" value="$!{userAddress.name}" aria-describedby="nameHelpText">
                             </label>
                             <p class="help-text" id="nameHelpText">收货人是指接收邮寄包裹的那个幸运的人</p>
                         </div>
                         <div class="small-6 columns">
                             <label>电话
-                                <input type="text" class="click-select" placeholder="收货人联系方式" id="address-phone" value="$!{globalOrder.userAddress.phone}" aria-describedby="phoneHelpText">
+                                <input type="text" class="click-select" placeholder="收货人联系方式" id="address-phone" value="$!{userAddress.phone}" aria-describedby="phoneHelpText">
                             </label>
                             <p class="help-text" id="phoneHelpText">国内订单一般会在2-4天收货，请保持手机通畅</p>
                         </div>
                     </div>
                     <div class="row margin-bottom">
                         <div class="small-2 columns">
-                            <select class="address-region" id="address-level1" data-next-level="address-level2" data-original-region-id="$!{globalOrder.userAddress.level1}">
+                            <select class="address-region" id="address-level1" data-next-level="address-level2" data-original-region-id="$!{userAddress.level1}">
                             </select>
                         </div>
                         <div class="small-2 columns">
-                            <select class="address-region" id="address-level2" data-next-level="address-level3" data-original-region-id="$!{globalOrder.userAddress.level2}">
+                            <select class="address-region" id="address-level2" data-next-level="address-level3" data-original-region-id="$!{userAddress.level2}">
                             </select>
                         </div>
                         <div class="small-2 columns">
-                            <select class="address-region" id="address-level3" data-next-level="" data-original-region-id="$!{globalOrder.userAddress.level3}">
+                            <select class="address-region" id="address-level3" data-next-level="" data-original-region-id="$!{userAddress.level3}">
                             </select>
                         </div>
                         <div class="small-6 columns">
-                            <input type="text" class="click-select" placeholder="详细街道地址" id="address-detail" value="$!{globalOrder.userAddress.address}">
+                            <input type="text" class="click-select" placeholder="详细街道地址" id="address-detail" value="$!{userAddress.address}">
                         </div>
                     </div>
                 </div>

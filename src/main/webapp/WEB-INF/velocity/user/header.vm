@@ -83,7 +83,7 @@
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu>
                         #if ("$!{userInfo}" != "")
-                        <li><a href="#"><i class="fi-torso"></i>
+                        <li><a href="/order/list" id="user-url"><i class="fi-torso"></i>
                             <span id="username-section">$userInfo.getUsername()，$helloMsg</span></a>
                         </li>
                         <li><a href="#"> | </a></li>
@@ -91,7 +91,7 @@
                             <span id="login-decide-content">登出</span></a>
                         </li>
                         #else
-                        <li><a href="#" class="login-btn"><i class="fi-torso"></i>
+                        <li><a href="#" class="login-btn" id="user-url"><i class="fi-torso"></i>
                             <span id="username-section">登陆</span></a>
                         </li>
                         <li><a href="#"> | </a></li>
@@ -147,18 +147,20 @@
                             <div class="login-inputs">
                                 <div class="row collapse">
                                     <div class="small-2  columns">
-                                        <span class="prefix"><i class="fi-torso"></i></span>
+                                        <span class="prefix"><i class="fi-telephone"></i></span>
                                     </div>
                                     <div class="small-10  columns">
                                         <input type="text" id="phone" name="phone"/>
+                                        <p class="help-text" id="phoneHelpText">该手机号未注册过</p>
                                     </div>
                                 </div>
                                 <div class="row collapse">
                                     <div class="small-2 columns ">
                                         <span class="prefix"><i class="fi-lock"></i></span>
                                     </div>
-                                    <div class="small-10 columns ">
+                                    <div class="small-10 columns">
                                         <input type="password" id="password" name="password"/>
+                                        <p class="help-text" id="pwdHelpText">密码错误</p>
                                     </div>
                                 </div>
                             </div>
@@ -182,36 +184,38 @@
                                         </div>
                                     </div>
                                     <div class="welcome-hide-before">
-                                        <div class="row collapse">
+                                        <div class="row">
                                             <div class="small-2 columns">
                                                 <span class="prefix"><i class="fi-telephone"></i></span>
                                             </div>
                                             <div class="small-10 columns">
-                                                <input type="text" id="phone2" name="phone" placeholder="您的手机号"/>
+                                                <input type="text" id="phone2" name="phone" placeholder="您的手机号，11位数字"/>
+                                                <p class="help-text" id="phoneHelpText2">手机号应为11位数字</p>
                                             </div>
-                                        </div>
-                                        <div class="row collapse">
                                             <div class="small-2 columns ">
                                                 <span class="prefix"><i class="fi-lock"></i></span>
                                             </div>
-                                            <div class="small-10 columns ">
-                                                <input type="password" id="password2" name="password" placeholder="密码"/>
+                                            <div class="small-10 columns">
+                                                <input type="password" id="password2" name="password" placeholder="密码，6-12位密码"/>
+                                                <p class="help-text" id="pwdHelpText2">请使用6-12位数字和字母的组合作为密码</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="welcome-hide-before-2">
                                         <div class="row collapse">
-                                            <div class="small-12 columns">
-                                                怎么称呼您？
+                                            <div class="small-2 columns">&nbsp;</div>
+                                            <div class="small-10 columns left-align">
+                                                起一个优雅的名字？
                                             </div>
                                         </div>
-                                        <div class="row collapse">
+                                        <div class="row collapse margin-top-small">
                                             <div class="small-2 columns ">
                                                 <span class="prefix"><i class="fi-torso"></i></span>
                                             </div>
-                                            <div class="small-10 columns ">
+                                            <div class="small-10 columns">
                                                 <input type="hidden" id="userId" name="userId"/>
                                                 <input type="text" id="username" name="username" placeholder="用户名"/>
+                                                <p class="help-text" id="usernameHelpText2">用户名太敏感了</p>
                                             </div>
                                         </div>
                                     </div>

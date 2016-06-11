@@ -1,7 +1,6 @@
 package nanshen.service.impl;
 
 import nanshen.utils.EncryptUtils;
-import nanshen.utils.LogUtils;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +19,6 @@ public class SpringPasswordEncoder implements PasswordEncoder {
 
     @Override
     public boolean isPasswordValid(String encPass, String rawPass, Object neverUse) {
-
-        LogUtils.info("encPass: " + encPass);
-        LogUtils.info("rawPass: " + rawPass);
         return EncryptUtils.isPasswordValid(encPass, rawPass);
     }
 

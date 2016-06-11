@@ -72,6 +72,14 @@ public interface OrderService {
     String getPaymentHtml(Order order);
 
     /**
+     * update order status to paying
+     *
+     * @param orderId orderId
+     * @return
+     */
+    boolean updateOrderToPaying(long orderId);
+
+    /**
      * update order status to payed and record trade number
      *
      * @param out_trade_no showOrderId

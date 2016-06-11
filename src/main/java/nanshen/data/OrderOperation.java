@@ -33,6 +33,8 @@ public enum OrderOperation {
 
     CHANGE_ADDRESS("修改订单地址"),
 
+    ORDER_PAYING("支付开始支付"),
+
     ORDER_PAYED("支付成功"),
 
     ALIPAY_FEEDBACK("支付宝回调"),

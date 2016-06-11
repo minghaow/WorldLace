@@ -146,7 +146,7 @@ public class UserAddressDaoImpl extends BaseDao implements UserAddressDao {
 
     @Override
     public List<UserAddress> getUserAddressListByUserId(long userId) {
-        Condition cnd = Cnd.where("userId", "=", userId);
+        Condition cnd = Cnd.where("userId", "=", userId).desc("id");
         return dao.query(UserAddress.class, cnd);
     }
 

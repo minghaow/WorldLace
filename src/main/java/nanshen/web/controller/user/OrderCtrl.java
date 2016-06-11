@@ -46,7 +46,7 @@ public class OrderCtrl extends BaseCtrl {
 			model.put("orderList", orderList);
 		}
 		prepareHeaderModel(model, PageType.ORDER_LIST);
-		return new ModelAndView("user/order");
+		return new ModelAndView("user/my-order");
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -71,7 +71,9 @@ public class OrderCtrl extends BaseCtrl {
 			String paymentHtml = orderService.getPaymentHtml(order);
 			model.put("paymentHtml", paymentHtml);
 			List<UserAddress> userAddressList = accountService.getUserAddressListByUserId(userInfo.getId());
-			model.put("userAddressList", userAddressList);
+			if (userAddressList != null && userAddressList.size() > 0) {
+				model.put("userAddress", userAddressList.get(0));
+			}
 			model.put("order", order);
 		}
 		prepareHeaderModel(model, PageType.ORDER_LIST);
@@ -91,6 +93,7 @@ public class OrderCtrl extends BaseCtrl {
 		if (userInfo != null) {
 			userAddressService.createAddress(new UserAddress(detail, (int)level1, (int)level2, (int)level3, name, phone,
 					userInfo.getId()));
+			orderService.updateOrderToPaying(orderId);
 			model.put("success", true);
 		}
 		responseJson(response, model);

@@ -1,0 +1,153 @@
+#* @vtlvariable name="orderList" type="java.util.List<nanshen.data.Order>" *#
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.SkuItem" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="cart" type="nanshen.data.Cart" *#
+#* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/my-order.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small" id="my-order-page-content">
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText">首页列表</a></li>
+                <li>
+                    我的订单列表
+                </li>
+            </ul>
+        </nav>
+
+        <br/>
+
+        <div class="small-12 columns">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text">我的订单</li>
+                        <li>
+                            <a href="#">全部订单</a>
+                            <ul class="menu vertical">
+                                <li><a href="#">待支付订单</a></li>
+                                <li><a href="#">待发货订单</a></li>
+                                <li><a href="#">待收货订单</a></li>
+                                <li><a href="#">待评价订单</a></li>
+                                <li><a href="#">已完成订单</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">待支付订单</a></li>
+                        <li><a href="#">已完成订单</a></li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li><input type="search" placeholder="商品搜索"></li>
+                        <li><button type="button" class="button">搜索</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        #if ("$!{orderList}" != "" && $!{orderList.size()} > 0)
+        <div class="small-12 columns margin-top-small" id="cart-content">
+
+            #foreach ($order in $!{orderList})
+            <table cellpadding="0" cellspacing="0" class="scroll order-list" id="order-$order.getOrderId()">
+                <thead class="cart-thead center">
+                <tr>
+                    <th class="center" scope="col" width="20%">图片</th>
+                    <th class="center" scope="col" width="20%">商品名称</th>
+                    <th class="center" scope="col" width="">价格</th>
+                    <th class="center" scope="col" width="150px">数量</th>
+                    <th class="center" scope="col" width="">合计</th>
+                    <th class="center" scope="col" width="">交易状态</th>
+                </tr>
+                </thead>
+
+                <tbody class="cart-tbody center">
+                    #foreach ($goods in $!{order.goodsList})
+                    <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
+                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                        <td>
+
+                            <div class="link-1">
+                                <a href="/item?itemId=$!{goods.skuId}" target="_blank" class="demo">
+                                    <span class="thin">$!{goods.title}</span>
+                                </a>
+                            </div>
+                            #if ("$!{goods.option1}" == "")
+                                <div></div>
+                            #else
+                                <div>[ $!{goods.option1} ]</div>
+                            #end
+                        </td>
+                        <td>
+                            $!{goods.convertedPrice}
+                        </td>
+                        <td>
+                            $!{goods.count}
+                        </td>
+                        <td>
+                            <span class="item-total" id="item-total-$!{goods.id}">$!{goods.convertedTotalPriceNo}</span>元
+                        </td>
+                        <td>
+                            <span class="item-total">$!{goods.convertedTotalPriceNo}</span>
+                        </td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+
+            <div class="row callout order-list-summary table-color">
+                <div class="small-4 columns">&nbsp;</div>
+                <div class="small-2 columns center">
+                    下单时间
+                    <div>
+                        <span class="blueText">$order.createTimeString</span>
+                    </div>
+                </div>
+                <div class="small-2 columns center">
+                    共计商品
+                    <div>
+                        <span class="redText">$order.goodsCount</span>件
+                    </div>
+                </div>
+                <div class="small-2 columns center">
+                    合计(包邮):
+                    <div>
+                        <span class="redText">$order.totalPriceString</span>元
+                    </div>
+                </div>
+                <div class="small-2 columns center">
+                    订单状态:
+                    <div>
+                        <span class="redText">$order.orderStatus.getDesc()</span>
+                    </div>
+                </div>
+            </div>
+            #end
+        </div>
+        #else
+        <div class="row center margin-top-large">抱歉，您还没下过单呢，快去给自己买点什么吧！</div>
+        <div class="margin-top-large">&nbsp;</div>
+        #end
+
+    </div>
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+#parse("user/footer.vm")

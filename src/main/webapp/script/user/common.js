@@ -8,6 +8,8 @@ jQuery( document ).ready(function( $ ) {
     var userName = "";
     var phone = "";
     var password = "";
+    var isLogined = $("#is-login").html() == "true";
+    var isValidPhone = false;
 
     $(".unsupported-section").click(function(event){
         event.preventDefault();
@@ -16,18 +18,8 @@ jQuery( document ).ready(function( $ ) {
 
     $(".detail-image-slider .banner-slider ul li").show();
 
-    $('.lr-toggle').on('click', function() {
-        $('.lr-toggle').removeClass("shake-crazy");
-        $('.lr-container').stop().addClass('active');
-    });
-
-    $('.lr-close').on('click', function() {
-        $('.lr-toggle').addClass("shake-crazy");
-        $('.lr-container').stop().removeClass('active');
-    });
-
     $('.register-btn').on('click', function() {
-        $("#animatedModal1").foundation("open");
+        $('.login-btn').trigger('click');
     });
 
     $('.login-btn').on('click', function() {
@@ -49,6 +41,71 @@ jQuery( document ).ready(function( $ ) {
         }
     });
 
+    $("#phone").focus(function(){
+        isValidPhone = false;
+        $(this).removeClass("successInput alertInput");
+    })
+    .blur(function(){
+        phone = $("#phone").val().replace(/\s+/g,"");
+        if (phone.length != 11) {
+            inputNotification("#phone", "#phoneHelpText", false, "手机号应为11位数字");
+            return;
+        }
+        $.ajax({
+            url: "/auth/isRegistered",
+            type: "POST",
+            data: {"phone":phone},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    inputNotification("#phone", "#phoneHelpText", true, "&nbsp");
+                } else {
+                    inputNotification("#phone", "#phoneHelpText", false, data.msg);
+                }
+            }
+        });
+    });
+
+    function inputNotification(point, helpPoint, isSuccess, message) {
+        if (message == "") {
+            message = "&nbsp";
+        }
+        if (isSuccess) {
+            $(point).addClass("successInput");
+            $(helpPoint).html(message).animate({opacity: 0});
+        } else {
+            $(point).addClass("alertInput");
+            $(helpPoint).html(message).animate({opacity: 1});
+        }
+    }
+
+    $("#phone2").focus(function(){
+        isValidPhone = false;
+        $(this).removeClass("successInput alertInput");
+    })
+    .blur(function(){
+        phone = $("#phone2").val().replace(/\s+/g,"");
+        if (phone.length != 11) {
+            inputNotification("#phone2", "#phoneHelpText2", false, "手机号应为11位数字");
+            return;
+        }
+        $.ajax({
+            url: "/auth/isRegistered",
+            type: "POST",
+            data: {"phone":phone},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    inputNotification("#phone2", "#phoneHelpText2", false, data.msg);
+                    isValidPhone = false;
+                } else {
+                    inputNotification("#phone2", "#phoneHelpText2", true, "&nbsp");
+                    isValidPhone = true;
+                }
+            }
+        });
+    });
+
     $('.register-trigger').on('click', function() {
         event.preventDefault();
         if (registerStep == 0) {
@@ -56,6 +113,10 @@ jQuery( document ).ready(function( $ ) {
             registerStep = 1;
             $('.register-trigger').html("下一步").removeClass("final-step");
         } else if (registerStep == 1) {
+            password = $("#password2").val();
+            if (!isValidPhone) {
+                return;
+            }
             $.ajax({
                 url: "/auth/register",
                 type: "POST",
@@ -63,15 +124,13 @@ jQuery( document ).ready(function( $ ) {
                 dataType: 'json',
                 success: function(data) {
                     if (data.success == true || data.success == "true") {
-                        password = $("#password2").val();
-                        phone = $("#phone2").val();
                         userId = data.userId;
                         $("#userId").val(userId);
                         toggleRegisterContent(true, 2);
                         registerStep = 2;
                         $('.register-trigger').html("点我完成注册").addClass("final-step");
                     } else {
-                        presentFailModal("抱歉！", data.msg);
+                        inputNotification("#password2", "#pwdHelpText2", false, data.msg);
                     }
                 }
             });
@@ -89,6 +148,7 @@ jQuery( document ).ready(function( $ ) {
                         $("#animatedModal1").foundation("close");
                     } else {
                         presentFailModal("抱歉！", data.msg);
+                        setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
                     }
                 }
             });
@@ -105,7 +165,7 @@ jQuery( document ).ready(function( $ ) {
                         $(".cart-count").html(data.cart.goodsCount);
                         $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
                     } else {
-                        presentFailModal("抱歉！", "用户名和密码的组合不正确，请重新输入。");
+                        presentFailModal("请登录！", "注册成功，请登录，谢谢！");
                         setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
                     }
                 }
@@ -145,9 +205,9 @@ jQuery( document ).ready(function( $ ) {
                     $("#login-decide-content").html("登出");
                     $(".cart-count").html(data.cart.goodsCount);
                     $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
+                    $("#user-url").attr("href", "/order/list");
                 } else {
-                    presentFailModal("抱歉！", "用户名和密码的组合不正确，请重新输入。");
-                    setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
+                    inputNotification("#password", "#pwdHelpText", false, data.msg);
                 }
             }
         });
@@ -177,10 +237,16 @@ jQuery( document ).ready(function( $ ) {
         $(".price-before").html("￥" + originPrice);
         $(".price-after").html("￥" + price);
         $(".add-to-cart").data("sku-id", skuId);
+        $(".option-button-wrapper button").removeClass("checked");
+        $(this).addClass("checked");
     });
 
     $(".add-to-cart").on('click', function() {
         event.preventDefault();
+        if (!isLogined) {
+            $('.login-btn').trigger('click');
+            return;
+        }
         var skuId = $(this).data("sku-id");
         var count = $(this).data("count");
         $.ajax({

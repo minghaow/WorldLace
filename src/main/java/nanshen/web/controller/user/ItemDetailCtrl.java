@@ -29,12 +29,14 @@ public class ItemDetailCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView itemDetail(ModelMap model, @RequestParam(defaultValue = "1", required = true) int itemId) {
+		UserInfo userInfo = getLoginedUser();
         SkuItem skuItem = skuService.getSkuItemInfo(itemId);
         if (skuItem != null) {
             model.addAttribute("skuItem", skuItem);
+            model.addAttribute("isLogin", userInfo != null);
         }
 		prepareHeaderModel(model, PageType.ITEM_DETAIL);
-		return new ModelAndView("user/itemDetail");
+		return new ModelAndView("user/item-detail");
 	}
 
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)

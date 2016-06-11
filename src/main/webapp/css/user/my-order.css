@@ -1,0 +1,22 @@
+/*
+ *  user/my-order.css
+ *  @author: WANG Minghao
+*/
+#my-order-page-content button {
+    background: #af8e72;
+}
+#my-order-page-content .top-bar a {
+    color: #6e5847;
+}
+.order-list {
+    border-top: solid 2px #af8e72;
+}
+.callout.table-color {
+    background-color: #f8f8f8;
+}
+#my-order-page-content .order-list-summary {
+    border: none;
+}
+#my-order-page-content table {
+    margin-bottom: 0;
+}

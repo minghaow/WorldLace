@@ -73,7 +73,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
                 .add("updateTime", new Date());
         Cnd cnd = Cnd
                 .where("showOrderId", "=", out_trade_no)
-                .and("orderStatus", "=", OrderStatus.NEW);
+                .and("orderStatus", "in", new OrderStatus[]{OrderStatus.PAYING, OrderStatus.NEW});
         return 1 == dao.update(Order.class, chain, cnd);
     }
 
@@ -81,6 +81,17 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
     public Order getByShowOrderId(String showOrderId) {
         Condition cnd = Cnd.where("showOrderId", "=", showOrderId);
         return dao.fetch(Order.class, cnd);
+    }
+
+    @Override
+    public boolean updateStatusToPaying(long orderId) {
+        Chain chain = Chain
+                .make("orderStatus", OrderStatus.PAYING)
+                .add("updateTime", new Date());
+        Cnd cnd = Cnd
+                .where("orderId", "=", orderId)
+                .and("orderStatus", "=", OrderStatus.NEW);
+        return 1 == dao.update(Order.class, chain, cnd);
     }
 
 }

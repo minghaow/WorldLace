@@ -12,54 +12,6 @@ form [type=file], [type=checkbox], [type=radio] {
     width: 5rem;
     display: inline-block;
 }
-.circlenumber {
-    background-color: #fff;
-    border-radius: 50%;
-    border: 1px solid #0b4f69;
-    position: relative;
-}
-.circlenumber h3 {
-    line-height: 1px;
-    color: #0b4f69;
-    position: relative;
-    text-align: center;
-    font-weight: normal;
-}
-
-@media only screen and (min-width: 40em) {
-    .step-by-step-style-two .circlenumber {
-        width: 60px;
-        height: 60px;
-        margin: 30px auto 15px auto;
-    }
-    .step-by-step-style-two .circlenumber h3 {
-        padding-top: 25px;
-        font-size: 20px;
-    }
-    .step-by-step-style-two .path-item {
-        text-align: center;
-    }
-}
-@media only screen and (min-width: 0) and (max-width: 40em) {
-    .step-by-step-style-two .path-item {
-        padding-left: 55px;
-        position: relative;
-        text-align: center;
-    }
-    .step-by-step-style-two .path-item .circlenumber {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        margin-top: 6px;
-        left: 0;
-    }
-    .step-by-step-style-two .path-item .circlenumber h3 {
-        padding-top: 15px;
-        font-size: 16px;
-    }
-}
-
-
 #global-step {
     position: relative;
     z-index: 1;
@@ -158,7 +110,6 @@ form [type=file], [type=checkbox], [type=radio] {
 .cart-thead {
     border-top: #af8e72 solid 3px;
 }
-
 .gwc_tb3{ width:100%; border:1px solid #d2d2d2; background:#e7e7e7; height:46px; margin-top:20px; }
 .gwc_tb3 tr td{font-size:14px;}
 .tb3_td2{ text-align:center;}
@@ -167,9 +118,14 @@ form [type=file], [type=checkbox], [type=radio] {
 .tb3_td3 span{ font-size:18px; font-weight:bold;}
 .tb3_td4{ width:110px;text-align:center;}
 .jz2{ width:100px; height:46px; line-height:46px; text-align:center; font-size:18px; color:#fff; background:#ee0000; display:block; float:right;}
-
 #body .accordion-title {
-    color: #af8e72;
+    color: #6e5847;
     border-top: 2px solid #af8e72;
     font-size: 1rem;
+}
+#body .link-1 a.demo {
+    color: #6e5847;
+}
+#body .link-1 a.demo:hover {
+    border-bottom: solid 1px #af8e72;
 }

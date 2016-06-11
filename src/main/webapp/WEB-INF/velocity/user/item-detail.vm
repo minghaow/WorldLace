@@ -1,3 +1,4 @@
+#* @vtlvariable name="isLogin" type="java.lang.Boolean" *#
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
@@ -13,6 +14,7 @@
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">orders</div>
+    <div id="is-login">$!{isLogin}</div>
 </div>
 
 <!-- page contents -->
@@ -143,7 +145,6 @@
 
                     #foreach ($imgId in [0..$skuItem.getContentImgCount()])
                         <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
-                        <p>&nbsp;</p>
                     #end
                 </div>
 

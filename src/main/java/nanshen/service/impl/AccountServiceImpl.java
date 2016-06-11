@@ -121,6 +121,7 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
         if (!userInfoDao.setUsername(userId, username)) {
             return ExecInfo.fail("用户名设置失败，请联系客服！");
         }
+        userCache.invalidate(userId);
         return ExecInfo.succ();
     }
 
@@ -132,6 +133,15 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     @Override
     public UserAddress getUserAddress(long addressId) {
         return userAddressDao.getUserAddress(addressId);
+    }
+
+    @Override
+    public ExecResult<UserInfo> checkRegistered(String phone) {
+        UserInfo userInfo = userInfoDao.getUserInfoByPhone(phone);
+        if (userInfo != null) {
+            return ExecResult.fail("该手机号已经注册过，请直接登录");
+        }
+        return ExecResult.succ(null);
     }
 
     @Override

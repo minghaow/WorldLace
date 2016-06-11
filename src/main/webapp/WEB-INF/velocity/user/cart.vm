@@ -81,8 +81,17 @@
                         </td>
                         <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
                         <td>
-                            <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
-                            <div>$!{goods.option1}</div>
+
+                            <div class="link-1">
+                                <a href="/item?itemId=$!{goods.skuId}" target="_blank" class="demo">
+                                    <span class="thin">$!{goods.title}</span>
+                                </a>
+                            </div>
+                            #if ("$!{goods.option1}" == "")
+                            <div></div>
+                            #else
+                            <div>[ $!{goods.option1} ]</div>
+                            #end
                         </td>
                         <td>
                             $!{goods.convertedPrice}

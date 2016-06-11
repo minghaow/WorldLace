@@ -27,4 +27,6 @@ public interface OrderDao {
     boolean updateStatusToPayed(String out_trade_no, String trade_no);
 
     Order getByShowOrderId(String showOrderId);
+
+    boolean updateStatusToPaying(long orderId);
 }

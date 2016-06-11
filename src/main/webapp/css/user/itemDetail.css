@@ -162,3 +162,8 @@ a.icon-hook:active {
         fill: #f77049;
     }
 }
+#body .option-button-wrapper button.checked {
+    background: #af8e72;
+    color: white;
+    border: 1px solid #af8e72;
+}

@@ -71,6 +71,30 @@ public class AuthorityCtrl extends BaseCtrl {
     }
 
     /**
+     * Is phone registered?
+     *
+     * @param response
+     * @param model
+     * @param phone
+     * @throws IOException
+     */
+    @RequestMapping(value = "/isRegistered", method = RequestMethod.POST)
+    public void register(HttpServletResponse response, ModelMap model,
+                         @RequestParam(defaultValue = "") String phone)
+            throws IOException {
+        ExecInfo execInfo = phoneInputValidCheck(phone);
+        if (!execInfo.isSucc()) {
+            model.put("msg", execInfo.getMsg());
+            model.put("success", false);
+        } else {
+            ExecResult<UserInfo> execResult = accountService.checkRegistered(phone);
+            model.put("success", !execResult.isSucc());
+            model.put("msg", execResult.getMsg());
+        }
+        responseJson(response, model);
+    }
+
+    /**
      * Register new user
      *
      * @param response
@@ -124,16 +148,31 @@ public class AuthorityCtrl extends BaseCtrl {
         responseJson(response, model);
     }
 
-    private ExecInfo registerInputValidCheck(String phone, String password1, String password2) {
+    private ExecInfo phoneInputValidCheck(String phone) {
         ExecInfo execInfo = ExecInfo.succ();
         if (StringUtils.isBlank(phone)) {
-            execInfo = ExecInfo.fail("抱歉，手机号不能为空，注册失败。");
-        } else if (StringUtils.isBlank(password1)) {
-            execInfo = ExecInfo.fail("抱歉，密码不能为空，注册失败。");
+            execInfo = ExecInfo.fail("抱歉，手机号不能为空");
+        } else if (phone.length() != 11 && StringUtils.isNumeric(phone)) {
+            execInfo = ExecInfo.fail("抱歉，手机号码应为11位数字");
+        }
+        return execInfo;
+    }
+
+    private ExecInfo registerInputValidCheck(String phone, String password1, String password2) {
+        ExecInfo execInfo = phoneInputValidCheck(phone);
+        if (!execInfo.isSucc()) {
+            return execInfo;
+        }
+        if (StringUtils.isBlank(password1)) {
+            execInfo = ExecInfo.fail("抱歉，密码不能为空");
         } else if (!password1.equals(password2)) {
             execInfo = ExecInfo.fail("抱歉，两次密码输入不一致，请重新输入。");
-        } else if (password1.equalsIgnoreCase(phone) || password1.equalsIgnoreCase("123456") || password1.length() < 6) {
+        } else if (password1.equalsIgnoreCase(phone)) {
+            execInfo = ExecInfo.fail("抱歉，密码不能等于手机号，请重新输入。");
+        } else if (password1.equalsIgnoreCase("123456")) {
             execInfo = ExecInfo.fail("抱歉，密码过于简单，请重新输入。");
+        } else if (password1.length() < 6) {
+            execInfo = ExecInfo.fail("抱歉，请使用大于等于6位的密码，请重新输入。");
         }
         return execInfo;
     }

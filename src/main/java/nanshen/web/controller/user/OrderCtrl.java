@@ -67,7 +67,6 @@ public class OrderCtrl extends BaseCtrl {
 		UserInfo userInfo = getLoginedUser();
 		if (userInfo != null) {
 			Order order = orderService.getByOrderId(orderId);
-			order.setTotalPrice(166);
 			String paymentHtml = orderService.getPaymentHtml(order);
 			model.put("paymentHtml", paymentHtml);
 			List<UserAddress> userAddressList = accountService.getUserAddressListByUserId(userInfo.getId());

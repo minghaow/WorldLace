@@ -2,7 +2,7 @@ package nanshen.web.controller.user;
 
 import nanshen.dao.ContactMsgDao;
 import nanshen.data.ContactMsg;
-import nanshen.data.PageType;
+import nanshen.data.SystemUtil.PageType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

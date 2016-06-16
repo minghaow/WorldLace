@@ -1,6 +1,19 @@
 #body {
     background-color: #e2e2e2;
 }
+#body a:hover{
+    text-decoration: none;
+    outline: none;
+}
+#body a {
+    text-decoration: none;
+    outline: none;
+}
+body a {
+    color: #9c7b61;
+    text-decoration: none;
+    outline: none;
+}
 .page-content {
     min-height: 300px;
 }
@@ -14,10 +27,34 @@
     margin-left: auto !important;
     margin-right: auto !important;
 }
-.all-list tr th,
-.all-list tr td {
-    text-align: center !important;
+#login-button {
+    padding: 0.5rem 3rem;
 }
-input.labelauty + label {
-    display: inline !important;
+.all-list tr th {
+    text-align: center;
+}
+.all-list thead tr {
+    background: #af8e72;
+    color: white;
+}
+.all-list {
+    margin: 2rem auto 0 auto;
+    width: 100%;
+    border-bottom: 2px solid #af8e72;
+}
+.page-content .breadcrumbs a {
+    color: #9c7b61;
+    font-size: 0.95rem;
+}
+.all-list caption, .all-list  tbody td, .all-list  tbody th {
+    padding: .3rem .625rem;
+}
+.all-list .button {
+    margin: 0;
+}
+.all-list .cancel-btn {
+    background: #af8e72;
+}
+.all-list .detail-btn {
+    background: #af8e72;
 }

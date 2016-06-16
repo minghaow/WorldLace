@@ -2,8 +2,8 @@ package nanshen.dao.impl;
 
 import nanshen.dao.OrderLogDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.OrderLog;
-import nanshen.data.OrderOperation;
+import nanshen.data.Order.OrderLog;
+import nanshen.data.Order.OrderOperation;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;

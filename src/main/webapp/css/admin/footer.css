@@ -1,0 +1,43 @@
+/*
+ *  Footer.css
+ *  @author: WANG Minghao
+*/
+.top-footer {
+    margin-top: 80px;
+    text-align: center;
+    background: lightgrey;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+    font-style: normal;
+    padding-top: 1.5rem;
+}
+.top-footer h3 {
+    font-weight: normal;
+    color: lightgrey;
+}
+.learn-links {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 40px;
+}
+.learn-links ul li {
+    font-size: 13px;
+}
+.learn-links p {
+    margin-left: 3rem;
+    font-size: 13px;
+    font-weight: lighter;
+}
+.bottom-footer {
+    background: #382E26;
+    height: 120px;
+    text-align: left;
+    position: relative;
+    padding: 0px 20px 0 20px;
+    overflow: hidden;
+}
+.page-info {
+    display: none;
+}
+

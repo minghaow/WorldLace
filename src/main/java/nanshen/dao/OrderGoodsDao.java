@@ -1,6 +1,6 @@
 package nanshen.dao;
 
-import nanshen.data.OrderGoods;
+import nanshen.data.Order.OrderGoods;
 
 import java.util.List;
 
@@ -21,4 +21,5 @@ public interface OrderGoodsDao {
 
     boolean remove(long goodsId);
 
+    List<OrderGoods> getByOrderIdList(List<Long> orderIdList);
 }

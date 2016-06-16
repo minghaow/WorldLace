@@ -1,6 +1,12 @@
 package nanshen.service;
 
-import nanshen.data.*;
+import nanshen.data.AdminUserInfo;
+import nanshen.data.LookInfo;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.User.UserAddress;
+import nanshen.data.User.UserInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -53,11 +59,6 @@ public interface AccountService {
     UserInfo getUserInfo(long userId);
 
     /**
-     * Clear buyerInfo cache for all change actions
-     */
-    void clearBuyerInfoCache();
-
-    /**
      * Create new user
      *
      * @param phone user's phone number
@@ -98,4 +99,11 @@ public interface AccountService {
      * @return
      */
     ExecResult<UserInfo> checkRegistered(String phone);
+
+    /**
+     * clear admin user info cache
+     *
+     * @return boolean
+     */
+    boolean clearAdminUserInfoCache();
 }

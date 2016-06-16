@@ -1,9 +1,9 @@
 package nanshen.web.controller.user;
 
 import nanshen.constant.SystemConstants;
-import nanshen.data.Cart;
-import nanshen.data.PageType;
-import nanshen.data.UserInfo;
+import nanshen.data.Cart.Cart;
+import nanshen.data.SystemUtil.PageType;
+import nanshen.data.User.UserInfo;
 import nanshen.service.AccountService;
 import nanshen.service.CartService;
 import nanshen.utils.JsonUtils;

@@ -2,7 +2,7 @@ package nanshen.dao.impl;
 
 import nanshen.dao.UserAuthorityDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.UserAuthority;
+import nanshen.data.User.UserAuthority;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
 package nanshen.dao;
 
-import nanshen.data.OrderLog;
-import nanshen.data.OrderOperation;
+import nanshen.data.Order.OrderLog;
+import nanshen.data.Order.OrderOperation;
 
 import java.util.List;
 

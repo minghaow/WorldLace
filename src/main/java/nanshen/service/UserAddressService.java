@@ -1,6 +1,10 @@
 package nanshen.service;
 
-import nanshen.data.*;
+import nanshen.data.Region;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.User.IDCard;
+import nanshen.data.User.IDCardImage;
+import nanshen.data.User.UserAddress;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

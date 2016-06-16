@@ -2,7 +2,7 @@ package nanshen.dao.impl;
 
 import nanshen.dao.CartDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.Cart;
+import nanshen.data.Cart.Cart;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;

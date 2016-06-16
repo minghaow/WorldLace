@@ -8,7 +8,13 @@ package nanshen.service.impl;
 
 import nanshen.dao.OrderDao;
 import nanshen.dao.UserAddressDao;
-import nanshen.data.*;
+import nanshen.data.Order.Order;
+import nanshen.data.Order.OrderOperation;
+import nanshen.data.Region;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.User.IDCard;
+import nanshen.data.User.IDCardImage;
+import nanshen.data.User.UserAddress;
 import nanshen.service.UserAddressService;
 import nanshen.service.common.BaseService;
 import nanshen.utils.ImageUtils;

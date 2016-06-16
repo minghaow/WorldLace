@@ -8,7 +8,11 @@ import nanshen.dao.CartDao;
 import nanshen.dao.CartGoodsDao;
 import nanshen.dao.OrderDao;
 import nanshen.dao.OrderGoodsDao;
-import nanshen.data.*;
+import nanshen.data.Cart.Cart;
+import nanshen.data.Cart.CartGoods;
+import nanshen.data.Sku.SkuDetail;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.ExecResult;
 import nanshen.service.CartService;
 import nanshen.service.SkuService;
 import nanshen.service.common.ScheduledService;
@@ -44,7 +48,7 @@ public class CartServiceImpl extends ScheduledService implements CartService {
     @Autowired
     private SkuService skuService;
 
-    /** 买手ID到买手信息的缓存 */
+    /** userId to user Cart cache */
     private final LoadingCache<Long, Cart> userCache = CacheBuilder.newBuilder()
             .softValues()
             .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
@@ -192,6 +196,12 @@ public class CartServiceImpl extends ScheduledService implements CartService {
             }
         }
         return ExecResult.fail("抱歉，没有在您的购物车找到该商品");
+    }
+
+    @Override
+    public boolean clearCartCache() {
+        userCache.invalidateAll();
+        return true;
     }
 
     private Cart getCartByUserId(long userId) {

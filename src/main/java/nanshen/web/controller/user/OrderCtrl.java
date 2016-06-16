@@ -1,9 +1,11 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.Order;
-import nanshen.data.PageType;
-import nanshen.data.UserAddress;
-import nanshen.data.UserInfo;
+import nanshen.data.Order.Order;
+import nanshen.data.Sku.SkuCommentImg;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.PageType;
+import nanshen.data.User.UserAddress;
+import nanshen.data.User.UserInfo;
 import nanshen.service.CartService;
 import nanshen.service.OrderService;
 import nanshen.service.UserAddressService;
@@ -15,6 +17,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -90,9 +94,8 @@ public class OrderCtrl extends BaseCtrl {
 									@RequestParam(defaultValue = "0", required = true) String detail) throws IOException  {
 		UserInfo userInfo = getLoginedUser();
 		if (userInfo != null) {
-			userAddressService.createAddress(new UserAddress(detail, (int)level1, (int)level2, (int)level3, name, phone,
+			orderService.updateOrderToPaying(orderId, new UserAddress(detail, (int)level1, (int)level2, (int)level3, name, phone,
 					userInfo.getId()));
-			orderService.updateOrderToPaying(orderId);
 			model.put("success", true);
 		}
 		responseJson(response, model);
@@ -106,10 +109,7 @@ public class OrderCtrl extends BaseCtrl {
 			String out_trade_no = params.get("out_trade_no");
 			String trade_no = params.get("trade_no");
 			String trade_status = params.get("trade_status");
-			LogUtils.info("trade_status: " + trade_status);
-			LogUtils.info("trade_no: " + trade_no);
-			LogUtils.info("out_trade_no: " + out_trade_no);
-			if(AlipayNotify.verify(params) || true){//验证成功
+			if(AlipayNotify.verify(params)){//验证成功
 				if(trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")){
 					orderService.updateOrderToPayed(out_trade_no, trade_no, params);
 					Order order = orderService.getByShowOrderId(out_trade_no);
@@ -143,6 +143,33 @@ public class OrderCtrl extends BaseCtrl {
 		}else{
 			response.getWriter().print("fail");
 		}
+	}
+
+	/**
+	 * 上传评论配图功能
+	 *
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/uploadCommentImage", method = RequestMethod.POST)
+	public void uploadCommentImage(MultipartHttpServletRequest request, HttpServletResponse response, ModelMap model,
+							@RequestParam(defaultValue = "0", required = true) long skuId)
+			throws IOException {
+		UserInfo userInfo = getLoginedUser();
+		if (userInfo != null) {
+			MultipartFile file = request.getFile("Filedata");
+			ExecResult<SkuCommentImg> execResult = orderService.uploadCommentImg(userInfo.getId(), skuId, file);
+			model.addAttribute("success", execResult.isSucc());
+			model.addAttribute("message", execResult.getMsg());
+			model.addAttribute("id", execResult.getValue().getId() - 1);
+			model.addAttribute("skuId", skuId);
+			model.addAttribute("url", execResult.getValue().getImgUrl());
+		} else {
+			model.addAttribute("success", false);
+			model.addAttribute("message", "请登陆后再上传图片，谢谢");
+		}
+		responseJson(response, model);
 	}
 
 	public Map<String,String> getRequestParams(HttpServletRequest request) {

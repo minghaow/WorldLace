@@ -1,6 +1,6 @@
-#* @vtlvariable name="userAddress" type="nanshen.data.UserAddress" *#
+#* @vtlvariable name="userAddress" type="nanshen.data.User.UserAddress" *#
 #* @vtlvariable name="paymentHtml" type="java.lang.String" *#
-#* @vtlvariable name="order" type="nanshen.data.Order" *#
+#* @vtlvariable name="order" type="nanshen.data.Order.Order" *#
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
 
 #parse("user/header.vm")

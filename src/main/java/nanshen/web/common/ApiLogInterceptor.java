@@ -1,6 +1,6 @@
 package nanshen.web.common;
 
-import nanshen.data.UserInfo;
+import nanshen.data.User.UserInfo;
 import nanshen.utils.LogUtils;
 import nanshen.web.controller.user.BaseCtrl;
 import org.apache.commons.lang.StringUtils;

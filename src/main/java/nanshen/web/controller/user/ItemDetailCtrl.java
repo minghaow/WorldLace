@@ -1,9 +1,9 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.ExecResult;
-import nanshen.data.PageType;
-import nanshen.data.SkuItem;
-import nanshen.data.UserInfo;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.PageType;
+import nanshen.data.User.UserInfo;
 import nanshen.service.CartService;
 import nanshen.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;

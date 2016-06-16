@@ -1,7 +1,7 @@
 package nanshen.service;
 
-import nanshen.data.Cart;
-import nanshen.data.ExecResult;
+import nanshen.data.Cart.Cart;
+import nanshen.data.SystemUtil.ExecResult;
 
 /**
  * Cart related services
@@ -73,4 +73,11 @@ public interface CartService {
      * @return ExecResult with cart goods count
      */
     ExecResult<Long> deleteGoods(long userId, long goodsId);
+
+    /**
+     * clear cart cache
+     *
+     * @return boolean
+     */
+    boolean clearCartCache();
 }

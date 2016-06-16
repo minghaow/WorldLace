@@ -1,6 +1,6 @@
 package nanshen.dao;
 
-import nanshen.data.Cart;
+import nanshen.data.Cart.Cart;
 
 /**
  * @author WANG Minghao

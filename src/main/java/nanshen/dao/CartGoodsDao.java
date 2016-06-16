@@ -1,6 +1,6 @@
 package nanshen.dao;
 
-import nanshen.data.CartGoods;
+import nanshen.data.Cart.CartGoods;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package nanshen.service.api.oss;
 
-import nanshen.data.ExecInfo;
+import nanshen.data.SystemUtil.ExecInfo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

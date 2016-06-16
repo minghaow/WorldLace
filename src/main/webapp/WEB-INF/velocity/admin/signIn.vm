@@ -10,108 +10,50 @@
     <div id="this-tag">orders</div>
 </div>
 
-<!-- breadcrumbs -->
-<ul class="breadcrumbs">
-    <li ><a href="/"><i class="fi-home"></i> 未登录用户</a></li>
-    <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 登陆/注册</a></li>
-</ul>
-
-<!-- alert info -->
-#if ($!{error})
-<div data-alert class="row alert-box alert radius margin-top">
-    密码错误，登陆失败！
-    <a href="#" class="close">&times;</a>
-</div>
-#end
-
 <!-- page contents -->
-<div class="page-content margin-top-large">
+<div class="page-content margin-top-small">
+
+    <!-- breadcrumbs -->
+    <ul class="breadcrumbs row">
+        <li ><a href="/"><i class="fi-home"></i> 未登录用户</a></li>
+        <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 登陆/注册</a></li>
+    </ul>
 
     <div class="row" data-equalizer>
-        <div class="login-wrapper large-8 columns" data-equalizer-watch>
+        <div class="login-wrapper small-12 columns" data-equalizer-watch>
             <form action="/admin/auth/signin" method="post" id="login-form">
-                <fieldset class="panel row margin-top">
+                <fieldset class="callout row margin-top primary">
                     <legend>登陆 Log In</legend>
-                    <div class="large-9 small-12 column large-centered margin-top">
+                    <div class="small-12 column large-centered margin-top">
                         <div class="row collapse prefix-radius margin-top-small">
-                            <div class="small-3 columns">
+                            <div class="small-2 columns">
                                 <span class="prefix">邮箱</span>
                             </div>
-                            <div class="small-9 columns">
+                            <div class="small-10 columns">
                                 <input id="username" name="username" type="text" placeholder="Email">
                             </div>
                         </div>
                         <div class="row collapse prefix-radius">
-                            <div class="small-3 columns">
+                            <div class="small-2 columns">
                                 <span class="prefix">密码</span>
                             </div>
-                            <div class="small-9 columns">
+                            <div class="small-10 columns">
                                 <input id="password" name="password" type="password" placeholder="password">
                             </div>
                         </div>
-                        <input type="submit" class="button postfix margin-top-small" id="login-button" value="登录">
-                        <div class="margin-bottom"></div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-
-        <div class="register-wrapper large-4 columns" data-equalizer-watch>
-            <form action="/auth/register" method="post" id="register-form">
-                <fieldset class="panel row margin-top">
-                    <legend>注册 Register</legend>
-                    <div class="large-12 small-12 column large-centered margin-top">
-                        <div class="row collapse prefix-radius margin-top-small">
-                            <div class="small-3 columns">
-                                <span class="prefix">邮箱</span>
-                            </div>
-                            <div class="small-9 columns">
-                                <input id="username_r" name="username" type="text" placeholder="Email">
-                            </div>
+                        <div class="row center">
+                            <input type="submit" class="button margin-top-small" id="login-button" value="登录">
                         </div>
-                        <div class="row collapse prefix-radius">
-                            <div class="small-3 columns">
-                                <span class="prefix">种类</span>
-                            </div>
-                            <div class="small-9 columns">
-                                <select name="type">
-                                    <option value="OPERATION">运营人员</option>
-                                    <option value="SERVICE">客服人员</option>
-                                    <option value="ADMIN">管理员</option>
-                                    <option value="SUPER">超级管理员</option>
-                                </select>
-                            </div>
-                        </div>
-                        <input type="submit" class="button postfix margin-top-small" id="register-button" value="注册">
                         <div class="margin-bottom"></div>
                     </div>
                 </fieldset>
             </form>
         </div>
     </div>
-
-    <div id="successModal" class="small reveal-modal" data-reveal>
-        <h2 class="greenText">修改密码成功!</h2>
-        <p>欢迎您使用买手系统！请登陆！</p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-
-    <div id="failModal" class="small reveal-modal" data-reveal>
-        <h2 class="redText">修改密码失败!</h2>
-        <p id="fail-reason"></p>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-
 </div>
 <!-- end of this page contents -->
 
-<script src="/script/login.js"></script>
-
 <!-- start of footer-->
-<script>
-    $(document).ready(function(){
-        $('.bxslider').bxSlider();
-    });
-</script>
+<script src="/script/login.js"></script>
 <script src="/script/user/common.js"></script>
 #include("admin/footer.vm")

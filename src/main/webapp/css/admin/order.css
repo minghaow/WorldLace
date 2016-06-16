@@ -1,0 +1,19 @@
+/*
+ *  admin/order.css
+ *  @author: WANG Minghao
+*/
+
+#body .accordion-title {
+    color: #6e5847;
+    border-top: 2px solid #af8e72;
+    font-size: 1rem;
+}
+#body .link-1 a.demo {
+    color: #6e5847;
+}
+#body .link-1 a.demo:hover {
+    border-bottom: solid 1px #af8e72;
+}
+.log-table {
+    width: 100%;
+}

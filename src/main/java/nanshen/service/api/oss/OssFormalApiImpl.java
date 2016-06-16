@@ -4,7 +4,7 @@ import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.*;
 import nanshen.constant.SystemConstants;
-import nanshen.data.ExecInfo;
+import nanshen.data.SystemUtil.ExecInfo;
 import org.springframework.stereotype.Service;
 
 import java.io.*;

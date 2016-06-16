@@ -2,7 +2,11 @@ package nanshen.dao.impl;
 
 import nanshen.dao.SkuDetailDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.*;
+import nanshen.data.LookInfo;
+import nanshen.data.PublicationStatus;
+import nanshen.data.Sku.SkuDetail;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.PageInfo;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;

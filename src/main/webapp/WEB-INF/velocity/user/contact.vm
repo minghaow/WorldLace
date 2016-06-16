@@ -1,7 +1,7 @@
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
-#* @vtlvariable name="skuItem" type="nanshen.data.SkuItem" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.Sku.SkuItem" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 #* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#

@@ -1,3 +1,4 @@
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="pageType" type="java.lang.String" *#
 <!DOCTYPE html>
 <html lang="en">
@@ -13,157 +14,99 @@
     <!-- style stuff -->
     <link type="image/x-icon" href="/images/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="/css/admin/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/admin/footer.css">
     <link rel="stylesheet" href="/css/tool.css">
     <link rel="stylesheet" href="/css/admin/common.css">
     <link rel="stylesheet" href="/css/foundation.min.css">
     <link rel="stylesheet" href="/css/foundation-icons.css">
-    <link rel="stylesheet" href="/css/jquery.bxslider.css"/>
-##    <link rel="stylesheet" href="/css/jquery-labelauty.css">
 
     <!-- js stuff -->
     <script src="/script/vendor/jquery.js"></script>
-    <script src="/script/vendor/jquery.bxslider.min.js"></script>
 </head>
 
 <!-- body start -->
-<body>
+<body id="body">
 
-<!-- top bar start -->
-<div class="off-canvas-wrap" data-offcanvas>
-<div class="inner-wrap">
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
-    <!-- left menu for mobile devices -->
-    <div class="left-menu">
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><label class="first">男神梦工厂</label></li>
-                <li><a href="/list">男装</a></li>
-            </ul>
-        </aside>
-        <title>男神梦工厂</title><meta name="description" content="男神梦工厂">
-        <nav class="tab-bar show-for-small">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#"><span style="margin-left:1rem;"></span></a>
-            </section>
-            <div class="middle tab-bar-section"><img src=""></div>
-        </nav>
-    </div>
-
-    <!-- bigger menu with centered logo -->
-    <!-- bigger header -->
-    <nav class="top-bar hide-for-small" data-topbar="">
-        <ul class="title-area">
-            <li class="name">
-                <h1>
-                    <a href="/">
-                        LanZhuJue.com
-                    </a>
-                </h1>
-            </li>
-        </ul>
-
-        <section class="top-bar-section">
-            <ul class="right-section">
-                <li>
-                    <a href="/" class="top-button">
-                        <img class="menu-icon" src="/images/buyer.png" alt="icon">
-                        <div class="menu-text" id="exchange"><i class="fi-torso-business exchange"></i></div>
-                    </a>
-                </li>
-
-                <li class="divider"></li>
-                <li>
-                    <a href="/admin/operation/look/look-list" class="top-button">
-                        <img class="menu-icon" src="/images/icon-recruit.png" alt="icon">
-                        <div class="menu-text" id="look-list-page">搭配列表</div>
-                    </a>
-                </li>
-
-                <li class="divider"></li>
-                <li>
-                    <a href="/admin/operation/look/look-upload" class="top-button">
-                        <img class="menu-icon" src="/images/icon-recruit.png" alt="icon">
-                        <div class="menu-text" id="look-upload-page">上传搭配</div>
-                    </a>
-                </li>
-
-                <li class="divider"></li>
-                <li>
-                    <a href="/admin/operation/sku/sku-list" class="top-button">
-                        <img class="menu-icon" src="/images/icon-product.png" alt="icon">
-                        <div class="menu-text" id="sku-list-page">单品列表</div>
-                    </a>
-                </li>
-
-                <li class="divider"></li>
-                <li>
-                    <a href="/admin/operation/sku/sku-upload" class="top-button">
-                        <img class="menu-icon" src="/images/icon-product.png" alt="icon">
-                        <div class="menu-text" id="sku-upload-page">上传单品</div>
-                    </a>
-                </li>
-
-                <li class="divider"></li>
-                <li class="drop-remove has-dropdown not-click height-definer higher-index">
-                    <a href="#" class="drop-remove drop-anchor" id="statistics-info">统计系统</a>
-                    <ul class="dropdown"><li class="title back js-generated">
-                        <h5><a href="javascript:void(0)">Back</a></h5>
-                        <li><a class="drop-remove drop-options" href="/admin/">订单统计</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/">转运统计</a></li>
-                        <li><a class="drop-remove drop-options" href="/admin/">信息统计</a></li>
-                        <li><a class="drop-remove drop-options"
-                               href="/admin/">超时订单统计</a></li>
-                    </ul>
-                </li>
-
-                <li class="divider"></li>
-                <li class="has-form">
-                    #if ($!{adminUserInfo})
-                        <a href="#" data-reveal-id="logoutModal" class="small button">退出登陆</a>
-                    #else
-                        <a href="/auth/login-check" class="small button">登陆</a>
-                    #end
-
-                    <div id="logoutModal" class="reveal-modal small center" data-reveal>
-                        <p>您真的想登出吗？</p>
-                        <a href="/auth/logout" class="small button">确定</a>
-                        <a class="close-reveal-modal">&#215;</a>
-                    </div>
-                </li>
-            </ul>
-        </section>
-    </nav>
-
-    <nav class="bottom-line"></nav>
-
-    <header>
-        <div class="row">
-            <div class="large-10 columns">
-                <h1 class="margin-left">
-                    <span class="lightgreyText">
-                        蓝主角管理系统
-                    </span>
-                    <span class="greyText" style="font-size: 1rem;letter-spacing:0.5px;">
-                        Let's make things done.
-                    </span>
-                </h1>
-            </div>
-            <div class="large-1 columns">
-                <div class="">
-                    <img src="/images/adminBig.png" alt="" class="margin-top-small"/>
-                </div>
+        <!-- off-canvas title bar for 'small' screen -->
+        <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+            <div class="title-bar-left">
+                <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+                <span class="title-bar-title">桃源管理系统</span>
             </div>
         </div>
-    </header>
 
-    <!-- some hidden infos -->
-    <div class="page-info">
-        <div id="page-type">$!{pageType}</div>
-    </div>
+        <!-- off-canvas left menu -->
+        <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+            <ul class="vertical dropdown menu" data-dropdown-menu>
+                <li><a href="/admin">登陆</a></li>
+                <li><a href="/admin/orderList">订单列表</a></li>
+                <li><a href="#">商品列表</a></li>
+                <li><a href="#">上传sku</a></li>
+                <li><a href="/">到用户页面</a></li>
+            </ul>
+        </div>
 
-    <div id="logoutModal" class="reveal-modal tiny center" data-reveal>
-        <p>Hi, $!{realName}！您真的想登出吗？</p>
-        <a href="/auth/logout" class="small button margin-top">确定</a>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
+        <!-- "wider" top-bar menu for 'medium' and up -->
+        <div id="main-menu" class="top-bar">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu data-click-open="false" data-responsive-menu="drilldown medium-dropdown">
+                    <li class="menu-text">桃源管理系统</li>
+                    <li class="has-submenu">
+                        <a href="/admin/orderList">订单列表</a>
+                        <ul class="menu vertical">
+                            <li><a href="/admin/orderList">全部订单</a></li>
+                            <li><a href="/admin/orderList?status=NEW">待支付订单</a></li>
+                            <li><a href="/admin/orderList?status=PAYING">正在支付订单</a></li>
+                            <li><a href="/admin/orderList?status=PAYED">已支付订单</a></li>
+                            <li><a href="/admin/orderList?status=CONFIRMED">待发货订单</a></li>
+                            <li><a href="/admin/orderList?status=SHIPPING">待收货订单</a></li>
+                            <li><a href="/admin/orderList?status=FINISHED">已完结订单</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">商品列表</a>
+                        <ul class="menu submenu vertical" data-submenu>
+                            <li><a href="#">全部商品</a></li>
+                            <li><a href="#">已上线商品</a></li>
+                            <li><a href="#">未上线商品</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">管理功能</a>
+                        <ul class="menu submenu vertical" data-submenu>
+                            <li><a target="_blank" href="/admin/special/clearCartCache?key=2">清除购物车缓存</a></li>
+                            <li><a target="_blank" href="/admin/special/clearOrderCache?key=2">清除订单缓存</a></li>
+                            <li><a target="_blank" href="/admin/special/clearAdminUserInfoCache?key=2">清除管理员缓存</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/">桃源首页</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <li>Hi, $!{adminUserInfo.getRealName()} &nbsp;</li>
+                    #if ("$!{adminUserInfo}" == "")
+                    <li><a href="/admin"><button class="button">登陆</button></a></li>
+                    #else
+                    <li><a href="/admin/auth/signout"><button class="button">退出登录</button></a></li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+        <!-- original content goes in this container -->
+        <div class="off-canvas-content" data-off-canvas-content>
+            #if ("$!{pageType}" == "SIGN_IN")
+            <div class="banner">
+##                <img src="http://image-cdn.zaitaoyuan.com/images/slider/slider8.jpg@!list-banner-s" alt="" />
+            </div>
+            #else
+            <div class="banner smaller">
+##                <img src="http://image-cdn.zaitaoyuan.com/images/slider/slider8.jpg@!list-banner-s" alt="" />
+            </div>
+            #end

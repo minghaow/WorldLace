@@ -1,0 +1,179 @@
+#* @vtlvariable name="imageUrlPrefix" type="java.lang.String" *#
+#* @vtlvariable name="order" type="nanshen.data.Order.Order" *#
+
+#parse("admin/header.vm")
+<link rel="stylesheet" href="/css/admin/order.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info"></div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small">
+
+    <!-- breadcrumbs -->
+    <ul class="breadcrumbs">
+        <li ><a href="/admin/orderList"><i class="fi-home"></i> 运营系统</a></li>
+        <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 订单详情</a></li>
+    </ul>
+
+    <ul class="accordion margin-top" data-accordion data-multi-expand="true">
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">地址信息</a>
+            <div class="accordion-content" data-tab-content>
+                <div class="row margin-top-small">
+                    <div class="medium-6 small-12 columns">
+                        <label>收货人
+                            <input type="text" class="click-select" placeholder="收货人姓名" id="address-name" value="$!{order.userAddress.name}" aria-describedby="nameHelpText">
+                        </label>
+                        <p class="help-text" id="nameHelpText">收货人是指接收邮寄包裹的那个幸运的人</p>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <label>电话
+                            <input type="text" class="click-select" placeholder="收货人联系方式" id="address-phone" value="$!{order.userAddress.phone}" aria-describedby="phoneHelpText">
+                        </label>
+                        <p class="help-text" id="phoneHelpText">国内订单一般会在2-4天收货，请保持手机通畅</p>
+                    </div>
+                </div>
+                <div class="row margin-bottom">
+                    <div class="medium-2 small-6 columns">
+                        <select class="address-region" id="address-level1" data-next-level="address-level2" data-original-region-id="$!{order.userAddress.level1}">
+                        </select>
+                    </div>
+                    <div class="medium-2 small-6 columns">
+                        <select class="address-region" id="address-level2" data-next-level="address-level3" data-original-region-id="$!{order.userAddress.level2}">
+                        </select>
+                    </div>
+                    <div class="medium-2 small-12 columns">
+                        <select class="address-region" id="address-level3" data-next-level="" data-original-region-id="$!{order.userAddress.level3}">
+                        </select>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <input type="text" class="click-select" placeholder="详细街道地址" id="address-detail" value="$!{order.userAddress.address}">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">订单信息</a>
+            <div class="accordion-content" data-tab-content>
+                <div class="row margin-top-small">
+                    <div class="medium-8 small-12 columns" id="cart-content">
+                        <table cellpadding="0" cellspacing="0" class="scroll">
+                            <thead class="cart-thead center">
+                            <tr>
+                                <th class="center" scope="col" width="20%">图片</th>
+                                <th class="center" scope="col" width="30%">商品名称</th>
+                                <th class="center" scope="col" width="">价格</th>
+                                <th class="center" scope="col" width="150px">数量</th>
+                                <th class="center" scope="col" width="">合计</th>
+                            </tr>
+                            </thead>
+                            <tbody class="cart-tbody center">
+                                #foreach ($goods in $!{order.goodsList})
+                                <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
+                                    <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                                    <td>
+                                        <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
+                                        <div>$!{goods.option1}</div>
+                                    </td>
+                                    <td>
+                                        $!{goods.convertedPrice}
+                                    </td>
+                                    <td>
+                                        $!{goods.count}
+                                    </td>
+                                    <td>
+                                        <span class="item-total" id="item-total-$!{goods.id}" data-step="$!{goods.convertedPriceNo}">$!{goods.convertedTotalPriceNo}</span>元
+                                    </td>
+                                </tr>
+                                #end
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="medium-4 small-12 columns">
+                        <div class="callout row">
+                            <div class="small-6 column right-align">状态:</div>
+                            <div class="small-6 column left-align">${order.orderStatus.desc}</div>
+                            <div class="small-6 column right-align">下单时间:</div>
+                            <div class="small-6 column left-align">${order.simplifiedCreateTimeString}</div>
+                            <div class="small-6 column right-align">备注:</div>
+                            <div class="small-6 column left-align">
+                                #if ("$!{order.getRemark()}" == "")
+                                    无
+                                #else
+                                    $!{order.getRemark()}
+                                #end
+                            </div>
+                            <div class="small-6 column right-align">优惠码:</div>
+                            <div class="small-6 column left-align">
+                                #if ("$!{order.discountCode}" == "")
+                                    无
+                                #else
+                                    $!{order.discountCode}
+                                #end
+                            </div>
+                            <div class="small-6 column right-align">折扣:</div>
+                            <div class="small-6 column left-align">${order.discountPriceString}元</div>
+                            <div class="small-6 column right-align">总价:</div>
+                            <div class="small-6 column left-align">${order.totalPriceString}元</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">订单日志</a>
+            <div class="accordion-content" data-tab-content>
+                <table cellpadding="0" cellspacing="0" class="scroll log-table">
+                    <thead class="center">
+                    <tr>
+                        <th class="center" scope="col" width="20%">操作</th>
+                        <th class="center" scope="col" width="45%">额外信息</th>
+                        <th class="center" scope="col" width="20%">操作人</th>
+                        <th class="center" scope="col" width="150px">操作时间</th>
+                    </tr>
+                    </thead>
+                    <tbody class="center">
+                        #foreach ($log in $!{order.orderLogList})
+                        <tr>
+                            <td>
+                                $log.getOperation().desc
+                            </td>
+                            <td>
+                                $log.getExtraInfo()
+                            </td>
+                            <td>
+                                $log.getUsername()
+                            </td>
+                            <td>
+                                $log.getConvertedOperateTime()
+                            </td>
+                        </tr>
+                        #end
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">订单操作</a>
+            <div class="accordion-content center" data-tab-content>
+                <div class="row center">
+                    <div class="small-12 columns">
+                        <a class="large warning hollow button">确认订单</a>
+                        <a class="large success hollow button">&nbsp;发货&nbsp;</a>
+                        <a class="large secondary hollow button">取消订单</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    #include("msgModal.vm")
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script src="/script/admin/order.js"></script>
+#include("admin/footer.vm")

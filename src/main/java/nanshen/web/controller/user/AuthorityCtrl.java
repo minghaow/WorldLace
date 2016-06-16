@@ -1,6 +1,10 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.*;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.LoginError;
+import nanshen.data.SystemUtil.PageType;
+import nanshen.data.User.UserInfo;
 import nanshen.service.AccountService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

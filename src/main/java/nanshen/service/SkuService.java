@@ -1,6 +1,14 @@
 package nanshen.service;
 
-import nanshen.data.*;
+import nanshen.data.AdminUserInfo;
+import nanshen.data.PublicationStatus;
+import nanshen.data.Sku.SkuDetail;
+import nanshen.data.Sku.SkuDetailType;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.StyleTag;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.PageInfo;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -31,7 +39,7 @@ public interface SkuService {
      * @param subTitle the sku subtitle
      * @param url the sku link
      * @param desc the sku description
-     * @param category the sku category {@link nanshen.data.SkuDetailType}
+     * @param category the sku category {@link SkuDetailType}
      * @param operatorId the uploader
      * @return ExecInfo
      */

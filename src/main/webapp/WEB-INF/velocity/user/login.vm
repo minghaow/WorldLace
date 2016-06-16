@@ -1,5 +1,5 @@
 #* @velocityproperties path="/WEB-INF/velocity" *#
-#* @vtlvariable name="pageType" type="nanshen.data.PageType" *#
+#* @vtlvariable name="pageType" type="nanshen.data.SystemUtil.PageType" *#
 #* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#

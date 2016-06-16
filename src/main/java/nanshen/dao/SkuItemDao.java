@@ -1,8 +1,8 @@
 package nanshen.dao;
 
-import nanshen.data.PageInfo;
 import nanshen.data.PublicationStatus;
-import nanshen.data.SkuItem;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.PageInfo;
 
 import java.util.Date;
 import java.util.List;

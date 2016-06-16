@@ -1,6 +1,6 @@
 package nanshen.dao;
 
-import nanshen.data.UserAuthority;
+import nanshen.data.User.UserAuthority;
 
 import java.util.List;
 

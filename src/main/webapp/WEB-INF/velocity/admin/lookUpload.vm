@@ -3,7 +3,7 @@
 #* @vtlvariable name="lookTagList" type="java.util.List" *#
 #* @vtlvariable name="lookTag" type="nanshen.data.StyleTag" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
-#* @vtlvariable name="skuInfo" type="nanshen.data.SkuItem" *#
+#* @vtlvariable name="skuInfo" type="nanshen.data.Sku.SkuItem" *#
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 

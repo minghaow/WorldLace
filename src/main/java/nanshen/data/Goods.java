@@ -1,5 +1,7 @@
 package nanshen.data;
 
+import nanshen.data.Sku.SkuDetail;
+import nanshen.data.Sku.SkuTag;
 import nanshen.utils.ViewUtils;
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;

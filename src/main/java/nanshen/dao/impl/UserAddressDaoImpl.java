@@ -8,10 +8,10 @@ package nanshen.dao.impl;
 
 import nanshen.dao.UserAddressDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.IDCard;
-import nanshen.data.IDCardImage;
 import nanshen.data.Region;
-import nanshen.data.UserAddress;
+import nanshen.data.User.IDCard;
+import nanshen.data.User.IDCardImage;
+import nanshen.data.User.UserAddress;
 import nanshen.utils.CollectionExtractor;
 import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
@@ -147,6 +147,12 @@ public class UserAddressDaoImpl extends BaseDao implements UserAddressDao {
     @Override
     public List<UserAddress> getUserAddressListByUserId(long userId) {
         Condition cnd = Cnd.where("userId", "=", userId).desc("id");
+        return dao.query(UserAddress.class, cnd);
+    }
+
+    @Override
+    public List<UserAddress> getUserAddressByUserIdList(List<Long> userIdList) {
+        Condition cnd = Cnd.where("userId", "in", userIdList).desc("id");
         return dao.query(UserAddress.class, cnd);
     }
 

@@ -1,9 +1,9 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.PageInfo;
-import nanshen.data.PageType;
 import nanshen.data.PublicationStatus;
-import nanshen.data.SkuItem;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.PageInfo;
+import nanshen.data.SystemUtil.PageType;
 import nanshen.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

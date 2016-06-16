@@ -1,7 +1,8 @@
 package nanshen.dao;
 
-import nanshen.data.Order;
-import nanshen.data.OrderStatus;
+import nanshen.data.Order.Order;
+import nanshen.data.Order.OrderStatus;
+import nanshen.data.SystemUtil.PageInfo;
 
 import java.util.List;
 
@@ -28,5 +29,7 @@ public interface OrderDao {
 
     Order getByShowOrderId(String showOrderId);
 
-    boolean updateStatusToPaying(long orderId);
+    boolean updateStatusToPaying(long orderId, long addressId);
+
+    List<Order> getAll(OrderStatus status, PageInfo pageInfo);
 }

@@ -7,7 +7,13 @@ import nanshen.constant.TimeConstants;
 import nanshen.dao.AdminUserInfoDao;
 import nanshen.dao.UserAddressDao;
 import nanshen.dao.UserInfoDao;
-import nanshen.data.*;
+import nanshen.data.AdminUserInfo;
+import nanshen.data.LookInfo;
+import nanshen.data.Sku.SkuItem;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.User.UserAddress;
+import nanshen.data.User.UserInfo;
 import nanshen.service.AccountService;
 import nanshen.service.common.ScheduledService;
 import nanshen.utils.EncryptUtils;
@@ -102,11 +108,6 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     }
 
     @Override
-    public void clearBuyerInfoCache() {
-        userCache.invalidateAll();
-    }
-
-    @Override
     public ExecResult<UserInfo> createNewUser(String phone, String passwordOrigin) {
         UserInfo userInfo = new UserInfo(phone, EncryptUtils.encodePassword(passwordOrigin));
         userInfo = userInfoDao.addNewUser(userInfo);
@@ -142,6 +143,12 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
             return ExecResult.fail("该手机号已经注册过，请直接登录");
         }
         return ExecResult.succ(null);
+    }
+
+    @Override
+    public boolean clearAdminUserInfoCache() {
+        userCache.invalidateAll();
+        return true;
     }
 
     @Override

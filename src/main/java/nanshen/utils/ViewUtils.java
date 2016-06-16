@@ -16,6 +16,11 @@ public class ViewUtils {
         return format.format(date);
     }
 
+    public static String convertDateToShortString(Date date) {
+        DateFormat format = new java.text.SimpleDateFormat("MM-dd HH:mm");
+        return format.format(date);
+    }
+
     public static String convertToDisplayRate(long rate) {
         BigDecimal a = BigDecimal.valueOf(rate);
         BigDecimal b = BigDecimal.valueOf(100);

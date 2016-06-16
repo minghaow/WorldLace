@@ -6,7 +6,7 @@
  */
 package nanshen.service.impl;
 
-import nanshen.data.LoginError;
+import nanshen.data.SystemUtil.LoginError;
 import nanshen.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;

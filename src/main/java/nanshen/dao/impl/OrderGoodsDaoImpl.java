@@ -2,7 +2,7 @@ package nanshen.dao.impl;
 
 import nanshen.dao.OrderGoodsDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.OrderGoods;
+import nanshen.data.Order.OrderGoods;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.springframework.stereotype.Repository;
@@ -45,6 +45,12 @@ public class OrderGoodsDaoImpl extends BaseDao implements OrderGoodsDao {
     @Override
     public boolean remove(long goodsId) {
         return dao.delete(OrderGoods.class, goodsId) == 1;
+    }
+
+    @Override
+    public List<OrderGoods> getByOrderIdList(List<Long> orderIdList) {
+        Condition cnd = Cnd.where("orderId", "in", orderIdList);
+        return dao.query(OrderGoods.class, cnd);
     }
 
 }

@@ -3,23 +3,35 @@ package nanshen.service.impl;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import nanshen.constant.SystemConstants;
 import nanshen.constant.TimeConstants;
-import nanshen.dao.CartDao;
-import nanshen.dao.CartGoodsDao;
-import nanshen.dao.OrderDao;
-import nanshen.dao.OrderGoodsDao;
-import nanshen.data.*;
-import nanshen.service.CartService;
-import nanshen.service.OrderService;
-import nanshen.service.SkuService;
+import nanshen.dao.*;
+import nanshen.data.AdminUserInfo;
+import nanshen.data.Cart.Cart;
+import nanshen.data.Cart.CartGoods;
+import nanshen.data.Order.*;
+import nanshen.data.Sku.SkuComment;
+import nanshen.data.Sku.SkuCommentImg;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.PageInfo;
+import nanshen.data.User.UserAddress;
+import nanshen.data.User.UserInfo;
+import nanshen.service.*;
 import nanshen.service.api.alipay.config.AlipayConfig;
 import nanshen.service.api.alipay.util.AlipaySubmit;
+import nanshen.service.api.oss.OssFormalApi;
 import nanshen.service.common.ScheduledService;
+import nanshen.utils.CollectionExtractor;
 import nanshen.utils.JsonUtils;
 import nanshen.utils.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -39,16 +51,75 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     private OrderDao orderDao;
 
     @Autowired
+    private UserInfoDao userInfoDao;
+
+    @Autowired
     private CartGoodsDao cartGoodsDao;
 
     @Autowired
+    private SkuCommentDao skuCommentDao;
+
+    @Autowired
+    private SkuCommentImgDao skuCommentImgDao;
+
+    @Autowired
     private OrderGoodsDao orderGoodsDao;
+
+    @Autowired
+    private UserAddressDao userAddressDao;
+
+    @Autowired
+    private AdminUserInfoDao adminUserInfoDao;
+
+    @Autowired
+    private OssFormalApi ossFormalApi;
 
     @Autowired
     private CartService cartService;
 
     @Autowired
     private SkuService skuService;
+
+    @Autowired
+    private UserAddressService userAddressService;
+
+    @Autowired
+    private AccountService accountService;
+
+    private CollectionExtractor<Long, Order> orderExtractor = new CollectionExtractor<Long, Order>() {
+        @Override
+        protected Long convert(Order order) {
+            return order.getOrderId();
+        }
+    };
+
+    private CollectionExtractor<Long, OrderGoods> orderGoodsExtractor = new CollectionExtractor<Long, OrderGoods>() {
+        @Override
+        protected Long convert(OrderGoods order) {
+            return order.getOrderId();
+        }
+    };
+
+    private CollectionExtractor<Long, Order> userIdExtractor = new CollectionExtractor<Long, Order>() {
+        @Override
+        protected Long convert(Order order) {
+            return order.getUserId();
+        }
+    };
+
+    private CollectionExtractor<Long, UserInfo> userInfoExtractor = new CollectionExtractor<Long, UserInfo>() {
+        @Override
+        protected Long convert(UserInfo userInfo) {
+            return userInfo.getId();
+        }
+    };
+
+    private CollectionExtractor<Long, OrderLog> orderLogExtractor = new CollectionExtractor<Long, OrderLog>() {
+        @Override
+        protected Long convert(OrderLog orderLog) {
+            return orderLog.getUserId();
+        }
+    };
 
     /** 买手ID到买手信息的缓存 */
     private final LoadingCache<Long, Order> orderCache = CacheBuilder.newBuilder()
@@ -152,7 +223,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
         }
         Order order = createOrder(userId, skuIdList);
         if (order != null) {
-            orderLogDao.log(order.getOrderId(), 0, OrderOperation.CREATE_ORDER, "总价：" + order.getTotalPriceString()  + "商品ID列表：" + idListString);
+            orderLogDao.log(order.getOrderId(), 0, OrderOperation.CREATE_ORDER, "总价：" + order.getTotalPriceString()  + " 商品ID列表：" + idListString);
         }
         return order;
     }
@@ -206,11 +277,12 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     }
 
     @Override
-    public boolean updateOrderToPaying(long orderId) {
+    public boolean updateOrderToPaying(long orderId, UserAddress userAddress) {
         Order order = getByOrderId(orderId);
-        if (orderDao.updateStatusToPaying(orderId)) {
+        UserAddress userAddressResult = userAddressService.createAddress(userAddress);
+        if (orderDao.updateStatusToPaying(orderId, userAddressResult.getId())) {
             orderUserIdCache.invalidate(order.getUserId());
-            orderLogDao.log(orderId, 0, OrderOperation.ORDER_PAYING);
+            orderLogDao.log(orderId, 0, OrderOperation.ORDER_PAYING, "地址ID: " + userAddressResult.getId());
             return true;
         }
         return false;
@@ -231,6 +303,128 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     @Override
     public Order getByShowOrderId(String showOrderId) {
         return orderDao.getByShowOrderId(showOrderId);
+    }
+
+    @Override
+    public boolean finish(long orderId) {
+        if (orderDao.updateStatus(orderId, Arrays.asList(OrderStatus.SHIPPING, OrderStatus.CONFIRMED), OrderStatus.FINISHED)) {
+            orderUserIdCache.invalidate(orderId);
+            orderLogDao.log(orderId, 0, OrderOperation.USER_FINISH);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public ExecInfo comment(long orderId, long skuId, long star, String comment, List<Long> imgList) {
+        Order order = getByOrderId(orderId);
+        if (order.getOrderStatus() != OrderStatus.FINISHED) {
+            return ExecInfo.fail("请确认收货后再评论");
+        }
+        SkuComment skuComment = skuCommentDao.insert(new SkuComment(comment, imgList.size(), skuId, star, order.getUserId()));
+        if (!skuCommentImgDao.updateImgCommentId(order.getUserId(), skuId, imgList, skuComment.getId())) {
+            return ExecInfo.fail("图片更新错误，请勿使用错误接口");
+        }
+        return ExecInfo.succ();
+    }
+
+    @Override
+    public ExecResult<SkuCommentImg> uploadCommentImg(long userId, long skuId, MultipartFile file) {
+        String imgKey = getUserCommentImgKey(skuId, userId);
+        try {
+            InputStream is = file.getInputStream();
+            uploadImageToOss(file, is, imgKey);
+        } catch (IOException e) {
+            LogUtils.info(e.toString());
+        }
+        SkuCommentImg commentImg = skuCommentImgDao.insert(new SkuCommentImg(skuId, userId, imgKey));
+        if (commentImg != null) {
+            return ExecResult.succ(commentImg);
+        }
+        return ExecResult.fail("图片上传成功，但是记录失败，请重新上传");
+    }
+
+    @Override
+    public List<Order> getAll(OrderStatus status, PageInfo pageInfo) {
+        return orderDao.getAll(status, pageInfo);
+    }
+
+    @Override
+    public List<Order> getAllForOrderList(OrderStatus status, PageInfo pageInfo) {
+        List<Order> orderList = orderDao.getAll(status, pageInfo);
+        return fillUserName(orderList);
+    }
+
+    @Override
+    public Order getByOrderIdWithAllInfo(long orderId) {
+        Order order = getByOrderId(orderId);
+        if (order == null) {
+            return null;
+        }
+        order.setGoodsList(orderGoodsDao.getByOrderId(orderId));
+        order.setUserAddress(userAddressDao.getUserAddress(order.getAddressId()));
+        order.setUserInfo(userInfoDao.getUserInfo(order.getUserId()));
+        order.setOrderLogList(getOrderLogList(orderId));
+        return order;
+    }
+
+    @Override
+    public boolean clearOrderCache() {
+        orderCache.invalidateAll();
+        orderUserIdCache.invalidateAll();
+        return true;
+    }
+
+    private List<OrderLog> getOrderLogList(long orderId) {
+        List<OrderLog> orderLogList = orderLogDao.getLogListByOrderId(orderId);
+        List<Long> adminUserIdList = orderLogExtractor.extractList(orderLogList);
+        Map<Long, AdminUserInfo> adminUserInfoMap = new HashMap<Long, AdminUserInfo>();
+        for (Long adminUserId : adminUserIdList) {
+            AdminUserInfo adminUserInfo = accountService.getAdminUserInfoByUserId(adminUserId);
+            if (adminUserInfo != null) {
+                adminUserInfoMap.put(adminUserId, adminUserInfo);
+            }
+        }
+        for (OrderLog orderLog : orderLogList) {
+            orderLog.setUsername(adminUserInfoMap.get(orderLog.getUserId()).getRealName());
+        }
+        return orderLogList;
+    }
+
+    private List<Order> fillOrderGoods(List<Order> orderList) {
+        List<Long> orderIdList = orderExtractor.extractList(orderList);
+        List<OrderGoods> orderGoodsList = orderGoodsDao.getByOrderIdList(orderIdList);
+        Map<Long, List<OrderGoods>> orderGoodsMap = orderGoodsExtractor.extractListMap(orderGoodsList);
+        for (Order order : orderList) {
+            order.setGoodsList(orderGoodsMap.get(order.getOrderId()));
+        }
+        return orderList;
+    }
+
+    private List<Order> fillUserName(List<Order> orderList) {
+        List<Long> userIdList = userIdExtractor.extractList(orderList);
+        List<UserInfo> userInfoList = userInfoDao.getUserInfo(userIdList);
+        Map<Long, UserInfo> userInfoMap = userInfoExtractor.extractMap(userInfoList);
+        for (Order order : orderList) {
+            order.setUserInfo(userInfoMap.get(order.getUserId()));
+        }
+        return orderList;
+    }
+
+    private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, String imgKey) {
+        ExecInfo execInfo = ExecInfo.fail("上传云服务失败");
+        try {
+            execInfo = ossFormalApi.putObject(SystemConstants.BUCKET_NAME, imgKey, is, file.getSize());
+        } catch (FileNotFoundException e) {
+            LogUtils.info("上传图片文件未找到");
+        }
+        return execInfo;
+    }
+
+    private String getUserCommentImgKey(long skuId, long userId) {
+        String imgKey = "images/sku/" + skuId + "/" + userId + "-" + System.currentTimeMillis();
+        LogUtils.info("imgKey : " + imgKey);
+        return imgKey;
     }
 
 }

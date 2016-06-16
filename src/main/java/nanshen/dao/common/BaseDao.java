@@ -1,6 +1,6 @@
 package nanshen.dao.common;
 
-import nanshen.data.PageInfo;
+import nanshen.data.SystemUtil.PageInfo;
 import org.nutz.dao.Dao;
 import org.nutz.dao.pager.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public abstract class BaseDao {
     /**
      * 生成分页信息数据
      * <p />
-     * 将高层的{@link nanshen.data.PageInfo}数据结构转换为Nutz使用的{@link org.nutz.dao.pager.Pager}
+     * 将高层的{@link PageInfo}数据结构转换为Nutz使用的{@link org.nutz.dao.pager.Pager}
      *
      * @param pageInfo
      * @return

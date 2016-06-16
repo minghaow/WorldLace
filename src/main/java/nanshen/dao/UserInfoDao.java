@@ -1,6 +1,6 @@
 package nanshen.dao;
 
-import nanshen.data.UserInfo;
+import nanshen.data.User.UserInfo;
 
 import java.util.Date;
 import java.util.List;
@@ -78,13 +78,7 @@ public interface UserInfoDao {
      */
     boolean login(String username, String ip, Date loginTime);
 
-    /**
-     * 获取买手ID在指定ID列表中的买手信息
-     *
-     * @param buyerIds
-     * @return
-     */
-    List<UserInfo> getUserInfo(List<Long> buyerIds);
+    List<UserInfo> getUserInfo(List<Long> userIds);
 
     /**
      * 设置用户名

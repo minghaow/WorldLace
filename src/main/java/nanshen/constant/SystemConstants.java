@@ -26,7 +26,7 @@ public class SystemConstants {
 
     /** OSS related */
     public static String OSS_BASE_HTTP = "http://nanshen.oss-cn-beijing.aliyuncs.com";
-    public static String BUCKET_NAME = "nanshen";
+    public static String BUCKET_NAME = "taoyuan";
 
     /** hello Message */
     public static String HELLO_MSG_MORNING = "早上好";

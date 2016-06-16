@@ -2,8 +2,9 @@ package nanshen.dao.impl;
 
 import nanshen.dao.OrderDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.Order;
-import nanshen.data.OrderStatus;
+import nanshen.data.Order.Order;
+import nanshen.data.Order.OrderStatus;
+import nanshen.data.SystemUtil.PageInfo;
 import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
@@ -84,14 +85,26 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
     }
 
     @Override
-    public boolean updateStatusToPaying(long orderId) {
+    public boolean updateStatusToPaying(long orderId, long addressId) {
         Chain chain = Chain
                 .make("orderStatus", OrderStatus.PAYING)
+                .add("addressId", addressId)
                 .add("updateTime", new Date());
         Cnd cnd = Cnd
                 .where("orderId", "=", orderId)
                 .and("orderStatus", "=", OrderStatus.NEW);
         return 1 == dao.update(Order.class, chain, cnd);
+    }
+
+    @Override
+    public List<Order> getAll(OrderStatus status, PageInfo pageInfo) {
+        Condition cnd;
+        if (status == null) {
+            cnd = Cnd.where("createTime", ">", "2015-06-01").desc("orderId");
+        } else {
+            cnd = Cnd.where("orderStatus", "=", status).desc("orderId");
+        }
+        return dao.query(Order.class, cnd, genaratePager(pageInfo));
     }
 
 }

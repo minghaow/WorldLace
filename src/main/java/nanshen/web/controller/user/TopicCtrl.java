@@ -1,6 +1,6 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.PageType;
+import nanshen.data.SystemUtil.PageType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

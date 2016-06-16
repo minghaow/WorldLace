@@ -1,6 +1,12 @@
 package nanshen.service;
 
-import nanshen.data.*;
+import nanshen.data.AdminUserInfo;
+import nanshen.data.LookInfo;
+import nanshen.data.PublicationStatus;
+import nanshen.data.StyleTag;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.PageInfo;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

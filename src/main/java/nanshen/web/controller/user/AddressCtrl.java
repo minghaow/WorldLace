@@ -1,9 +1,9 @@
 package nanshen.web.controller.user;
 
-import nanshen.data.ExecInfo;
 import nanshen.data.Region;
-import nanshen.data.UserAddress;
-import nanshen.data.UserInfo;
+import nanshen.data.SystemUtil.ExecInfo;
+import nanshen.data.User.UserAddress;
+import nanshen.data.User.UserInfo;
 import nanshen.service.CartService;
 import nanshen.service.UserAddressService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package nanshen.dao.impl;
 
 import nanshen.dao.UserInfoDao;
 import nanshen.dao.common.BaseDao;
-import nanshen.data.UserInfo;
+import nanshen.data.User.UserInfo;
 import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
@@ -78,9 +78,9 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
     }
 
     @Override
-    public List<UserInfo> getUserInfo(List<Long> buyerIds) {
+    public List<UserInfo> getUserInfo(List<Long> userIds) {
         Condition condition = Cnd
-                .where("id", "in", buyerIds);
+                .where("id", "in", userIds);
         return dao.query(UserInfo.class, condition);
     }
 

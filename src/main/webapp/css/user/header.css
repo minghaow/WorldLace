@@ -11,10 +11,32 @@ header {
     text-align: center;
 }
 .bottom-line {
+    height: 2px;
+    background-color: rgba(167, 134, 106, 0.2);
+    z-index: 100;
+}
+.bottom-line-down {
     height: 3px;
     background-color: #A7866A;
     z-index: 100;
     box-shadow: 0 2px 3px 1px rgba(167, 134, 106, 0.42);
+}
+#middle-menu {
+    width: 100%;
+    height: 3rem;
+}
+#middle-menu ul {
+    list-style: none;
+    color: #A7866A;
+    line-height: 3rem;
+    padding: 0 5rem;
+}
+#middle-menu ul li {
+    display: inline-block;
+    padding: 0 2rem;
+}
+#middle-menu ul li.chosen {
+    border-top: 2px #A7866A solid;
 }
 .header-menu ul {
     margin-top: 4.5rem;
@@ -28,7 +50,7 @@ header {
         max-width: 1200px;
         margin: auto;
         text-align: center;
-        padding: 1rem 0 0.5rem 0;
+        padding: 0 0 0.5rem 0;
     }
     .superHeader .top-bar,
     .superHeader .top-bar ul {
@@ -103,73 +125,6 @@ header {
          display: none;
      }
 }
-/* lr-Container */
-.lr-container {
-    position: relative;
-    max-width: 460px;
-    width: 100%;
-    margin: 0 auto 100px;
-}
-.lr-container.active .card:first-child {
-    background: #f2f2f2;
-    margin: 0 15px;
-}
-.lr-container.active .card:nth-child(2) {
-    background: #fafafa;
-    margin: 0 10px;
-}
-.lr-container.active .card.alt {
-    top: 20px;
-    right: 0;
-    width: 100%;
-    min-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    padding: 60px 0 40px;
-    overflow: hidden;
-}
-.lr-container.active .card.alt .lr-toggle {
-    position: absolute;
-    top: 40px;
-    right: -70px;
-    box-shadow: none;
-    -webkit-transform: scale(10);
-    transform: scale(10);
-    -webkit-transition: -webkit-transform .3s ease;
-    transition: -webkit-transform .3s ease;
-    transition: transform .3s ease;
-    transition: transform .3s ease, -webkit-transform .3s ease;
-}
-.lr-container.active .card.alt .lr-title,
-.lr-container.active .card.alt .input-container,
-.lr-container.active .card.alt .button-container {
-    left: 0;
-    opacity: 1;
-    visibility: visible;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-}
-.lr-container.active .card.alt .lr-title {
-    -webkit-transition-delay: .3s;
-    transition-delay: .3s;
-}
-.lr-container.active .card.alt .input-container {
-    -webkit-transition-delay: .4s;
-    transition-delay: .4s;
-}
-.lr-container.active .card.alt .input-container:nth-child(2) {
-    -webkit-transition-delay: .5s;
-    transition-delay: .5s;
-}
-.lr-container.active .card.alt .input-container:nth-child(3) {
-    -webkit-transition-delay: .6s;
-    transition-delay: .6s;
-}
-.lr-container.active .card.alt .button-container {
-    -webkit-transition-delay: .7s;
-    transition-delay: .7s;
-}
-
 /* Card */
 .card {
     position: relative;
@@ -180,11 +135,6 @@ header {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -webkit-transition: .3s ease;
     transition: .3s ease;
-    /* Title */
-    /* Inputs */
-    /* Button */
-    /* Footer */
-    /* Alt Card */
 }
 .card:first-child {
     background: #fafafa;
@@ -353,10 +303,6 @@ header {
     padding: 0;
     -webkit-transition: .3s ease;
     transition: .3s ease;
-    /* Toggle */
-    /* Title */
-    /* Input */
-    /* Button */
 }
 .card.alt .lr-toggle {
     position: relative;
@@ -436,7 +382,6 @@ header {
 .card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
     display: none;
 }
-
 /* Keyframes */
 @-webkit-keyframes buttonFadeInUp {
     0% {
@@ -743,15 +688,15 @@ header {
 .signup-panel i {
     font-size: 30px;
     line-height: 50px;
-    color: #999;
 }
 .signup-panel form input, .signup-panel form span {
     height: 50px;
 }
 .signup-panel .welcome {
-    font-size: 26px;
+    font-size: 2.2rem;
     text-align: center;
     margin-left: 0;
+    font-weight: 400;
 }
 .signup-panel .login-inputs {
     padding-top: 16px;
@@ -764,7 +709,7 @@ header {
     padding-top: 16px;
     height: 170px;
     width: 100%;
-    color: #9c7b61;
+    color: #666;
 }
 .signup-panel .welcome-hide-before {
     top: 170px;
@@ -774,23 +719,23 @@ header {
 }
 #animatedModal1 {
     width: 80%;
-    background-color: rgba(10, 10, 10, 0.69);
-    border: none;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 4px solid #A7866A;
 }
 #animatedModal1 .welcome {
-    color: #ba997a;
+    color: #6e5847;
 }
 #animatedModal1 .button {
     border: 2px solid #A7866A;
     width: 9rem;
     background: transparent;
-    color: #a7866a;
+    color: #A7866A;
 }
 #animatedModal1 .button:hover {
     border: 2px solid #A7866A;
     width: 9rem;
     background: transparent;
-    color: #a7866a;
+    color: #6e5847;
 }
 #animatedModal1 .right-border {
     border-right: 1px solid #484747;
@@ -821,4 +766,11 @@ header {
     margin-bottom: 0.2rem;
     margin-top: 0;
     opacity: 0;
+}
+#animatedModal1 .login-prefix {
+    background-color: #A7866A;
+    color: white;
+}
+#animatedModal1 .login-postfix {
+    padding-left: 0;
 }

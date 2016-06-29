@@ -93,12 +93,20 @@ public interface AccountService {
     UserAddress getUserAddress(long addressId);
 
     /**
+     * check if the phone number is not registered
+     *
+     * @param phone
+     * @return
+     */
+    ExecResult<UserInfo> checkIsNotRegistered(String phone);
+
+    /**
      * check if the phone number is registered
      *
      * @param phone
      * @return
      */
-    ExecResult<UserInfo> checkRegistered(String phone);
+    ExecResult<UserInfo> checkIsRegistered(String phone);
 
     /**
      * clear admin user info cache

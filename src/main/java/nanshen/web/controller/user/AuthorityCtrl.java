@@ -75,6 +75,30 @@ public class AuthorityCtrl extends BaseCtrl {
     }
 
     /**
+     * Is phone not registered?
+     *
+     * @param response
+     * @param model
+     * @param phone
+     * @throws IOException
+     */
+    @RequestMapping(value = "/isNotRegistered", method = RequestMethod.POST)
+    public void isNotRegister(HttpServletResponse response, ModelMap model,
+                         @RequestParam(defaultValue = "") String phone)
+            throws IOException {
+        ExecInfo execInfo = phoneInputValidCheck(phone);
+        if (!execInfo.isSucc()) {
+            model.put("msg", execInfo.getMsg());
+            model.put("success", false);
+        } else {
+            ExecResult<UserInfo> execResult = accountService.checkIsNotRegistered(phone);
+            model.put("success", execResult.isSucc());
+            model.put("msg", execResult.getMsg());
+        }
+        responseJson(response, model);
+    }
+
+    /**
      * Is phone registered?
      *
      * @param response
@@ -83,7 +107,7 @@ public class AuthorityCtrl extends BaseCtrl {
      * @throws IOException
      */
     @RequestMapping(value = "/isRegistered", method = RequestMethod.POST)
-    public void register(HttpServletResponse response, ModelMap model,
+    public void isRegister(HttpServletResponse response, ModelMap model,
                          @RequestParam(defaultValue = "") String phone)
             throws IOException {
         ExecInfo execInfo = phoneInputValidCheck(phone);
@@ -91,8 +115,8 @@ public class AuthorityCtrl extends BaseCtrl {
             model.put("msg", execInfo.getMsg());
             model.put("success", false);
         } else {
-            ExecResult<UserInfo> execResult = accountService.checkRegistered(phone);
-            model.put("success", !execResult.isSucc());
+            ExecResult<UserInfo> execResult = accountService.checkIsRegistered(phone);
+            model.put("success", execResult.isSucc());
             model.put("msg", execResult.getMsg());
         }
         responseJson(response, model);

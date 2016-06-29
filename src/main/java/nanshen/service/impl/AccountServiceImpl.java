@@ -137,12 +137,21 @@ public class AccountServiceImpl extends ScheduledService implements AccountServi
     }
 
     @Override
-    public ExecResult<UserInfo> checkRegistered(String phone) {
+    public ExecResult<UserInfo> checkIsNotRegistered(String phone) {
         UserInfo userInfo = userInfoDao.getUserInfoByPhone(phone);
         if (userInfo != null) {
             return ExecResult.fail("该手机号已经注册过，请直接登录");
         }
         return ExecResult.succ(null);
+    }
+
+    @Override
+    public ExecResult<UserInfo> checkIsRegistered(String phone) {
+        UserInfo userInfo = userInfoDao.getUserInfoByPhone(phone);
+        if (userInfo == null) {
+            return ExecResult.fail("该手机号未注册过");
+        }
+        return ExecResult.succ(userInfo);
     }
 
     @Override

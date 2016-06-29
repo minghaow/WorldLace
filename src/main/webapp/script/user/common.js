@@ -90,17 +90,17 @@ jQuery( document ).ready(function( $ ) {
             return;
         }
         $.ajax({
-            url: "/auth/isRegistered",
+            url: "/auth/isNotRegistered",
             type: "POST",
             data: {"phone":phone},
             dataType: 'json',
             success: function(data) {
                 if (data.success == true || data.success == "true") {
-                    inputNotification("#phone2", "#phoneHelpText2", false, data.msg);
-                    isValidPhone = false;
-                } else {
                     inputNotification("#phone2", "#phoneHelpText2", true, "&nbsp");
                     isValidPhone = true;
+                } else {
+                    inputNotification("#phone2", "#phoneHelpText2", false, data.msg);
+                    isValidPhone = false;
                 }
             }
         });

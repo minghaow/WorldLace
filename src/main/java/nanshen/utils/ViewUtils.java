@@ -44,7 +44,7 @@ public class ViewUtils {
     public static String priceConverter(long priceLong) {
         BigDecimal a = BigDecimal.valueOf(priceLong);
         BigDecimal b = BigDecimal.valueOf(100);
-        return a.divide(b).toString() + "元";
+        return a.divide(b).toString();
     }
 
     public static String priceConverterNo(long priceLong) {

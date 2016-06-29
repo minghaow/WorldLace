@@ -1,7 +1,7 @@
 <!-- footer -->
 <section class="top-footer">
     <div class="row features">
-        <div class="medium-4 columns">
+        <div class="small-12 medium-4 columns">
             <div class="round-icon">
                 <span class="fi-trophy"></span>
             </div>
@@ -9,7 +9,7 @@
             <hr>
             <p>平台上的每一款产品，都是公司员工长期试用过后满意方才入选桃源精品库，您大可以闭眼选货，准保喜欢</p>
         </div>
-        <div class="medium-4 columns">
+        <div class="small-12 medium-4 columns">
             <div class="round-icon">
                 <span class="fi-trees"></span>
             </div>
@@ -17,7 +17,7 @@
             <hr>
             <p>每一款产品，都经过领域内10年+经验的专业人员严格筛选，以确保商品的安全环保</p>
         </div>
-        <div class="medium-4 columns">
+        <div class="small-12 medium-4 columns">
             <div class="round-icon">
                 <span class="fi-loop"></span>
             </div>
@@ -70,34 +70,14 @@
 
 
 <script src="$!{cssUrlPrefix}/script/vendor/foundation.min.js"></script>
-<script src="$!{cssUrlPrefix}/script/vendor/unslider-min.js"></script>
 <script>
     $(document).foundation();
     jQuery(document).ready(function($) {
-        $('.banner-slider').unslider({
-            autoplay: true,
-            delay: 4000,
-            keys: true,
-            arrows: false
-        });
         $('#banner-slider').lightSlider({
             adaptiveHeight:true,
             item:1,
             slideMargin:0,
             loop:true
-        });
-        $('#lightSlider').lightSlider({
-            gallery: true,
-            vertical:true,
-            vThumbWidth:80,
-            item: 1,
-            loop: true,
-            slideMargin: 0,
-            thumbItem:6,
-            enableDrag: true,
-            controls: false,
-            auto: false,
-            addClass: "hide-for-small-only"
         });
         $('#lightSlider-s').lightSlider({
             gallery: true,
@@ -109,7 +89,36 @@
             enableDrag: true,
             controls: false,
             auto: false,
-            addClass: "show-for-small-only"
+            adaptiveHeight:true,
+//            addClass: "show-for-small-only"
+        });
+
+        $("#lightSlider-s .detail-image-wrapper .detail-image").show();
+        $(".hide-before-js-ready").show();
+
+        var detailImageWrapper = $(".lSSlideWrapper");
+        var detailImageHeight = detailImageWrapper.height();
+        var detailImageWidth = detailImageWrapper.width();
+        var detailImageTop = detailImageWrapper.prop("offsetTop");
+        var detailImageLeft = detailImageWrapper.prop("offsetLeft");
+
+        $(".detail-image-cover").mouseenter(function(e) {
+            var id = $(this).data("id");
+            detailImageHeight = detailImageWrapper.height();
+            detailImageWidth = detailImageWrapper.width();
+            $("#detail-image-big-" + id).show();
+        }).mouseleave(function() {
+            var id = $(this).data("id");
+            $("#detail-image-big-" + id).hide();
+        }).mousemove(function(e) {
+            var id = $(this).data("id");
+            var relativeTop = e.pageY - detailImageTop;
+            var relativeLeft = e.pageX - detailImageLeft;
+            var bigImgHeight = $("#detail-image-big-" + id).height() * 1.2;
+            var bigImgWidth = $("#detail-image-big-" + id).width() * 1.2;
+            var absoluteTop = (detailImageHeight - bigImgHeight / bigImgWidth * 870) * relativeTop / detailImageHeight;
+            var absoluteLeft = (detailImageWidth - 870) * relativeLeft / detailImageWidth;
+            $("#detail-image-big-" + id).css({top: absoluteTop, left: absoluteLeft});
         });
     });
     (function(){

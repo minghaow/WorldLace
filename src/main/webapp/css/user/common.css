@@ -64,9 +64,9 @@ input.labelauty + label {
 #body .button.brandColor {
     background: #A7866A;
 }
-#body .tabs, #body .tabs-content {
-    border: solid 2px #A7866A;
-}
+/*#body .tabs, #body .tabs-content {*/
+    /*border: solid 2px #A7866A;*/
+/*}*/
 #body .tabs {
     border-bottom: none;
 }

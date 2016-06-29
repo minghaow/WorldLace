@@ -74,7 +74,7 @@
 
         <div id="mapModal" class="reveal small" data-reveal>
             <h4>我们的位置</h4>
-            <p><img src="http://placehold.it/800x600" /></p>
+            <p><img src="$!{imageUrlPrefix}/images/map-b.jpg"</p>
 
             <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>

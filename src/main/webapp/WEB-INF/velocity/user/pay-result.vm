@@ -77,8 +77,8 @@
     }
 </script>
 <script type="text/javascript" src="$!{cssUrlPrefix}/script/user/cart.js"></script>
-<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/TweenMax.min.js"></script>
-<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/three.min.js"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/TweenMax.min.js"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/three.min.js"></script>
 <script type="text/javascript" src="$!{cssUrlPrefix}/script/user/game.js" /></script>
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

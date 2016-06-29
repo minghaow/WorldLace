@@ -32,17 +32,19 @@
 
         <div class="large-6 medium-6 small-12 columns">
             <div class="item-slider">
-                <ul id="lightSlider">
-                #foreach ($imgId in [0..$skuItem.getImgCount()])
-                    <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-detail-s">
-                        <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
-                    </li>
-                #end
-                </ul>
                 <ul id="lightSlider-s">
                     #foreach ($imgId in [0..$skuItem.getImgCount()])
-                        <li data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-detail-s">
-                            <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-detail-s">
+                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
+                            <div class="detail-image-cover" data-id="h$imgId" ></div>
+                        </li>
+                    #end
+                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail-s">
+                            <img class="detail-image" data-id="d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head" alt="${skuItem.title}"/>
+                            <div class="detail-image-cover" data-id="d$imgId" ></div>
                         </li>
                     #end
                 </ul>
@@ -56,15 +58,15 @@
                         <h3 class="greyText"><span style="color:#454545;">$!{skuItem.title}</span></h3>
                         <div class="redText">$!{skuItem.subTitle}</div>
                     </div>
-                    <a href="#" class="contain-icon icon-hook float-right">
-                        <!--Begin Third Favorite Icon-->
-                        <svg class="heart-icon heart-icon-3" version="1.1" width="2rem" height="2rem" viewBox="0 0 90.65 85.04">
-                            <path class="heart-3" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-      M45.137,23.041c4.912-24.596,40.457-27.775,42.128-0.435c1.398,22.88-21.333,40.717-42.128,50.522 M45.137,23.041
-      C40.225-1.555,5.057-4.734,3.387,22.606c-1.398,22.88,20.955,40.717,41.75,50.522"></path>
-                        </svg>
-                        <div>心水</div>
-                    </a>
+##                    <a href="#" class="contain-icon icon-hook float-right">
+##                        <!--Begin Third Favorite Icon-->
+##                        <svg class="heart-icon heart-icon-3" version="1.1" width="2rem" height="2rem" viewBox="0 0 90.65 85.04">
+##                            <path class="heart-3" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+##      M45.137,23.041c4.912-24.596,40.457-27.775,42.128-0.435c1.398,22.88-21.333,40.717-42.128,50.522 M45.137,23.041
+##      C40.225-1.555,5.057-4.734,3.387,22.606c-1.398,22.88,20.955,40.717,41.75,50.522"></path>
+##                        </svg>
+##                        <div>心水</div>
+##                    </a>
                 </div>
 
                 <hr class="hidden-for-small-down"/>
@@ -114,61 +116,96 @@
 
         <div class="detail-description">
             <ul class="tabs" data-tabs id="detail-tabs">
-                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true" class="brandColorText">商品详情</a></li>
-##                <li class="tabs-title"><a href="#panel2" class="brandColorText">用户评论</a></li>
-                <li class="tabs-title"><a href="#panel3" class="brandColorText">下单必读</a></li>
+                <li class="tabs-title detail-tab is-active">
+                    <a href="#product-info" aria-selected="true" class="brandColorText">
+                        <i class="fi-info"></i>
+                        <div>产品信息</div>
+                    </a>
+                </li>
+                <li class="tabs-title detail-tab middle-tab">
+                    <a href="#comments" class="brandColorText">
+                        <i class="fi-star"></i>
+                        <div>用户评测</div>
+                    </a>
+                </li>
+                <li class="tabs-title detail-tab">
+                    <a href="#notes" class="brandColorText">
+                        <i class="fi-lightbulb"></i>
+                        <div>购买说明</div>
+                    </a>
+                </li>
             </ul>
 
             <div class="tabs-content" data-tabs-content="detail-tabs">
-                <div class="tabs-panel is-active row" id="panel1">
-                    <table class="scroll">
-                        <thead>
-                            <tr>
-                                <th width="20%">品牌</th>
-                                <th width="20%">材质</th>
-                                <th width="20%">材质详情</th>
-                                <th width="20%">重量</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} >= 1)
-                            #set ($sku = $skuItem.getSkuDetailList().get(0))
-                            <tr>
-                                <td>$!{sku.brand}</td>
-                                <td>$!{sku.materialType.desc}</td>
-                                <td>$!{sku.materialDetailType.desc}</td>
-                                <td>$!{sku.weight}克</td>
-                            </tr>
-                            #end
-                        </tbody>
-                    </table>
+                <div class="tabs-panel is-active row" id="product-info">
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">特点</div>
+                        <ul>
+                            <li>按压式开关，最高24小时保温效果  </li>
+                            <li>丹麦原装进口，北欧设计师品牌 </li>
+                            <li>双层保温壶，玻璃内胆</li>
+                            <li>不适用于洗碗机</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">产品参数</div>
+                        <ul>
+                            <li>材质：无双酚A塑料（BPA-free），玻璃</li>
+                            <li>规格：高28.5cm  底径17cm</li>
+                            <li>容量：1升</li>
+                        </ul>
+                    </div>
 
-                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
-                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
-                    #end
+                    <div class="small-12 column product-artical">
+                        <p>
+                            rosendahl成立于1984年，总部位于丹麦哥本哈根，一流的产品品质加上出色的设计思路，让其跻身于世纪经典品牌行列。聪明的按压式瓶盖设计，只需轻用拇指按压，就可单手控制瓶口的开关；环保的外涂层纯银玻璃内胆，对人体无任何伤害，易于保持食物的原味；保温时间长；内层附加绝缘材料，让水壶维持轻盈的重量，同时防震、耐摔；防侧漏壶嘴，用以防止滴漏；特殊的表面处理，不易刮花，而且耐脏，光滑及舒适感强；易清洗，内胆易拆换。
+                        </p>
+
+                        <p>
+                            全新的GRAND CRU保温壶，清爽的线条，人性化的造型和顺滑的表面，直觉让人联想到穿上彩衣，爱漂亮的小企鹅。据说，企鹅之所以能在南极安家落户是因为它特殊的羽衣，不但海水难以浸透，就是气温在零下近百摄氏度，也休想攻破它保持温度的防线。ROSENDAHL设计师从企鹅的特殊保暖功能获取灵感，看似简洁的外形，却让人眼前一亮。舒心的设计，过硬的保温功能，让人们用得舒心、放心、省心。
+                        </p>
+                    </div>
+##                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
+##                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
+##                    #end
                 </div>
 
-##                <div class="tabs-panel" id="panel2">
-##                    <div class="row">
-##                        <div class="large-3 columns">
-##                            User Information
-##                        </div>
-##                        <div class="large-9 columns">
-##                            User Comments
-##                        </div>
-##                    </div>
-##                </div>
+                <div class="tabs-panel row" id="comments">
+                    <div class="small-12 column">
+                        <div class="detail-title">超级体验馆计划</div>
+                        <ul>
+                            <li>用户上传使用感受过后，便会自动加入我们的超级体验官计划。我们网站后续上线的每个产品都会在上线前，在超级体验官中挑选几位对新产品进行免费试用。</li>
+                            <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 column">
+                        <div class="detail-title">用户评分</div>
+                        <ul>
+                            <li>桃源全站全国包邮（极个别地区除外，地区包括：西藏北部等，如有需要，请联系客服购买）</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="tabs-panel" id="panel3">
-                    <div class="row">
-                        <div class="margin-top-small">
-                            <h5>下单请注意：</h5>
-                            <p>$!{skuItem.notice}</p>
-                        </div>
-                        <div class="margin-top">
-                            <h5>产品特点：</h5>
-                            <p>$!{skuItem.description}</p>
-                        </div>
+                <div class="tabs-panel row" id="notes">
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">发货时间</div>
+                        <ul>
+                            <li>显示有货时，发货时间24小时之内，极少数时间可能会延长到48小时之内</li>
+                            <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">邮费说明</div>
+                        <ul>
+                            <li>桃源全站全国包邮（极个别地区除外，地区包括：西藏北部等，如有需要，请联系客服购买）</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">包装说明</div>
+                        <ul>
+                            <li>我们使用精选的环保纸盒包装</li>
+                            <li>可以联系客服，在包装中添加自定义祝福，送给你爱的人</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -190,5 +227,6 @@
     }
 </script>
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/item-detail.js" charset="utf-8"></script>
 <!-- JiaThis Button END -->
 #parse("user/footer.vm")

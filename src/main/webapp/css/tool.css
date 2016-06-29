@@ -40,7 +40,8 @@
 .height-definer {
     height: 45px !important;
 }
-.hidden {
+.hidden,
+.hide-before-js-ready {
     display: none;
 }
 

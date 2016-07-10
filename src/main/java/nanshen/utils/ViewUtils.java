@@ -2,6 +2,7 @@ package nanshen.utils;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -44,13 +45,15 @@ public class ViewUtils {
     public static String priceConverter(long priceLong) {
         BigDecimal a = BigDecimal.valueOf(priceLong);
         BigDecimal b = BigDecimal.valueOf(100);
-        return a.divide(b).toString();
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(a.divide(b));
     }
 
     public static String priceConverterNo(long priceLong) {
         BigDecimal a = BigDecimal.valueOf(priceLong);
         BigDecimal b = BigDecimal.valueOf(100);
-        return a.divide(b).toString();
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(a.divide(b, 2));
     }
 
     public static long priceDoubleToLong(double priceDouble) {

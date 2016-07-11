@@ -203,7 +203,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
                 orderGoodsDao.insert(new OrderGoods(goods, order.getOrderId()));
                 orderGoodsList.add(new OrderGoods(goods, order.getOrderId()));
                 order.setGoodsCount(order.getGoodsCount() + goods.getCount());
-                order.setTotalPrice(order.getTotalPrice() + goods.getPrice());
+                order.setTotalPrice(order.getTotalPrice() + goods.getPrice() * goods.getCount());
                 order.setDiscountPrice(order.getDiscountPrice() + goods.getDiscountPrice());
                 cartService.deleteGoods(userId, goods.getId());
             }

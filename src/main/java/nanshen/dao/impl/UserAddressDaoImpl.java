@@ -52,6 +52,9 @@ public class UserAddressDaoImpl extends BaseDao implements UserAddressDao {
 
     private void fillRegion(UserAddress address) {
         List<Integer> regionIds = new ArrayList<Integer>();
+        if (address == null) {
+            return;
+        }
         regionIds.add(address.getLevel1());
         regionIds.add(address.getLevel2());
         regionIds.add(address.getLevel3());

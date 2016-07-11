@@ -6,7 +6,8 @@ jQuery( document ).ready(function( $ ) {
         var countDiv = $("#item-count-" + id);
         var totalDiv = $("#item-total-" + id);
         var currentValue = parseInt(countDiv.val());
-        var currentTotal = parseInt(totalDiv.html());
+        var currentTotal = parseFloat(totalDiv.html());
+        var step = parseFloat(totalDiv.data("step"));
         if (currentValue > 1) {
             $.ajax({
                 url: "/cart/goods/minus",
@@ -16,7 +17,7 @@ jQuery( document ).ready(function( $ ) {
                 success: function(data) {
                     if (data.success == true || data.success == "true") {
                         countDiv.val(currentValue - 1);
-                        totalDiv.html(currentTotal - totalDiv.data("step"));
+                        totalDiv.html((currentTotal - step).toFixed(2));
                         updateCountAndPrice();
                     } else {
                         presentFailModal(data.message, "[  抱歉  ]");
@@ -33,7 +34,8 @@ jQuery( document ).ready(function( $ ) {
         var totalDiv = $("#item-total-" + id);
         var max = countDiv.data('rest');
         var currentValue = parseInt(countDiv.val());
-        var currentTotal = parseInt(totalDiv.html());
+        var currentTotal = parseFloat(totalDiv.html());
+        var step = parseFloat(totalDiv.data("step"));
         if (currentValue < max) {
             $.ajax({
                 url: "/cart/goods/add",
@@ -43,7 +45,7 @@ jQuery( document ).ready(function( $ ) {
                 success: function(data) {
                     if (data.success == true || data.success == "true") {
                         countDiv.val(currentValue + 1);
-                        totalDiv.html(currentTotal + totalDiv.data("step"));
+                        totalDiv.html((step + currentTotal).toFixed(2));
                         updateCountAndPrice();
                     } else {
                         presentFailModal(data.message, "[  抱歉  ]");
@@ -73,7 +75,7 @@ jQuery( document ).ready(function( $ ) {
                 var _count = $("#item-count-" + goodsId).val();
                 var _total = $("#item-total-" + goodsId).html();
                 $("#total-count").html(parseInt($("#total-count").html()) + parseInt(_count));
-                $("#total-price").html(parseInt($("#total-price").html()) + parseInt(_total));
+                $("#total-price").html((parseFloat($("#total-price").html()) + parseFloat(_total)).toFixed(2));
             }
         })
     }

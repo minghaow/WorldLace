@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -67,7 +68,7 @@ public class OrderCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "/process", method = RequestMethod.GET)
 	public ModelAndView orderProcess(HttpServletResponse response, ModelMap model,
-								 @RequestParam(defaultValue = "0", required = true) long orderId) {
+								 @RequestParam(defaultValue = "0", required = true) long orderId) throws UnsupportedEncodingException {
 		UserInfo userInfo = getLoginedUser();
 		if (userInfo != null) {
 			Order order = orderService.getByOrderId(orderId);

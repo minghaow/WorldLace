@@ -140,9 +140,31 @@
         }]
     }
     with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    var $successModal = $("#successModal"),
+        $successHdr = $("#successHdr"),
+        $successMsg = $("#successMsg"),
+        $failModal = $("#failModal"),
+        $failHdr = $("#failHdr"),
+        $failMsg = $("#failMsg");
+
+    function presentSuccessModal(header, message) {
+            $successHdr.html(header);
+            $successMsg.html(message);
+            $successModal.foundation("open");
+    }
+    function presentFailModal(header, message) {
+            $failHdr.html(header);
+            $failMsg.html(message);
+            $failModal.foundation('open');
+    }
+    function hideSuccessModal() {
+            $successModal.foundation("close");
+    }
+    function hideFailModal() {
+            $failModal.foundation('close');
+    }
 </script>
 <script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
-<script src="$!{cssUrlPrefix}/script/msgModal.js"></script>
 <script src="$!{cssUrlPrefix}/script/user/common.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
 </body>

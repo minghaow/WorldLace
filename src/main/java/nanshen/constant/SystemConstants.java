@@ -18,6 +18,8 @@ public class SystemConstants {
 
     /** base domain */
     public static final String BASE_URL = "http://www.zaitaoyuan.com";
+    public static final String IMAGE_URL = "http://image.zaitaoyuan.com";
+    public static final String CDN_URL = "http://image-cdn.zaitaoyuan.com";
 
     /** default page length for lists */
     public static final int DEFAULT_PAGE_SIZE = 30;

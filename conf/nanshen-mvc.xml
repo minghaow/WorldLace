@@ -18,6 +18,10 @@
     </mvc:interceptors>
 
     <mvc:interceptors>
+        <bean class="nanshen.web.common.CORSInterceptor"/>
+    </mvc:interceptors>
+
+    <mvc:interceptors>
         <bean class="nanshen.web.common.LoginInterceptor"/>
     </mvc:interceptors>
 

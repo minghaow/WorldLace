@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
-import java.util.Calendar;
 
 /**
  * Controller的基类，定义了Controller使用的基本方法，所有Controller都应该继承该基类
@@ -157,16 +156,16 @@ public abstract class BaseCtrl {
 	}
 
 	protected void prepareHeaderModel(ModelMap model, PageType pageType) {
-		String helloMsg;
-		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-		if (hour >= 0 && hour < 12) {
-			helloMsg = SystemConstants.HELLO_MSG_MORNING;
-		} else if (hour >= 12 && hour < 18) {
-			helloMsg = SystemConstants.HELLO_MSG_AFTERNOON;
-		} else {
-			helloMsg = SystemConstants.HELLO_MSG_EVENING;
-		}
-		model.addAttribute("helloMsg", helloMsg);
+//		String helloMsg;
+//		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+//		if (hour >= 0 && hour < 12) {
+//			helloMsg = SystemConstants.HELLO_MSG_MORNING;
+//		} else if (hour >= 12 && hour < 18) {
+//			helloMsg = SystemConstants.HELLO_MSG_AFTERNOON;
+//		} else {
+//			helloMsg = SystemConstants.HELLO_MSG_EVENING;
+//		}
+//		model.addAttribute("helloMsg", helloMsg);
 		for (PageType type : PageType.values()) {
 			model.addAttribute(type.name(), pageType == type && type.isNeedShow() ? "selected" : "");
 		}

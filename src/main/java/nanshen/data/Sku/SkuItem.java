@@ -1,5 +1,6 @@
 package nanshen.data.Sku;
 
+import nanshen.data.CustomerReview.CustomerReview;
 import nanshen.data.PublicationStatus;
 import nanshen.utils.ViewUtils;
 import org.nutz.dao.entity.annotation.Column;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * SkuItem
+ * SkuItem, item
  *
  * @author WANG Minghao
  */
@@ -81,6 +82,9 @@ public class SkuItem {
 
     /** sku detail */
     private List<SkuDetail> skuDetailList;
+
+    /** customer review */
+    private List<CustomerReview> customerReviewList;
 
     /** create time for this look, will fill when create */
     @Column
@@ -272,5 +276,13 @@ public class SkuItem {
 
     public void setNotice(String notice) {
         this.notice = notice;
+    }
+
+    public List<CustomerReview> getCustomerReviewList() {
+        return customerReviewList;
+    }
+
+    public void setCustomerReviewList(List<CustomerReview> customerReviewList) {
+        this.customerReviewList = customerReviewList;
     }
 }

@@ -17,7 +17,7 @@ public class SystemConstants {
     public static final String SYS_ENC = "utf-8";
 
     /** base domain */
-    public static final String BASE_URL = "http://www.lanzhujue.com";
+    public static final String BASE_URL = "http://www.zaitaoyuan.com";
 
     /** default page length for lists */
     public static final int DEFAULT_PAGE_SIZE = 30;
@@ -25,7 +25,7 @@ public class SystemConstants {
     public static final int DEFAULT_CACHED_SKU_SIZE = 3 * DEFAULT_CACHED_LOOK_SIZE;
 
     /** OSS related */
-    public static String OSS_BASE_HTTP = "http://nanshen.oss-cn-beijing.aliyuncs.com";
+    public static String OSS_BASE_HTTP = "http://image-cdn.zaitaoyuan.com";
     public static String BUCKET_NAME = "taoyuan";
 
     /** hello Message */

@@ -22,6 +22,11 @@ public class ViewUtils {
         return format.format(date);
     }
 
+    public static String convertDateToStringWithoutTime(Date date) {
+        DateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
+    }
+
     public static String convertToDisplayRate(long rate) {
         BigDecimal a = BigDecimal.valueOf(rate);
         BigDecimal b = BigDecimal.valueOf(100);

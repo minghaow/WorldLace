@@ -49,8 +49,8 @@ public class AlipayNotify {
 	    boolean isSign = getSignVeryfy(params, sign);
 
         //写日志记录（若要调试，请取消下面两行注释）
-        //String sWord = "responseTxt=" + responseTxt + "\n isSign=" + isSign + "\n 返回回来的参数：" + AlipayCore.createLinkString(params);
-	    //AlipayCore.logResult(sWord);
+        String sWord = "responseTxt=" + responseTxt + "\n isSign=" + isSign + "\n 返回回来的参数：" + AlipayCore.createLinkString(params);
+	    AlipayCore.logResult(sWord);
 
         if (isSign && responseTxt.equals("true")) {
             return true;

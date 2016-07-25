@@ -16,11 +16,10 @@
 
 <script src="/script/vendor/modernizr.js"></script>
 <script src="/script/vendor/foundation.min.js"></script>
-<script src="/script/vendor/unslider-min.js"></script>
-<script src="/script/msgModal.js"></script>
-<script src="/script/admin/common.js"></script>
 <script>
     $(document).foundation();
 </script>
+<script src="/script/vendor/unslider-min.js"></script>
+<script src="/script/admin/common.js"></script>
 </body>
 </html>

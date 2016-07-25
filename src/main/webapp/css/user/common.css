@@ -73,3 +73,13 @@ input.labelauty + label {
 .page-content hr {
     border-bottom: 1px solid #af8e72;
 }
+#body .button.hollow.brandColor {
+    border: 1px solid #A7866A;
+    color: #5c4a3e;
+    background: none;
+    margin: 0;
+}
+#body .button.hollow.brandColor:hover {
+    border: 1px solid #493729;
+    color: #2e241e;
+}

@@ -19,7 +19,7 @@ public enum OrderStatus {
 
     REFUSED("拒绝订单"),
 
-    SHIPPING("运输"),
+    SHIPPING("运输中"),
 
     FINISHED("到货"),
 

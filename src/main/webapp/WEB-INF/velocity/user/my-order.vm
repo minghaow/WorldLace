@@ -132,9 +132,15 @@
                 </div>
                 <div class="small-2 columns center">
                     订单状态:
-                    <div>
-                        <span class="redText">$order.orderStatus.getDesc()</span>
-                    </div>
+                    #if ("$order.orderStatus" == "SHIPPING")
+                        <div>
+                            <a href="/order/review?orderId=$order.orderId" class="button tiny brandColor hollow">&nbsp;确认收货&nbsp;</a>
+                        </div>
+                    #else
+                        <div>
+                            <span class="redText">$order.orderStatus.getDesc()</span>
+                        </div>
+                    #end
                 </div>
             </div>
             #end

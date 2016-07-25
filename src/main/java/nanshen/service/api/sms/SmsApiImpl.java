@@ -23,6 +23,7 @@ public class SmsApiImpl implements SmsApi {
     private static final String CID = "d9Z7uIKCYqhQ";
     private static final String PASSWORD = "bpafm6v5";
     private static final String TEMPLATE_CONTENT = "【商讯达】您的验证码：5768，三分钟内有效";
+    private static final String TEMPLATE_CONTENT_VERIFY = "【桃源网】尊敬的用户，你的手机验证码是：%P%，3分钟内有效。请不要把此验证码泄露给任何人，以便你能安全使用。";
 
     @Autowired
     private SmsDao smsDao;

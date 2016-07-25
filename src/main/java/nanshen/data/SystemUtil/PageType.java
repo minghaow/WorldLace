@@ -21,6 +21,8 @@ public enum PageType {
 
     ORDER_LIST("订单列表", false),
 
+    CUSTOMER_REVIEW("用户评价", false),
+
     ORDER("订单详情", false),
 
     CATEGORY("分类", true),

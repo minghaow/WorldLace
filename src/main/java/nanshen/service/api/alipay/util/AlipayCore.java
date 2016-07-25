@@ -1,6 +1,6 @@
 package nanshen.service.api.alipay.util;
 
-import nanshen.service.api.alipay.config.AlipayConfig;
+import nanshen.utils.LogUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.httpclient.methods.multipart.FilePartSource;
 import org.apache.commons.httpclient.methods.multipart.PartSource;
@@ -81,8 +81,9 @@ public class AlipayCore {
     public static void logResult(String sWord) {
         FileWriter writer = null;
         try {
-            writer = new FileWriter(AlipayConfig.log_path + "alipay_log_" + System.currentTimeMillis()+".txt");
-            writer.write(sWord);
+            LogUtils.info("[alipay log]" + sWord);
+//            writer = new FileWriter(AlipayConfig.log_path + "alipay_log_" + System.currentTimeMillis()+".txt");
+//            writer.write(sWord);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

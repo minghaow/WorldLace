@@ -21,6 +21,7 @@ public interface OrderService {
 
     /**
      * get order by orderId
+     * NOTE: get from cache, will fill goods in it
      *
      * @param orderId order id
      * @return Order
@@ -105,12 +106,21 @@ public interface OrderService {
     Order getByShowOrderId(String showOrderId);
 
     /**
-     * finish order by orderId
+     * finish order by orderId by user
      *
      * @param orderId orderId
      * @return boolean
      */
     boolean finish(long orderId);
+
+    /**
+     * finish order by orderId by adminUser
+     *
+     * @param orderId orderId
+     * @param adminUserInfoId adminUserInfo id
+     * @return boolean
+     */
+    boolean finish(long orderId, long adminUserInfoId);
 
     /**
      * comment order by orderId and skuId
@@ -166,4 +176,31 @@ public interface OrderService {
      * @return boolean
      */
     boolean clearOrderCache();
+
+    /**
+     * confirm order by orderId
+     *
+     * @param orderId orderId
+     * @param adminUserInfoId adminUserInfo id
+     * @return ExecInfo
+     */
+    ExecInfo confirm(long orderId, long adminUserInfoId);
+
+    /**
+     * start shipping for the order by orderId
+     *
+     * @param orderId orderId
+     * @param adminUserInfoId adminUserInfo id
+     * @return ExecInfo
+     */
+    ExecInfo shipping(long orderId, long adminUserInfoId);
+
+    /**
+     * cancel order by orderId
+     *
+     * @param orderId orderId
+     * @param adminUserInfoId adminUserInfo id
+     * @return ExecInfo
+     */
+    ExecInfo cancel(long orderId, long adminUserInfoId);
 }

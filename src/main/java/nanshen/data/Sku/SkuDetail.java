@@ -8,7 +8,7 @@ import org.nutz.dao.entity.annotation.Table;
 import java.util.Date;
 
 /**
- * SkuInfo
+ * SkuInfo, sku
  *
  * @author WANG Minghao
  */

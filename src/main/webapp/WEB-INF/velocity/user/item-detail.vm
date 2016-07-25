@@ -8,7 +8,7 @@
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="css/user/itemDetail.css"/>
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/itemDetail.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->
@@ -202,9 +202,62 @@
                     </div>
                     <div class="small-12 column">
                         <div class="detail-title">用户评分</div>
-                        <ul>
-                            <li>超时未评论，系统自动好评。</li>
-                        </ul>
+
+                        #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
+                        <div class="row">
+                            #foreach ($customerReview in $skuItem.getCustomerReviewList())
+                                <div class="small-1 column">
+                                    <img src="/images/user/head.jpg" alt=""/>
+                                </div>
+                                <div class="small-11 column">
+                                    <div>
+                                        $customerReview.customerReviewDetail.content
+                                    </div>
+
+                                    <div class="aniimated-thumbnials" >
+                                        #foreach ($img in $customerReview.getCustomerReviewImgList())
+                                            <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
+                                                <img src="$!{imageUrlPrefix}/$img.imgKey" />
+                                            </a>
+                                        #end
+                                    </div>
+                                </div>
+
+                                $customerReview.createTime
+
+
+                            #end
+                        #end
+                        </div>
+
+                        #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
+                        <div class="row">
+                            #foreach ($customerReview in $skuItem.getCustomerReviewList())
+                                <div class="small-1 column">
+                                    <img src="/images/user/head.jpg" alt=""/>
+                                    $customerReview.convertedCreateTime
+                                </div>
+                                <div class="small-11 column">
+                                    <div>
+                                        $customerReview.customerReviewDetail.content
+                                    </div>
+
+                                    <div class="aniimated-thumbnials" >
+                                        #foreach ($img in $customerReview.getCustomerReviewImgList())
+                                            <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
+                                                <img src="$!{imageUrlPrefix}/$img.imgKey" />
+                                            </a>
+                                        #end
+                                        #foreach ($img in $customerReview.getCustomerReviewImgList())
+                                            <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
+                                                <img src="$!{imageUrlPrefix}/$img.imgKey" />
+                                            </a>
+                                        #end
+                                    </div>
+                                </div>
+                            #end
+                        #end
+                        </div>
                     </div>
                 </div>
 

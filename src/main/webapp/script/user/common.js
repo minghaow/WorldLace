@@ -201,7 +201,7 @@ jQuery( document ).ready(function( $ ) {
             success: function(data) {
                 if (data.success == true || data.success == "true") {
                     $("#animatedModal1").foundation("close");
-                    $("#username-section").html(data.userInfo.username + ", " + data.helloMsg);
+                    $("#username-section").html(data.userInfo.username + "的订单");
                     $("#login-decide-content").html("登出");
                     $(".cart-count").html(data.cart.goodsCount);
                     $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");

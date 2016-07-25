@@ -73,7 +73,37 @@ public class AdminOrderCtrl extends BaseController {
         return new ModelAndView("admin/order");
     }
 
-	@RequestMapping(value = "/sku-upload", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/confirm", method = RequestMethod.POST)
+    public void confirm(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                        @RequestParam(defaultValue = "1", required = true) long orderId) throws IOException {
+        AdminUserInfo adminUserInfo = prepareLoginUserInfo(request, model);
+        ExecInfo execInfo = orderService.confirm(orderId, adminUserInfo.getId());
+        model.addAttribute("success", execInfo.isSucc());
+        model.addAttribute("reason", execInfo.getMsg());
+        responseJson(response, model);
+    }
+
+    @RequestMapping(value = "/order/shipping", method = RequestMethod.POST)
+    public void shipping(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                        @RequestParam(defaultValue = "1", required = true) long orderId) throws IOException {
+        AdminUserInfo adminUserInfo = prepareLoginUserInfo(request, model);
+        ExecInfo execInfo = orderService.shipping(orderId, adminUserInfo.getId());
+        model.addAttribute("success", execInfo.isSucc());
+        model.addAttribute("reason", execInfo.getMsg());
+        responseJson(response, model);
+    }
+
+    @RequestMapping(value = "/order/cancel", method = RequestMethod.POST)
+    public void cancel(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                         @RequestParam(defaultValue = "1", required = true) long orderId) throws IOException {
+        AdminUserInfo adminUserInfo = prepareLoginUserInfo(request, model);
+        ExecInfo execInfo = orderService.cancel(orderId, adminUserInfo.getId());
+        model.addAttribute("success", execInfo.isSucc());
+        model.addAttribute("reason", execInfo.getMsg());
+        responseJson(response, model);
+    }
+
+    @RequestMapping(value = "/sku-upload", method = RequestMethod.GET)
 	public ModelAndView lookUpload(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                                    @RequestParam(defaultValue = "0", required = true) long skuId){
         prepareLoginUserInfo(request, model);

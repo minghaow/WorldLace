@@ -31,8 +31,14 @@ public enum OrderOperation {
 
     UNAVAILABLE("订单被取消，禁止操作"),
 
+    ADMIN_CONFIRM("管理员确认订单"),
+
+    SHIPPING("开始运输"),
+
+    CANCEL_ORDER("取消订单"),
+
     /** 当添加新操作时，旧的代码会将其转换为该值而不会抛出Exception */
-    UNKNOWN("未知操作"),;
+    UNKNOWN("未知操作");
 
     private String desc;
 

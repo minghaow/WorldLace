@@ -348,3 +348,7 @@
     font-weight: inherit;
     display: inline;
 }
+.review-img img {
+    height: 5rem;
+    width: 5rem;
+}

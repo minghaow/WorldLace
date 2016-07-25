@@ -70,6 +70,9 @@
 
 
 <script src="$!{cssUrlPrefix}/script/vendor/foundation.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lightgallery.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lg-thumbnail.min.js"></script>
 <script>
     $(document).foundation();
     jQuery(document).ready(function($) {
@@ -163,9 +166,11 @@
     function hideFailModal() {
             $failModal.foundation('close');
     }
+    $('.aniimated-thumbnials').lightGallery({
+        thumbnail:true
+    });
 </script>
 <script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/user/common.js"></script>
-<script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
 </body>
 </html>

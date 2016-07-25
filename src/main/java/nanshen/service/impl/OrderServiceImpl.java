@@ -316,6 +316,16 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     }
 
     @Override
+    public boolean finish(long orderId, long adminUserInfoId) {
+        if (orderDao.updateStatus(orderId, Arrays.asList(OrderStatus.SHIPPING, OrderStatus.CONFIRMED), OrderStatus.FINISHED)) {
+            orderUserIdCache.invalidate(orderId);
+            orderLogDao.log(orderId, adminUserInfoId, OrderOperation.USER_FINISH);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public ExecInfo comment(long orderId, long skuId, long star, String comment, List<Long> imgList) {
         Order order = getByOrderId(orderId);
         if (order.getOrderStatus() != OrderStatus.FINISHED) {
@@ -373,6 +383,36 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
         orderCache.invalidateAll();
         orderUserIdCache.invalidateAll();
         return true;
+    }
+
+    @Override
+    public ExecInfo confirm(long orderId, long adminUserInfoId) {
+        if (orderDao.updateStatus(orderId, Collections.singletonList(OrderStatus.PAYED), OrderStatus.CONFIRMED)) {
+            orderCache.invalidate(orderId);
+            orderLogDao.log(orderId, adminUserInfoId, OrderOperation.ADMIN_CONFIRM);
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("订单状态更新失败");
+    }
+
+    @Override
+    public ExecInfo shipping(long orderId, long adminUserInfoId) {
+        if (orderDao.updateStatus(orderId, Arrays.asList(OrderStatus.PAYED, OrderStatus.CONFIRMED), OrderStatus.SHIPPING)) {
+            orderCache.invalidate(orderId);
+            orderLogDao.log(orderId, adminUserInfoId, OrderOperation.SHIPPING);
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("订单状态更新失败");
+    }
+
+    @Override
+    public ExecInfo cancel(long orderId, long adminUserInfoId) {
+        if (orderDao.updateStatus(orderId, Arrays.asList(OrderStatus.PAYED, OrderStatus.CONFIRMED, OrderStatus.SHIPPING), OrderStatus.RETURNING)) {
+            orderCache.invalidate(orderId);
+            orderLogDao.log(orderId, adminUserInfoId, OrderOperation.CANCEL_ORDER);
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("订单状态更新失败");
     }
 
     private List<OrderLog> getOrderLogList(long orderId) {

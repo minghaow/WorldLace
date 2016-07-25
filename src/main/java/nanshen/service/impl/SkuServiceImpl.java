@@ -5,6 +5,7 @@ import nanshen.constant.TimeConstants;
 import nanshen.dao.SkuDetailDao;
 import nanshen.dao.SkuItemDao;
 import nanshen.data.AdminUserInfo;
+import nanshen.data.CustomerReview.CustomerReview;
 import nanshen.data.PublicationStatus;
 import nanshen.data.Sku.SkuDetail;
 import nanshen.data.Sku.SkuDetailType;
@@ -13,6 +14,7 @@ import nanshen.data.StyleTag;
 import nanshen.data.SystemUtil.ExecInfo;
 import nanshen.data.SystemUtil.ExecResult;
 import nanshen.data.SystemUtil.PageInfo;
+import nanshen.service.CustomerReviewService;
 import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
 import nanshen.service.common.ScheduledService;
@@ -43,6 +45,9 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Autowired
     private OssFormalApi ossFormalApi;
+
+    @Autowired
+    private CustomerReviewService customerReviewService;
 
     private Map<PublicationStatus, Long> statusCntMap = new HashMap<PublicationStatus, Long>();
     private Map<PublicationStatus, Long> newStatusCntMap = new HashMap<PublicationStatus, Long>();
@@ -119,9 +124,11 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     @Override
     public SkuItem getSkuItemInfo(long itemId) {
         List<SkuDetail> skuDetailList = getSkuDetailByItemId(itemId);
+        List<CustomerReview> customerReviewList = customerReviewService.getByItemId(itemId, new PageInfo(1));
         SkuItem skuItem = skuItemDao.get(itemId);
         if (skuItem != null) {
             skuItem.setSkuDetailList(skuDetailList);
+            skuItem.setCustomerReviewList(customerReviewList);
         }
         return skuItem;
     }

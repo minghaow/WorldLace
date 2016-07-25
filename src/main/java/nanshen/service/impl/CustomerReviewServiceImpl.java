@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -142,6 +143,9 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
     @Override
     public List<CustomerReview> getByItemId(long itemId, PageInfo pageInfo) {
         List<CustomerReviewSku> customerReviewSkuList = customerReviewSkuDao.getByItemId(itemId, pageInfo);
+        if (customerReviewSkuList == null || customerReviewSkuList.size() == 0) {
+            return new ArrayList<CustomerReview>();
+        }
         List<Long> reviewIdList = reviewIdFromCRSkuExtractor.extractList(customerReviewSkuList);
         List<CustomerReview> customerReviewList = customerReviewDao.getByReviewId(reviewIdList);
         List<CustomerReviewDetail> customerReviewDetailList = customerReviewDetailDao.getByReviewId(reviewIdList);

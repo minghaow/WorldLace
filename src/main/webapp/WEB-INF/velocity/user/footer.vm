@@ -167,7 +167,8 @@
             $failModal.foundation('close');
     }
     $('.aniimated-thumbnials').lightGallery({
-        thumbnail:true
+        thumbnail: true,
+        selector: '.review-img'
     });
 </script>
 <script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>

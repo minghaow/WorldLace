@@ -109,16 +109,22 @@
 .buy-button-wrapper .button {
     border: 2px solid #ec5840;
     letter-spacing: 2px;
+    margin-right: 0;
+}
+.bdsharebuttonbox {
+    margin-top: 0.5rem;
 }
 .bdsharebuttonbox .hollow.button {
     color: transparent;
     border: 2px solid transparent;
-    border-image: linear-gradient(45deg, pink, skyblue);
+    border-image: linear-gradient(135deg, white, #856f5e);
     border-image-slice: 1;
-    background: linear-gradient(45deg, pink, skyblue);
+    background: linear-gradient(135deg, white, #856f5e);
     -webkit-background-clip: text;
     text-fill-color: transparent;
-    transition: all 0.2s ease;
+    transition: all 0.5s ease;
+    padding: 0.5rem;
+    border-radius: 3px;
 }
 .button:hover {
     border-image: linear-gradient(45deg, #2ecc71, dodgerblue);
@@ -127,7 +133,7 @@
 #body .option-button-wrapper button.checked {
     background: #af8e72;
     color: white;
-    border: 1px solid #af8e72;
+    border: 2px solid #af8e72;
 }
 .detail-image-wrapper {
     position: relative;
@@ -349,6 +355,14 @@
     display: inline;
 }
 .review-img img {
-    height: 5rem;
-    width: 5rem;
+    height: 7rem;
+    width: 7rem;
+    border: solid 1px #af8e72;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+.user-review-info {
+    text-align: center;
+    font-size: 0.6rem;
 }

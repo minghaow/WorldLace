@@ -34,18 +34,27 @@ input.labelauty + label {
     display: inline !important;
 }
 .option-button-wrapper .button.option {
-    border: 1px solid #af8e72;
-    color: #A7866A;
+    /*border: 2px solid #af8e72;*/
+    /*color: #A7866A;*/
+    color: transparent;
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #f1d3a9, #856f5e);
+    border-image-slice: 1;
+    background: linear-gradient(135deg, #f1d3a9, #856f5e);
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    transition: all 0.5s ease;
     padding: 0.65em 1em;
     margin-bottom: 0.8rem;
     font-size: 0.8rem;
     font-weight: 600;
 }
 .option-button-wrapper .button.option:hover,
-.option-button-wrapper .button.option.active
+.option-button-wrapper .button.option.active,
 .option-button-wrapper .button.option:focus {
-    border: 1px solid #2e241e;
-    color: #2e241e;
+    /*border: 2px solid #856f5e;*/
+    /*color: #856f5e;*/
+    color: #856f5e;
 }
 .seo-content {
     display: none;
@@ -59,7 +68,11 @@ input.labelauty + label {
 }
 .bdsharebuttonbox,
 .bdsharebuttonbox a {
-    color: #A7866A;
+    color: #856f5e;
+}
+.bdsharebuttonbox,
+.bdsharebuttonbox a:hover {
+    color: #856f5e;
 }
 #body #bdshare_weixin_qrcode_dialog {
     height:295px !important;

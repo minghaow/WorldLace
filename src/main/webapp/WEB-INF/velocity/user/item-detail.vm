@@ -58,6 +58,13 @@
                         <h3 class="item-detail-title">$!{skuItem.title}</h3>
                         <div class="item-detail-subtitle">$!{skuItem.subTitle}</div>
                     </div>
+                    <div class="float-right">
+                        <div class="bdsharebuttonbox" data-tag="share_1">
+                            <button class="hollow button hide-for-small-only" href="#">
+                                <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <hr/>
@@ -80,7 +87,7 @@
                             <span class="star-4">★</span>
                             <span class="star-5">★</span>
                         </span>
-                        <span class="user-review-cnt">（累计1219个评价）</span>
+                        <span class="user-review-cnt">&nbsp; 4.8（1219个评价）</span>
                     </div>
                 </div>
 
@@ -110,11 +117,11 @@
 
                 <div class="buy-button-wrapper margin-top clearfix">
                     <div class="float-right">
-                        <div class="bdsharebuttonbox" data-tag="share_1" style="float:left">
-                            <button class="secondary hollow button hide-for-small-only" href="#">
-                                <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
-                            </button>
-                        </div>
+##                        <div class="bdsharebuttonbox" data-tag="share_1" style="float:left">
+##                            <button class="secondary hollow button hide-for-small-only" href="#">
+##                                <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
+##                            </button>
+##                        </div>
                         <button class="alert button add-to-cart" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}"
                                 data-count="1"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
                     </div>
@@ -200,21 +207,23 @@
                             <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
                         </ul>
                     </div>
-                    <div class="small-12 column">
+                    <div class="small-12 column aniimated-thumbnials">
                         <div class="detail-title">用户评分</div>
 
                         #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
                         <div class="row">
                             #foreach ($customerReview in $skuItem.getCustomerReviewList())
-                                <div class="small-1 column">
+                                <div class="small-1 column user-review-info">
                                     <img src="/images/user/head.jpg" alt=""/>
+                                    <span>$customerReview.username</span>
+                                    <span>$customerReview.convertedCreateTime</span>
                                 </div>
                                 <div class="small-11 column">
                                     <div>
                                         $customerReview.customerReviewDetail.content
                                     </div>
 
-                                    <div class="aniimated-thumbnials" >
+                                    <div>
                                         #foreach ($img in $customerReview.getCustomerReviewImgList())
                                             <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
                                                 <img src="$!{imageUrlPrefix}/$img.imgKey" />
@@ -222,27 +231,28 @@
                                         #end
                                     </div>
                                 </div>
-
-                                $customerReview.createTime
-
-
                             #end
-                        #end
                         </div>
+                        #else
+                        <div class="row">
+                            暂无用户评分
+                        </div>
+                        #end
 
                         #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
                         <div class="row">
                             #foreach ($customerReview in $skuItem.getCustomerReviewList())
-                                <div class="small-1 column">
+                                <div class="small-1 column user-review-info">
                                     <img src="/images/user/head.jpg" alt=""/>
-                                    $customerReview.convertedCreateTime
+                                    <span>$customerReview.username</span>
+                                    <span>$customerReview.convertedCreateTime</span>
                                 </div>
                                 <div class="small-11 column">
                                     <div>
                                         $customerReview.customerReviewDetail.content
                                     </div>
 
-                                    <div class="aniimated-thumbnials" >
+                                    <div>
                                         #foreach ($img in $customerReview.getCustomerReviewImgList())
                                             <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
                                                 <img src="$!{imageUrlPrefix}/$img.imgKey" />
@@ -256,8 +266,8 @@
                                     </div>
                                 </div>
                             #end
-                        #end
                         </div>
+                        #end
                     </div>
                 </div>
 

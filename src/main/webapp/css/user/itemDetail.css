@@ -144,7 +144,7 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    width: 870px;
+    width: 1000px;
     max-width: none;
     max-height: none;
     z-index: 1;
@@ -365,4 +365,17 @@
 .user-review-info {
     text-align: center;
     font-size: 0.6rem;
+}
+#body .lSSlideWrapper {
+    border-right: 2px solid #e6e6e6;
+    border-left: 2px solid #e6e6e6;
+    border-top: 4px solid #A7866A;
+    border-bottom: 4px solid #A7866A;
+    border-radius: 3px;
+}
+.item-head-prev {
+    content: "\e094";
+}
+.item-head-next {
+    content: "\e095";
 }

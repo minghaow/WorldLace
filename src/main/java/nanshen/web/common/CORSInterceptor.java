@@ -19,6 +19,7 @@ public class CORSInterceptor extends BaseCtrl implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
         response.setHeader("Access-Control-Allow-Origin", SystemConstants.IMAGE_URL);
+        response.setHeader("Access-Control-Allow-Origin", SystemConstants.SHORT_BASE_URL);
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");

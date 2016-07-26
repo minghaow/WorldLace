@@ -90,9 +90,9 @@
             slideMargin: 0,
             thumbItem:6,
             enableDrag: true,
-            controls: false,
+            controls: true,
             auto: false,
-            adaptiveHeight:true,
+            adaptiveHeight:false,
 //            addClass: "show-for-small-only"
         });
 

@@ -34,16 +34,16 @@
             <div class="item-slider">
                 <ul id="lightSlider-s">
                     #foreach ($imgId in [0..$skuItem.getImgCount()])
-                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb">
-                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-2" alt="${skuItem.title}"/>
-                            <img class="detail-image-big" id="detail-image-big-h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-2" alt="${skuItem.title}"/>
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
+                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
                             <div class="detail-image-cover" data-id="h$imgId" ></div>
                         </li>
                     #end
                     #foreach ($imgId in [0..$skuItem.getContentImgCount()])
-                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb">
-                            <img class="detail-image" data-id="d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-2" alt="${skuItem.title}"/>
-                            <img class="detail-image-big" id="detail-image-big-d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-2" alt="${skuItem.title}"/>
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
+                            <img class="detail-image" data-id="d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
                             <div class="detail-image-cover" data-id="d$imgId" ></div>
                         </li>
                     #end

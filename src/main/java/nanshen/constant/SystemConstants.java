@@ -18,6 +18,7 @@ public class SystemConstants {
 
     /** base domain */
     public static final String BASE_URL = "http://www.zaitaoyuan.com";
+    public static final String SHORT_BASE_URL = "http://zaitaoyuan.com";
     public static final String IMAGE_URL = "http://image.zaitaoyuan.com";
     public static final String CDN_URL = "http://image-cdn.zaitaoyuan.com";
 

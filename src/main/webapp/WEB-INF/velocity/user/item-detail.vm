@@ -87,7 +87,7 @@
                             <span class="star-4">★</span>
                             <span class="star-5">★</span>
                         </span>
-                        <span class="user-review-cnt">&nbsp; 4.8（1219个评价）</span>
+                        <span class="user-review-cnt">&nbsp; 4.8（128个评价）</span>
                     </div>
                 </div>
 
@@ -111,7 +111,7 @@
                         <i class="fi-check greenText"> </i>有货，包邮（<span data-tooltip aria-haspopup="true" class="has-tip" title="新疆、西藏，以及一些偏远地区需要补交少量运费差价"><i class="fi-alert darkGreyText"> </i>少数地区除外</span>）
                     </span>
                     <span class="float-right">
-                        月销售<span class="redText"> 35 </span>套
+                        月销售<span class="redText"> 19 </span>套
                     </span>
                 </div>
 
@@ -142,7 +142,7 @@
                 <li class="tabs-title detail-tab middle-tab">
                     <a href="#comments" class="brandColorText">
                         <i class="fi-star"></i>
-                        <div>用户 <span class="redText">1219</span> 评测</div>
+                        <div>用户 <span class="redText">128</span> 评测</div>
                     </a>
                 </li>
                 <li class="tabs-title detail-tab">
@@ -223,6 +223,7 @@
                                         $customerReview.customerReviewDetail.content
                                     </div>
 
+                                    #if ("$customerReview.getCustomerReviewImgList()" != "" && $customerReview.getCustomerReviewImgList().size() > 0)
                                     <div>
                                         #foreach ($img in $customerReview.getCustomerReviewImgList())
                                             <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
@@ -230,6 +231,7 @@
                                             </a>
                                         #end
                                     </div>
+                                    #end
                                 </div>
                             #end
                         </div>
@@ -239,35 +241,6 @@
                         </div>
                         #end
 
-                        #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
-                        <div class="row">
-                            #foreach ($customerReview in $skuItem.getCustomerReviewList())
-                                <div class="small-1 column user-review-info">
-                                    <img src="/images/user/head.jpg" alt=""/>
-                                    <span>$customerReview.username</span>
-                                    <span>$customerReview.convertedCreateTime</span>
-                                </div>
-                                <div class="small-11 column">
-                                    <div>
-                                        $customerReview.customerReviewDetail.content
-                                    </div>
-
-                                    <div>
-                                        #foreach ($img in $customerReview.getCustomerReviewImgList())
-                                            <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
-                                                <img src="$!{imageUrlPrefix}/$img.imgKey" />
-                                            </a>
-                                        #end
-                                        #foreach ($img in $customerReview.getCustomerReviewImgList())
-                                            <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
-                                                <img src="$!{imageUrlPrefix}/$img.imgKey" />
-                                            </a>
-                                        #end
-                                    </div>
-                                </div>
-                            #end
-                        </div>
-                        #end
                     </div>
                 </div>
 

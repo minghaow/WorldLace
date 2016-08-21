@@ -23,6 +23,8 @@ public enum OrderStatus {
 
     FINISHED("到货"),
 
+    REVIEWED("已评价"),
+
     RETURNING("退货中"),
 
     RETURNED("已退货"),

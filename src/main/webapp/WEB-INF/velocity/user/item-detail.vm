@@ -87,7 +87,7 @@
                             <span class="star-4">★</span>
                             <span class="star-5">★</span>
                         </span>
-                        <span class="user-review-cnt">&nbsp; 4.8（128个评价）</span>
+                        <span class="user-review-cnt">&nbsp; 4.8（${skuItem.getCustomerReviewList().size()}个评价）</span>
                     </div>
                 </div>
 
@@ -111,7 +111,7 @@
                         <i class="fi-check greenText"> </i>有货，包邮（<span data-tooltip aria-haspopup="true" class="has-tip" title="新疆、西藏，以及一些偏远地区需要补交少量运费差价"><i class="fi-alert darkGreyText"> </i>少数地区除外</span>）
                     </span>
                     <span class="float-right">
-                        月销售<span class="redText"> 19 </span>套
+                        月销售<span class="redText"> ${skuItem.getMonthlySalesInfo()} </span>套，累计<span class="redText"> ${skuItem.getTotalSalesInfo()} </span>套
                     </span>
                 </div>
 
@@ -142,7 +142,7 @@
                 <li class="tabs-title detail-tab middle-tab">
                     <a href="#comments" class="brandColorText">
                         <i class="fi-star"></i>
-                        <div>用户 <span class="redText">128</span> 评测</div>
+                        <div>用户 <span class="redText">${skuItem.getCustomerReviewList().size()}</span> 评测</div>
                     </a>
                 </li>
                 <li class="tabs-title detail-tab">
@@ -158,29 +158,18 @@
                     <div class="small-12 medium-6 column">
                         <div class="detail-title">特点</div>
                         <ul>
-                            <li>按压式开关，最高24小时保温效果  </li>
-                            <li>丹麦原装进口，北欧设计师品牌 </li>
-                            <li>双层保温壶，玻璃内胆</li>
-                            <li>不适用于洗碗机</li>
+                            $!{skuItem.skuItemDescription.points}
                         </ul>
                     </div>
                     <div class="small-12 medium-6 column">
                         <div class="detail-title">产品参数</div>
                         <ul>
-                            <li>材质：无双酚A塑料（BPA-free），玻璃</li>
-                            <li>规格：高28.5cm  底径17cm</li>
-                            <li>容量：1升</li>
+                            $!{skuItem.skuItemDescription.infos}
                         </ul>
                     </div>
 
                     <div class="small-12 column product-artical">
-                        <p>
-                            rosendahl成立于1984年，总部位于丹麦哥本哈根，一流的产品品质加上出色的设计思路，让其跻身于世纪经典品牌行列。聪明的按压式瓶盖设计，只需轻用拇指按压，就可单手控制瓶口的开关；环保的外涂层纯银玻璃内胆，对人体无任何伤害，易于保持食物的原味；保温时间长；内层附加绝缘材料，让水壶维持轻盈的重量，同时防震、耐摔；防侧漏壶嘴，用以防止滴漏；特殊的表面处理，不易刮花，而且耐脏，光滑及舒适感强；易清洗，内胆易拆换。
-                        </p>
-
-                        <p>
-                            全新的GRAND CRU保温壶，清爽的线条，人性化的造型和顺滑的表面，直觉让人联想到穿上彩衣，爱漂亮的小企鹅。据说，企鹅之所以能在南极安家落户是因为它特殊的羽衣，不但海水难以浸透，就是气温在零下近百摄氏度，也休想攻破它保持温度的防线。ROSENDAHL设计师从企鹅的特殊保暖功能获取灵感，看似简洁的外形，却让人眼前一亮。舒心的设计，过硬的保温功能，让人们用得舒心、放心、省心。
-                        </p>
+                        $!{skuItem.skuItemDescription.description}
                     </div>
 ##                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
 ##                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
@@ -211,17 +200,17 @@
                         <div class="detail-title">用户评分</div>
 
                         #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
-                        <div class="row">
-                            #foreach ($customerReview in $skuItem.getCustomerReviewList())
+                        #foreach ($customerReview in $skuItem.getCustomerReviewList())
+                            <div class="row customer-review-list customer-review-${customerReview.id}" >
                                 <div class="small-1 column user-review-info">
                                     <img src="/images/user/head.jpg" alt=""/>
                                     <span>$customerReview.username</span>
                                     <span>$customerReview.convertedCreateTime</span>
                                 </div>
-                                <div class="small-11 column">
-                                    <div>
+                                <div class="small-10 column">
+                                    <a href="/review?reviewId=$customerReview.id">
                                         $customerReview.customerReviewDetail.content
-                                    </div>
+                                    </a>
 
                                     #if ("$customerReview.getCustomerReviewImgList()" != "" && $customerReview.getCustomerReviewImgList().size() > 0)
                                     <div>
@@ -233,8 +222,8 @@
                                     </div>
                                     #end
                                 </div>
-                            #end
-                        </div>
+                            </div>
+                        #end
                         #else
                         <div class="row">
                             暂无用户评分

@@ -1,3 +1,5 @@
+#* @vtlvariable name="skuDetailList" type="java.util.List<nanshen.data.Sku.SkuDetail>" *#
+#* @vtlvariable name="customerReview" type="nanshen.data.CustomerReview.CustomerReview" *#
 #* @vtlvariable name="order" type="nanshen.data.Order.Order" *#
 #* @vtlvariable name="orderList" type="java.util.List<nanshen.data.Order.Order>" *#
 #* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
@@ -34,37 +36,49 @@
         <br/>
 
         <div class="small-12 columns">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text"><span class="review-list-title">评价</span> 商品列表</li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+##                    <ul class="menu">
+##                        <li><input type="search" placeholder="商品搜索"></li>
+##                        <li><button type="button" class="button">搜索</button></li>
+##                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="small-12 columns margin-top-small">
             <table cellpadding="0" cellspacing="0" class="scroll">
-                <thead class="cart-thead center">
+                <thead class="cart-thead center order-list">
                 <tr>
                     <th class="center" scope="col" width="20%">图片</th>
                     <th class="center" scope="col" width="30%">商品名称</th>
-                    <th class="center" scope="col" width="">价格</th>
-                    <th class="center" scope="col" width="150px">数量</th>
-                    <th class="center" scope="col" width="">合计</th>
-                    <th class="center" scope="col" width="">操作</th>
+                    <th class="center" scope="col" width="">商品选项</th>
+                    <th class="center" scope="col" width="150px">价格</th>
                 </tr>
                 </thead>
                 <tbody class="cart-tbody center">
-                    #foreach ($goods in $!{order.goodsList})
+                    #foreach ($goods in $!{skuDetailList})
                     <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
                         <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
                         <td>
                             <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
-                            <div>$!{goods.option1}</div>
+                        </td>
+                        <td>
+                            #if ("$!{goods.option1}" != "")
+                                $!{goods.option1}
+                            #else
+                                默认选项
+                            #end
                         </td>
                         <td>
                             $!{goods.convertedPrice}
-                        </td>
-                        <td>
-                            $!{goods.count}
-                        </td>
-                        <td>
-                            <span class="item-total" id="item-total-$!{goods.id}" data-step="$!{goods.convertedPriceNo}">$!{goods.convertedTotalPriceNo}</span>元
-                        </td>
-                        <td>
-                            <a href="/order/review/create?orderId=$!{order.orderId}&itemId=$!{goods.itemId}&skuId=$!{goods.skuId}"
-                               class="button hollow brandColor" target="_blank">去评价</a>
                         </td>
                     </tr>
                     #end
@@ -72,6 +86,33 @@
             </table>
         </div>
 
+        <br/>
+
+        <div class="small-12 columns margin-top">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text"><span class="review-list-title">评价</span> 内容</li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                ##                    <ul class="menu">
+##                        <li><input type="search" placeholder="商品搜索"></li>
+##                        <li><button type="button" class="button">搜索</button></li>
+##                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="small-12 columns">
+            <div class="margin-top">
+                $!{customerReview.title}
+                $!{customerReview.customerReviewDetail.content}
+            </div>
+        </div>
+    </div>
 </div>
 <!-- end of this page contents -->
 

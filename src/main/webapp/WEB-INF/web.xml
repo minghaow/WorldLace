@@ -67,7 +67,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>
-		<url-pattern>/script/*.swf</url-pattern>
+		<url-pattern>/script/*</url-pattern>
 	</servlet-mapping>
 
 	<!-- 加载通用的bean -->

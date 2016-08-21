@@ -1,15 +1,18 @@
 package nanshen.service.impl;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import nanshen.constant.SystemConstants;
 import nanshen.constant.TimeConstants;
+import nanshen.dao.SalesInfoDao;
 import nanshen.dao.SkuDetailDao;
 import nanshen.dao.SkuItemDao;
+import nanshen.dao.SkuItemDescriptionDao;
 import nanshen.data.AdminUserInfo;
 import nanshen.data.CustomerReview.CustomerReview;
 import nanshen.data.PublicationStatus;
-import nanshen.data.Sku.SkuDetail;
-import nanshen.data.Sku.SkuDetailType;
-import nanshen.data.Sku.SkuItem;
+import nanshen.data.Sku.*;
 import nanshen.data.StyleTag;
 import nanshen.data.SystemUtil.ExecInfo;
 import nanshen.data.SystemUtil.ExecResult;
@@ -18,6 +21,7 @@ import nanshen.service.CustomerReviewService;
 import nanshen.service.SkuService;
 import nanshen.service.api.oss.OssFormalApi;
 import nanshen.service.common.ScheduledService;
+import nanshen.utils.LogUtils;
 import nanshen.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +32,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Sku related service
@@ -44,6 +50,12 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     private SkuDetailDao skuDetailDao;
 
     @Autowired
+    private SalesInfoDao salesInfoDao;
+
+    @Autowired
+    private SkuItemDescriptionDao skuItemDescriptionDao;
+
+    @Autowired
     private OssFormalApi ossFormalApi;
 
     @Autowired
@@ -53,6 +65,37 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     private Map<PublicationStatus, Long> newStatusCntMap = new HashMap<PublicationStatus, Long>();
     private List<SkuItem> offlineSkuItemList = new ArrayList<SkuItem>();
     private List<SkuItem> onlineSkuItemList = new ArrayList<SkuItem>();
+
+    /** skuId到skuItem信息的缓存 */
+    private final LoadingCache<Long, SkuItem> skuItemCache = CacheBuilder.newBuilder()
+            .softValues()
+            .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
+            .build(
+                    new CacheLoader<Long, SkuItem>() {
+                        @Override
+                        public SkuItem load(Long skuItemId) throws Exception {
+                            List<SkuDetail> skuDetailList = getSkuDetailByItemId(skuItemId);
+                            List<CustomerReview> customerReviewList = customerReviewService.getByItemId(skuItemId, new PageInfo(1));
+                            List<SalesInfo> salesInfoList = salesInfoDao.getBySkuItemId(skuItemId);
+                            SkuItemDescription skuItemDescription = skuItemDescriptionDao.get(skuItemId);
+                            SkuItem skuItem = skuItemDao.get(skuItemId);
+                            if (skuItem != null) {
+                                skuItem.setSkuDetailList(skuDetailList);
+                                skuItem.setCustomerReviewList(customerReviewList);
+                                long totalSalesInfo = 0;
+                                long monthlySalesInfo = 0;
+                                for (SalesInfo salesInfo : salesInfoList) {
+                                    totalSalesInfo += salesInfo.getTotalAmount();
+                                    monthlySalesInfo += salesInfo.getMonthlyAmount();
+                                }
+                                skuItem.setTotalSalesInfo(totalSalesInfo);
+                                skuItem.setMonthlySalesInfo(monthlySalesInfo);
+                                skuItem.setSkuItemDescription(skuItemDescription);
+                            }
+                            return skuItem;
+                        }
+                    });
+
 
     @Override
     public void update() {
@@ -123,14 +166,12 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
 
     @Override
     public SkuItem getSkuItemInfo(long itemId) {
-        List<SkuDetail> skuDetailList = getSkuDetailByItemId(itemId);
-        List<CustomerReview> customerReviewList = customerReviewService.getByItemId(itemId, new PageInfo(1));
-        SkuItem skuItem = skuItemDao.get(itemId);
-        if (skuItem != null) {
-            skuItem.setSkuDetailList(skuDetailList);
-            skuItem.setCustomerReviewList(customerReviewList);
+        try {
+            return skuItemCache.get(itemId);
+        } catch (ExecutionException e) {
+            LogUtils.warning("[SkuServiceImpl] Fail to get sku item from skuItemCache!");
         }
-        return skuItem;
+        return null;
     }
 
     @Override
@@ -227,6 +268,11 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
         clearSkuLookInfo(lookId);
         updateSkuLookInfo(lookId, resultSkuItemList);
         return ExecInfo.succ();
+    }
+
+    @Override
+    public List<SkuDetail> getSkuDetailList(List<Long> skuIdList) {
+        return skuDetailDao.get(skuIdList);
     }
 
     private void updateSkuLookInfo(long lookId, List<SkuItem> resultSkuItemList) {

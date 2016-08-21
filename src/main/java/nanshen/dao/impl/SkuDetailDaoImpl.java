@@ -92,4 +92,10 @@ public class SkuDetailDaoImpl extends BaseDao implements SkuDetailDao {
                 .desc("id");
         return dao.count(SkuDetail.class, cnd);
     }
+
+    @Override
+    public List<SkuDetail> get(List<Long> skuIdList) {
+        Condition cnd = Cnd.where("id", "in", skuIdList);
+        return dao.query(SkuDetail.class, cnd);
+    }
 }

@@ -1,0 +1,21 @@
+/*
+ *  user/my-order.css
+ *  @author: WANG Minghao
+*/
+.review-title {
+    font-size: 2rem;
+}
+.review-info {
+    color: #666;
+}
+.review-content {
+    margin-top: 1rem;
+    line-height: 2rem;
+}
+.order-list {
+    border-top: solid 2px #af8e72;
+}
+.review-list-title {
+    font-size: 2rem;
+    color: #A7866A;
+}

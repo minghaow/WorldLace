@@ -34,17 +34,15 @@ input.labelauty + label {
     display: inline !important;
 }
 .option-button-wrapper .button.option {
-    /*border: 2px solid #af8e72;*/
-    /*color: #A7866A;*/
-    color: transparent;
+    color: #A7866A;
     border: 2px solid transparent;
-    border-image: linear-gradient(135deg, #f1d3a9, #856f5e);
+    border-image: linear-gradient(135deg, #fcdeb4, #97816e);
     border-image-slice: 1;
-    background: linear-gradient(135deg, #f1d3a9, #856f5e);
+    background: linear-gradient(135deg, #fcdeb4, #97816e);
     -webkit-background-clip: text;
     text-fill-color: transparent;
     transition: all 0.5s ease;
-    padding: 0.65em 1em;
+    padding: 0.55rem 0.85rem;
     margin-bottom: 0.8rem;
     font-size: 0.8rem;
     font-weight: 600;
@@ -52,9 +50,7 @@ input.labelauty + label {
 .option-button-wrapper .button.option:hover,
 .option-button-wrapper .button.option.active,
 .option-button-wrapper .button.option:focus {
-    /*border: 2px solid #856f5e;*/
-    /*color: #856f5e;*/
-    color: #856f5e;
+    color: #4b3e35;
 }
 .seo-content {
     display: none;

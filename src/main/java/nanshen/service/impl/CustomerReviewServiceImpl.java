@@ -101,6 +101,8 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
         if (customerReview != null) {
             CustomerReviewSku customerReviewSku = new CustomerReviewSku(customerReview.getId(), itemId, skuId);
             customerReviewSkuDao.insert(customerReviewSku);
+            CustomerReviewDetail customerReviewDetail = new CustomerReviewDetail("", customerReview.getId());
+            customerReviewDetailDao.insert(customerReviewDetail);
             return ExecResult.succ(customerReview);
         }
         return ExecResult.fail("数据库添加用户评测失败");
@@ -124,6 +126,14 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
             return ExecInfo.succ();
         }
         return ExecInfo.fail("更新失败");
+    }
+
+    @Override
+    public ExecInfo publishCustomerReview(long reviewId) {
+        if (customerReviewDao.publish(reviewId)) {
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("发布失败");
     }
 
     @Override
@@ -159,6 +169,18 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
             customerReview.setCustomerReviewSkuList(reviewSkuMap.get(customerReview.getId()));
         }
         return customerReviewList;
+    }
+
+    @Override
+    public CustomerReview getByReviewId(long reviewId) {
+        CustomerReview customerReview = customerReviewDao.getByReviewId(reviewId);
+        CustomerReviewDetail customerReviewDetail = customerReviewDetailDao.getByReviewId(reviewId);
+        List<CustomerReviewImg> customerReviewImgList = customerReviewImgDao.getByReviewId(reviewId);
+        List<CustomerReviewSku> customerReviewSkuList = customerReviewSkuDao.getByReviewId(reviewId);
+        customerReview.setCustomerReviewDetail(customerReviewDetail);
+        customerReview.setCustomerReviewImgList(customerReviewImgList);
+        customerReview.setCustomerReviewSkuList(customerReviewSkuList);
+        return customerReview;
     }
 
     private ExecInfo uploadImageToOss(MultipartFile file, InputStream is, String imgKey) {

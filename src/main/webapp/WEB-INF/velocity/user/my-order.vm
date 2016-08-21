@@ -103,7 +103,7 @@
                             <span class="item-total" id="item-total-$!{goods.id}">$!{goods.convertedTotalPriceNo}</span>元
                         </td>
                         <td>
-                            <span class="item-total">$!{goods.convertedTotalPriceNo}</span>
+                            <span>正常</span>
                         </td>
                     </tr>
                     #end
@@ -132,9 +132,9 @@
                 </div>
                 <div class="small-2 columns center">
                     订单状态:
-                    #if ("$order.orderStatus" == "SHIPPING")
+                    #if ("$order.orderStatus" == "SHIPPING" || "$order.orderStatus" == "FINISHED")
                         <div>
-                            <a href="/order/review?orderId=$order.orderId" class="button tiny brandColor hollow">&nbsp;确认收货&nbsp;</a>
+                            <a href="/review/order?orderId=$order.orderId" class="button tiny brandColor hollow">&nbsp;确认收货并评价&nbsp;</a>
                         </div>
                     #else
                         <div>

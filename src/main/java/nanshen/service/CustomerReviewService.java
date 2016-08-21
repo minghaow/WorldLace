@@ -54,6 +54,13 @@ public interface CustomerReviewService {
     ExecInfo updateCustomerReview(long reviewId, String title, String content);
 
     /**
+     * publish
+     *
+     * @return ExecInfo
+     */
+    ExecInfo publishCustomerReview(long reviewId);
+
+    /**
      * upload review img
      *
      * @return img key
@@ -67,4 +74,12 @@ public interface CustomerReviewService {
      * @return
      */
     List<CustomerReview> getByItemId(long itemId, PageInfo pageInfo);
+
+    /**
+     * Get customer review by review id
+     *
+     * @param reviewId customer review id
+     * @return CustomerReview
+     */
+    CustomerReview getByReviewId(long reviewId);
 }

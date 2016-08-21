@@ -379,3 +379,6 @@
 .item-head-next {
     content: "\e095";
 }
+.customer-review-list a {
+    color: #666;
+}

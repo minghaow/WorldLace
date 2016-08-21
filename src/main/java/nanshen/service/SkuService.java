@@ -163,4 +163,12 @@ public interface SkuService {
      * @return ExecInfo
      */
     ExecInfo addRelatedSku(long itemId, String skuIdList);
+
+    /**
+     * Get sku detail list by sku id list
+     *
+     * @param skuIdList sku id list
+     * @return List<SkuDetail>
+     */
+    List<SkuDetail> getSkuDetailList(List<Long> skuIdList);
 }

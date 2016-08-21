@@ -114,8 +114,12 @@ public class CustomerReviewDaoImpl extends BaseDao implements CustomerReviewDao 
     }
 
     @Override
-    public List<CustomerReview> getByReviewId(long reviewId) {
-        return getByReviewId(Collections.singletonList(reviewId));
+    public CustomerReview getByReviewId(long reviewId) {
+        List<CustomerReview> customerReviewList = getByReviewId(Collections.singletonList(reviewId));
+        if (customerReviewList != null && customerReviewList.size() > 0) {
+            return customerReviewList.get(0);
+        }
+        return null;
     }
 
     @Override
@@ -143,6 +147,16 @@ public class CustomerReviewDaoImpl extends BaseDao implements CustomerReviewDao 
     @Override
     public boolean delete(long reviewId) {
         return dao.delete(CustomerReview.class, reviewId) == 1;
+    }
+
+    @Override
+    public boolean publish(long reviewId) {
+        Chain chn = Chain
+                .make("isPublished", true)
+                .add("updateTime", new Date());
+        Condition cnd = Cnd
+                .where("id", "=", reviewId);
+        return 1 == dao.update(CustomerReview.class, chn, cnd);
     }
 
 }

@@ -35,4 +35,5 @@ public interface SkuDetailDao {
 
     long getCnt(PublicationStatus status, Date startDate);
 
+    List<SkuDetail> get(List<Long> skuIdList);
 }

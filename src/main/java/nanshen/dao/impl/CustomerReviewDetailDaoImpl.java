@@ -32,7 +32,7 @@ public class CustomerReviewDetailDaoImpl extends BaseDao implements CustomerRevi
         Chain chn = Chain
                 .make("content", content);
         Condition cnd = Cnd
-                .where("id", "=", reviewId);
+                .where("reviewId", "=", reviewId);
         return 1 == dao.update(CustomerReviewDetail.class, chn, cnd);
     }
 

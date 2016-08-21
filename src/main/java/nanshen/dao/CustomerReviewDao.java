@@ -31,11 +31,14 @@ public interface CustomerReviewDao {
 
     List<CustomerReview> getBySkuAndUserId(long skuId, long userId);
 
-    List<CustomerReview> getByReviewId(long reviewId);
+    CustomerReview getByReviewId(long reviewId);
 
     List<CustomerReview> getByReviewId(List<Long> reviewIdList);
 
     CustomerReview get(long reviewId);
 
     boolean delete(long reviewId);
+
+    boolean publish(long reviewId);
+
 }

@@ -83,8 +83,20 @@ public class SkuItem {
     /** sku detail */
     private List<SkuDetail> skuDetailList;
 
+    /** sales info for skuDetails */
+    private List<SalesInfo> salesInfos;
+
+    /** total sales info for sku items */
+    private long totalSalesInfo = 0;
+
+    /** monthly sales info for sku items */
+    private long monthlySalesInfo = 0;
+
     /** customer review */
     private List<CustomerReview> customerReviewList;
+
+    /** sku item describe info */
+    private SkuItemDescription skuItemDescription;
 
     /** create time for this look, will fill when create */
     @Column
@@ -284,5 +296,37 @@ public class SkuItem {
 
     public void setCustomerReviewList(List<CustomerReview> customerReviewList) {
         this.customerReviewList = customerReviewList;
+    }
+
+    public List<SalesInfo> getSalesInfos() {
+        return salesInfos;
+    }
+
+    public void setSalesInfos(List<SalesInfo> salesInfos) {
+        this.salesInfos = salesInfos;
+    }
+
+    public long getTotalSalesInfo() {
+        return totalSalesInfo;
+    }
+
+    public void setTotalSalesInfo(long totalSalesInfo) {
+        this.totalSalesInfo = totalSalesInfo;
+    }
+
+    public long getMonthlySalesInfo() {
+        return monthlySalesInfo;
+    }
+
+    public void setMonthlySalesInfo(long monthlySalesInfo) {
+        this.monthlySalesInfo = monthlySalesInfo;
+    }
+
+    public SkuItemDescription getSkuItemDescription() {
+        return skuItemDescription;
+    }
+
+    public void setSkuItemDescription(SkuItemDescription skuItemDescription) {
+        this.skuItemDescription = skuItemDescription;
     }
 }

@@ -15,7 +15,8 @@
 .order-list {
     border-top: solid 2px #af8e72;
 }
-.review-list-title {
+.review-list-title,
+.review-order-list-icon {
     font-size: 2rem;
     color: #A7866A;
 }

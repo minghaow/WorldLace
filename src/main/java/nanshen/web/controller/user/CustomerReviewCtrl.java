@@ -62,23 +62,7 @@ public class CustomerReviewCtrl extends BaseCtrl {
 			model.put("order", order);
 		}
 		prepareHeaderModel(model, PageType.CUSTOMER_REVIEW_LIST);
-		return new ModelAndView("user/review");
-	}
-
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ModelAndView reviewPage(ModelMap model, @RequestParam(defaultValue = "1", required = true) int reviewId) {
-		UserInfo userInfo = getLoginedUser();
-		model.put("URLDecoder", URLDecoder.class);
-		model.put("StringEscapeUtils", StringEscapeUtils.class);
-		CustomerReview customerReview = customerReviewService.getByReviewId(reviewId);
-		if (customerReview != null) {
-			List<SkuDetail> skuDetailList = skuService.getSkuDetailList(skuIdExtractor.extractList(customerReview.getCustomerReviewSkuList()));
-			model.addAttribute("skuDetailList", skuDetailList);
-			model.addAttribute("customerReview", customerReview);
-			model.addAttribute("isLogin", userInfo != null);
-		}
-		prepareHeaderModel(model, PageType.ITEM_DETAIL);
-		return new ModelAndView("user/review");
+		return new ModelAndView("user/review-order");
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -102,6 +86,22 @@ public class CustomerReviewCtrl extends BaseCtrl {
 		}
 		prepareHeaderModel(model, PageType.CUSTOMER_REVIEW_CREATE);
 		return new ModelAndView("user/review-create");
+	}
+
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView reviewPage(ModelMap model, @RequestParam(defaultValue = "1", required = true) int reviewId) {
+		UserInfo userInfo = getLoginedUser();
+		model.put("URLDecoder", URLDecoder.class);
+		model.put("StringEscapeUtils", StringEscapeUtils.class);
+		CustomerReview customerReview = customerReviewService.getByReviewId(reviewId);
+		if (customerReview != null) {
+			List<SkuDetail> skuDetailList = skuService.getSkuDetailList(skuIdExtractor.extractList(customerReview.getCustomerReviewSkuList()));
+			model.addAttribute("skuDetailList", skuDetailList);
+			model.addAttribute("customerReview", customerReview);
+			model.addAttribute("isLogin", userInfo != null);
+		}
+		prepareHeaderModel(model, PageType.ITEM_DETAIL);
+		return new ModelAndView("user/review");
 	}
 
 	@RequestMapping(value = "/create/save", method = RequestMethod.POST)

@@ -71,8 +71,8 @@
                     <th class="center" scope="col" width="20%">商品名称</th>
                     <th class="center" scope="col" width="">价格</th>
                     <th class="center" scope="col" width="150px">数量</th>
+                    <th class="center" scope="col" width="150px">折扣</th>
                     <th class="center" scope="col" width="">合计</th>
-                    <th class="center" scope="col" width="">交易状态</th>
                 </tr>
                 </thead>
 
@@ -100,10 +100,10 @@
                             $!{goods.count}
                         </td>
                         <td>
-                            <span class="item-total" id="item-total-$!{goods.id}">$!{goods.convertedTotalPriceNo}</span>元
+                            $!{goods.convertedDiscountPrice}元
                         </td>
                         <td>
-                            <span>正常</span>
+                            <span class="item-total" id="item-total-$!{goods.id}">$!{goods.convertedTotalPriceNo}</span>元
                         </td>
                     </tr>
                     #end

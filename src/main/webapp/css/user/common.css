@@ -87,6 +87,7 @@ input.labelauty + label {
     color: #5c4a3e;
     background: none;
     margin: 0;
+    padding: .5rem;
 }
 #body .button.hollow.brandColor:hover {
     border: 1px solid #493729;

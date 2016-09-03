@@ -2,6 +2,12 @@
 #banner-slider img {
     width: 100%;
 }
+#body .lSSlideOuter .lSPager {
+    margin-top: -10px !important;
+}
+.lSSlideOuter .lSPager.lSpg>li a {
+    background-color: #999 !important;
+}
 .lSSlideOuter .lSPager.lSpg>li.active a {
     background-color: #A7866A !important;
 }
@@ -30,10 +36,19 @@
         padding: 1px;
     }
     .list-tagger {
-        font-size: x-large;
-        font-weight: 300;
         padding-left: 0.5rem;
+        border-bottom: 2px solid transparent;
+        border-image: linear-gradient(200deg, #856f5e, white);
+        border-image-slice: 1;
+    }
+    .list-tagger i, .list-tagger div {
+        font-size: large;
+        font-weight: 300;
         color: #A7866A;
+    }
+    .list-tagger .english-note {
+        font-size: large;
+        color: #999;
     }
     .item-description {
         height: 6rem;
@@ -45,10 +60,19 @@
         transition: all 0.3s ease-in-out 0.1s;
     }
     .list-tagger {
+        padding-left: 0.5rem;
+        border-bottom: 2px solid transparent;
+        border-image: linear-gradient(200deg, #856f5e, white);
+        border-image-slice: 1;
+    }
+    .list-tagger i, .list-tagger div {
         font-size: x-large;
         font-weight: 300;
-        padding-left: 0.5rem;
         color: #A7866A;
+    }
+    .list-tagger .english-note {
+        font-size: large;
+        color: #999;
     }
     .item-description {
         height: 7rem;
@@ -58,6 +82,44 @@
         transform: scale(1.02);
         box-shadow: 0 5px 10px 5px #707070;
     }
+    .topic-content {
+        position: relative;
+        display: block;
+        text-align: center;
+    }
+    .topic-title-cover {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.6);
+        border-bottom: 2px solid transparent;
+        border-image: linear-gradient(20deg, #856f5e, white);
+        border-image-slice: 1;
+        border-radius: 5px;
+        top: 80%;
+        height: 20%;
+        margin: auto;
+        vertical-align: middle;
+    }
+    .topic-title-cover .topic-title {
+        margin-top: 1%;
+        padding: 0 3rem;
+        font-size: x-large;
+        color: #A7866A;
+        text-shadow: 1px 1px #d1d1d1;
+    }
+    .topic-title-cover .topic-subtitle {
+        margin-top: 1%;
+        font-size: medium;
+        color: #666;
+        text-shadow: 1px 1px #d1d1d1;
+    }
+}
+.coming-soon-pic {
+    text-align: center;
+    margin-top: 20%;
+    font-size: x-large;
+    color: #333;
+    width: 100%;
+    height: 30%;
 }
 .list-banner li {
     list-style:none;

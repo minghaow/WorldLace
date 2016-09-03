@@ -76,7 +76,7 @@ public class SkuItemDaoImpl extends BaseDao implements SkuItemDao {
     @Override
     public List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo) {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01")
-                .and("status", "=", status).desc("id");
+                .and("status", "=", status).desc("sortingId");
         return dao.query(SkuItem.class, cnd, genaratePager(pageInfo));
     }
 

@@ -20,13 +20,13 @@
     <div>
         <ul id="banner-slider">
             <li>
-                <a href="/item?itemId=1" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
+                <a href="/item?itemId=8" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg@!list-banner-s" alt="钻石系列餐具套装">
                 </a>
             </li>
             <li>
-                <a href="/item?itemId=8" target="_blank">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider8.jpg@!list-banner-s" alt="钻石系列餐具套装">
+                <a href="/item?itemId=1" target="_blank">
+                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider10.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
                 </a>
             </li>
             <li>
@@ -52,9 +52,18 @@
 <!-- page contents -->
 <div class="page-content">
 
+    <div class="row list-tagger clearfix">
+        <div>
+            <i class="fi-sound"> </i>
+            限时新品
+            <span class="english-note">Limited New Collection</span>
+        </div>
+    </div>
+
     <div class="item-list margin-top-tiny">
         <ul class="row large-up-4 medium-up-3 small-up-2">
             #foreach ($skuInfo in $skuInfoList)
+                #if ($velocityCount <= 4)
                 <li class="column">
                     <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
                         #if ($velocityCount == 1 || $velocityCount == 2)
@@ -74,17 +83,89 @@
                         </div>
                     </div>
                 </li>
+                #end
             #end
         </ul>
     </div>
+
+    <div class="row list-tagger clearfix">
+        <div>
+            <i class="fi-sound"> </i>
+            专题研究
+            <span class="english-note">Topic Research</span>
+        </div>
+    </div>
+
+    <div class="row margin-top-tiny">
+        <a href="/topic" target="_blank" class="topic-content">
+            <img src="$!{imageUrlPrefix}/images/topic/0/0.jpg" alt="红酒杯专题">
+            <div class="topic-title-cover">
+                <div class="topic-title">
+                    周末放松一下？优雅的喝杯红酒，怎样？
+                </div>
+                <div class="topic-subtitle">
+                    [桃源专题：几百块的葡萄酒，你却在用一次性杯子喝。]
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="row list-tagger clearfix margin-top">
+        <div>
+            <i class="fi-sound"> </i>
+            正品收藏
+            <span class="english-note">Branded Collection</span>
+        </div>
+    </div>
+
+    <div class="item-list margin-top-tiny">
+        <ul class="row large-up-4 medium-up-3 small-up-2">
+            #foreach ($skuInfo in $skuInfoList)
+                #if ($velocityCount > 4)
+                <li class="column">
+                    <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
+                        #if ($velocityCount == 1 || $velocityCount == 2)
+                            <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
+                        #end
+                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail2" alt="$skuInfo.title"/>
+                    </a>
+                    <div class="item-description">
+                        <div class="item-title">$skuInfo.getTitle()</div>
+                        <div class="item-price margin-top-tiny">
+                            <p class="item-price-num-wrapper">
+                                <span class="item-price-num">
+                                    <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
+                                </span>
+                            </p>
+                            <hr class="item-price-hr">
+                        </div>
+                    </div>
+                </li>
+                #end
+            #end
+            <li class="column">
+                <div class="coming-soon-pic">
+                    <div>
+                        Coming Soon!
+                    </div>
+                    <div>
+                        桃源还在继续选品...
+                    </div>
+                </div>
+                <div class="item-description margin-top">
+                    <div class="item-price margin-top-tiny">
+                        <p class="item-price-num-wrapper">
+                            <span class="item-price-num">
+                                <span class="item-price-num-current">敬请期待</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 ##
-##    <div class="row list-tagger clearfix">
-##        <div class="center">
-##            - - - [ 桃源 经典 ] - - -
-##        </div>
-##        <div class="float-right">
-##        </div>
-##    </div>
+
 ##    <div class="item-list margin-top-tiny">
 ##        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
 ##            #foreach ($imgId in [3..22])

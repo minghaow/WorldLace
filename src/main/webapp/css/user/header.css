@@ -67,13 +67,13 @@ header {
         font-size: 1rem;
         padding: .2rem 1rem;
         font-weight: 300;
-        color: #A7866A;
+        color: #856f5e;
     }
     .top-bar#top-bar ul li a {
         padding: .2rem 0.7rem;
         font-weight: 300;
         font-size: 0.8rem;
-        color: #A7866A;
+        color: #856f5e;
     }
     .top-bar-right .dropdown.menu .has-submenu.is-down-arrow>a::after {
         display: none;

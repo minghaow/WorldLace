@@ -1,0 +1,98 @@
+#* @vtlvariable name="skuDetailList" type="java.util.List<nanshen.data.Sku.SkuDetail>" *#
+#* @vtlvariable name="customerReview" type="nanshen.data.CustomerReview.CustomerReview" *#
+#* @vtlvariable name="order" type="nanshen.data.Order.Order" *#
+#* @vtlvariable name="orderList" type="java.util.List<nanshen.data.Order.Order>" *#
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.Sku.SkuItem" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="cart" type="nanshen.data.Cart.Cart" *#
+#* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/order-review.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small" id="order-review-page-content">
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText">首页列表</a></li>
+                <li>
+                    订单评价
+                </li>
+            </ul>
+        </nav>
+
+        <br/>
+
+        <div class="small-12 columns">
+            <div class="top-bar ">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text"><span class="review-list-title">待评价</span> 商品列表</li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text"><i class="fi-list-thumbnails review-order-list-icon"> </i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="small-12 columns margin-top-small">
+            <table cellpadding="0" cellspacing="0" class="scroll order-list">
+                <thead class="cart-thead center">
+                <tr>
+                    <th class="center" scope="col" width="20%">图片</th>
+                    <th class="center" scope="col" width="30%">商品名称</th>
+                    <th class="center" scope="col" width="20%">商品选项</th>
+                    <th class="center" scope="col" width="150px">价格</th>
+                    <th class="center" scope="col" width="150px">操作</th>
+                </tr>
+                </thead>
+                <tbody class="cart-tbody center">
+                    #foreach ($goods in $!{order.goodsList})
+                    <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
+                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                        <td>
+                            <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
+                        </td>
+                        <td>
+                            #if ("$!{goods.option1}" != "")
+                                $!{goods.option1}
+                            #else
+                                默认选项
+                            #end
+                        </td>
+                        <td>
+                            $!{goods.convertedPrice}
+                        </td>
+                        <td>
+                            <a href="/order/review/create?orderId=$!{order.orderId}&itemId=$!{goods.itemId}&skuId=$!{goods.skuId}" class="button hollow brandColor" target="_blank">去评价</a>
+                        </td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+
+        <br/>
+    </div>
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+#parse("user/footer.vm")

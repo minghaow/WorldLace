@@ -74,6 +74,18 @@ public class SkuItem {
     @Column
     private PublicationStatus status = PublicationStatus.NEW;
 
+    /** is gift wrap valid */
+    @Column
+    private boolean giftWrapValid = false;
+
+    /** 0 for no free shipping, 1 for mainly free shipping, 2 for all */
+    @Column
+    private long freeShippingLevel = 0;
+
+    /** is this product only selling in taoyuan */
+    @Column
+    private boolean onlyInTaoyuan = false;
+
     /** image url list, default for 1 to 2 images */
     private List<String> imgUrlList;
 
@@ -328,5 +340,29 @@ public class SkuItem {
 
     public void setSkuItemDescription(SkuItemDescription skuItemDescription) {
         this.skuItemDescription = skuItemDescription;
+    }
+
+    public long getFreeShippingLevel() {
+        return freeShippingLevel;
+    }
+
+    public void setFreeShippingLevel(long freeShippingLevel) {
+        this.freeShippingLevel = freeShippingLevel;
+    }
+
+    public boolean isGiftWrapValid() {
+        return giftWrapValid;
+    }
+
+    public void setGiftWrapValid(boolean giftWrapValid) {
+        this.giftWrapValid = giftWrapValid;
+    }
+
+    public boolean isOnlyInTaoyuan() {
+        return onlyInTaoyuan;
+    }
+
+    public void setOnlyInTaoyuan(boolean onlyInTaoyuan) {
+        this.onlyInTaoyuan = onlyInTaoyuan;
     }
 }

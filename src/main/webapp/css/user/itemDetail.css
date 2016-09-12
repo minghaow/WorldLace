@@ -53,19 +53,23 @@
     font-size: 1rem;
 }
 .item-description {
-    color: #666;
+    color: #555;
 }
 .price-wrapper .price-before {
     text-decoration: line-through;
     letter-spacing: -2px;
     color: #666;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    font-style: italic;
 }
 .price-wrapper .price-after {
     letter-spacing: -1px;
     color: #ec372f;
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+}
+.option-button-wrapper {
+    margin-top: 4rem;
 }
 .user-review-star {
     color: #A7866A;
@@ -341,7 +345,8 @@
     color: #333;
 }
 .item-detail-subtitle {
-    color: #666;
+    color: #94735b;
+    font-size: 1.1rem;
 }
 .item-detail-brand {
     height: 3rem;

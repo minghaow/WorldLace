@@ -32,6 +32,18 @@ public class SkuItemDescription {
     @Column
     private String description;
 
+    /** ship speed info */
+    @Column
+    private String shipSpeed;
+
+    /** package info */
+    @Column
+    private String packageInfo;
+
+    /** notice info */
+    @Column
+    private String notice;
+
     public SkuItemDescription() {
     }
 
@@ -80,5 +92,29 @@ public class SkuItemDescription {
 
     public void setPoints(String points) {
         this.points = points;
+    }
+
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
+
+    public String getPackageInfo() {
+        return packageInfo;
+    }
+
+    public void setPackageInfo(String packageInfo) {
+        this.packageInfo = packageInfo;
+    }
+
+    public String getShipSpeed() {
+        return shipSpeed;
+    }
+
+    public void setShipSpeed(String shipSpeed) {
+        this.shipSpeed = shipSpeed;
     }
 }

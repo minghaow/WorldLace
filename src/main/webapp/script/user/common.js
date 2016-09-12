@@ -233,12 +233,21 @@ jQuery( document ).ready(function( $ ) {
     $(".option").on('click', function() {
         var originPrice = $(this).data("origin");
         var price = $(this).data("now");
-        var skuId = $(this).data("skuId");
+        var itemId = $(this).data("item-id");
+        var skuId = $(this).data("sku-id");
+        var optionId = $(this).data("option-id");
         $(".price-before").html("￥" + originPrice);
         $(".price-after").html("￥" + price);
+        $(".detail-image-h0").attr("src", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-4");
+        $("#detail-image-big-h0").attr("src", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-4");
         $(".add-to-cart").data("sku-id", skuId);
         $(".option-button-wrapper button").removeClass("checked");
         $(this).addClass("checked");
+    });
+
+    $(".lSPager li a img").on('click', function() {
+        alert(1);
+        $(".detail-image-h0").attr("src", currentImgUrl);
     });
 
     $(".add-to-cart").on('click', function() {

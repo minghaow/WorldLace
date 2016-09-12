@@ -31,7 +31,9 @@
 <section class=" footer">
     <div class="row">
         <div class="small-12 medium-6 large-5 columns">
-            <p class="logo"><i class="fi-shield"></i> 桃源网</p>
+            <p class="logo"><i class="fi-shield"></i> 桃源网
+                <span class="about subheader">做中国最有良心的餐厨用品平台。</span>
+            </p>
             <p class="footer-links">
                 <a href="/">主页</a>
                 <a href="/topic">专题</a>
@@ -41,7 +43,7 @@
                 <a href="/contact">联系我们</a>
             </p>
             <p class="copywrite">北京明昊天地科技有限公司，京ICP备16000451号-1</p>
-            <p class="copywrite">Copywrite © 2015. All rights Reserved.</p>
+            <p class="copywrite">Copywrite © 2015-2019. All rights Reserved.</p>
         </div>
         <div class="small-12 medium-6 large-4 columns">
             <ul class="contact">
@@ -51,13 +53,9 @@
             </ul>
         </div>
         <div class="small-12 medium-12 large-3 columns">
-            <p class="about">我们的目标：</p>
-            <p class="about subheader">做中国最有良心的餐厨用品平台。</p>
             <ul class="inline-list social">
-                <a href="#"><i class="fi-social-facebook"></i></a>
-                <a href="#"><i class="fi-social-twitter"></i></a>
-                <a href="#"><i class="fi-social-linkedin"></i></a>
-                <a href="#"><i class="fi-social-github"></i></a>
+                <p class="about subheader">微信公众号，关注我们：</p>
+                <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
             </ul>
         </div>
     </div>
@@ -76,6 +74,8 @@
 <script>
     $(document).foundation();
     jQuery(document).ready(function($) {
+        var currentImgUrl = $(".detail-image-h0").attr("src");
+        var currentBigImgUrl = $("#detail-image-big-h0").attr("src");
         $('#banner-slider').lightSlider({
             adaptiveHeight:true,
             item:1,
@@ -93,6 +93,10 @@
             controls: true,
             auto: false,
             adaptiveHeight:false,
+            onBeforeSlide: function (el) {
+                $(".detail-image-h0").attr("src", currentImgUrl);
+                $("#detail-image-big-h0").attr("src", currentBigImgUrl);
+            },
 //            addClass: "show-for-small-only"
         });
 
@@ -107,8 +111,6 @@
 
         $(".detail-image-cover").mouseenter(function(e) {
             var id = $(this).data("id");
-            detailImageHeight = detailImageWrapper.height();
-            detailImageWidth = detailImageWrapper.width();
             $("#detail-image-big-" + id).show();
         }).mouseleave(function() {
             var id = $(this).data("id");
@@ -117,10 +119,10 @@
             var id = $(this).data("id");
             var relativeTop = e.pageY - detailImageTop;
             var relativeLeft = e.pageX - detailImageLeft;
-            var bigImgHeight = $("#detail-image-big-" + id).height() * 1.2;
-            var bigImgWidth = $("#detail-image-big-" + id).width() * 1.2;
-            var absoluteTop = (detailImageHeight - bigImgHeight / bigImgWidth * 870) * relativeTop / detailImageHeight;
-            var absoluteLeft = (detailImageWidth - 870) * relativeLeft / detailImageWidth;
+            var bigImgHeight = $("#detail-image-big-" + id).height();
+            var bigImgWidth = $("#detail-image-big-" + id).width();
+            var absoluteTop = (detailImageHeight - bigImgHeight / bigImgWidth * 1000) * relativeTop / detailImageHeight;
+            var absoluteLeft = (detailImageWidth - 1000) * relativeLeft / detailImageWidth;
             $("#detail-image-big-" + id).css({top: absoluteTop, left: absoluteLeft});
         });
     });

@@ -82,10 +82,16 @@
         transform: scale(1.02);
         box-shadow: 0 5px 10px 5px #707070;
     }
+    .item-list ul li {
+        list-style: none;
+    }
     .topic-content {
         position: relative;
         display: block;
         text-align: center;
+    }
+    .topic-content img {
+        width: 100%;
     }
     .topic-title-cover {
         position: absolute;

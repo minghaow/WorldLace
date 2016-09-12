@@ -69,7 +69,7 @@
                         #if ($velocityCount == 1 || $velocityCount == 2)
                         <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
                         #end
-                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail2" alt="$skuInfo.title"/>
+                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail-3" alt="$skuInfo.title"/>
                     </a>
                     <div class="item-description">
                         <div class="item-title">$skuInfo.getTitle()</div>
@@ -127,7 +127,7 @@
                         #if ($velocityCount == 1 || $velocityCount == 2)
                             <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
                         #end
-                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail2" alt="$skuInfo.title"/>
+                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail-3" alt="$skuInfo.title"/>
                     </a>
                     <div class="item-description">
                         <div class="item-title">$skuInfo.getTitle()</div>

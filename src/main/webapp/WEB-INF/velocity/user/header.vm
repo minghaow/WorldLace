@@ -98,16 +98,16 @@
                             <span id="login-decide-content">注册</span></a>
                         </li>
                         #end
-                        <li><a href="#"> | </a></li>
-                        <li class="has-submenu is-dropdown-submenu-parent opens-left">
-                            <a href="#"><i class="fi-star"></i> 关注我们</a>
-
-                            <ul class="submenu menu vertical" data-submenu>
-                                <li>
-                                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
-                                </li>
-                            </ul>
-                        </li>
+##                        <li><a href="#"> | </a></li>
+##                        <li class="has-submenu is-dropdown-submenu-parent opens-left">
+##                            <a href="#"><i class="fi-star"></i> 关注我们</a>
+##
+##                            <ul class="submenu menu vertical" data-submenu>
+##                                <li>
+##                                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+##                                </li>
+##                            </ul>
+##                        </li>
                         <li><a href="#"> | </a></li>
                         <li>
                             <a href="/cart" target="_blank">

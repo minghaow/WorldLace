@@ -35,15 +35,15 @@
                 <ul id="lightSlider-s">
                     #foreach ($imgId in [0..$skuItem.getImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
-                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
-                            <img class="detail-image-big" id="detail-image-big-h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
+                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
                             <div class="detail-image-cover" data-id="h$imgId" ></div>
                         </li>
                     #end
                     #foreach ($imgId in [0..$skuItem.getContentImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
-                            <img class="detail-image" data-id="d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
-                            <img class="detail-image-big" id="detail-image-big-d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-3" alt="${skuItem.title}"/>
+                            <img class="detail-image" data-id="d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
                             <div class="detail-image-cover" data-id="d$imgId" ></div>
                         </li>
                     #end
@@ -71,13 +71,13 @@
 
                 <div class="clearfix">
 ##                    <div class="float-left">
-##                        <span class="success label"><i class="fi-like"> </i>全站包邮</span>
+##                        <span class="uccess label"><i class="fi-like"> </i>全站包邮</span>
 ##                        <span class="alert label"><i class="fi-burst-sale"> </i>正品保证</span>
 ##                        <span class="warning label"><i class="fi-alert"> </i>破碎补发</span>
 ##                    </div>
                     <div class="price-wrapper float-left">
-                        <span class="price-before">￥$!{skuItem.displayOriginPrice}</span>
                         <span class="price-after"><span class="rmb-sign">￥</span>$!{skuItem.displayPrice}</span>
+                        <span class="price-before">￥$!{skuItem.displayOriginPrice}</span>
                     </div>
                     <div class="float-right">
                         <span class="user-review-star">
@@ -96,10 +96,10 @@
                 </div>
 
                 #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} > 1)
-                    <div class="option-button-wrapper margin-top-small clearfix">
+                    <div class="option-button-wrapper clearfix">
                         #foreach ($sku in $skuItem.getSkuDetailList())
                             <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
-                                    data-optionId="$sku.optionId" data-sku-id="$sku.id">$sku.option1</button>
+                                    data-option-id="$sku.optionId" data-item-id="$skuItem.id" data-sku-id="$sku.id">$sku.option1</button>
                         #end
                     </div>
                 #end
@@ -234,24 +234,42 @@
                 </div>
 
                 <div class="tabs-panel row" id="notes">
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 columns">
                         <div class="detail-title">发货时间</div>
                         <ul>
-                            <li>显示有货时，发货时间24小时之内，极少数时间可能会延长到48小时之内</li>
-                            <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                            #if ("$!{skuItem.skuItemDescription.shipSpeed}" == "")
+                                <li>显示有货时，发货时间24小时之内，极少数时间可能会延长到48小时之内</li>
+                                <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                            #else
+                                $!{skuItem.skuItemDescription.shipSpeed}
+                            #end
                         </ul>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 columns">
+                        <div class="detail-title">购买注意</div>
+                        <ul>
+                            #if ("$!{skuItem.skuItemDescription.notice}" != "")
+                                $!{skuItem.skuItemDescription.notice}
+                            #else
+                                无
+                            #end
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 columns end">
                         <div class="detail-title">邮费说明</div>
                         <ul>
                             <li>桃源全站全国包邮（极个别地区除外，地区包括：西藏北部等，如有需要，请联系客服购买）</li>
                         </ul>
                     </div>
-                    <div class="small-12 medium-6 column">
+                    <div class="small-12 medium-6 columns end">
                         <div class="detail-title">包装说明</div>
                         <ul>
-                            <li>我们使用精选的环保纸盒包装</li>
-                            <li>可以联系客服，在包装中添加自定义祝福，送给你爱的人</li>
+                            #if ("$!{skuItem.skuItemDescription.packageInfo}" == "")
+                                <li>我们使用精选的环保纸盒包装</li>
+                                <li>可以联系客服，在包装中添加自定义祝福，送给你爱的人</li>
+                            #else
+                                $!{skuItem.skuItemDescription.packageInfo}
+                            #end
                         </ul>
                     </div>
                 </div>

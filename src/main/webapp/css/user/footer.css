@@ -127,9 +127,9 @@
     font-size: 0.875rem;
     margin: 0 0 1rem 0; }
 .footer .about {
-    color: #92999f;
-    font-size: 0.875rem;
-    margin: 0 0 1rem 0; }
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0 0 .3rem 0; }
 .footer .footer-links a {
     list-style: none;
     font-weight: normal;
@@ -148,7 +148,10 @@
         text-align: left; }
     .footer .social {
         text-align: left;
+        padding-left: 4rem;
         margin: 0; }
+    .footer .social img {
+        max-height: 9rem;}
     .footer .contact {
         text-align: left; }
     .footer .contact > i {

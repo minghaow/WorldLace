@@ -71,7 +71,7 @@
     .list-tagger {
         padding-left: 0.5rem;
         border-bottom: 2px solid transparent;
-        border-image: linear-gradient(200deg, #856f5e, white);
+        border-image: linear-gradient(350deg, #856f5e, white);
         border-image-slice: 1;
     }
     .list-tagger i, .list-tagger div {

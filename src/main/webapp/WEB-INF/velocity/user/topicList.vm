@@ -55,10 +55,10 @@
             </div>
 
             <div class="row">
-                <div class="large-8 small-6 large-offset-1 columns">
+                <div class="large-8 small-12 large-offset-1 columns">
                     <img src="$!{imageUrlPrefix}/images/topic/0/1.jpg" style="margin-bottom:20px;"></img>
                 </div>
-                <div class="large-2 small-4 columns end">
+                <div class="large-2 small-12 columns end">
                     <p style="font-size:12px;color:#bbb;border-top:1px solid #bbb;padding-top:10px;">
                         一般来说最大的两个一个是波尔多杯，一个是勃艮第杯。单看杯身：杯身较高，杯口较窄的是波尔多杯。杯身较矮，肚子大而圆的是勃艮第杯。除去最突出的两个杯子剩下最大的一个杯子就是红酒杯了，一般这种杯子都是中规中矩，但是基本能盛装各种类型的红酒。再下面一个比红酒杯矮一点，肚子瘦一点的就是白葡萄酒杯。剩下一个杯身细长，就是香槟杯了，标准的香槟杯杯底会有一个尖的凹点，当装入香槟时，气泡好像是从这个点冒出来的一样。</p>
                 </div>
@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="large-10 small-12 large-centered small-centered columns">
                     <img src="$!{imageUrlPrefix}/images/topic/0/2.jpg"
-                         style="margin-bottom:20px;max-width:800px;"></img>
+                         style="margin-bottom:20px;"></img>
                 </div>
             </div>
 
@@ -119,7 +119,7 @@
             <div class="row">
                 <div class="large-10 small-12 large-centered small-centered columns">
                     <img src="$!{imageUrlPrefix}/images/topic/0/3.jpg"
-                         style="margin-bottom:20px;max-width:800px;"></img>
+                         style="margin-bottom:20px;"></img>
                 </div>
             </div>
 
@@ -148,7 +148,7 @@
             <div class="row">
                 <div class="large-10 small-12 large-centered small-centered columns">
                     <img src="$!{imageUrlPrefix}/images/topic/0/4.jpg"
-                         style="margin-bottom:20px;max-width:800px;"></img>
+                         style="margin-bottom:20px;"></img>
                 </div>
             </div>
 
@@ -169,7 +169,7 @@
             <div class="row">
                 <div class="large-10 small-12 large-centered small-centered columns">
                     <img src="$!{imageUrlPrefix}/images/topic/0/7.jpg"
-                         style="margin-bottom:20px;max-width:800px;"></img>
+                         style="margin-bottom:20px;"></img>
                 </div>
             </div>
 

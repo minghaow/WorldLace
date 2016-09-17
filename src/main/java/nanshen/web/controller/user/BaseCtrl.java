@@ -156,16 +156,6 @@ public abstract class BaseCtrl {
 	}
 
 	protected void prepareHeaderModel(ModelMap model, PageType pageType) {
-//		String helloMsg;
-//		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-//		if (hour >= 0 && hour < 12) {
-//			helloMsg = SystemConstants.HELLO_MSG_MORNING;
-//		} else if (hour >= 12 && hour < 18) {
-//			helloMsg = SystemConstants.HELLO_MSG_AFTERNOON;
-//		} else {
-//			helloMsg = SystemConstants.HELLO_MSG_EVENING;
-//		}
-//		model.addAttribute("helloMsg", helloMsg);
 		for (PageType type : PageType.values()) {
 			model.addAttribute(type.name(), pageType == type && type.isNeedShow() ? "selected" : "");
 		}
@@ -174,7 +164,7 @@ public abstract class BaseCtrl {
 		model.addAttribute("cart", getCartInfo());
 		model.addAttribute("imageUrlPrefix", "http://image-cdn.zaitaoyuan.com");
 //		model.addAttribute("imageUrlPrefix", "");
-		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");
-//		model.addAttribute("cssUrlPrefix", "");
+//		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");
+		model.addAttribute("cssUrlPrefix", "");
 	}
 }

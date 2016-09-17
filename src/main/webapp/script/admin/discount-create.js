@@ -1,71 +1,21 @@
 jQuery( document ).ready(function( $ ) {
 
-    updateRegionSelectorRecursive('address-level1', 0);
-
-    $(document).on('change', '.address-region', function(event) {
+    $("#discount-btn").on('click', function() {
         event.preventDefault();
-        var nextSelectorId = $(this).data('next-level');
-        var regionId = $(this).find(":selected").val();
-        updateRegionSelectorRecursive(nextSelectorId, regionId);
-    });
-
-    function updateRegionSelectorRecursive(selectorId, parentRegionId) {
-        while ('' != selectorId) {
-            var selector = $('#' + selectorId);
-            updateRegionSelector(selector, parentRegionId);
-            selectorId = selector.data('next-level');
-            parentRegionId = selector.find(":selected").val();
-        }
-    }
-
-    function updateRegionSelector(selector, parentRegionId) {
+        var type = $("#discount-type").val();
+        var code = $("#discount-code").val();
+        var amount = $("#discount-amount").val();
+        var percent = $("#discount-percent").val();
+        var limit = $("#discount-limit").val();
+        var times = $("#discount-times").val();
         $.ajax({
-            url: '/address/nextLevelRegion?regionId=' + parentRegionId,
-            async: false,
-            success: function (data) {
-                if (!data.success) {
-                    return;
-                }
-                createRegionOptions(selector, data.data);
-            }
-        });
-    }
-
-    function createRegionOptions(selector, regions) {
-        var originalRegionId = selector.data('original-region-id');
-        selector.empty();
-        var option = '<option value="{val}" {attr}>{text}</option>';
-        var selected = false;
-        for (var i = 0; i < regions.length; i++) {
-            var region = regions[i];
-            var attr = '';
-            if (region.regionId == originalRegionId) {
-                attr = 'selected="selected"';
-                selected = true;
-            }
-            var optionToInsert = option
-                .replace('{val}',region.regionId)
-                .replace('{text}', region.regionName)
-                .replace('{attr}', attr);
-            selector.append(optionToInsert);
-        }
-        if (!selected) {
-            selector.child().attribute('selected', 'selected');
-        }
-    }
-
-    $(".confirm").on('click', function() {
-        event.preventDefault();
-        var orderId = $(this).data("id");
-        $.ajax({
-            url: "/admin/order/confirm",
+            url: "/admin/discount/create/confirm",
             type: "POST",
-            data: {"orderId":orderId},
+            data: {"type":type, "code":code, "amount":amount, "percentage":percent, "limit":limit, "times":times},
             dataType: 'json',
             success: function(data) {
                 if (data.success == true || data.success == "true") {
-                    presentSuccessModal("确认成功！", "即将为您刷新页面...");
-                    setTimeout(function(){location.reload();}, 1300);
+                    presentSuccessModal("生成成功！", "此优惠已可以使用");
                 } else {
                     presentFailModal(data.reason, "[  抱歉  ]");
                 }

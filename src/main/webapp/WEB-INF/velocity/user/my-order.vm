@@ -14,7 +14,7 @@
 
 <!-- some hidden infos -->
 <div class="page-info">
-    <div id="this-tag">orders</div>
+    <div id="this-tag">my-order</div>
 </div>
 
 <!-- page contents -->
@@ -54,7 +54,7 @@
                 <div class="top-bar-right">
                     <ul class="menu">
                         <li><input type="search" placeholder="商品搜索"></li>
-                        <li><button type="button" class="button">搜索</button></li>
+                        <li><button type="button" class="button unsupported-section">搜索</button></li>
                     </ul>
                 </div>
             </div>
@@ -79,7 +79,13 @@
                 <tbody class="cart-tbody center">
                     #foreach ($goods in $!{order.goodsList})
                     <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
-                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                        <td>
+                            #if ("$!{goods.option1}" != "")
+                                <img src="$!{imageUrlPrefix}/images/item/itemOption/$!{goods.itemId}/$!{goods.optionId}.jpg@!item-head-4" alt="" class="detail-image">
+                            #else
+                                <img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head-4" alt="" class="detail-image">
+                            #end
+                        </td>
                         <td>
 
                             <div class="link-1">
@@ -111,30 +117,34 @@
             </table>
 
             <div class="row callout order-list-summary table-color">
-                <div class="small-4 columns">&nbsp;</div>
-                <div class="small-2 columns center">
+                <div class="small-12 medium-4 columns">&nbsp;</div>
+                <div class="small-6 medium-2 columns center">
                     下单时间
                     <div>
                         <span class="blueText">$order.createTimeString</span>
                     </div>
                 </div>
-                <div class="small-2 columns center">
+                <div class="small-6 medium-2 columns center">
                     共计商品
                     <div>
                         <span class="redText">$order.goodsCount</span>件
                     </div>
                 </div>
-                <div class="small-2 columns center">
+                <div class="small-6 medium-2 columns center">
                     合计(包邮):
                     <div>
                         <span class="redText">$order.totalPriceString</span>元
                     </div>
                 </div>
-                <div class="small-2 columns center">
+                <div class="small-6 medium-2 columns center">
                     订单状态:
-                    #if ("$order.orderStatus" == "SHIPPING" || "$order.orderStatus" == "FINISHED")
+                    #if ("$order.orderStatus" == "SHIPPING" || "$order.orderStatus" == "FINISHED" || "$order.orderStatus" == "PAYED")
                         <div>
-                            <a href="/review/order?orderId=$order.orderId" class="button tiny brandColor hollow">&nbsp;确认收货并评价&nbsp;</a>
+                            <span class="greenText">$order.orderStatus.getDesc()</span>
+                        </div>
+                    #elseif ("$order.orderStatus" == "NEW")
+                        <div>
+                            <a href="/order/process?orderId=$order.orderId" class="button alert tiny hollow">待支付，去支付</a>
                         </div>
                     #else
                         <div>
@@ -143,6 +153,21 @@
                     #end
                 </div>
             </div>
+            #if ("$order.orderStatus" == "SHIPPING" || "$order.orderStatus" == "FINISHED")
+            <div class="row callout order-list-summary table-color">
+                <div class="small-12 medium-8 columns">&nbsp;</div>
+                <div class="small-6 medium-2 columns center">
+                    超级体验官计划：
+                    <div>
+                    </div>
+                </div>
+                <div class="small-6 medium-2 columns center">
+                    <div>
+                        <a href="/review/order?orderId=$order.orderId" class="button tiny brandColor hollow">&nbsp;确认收货并评价&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+            #end
             #end
         </div>
         #else

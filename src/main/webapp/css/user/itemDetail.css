@@ -387,3 +387,8 @@
 .customer-review-list a {
     color: #666;
 }
+img.u-flyer {
+    width: 50px;
+    height: 50px;
+    border: solid 1px #af8e72;
+}

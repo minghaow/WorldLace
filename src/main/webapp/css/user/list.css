@@ -53,6 +53,15 @@
     .item-description {
         height: 6rem;
     }
+    .topic-title-cover .topic-title {
+        margin-top: 1%;
+        padding: 0 3rem;
+        color: #A7866A;
+    }
+    .topic-title-cover .topic-subtitle {
+        margin-top: 1%;
+        color: #666;
+    }
 }
 @media only screen and (min-width: 40.063em) {
     .item-list ul li {
@@ -100,8 +109,7 @@
         border-image: linear-gradient(20deg, #856f5e, white);
         border-image-slice: 1;
         border-radius: 5px;
-        top: 80%;
-        height: 20%;
+        bottom: 0;
         margin: auto;
         vertical-align: middle;
     }

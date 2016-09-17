@@ -9,6 +9,7 @@ import nanshen.dao.*;
 import nanshen.data.AdminUserInfo;
 import nanshen.data.Cart.Cart;
 import nanshen.data.Cart.CartGoods;
+import nanshen.data.Discount.Discount;
 import nanshen.data.Order.*;
 import nanshen.data.Sku.SkuComment;
 import nanshen.data.Sku.SkuCommentImg;
@@ -69,6 +70,9 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     private UserAddressDao userAddressDao;
 
     @Autowired
+    private DiscountDao discountDao;
+
+    @Autowired
     private AdminUserInfoDao adminUserInfoDao;
 
     @Autowired
@@ -121,7 +125,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
         }
     };
 
-    /** 买手ID到买手信息的缓存 */
+    /** 订单号到订单的缓存（含有商品信息） */
     private final LoadingCache<Long, Order> orderCache = CacheBuilder.newBuilder()
             .softValues()
             .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
@@ -138,7 +142,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
                         }
                     });
 
-    /** 买手ID到买手信息的缓存 */
+    /** 用户id到用户订单列表的缓存 */
     private final LoadingCache<Long, List<Order>> orderUserIdCache = CacheBuilder.newBuilder()
             .softValues()
             .expireAfterWrite(TimeConstants.HALF_HOUR_IN_SECONDS, TimeUnit.SECONDS)
@@ -193,7 +197,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
     }
 
     @Override
-    public Order createOrder(long userId, List<Long> idList) {
+    public Order createOrder(long userId, List<Long> idList, String discountCode) {
         Cart cart = cartService.getByUserId(userId);
         List<CartGoods> cartGoodsList = cart.getGoodsList();
         Order order = orderDao.insert(new Order(cart));
@@ -209,19 +213,27 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
             }
         }
         order.setGoodsList(orderGoodsList);
+        order.setDiscountCode(discountCode);
+        Discount discount = discountDao.get(discountCode);
+        if (discount != null && discount.getTimes() > 0) {
+            discount.setTimes(discount.getTimes() - 1);
+            discountDao.update(discount);
+            order.setDiscountPrice(discount.getCodeType().calculateAmount(order.getTotalPrice(), discount.getDiscount(), discount.getPercentage(), discount.getLimitTotal()));
+            order.setTotalPrice(order.getTotalPrice() - order.getDiscountPrice());
+        }
         orderDao.update(order);
         orderUserIdCache.invalidate(userId);
         return order;
     }
 
     @Override
-    public Order createOrder(long userId, String idListString) {
+    public Order createOrder(long userId, String idListString, String discountCode) {
         List<String> skuIdStringList = Arrays.asList(idListString.split(","));
         List<Long> skuIdList = new ArrayList<Long>();
         for (String skuIdString : skuIdStringList) {
             skuIdList.add(Long.parseLong(skuIdString));
         }
-        Order order = createOrder(userId, skuIdList);
+        Order order = createOrder(userId, skuIdList, discountCode);
         if (order != null) {
             orderLogDao.log(order.getOrderId(), 0, OrderOperation.CREATE_ORDER, "总价：" + order.getTotalPriceString()  + " 商品ID列表：" + idListString);
         }
@@ -249,6 +261,7 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
         }
         if (orderDao.updateStatus(orderId, Collections.singletonList(OrderStatus.PAYING), OrderStatus.PAYED)) {
             orderUserIdCache.invalidate(order.getUserId());
+            orderCache.invalidate(order.getOrderId());
             return ExecResult.succ(order);
         }
         return ExecResult.fail("修改订单状态到已支付失败，请联系客服");

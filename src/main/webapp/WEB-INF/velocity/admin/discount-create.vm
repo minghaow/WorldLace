@@ -1,0 +1,79 @@
+#* @vtlvariable name="DiscountCodeType" type="nanshen.data.Discount.DiscountCodeType" *#
+#* @vtlvariable name="imageUrlPrefix" type="java.lang.String" *#
+#* @vtlvariable name="order" type="nanshen.data.Order.Order" *#
+
+#parse("admin/header.vm")
+<link rel="stylesheet" href="/css/admin/order.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info"></div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small">
+
+    <!-- breadcrumbs -->
+    <ul class="breadcrumbs">
+        <li ><a href="/admin/orderList"><i class="fi-home"></i> 运营系统</a></li>
+        <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 折扣生成</a></li>
+    </ul>
+
+    <ul class="accordion margin-top" data-accordion data-multi-expand="true">
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">优惠券生成</a>
+            <div class="accordion-content" data-tab-content>
+                <div class="row margin-top-small">
+                    <div class="medium-6 small-6 columns">
+                        <select class="discount-type" id="discount-type">
+                            #foreach ($CodeType in $!{DiscountCodeType.values()})
+                            <option value="$CodeType">$!{CodeType.desc}</option>
+                            #end
+                        </select>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <input type="text" class="click-select" placeholder="折扣码" id="discount-code" value="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="medium-6 small-12 columns">
+                        <label>直减折扣
+                            <input type="text" placeholder="单位：分。如10元则写1000" id="discount-amount" value="">
+                        </label>
+                        <p class="help-text" id="amountHelpText">如直减或满减则必填</p>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <label>打折折扣
+                            <input type="text" placeholder="单位：%。如8折则写80" id="discount-percent" value="">
+                        </label>
+                        <p class="help-text" id="percentHelpText">如折扣或满折则必填</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="medium-6 small-12 columns">
+                        <label>满减限制
+                            <input type="text" placeholder="单位：分。如10元则写1000" id="discount-limit" value="">
+                        </label>
+                        <p class="help-text" id="limitHelpText">超过此金额后才可以享受折扣</p>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <label>使用次数
+                            <input type="text" placeholder="单位：次。如给特定人，则写1" id="discount-times" value="">
+                        </label>
+                        <p class="help-text" id="timesHelpText">请不要设过大的使用次数，以保证系统安全</p>
+                    </div>
+                    <div class="medium-12 small-12 columns center">
+                        <button type="submit" class="radius button" id="discount-btn">&nbsp;提交&nbsp;</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    #include("msgModal.vm")
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script src="/script/admin/discount-create.js"></script>
+#parse("admin/footer.vm")

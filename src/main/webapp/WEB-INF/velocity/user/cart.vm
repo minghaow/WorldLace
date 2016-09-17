@@ -79,7 +79,13 @@
                         <td>
                             <input id="checkbox-goods-$!{goods.id}" data-id="$!{goods.id}" type="checkbox" class="checkbox-goods checkbox-goods-item"><label for="checkbox-goods-$!{goods.id}"></label>
                         </td>
-                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                        <td>
+                            #if ("$!{goods.option1}" != "")
+                                <img src="$!{imageUrlPrefix}/images/item/itemOption/$!{goods.itemId}/$!{goods.optionId}.jpg@!item-head-4" alt="" class="detail-image">
+                            #else
+                                <img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head-4" alt="" class="detail-image">
+                            #end
+                        </td>
                         <td>
 
                             <div class="link-1">
@@ -102,7 +108,7 @@
                                     <i class="fi-minus" data-id="$!{goods.id}"></i>
                                 </div>
                                 <div class="small-4 columns count-wrapper">
-                                    <input class="item-count" id="item-count-$!{goods.id}" type="text" value="$!{goods.count}" data-rest="100">
+                                    <input class="item-count" id="item-count-$!{goods.id}" type="text" value="$!{goods.count}" data-rest="100" disabled>
                                 </div>
                                 <div class="small-4 columns count-plus count-adjust">
                                     <i class="fi-plus" data-id="$!{goods.id}"></i>
@@ -127,20 +133,25 @@
     </div>
 
     <div class="row callout secondary">
-        <div class="small-2 columns">
-            <input class="checkbox-goods-all checkbox-goods" type="checkbox"> 全选
+        <div class="small-2 columns checkbox-goods-wrapper">
+            <input class="checkbox-goods-all checkbox-goods" type="checkbox"> 全选(<span id="total-count">0</span>件)
         </div>
-        <div class="small-4 columns">&nbsp;</div>
+        <div class="small-4 columns">
+            <ul class="menu">
+                <li><input type="text" id="discount-code" placeholder="优惠券"></li>
+                <li><button type="button" class="button discount-code-btn">使用</button></li>
+            </ul>
+        </div>
         <div class="small-2 columns center">
-            已选商品
+            优惠券折扣：
             <div>
-                <span id="total-count">0</span>件
+                -<span id="discount">0.00</span>元
             </div>
         </div>
         <div class="small-2 columns center">
             合计(包邮):
             <div>
-                <span id="total-price">0</span>元
+                <span id="total-price" data-total="0" data-discount="0">0</span>元
             </div>
         </div>
         <div class="small-2 columns">

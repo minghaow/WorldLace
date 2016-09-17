@@ -82,6 +82,7 @@ form [type=file], [type=checkbox], [type=radio] {
 .count-adjust i {
     background: lightgray;
     padding: 0.35rem 0.35rem;
+    cursor: pointer;
 }
 #body .count-selector .columns {
     padding: 0;
@@ -97,7 +98,8 @@ form [type=file], [type=checkbox], [type=radio] {
     margin-bottom: 0;
 }
 #total-count,
-#total-price {
+#total-price,
+#total-discount {
     color:#ff5500;
     font-weight:bold;
 }
@@ -117,7 +119,22 @@ form [type=file], [type=checkbox], [type=radio] {
 .tb3_td3{ text-align:center;}
 .tb3_td3 span{ font-size:18px; font-weight:bold;}
 .tb3_td4{ width:110px;text-align:center;}
-.jz2{ width:100px; height:46px; line-height:46px; text-align:center; font-size:18px; color:#fff; background:#ee0000; display:block; float:right;}
+.jz2 {
+    transition: all 0.5s ease;
+    width:110px;
+    height:46px;
+    line-height:46px;
+    text-align:center;
+    font-size:18px;
+    color:#fff;
+    background:#ee0000;
+    display:block;
+    float:right;
+}
+.jz2:hover {
+    background: #970000;
+    color: #fff;
+}
 #body .accordion-title {
     color: #6e5847;
     border-top: 2px solid #af8e72;
@@ -128,4 +145,20 @@ form [type=file], [type=checkbox], [type=radio] {
 }
 #body .link-1 a.demo:hover {
     border-bottom: solid 1px #af8e72;
+}
+#body .checkbox-goods-wrapper {
+    line-height: 3rem;
+}
+#body .discount-code-btn {
+    background: #af8e72;
+}
+#body .discount-code-btn:hover {
+    background: #8b715b;
+}
+#discount-code,
+.discount-code-btn {
+    height: 46px;
+}
+#body .help-text {
+    color: #6e5847;
 }

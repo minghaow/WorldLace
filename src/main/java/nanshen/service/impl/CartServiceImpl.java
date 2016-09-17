@@ -88,7 +88,7 @@ public class CartServiceImpl extends ScheduledService implements CartService {
             SkuItem skuItem = skuService.getSkuItemInfo(skuDetail.getItemId());
             if (null != cartGoodsDao.insert(new CartGoods(cart.getId(), count, null, 0, skuDetail.getOriginPrice(),
                     skuDetail.getPrice(), null, skuItem.getSubTitle(), skuItem.getTitle(), userId, skuDetail.getId(),
-                    skuDetail.getItemId(), skuDetail.getOption1(), skuDetail.getOption2()))) {
+                    skuDetail.getItemId(), skuDetail.getOption1(), skuDetail.getOption2(), skuDetail.getOptionId()))) {
                 cart.setGoodsCount(cart.getGoodsCount() + count);
                 cart.setTotalPrice(cart.getTotalPrice() + count * skuDetail.getPrice());
                 cartDao.update(cart);

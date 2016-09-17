@@ -35,15 +35,15 @@
                 <ul id="lightSlider-s">
                     #foreach ($imgId in [0..$skuItem.getImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
-                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
-                            <img class="detail-image-big" id="detail-image-big-h$imgId" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-h$imgId" data-url="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
                             <div class="detail-image-cover" data-id="h$imgId" ></div>
                         </li>
                     #end
                     #foreach ($imgId in [0..$skuItem.getContentImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
-                            <img class="detail-image" data-id="d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
-                            <img class="detail-image-big" id="detail-image-big-d$imgId" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image" data-id="d$imgId" data-url="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-d$imgId" data-url="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
                             <div class="detail-image-cover" data-id="d$imgId" ></div>
                         </li>
                     #end
@@ -100,6 +100,7 @@
                         #foreach ($sku in $skuItem.getSkuDetailList())
                             <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
                                     data-option-id="$sku.optionId" data-item-id="$skuItem.id" data-sku-id="$sku.id">$sku.option1</button>
+                            <img class="hide" src="http://image-cdn.zaitaoyuan.com/images/item/itemOption/${skuItem.id}/${sku.optionId}.jpg@!item-head-thumb-1" alt=""/>
                         #end
                     </div>
                 #end
@@ -123,7 +124,7 @@
 ##                            </button>
 ##                        </div>
                         <button class="alert button add-to-cart" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}"
-                                data-count="1"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
+                                data-count="1" data-url="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head-thumb-1"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -142,7 +143,8 @@
                 <li class="tabs-title detail-tab middle-tab">
                     <a href="#comments" class="brandColorText">
                         <i class="fi-star"></i>
-                        <div>用户 <span class="redText">${skuItem.getCustomerReviewList().size()}</span> 评测</div>
+                        <div class="hide-for-small-only">用户 <span class="redText">${skuItem.getCustomerReviewList().size()}</span> 评测</div>
+                        <div class="hide-for-medium">用户评测</div>
                     </a>
                 </li>
                 <li class="tabs-title detail-tab">
@@ -202,12 +204,12 @@
                         #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
                         #foreach ($customerReview in $skuItem.getCustomerReviewList())
                             <div class="row customer-review-list customer-review-${customerReview.id}" >
-                                <div class="small-1 column user-review-info">
+                                <div class="small-2 medium-1 column user-review-info">
                                     <img src="/images/user/head.jpg" alt=""/>
-                                    <span>$customerReview.username</span>
-                                    <span>$customerReview.convertedCreateTime</span>
+                                    <span class="hide-for-small-only">$customerReview.username</span>
+                                    <span class="hide-for-small-only">$customerReview.convertedCreateTime</span>
                                 </div>
-                                <div class="small-10 column">
+                                <div class="small-10 medium-10 column">
                                     <a href="/review?reviewId=$customerReview.id">
                                         $customerReview.customerReviewDetail.content
                                     </a>
@@ -293,5 +295,6 @@
 </script>
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
 <script type="text/javascript" src="$!{cssUrlPrefix}/script/user/item-detail.js" charset="utf-8"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/jquery.fly.min.js" charset="utf-8"></script>
 <!-- JiaThis Button END -->
 #parse("user/footer.vm")

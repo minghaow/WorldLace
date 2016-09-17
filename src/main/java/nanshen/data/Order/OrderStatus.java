@@ -15,9 +15,9 @@ public enum OrderStatus {
 
     PAYED("已支付"),
 
-    CONFIRMED("确认订单"),
+    CONFIRMED("订单已确认"),
 
-    REFUSED("拒绝订单"),
+    REFUSED("订单已拒绝"),
 
     SHIPPING("运输中"),
 

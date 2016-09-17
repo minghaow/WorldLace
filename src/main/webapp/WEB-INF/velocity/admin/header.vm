@@ -9,7 +9,7 @@
     <meta name="keywords" content="男神梦工厂" />
     <meta name="description" content="男神梦工厂（www.IamNanShen.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>蓝主角</title>
+    <title>桃源管理系统</title>
 
     <!-- style stuff -->
     <link type="image/x-icon" href="/images/favicon.ico" rel="shortcut icon">
@@ -67,11 +67,9 @@
                         </ul>
                     </li>
                     <li class="has-submenu">
-                        <a href="#">商品列表</a>
+                        <a href="#">优惠券</a>
                         <ul class="menu submenu vertical" data-submenu>
-                            <li><a href="#">全部商品</a></li>
-                            <li><a href="#">已上线商品</a></li>
-                            <li><a href="#">未上线商品</a></li>
+                            <li><a href="/admin/discount/create">生成优惠券</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">

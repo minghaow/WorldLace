@@ -1,5 +1,5 @@
 <!-- footer -->
-<section class="top-footer">
+<section class="top-footer hide-for-small-only">
     <div class="row features">
         <div class="small-12 medium-4 columns">
             <div class="round-icon">
@@ -7,7 +7,7 @@
             </div>
             <h3>高品质</h3>
             <hr>
-            <p>平台上的每一款产品，都是公司员工长期试用过后满意方才入选桃源精品库，您大可以闭眼选货，准保喜欢</p>
+            <p>平台上的每一款产品，都是公司员工长期试用过后满意方才入选桃源精品库，无论是设计还是工艺，您都大可放心</p>
         </div>
         <div class="small-12 medium-4 columns">
             <div class="round-icon">
@@ -23,12 +23,12 @@
             </div>
             <h3>七天无忧退换</h3>
             <hr>
-            <p>凡在桃源网购买的商品，全部七天无理由退换，并且我们已为用户承保退货险，完全不用担心邮费问题。</p>
+            <p>凡在桃源网购买的商品，全部七天无理由退换，并且我们已为用户承保退货险，完全不用担心邮费问题</p>
         </div>
     </div>
 </section>
 
-<section class=" footer">
+<section class="footer">
     <div class="row">
         <div class="small-12 medium-6 large-5 columns">
             <p class="logo"><i class="fi-shield"></i> 桃源网
@@ -38,8 +38,6 @@
                 <a href="/">主页</a>
                 <a href="/topic">专题</a>
                 <a href="#">常见问题</a>
-                <a href="#">友情链接</a>
-                <a href="#">关于我们</a>
                 <a href="/contact">联系我们</a>
             </p>
             <p class="copywrite">北京明昊天地科技有限公司，京ICP备16000451号-1</p>
@@ -71,16 +69,23 @@
 <script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/lightgallery.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/lg-thumbnail.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/notyf.min.js"></script>
 <script>
     $(document).foundation();
     jQuery(document).ready(function($) {
-        var currentImgUrl = $(".detail-image-h0").attr("src");
-        var currentBigImgUrl = $("#detail-image-big-h0").attr("src");
         $('#banner-slider').lightSlider({
             adaptiveHeight:true,
             item:1,
             slideMargin:0,
-            loop:true
+            loop:true,
+            responsive : [
+                {
+                    breakpoint:500,
+                    settings: {
+                        controls: false
+                    }
+                }
+            ]
         });
         $('#lightSlider-s').lightSlider({
             gallery: true,
@@ -94,9 +99,19 @@
             auto: false,
             adaptiveHeight:false,
             onBeforeSlide: function (el) {
-                $(".detail-image-h0").attr("src", currentImgUrl);
-                $("#detail-image-big-h0").attr("src", currentBigImgUrl);
+                var detailImage = $(".detail-image-wrapper.active .detail-image");
+                var detailImageBig = $(".detail-image-wrapper.active .detail-image-big");
+                detailImage.attr("src", detailImage.data("url"));
+                detailImageBig.attr("src", detailImageBig.data("url"));
             },
+            responsive : [
+                {
+                    breakpoint:500,
+                    settings: {
+                        controls: false
+                    }
+                }
+            ]
 //            addClass: "show-for-small-only"
         });
 

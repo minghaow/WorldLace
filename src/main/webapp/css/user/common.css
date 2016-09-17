@@ -61,6 +61,7 @@ input.labelauty + label {
 #successModal,
 #failModal {
     text-align: center;
+    z-index: 2000;
 }
 .bdsharebuttonbox,
 .bdsharebuttonbox a {
@@ -77,7 +78,14 @@ input.labelauty + label {
     background: #A7866A;
 }
 #body .tabs {
+    border-top: solid 2px #af8e72;
+}
+#contact-tabs {
     border-bottom: none;
+}
+#contact-tabs a {
+    color: #af8e72;
+    font-size: .9rem;
 }
 .page-content hr {
     border-bottom: 1px solid #af8e72;

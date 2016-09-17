@@ -13,7 +13,7 @@ public class CartGoods extends Goods {
 
     public CartGoods(long cartId, long count, String discountCode, long discountPrice, long originPrice, long price,
                      String remark, String subTitle, String title, long userId, long skuId, long itemId, String option1,
-                     String option2) {
+                     String option2, long optionId) {
         this.cartId = cartId;
         this.count = count;
         this.discountCode = discountCode;
@@ -29,6 +29,7 @@ public class CartGoods extends Goods {
         this.itemId = itemId;
         this.option1 = option1;
         this.option2 = option2;
+        this.optionId = optionId;
     }
 
     public CartGoods() {}

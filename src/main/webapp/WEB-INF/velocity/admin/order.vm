@@ -114,7 +114,7 @@
                                 #end
                             </div>
                             <div class="small-6 column right-align">折扣:</div>
-                            <div class="small-6 column left-align">${order.discountPriceString}元</div>
+                            <div class="small-6 column left-align">-${order.discountPriceString}元</div>
                             <div class="small-6 column right-align">总价:</div>
                             <div class="small-6 column left-align">${order.totalPriceString}元</div>
                         </div>
@@ -160,7 +160,11 @@
             <div class="accordion-content center" data-tab-content>
                 <div class="row center">
                     <div class="small-12 columns">
-                        <a class="large warning hollow button confirm" data-id="$!{order.orderId}">确认订单</a>
+                        #if (${order.orderStatus} == "PAYED")
+                            <a class="large warning hollow button confirm" data-id="$!{order.orderId}">确认订单</a>
+                        #else
+                            <a class="large disabled hollow button confirm" data-id="$!{order.orderId}">确认订单</a>
+                        #end
                         <a class="large success hollow button shipping" data-id="$!{order.orderId}">&nbsp;发货&nbsp;</a>
                         <a class="large secondary hollow button cancel" data-id="$!{order.orderId}">取消订单</a>
                     </div>

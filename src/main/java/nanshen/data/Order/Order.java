@@ -212,6 +212,10 @@ public class Order {
     }
 
     public String getDiscountPriceString() {
+        return ViewUtils.priceConverter(discountPrice);
+    }
+
+    public String getDiscountPriceStringNO() {
         return ViewUtils.priceConverterNo(discountPrice);
     }
 
@@ -288,6 +292,10 @@ public class Order {
     }
 
     public String getTotalPriceString() {
+        return ViewUtils.priceConverter(totalPrice);
+    }
+
+    public String getTotalPriceStringNo() {
         return ViewUtils.priceConverterNo(totalPrice);
     }
 

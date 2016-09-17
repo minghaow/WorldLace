@@ -17,3 +17,10 @@
 .log-table {
     width: 100%;
 }
+#discount-btn {
+    background: #6e5847;
+    width: 5rem;
+}
+.help-text {
+    color: #6e5847;
+}

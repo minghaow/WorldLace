@@ -1,4 +1,4 @@
-jQuery( document ).ready(function( $ ) {
+jQuery(document).ready(function($) {
 
     // initialization
     var thisTag = $("#this-tag").html();
@@ -8,12 +8,12 @@ jQuery( document ).ready(function( $ ) {
     var userName = "";
     var phone = "";
     var password = "";
-    var isLogined = $("#is-login").html() == "true";
     var isValidPhone = false;
+    var notyf = new Notyf({delay:3000});
 
     $(".unsupported-section").click(function(event){
         event.preventDefault();
-        presentSuccessModal("抱歉！", "本功能仍然处于开发状态，敬请期待！");
+        presentFailModal("抱歉！", "本功能仍然处于开发状态，敬请期待！");
     });
 
     $(".detail-image-slider .banner-slider ul li").show();
@@ -25,12 +25,58 @@ jQuery( document ).ready(function( $ ) {
     $('.login-btn').on('click', function() {
         $("#animatedModal1").foundation("open");
         setTimeout(function(){
-            $('.lr-close').trigger("click");
             $('#login-form .button').addClass("shake-crazy shake-constant");
         }, 300);
         setTimeout(function(){
             $('#login-form .button').removeClass("shake-crazy shake-constant");
         }, 1000);
+    });
+
+    $('.register-btn2').on('click', function() {
+        $('#offCanvas').foundation('close', function(){});
+        setTimeout(function(){
+            $("#animatedModal2").foundation("open");
+            $('#login-form2 .button').addClass("shake-crazy shake-constant");
+        }, 500);
+        setTimeout(function(){
+            $('#login-form2 .button').removeClass("shake-crazy shake-constant");
+        }, 1000);
+    });
+
+    $('.login-btn2').on('click', function() {
+        $('#offCanvas').foundation('close', function(){});
+        setTimeout(function(){
+            $("#animatedModal2").foundation("open");
+            $('#login-form2 .button').addClass("shake-crazy shake-constant");
+        }, 500);
+        setTimeout(function(){
+            $('#login-form2 .button').removeClass("shake-crazy shake-constant");
+        }, 1000);
+    });
+
+    $("#phone3").focus(function(){
+        isValidPhone = false;
+        $(this).removeClass("successInput alertInput");
+    })
+    .blur(function(){
+        phone = $("#phone3").val().replace(/\s+/g,"");
+        if (phone.length != 11) {
+            inputNotification("#phone3", "#phoneHelpText3", false, "手机号应为11位数字");
+            return;
+        }
+        $.ajax({
+            url: "/auth/isRegistered",
+            type: "POST",
+            data: {"phone":phone},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    inputNotification("#phone3", "#phoneHelpText3", true, "&nbsp");
+                } else {
+                    inputNotification("#phone3", "#phoneHelpText3", false, data.msg);
+                }
+            }
+        });
     });
 
     $('#animatedModal1').on('closed.zf.reveal', function() {
@@ -145,9 +191,8 @@ jQuery( document ).ready(function( $ ) {
                         userName = $("#username").val();
                         toggleRegisterContent(true, 3);
                         registerStep = 3;
-                        $("#animatedModal1").foundation("close");
                     } else {
-                        presentFailModal("抱歉！", data.msg);
+                        notyf.alert("抱歉，" + data.msg);
                         setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
                     }
                 }
@@ -159,13 +204,9 @@ jQuery( document ).ready(function( $ ) {
                 dataType: 'json',
                 success: function(data) {
                     if (data.success == true || data.success == "true") {
-                        $("#animatedModal1").foundation("close");
-                        $("#username-section").html(data.userInfo.username + ", " + data.helloMsg);
-                        $("#login-decide-content").html("登出");
-                        $(".cart-count").html(data.cart.goodsCount);
-                        $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
+                        afterLoginAction(data);
                     } else {
-                        presentFailModal("请登录！", "注册成功，请登录，谢谢！");
+                        notyf.alert("请登录！注册成功，请登录，谢谢！");
                         setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
                     }
                 }
@@ -200,12 +241,7 @@ jQuery( document ).ready(function( $ ) {
             dataType: 'json',
             success: function(data) {
                 if (data.success == true || data.success == "true") {
-                    $("#animatedModal1").foundation("close");
-                    $("#username-section").html(data.userInfo.username + "的订单");
-                    $("#login-decide-content").html("登出");
-                    $(".cart-count").html(data.cart.goodsCount);
-                    $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
-                    $("#user-url").attr("href", "/order/list");
+                    afterLoginAction(data);
                 } else {
                     inputNotification("#password", "#pwdHelpText", false, data.msg);
                 }
@@ -213,66 +249,19 @@ jQuery( document ).ready(function( $ ) {
         });
     });
 
-    $("#register-confirm").on('click', function() {
-        event.preventDefault();
-        $.ajax({
-            url: "/auth/register",
-            type: "POST",
-            data: $("#register-form2").serialize(),
-            dataType: 'json',
-            success: function(data) {
-                if (data.success == true || data.success == "true") {
-                    presentSuccessModal("恭喜您！", "欢迎您加入桃源大家庭！请点击登陆。");
-                } else {
-                    presentFailModal("抱歉！", data.msg);
-                }
-            }
-        });
-    });
-
-    $(".option").on('click', function() {
-        var originPrice = $(this).data("origin");
-        var price = $(this).data("now");
-        var itemId = $(this).data("item-id");
-        var skuId = $(this).data("sku-id");
-        var optionId = $(this).data("option-id");
-        $(".price-before").html("￥" + originPrice);
-        $(".price-after").html("￥" + price);
-        $(".detail-image-h0").attr("src", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-4");
-        $("#detail-image-big-h0").attr("src", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-4");
-        $(".add-to-cart").data("sku-id", skuId);
-        $(".option-button-wrapper button").removeClass("checked");
-        $(this).addClass("checked");
-    });
-
-    $(".lSPager li a img").on('click', function() {
-        alert(1);
-        $(".detail-image-h0").attr("src", currentImgUrl);
-    });
-
-    $(".add-to-cart").on('click', function() {
-        event.preventDefault();
-        if (!isLogined) {
-            $('.login-btn').trigger('click');
-            return;
+    function afterLoginAction(data) {
+        if ($("#this-tag").html() == "my-order") {
+            window.location.reload();
         }
-        var skuId = $(this).data("sku-id");
-        var count = $(this).data("count");
-        $.ajax({
-            url: "/item/addToCart",
-            type: "POST",
-            data: {"skuId":skuId, "count": count},
-            dataType: 'json',
-            success: function(data) {
-                if (data.success == true || data.success == "true") {
-                    $(".cart-count").html(data.cnt);
-                    presentSuccessModal("干得漂亮！", "添加购物车成功");
-                } else {
-                    presentFailModal(data.message, "[  抱歉  ]");
-                }
-            }
-        });
-    });
+        $("#animatedModal1").foundation("close");
+        $("#username-section").html(data.userInfo.username + "的订单");
+        $("#login-decide-content").html("登出");
+        $(".cart-count").html(data.cart.goodsCount);
+        $("#is-login").html("true");
+        $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
+        $("#user-url").attr("href", "/order/list");
+        notyf.confirm("自动登录成功!");
+    }
 
     $("#contact-us-btn").on('click', function() {
         event.preventDefault();

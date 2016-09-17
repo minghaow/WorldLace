@@ -73,7 +73,14 @@
     vertical-align: middle; }
 @media only screen and (max-width: 40em) {
     .features .columns {
-        margin-bottom: 5rem; } }
+        margin-bottom: 5rem; }
+    #body .footer {
+        padding: 1rem;
+    }
+    #body .footer .row div {
+        padding-top: 2rem;
+    }
+}
 .hero {
     background: url("http://www.banksy-wallpaper.com/wallpapers/800x600/10-i-am-father.jpg") no-repeat center center;
     background-size: cover;

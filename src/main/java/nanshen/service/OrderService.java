@@ -41,18 +41,20 @@ public interface OrderService {
      *
      * @param userId user id
      * @param idList goods id list
+     * @param discountCode discount code
      * @return Order
      */
-    Order createOrder(long userId, List<Long> idList);
+    Order createOrder(long userId, List<Long> idList, String discountCode);
 
     /**
      * get all the cart info
      *
      * @param userId user id
      * @param idListString goods id list
+     * @param discountCode discount code
      * @return Order
      */
-    Order createOrder(long userId, String idListString);
+    Order createOrder(long userId, String idListString, String discountCode);
 
     /**
      * start to pay order

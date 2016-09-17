@@ -16,7 +16,16 @@
 </div>
 
 <!-- page contents -->
-<div class="page-content margin-top-large" id="look-detail-page-content">
+<div class="page-content margin-top" id="look-detail-page-content">
+    <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs">
+            <li><a href="/" class="brandColorText"><i class="fi-home"> </i>首页列表</a></li>
+            <li>
+                联系我们
+            </li>
+        </ul>
+    </nav>
+
     <div class="row">
         <!-- Contact Details -->
         <div class="large-9 columns">
@@ -47,7 +56,9 @@
                         </div>
                         <label>要跟我们说的事？</label>
                         <textarea rows="4" name="content" placeholder="十分感谢您的关注和支持！"></textarea>
-                        <button type="submit" class="radius button brandColor" id="contact-us-btn">提交</button>
+                        <div class="row center">
+                            <button type="submit" class="radius button brandColor" id="contact-us-btn">&nbsp;提交&nbsp;</button>
+                        </div>
                     </form>
                 </div>
                 <div class="tabs-panel row small-up-3 medium-up-4 large-up-5" id="panel2">

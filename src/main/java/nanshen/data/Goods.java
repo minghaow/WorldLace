@@ -103,6 +103,10 @@ public class Goods {
     protected long itemId = 0;
 
     @Column
+    /** option id */
+    protected long optionId = 0;
+
+    @Column
     /** option 1 name */
     protected String option1 = "";
 
@@ -363,5 +367,13 @@ public class Goods {
 
     public void setOption2(String option2) {
         this.option2 = option2;
+    }
+
+    public long getOptionId() {
+        return optionId;
+    }
+
+    public void setOptionId(long optionId) {
+        this.optionId = optionId;
     }
 }

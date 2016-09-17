@@ -108,7 +108,7 @@
                 <a href="#" class="accordion-title">确认订单信息</a>
                 <div class="accordion-content" data-tab-content>
                     <div class="row margin-top-small">
-                        <div class="small-8 columns" id="cart-content">
+                        <div class="small-12 columns" id="cart-content">
                             <table cellpadding="0" cellspacing="0" class="scroll">
                                 <thead class="cart-thead center">
                                 <tr>
@@ -122,7 +122,13 @@
                                 <tbody class="cart-tbody center">
                                     #foreach ($goods in $!{order.goodsList})
                                     <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
-                                        <td><img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head" alt="" class="detail-image"></td>
+                                        <td>
+                                            #if ("$!{goods.option1}" != "")
+                                                <img src="$!{imageUrlPrefix}/images/item/itemOption/$!{goods.itemId}/$!{goods.optionId}.jpg@!item-head-4" alt="" class="detail-image">
+                                            #else
+                                                <img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head-4" alt="" class="detail-image">
+                                            #end
+                                        </td>
                                         <td>
                                             <a href="/item?itemId=$!{goods.skuId}" target="_blank">$!{goods.title}</a>
                                             <div>$!{goods.option1}</div>
@@ -148,11 +154,17 @@
     </div>
 
     <div class="row callout secondary">
-        <div class="small-6 columns">&nbsp;</div>
+        <div class="small-4 columns">&nbsp;</div>
         <div class="small-2 columns center">
             共计商品
             <div>
                 <span id="total-count">$!{order.getGoodsCount()}</span>件
+            </div>
+        </div>
+        <div class="small-2 columns center">
+            折扣
+            <div>
+                <span id="total-discount">-$!{order.getDiscountPriceString()}</span>元
             </div>
         </div>
         <div class="small-2 columns center">
@@ -162,7 +174,7 @@
             </div>
         </div>
         <div class="small-2 columns">
-            <input type='submit' value='去支付' class="jz2" id="jz2">
+            <a href="#" class="jz2" id="jz2">提交订单</a>
         </div>
     </div>
     </form>

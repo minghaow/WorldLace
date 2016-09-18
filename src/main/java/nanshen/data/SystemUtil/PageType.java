@@ -35,6 +35,10 @@ public enum PageType {
 
     CONTACT("联系", true),
 
+    WOYANG_HOME("首页", false),
+
+    WOYANG_SEARCH("搜索页", false),
+
     UNKNOWN("未知状态", false);
 
     private String desc;

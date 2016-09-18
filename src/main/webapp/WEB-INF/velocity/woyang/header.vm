@@ -79,9 +79,8 @@
 
         <ul class="off-canvas-list vertical menu">
             <li><label class="first">我样</label></li>
-            <li><a href="/">首页</a></li>
-            <li><a href="/topic">搜索</a></li>
-            <li><a href="/topic">榜单</a></li>
+            <li><a href="/home">首页</a></li>
+            <li><a href="/search">搜索</a></li>
 
             <li><label class="first margin-top-small">我的</label></li>
             <li>
@@ -99,7 +98,11 @@
         </ul>
     </div>
 
+    #if ($!{pageType} == "WOYANG_HOME")
+    <div class="off-canvas-content woyang-home" id="woyang-content" data-off-canvas-content>
+    #else
     <div class="off-canvas-content" id="woyang-content" data-off-canvas-content>
+    #end
         <div class="superHeader hide-for-small-only">
             <div class="top-bar" id="top-bar">
                 <div class="top-bar-left">
@@ -154,12 +157,12 @@
         <div class="menu-wrapper">
             <div class="logo-wrapper">
                 <a href="/">
-                    #if ($!{pageType} == "ITEM_DETAIL")
-                        <img src="$!{imageUrlPrefix}/images/woyang/logo2.jpg" class="hide-for-small-only" alt="桃源网"/>
+                    #if ($!{pageType} == "WOYANG_HOME")
+                        <img src="$!{imageUrlPrefix}/images/woyang/logo2.jpg" class="woyang-home hide-for-medium" alt="桃源网"/>
                     #else
-                        <img src="$!{imageUrlPrefix}/images/woyang/logo2.jpg" class="hide-for-small-only"  alt="桃源网"/>
+                        <img src="$!{imageUrlPrefix}/images/woyang/logo2.jpg" class="hide-for-medium" alt="桃源网"/>
                     #end
-                    <img src="$!{imageUrlPrefix}/images/woyang/logo2.jpg" class="hide-for-medium" alt="桃源网"/>
+                    <img src="$!{imageUrlPrefix}/images/woyang/logo2.jpg" class="hide-for-small-only" alt="桃源网"/>
                 </a>
             </div>
         </div>

@@ -18,7 +18,7 @@
 <div class="woyang-search">
     <ul class="menu">
         <li class="input-wrapper"><input type="search" placeholder="全能商品搜索" value="餐具"></li>
-        <li class="btn-wrapper"><a type="button" class="button" href="/search?s=餐具" target="_blank">搜索</a></li>
+        <li class="btn-wrapper"><a type="button" class="button" href="/search?s=餐具">搜索</a></li>
     </ul>
 </div>
 
@@ -38,7 +38,7 @@
             <li class="tabs-title detail-tab middle-tab">
                 <a href="#comments">
                     <i class="fi-star"></i>
-                    <div class="hide-for-small-only">全网 <span class="redText">${skuItem.getCustomerReviewList().size()}</span> 文章</div>
+                    <div class="hide-for-small-only">全网 <span class="redText">9篇</span> 文章</div>
                     <div class="hide-for-medium">全网文章</div>
                 </a>
             </li>
@@ -116,42 +116,42 @@
             <div class="tabs-panel row" id="comments">
 
                 <div class="row article-list first">
-                    <a href="/topic" target="_blank" class="topic-content">
-                        <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg" alt="红酒杯专题">
+                    <a href="/item?itemId=8" target="_blank" class="topic-content">
+                        <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg" alt="白色主色餐具推荐">
                         <div class="topic-title-cover">
                             <div class="topic-title">
-                                周末放松一下，优雅的喝杯红酒怎样？
+                                世界太嘈杂？纯白色的盘子还你平静
                             </div>
                             <div class="topic-subtitle">
-                                [专题：几百块的葡萄酒，你却在用一次性杯子喝。]
+                                [专题：高档白色主色餐具推荐]
                             </div>
                         </div>
                     </a>
                 </div>
 
                 <div class="row article-list">
-                    <a href="/topic" target="_blank" class="topic-content">
-                        <img src="$!{imageUrlPrefix}/images/slider/slider9.jpg" alt="红酒杯专题">
+                    <a href="/item?itemId=1" target="_blank" class="topic-content">
+                        <img src="$!{imageUrlPrefix}/images/slider/slider9.jpg" alt="日系餐具推荐">
                         <div class="topic-title-cover">
                             <div class="topic-title">
-                                周末放松一下，优雅的喝杯红酒怎样？
+                                在樱花和线条中，这是蓝色的美
                             </div>
                             <div class="topic-subtitle">
-                                [专题：几百块的葡萄酒，你却在用一次性杯子喝。]
+                                [专题：日系餐具推荐]
                             </div>
                         </div>
                     </a>
                 </div>
 
                 <div class="row article-list">
-                    <a href="/topic" target="_blank" class="topic-content">
-                        <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg" alt="红酒杯专题">
+                    <a href="/item?itemId=11" target="_blank" class="topic-content">
+                        <img src="$!{imageUrlPrefix}/images/slider/slider10.jpg" alt="G20峰会原厂同款餐具推荐">
                         <div class="topic-title-cover">
                             <div class="topic-title">
-                                周末放松一下，优雅的喝杯红酒怎样？
+                                G20的餐桌上的山水，只在这里
                             </div>
                             <div class="topic-subtitle">
-                                [专题：几百块的葡萄酒，你却在用一次性杯子喝。]
+                                [专题：G20峰会原厂同款餐具推荐]
                             </div>
                         </div>
                     </a>
@@ -277,4 +277,4 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-#parse("user/footer.vm")
+#parse("woyang/footer.vm")

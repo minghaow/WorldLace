@@ -33,6 +33,7 @@
 .btn-wrapper a:hover,
 .btn-wrapper a:active {
     background: #a61e38;
+    color: white;
 }
 #body .title-bar.woyang-title {
     background: linear-gradient(135deg, #c91f3f, #a50047);
@@ -56,8 +57,8 @@
     background: rgba(201, 31, 63, 0.1);
 }
 #body .detail-tab>a {
-    padding: 1rem 1.5rem;
-    color: #64002c;
+    padding: .7rem 1.5rem;
+    color: #ba1d3a;
 }
 #body .detail-tab>a {
     background: #f2f2f2;
@@ -96,7 +97,7 @@
     background: #eee;
     margin-top: .5rem;
 }
-#woyang-content .menu > li > a {
+#woyang-content .woyang-filter .menu > li > a {
     color: #333;
 }
 #woyang-content .woyang-filter .menu>li {
@@ -109,11 +110,6 @@
 #comments {
     margin-top: 1rem;
     color: #666;
-}
-#product-info p {
-    line-height: 1.5rem;
-    font-weight: 400;
-    text-indent: 2rem;
 }
 .product-artical {
     margin-top: 1.5rem;
@@ -246,12 +242,33 @@
 }
 .article-list {
     margin-top: 1.5rem;
-    /*border-top: 3px solid transparent;*/
-    border-image: linear-gradient(90deg, white, #c91f3f);
-    border-image-slice: 1;
 }
-.topic-title-cover .topic-subtitle {
+.article-list .topic-title-cover .topic-subtitle {
+    border:0;
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(290deg, white, #c91f3f);
     border-image-slice: 1;
+}
+.logo-wrapper img.woyang-home {
+    height: 150px;
+    margin-top: 2rem;
+}
+.woyang-search.woyang-home {
+    padding: 4rem 0;
+    background: white;
+    margin: 0;
+}
+#woyang-content .menu-wrapper {
+    background: white;
+}
+.woyang-home#woyang-content {
+    background-color: #f4f4f4;
+}
+#woyang-content .coming-soon-pic {
+    background: white;
+    padding-top:20%;
+    margin-top: 0;
+}
+.item-description.coming-soon-pic {
+    padding-top: 3rem;
 }

@@ -15,7 +15,7 @@
     <div id="this-tag">$!{pageType}</div>
 </div>
 
-<div class="woyang-search">
+<div class="woyang-search woyang-home">
     <ul class="menu">
         <li class="input-wrapper"><input type="search" placeholder="全能商品搜索，如输入：餐具"></li>
         <li class="btn-wrapper"><a type="button" class="button" href="/search?s=餐具">搜索</a></li>
@@ -35,15 +35,15 @@
     </div>
 </div>
 
-<div class="row margin-top-tiny">
-    <a href="/topic" target="_blank" class="topic-content">
-        <img src="$!{imageUrlPrefix}/images/topic/0/0.jpg" alt="红酒杯专题">
+<div class="row">
+    <a href="/item?itemId=8" target="_blank" class="topic-content">
+        <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg" alt="白色主色餐具推荐">
         <div class="topic-title-cover">
             <div class="topic-title">
-                周末放松一下，优雅的喝杯红酒怎样？
+                世界太嘈杂？纯白色的盘子还你平静
             </div>
             <div class="topic-subtitle">
-                [专题：几百块的葡萄酒，你却在用一次性杯子喝。]
+                [专题：高档白色主色餐具推荐]
             </div>
         </div>
     </a>
@@ -185,7 +185,7 @@
                         我样新品
                     </div>
                 </div>
-                <div class="item-description margin-top">
+                <div class="item-description coming-soon-pic">
                     <div class="item-price margin-top-tiny">
                         <p class="item-price-num-wrapper">
                             <span class="item-price-num">
@@ -204,4 +204,4 @@
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-#parse("user/footer.vm")
+#parse("woyang/footer.vm")

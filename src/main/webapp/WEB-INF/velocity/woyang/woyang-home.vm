@@ -6,48 +6,81 @@
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
-#parse("user/header.vm")
+#parse("woyang/header.vm")
 <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/list.css"/>
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/woyang/common.css"/>
 
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">$!{pageType}</div>
 </div>
 
-<div class="banner">
-
-##    <div class="banner-slider">
-    <div>
-        <ul id="banner-slider">
-            <li>
-                <a href="/item?itemId=8" target="_blank">
-                    <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg@!list-banner-s" alt="钻石系列餐具套装">
-                </a>
-            </li>
-            <li>
-                <a href="/item?itemId=1" target="_blank">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider10.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
-                </a>
-            </li>
-            <li>
-                <a href="/item?itemId=11" target="_blank">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider12.jpg@!list-banner-s" alt="江南颂系列餐具套装">
-                </a>
-            </li>
-            <li>
-                <a href="/item?itemId=10" target="_blank">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider11.jpg@!list-banner-s" alt="银河系列餐具套装">
-                </a>
-            </li>
-            <li>
-                <a href="/item?itemId=1" target="_blank">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider9.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
-                </a>
-            </li>
-        </ul>
-    </div>
-
+<div class="woyang-search">
+    <ul class="menu">
+        <li class="input-wrapper"><input type="search" placeholder="全能商品搜索，如输入：餐具"></li>
+        <li class="btn-wrapper"><a type="button" class="button" href="/search?s=餐具">搜索</a></li>
+    </ul>
 </div>
+
+<nav class="bottom-line-down"></nav>
+
+
+<!-- page contents -->
+<div class="page-content">
+<div class="row list-tagger clearfix margin-top-small">
+    <div>
+        <i class="fi-sound"> </i>
+        专题研究
+        <span class="english-note">Topic Research</span>
+    </div>
+</div>
+
+<div class="row margin-top-tiny">
+    <a href="/topic" target="_blank" class="topic-content">
+        <img src="$!{imageUrlPrefix}/images/topic/0/0.jpg" alt="红酒杯专题">
+        <div class="topic-title-cover">
+            <div class="topic-title">
+                周末放松一下，优雅的喝杯红酒怎样？
+            </div>
+            <div class="topic-subtitle">
+                [专题：几百块的葡萄酒，你却在用一次性杯子喝。]
+            </div>
+        </div>
+    </a>
+</div>
+</div>
+
+##<div class="banner">
+##    <div>
+##        <ul id="banner-slider">
+##            <li>
+##                <a href="/item?itemId=8" target="_blank">
+##                    <img src="$!{imageUrlPrefix}/images/slider/slider8.jpg@!list-banner-s" alt="钻石系列餐具套装">
+##                </a>
+##            </li>
+##            <li>
+##                <a href="/item?itemId=1" target="_blank">
+##                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider10.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
+##                </a>
+##            </li>
+##            <li>
+##                <a href="/item?itemId=11" target="_blank">
+##                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider12.jpg@!list-banner-s" alt="江南颂系列餐具套装">
+##                </a>
+##            </li>
+##            <li>
+##                <a href="/item?itemId=10" target="_blank">
+##                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider11.jpg@!list-banner-s" alt="银河系列餐具套装">
+##                </a>
+##            </li>
+##            <li>
+##                <a href="/item?itemId=1" target="_blank">
+##                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider9.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
+##                </a>
+##            </li>
+##        </ul>
+##    </div>
+##</div>
 
 <!-- page contents -->
 <div class="page-content">
@@ -149,7 +182,7 @@
                         Coming Soon!
                     </div>
                     <div>
-                        桃源还在继续选品...
+                        我样新品
                     </div>
                 </div>
                 <div class="item-description margin-top">
@@ -164,30 +197,6 @@
             </li>
         </ul>
     </div>
-##
-
-##    <div class="item-list margin-top-tiny">
-##        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
-##            #foreach ($imgId in [3..22])
-##                <li class="column" data-equalizer-watch>
-##                    <a href="/item?itemId=1" class="item-image-wrapper">
-##                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
-##                    </a>
-##                    <div class="item-description">
-##                        <div class="item-title">Tescoma Kitchen Stuff</div>
-##                        <div class="item-price margin-top-tiny">
-##                            <p class="item-price-num-wrapper">
-##                                <span class="item-price-num">
-##                                    <span class="item-price-num-current">￥199</span>
-##                                </span>
-##                            </p>
-##                            <hr class="item-price-hr">
-##                        </div>
-##                    </div>
-##                </li>
-##            #end
-##        </ul>
-##    </div>
 
 ##    #include("msgModal.vm")
 

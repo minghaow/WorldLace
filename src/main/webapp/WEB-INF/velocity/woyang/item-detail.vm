@@ -1,0 +1,300 @@
+#* @vtlvariable name="isLogin" type="java.lang.Boolean" *#
+#* @vtlvariable name="tagIdMap" type="java.util.Map<java.lang.Long, java.lang.Boolean>" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.Sku.SkuItem" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="uploader" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/itemDetail.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">orders</div>
+    <div id="is-login">$!{isLogin}</div>
+</div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small" id="look-detail-page-content">
+    <div class="row">
+
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="/" class="brandColorText"><i class="fi-home"> </i>首页列表</a></li>
+                <li>
+                    $!{skuItem.title}
+                </li>
+            </ul>
+        </nav>
+
+        <div class="large-6 medium-7 small-12 columns">
+            <div class="item-slider">
+                <ul id="lightSlider-s">
+                    #foreach ($imgId in [0..$skuItem.getImgCount()])
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
+                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-h$imgId" data-url="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <div class="detail-image-cover" data-id="h$imgId" ></div>
+                        </li>
+                    #end
+                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-thumb-1">
+                            <img class="detail-image" data-id="d$imgId" data-url="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-d$imgId" data-url="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-head-4" alt="${skuItem.title}"/>
+                            <div class="detail-image-cover" data-id="d$imgId" ></div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+        <div class="large-6 medium-5 small-12 columns">
+            <div class="detail-description text-left">
+                <div class="clearfix">
+                    <div class="float-left">
+                        <h3 class="item-detail-title">$!{skuItem.title}</h3>
+                        <div class="item-detail-subtitle">$!{skuItem.subTitle}</div>
+                    </div>
+                    <div class="float-right">
+                        <div class="bdsharebuttonbox" data-tag="share_1">
+                            <button class="hollow button hide-for-small-only" href="#">
+                                <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="clearfix">
+##                    <div class="float-left">
+##                        <span class="uccess label"><i class="fi-like"> </i>全站包邮</span>
+##                        <span class="alert label"><i class="fi-burst-sale"> </i>正品保证</span>
+##                        <span class="warning label"><i class="fi-alert"> </i>破碎补发</span>
+##                    </div>
+                    <div class="price-wrapper float-left">
+                        <span class="price-after"><span class="rmb-sign">￥</span>$!{skuItem.displayPrice}</span>
+                        <span class="price-before">￥$!{skuItem.displayOriginPrice}</span>
+                    </div>
+                    <div class="float-right">
+                        <span class="user-review-star">
+                            <span class="star-1">★</span>
+                            <span class="star-2">★</span>
+                            <span class="star-3">★</span>
+                            <span class="star-4">★</span>
+                            <span class="star-5">★</span>
+                        </span>
+                        <span class="user-review-cnt">&nbsp; 4.8（${skuItem.getCustomerReviewList().size()}个评价）</span>
+                    </div>
+                </div>
+
+                <div class="margin-top-small item-description">
+                    <p>$!{skuItem.description}</p>
+                </div>
+
+                #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} > 1)
+                    <div class="option-button-wrapper clearfix">
+                        #foreach ($sku in $skuItem.getSkuDetailList())
+                            <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
+                                    data-option-id="$sku.optionId" data-item-id="$skuItem.id" data-sku-id="$sku.id">$sku.option1</button>
+                            <img class="hide" src="http://image-cdn.zaitaoyuan.com/images/item/itemOption/${skuItem.id}/${sku.optionId}.jpg@!item-head-thumb-1" alt=""/>
+                        #end
+                    </div>
+                #end
+
+                <hr/>
+
+                <div class="margin-top-small clearfix">
+                    <span class="float-left">
+                        <i class="fi-check greenText"> </i>有货，包邮（<span data-tooltip aria-haspopup="true" class="has-tip" title="新疆、西藏，以及一些偏远地区需要补交少量运费差价"><i class="fi-alert darkGreyText"> </i>少数地区除外</span>）
+                    </span>
+                    <span class="float-right">
+                        月销售<span class="redText"> ${skuItem.getMonthlySalesInfo()} </span>套，累计<span class="redText"> ${skuItem.getTotalSalesInfo()} </span>套
+                    </span>
+                </div>
+
+                <div class="buy-button-wrapper margin-top clearfix">
+                    <div class="float-right">
+##                        <div class="bdsharebuttonbox" data-tag="share_1" style="float:left">
+##                            <button class="secondary hollow button hide-for-small-only" href="#">
+##                                <a data-cmd="weixin"><i class="fi-share"> </i>&nbsp;分享商品&nbsp;</a>
+##                            </button>
+##                        </div>
+                        <button class="alert button add-to-cart" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}"
+                                data-count="1" data-url="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head-thumb-1"><i class="fi-shopping-cart"> </i>&nbsp;加入购物车&nbsp;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row"></div>
+
+        <div class="detail-description">
+            <ul class="tabs" data-tabs id="detail-tabs">
+                <li class="tabs-title detail-tab is-active">
+                    <a href="#product-info" aria-selected="true" class="brandColorText">
+                        <i class="fi-info"></i>
+                        <div>产品信息</div>
+                    </a>
+                </li>
+                <li class="tabs-title detail-tab middle-tab">
+                    <a href="#comments" class="brandColorText">
+                        <i class="fi-star"></i>
+                        <div class="hide-for-small-only">用户 <span class="redText">${skuItem.getCustomerReviewList().size()}</span> 评测</div>
+                        <div class="hide-for-medium">用户评测</div>
+                    </a>
+                </li>
+                <li class="tabs-title detail-tab">
+                    <a href="#notes" class="brandColorText">
+                        <i class="fi-lightbulb"></i>
+                        <div>购买说明</div>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tabs-content" data-tabs-content="detail-tabs">
+                <div class="tabs-panel is-active row" id="product-info">
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">特点</div>
+                        <ul>
+                            $!{skuItem.skuItemDescription.points}
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 column">
+                        <div class="detail-title">产品参数</div>
+                        <ul>
+                            $!{skuItem.skuItemDescription.infos}
+                        </ul>
+                    </div>
+
+                    <div class="small-12 column product-artical">
+                        $!{skuItem.skuItemDescription.description}
+                    </div>
+##                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
+##                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
+##                    #end
+                </div>
+
+                <div class="tabs-panel row" id="comments">
+                    <div class="small-12 column">
+                        <div class="detail-title">综合评分</div>
+                        <div class="rating rating-4-half">
+                            <i class="star-1">★</i>
+                            <i class="star-2">★</i>
+                            <i class="star-3">★</i>
+                            <i class="star-4">★</i>
+                            <i class="star-5">★</i>
+                            <span class="user-">4.5</span>
+                        </div>
+                    </div>
+
+                    <div class="small-12 column">
+                        <div class="detail-title">超级体验馆计划</div>
+                        <ul>
+                            <li>用户上传使用感受过后，便会自动加入我们的超级体验官计划。我们网站后续上线的每个产品都会在上线前，在超级体验官中挑选几位对新产品进行免费试用。</li>
+                            <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 column aniimated-thumbnials">
+                        <div class="detail-title">用户评分</div>
+
+                        #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
+                        #foreach ($customerReview in $skuItem.getCustomerReviewList())
+                            <div class="row customer-review-list customer-review-${customerReview.id}" >
+                                <div class="small-2 medium-1 column user-review-info">
+                                    <img src="/images/user/head.jpg" alt=""/>
+                                    <span class="hide-for-small-only">$customerReview.username</span>
+                                    <span class="hide-for-small-only">$customerReview.convertedCreateTime</span>
+                                </div>
+                                <div class="small-10 medium-10 column">
+                                    <a href="/review?reviewId=$customerReview.id">
+                                        $customerReview.customerReviewDetail.content
+                                    </a>
+
+                                    #if ("$customerReview.getCustomerReviewImgList()" != "" && $customerReview.getCustomerReviewImgList().size() > 0)
+                                    <div>
+                                        #foreach ($img in $customerReview.getCustomerReviewImgList())
+                                            <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
+                                                <img src="$!{imageUrlPrefix}/$img.imgKey" />
+                                            </a>
+                                        #end
+                                    </div>
+                                    #end
+                                </div>
+                            </div>
+                        #end
+                        #else
+                        <div class="row">
+                            暂无用户评分
+                        </div>
+                        #end
+
+                    </div>
+                </div>
+
+                <div class="tabs-panel row" id="notes">
+                    <div class="small-12 medium-6 columns">
+                        <div class="detail-title">发货时间</div>
+                        <ul>
+                            #if ("$!{skuItem.skuItemDescription.shipSpeed}" == "")
+                                <li>显示有货时，发货时间24小时之内，极少数时间可能会延长到48小时之内</li>
+                                <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                            #else
+                                $!{skuItem.skuItemDescription.shipSpeed}
+                            #end
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <div class="detail-title">购买注意</div>
+                        <ul>
+                            #if ("$!{skuItem.skuItemDescription.notice}" != "")
+                                $!{skuItem.skuItemDescription.notice}
+                            #else
+                                无
+                            #end
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 columns end">
+                        <div class="detail-title">邮费说明</div>
+                        <ul>
+                            <li>桃源全站全国包邮（极个别地区除外，地区包括：西藏北部等，如有需要，请联系客服购买）</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 medium-6 columns end">
+                        <div class="detail-title">包装说明</div>
+                        <ul>
+                            #if ("$!{skuItem.skuItemDescription.packageInfo}" == "")
+                                <li>我们使用精选的环保纸盒包装</li>
+                                <li>可以联系客服，在包装中添加自定义祝福，送给你爱的人</li>
+                            #else
+                                $!{skuItem.skuItemDescription.packageInfo}
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script type="text/javascript">
+    var jiathis_config = {
+        summary:"",
+        shortUrl:false,
+        hideMore:false,
+        data_track_clickback:'true'
+    }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/user/item-detail.js" charset="utf-8"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/jquery.fly.min.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+#parse("user/footer.vm")

@@ -1,0 +1,107 @@
+@media only screen and (min-width: 40.063em) {
+}
+@media only screen and (max-width: 40em) {
+}
+.page-content {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 300px;
+    text-align: center;
+    margin: auto;
+}
+.woyang-search {
+    margin-bottom: 1rem;
+}
+.woyang-search .menu .input-wrapper {
+    width: 79%;
+    display: inline-block;
+    margin-left: 1%;
+}
+.woyang-search .menu .input-wrapper input {
+    border: 1px solid #e2a8b3;
+}
+.woyang-search .menu .btn-wrapper {
+    width: 18%;
+    display: inline-block;
+}
+.btn-wrapper a {
+    width: 100%;
+    margin: 0;
+    background: #c21f3e;
+    cursor: pointer;
+}
+.btn-wrapper a:hover,
+.btn-wrapper a:active {
+    background: #a61e38;
+}
+#body .title-bar.woyang-title {
+    background: linear-gradient(135deg, #c91f3f, #a50047);
+    /*background-image: image("/images/woyang/1.png");*/
+    /*background: url("/images/woyang/3.png") #a50047;*/
+    background-position: 60%;
+}
+#woyang-content .bottom-line-down {
+    height: 3px;
+    background-color: #c91f3f;
+    z-index: 100;
+}
+#woyang-content .page-content {
+    min-height: 200px;
+    margin-bottom: 3rem;
+}
+.detail-tab {
+    width: 33.33%;
+}
+#body .detail-tab>a:focus, #body .detail-tab>a:hover, #body .detail-tab>a[aria-selected=true] {
+    background: rgba(201, 31, 63, 0.1);
+}
+#body .detail-tab>a {
+    padding: 1rem 1.5rem;
+    color: #64002c;
+}
+#body .detail-tab>a {
+    background: #f2f2f2;
+    text-align: center;
+}
+.detail-description ul li a {
+    font-size: 14px;
+    font-weight: 600;
+}
+#body .detail-tab>a i {
+    font-size: 1.6rem;
+}
+#body .detail-tab>a div {
+    line-height: 1.6rem;
+    vertical-align: middle;
+}
+#woyang-content .tabs-panel {
+    padding: 0;
+}
+#body .item-price-num-current {
+    color: #c91f3f;
+}
+.item-like {
+    margin-top: -.5rem;
+    margin-bottom: .1rem;
+}
+#woyang-content .sale-box span.on_sale {
+    background: rgba(167, 106, 106, 0.73);
+}
+.item-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+.woyang-filter {
+    background: #eee;
+    margin-top: .5rem;
+}
+#woyang-content .menu > li > a {
+    color: #333;
+}
+#woyang-content .woyang-filter .menu>li {
+    margin-right: 1rem;
+}
+.woyang-filter .menu.submenu {
+    z-index: 10;
+}

@@ -1,0 +1,224 @@
+#* @vtlvariable name="skuInfoList" type="java.util.List<nanshen.data.Sku.SkuItem>" *#
+#* @velocityproperties path="/WEB-INF/velocity" *#
+#* @vtlvariable name="pageType" type="nanshen.data.SystemUtil.PageType" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+
+#parse("woyang/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/list.css"/>
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/woyang/common.css"/>
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">$!{pageType}</div>
+</div>
+
+<div class="woyang-search">
+    <ul class="menu">
+        <li class="input-wrapper"><input type="search" placeholder="全能商品搜索" value="餐具"></li>
+        <li class="btn-wrapper"><a type="button" class="button" href="/search?s=餐具" target="_blank">搜索</a></li>
+    </ul>
+</div>
+
+<nav class="bottom-line-down"></nav>
+
+
+<!-- page contents -->
+<div class="page-content">
+    <div class="detail-description">
+        <ul class="tabs" data-tabs id="detail-tabs">
+            <li class="tabs-title detail-tab is-active">
+                <a href="#product-info" aria-selected="true">
+                    <i class="fi-info"></i>
+                    <div>排行</div>
+                </a>
+            </li>
+            <li class="tabs-title detail-tab middle-tab">
+                <a href="#comments">
+                    <i class="fi-star"></i>
+                    <div class="hide-for-small-only">全网 <span class="redText">${skuItem.getCustomerReviewList().size()}</span> 文章</div>
+                    <div class="hide-for-medium">全网文章</div>
+                </a>
+            </li>
+            <li class="tabs-title detail-tab">
+                <a href="#notes">
+                    <i class="fi-lightbulb"></i>
+                    <div>达人推荐</div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="detail-tabs">
+            <div class="tabs-panel is-active" id="product-info">
+                <div class="woyang-filter">
+                    <ul class="dropdown menu" data-dropdown-menu data-autoclose="false" data-click-open="true" data-close-on-click="true">
+                        <li>
+                            <a href="#">风格</a>
+                            <ul class="menu">
+                                <li><a href="#">北欧</a></li>
+                                <li><a href="#">现代简约</a></li>
+                                <li><a href="#">日式禅意</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">价位</a>
+                            <ul class="menu">
+                                <li><a href="#">0-100</a></li>
+                                <li><a href="#">100-300</a></li>
+                                <li><a href="#">300-500</a></li>
+                                <li><a href="#">500+</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">排序</a>
+                            <ul class="menu">
+                                <li><a href="#">销量</a></li>
+                                <li><a href="#">喜欢</a></li>
+                                <li><a href="#">好评率</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div class="item-list margin-top-tiny">
+                    <ul class="row large-up-4 medium-up-3 small-up-2">
+                        #foreach ($skuInfo in $skuInfoList)
+                            #if ($velocityCount <= 8)
+                                <li class="column">
+                                    <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
+                                        #if ($velocityCount == 1 || $velocityCount == 2)
+                                            <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
+                                        #end
+                                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail-3" alt="$skuInfo.title"/>
+                                    </a>
+                                    <div class="item-description">
+                                        <div class="item-like"><i class="fi-heart"> </i> 249人喜欢</div>
+
+                                        <div class="item-title">$skuInfo.getTitle()</div>
+                                        <div class="item-price">
+                                            <p class="item-price-num-wrapper">
+                                                <span class="item-price-num">
+                                                    <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
+                                                </span>
+                                            </p>
+                                            <hr class="item-price-hr">
+                                        </div>
+                                    </div>
+                                </li>
+                            #end
+                        #end
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tabs-panel row" id="comments">
+                <div class="small-12 column">
+                    <div class="detail-title">综合评分</div>
+                    <div class="rating rating-4-half">
+                        <i class="star-1">★</i>
+                        <i class="star-2">★</i>
+                        <i class="star-3">★</i>
+                        <i class="star-4">★</i>
+                        <i class="star-5">★</i>
+                        <span class="user-">4.5</span>
+                    </div>
+                </div>
+
+                <div class="small-12 column">
+                    <div class="detail-title">超级体验馆计划</div>
+                    <ul>
+                        <li>用户上传使用感受过后，便会自动加入我们的超级体验官计划。我们网站后续上线的每个产品都会在上线前，在超级体验官中挑选几位对新产品进行免费试用。</li>
+                        <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                    </ul>
+                </div>
+                <div class="small-12 column aniimated-thumbnials">
+                    <div class="detail-title">用户评分</div>
+
+                    #if ("$!{skuItem.getCustomerReviewList()}" != "" && $!{skuItem.getCustomerReviewList().size()} > 0)
+                        #foreach ($customerReview in $skuItem.getCustomerReviewList())
+                            <div class="row customer-review-list customer-review-${customerReview.id}" >
+                                <div class="small-2 medium-1 column user-review-info">
+                                    <img src="/images/user/head.jpg" alt=""/>
+                                    <span class="hide-for-small-only">$customerReview.username</span>
+                                    <span class="hide-for-small-only">$customerReview.convertedCreateTime</span>
+                                </div>
+                                <div class="small-10 medium-10 column">
+                                    <a href="/review?reviewId=$customerReview.id">
+                                        $customerReview.customerReviewDetail.content
+                                    </a>
+
+                                    #if ("$customerReview.getCustomerReviewImgList()" != "" && $customerReview.getCustomerReviewImgList().size() > 0)
+                                        <div>
+                                            #foreach ($img in $customerReview.getCustomerReviewImgList())
+                                                <a href="$!{imageUrlPrefix}/$img.imgKey" class="review-img">
+                                                    <img src="$!{imageUrlPrefix}/$img.imgKey" />
+                                                </a>
+                                            #end
+                                        </div>
+                                    #end
+                                </div>
+                            </div>
+                        #end
+                    #else
+                        <div class="row">
+                            暂无用户评分
+                        </div>
+                    #end
+
+                </div>
+            </div>
+
+            <div class="tabs-panel row" id="notes">
+                <div class="small-12 medium-6 columns">
+                    <div class="detail-title">发货时间</div>
+                    <ul>
+                        #if ("$!{skuItem.skuItemDescription.shipSpeed}" == "")
+                            <li>显示有货时，发货时间24小时之内，极少数时间可能会延长到48小时之内</li>
+                            <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                        #else
+                            $!{skuItem.skuItemDescription.shipSpeed}
+                        #end
+                    </ul>
+                </div>
+                <div class="small-12 medium-6 columns">
+                    <div class="detail-title">购买注意</div>
+                    <ul>
+                        #if ("$!{skuItem.skuItemDescription.notice}" != "")
+                            $!{skuItem.skuItemDescription.notice}
+                        #else
+                            无
+                        #end
+                    </ul>
+                </div>
+                <div class="small-12 medium-6 columns end">
+                    <div class="detail-title">邮费说明</div>
+                    <ul>
+                        <li>桃源全站全国包邮（极个别地区除外，地区包括：西藏北部等，如有需要，请联系客服购买）</li>
+                    </ul>
+                </div>
+                <div class="small-12 medium-6 columns end">
+                    <div class="detail-title">包装说明</div>
+                    <ul>
+                        #if ("$!{skuItem.skuItemDescription.packageInfo}" == "")
+                            <li>我们使用精选的环保纸盒包装</li>
+                            <li>可以联系客服，在包装中添加自定义祝福，送给你爱的人</li>
+                        #else
+                            $!{skuItem.skuItemDescription.packageInfo}
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+##    #include("msgModal.vm")
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+#parse("user/footer.vm")

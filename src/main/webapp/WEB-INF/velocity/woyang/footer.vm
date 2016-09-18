@@ -1,0 +1,194 @@
+<!-- footer -->
+<section class="top-footer hide-for-small-only">
+    <div class="row features">
+        <div class="small-12 medium-4 columns">
+            <div class="round-icon">
+                <span class="fi-trophy"></span>
+            </div>
+            <h3>高品质</h3>
+            <hr>
+            <p>平台上的每一款产品，都是公司员工长期试用过后满意方才入选桃源精品库，无论是设计还是工艺，您都大可放心</p>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="round-icon">
+                <span class="fi-trees"></span>
+            </div>
+            <h3>安全环保</h3>
+            <hr>
+            <p>每一款产品，都经过领域内10年+经验的专业人员严格筛选，以确保商品的安全环保</p>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <div class="round-icon">
+                <span class="fi-loop"></span>
+            </div>
+            <h3>七天无忧退换</h3>
+            <hr>
+            <p>凡在桃源网购买的商品，全部七天无理由退换，并且我们已为用户承保退货险，完全不用担心邮费问题</p>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="row">
+        <div class="small-12 medium-6 large-5 columns">
+            <p class="logo"><i class="fi-shield"></i> 桃源网
+                <span class="about subheader">做中国最有良心的餐厨用品平台。</span>
+            </p>
+            <p class="footer-links">
+                <a href="/">主页</a>
+                <a href="/topic">专题</a>
+                <a href="#">常见问题</a>
+                <a href="/contact">联系我们</a>
+            </p>
+            <p class="copywrite">北京明昊天地科技有限公司，京ICP备16000451号-1</p>
+            <p class="copywrite">Copywrite © 2015-2019. All rights Reserved.</p>
+        </div>
+        <div class="small-12 medium-6 large-4 columns">
+            <ul class="contact">
+                <li><p><i class="fi-marker"></i>北京市海淀区中关村大街2号</p></li>
+                <li><p><i class="fi-telephone"></i>+1-138-1144-889儿</p></li>
+                <li><p><i class="fi-mail"></i>admin@zaitaoyuan.com</p></li>
+            </ul>
+        </div>
+        <div class="small-12 medium-12 large-3 columns">
+            <ul class="inline-list social">
+                <p class="about subheader">微信公众号，关注我们：</p>
+                <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- end of mobile header -->
+</div>
+</div>
+</div>
+
+
+<script src="$!{cssUrlPrefix}/script/vendor/foundation.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lightgallery.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/lg-thumbnail.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/notyf.min.js"></script>
+<script>
+    $(document).foundation();
+    jQuery(document).ready(function($) {
+        $('#banner-slider').lightSlider({
+            adaptiveHeight:true,
+            item:1,
+            slideMargin:0,
+            loop:true,
+            responsive : [
+                {
+                    breakpoint:500,
+                    settings: {
+                        controls: false
+                    }
+                }
+            ]
+        });
+        $('#lightSlider-s').lightSlider({
+            gallery: true,
+            vThumbWidth:80,
+            item: 1,
+            loop: true,
+            slideMargin: 0,
+            thumbItem:6,
+            enableDrag: true,
+            controls: true,
+            auto: false,
+            adaptiveHeight:false,
+            onBeforeSlide: function (el) {
+                var detailImage = $(".detail-image-wrapper.active .detail-image");
+                var detailImageBig = $(".detail-image-wrapper.active .detail-image-big");
+                detailImage.attr("src", detailImage.data("url"));
+                detailImageBig.attr("src", detailImageBig.data("url"));
+            },
+            responsive : [
+                {
+                    breakpoint:500,
+                    settings: {
+                        controls: false
+                    }
+                }
+            ]
+//            addClass: "show-for-small-only"
+        });
+
+        $("#lightSlider-s .detail-image-wrapper .detail-image").show();
+        $(".hide-before-js-ready").show();
+
+        var detailImageWrapper = $(".lSSlideWrapper");
+        var detailImageHeight = detailImageWrapper.height();
+        var detailImageWidth = detailImageWrapper.width();
+        var detailImageTop = detailImageWrapper.prop("offsetTop");
+        var detailImageLeft = detailImageWrapper.prop("offsetLeft");
+
+        $(".detail-image-cover").mouseenter(function(e) {
+            var id = $(this).data("id");
+            $("#detail-image-big-" + id).show();
+        }).mouseleave(function() {
+            var id = $(this).data("id");
+            $("#detail-image-big-" + id).hide();
+        }).mousemove(function(e) {
+            var id = $(this).data("id");
+            var relativeTop = e.pageY - detailImageTop;
+            var relativeLeft = e.pageX - detailImageLeft;
+            var bigImgHeight = $("#detail-image-big-" + id).height();
+            var bigImgWidth = $("#detail-image-big-" + id).width();
+            var absoluteTop = (detailImageHeight - bigImgHeight / bigImgWidth * 1000) * relativeTop / detailImageHeight;
+            var absoluteLeft = (detailImageWidth - 1000) * relativeLeft / detailImageWidth;
+            $("#detail-image-big-" + id).css({top: absoluteTop, left: absoluteLeft});
+        });
+    });
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    window._bd_share_config = {
+        common : {
+            bdText : '桃源网 - $!{skuItem.title}',
+            bdDesc : '$!{skuItem.subTitle}',
+            bdUrl : window.location.href,
+            bdPic : '$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head'
+        },
+        share : [{
+            "bdSize" : 16,
+            "bdCustomStyle" : "javascript:void(0)"
+        }]
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    var $successModal = $("#successModal"),
+        $successHdr = $("#successHdr"),
+        $successMsg = $("#successMsg"),
+        $failModal = $("#failModal"),
+        $failHdr = $("#failHdr"),
+        $failMsg = $("#failMsg");
+
+    function presentSuccessModal(header, message) {
+            $successHdr.html(header);
+            $successMsg.html(message);
+            $successModal.foundation("open");
+    }
+    function presentFailModal(header, message) {
+            $failHdr.html(header);
+            $failMsg.html(message);
+            $failModal.foundation('open');
+    }
+    function hideSuccessModal() {
+            $successModal.foundation("close");
+    }
+    function hideFailModal() {
+            $failModal.foundation('close');
+    }
+    $('.aniimated-thumbnials').lightGallery({
+        thumbnail: true,
+        selector: '.review-img'
+    });
+</script>
+<script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
+<script src="$!{cssUrlPrefix}/script/user/common.js"></script>
+</body>
+</html>

@@ -41,4 +41,5 @@ public interface CustomerReviewDao {
 
     boolean publish(long reviewId);
 
+    CustomerReview getByUserIdAndOrderId(long userId, long orderId);
 }

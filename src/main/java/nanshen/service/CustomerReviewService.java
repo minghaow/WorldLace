@@ -22,22 +22,33 @@ public interface CustomerReviewService {
      *
      * @return ExecResult<CustomerReview>
      */
-    ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo);
+    ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long orderId);
 
     /**
      * add new customer review to a sku
      *
      * @return ExecResult<CustomerReview>
      */
-    ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long itemId, long skuId);
+    ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long orderId, long itemId, long skuId);
 
     /**
      * add new customer review to a sku
      *
      * @return ExecResult<CustomerReview>
      */
-    ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long itemId, long skuId, String title, String content,
-                                                    long skuStar, long shippingStar);
+    ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long orderId, long itemId, long skuId, String title,
+                                                    String content, long skuStar, long shippingStar);
+
+    /**
+     * Get customer review by order id and item id
+     *
+     * @param userInfo logined user info
+     * @param orderId order id
+     * @param itemId item id
+     * @param skuId sku id
+     * @return CustomerReview
+     */
+    CustomerReview getByOrderIdAndItemId(UserInfo userInfo, long orderId, long itemId, long skuId);
 
     /**
      * delete customer review to a sku

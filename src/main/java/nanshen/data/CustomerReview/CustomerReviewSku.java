@@ -28,6 +28,10 @@ public class CustomerReviewSku {
     @Column
     private long skuId;
 
+    /** star */
+    @Column
+    private int star;
+
     /** 添加时间 */
     @Column
     private Date createTime = new Date();
@@ -79,5 +83,13 @@ public class CustomerReviewSku {
 
     public void setItemId(long itemId) {
         this.itemId = itemId;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
     }
 }

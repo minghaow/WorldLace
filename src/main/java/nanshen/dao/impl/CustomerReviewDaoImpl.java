@@ -159,4 +159,12 @@ public class CustomerReviewDaoImpl extends BaseDao implements CustomerReviewDao 
         return 1 == dao.update(CustomerReview.class, chn, cnd);
     }
 
+    @Override
+    public CustomerReview getByUserIdAndOrderId(long userId, long orderId) {
+        Condition condition = Cnd
+                .where("orderId", "=", orderId)
+                .and("userId", "=", userId);
+        return dao.fetch(CustomerReview.class, condition);
+    }
+
 }

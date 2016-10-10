@@ -164,7 +164,7 @@ public abstract class BaseCtrl {
 		model.addAttribute("cart", getCartInfo());
 		model.addAttribute("imageUrlPrefix", "http://image-cdn.zaitaoyuan.com");
 //		model.addAttribute("imageUrlPrefix", "");
-		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");
-//		model.addAttribute("cssUrlPrefix", "");
+//		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");
+		model.addAttribute("cssUrlPrefix", "");
 	}
 }

@@ -74,8 +74,8 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
 
 
     @Override
-    public ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo) {
-        CustomerReview customerReview = new CustomerReview(userInfo.getId(), userInfo.getUsername());
+    public ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long orderId) {
+        CustomerReview customerReview = new CustomerReview(orderId, userInfo.getId(), userInfo.getUsername());
         customerReview = customerReviewDao.insert(customerReview);
         if (customerReview != null) {
             return ExecResult.succ(customerReview);
@@ -84,15 +84,15 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
     }
 
     @Override
-    public ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long itemId, long skuId) {
-        CustomerReview customerReview = new CustomerReview(userInfo.getId(), userInfo.getUsername());
+    public ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long orderId, long itemId, long skuId) {
+        CustomerReview customerReview = new CustomerReview(orderId, userInfo.getId(), userInfo.getUsername());
         return addNewCustomerReview(itemId, skuId, customerReview);
     }
 
     @Override
-    public ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long itemId, long skuId, String title,
+    public ExecResult<CustomerReview> addNewCustomerReview(UserInfo userInfo, long orderId, long itemId, long skuId, String title,
                                                            String content, long skuStar, long shippingStar) {
-        CustomerReview customerReview = new CustomerReview(title, userInfo.getId(), userInfo.getUsername(), skuStar, shippingStar);
+        CustomerReview customerReview = new CustomerReview(orderId, title, userInfo.getId(), userInfo.getUsername(), skuStar, shippingStar);
         return addNewCustomerReview(itemId, skuId, customerReview);
     }
 
@@ -174,6 +174,23 @@ public class CustomerReviewServiceImpl implements CustomerReviewService {
     @Override
     public CustomerReview getByReviewId(long reviewId) {
         CustomerReview customerReview = customerReviewDao.getByReviewId(reviewId);
+        CustomerReviewDetail customerReviewDetail = customerReviewDetailDao.getByReviewId(reviewId);
+        List<CustomerReviewImg> customerReviewImgList = customerReviewImgDao.getByReviewId(reviewId);
+        List<CustomerReviewSku> customerReviewSkuList = customerReviewSkuDao.getByReviewId(reviewId);
+        customerReview.setCustomerReviewDetail(customerReviewDetail);
+        customerReview.setCustomerReviewImgList(customerReviewImgList);
+        customerReview.setCustomerReviewSkuList(customerReviewSkuList);
+        return customerReview;
+    }
+
+    @Override
+    public CustomerReview getByOrderIdAndItemId(UserInfo userInfo, long orderId, long itemId, long skuId) {
+        CustomerReview customerReview = customerReviewDao.getByUserIdAndOrderId(userInfo.getId(), orderId);
+        return getByReviewIdAndItemIdAndSkuId(customerReview, itemId, skuId);
+    }
+
+    public CustomerReview getByReviewIdAndItemIdAndSkuId(CustomerReview customerReview, long itemId, long skuId) {
+        long reviewId = customerReview.getId();
         CustomerReviewDetail customerReviewDetail = customerReviewDetailDao.getByReviewId(reviewId);
         List<CustomerReviewImg> customerReviewImgList = customerReviewImgDao.getByReviewId(reviewId);
         List<CustomerReviewSku> customerReviewSkuList = customerReviewSkuDao.getByReviewId(reviewId);

@@ -72,7 +72,8 @@ public class CustomerReviewCtrl extends BaseCtrl {
 								  @RequestParam(defaultValue = "0", required = true) long skuId) {
 		UserInfo userInfo = getLoginedUser();
 		if (userInfo != null) {
-			ExecResult<CustomerReview> customerReviewExecResult = customerReviewService.addNewCustomerReview(userInfo, itemId, skuId);
+//			ExecResult<CustomerReview> customerReviewExecResult = customerReviewService.getByOrderIdAndItemId(userInfo, orderId, itemId, skuId);
+			ExecResult<CustomerReview> customerReviewExecResult = customerReviewService.addNewCustomerReview(userInfo, orderId, itemId, skuId);
 			Order order = orderService.getByOrderId(orderId);
 			for (Goods goods : order.getGoodsList()) {
 				if (goods.getSkuId() == skuId) {

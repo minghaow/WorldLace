@@ -81,7 +81,7 @@
                             $!{goods.convertedPrice}
                         </td>
                         <td>
-                            <a href="/order/review/create?orderId=$!{order.orderId}&itemId=$!{goods.itemId}&skuId=$!{goods.skuId}" class="button hollow brandColor" target="_blank">去评价</a>
+                            <a href="/review/create?orderId=$!{order.orderId}&itemId=$!{goods.itemId}&skuId=$!{goods.skuId}" class="button hollow brandColor" target="_blank">去评价</a>
                         </td>
                     </tr>
                     #end

@@ -50,7 +50,8 @@
 
         <br/>
         ${success}
-        ${customerReview}
+        ${customerReview.title}
+        ${customerReview.customerReviewDetail.content}
 
         <div id="main-title" data-editable data-name="title">
             <p>Hahahahahhh</p>

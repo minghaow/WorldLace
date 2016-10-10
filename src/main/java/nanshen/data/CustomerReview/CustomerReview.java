@@ -23,6 +23,10 @@ public class CustomerReview {
     @Column
     private long userId;
 
+    /** 订单号 */
+    @Column
+    private long orderId = 0;
+
     /** 用户名 */
     @Column
     private String username = "";
@@ -35,13 +39,13 @@ public class CustomerReview {
     @Column
     private long viewCnt = 0;
 
-    /** 商品评星 */
-    @Column
-    private long skuStar = 0;
-
     /** 物流评星 */
     @Column
     private long shippingStar = 0;
+
+    /** 商品评星 */
+    @Column
+    private long skuStar = 0;
 
     /** 标题 */
     @Column
@@ -68,12 +72,14 @@ public class CustomerReview {
     public CustomerReview() {
     }
 
-    public CustomerReview(long userId, String username) {
+    public CustomerReview(long orderId, long userId, String username) {
+        this.orderId = orderId;
         this.userId = userId;
         this.username = username;
     }
 
-    public CustomerReview(String title, long userId, String username, long skuStar, long shippingStar) {
+    public CustomerReview(long orderId, String title, long userId, String username, long skuStar, long shippingStar) {
+        this.orderId = orderId;
         this.title = title;
         this.userId = userId;
         this.username = username;
@@ -181,19 +187,27 @@ public class CustomerReview {
         this.shippingStar = shippingStar;
     }
 
-    public long getSkuStar() {
-        return skuStar;
-    }
-
-    public void setSkuStar(long skuStar) {
-        this.skuStar = skuStar;
-    }
-
     public boolean isPublished() {
         return isPublished;
     }
 
     public void setIsPublished(boolean isPublished) {
         this.isPublished = isPublished;
+    }
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
+
+    public long getSkuStar() {
+        return skuStar;
+    }
+
+    public void setSkuStar(long skuStar) {
+        this.skuStar = skuStar;
     }
 }

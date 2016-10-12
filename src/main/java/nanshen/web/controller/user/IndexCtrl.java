@@ -30,20 +30,20 @@ public class IndexCtrl extends BaseCtrl {
 		return new ModelAndView("user/list");
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView woYangHome(ModelMap model, @RequestParam(defaultValue = "1", required = true) int page) {
-		List<SkuItem> skuInfoList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(page));
-		prepareHeaderModel(model, PageType.WOYANG_HOME);
-		model.addAttribute("skuInfoList", skuInfoList);
-		return new ModelAndView("woyang/woyang-home");
-	}
-
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView woYangSearch(ModelMap model, @RequestParam(defaultValue = "餐具", required = true) String s) {
-		List<SkuItem> skuInfoList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(0));
-		prepareHeaderModel(model, PageType.WOYANG_SEARCH);
-		model.addAttribute("skuInfoList", skuInfoList);
-		return new ModelAndView("woyang/woyang-search");
-	}
+//	@RequestMapping(value = "/home", method = RequestMethod.GET)
+//	public ModelAndView woYangHome(ModelMap model, @RequestParam(defaultValue = "1", required = true) int page) {
+//		List<SkuItem> skuInfoList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(page));
+//		prepareHeaderModel(model, PageType.WOYANG_HOME);
+//		model.addAttribute("skuInfoList", skuInfoList);
+//		return new ModelAndView("woyang/woyang-home");
+//	}
+//
+//	@RequestMapping(value = "/search", method = RequestMethod.GET)
+//	public ModelAndView woYangSearch(ModelMap model, @RequestParam(defaultValue = "餐具", required = true) String s) {
+//		List<SkuItem> skuInfoList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(0));
+//		prepareHeaderModel(model, PageType.WOYANG_SEARCH);
+//		model.addAttribute("skuInfoList", skuInfoList);
+//		return new ModelAndView("woyang/woyang-search");
+//	}
 
 }

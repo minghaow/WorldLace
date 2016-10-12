@@ -13,14 +13,23 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    #if ($!{pageType} == "ITEM_DETAIL")
-        <title>$!{skuItem.title} | 桃源网 - 精选品质餐具</title>
-        <meta name="keywords" content="餐具，餐厨用品，厨具，送父母，送老婆，送朋友，送领导，幸福感，高端餐具，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
-        <meta name="description" content="桃源网，品质餐厨用品专家。精选品牌餐具厨具，以厂家直销的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。搬家送礼，送父母，选年货，送领导，选品质礼物来桃源，精装餐具，品质感好极了！" />
+##    #if ($!{pageType} == "ITEM_DETAIL")
+##        <title>$!{skuItem.title} | 桃源网 - 精选品质餐具</title>
+##        <meta name="keywords" content="餐具，餐厨用品，厨具，送父母，送老婆，送朋友，送领导，幸福感，高端餐具，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
+##        <meta name="description" content="桃源网，品质餐厨用品专家。精选品牌餐具厨具，以厂家直销的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。搬家送礼，送父母，选年货，送领导，选品质礼物来桃源，精装餐具，品质感好极了！" />
+##    #else
+##        <title>IT'LACE 世界蕾丝时尚</title>
+##        <meta name="keywords" content="餐具，餐厨用品，厨具，送父母，送老婆，送朋友，送领导，幸福感，高端餐具，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
+##        <meta name="description" content="桃源网，品质餐厨用品专家。精选品牌餐具厨具，以厂家直销的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。搬家送礼，送父母，选年货，送领导，选品质礼物来桃源，精装餐具，品质感好极了！" />
+##    #end
+    #if ($!{en})
+        <title>IT'LACE | World Lace Fashion</title>
+        <meta name="keywords" content="Lace, Fashion, italy, IT'LACE" />
+        <meta name="description" content="World Lace Fashion Technology Development (Beijing) Co.,Ltd is found in 2016. The company focuses on improving the quality of  female life. It provides modern women with upgraded products combined with fashion and technology. The products range from clothing, accessories to household products selection.  The company has close cooperation with upstream companies in order to provide a quality guarantee from raw materials." />
     #else
-        <title>桃源网 - 精选品质餐具</title>
-        <meta name="keywords" content="餐具，餐厨用品，厨具，送父母，送老婆，送朋友，送领导，幸福感，高端餐具，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
-        <meta name="description" content="桃源网，品质餐厨用品专家。精选品牌餐具厨具，以厂家直销的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。搬家送礼，送父母，选年货，送领导，选品质礼物来桃源，精装餐具，品质感好极了！" />
+        <title>IT'LACE 世界蕾丝时尚</title>
+        <meta name="keywords" content="蕾丝，时尚，金领，意大利，IT'LACE" />
+        <meta name="description" content="世界蕾丝时尚（北京）科技发展有限公司成立于2016年，公司着眼于女性生活品质的提升，通过整合创新的产品研发、设计、制造能力，为当代女性提供科技与时尚融合的升级型服装、配饰、居家等产品。公司与国内外上游企业建立密切合作，从原材料环节开始提供品质保证。" />
     #end
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -55,14 +64,14 @@
 
 <!-- for seo -->
 #if ($!{pageType} == "ITEM_DETAIL")
-    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head" alt="桃源网" class="seo-content"/>
+    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head" alt="世界蕾丝时尚" class="seo-content"/>
 #else
-    <img src="$!{imageUrlPrefix}/images/search.jpg" alt="桃源网" class="seo-content"/>
+    <img src="$!{imageUrlPrefix}/images/search.jpg" alt="世界蕾丝时尚" class="seo-content"/>
 #end
 
 <div class="title-bar hide-for-medium">
     <div class="title-bar-left">
-        <span class="title-bar-title">精选品质餐具</span>
+        <span class="title-bar-title">IT'LACE</span>
     </div>
     <div class="title-bar-right">
         <button class="menu-icon" type="button" data-open="offCanvas"></button>
@@ -78,7 +87,7 @@
         </button>
 
         <ul class="off-canvas-list vertical menu">
-            <li><label class="first">桃源餐厨</label></li>
+            <li><label class="first">IT'LACE</label></li>
             <li><a href="/">首页</a></li>
             <li><a href="/topic">专题页</a></li>
 
@@ -102,7 +111,7 @@
             <div class="top-bar" id="top-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
-                        <li class="menu-text">小资生活就这样</li>
+                        <li class="menu-text">My life, my style.</li>
                     </ul>
                 </div>
                 <div class="top-bar-right">

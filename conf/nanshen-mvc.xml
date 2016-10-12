@@ -25,6 +25,10 @@
         <bean class="nanshen.web.common.LoginInterceptor"/>
     </mvc:interceptors>
 
+    <mvc:interceptors>
+        <bean class="nanshen.web.common.LanguageInterceptor"/>
+    </mvc:interceptors>
+
     <!--<mvc:interceptors>-->
         <!--<bean class="outfox.buyers.web.common.AccountActivateInterceptor"/>-->
     <!--</mvc:interceptors>-->

@@ -8,7 +8,7 @@ header {
     padding: 22px 0;
 }
 .logo-wrapper {
-    text-align: center;
+    text-align: left;
 }
 .bottom-line {
     height: 2px;
@@ -16,10 +16,82 @@ header {
     z-index: 100;
 }
 .bottom-line-down {
-    height: 3px;
-    background-color: #A7866A;
+    height: 3rem;
+    background-color: #111;
     z-index: 100;
     box-shadow: 0 2px 3px 1px rgba(167, 134, 106, 0.42);
+}
+/* top-nav */
+.navbar{
+    padding: 45px 0 10px 0;
+    background-color:#fff;
+    transition:padding 0.4s;
+}
+.navbar.scrolled{
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+    padding: 0 0 0 0;
+    height: 50px;
+}
+.logo-wrapper {
+    padding-left: 5%;
+    width: 40%;
+    display: inline-block;
+}
+.menu-wrapper {
+    margin-left: 5%;
+    line-height: 3rem;
+    font-size: 0.7rem;
+}
+.menu-wrapper a {
+    padding: 0 3rem 0 1rem;
+    color: #f9e4db;
+}
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.navbar .container {
+    position: relative;
+}
+.menustyle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    float: right;
+    transition:padding 0.4s;
+}
+.navbar.scrolled .menustyle{
+    top: 0;
+    bottom: auto;
+}
+.navbar-nav {
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.navbar-nav>li {
+    float: left;
+    position: relative;
+    display: block;
+}
+.navbar-nav>li>a {
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+    line-height: 20px;
+    color: #333 !important;
+}
+.navbar-nav .fi-shopping-cart,
+.navbar-nav .fi-heart {
+    font-size: 1rem;
 }
 #middle-menu {
     width: 100%;
@@ -43,14 +115,8 @@ header {
 }
 @media only screen and (min-width: 40.063em) {
     .logo-wrapper img {
-        height: 140px;
-    }
-    .menu-wrapper {
-        width: 90%;
-        max-width: 1200px;
-        margin: auto;
-        text-align: center;
-        padding: 0 0 0.5rem 0;
+        height: 90px;
+        margin: 0;
     }
     .superHeader .top-bar,
     .superHeader .top-bar ul {
@@ -118,12 +184,6 @@ header {
     .logo-wrapper img {
         height: 100px;
         margin: .5rem;
-    }
-    .menu-wrapper .row .columns {
-        padding: 0;
-    }
-    .menu-wrapper {
-        width: 99%;
     }
     .sticky-bottom {
          display: none;

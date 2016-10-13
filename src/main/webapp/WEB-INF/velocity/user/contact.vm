@@ -19,7 +19,7 @@
 <div class="page-content margin-top" id="look-detail-page-content">
     <nav aria-label="You are here:" role="navigation">
         <ul class="breadcrumbs">
-            <li><a href="/" class="brandColorText"><i class="fi-home"> </i>首页列表</a></li>
+            <li><a href="/" class="brandColorText"><i class="fi-home"> </i>首页</a></li>
             <li>
                 联系我们
             </li>
@@ -29,11 +29,11 @@
     <div class="row">
         <!-- Contact Details -->
         <div class="large-9 columns">
-            <h3>联系我们</h3>
-            <p>对于我们的产品感兴趣？有问题需要跟我们沟通？有意向加入我们？请使用下表给联系我们，我们会对<em>每一封</em>邮件进行恢复！谢谢您的支持。</p>
+            <h3>联系我们 <span class="subtext">Contact Us</span></h3>
+            <p>对于我们的产品感兴趣？有问题需要跟我们沟通？有意向加入我们？请使用下表给联系我们，我们会对<span style="color:red">每一封</span>邮件进行回复！谢谢您的支持。</p>
             <ul class="tabs" data-tabs id="contact-tabs">
-                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">联系我们</a></li>
-                <li class="tabs-title"><a href="#panel2">具体人员</a></li>
+                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">联系我们 CONTACT</a></li>
+                <li class="tabs-title"><a href="#panel2">具体人员 TEAM</a></li>
             </ul>
             <div class="tabs-content" data-tabs-content="contact-tabs">
                 <div class="tabs-panel is-active" id="panel1">
@@ -61,10 +61,34 @@
                         </div>
                     </form>
                 </div>
-                <div class="tabs-panel row small-up-3 medium-up-4 large-up-5" id="panel2">
-                    <div class="column"><a href="mailto:wmh@zaitaoyuan.com"><img src="http://placehold.it/200x200&amp;text=[person]">汪明浩</a></div>
-                    <div class="column"><a href="mailto:ch@zaitaoyuan.com"><img src="http://placehold.it/200x200&amp;text=[person]">陈昊</a></div>
-                    <div class="column"><a href="mailto:gty@zaitaoyuan.com"><img src="http://placehold.it/200x200&amp;text=[person]">顾天元</a></div>
+                <div class="tabs-panel row small-up-2 medium-up-3 large-up-3" id="panel2">
+                    <div class="column center">
+                        <a href="mailto:wq@world-lace.com">
+                            <img src="http://placehold.it/200x200&amp;text=[person]">
+                            <div class="people-name">王琪</div>
+                            <div class="people-desc">
+                                企业家，时尚专业人士，在服装行业10余年工作经验，拥有Meingrace服饰品牌
+                            </div>
+                        </a>
+                    </div>
+                    <div class="column center">
+                        <a href="mailto:zy@world-lace.com">
+                            <img src="http://placehold.it/200x200&amp;text=[person]">
+                            <div class="people-name">张艳</div>
+                            <div class="people-desc">
+                                资本运营CEO, 材料系博士，在纺织行业10余年，专注新型面料，功能性纤维开发。
+                            </div>
+                        </a>
+                    </div>
+                    <div class="column center">
+                        <a href="mailto:wxx@world-lace.com" >
+                            <img src="http://placehold.it/200x200&amp;text=[person]">
+                            <div class="people-name">王茜璇</div>
+                            <div class="people-desc">
+                                90后，香港理工服装设计专业毕业，对时尚有敏锐嗅觉。后赴法国高商进修时尚管理，曾在巴黎银行负责趋势预测。
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,8 +102,8 @@
                 <a data-open="mapModal">点击查看大图</a>
             </p>
             <p>
-                中国北京市海淀区中关村2号<br />
-                Haidian Disctrict ZhongGuanCun 2nd, Beijing, China, 100082
+                中国北京市朝阳区霄云路国航大厦<br />
+                Chaoyang District Xiaoyun RD. Guohang BD., Beijing, China, 100082
             </p>
         </div>
 

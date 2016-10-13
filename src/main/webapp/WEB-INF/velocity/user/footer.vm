@@ -1,55 +1,44 @@
 <!-- footer -->
 <section class="top-footer hide-for-small-only">
     <div class="row features">
-        <div class="small-12 medium-4 columns">
-            <div class="round-icon">
-                <span class="fi-trophy"></span>
-            </div>
-            <h3>高品质</h3>
-            <hr>
-            <p>平台上的每一款产品，都是公司员工长期试用过后满意方才入选桃源精品库，无论是设计还是工艺，您都大可放心</p>
-        </div>
-        <div class="small-12 medium-4 columns">
-            <div class="round-icon">
-                <span class="fi-trees"></span>
-            </div>
-            <h3>安全环保</h3>
-            <hr>
-            <p>每一款产品，都经过领域内10年+经验的专业人员严格筛选，以确保商品的安全环保</p>
-        </div>
-        <div class="small-12 medium-4 columns">
-            <div class="round-icon">
-                <span class="fi-loop"></span>
-            </div>
-            <h3>七天无忧退换</h3>
-            <hr>
-            <p>凡在桃源网购买的商品，全部七天无理由退换，并且我们已为用户承保退货险，完全不用担心邮费问题</p>
+        <div class="small-12 columns center">
+            <div>用创新与美建立高品质的生活体验</div>
+            <div>Create high quality life experience with innovation and beauty</div>
         </div>
     </div>
 </section>
 
 <section class="footer">
     <div class="row">
+        <div class="small-12 medium-12 large-4 columns">
+            <ul class="foot-logo">
+                <img src="$!{imageUrlPrefix}/images/logo/logo-white-small.png" alt="桃源网公众号">
+            </ul>
+        </div>
+
         <div class="small-12 medium-6 large-5 columns">
-            <p class="logo"><i class="fi-shield"></i> 桃源网
-                <span class="about subheader">做中国最有良心的餐厨用品平台。</span>
+            <p class="logo"><i class="fi-shield"></i> 世界蕾丝
+                <span class="about subheader">邮箱：service@world-lace.com</span>
             </p>
             <p class="footer-links">
                 <a href="/">主页</a>
-                <a href="/topic">专题</a>
-                <a href="#">常见问题</a>
+                <a href="#" class="unsupported-section">专题</a>
+                <a href="#" class="unsupported-section">常见问题</a>
+                <a href="#">公司介绍</a>
+                <a href="#" class="unsupported-section">加入我们</a>
                 <a href="/contact">联系我们</a>
             </p>
-            <p class="copywrite">北京明昊天地科技有限公司，京ICP备16000451号-1</p>
-            <p class="copywrite">Copywrite © 2015-2019. All rights Reserved.</p>
+            <p class="copywrite">客服热线：400-820-8200</p>
+            <p class="copywrite">世界蕾丝时尚（北京）科技发展有限公司，京ICP备16000451号-1</p>
+            <p class="copywrite">COPYRIGHT © 2015-2019. All rights Reserved.</p>
         </div>
-        <div class="small-12 medium-6 large-4 columns">
-            <ul class="contact">
-                <li><p><i class="fi-marker"></i>北京市海淀区中关村大街2号</p></li>
-                <li><p><i class="fi-telephone"></i>+1-138-1144-889儿</p></li>
-                <li><p><i class="fi-mail"></i>admin@zaitaoyuan.com</p></li>
-            </ul>
-        </div>
+##        <div class="small-12 medium-6 large-4 columns">
+##            <ul class="contact">
+##                <li><p><i class="fi-marker"></i>北京市东城区霄云路国航大厦</p></li>
+##                <li><p><i class="fi-telephone"></i>400-820-8200</p></li>
+##                <li><p><i class="fi-mail"></i>service@world-lace.com</p></li>
+##            </ul>
+##        </div>
         <div class="small-12 medium-12 large-3 columns">
             <ul class="inline-list social">
                 <p class="about subheader">微信公众号，关注我们：</p>
@@ -73,11 +62,35 @@
 <script>
     $(document).foundation();
     jQuery(document).ready(function($) {
+        var nav = $('.navbar'),
+                doc = $(document),
+                win = $(window);
+
+        win.scroll(function() {
+            if (doc.scrollTop() > 20) {
+                nav.addClass('navbar-fixed-top');
+                nav.addClass('scrolled');
+            } else {
+                nav.removeClass('navbar-fixed-top');
+                nav.removeClass('scrolled');
+            }
+        });
+
+        // Trigger the scroll listener on page load
+
+        win.scroll();
+
         $('#banner-slider').lightSlider({
             adaptiveHeight:true,
             item:1,
             slideMargin:0,
             loop:true,
+            auto: true,
+            pause: 4000,
+            controls: false,
+            pauseOnHover: true,
+            easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+            speed: 1000,
             responsive : [
                 {
                     breakpoint:500,

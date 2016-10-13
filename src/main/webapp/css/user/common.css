@@ -2,6 +2,30 @@
     font-family: Arial, "STXihei", "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
     -webkit-font-smoothing: antialiased;
 }
+#body .brandColor.rose {
+    color: #febba4 !important;
+}
+#body .brandColor.pink {
+    color: #f9e4db !important;
+}
+#body .brandColor.grey {
+    color: #848484 !important;
+}
+#body .brandColor.black {
+    color: #333333 !important;
+}
+#body .brandColorBgnd.rose {
+    background: #febba4 !important;
+}
+#body .brandColorBgnd.pink {
+    background: #f9e4db !important;
+}
+#body .brandColorBgnd.grey {
+    background: #848484 !important;
+}
+#body .brandColorBgnd.black {
+    background: #333333 !important;
+}
 @media only screen and (min-width: 40.063em) {
     .page-content {
         width: 90%;
@@ -75,16 +99,16 @@ input.labelauty + label {
     height:295px !important;
 }
 #body .button.brandColor {
-    background: #A7866A;
+    background: #d2917b;
 }
 #body .tabs {
-    border-top: solid 2px #af8e72;
+    border-top: solid 2px #d2917b;
 }
 #contact-tabs {
     border-bottom: none;
 }
 #contact-tabs a {
-    color: #af8e72;
+    color: #d2917b;
     font-size: .9rem;
 }
 .page-content hr {
@@ -100,4 +124,12 @@ input.labelauty + label {
 #body .button.hollow.brandColor:hover {
     border: 1px solid #493729;
     color: #2e241e;
+}
+.people-name {
+    color: #d2917b;
+    font-size: 1.3rem;
+}
+.people-desc {
+    color: #848484;
+    font-size: .9rem;
 }

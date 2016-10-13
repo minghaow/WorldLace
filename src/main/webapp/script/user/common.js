@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 
     $(".unsupported-section").click(function(event){
         event.preventDefault();
-        presentFailModal("抱歉！", "本功能仍然处于开发状态，敬请期待！");
+        notyf.alert("产品尚未上线，敬请期待!");
     });
 
     $(".detail-image-slider .banner-slider ul li").show();
@@ -279,6 +279,21 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    });
+
+    $(".company-modal").on('click', function() {
+        event.preventDefault();
+        $("#company-modal").foundation("open");
+    });
+
+    $(".team-modal").on('click', function() {
+        event.preventDefault();
+        $("#team-modal").foundation("open");
+    });
+
+    $(".culture-modal").on('click', function() {
+        event.preventDefault();
+        $("#culture-modal").foundation("open");
     });
 
     $(".scroll-to-top").on('click', function() {

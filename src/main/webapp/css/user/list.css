@@ -167,7 +167,6 @@
 .grid figure img {
     position: relative;
     display: block;
-    min-height: 100%;
     opacity: 0.8;
 }
 .grid figure figcaption {

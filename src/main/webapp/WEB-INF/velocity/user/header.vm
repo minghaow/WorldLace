@@ -88,21 +88,23 @@
 
         <ul class="off-canvas-list vertical menu">
             <li><label class="first">IT'LACE</label></li>
-            <li><a href="/">首页</a></li>
-            <li><a href="/topic">专题页</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Topic</a></li>
 
-            <li><label class="first margin-top-small">我的</label></li>
+            <li><label class="first margin-top-small">Mine</label></li>
             <li>
                 <a href="#" class="login-btn2">
-                <span id="username-section3">登陆 [手机端尚未开通]</span></a>
+                <span id="username-section3">Login [soon]</span></a>
             </li>
             <li>
                 <a href="#" class="register-btn2">
-                <span id="username-section4">注册 [手机端尚未开通]</span></a>
+                <span id="username-section4">Register [soon]</span></a>
             </li>
+            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="#">Wishlist</a></li>
 
-            <li><label class="first margin-top-small">桃源公司</label></li>
-            <li><a href="/contact">联系我们</a></li>
+            <li><label class="first margin-top-small">World Lace Company</label></li>
+            <li><a href="/contact">Contact Us</a></li>
         </ul>
     </div>
 
@@ -158,15 +160,20 @@
 ##            </div>
 ##        </div>
 
-        <nav class="navbar navbar-default noBorder scrolled" role="navigation">
+        <div class="logo-wrapper show-for-small-only">
+            <a href="/">
+                <img src="$!{imageUrlPrefix}/images/logo/logo.png" alt="IT'LACE"/>
+            </a>
+        </div>
+
+        <nav class="navbar navbar-default noBorder scrolled hide-for-small-only" role="navigation">
             <div class="container">
                 <div class="logo-wrapper">
                     <a href="/">
-                        <img src="$!{imageUrlPrefix}/images/logo/logo.png" class="hide-for-small-only" alt="IT'LACE"/>
-                        <img src="$!{imageUrlPrefix}/images/logo/logo.png" class="hide-for-medium" alt="IT'LACE"/>
+                        <img src="$!{imageUrlPrefix}/images/logo/logo.png" alt="IT'LACE"/>
                     </a>
                 </div>
-                <div class="navbar-right menustyle">
+                <div class="navbar-right menustyle hide-for-small-only">
                     <ul class="nav navbar-nav">
                         <li><a href="#" class="unsupported-section"><i class="fi-shopping-cart"> </i>Shopping Cart (0)</a></li>
                         <li><a href="#" class="unsupported-section"><i class="fi-heart"> </i>My Wishlist</a></li>

@@ -171,7 +171,7 @@
         团队介绍 <span class="sub-text">Team Ambition</span>
     </div>
     <div class="info-modal-content">
-        <div class="row small-up-2 medium-up-3 large-up-3" id="panel2">
+        <div class="row small-up-1 medium-up-3 large-up-3" id="panel2">
             <div class="column center">
                 <a href="mailto:wq@world-lace.com">
                     <img src="http://placehold.it/200x200&amp;text=[person]">

@@ -162,9 +162,9 @@ public abstract class BaseCtrl {
 		model.addAttribute("pageType", pageType);
 		model.addAttribute("userInfo", getLoginedUser());
 		model.addAttribute("cart", getCartInfo());
-//		model.addAttribute("imageUrlPrefix", "http://image-cdn.zaitaoyuan.com");
-		model.addAttribute("imageUrlPrefix", "");
-//		model.addAttribute("cssUrlPrefix", "http://image.zaitaoyuan.com");
-		model.addAttribute("cssUrlPrefix", "");
+		model.addAttribute("imageUrlPrefix", "http://static.world-lace.com");
+//		model.addAttribute("imageUrlPrefix", "");
+		model.addAttribute("cssUrlPrefix", "http://static.world-lace.com");
+//		model.addAttribute("cssUrlPrefix", "");
 	}
 }

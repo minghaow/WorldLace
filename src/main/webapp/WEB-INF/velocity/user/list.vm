@@ -16,22 +16,21 @@
 
 <div class="banner">
 
-##    <div class="banner-slider">
     <div>
         <ul id="banner-slider">
             <li>
                 <a href="#">
-                    <img src="$!{imageUrlPrefix}/images/banner/banner1.png" alt="钻石系列餐具套装">
+                    <img src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.png" alt="樱花线条碗【四碗四筷精装套装】">
+                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.png" alt="江南颂系列餐具套装">
+                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
                 </a>
             </li>
 ##            <li>

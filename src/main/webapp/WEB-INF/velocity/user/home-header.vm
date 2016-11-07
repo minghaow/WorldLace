@@ -1,0 +1,150 @@
+#* @vtlvariable name="helloMsg" type="java.lang.String" *#
+#* @vtlvariable name="userInfo" type="nanshen.data.User.UserInfo" *#
+#* @vtlvariable name="LOOK" type="java.lang.String" *#
+#* @vtlvariable name="CATEGORY" type="java.lang.String" *#
+#* @vtlvariable name="TOPIC" type="java.lang.String" *#
+#* @vtlvariable name="ABOUT" type="java.lang.String" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.Sku.SkuItem" *#
+#* @vtlvariable name="cart" type="nanshen.data.Cart.Cart" *#
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- header start -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    #if ($!{en})
+        <title>IT'LACE | World Lace Fashion</title>
+        <meta name="keywords" content="Lace, Fashion, italy, IT'LACE" />
+        <meta name="description" content="World Lace Fashion Technology Development (Beijing) Co.,Ltd is found in 2016. The company focuses on improving the quality of  female life. It provides modern women with upgraded products combined with fashion and technology. The products range from clothing, accessories to household products selection.  The company has close cooperation with upstream companies in order to provide a quality guarantee from raw materials." />
+    #else
+        <title>IT'LACE 世界蕾丝时尚</title>
+        <meta name="keywords" content="蕾丝，时尚，金领，意大利，IT'LACE" />
+        <meta name="description" content="世界蕾丝时尚（北京）科技发展有限公司成立于2016年，公司着眼于女性生活品质的提升，通过整合创新的产品研发、设计、制造能力，为当代女性提供科技与时尚融合的升级型服装、配饰、居家等产品。公司与国内外上游企业建立密切合作，从原材料环节开始提供品质保证。" />
+    #end
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- style stuff -->
+    <link rel="stylesheet" href="/css/foundation-icons.css"/>
+    <link type="image/x-icon" href="$!{cssUrlPrefix}/images/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/header.css"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/common.css"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/home.css" />
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/tool.css"/>
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/foundation.min.css" />
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightslider.css">
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/motion-ui.min.css">
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/lightgallery.min.css" />
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/notyf.min.css" />
+    <link rel="stylesheet" href="$!{cssUrlPrefix}/css/component.css" />
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?0046db19a6dddc653c19626e40dcc59b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script src="$!{cssUrlPrefix}/script/vendor/jquery.min.js"></script>
+    <script src="$!{cssUrlPrefix}/script/vendor/modernizr.custom.js"></script>
+
+</head>
+
+<!-- body start -->
+<body id="body">
+
+<!-- for seo -->
+<img src="$!{imageUrlPrefix}/images/logo/logo-all-s.jpg" alt="世界蕾丝时尚" class="seo-content"/>
+
+<div class="title-bar hide-for-medium">
+    <div class="title-bar-left">
+        <span class="title-bar-title">IT'LACE</span>
+    </div>
+    <div class="title-bar-right">
+        <a href="/list">Store</a>
+    </div>
+</div>
+
+<!-- top bar start -->
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right">
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        <ul class="off-canvas-list vertical menu">
+            <li><label class="first">IT'LACE</label></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Topic</a></li>
+
+            <li><label class="first margin-top-small">Mine</label></li>
+            <li>
+                <a href="#" class="login-btn2">
+                <span id="username-section3">Login [soon]</span></a>
+            </li>
+            <li>
+                <a href="#" class="register-btn2">
+                <span id="username-section4">Register [soon]</span></a>
+            </li>
+            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="#">Wishlist</a></li>
+
+            <li><label class="first margin-top-small">World Lace Company</label></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+
+        <div class="logo-wrapper show-for-small-only">
+            <a href="/">
+                <img src="$!{imageUrlPrefix}/images/logo/logo.png" alt="IT'LACE"/>
+            </a>
+        </div>
+
+        <nav class="bottom-line-down hide-for-small-only">
+            <div class="menu-wrapper">
+                #if ($!{en})
+                    <a href="/list" class="unsupported-section">
+                        STORE
+                    </a>
+                    <a href="/" class="unsupported-section">
+                        COLLECTION
+                    </a>
+                    <a href="/about">
+                        ABOUT US
+                    </a>
+                    <a href="/contact">
+                        CONTACT
+                    </a>
+                #else
+                    <a href="/" class="unsupported-section">
+                        商店
+                    </a>
+                    <a href="/" class="unsupported-section">
+                        杂志
+                    </a>
+                    <a href="/contact">
+                        关于我们
+                    </a>
+                    <a href="/contact">
+                        联系我们
+                    </a>
+                #end
+            </div>
+
+            <div class="menu-wrapper-left">
+                #if ($!{en})
+                    <a href="?l=ch">
+                        中文官网
+                    </a>
+                #else
+                    <a href="?l=en">
+                        English Website
+                    </a>
+                #end
+            </div>
+        </nav>

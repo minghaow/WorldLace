@@ -1,5 +1,13 @@
+@font-face {
+    font-family: Proxima;
+    src: url(/css/fonts/ProximaNovaLight.otf);
+}
+@font-face {
+    font-family: ProximaBold;
+    src: url(/css/fonts/ProximaNovaReg.otf);
+}
 #body, #body h1, #body h2, #body h3, #body h4 {
-    font-family: Arial, "STXihei", "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
+    font-family: ProximaNovaReg, Arial, "STXihei", "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
     -webkit-font-smoothing: antialiased;
 }
 #body .brandColor.rose {
@@ -25,6 +33,9 @@
 }
 #body .brandColorBgnd.black {
     background: #333333 !important;
+}
+#body a:hover {
+    color: #e5a992 !important;
 }
 @media only screen and (min-width: 40.063em) {
     .page-content {

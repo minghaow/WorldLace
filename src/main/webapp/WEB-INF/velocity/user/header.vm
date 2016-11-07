@@ -185,21 +185,51 @@
         <nav class="bottom-line-down">
 
             <div class="menu-wrapper">
-                <a href="/" class="unsupported-section">
-                    BRAND
-                </a>
-                <a href="/" class="unsupported-section">
-                    PRODUCT
-                </a>
-                <a href="/" class="unsupported-section">
-                    COOPERATION
-                </a>
-                <a href="/" class="unsupported-section">
-                    INFORMATION
-                </a>
-                <a href="/contact">
-                    CONTACT
-                </a>
+                #if ($!{en})
+                    <a href="/">
+                        HOMEPAGE
+                    </a>
+                    <a href="/list" class="unsupported-section">
+                        STORE
+                    </a>
+                    <a href="/" class="unsupported-section">
+                        COLLECTION
+                    </a>
+                    <a href="/about">
+                        ABOUT US
+                    </a>
+                    <a href="/contact">
+                        CONTACT
+                    </a>
+                #else
+                    <a href="/">
+                        首页
+                    </a>
+                    <a href="/" class="unsupported-section">
+                        商店
+                    </a>
+                    <a href="/" class="unsupported-section">
+                        杂志
+                    </a>
+                    <a href="/contact">
+                        关于我们
+                    </a>
+                    <a href="/contact">
+                        联系我们
+                    </a>
+                #end
+            </div>
+
+            <div class="menu-wrapper-left">
+                #if ($!{en})
+                    <a href="?l=ch">
+                        中文
+                    </a>
+                #else
+                    <a href="?l=en">
+                        English
+                    </a>
+                #end
             </div>
         </nav>
 

@@ -63,6 +63,10 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>
+		<url-pattern>/css/*.otf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resin-file</servlet-name>
 		<url-pattern>/script/*.js</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

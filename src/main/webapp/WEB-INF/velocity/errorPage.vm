@@ -1,4 +1,4 @@
-#parse("user/header_old.vm")
+#parse("user/header.vm")
 
 <!-- error box -->
 #if ($!{error})

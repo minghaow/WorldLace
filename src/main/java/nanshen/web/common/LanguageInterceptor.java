@@ -39,6 +39,12 @@ public class LanguageInterceptor extends BaseController implements HandlerInterc
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) {
+        if (isLanguageChangingRequest(request)) {
+            String languageParam = request.getParameter(PARAM_LANGUAGE);
+            if (!languageParam.equals(PARAM_LANGUAGE_ENGLISH)) {
+                return;
+            }
+        }
         if (isEnglishRequest(request)) {
             modelAndView.addObject("en", "true");
         }

@@ -16,18 +16,18 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
-public class IndexCtrl extends BaseCtrl {
+@RequestMapping("/about")
+public class AboutUsCtrl extends BaseCtrl {
 
 	@Autowired
 	private SkuService skuService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView homePage(ModelMap model, @RequestParam(defaultValue = "1", required = true) int page) {
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView aboutUsPage(ModelMap model, @RequestParam(defaultValue = "1", required = true) int page) {
 		List<SkuItem> skuInfoList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(page));
 		prepareHeaderModel(model, PageType.ITEM_LIST);
 		model.addAttribute("skuInfoList", skuInfoList);
-		return new ModelAndView("user/home");
+		return new ModelAndView("user/about");
 	}
 
 }

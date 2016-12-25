@@ -133,7 +133,12 @@
                         <li>
                             <a href="#" class="unsupported-section">
                                 <img src="$!{imageUrlPrefix}/images/icon/cart.png" alt="" id="cart" style="width: 1.9rem"/>
-                                Shopping Cart (<span class="cart-count redText">$!{cart.goodsCount}</span>)
+                                Shopping Cart
+                                #if ("$!{cart.goodsCount}" != "")
+                                    (<span class="cart-count redText">$!{cart.goodsCount}</span>)
+                                #else
+                                    (<span class="cart-count redText">0</span>)
+                                #end
                             </a>
                         </li>
                         <li>

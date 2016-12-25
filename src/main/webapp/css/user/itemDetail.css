@@ -3,9 +3,41 @@
     max-width: 1200px;
     margin: auto;
 }
+.lSSlideOuter .lSPager.lSGallery li {
+    height: initial !important;
+}
+.detail-description img.heart-red {
+    position: relative;
+    top: -5.5rem;
+    width: 3rem;
+    margin: auto;
+    display: none;
+}
+.detail-description img.heart-red.active {
+    display: block;
+    opacity: 0;
+    animation-duration: 350ms;
+    animation-iteration-count: 1;
+    animation-name: shake-crazy;
+    animation-timing-function: linear;
+}
+@keyframes shake-crazy {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
 @media only screen and (min-width: 40.063em) {
     #look-detail-page-content {
-        width: 90%;
+        width: 99%;
         max-width: 1800px;
     }
     .detail-description {
@@ -14,11 +46,12 @@
     }
     .detail-description .tabs,
     .tabs-content {
-        border-top: solid 2px #A7866A;
-        border-bottom: solid 2px #A7866A;
+        border-top: solid 2px #d2917b;
+        border-bottom: solid 2px #d2917b;
     }
-    .item-slider div .lSPager .active {
-        border: solid 2px #A7866A;
+    .item-slider div .lSPager .active img {
+        border: solid 2px #d2917b;
+        border-radius: 5px;
     }
     .detail-description .tabs {
         border-bottom: none;
@@ -36,7 +69,7 @@
         padding: 0.3rem;
     }
     .detail-description .tabs, .tabs-content {
-        border-top: 1px solid #A7866A;
+        border-top: 1px solid #d2917b;
     }
 }
 .detail-description img {
@@ -58,15 +91,16 @@
 .price-wrapper .price-before {
     text-decoration: line-through;
     letter-spacing: -2px;
-    color: #666;
-    font-size: 1.2rem;
+    color: #999;
+    font-size: 1.1rem;
     font-style: italic;
+    font-weight: 600;
 }
 .price-wrapper .price-after {
     letter-spacing: -1px;
-    color: #ec372f;
+    color: #222;
     font-weight: 900;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 .option-button-wrapper {
     margin-top: 4rem;
@@ -111,9 +145,24 @@
     display: none;
 }
 .buy-button-wrapper .button {
-    border: 2px solid #ec5840;
-    letter-spacing: 2px;
-    margin-right: 0;
+    border: 2px solid black;
+    letter-spacing: 1px;
+    width: 100%;
+    font-size: .85rem;
+}
+.add-to-cart.button {
+    background: #333;
+    transition: all 0.5s ease;
+}
+.add-to-cart.button:hover {
+    background: black;
+}
+.add-to-wish.button {
+    background: transparent;
+    border: none;
+    color: #333;
+    width: 100%;
+    border-radius: .3rem;
 }
 .bdsharebuttonbox {
     margin-top: 0.5rem;
@@ -121,9 +170,9 @@
 .bdsharebuttonbox .hollow.button {
     color: transparent;
     border: 2px solid transparent;
-    border-image: linear-gradient(135deg, white, #856f5e);
+    border-image: linear-gradient(135deg, white, #d2917b);
     border-image-slice: 1;
-    background: linear-gradient(135deg, white, #856f5e);
+    background: linear-gradient(135deg, white, #d2917b);
     -webkit-background-clip: text;
     text-fill-color: transparent;
     transition: all 0.5s ease;
@@ -131,8 +180,8 @@
     border-radius: 3px;
 }
 .button:hover {
-    border-image: linear-gradient(45deg, #2ecc71, dodgerblue);
-    background: linear-gradient(45deg, #2ecc71, dodgerblue);
+    border-image: linear-gradient(45deg, #d2917b, white);
+    background: linear-gradient(45deg, #d2917b, white);
 }
 #body .option-button-wrapper button.checked {
     background: #af8e72;
@@ -232,121 +281,9 @@
 #lightSlider-s li {
     list-style: none;
 }
-.rating {
-    margin: 10px 0;
-}
-.rating i {
-    display: inline-block;
-    width: 0;
-    height: 1.5em;
-    border-width: 0 0.75em;
-    border-style: solid;
-    border-color: #eee;
-    border-radius: .22em;
-    color: white;
-    background: #eee;
-    font-style: normal;
-    line-height: 1.6em;
-    text-indent: -0.5em;
-    text-shadow: 1px 0 1px #b3b3b3;
-}
-/** Colors */
-.rating-1 .star-1,
-.rating-1-half .star-1 {
-    border-color: #cc8b1f;
-    background: #cc8b1f;
-}
-.rating-1-half .star-2 {
-    border-left-color: #cc8b1f;
-}
-.rating-2 .star-1,
-.rating-2-half .star-1 {
-    border-color: #dcb228;
-    background: #dcb228;
-}
-.rating-2 .star-2,
-.rating-2-half .star-2 {
-    border-color: #dcb228;
-    background: #dcb228;
-}
-.rating-2-half .star-3 {
-    border-left-color: #dcb228;
-}
-.rating-3 .star-1,
-.rating-3-half .star-1 {
-    border-color: #f0991e;
-    background: #f0991e;
-}
-.rating-3 .star-2,
-.rating-3-half .star-2 {
-    border-color: #f0991e;
-    background: #f0991e;
-}
-.rating-3 .star-3,
-.rating-3-half .star-3 {
-    border-color: #f0991e;
-    background: #f0991e;
-}
-.rating-3-half .star-4 {
-    border-left-color: #f0991e;
-}
-.rating-4 .star-1,
-.rating-4-half .star-1 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-}
-.rating-4 .star-2,
-.rating-4-half .star-2 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-}
-.rating-4 .star-3,
-.rating-4-half .star-3 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-}
-.rating-4 .star-4,
-.rating-4-half .star-4 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-}
-.rating-4-half .star-5 {
-    border-left-color: #f26a2c;
-}
-.rating-5 .star-1,
-.rating-5-half .star-1 {
-    border-color: #dd050b;
-    background: #dd050b;
-}
-.rating-5 .star-2,
-.rating-5-half .star-2 {
-    border-color: #dd050b;
-    background: #dd050b;
-}
-.rating-5 .star-3,
-.rating-5-half .star-3 {
-    border-color: #dd050b;
-    background: #dd050b;
-}
-.rating-5 .star-4,
-.rating-5-half .star-4 {
-    border-color: #dd050b;
-    background: #dd050b;
-}
-.rating-5 .star-5,
-.rating-5-half .star-5 {
-    border-color: #dd050b;
-    background: #dd050b;
-}
-.rating-5-half .star-6 {
-    border-left-color: #dd050b;
-}
 .item-detail-title {
     color: #333;
-}
-.item-detail-subtitle {
-    color: #94735b;
-    font-size: 1.1rem;
+    font-weight: 900;
 }
 .item-detail-brand {
     height: 3rem;
@@ -362,7 +299,7 @@
 .review-img img {
     height: 7rem;
     width: 7rem;
-    border: solid 1px #af8e72;
+    border: solid 1px #d2917b;
     border-radius: 3px;
     margin-right: 0.5rem;
     margin-top: 0.5rem;
@@ -374,8 +311,8 @@
 #body .lSSlideWrapper {
     border-right: 2px solid #e6e6e6;
     border-left: 2px solid #e6e6e6;
-    border-top: 4px solid #A7866A;
-    border-bottom: 4px solid #A7866A;
+    border-top: 4px solid #d2917b;
+    border-bottom: 4px solid #d2917b;
     border-radius: 3px;
 }
 .item-head-prev {

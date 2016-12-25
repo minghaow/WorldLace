@@ -108,11 +108,9 @@
         <nav class="bottom-line-down hide-for-small-only">
             <div class="menu-wrapper">
                 #if ($!{en})
-                    <a href="/list" class="unsupported-section">
-                        STORE
-                    </a>
-                    <a href="/" class="unsupported-section">
-                        COLLECTION
+                    <a href="/list">
+                        <img src="$!{imageUrlPrefix}/images/icon/bird.png" alt="IT'LACE"/>
+                        BOUTIQUE ONLINE
                     </a>
                     <a href="/about">
                         ABOUT US
@@ -121,11 +119,8 @@
                         CONTACT
                     </a>
                 #else
-                    <a href="/" class="unsupported-section">
+                    <a href="/list">
                         商店
-                    </a>
-                    <a href="/" class="unsupported-section">
-                        杂志
                     </a>
                     <a href="/contact">
                         关于我们

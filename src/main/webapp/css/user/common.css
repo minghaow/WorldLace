@@ -34,15 +34,21 @@
 #body .brandColorBgnd.black {
     background: #333333 !important;
 }
-#body a:hover {
-    color: #e5a992 !important;
+#body a:hover,
+#body a.selected {
+    color: #d79b84 !important;
 }
 @media only screen and (min-width: 40.063em) {
     .page-content {
-        width: 90%;
-        max-width: 1500px;
+        max-width: 1800px;
         min-height: 300px;
         margin: auto;
+    }
+    .breadcrumb-wrapper {
+        margin: 0 0 0 1rem;
+    }
+    .breadcrumb-wrapper .breadcrumbs a {
+        color: #d79b84;
     }
 }
 @media only screen and (max-width: 40em) {
@@ -52,6 +58,12 @@
         min-height: 300px;
         text-align: center;
         margin: auto;
+    }
+    .breadcrumb-wrapper {
+        margin: 0 0 0 .3rem;
+    }
+    .breadcrumb-wrapper .breadcrumbs a {
+        color: #d79b84;
     }
 }
 .page-info {

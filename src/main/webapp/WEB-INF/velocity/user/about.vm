@@ -7,11 +7,12 @@
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/list.css"/>
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/about.css"/>
 
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">$!{pageType}</div>
+    <div id="is-login">$!{isLogin}</div>
 </div>
 
 <div class="banner">
@@ -60,8 +61,8 @@
                 <figure class="effect-bubba">
                     <img src="${imageUrlPrefix}/images/list/6.jpg" alt="img06"/>
                     <figcaption>
-                        <h2>COMPANY <span>INTRO</span></h2>
-                        <p>世界蕾丝时尚（北京）公司简介</p>
+                        <h2>IT'<span>LACE</span></h2>
+                        <p>成衣礼服、成衣婚纱</p>
                         <a href="#" target="_blank" class="company-modal">View more</a>
                     </figcaption>
                 </figure>
@@ -70,8 +71,30 @@
                 <figure class="effect-bubba">
                     <img src="${imageUrlPrefix}/images/list/7.jpg" alt="img06"/>
                     <figcaption>
-                        <h2>TEAM <span>AMBITION</span></h2>
-                        <p>核心团队介绍</p>
+                        <h2>IT'LACE <span>24/7</span></h2>
+                        <p>日常的蕾丝时尚</p>
+                        <a href="#" target="_blank" class="team-modal">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="grid row">
+            <div class="border-wrapper">
+                <figure class="effect-bubba">
+                    <img src="${imageUrlPrefix}/images/list/6.jpg" alt="img06"/>
+                    <figcaption>
+                        <h2>IT'LACE <span>HOME</span></h2>
+                        <p>家居服及睡衣</p>
+                        <a href="#" target="_blank" class="company-modal">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="border-wrapper">
+                <figure class="effect-bubba">
+                    <img src="${imageUrlPrefix}/images/list/7.jpg" alt="img06"/>
+                    <figcaption>
+                        <h2>AND <span>MORE</span></h2>
+                        <p>敬请期待</p>
                         <a href="#" target="_blank" class="team-modal">View more</a>
                     </figcaption>
                 </figure>

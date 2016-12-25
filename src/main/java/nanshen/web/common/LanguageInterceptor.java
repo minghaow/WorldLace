@@ -46,7 +46,9 @@ public class LanguageInterceptor extends BaseController implements HandlerInterc
             }
         }
         if (isEnglishRequest(request)) {
-            modelAndView.addObject("en", "true");
+            if (modelAndView != null) {
+                modelAndView.addObject("en", "true");
+            }
         }
     }
 

@@ -12,234 +12,26 @@
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">$!{pageType}</div>
+    <div id="is-login">$!{isLogin}</div>
 </div>
 
-<div class="banner">
-
-    <div>
-        <ul id="banner-slider">
-            <li>
-                <a href="#">
-                    <img src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
-                </a>
-            </li>
-##            <li>
-##                <a href="/item?itemId=10" target="_blank">
-##                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider11.jpg@!list-banner-s" alt="银河系列餐具套装">
-##                </a>
-##            </li>
-##            <li>
-##                <a href="/item?itemId=1" target="_blank">
-##                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/slider/slider9.jpg@!list-banner-s" alt="樱花线条碗【四碗四筷精装套装】">
-##                </a>
-##            </li>
-        </ul>
+<div class="list-title">
+    <div class="list-title-text">
+        DRESSES ($skuInfoList.size())
     </div>
-
-    <div class="page-seperator center"></div>
-
-    <div class="" margin-top-tiny">
-        <div class="row">
-            <div class="small-12 columns center">
-                <span class="section-title">简介</span>
-                <span class="section-subtitle">INTRODUCTION</span>
-            </div>
-        </div>
-        <div class="grid row">
-            <div class="border-wrapper">
-                <figure class="effect-bubba">
-                    <img src="${imageUrlPrefix}/images/list/6.jpg" alt="img06"/>
-                    <figcaption>
-                        <h2>COMPANY <span>INTRO</span></h2>
-                        <p>世界蕾丝时尚（北京）公司简介</p>
-                        <a href="#" target="_blank" class="company-modal">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="border-wrapper">
-                <figure class="effect-bubba">
-                    <img src="${imageUrlPrefix}/images/list/7.jpg" alt="img06"/>
-                    <figcaption>
-                        <h2>TEAM <span>AMBITION</span></h2>
-                        <p>核心团队介绍</p>
-                        <a href="#" target="_blank" class="team-modal">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-
-        <div class="grid row">
-            <div class="border-wrapper">
-                <figure class="effect-ruby">
-                    <img src="${imageUrlPrefix}/images/list/8.jpg" alt="img06"/>
-                    <figcaption>
-                        <h2>CORE <span>CULTURE</span></h2>
-                        <p>公司核心文化</p>
-                        <a href="#" target="_blank" class="culture-modal">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-seperator center margin-top"></div>
-
-    <div class="item-list margin-top-tiny">
-        <div class="row">
-            <div class="small-12 columns center">
-                <span class="section-title">设计师</span>
-                <span class="section-subtitle">DESIGNERS</span>
-            </div>
-        </div>
-        <ul class="row large-up-4 medium-up-3 small-up-2 margin-top-small">
-            <li class="column">
-                <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper unsupported-section" target="_blank">
-                    <img src="${imageUrlPrefix}/images/list/1.jpg" alt="$skuInfo.title"/>
-                </a>
-            </li>
-
-            <li class="column">
-                <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper unsupported-section" target="_blank">
-                    <img src="${imageUrlPrefix}/images/list/2.jpg" alt="$skuInfo.title"/>
-                </a>
-            </li>
-
-            <li class="column">
-                <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper unsupported-section" target="_blank">
-                    <img src="${imageUrlPrefix}/images/list/3.jpg" alt="$skuInfo.title"/>
-                </a>
-            </li>
-
-            <li class="column">
-                <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper unsupported-section" target="_blank">
-                    <img src="${imageUrlPrefix}/images/list/4.jpg" alt="$skuInfo.title"/>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div id="parallax_box_3" class="owl_carousel_wrap parallax_box full_container block parallax_box_img " style="background-position: 50% 58px;">
-        <div class="container">
-            <div id="owl-parallax-3" class="">
-                <div id="parallax_text_con_4" class="container parallax_text_con parallax_text_con_4">
-                    <div class="style_content text-center ">
-                        <h3 class="uppercase" style="font-family:'Open Sans';">
-                            <span class="sub-text">ONLINE STORE IS</span>
-                            <span class="sign-text">COMING SOON</span>...
-                        </h3>
-                        <div><a class="btn btn-default btn-white last" title="Click here">蕾丝时尚即将来袭，敬请期待！</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
-<div id="company-modal" class="reveal" data-reveal data-animation-out="fade-out" >
-    <div class="info-modal-title">
-        公司简介 <span class="sub-text">Company Intro</span>
-    </div>
-    <div class="info-modal-content">
-        <p>
-            世界蕾丝时尚（北京）科技发展有限公司成立于2016年，公司着眼于女性生活品质的提升，通过整合创新的产品研发、设计、制造能力，为当代女性提供科技与时尚融合的升级型服装、配饰、居家等产品。公司与国内外上游企业建立密切合作，从原材料环节开始提供品质保证。
-        </p>
-        <p>
-            公司致力于搭建以蕾丝时尚为主的“互联网＋”信息服务平台，建立国内外蕾丝资源的生态圈，将国内外与蕾丝相关联的设计师，供应商、制造商、品牌商及消费者联系在一起，实现资源整合、共享及高效率资源嫁接。
-        </p>
-        <p>
-            世界蕾丝时尚还将对国外高端服装、布料品牌进行代理，通过网络平台等渠道进行销售。最终, 世界蕾丝时尚将打造信息化, 权威性，商务合作和消费功能互动结合的全球蕾丝主题互联网专业平台，用互联网思维延伸一种新的方便消费者识别的购物方式。
-        </p>
-    </div>
-    <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+<nav class="breadcrumb-wrapper">
+    <ul class="breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li class="disabled"><a href="/list">BOUTIQUE ONLINE</a></li>
+        <li>IT'LACE</li>
+    </ul>
+</nav>
 
-<div id="team-modal" class="reveal" data-reveal data-animation-out="fade-out" >
-    <div class="info-modal-title">
-        团队介绍 <span class="sub-text">Team Ambition</span>
-    </div>
-    <div class="info-modal-content">
-        <div class="row small-up-1 medium-up-3 large-up-3" id="panel2">
-            <div class="column center">
-                <a href="mailto:wq@world-lace.com">
-                    <img src="http://placehold.it/200x200&amp;text=[person]">
-                    <div class="people-name">王琪</div>
-                    <div class="people-desc">
-                        企业家，时尚专业人士，在服装行业10余年工作经验，拥有Meingrace服饰品牌
-                    </div>
-                </a>
-            </div>
-            <div class="column center">
-                <a href="mailto:zy@world-lace.com">
-                    <img src="http://placehold.it/200x200&amp;text=[person]">
-                    <div class="people-name">张艳</div>
-                    <div class="people-desc">
-                        资本运营CEO, 材料系博士，在纺织行业10余年，专注新型面料，功能性纤维开发。
-                    </div>
-                </a>
-            </div>
-            <div class="column center">
-                <a href="mailto:wxx@world-lace.com" >
-                    <img src="http://placehold.it/200x200&amp;text=[person]">
-                    <div class="people-name">王茜璇</div>
-                    <div class="people-desc">
-                        90后，香港理工服装设计专业毕业，对时尚有敏锐嗅觉。后赴法国高商进修时尚管理，曾在巴黎银行负责趋势预测。
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-
-<div id="culture-modal" class="reveal" data-reveal data-animation-out="fade-out" >
-    <div class="info-modal-title">
-        核心文化 <span class="sub-text">Core Culture</span>
-    </div>
-    <div class="info-modal-content">
-        <p>
-            <span style="font-weight: bold">理念：</span>
-            <div style="margin-left:2rem">
-                用创新与美建立高品质的生活体验
-            </div>
-            <div style="margin-left:2rem">
-                Create high quality life experience with innovation and beauty
-            </div>
-        </p>
-        <p>
-            <span style="font-weight: bold">企业文化:</span>
-            <div style="margin-left:2rem">
-                使命－创造由内而外的美，达到人类对美而健康生活的追求
-            </div>
-            <div style="margin-left:5rem">
-                女性科技创造者 Feminism technology creator
-            </div>
-            <div style="margin-left:2rem">
-                价值－开放、诚信、创新、关怀、细节
-            </div>
-        </p>
-    </div>
-    <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
 <!-- page contents -->
-##<div class="page-content">
-##
+<div class="page-content">
+
 ##    <div class="row list-tagger clearfix">
 ##        <div>
 ##            <i class="fi-sound"> </i>
@@ -247,139 +39,66 @@
 ##            <span class="english-note">Limited New Collection</span>
 ##        </div>
 ##    </div>
-##
-##    <div class="item-list margin-top-tiny">
-##        <ul class="row large-up-4 medium-up-3 small-up-2">
-##            #foreach ($skuInfo in $skuInfoList)
-##                #if ($velocityCount <= 4)
-##                <li class="column">
-##                    <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
-##                        #if ($velocityCount == 1 || $velocityCount == 2)
-##                        <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
-##                        #end
-##                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail-3" alt="$skuInfo.title"/>
-##                    </a>
-##                    <div class="item-description">
-##                        <div class="item-title">$skuInfo.getTitle()</div>
-##                        <div class="item-price margin-top-tiny">
-##                            <p class="item-price-num-wrapper">
-##                                <span class="item-price-num">
-##                                    <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
-##                                </span>
-##                            </p>
-##                            <hr class="item-price-hr">
-##                        </div>
-##                    </div>
-##                </li>
-##                #end
-##            #end
-##        </ul>
-##    </div>
-##
-##    <div class="row list-tagger clearfix">
-##        <div>
-##            <i class="fi-sound"> </i>
-##            专题研究
-##            <span class="english-note">Topic Research</span>
-##        </div>
-##    </div>
-##
-##    <div class="row margin-top-tiny">
-##        <a href="/topic" target="_blank" class="topic-content">
-##            <img src="$!{imageUrlPrefix}/images/topic/0/0.jpg" alt="红酒杯专题">
-##            <div class="topic-title-cover">
-##                <div class="topic-title">
-##                    周末放松一下，优雅的喝杯红酒怎样？
-##                </div>
-##                <div class="topic-subtitle">
-##                    [专题：几百块的葡萄酒，你却在用一次性杯子喝。]
-##                </div>
-##            </div>
-##        </a>
-##    </div>
-##
-##    <div class="row list-tagger clearfix margin-top">
-##        <div>
-##            <i class="fi-sound"> </i>
-##            正品收藏
-##            <span class="english-note">Branded Collection</span>
-##        </div>
-##    </div>
-##
-##    <div class="item-list margin-top-tiny">
-##        <ul class="row large-up-4 medium-up-3 small-up-2">
-##            #foreach ($skuInfo in $skuInfoList)
-##                #if ($velocityCount > 4)
-##                <li class="column">
-##                    <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper" target="_blank">
-##                        #if ($velocityCount == 1 || $velocityCount == 2)
-##                            <div class="sale-box"><span class="on_sale title_shop">Hot</span></div>
-##                        #end
-##                        <img src="${imageUrlPrefix}/images/item/itemHead/$skuInfo.getId()/0.jpg@!list-detail-3" alt="$skuInfo.title"/>
-##                    </a>
-##                    <div class="item-description">
-##                        <div class="item-title">$skuInfo.getTitle()</div>
-##                        <div class="item-price margin-top-tiny">
-##                            <p class="item-price-num-wrapper">
-##                                <span class="item-price-num">
-##                                    <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
-##                                </span>
-##                            </p>
-##                            <hr class="item-price-hr">
-##                        </div>
-##                    </div>
-##                </li>
-##                #end
-##            #end
-##            <li class="column">
-##                <div class="coming-soon-pic">
-##                    <div>
-##                        Coming Soon!
-##                    </div>
-##                    <div>
-##                        桃源还在继续选品...
-##                    </div>
-##                </div>
-##                <div class="item-description margin-top">
-##                    <div class="item-price margin-top-tiny">
-##                        <p class="item-price-num-wrapper">
-##                            <span class="item-price-num">
-##                                <span class="item-price-num-current">敬请期待</span>
-##                            </span>
-##                        </p>
-##                    </div>
-##                </div>
-##            </li>
-##        </ul>
-##    </div>
-####
-##
-####    <div class="item-list margin-top-tiny">
-####        <ul class="row large-up-4 medium-up-3 small-up-2" data-equalizer>
-####            #foreach ($imgId in [3..22])
-####                <li class="column" data-equalizer-watch>
-####                    <a href="/item?itemId=1" class="item-image-wrapper">
-####                        <img src="${imageUrlPrefix}/images/item/${imgId}.jpg" alt=""/>
-####                    </a>
-####                    <div class="item-description">
-####                        <div class="item-title">Tescoma Kitchen Stuff</div>
-####                        <div class="item-price margin-top-tiny">
-####                            <p class="item-price-num-wrapper">
-####                                <span class="item-price-num">
-####                                    <span class="item-price-num-current">￥199</span>
-####                                </span>
-####                            </p>
-####                            <hr class="item-price-hr">
-####                        </div>
-####                    </div>
-####                </li>
-####            #end
-####        </ul>
-####    </div>
-##
-####    #include("msgModal.vm")
-##
-##</div>
+
+    <div class="item-list margin-top-tiny">
+        <ul class="row large-up-4 medium-up-3 small-up-2">
+            #foreach ($skuInfo in $skuInfoList)
+                #if ($velocityCount <= 4)
+                <li class="column">
+                    <a href="/item?itemId=$velocityCount" class="item-image-wrapper" target="_blank">
+                        <img src="${imageUrlPrefix}/images/sku/$velocityCount/5.jpg" alt="$skuInfo.title"/>
+                    </a>
+                    <div class="item-description">
+                        <div class="item-title">$skuInfo.getTitle()</div>
+                        <div class="item-price margin-top-tiny">
+                            <p class="item-price-num-wrapper">
+                                <span class="item-price-num">
+                                    <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                #elseif ($velocityCount <= 8)
+                    #set ($vc = 9 - $velocityCount)
+                <li class="column">
+                    <a href="/item?itemId=$vc" class="item-image-wrapper" target="_blank">
+                        <img src="${imageUrlPrefix}/images/sku/$vc/1.jpg" alt="$skuInfo.title"/>
+                    </a>
+                    <div class="item-description">
+                        <div class="item-title">$skuInfo.getTitle()</div>
+                        <div class="item-price margin-top-tiny">
+                            <p class="item-price-num-wrapper">
+                            <span class="item-price-num">
+                                <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
+                            </span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                #elseif ($velocityCount <= 12)
+                    #set ($vc = $velocityCount - 8)
+                    <li class="column">
+                        <a href="/item?itemId=$vc" class="item-image-wrapper" target="_blank">
+                            <img src="${imageUrlPrefix}/images/sku/$vc/1.jpg" alt="$skuInfo.title"/>
+                        </a>
+                        <div class="item-description">
+                            <div class="item-title">$skuInfo.getTitle()</div>
+                            <div class="item-price margin-top-tiny">
+                                <p class="item-price-num-wrapper">
+                            <span class="item-price-num">
+                                <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
+                            </span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                #end
+            #end
+        </ul>
+    </div>
+
+</div>
 <!-- end of this page contents -->
 
 <!-- start of footer-->

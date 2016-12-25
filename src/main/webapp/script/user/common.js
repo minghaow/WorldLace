@@ -13,7 +13,13 @@ jQuery(document).ready(function($) {
 
     $(".unsupported-section").click(function(event){
         event.preventDefault();
-        notyf.alert("产品尚未上线，敬请期待!");
+        notyf.alert("Oops! Still in construction.");
+    });
+
+    $(".auto-anchor").click(function(event){
+        event.preventDefault();
+        var url = $(this).attr("href");
+        window.location.href = url;
     });
 
     $(".detail-image-slider .banner-slider ul li").show();
@@ -26,6 +32,7 @@ jQuery(document).ready(function($) {
         $("#animatedModal1").foundation("open");
         setTimeout(function(){
             $('#login-form .button').addClass("shake-crazy shake-constant");
+            $('#body').attr("onmousewheel", "return false;");
         }, 300);
         setTimeout(function(){
             $('#login-form .button').removeClass("shake-crazy shake-constant");
@@ -35,7 +42,7 @@ jQuery(document).ready(function($) {
     $('.register-btn2').on('click', function() {
         $('#offCanvas').foundation('close', function(){});
         setTimeout(function(){
-            $("#animatedModal2").foundation("open");
+            $("#animatedModal3").foundation("open");
             $('#login-form2 .button').addClass("shake-crazy shake-constant");
         }, 500);
         setTimeout(function(){
@@ -46,7 +53,7 @@ jQuery(document).ready(function($) {
     $('.login-btn2').on('click', function() {
         $('#offCanvas').foundation('close', function(){});
         setTimeout(function(){
-            $("#animatedModal2").foundation("open");
+            $("#animatedModal2").foundation("open").css("left", "0");
             $('#login-form2 .button').addClass("shake-crazy shake-constant");
         }, 500);
         setTimeout(function(){
@@ -54,32 +61,8 @@ jQuery(document).ready(function($) {
         }, 1000);
     });
 
-    $("#phone3").focus(function(){
-        isValidPhone = false;
-        $(this).removeClass("successInput alertInput");
-    })
-    .blur(function(){
-        phone = $("#phone3").val().replace(/\s+/g,"");
-        if (phone.length != 11) {
-            inputNotification("#phone3", "#phoneHelpText3", false, "手机号应为11位数字");
-            return;
-        }
-        $.ajax({
-            url: "/auth/isRegistered",
-            type: "POST",
-            data: {"phone":phone},
-            dataType: 'json',
-            success: function(data) {
-                if (data.success == true || data.success == "true") {
-                    inputNotification("#phone3", "#phoneHelpText3", true, "&nbsp");
-                } else {
-                    inputNotification("#phone3", "#phoneHelpText3", false, data.msg);
-                }
-            }
-        });
-    });
-
     $('#animatedModal1').on('closed.zf.reveal', function() {
+        $('#body').removeAttr("onmousewheel");
         if (registerStep != 0) {
             toggleRegisterContent(false);
             registerStep = 0;
@@ -87,14 +70,51 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $('#animatedModal2').on('closed.zf.reveal', function() {
+        $(".reveal-overlay:first").hide();
+    });
+
+    $('#animatedModal3').on('closed.zf.reveal', function() {
+        $(".reveal-overlay:first").hide();
+    });
+
+    $('#login-confirm2').on('click', function() {
+        $.ajax({
+            url: "/auth/login-check",
+            type: "POST",
+            data: $("#login-form2").serialize(),
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    afterLoginAction2(data);
+                } else {
+                    inputNotification("#password3", "#pwdHelpText3", false, data.msg);
+                }
+            }
+        });
+    });
+
+    $("#phone3").focus(function(){
+        isValidPhone = false;
+        $(this).removeClass("successInput alertInput");
+    })
+        .blur(function(){
+            phone = $("#phone3").val().replace(/\s+/g,"");
+            isPhoneValidAndRegistered(phone, "#phone3", "#phoneHelpText3");
+        });
+
     $("#phone").focus(function(){
         isValidPhone = false;
         $(this).removeClass("successInput alertInput");
     })
-    .blur(function(){
-        phone = $("#phone").val().replace(/\s+/g,"");
+        .blur(function(){
+            phone = $("#phone").val().replace(/\s+/g,"");
+            isPhoneValidAndRegistered(phone, "#phone", "#phoneHelpText");
+        });
+
+    function isPhoneValidAndRegistered(phone, inputDiv, helpTextDiv) {
         if (phone.length != 11) {
-            inputNotification("#phone", "#phoneHelpText", false, "手机号应为11位数字");
+            inputNotification(inputDiv, helpTextDiv, false, "手机号应为11位数字");
             return;
         }
         $.ajax({
@@ -104,13 +124,13 @@ jQuery(document).ready(function($) {
             dataType: 'json',
             success: function(data) {
                 if (data.success == true || data.success == "true") {
-                    inputNotification("#phone", "#phoneHelpText", true, "&nbsp");
+                    inputNotification(inputDiv, helpTextDiv, true, "&nbsp");
                 } else {
-                    inputNotification("#phone", "#phoneHelpText", false, data.msg);
+                    inputNotification(inputDiv, helpTextDiv, false, data.msg);
                 }
             }
         });
-    });
+    }
 
     function inputNotification(point, helpPoint, isSuccess, message) {
         if (message == "") {
@@ -129,28 +149,55 @@ jQuery(document).ready(function($) {
         isValidPhone = false;
         $(this).removeClass("successInput alertInput");
     })
-    .blur(function(){
-        phone = $("#phone2").val().replace(/\s+/g,"");
-        if (phone.length != 11) {
-            inputNotification("#phone2", "#phoneHelpText2", false, "手机号应为11位数字");
-            return;
-        }
-        $.ajax({
-            url: "/auth/isNotRegistered",
-            type: "POST",
-            data: {"phone":phone},
-            dataType: 'json',
-            success: function(data) {
-                if (data.success == true || data.success == "true") {
-                    inputNotification("#phone2", "#phoneHelpText2", true, "&nbsp");
-                    isValidPhone = true;
-                } else {
-                    inputNotification("#phone2", "#phoneHelpText2", false, data.msg);
-                    isValidPhone = false;
-                }
+        .blur(function(){
+            phone = $("#phone2").val().replace(/\s+/g,"");
+            if (phone.length != 11) {
+                inputNotification("#phone2", "#phoneHelpText2", false, "手机号应为11位数字");
+                return;
             }
+            $.ajax({
+                url: "/auth/isNotRegistered",
+                type: "POST",
+                data: {"phone":phone},
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        inputNotification("#phone2", "#phoneHelpText2", true, "&nbsp");
+                        isValidPhone = true;
+                    } else {
+                        inputNotification("#phone2", "#phoneHelpText2", false, data.msg);
+                        isValidPhone = false;
+                    }
+                }
+            });
         });
-    });
+
+    $("#phone4").focus(function(){
+        isValidPhone = false;
+        $(this).removeClass("successInput alertInput");
+    })
+        .blur(function(){
+            phone = $("#phone4").val().replace(/\s+/g,"");
+            if (phone.length != 11) {
+                inputNotification("#phone4", "#phoneHelpText4", false, "手机号应为11位数字");
+                return;
+            }
+            $.ajax({
+                url: "/auth/isNotRegistered",
+                type: "POST",
+                data: {"phone":phone},
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        inputNotification("#phone4", "#phoneHelpText4", true, "&nbsp");
+                        isValidPhone = true;
+                    } else {
+                        inputNotification("#phone4", "#phoneHelpText4", false, data.msg);
+                        isValidPhone = false;
+                    }
+                }
+            });
+        });
 
     $('.register-trigger').on('click', function() {
         event.preventDefault();
@@ -188,7 +235,7 @@ jQuery(document).ready(function($) {
                 dataType: 'json',
                 success: function(data) {
                     if (data.success == true || data.success == "true") {
-                        userName = $("#username").val();
+                        userName = $("#username4").val();
                         toggleRegisterContent(true, 3);
                         registerStep = 3;
                     } else {
@@ -208,6 +255,68 @@ jQuery(document).ready(function($) {
                     } else {
                         notyf.alert("请登录！注册成功，请登录，谢谢！");
                         setTimeout(function(){$("#animatedModal1").foundation("open");}, 2500);
+                    }
+                }
+            });
+        }
+    });
+
+    $('.register-trigger2').on('click', function() {
+        event.preventDefault();
+        if (registerStep == 0) {
+            toggleRegisterContent(true, 1);
+            registerStep = 1;
+            $('.register-trigger2').html("下一步").removeClass("final-step");
+        } else if (registerStep == 1) {
+            password = $("#password4").val();
+            if (!isValidPhone) {
+                return;
+            }
+            $.ajax({
+                url: "/auth/register",
+                type: "POST",
+                data: $("#register-form2").serialize(),
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        userId = data.userId;
+                        $("#userId4").val(userId);
+                        toggleRegisterContent(true, 2);
+                        registerStep = 2;
+                        $('.register-trigger2').html("点我完成注册").addClass("final-step");
+                    } else {
+                        inputNotification("#password4", "#pwdHelpText4", false, data.msg);
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                url: "/auth/setName",
+                type: "POST",
+                data: $("#register-form2").serialize(),
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        userName = $("#username4").val();
+                        toggleRegisterContent(true, 3);
+                        registerStep = 3;
+                    } else {
+                        notyf.alert("抱歉，" + data.msg);
+                        setTimeout(function(){$("#animatedModal3").foundation("open");}, 2500);
+                    }
+                }
+            });
+            $.ajax({
+                url: "/auth/login-check",
+                type: "POST",
+                data: {"password":password, "phone":phone},
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success == true || data.success == "true") {
+                        afterLoginAction2(data);
+                    } else {
+                        notyf.alert("请登录！注册成功，请登录，谢谢！");
+                        setTimeout(function(){$("#animatedModal3").foundation("open");}, 2500);
                     }
                 }
             });
@@ -254,8 +363,24 @@ jQuery(document).ready(function($) {
             window.location.reload();
         }
         $("#animatedModal1").foundation("close");
-        $("#username-section").html(data.userInfo.username + "的订单");
+        $("#username-section").html(data.userInfo.username + "'s Account");
         $("#login-decide-content").html("登出");
+        $(".cart-count").html(data.cart.goodsCount);
+        $("#is-login").html("true");
+        $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
+        $(".login-btn").attr("href", "/order/list");
+        notyf.confirm("自动登录成功!");
+    }
+
+    function afterLoginAction2(data) {
+        if ($("#this-tag").html() == "my-order") {
+            window.location.reload();
+        }
+        $('#offCanvas').foundation('close', function(){});
+        $('#animatedModal2').foundation('close');
+        $('#animatedModal3').foundation('close');
+        $('.login-btn2').html(data.userInfo.username + '的订单').attr("href", "/order/list").removeClass("login-btn2");
+        $('.register-btn2').html('登出').attr("href", "/auth/logout").removeClass("register-btn2");
         $(".cart-count").html(data.cart.goodsCount);
         $("#is-login").html("true");
         $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");

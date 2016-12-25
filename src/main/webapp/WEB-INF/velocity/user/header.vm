@@ -64,9 +64,9 @@
 
 <!-- for seo -->
 #if ($!{pageType} == "ITEM_DETAIL")
-    <img src="$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head" alt="世界蕾丝时尚" class="seo-content"/>
+    <img src="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/1.jpg?x-oss-process=style/item-detail" alt="世界蕾丝时尚" class="seo-content"/>
 #else
-    <img src="$!{imageUrlPrefix}/images/search.jpg" alt="世界蕾丝时尚" class="seo-content"/>
+    <img src="$!{imageUrlPrefix}/images/logo/logo-white-small.png" alt="世界蕾丝时尚" class="seo-content"/>
 #end
 
 <div class="title-bar hide-for-medium">
@@ -91,6 +91,11 @@
             <li><a href="/">Home</a></li>
             <li><a href="#">Topic</a></li>
 
+            <li><label class="first margin-top-small">BOUTIQUE ONLINE</label></li>
+            <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
+            <li><a href="#" class="unsupported-section">IT'LACE 24/7 (TBC)</a></li>
+            <li><a href="#" class="unsupported-section">IT'LACE HOME (TBC)</a></li>
+
             <li><label class="first margin-top-small">Mine</label></li>
             <li>
                 <a href="#" class="login-btn2">
@@ -109,56 +114,6 @@
     </div>
 
     <div class="off-canvas-content" data-off-canvas-content>
-##        <div class="superHeader hide-for-small-only">
-##            <div class="top-bar" id="top-bar">
-##                <div class="top-bar-left">
-##                    <ul class="menu">
-##                        <li class="menu-text">Create high quality life experience with innovation and beauty.</li>
-##                    </ul>
-##                </div>
-##                <div class="top-bar-right">
-##                    <ul class="dropdown menu" data-dropdown-menu>
-##                        #if ("$!{userInfo}" != "")
-##                        <li><a href="/order/list" id="user-url"><i class="fi-torso"></i>
-##                            <span id="username-section">$userInfo.getUsername()的订单</span></a>
-##                        </li>
-##                        <li><a href="#"> | </a></li>
-##                        <li><a id="login-decide-url" href="/auth/logout"><i class="fi-torso"></i>
-##                            <span id="login-decide-content">登出</span></a>
-##                        </li>
-##                        #else
-##                        <li><a href="#" class="login-btn" id="user-url"><i class="fi-torso"></i>
-##                            <span id="username-section">登陆</span></a>
-##                        </li>
-##                        <li><a href="#"> | </a></li>
-##                        <li><a id="login-decide-url" href="#" class="register-btn"><i class="fi-check"></i>
-##                            <span id="login-decide-content">注册</span></a>
-##                        </li>
-##                        #end
-####                        <li><a href="#"> | </a></li>
-####                        <li class="has-submenu is-dropdown-submenu-parent opens-left">
-####                            <a href="#"><i class="fi-star"></i> 关注我们</a>
-####
-####                            <ul class="submenu menu vertical" data-submenu>
-####                                <li>
-####                                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
-####                                </li>
-####                            </ul>
-####                        </li>
-##                        <li><a href="#"> | </a></li>
-##                        <li>
-##                            <a href="/cart" target="_blank">
-##                                #if ("$!{cart.goodsCount}" != "")
-##                                    <i class="fi-shopping-cart"></i> 购物车( <span class="cart-count redText">$!{cart.goodsCount}</span> )
-##                                #else
-##                                    <i class="fi-shopping-cart"></i> 购物车( <span class="cart-count redText">0</span> )
-##                                #end
-##                            </a>
-##                        </li>
-##                    </ul>
-##                </div>
-##            </div>
-##        </div>
 
         <div class="logo-wrapper show-for-small-only">
             <a href="/">
@@ -175,57 +130,92 @@
                 </div>
                 <div class="navbar-right menustyle hide-for-small-only">
                     <ul class="nav navbar-nav">
-                        <li><a href="#" class="unsupported-section"><i class="fi-shopping-cart"> </i>Shopping Cart (0)</a></li>
-                        <li><a href="#" class="unsupported-section"><i class="fi-heart"> </i>My Wishlist</a></li>
+                        <li>
+                            <a href="#" class="unsupported-section">
+                                <img src="$!{imageUrlPrefix}/images/icon/cart.png" alt="" id="cart" style="width: 1.9rem"/>
+                                Shopping Cart (<span class="cart-count redText">$!{cart.goodsCount}</span>)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="unsupported-section">
+                                <img src="$!{imageUrlPrefix}/images/icon/heart.png" alt=""  id="wishlist" style="width: 1.7rem"/>
+                                My Wishlist
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <nav class="bottom-line-down">
-
+        <nav class="bottom-line-down hide-for-small-only">
             <div class="menu-wrapper">
                 #if ($!{en})
-                    <a href="/">
-                        HOMEPAGE
-                    </a>
-                    <a href="/list" class="unsupported-section">
-                        STORE
-                    </a>
-                    <a href="/" class="unsupported-section">
-                        COLLECTION
-                    </a>
-                    <a href="/about">
-                        ABOUT US
-                    </a>
-                    <a href="/contact">
-                        CONTACT
-                    </a>
+                    <ul class="dropdown menu" data-dropdown-menu data-close-on-click-inside="false">
+                        <li><a href="/">HOME</a></li>
+                        <li>
+                            <a href="/list" class="$!{ITEM_LIST}">BOUTIQUE ONLINE</a>
+                            <ul class="menu">
+                                <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
+                                <li><a href="#" class="unsupported-section">IT'LACE 24/7 (TBC)</a></li>
+                                <li><a href="#" class="unsupported-section">IT'LACE HOME (TBC)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/about" class="$!{ABOUT}">ABOUT US</a></li>
+                        <li><a href="/contact">CONTACT</a></li>
+                    </ul>
                 #else
-                    <a href="/">
-                        首页
-                    </a>
-                    <a href="/" class="unsupported-section">
-                        商店
-                    </a>
-                    <a href="/" class="unsupported-section">
-                        杂志
-                    </a>
-                    <a href="/contact">
-                        关于我们
-                    </a>
-                    <a href="/contact">
-                        联系我们
-                    </a>
+                    <ul class="dropdown menu" data-dropdown-menu data-close-on-click-inside="false">
+                        <li><a href="/">首页</a></li>
+                        <li>
+                            <a href="/list" class="$!{ITEM_LIST}">线上精品店</a>
+                            <ul class="menu">
+                                <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
+                                <li><a href="#" class="unsupported-section">IT'LACE 24/7 (TBC)</a></li>
+                                <li><a href="#" class="unsupported-section">IT'LACE HOME (TBC)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/about" class="$!{ABOUT}">关于我们</a></li>
+                        <li><a href="/contact">联系我们</a></li>
+                    </ul>
                 #end
             </div>
 
             <div class="menu-wrapper-left">
                 #if ($!{en})
+                    #if ("$!{userInfo}" != "")
+                        <a href="/order/list" class="login-btn">
+                            <span id="username-section">$userInfo.getUsername()'s Account</span>
+                        </a>
+                        <a id="login-decide-url" href="/auth/logout">
+                            <span id="login-decide-content">Logout</span>
+                        </a>
+                    #else
+                        <a href="#" class="login-btn">
+                            <span id="username-section">Login / Register</span>
+                        </a>
+                        <a id="login-decide-url" href="/auth/logout">
+                            <span id="login-decide-content"></span>
+                        </a>
+                    #end
                     <a href="?l=ch">
                         中文
                     </a>
                 #else
+                    #if ("$!{userInfo}" != "")
+                        <a href="/order/list" class="login-btn">
+                            <span id="username-section">$userInfo.getUsername()的账号</span>
+                        </a>
+                        <a id="login-decide-url" href="/auth/logout">
+                            <span id="login-decide-content">登出</span>
+                        </a>
+                    #else
+                        <a href="#" class="login-btn">
+                            <span id="username-section">Login / Register</span>
+                        </a>
+                        <a id="login-decide-url" href="/auth/logout">
+                            <span id="login-decide-content"></span>
+                        </a>
+                    #end
                     <a href="?l=en">
                         English
                     </a>
@@ -233,221 +223,214 @@
             </div>
         </nav>
 
-##        <div id="animatedModal1" class="reveal" data-reveal data-animation-out="fade-out" >
-##            <div class="row">
-##                <div class="small-12 medium-6 large-6 columns auth-plain right-border">
-##                    <div class="signup-panel left-solid">
-##                        <p class="welcome">账户登录</p>
-##                        <form id="login-form">
-##                            <div class="login-inputs">
-##                                <div class="row collapse">
-##                                    <div class="small-2 columns login-prefix">
-##                                        <span class="prefix"><i class="fi-telephone"></i></span>
-##                                    </div>
-##                                    <div class="small-10 columns login-postfix">
-##                                        <input type="text" id="phone" name="phone"/>
-##                                        <p class="help-text" id="phoneHelpText">该手机号未注册过</p>
-##                                    </div>
-##                                </div>
-##                                <div class="row collapse">
-##                                    <div class="small-2 columns login-prefix">
-##                                        <span class="prefix"><i class="fi-lock"></i></span>
-##                                    </div>
-##                                    <div class="small-10 columns login-postfix">
-##                                        <input type="password" id="password" name="password"/>
-##                                        <p class="help-text" id="pwdHelpText">密码错误</p>
-##                                    </div>
-##                                </div>
-##                            </div>
-##                            <a href="#" class="button shake-slow" id="login-confirm">登陆 </a>
-##                        </form>
-##                    </div>
-##                </div>
-##
-##                <div class="small-12 medium-6 large-6 columns auth-plain">
-##                    <div class="signup-panel newusers">
-##                        <p class="welcome"> 新用户?</p>
-##                        <div class="welcome-content">
-##                            <form id="register-form">
-##                                <div class="register-content">
-##                                    <div class="welcome-hide-after">
-##                                        <div>
-##                                            欢迎您来到桃源网！在这里您可以放心的买到高品质的餐具厨具，为生活增加几抹靓丽的色彩！
-##                                        </div>
-##                                        <div class="margin-top-small">
-##                                            快点击下面的按钮，加入我们！
-##                                        </div>
-##                                    </div>
-##                                    <div class="welcome-hide-before">
-##                                        <div class="row">
-##                                            <div class="small-2 columns login-prefix">
-##                                                <span class="prefix"><i class="fi-telephone"></i></span>
-##                                            </div>
-##                                            <div class="small-10 columns login-postfix">
-##                                                <input type="text" id="phone2" name="phone" placeholder="您的手机号，11位数字"/>
-##                                                <p class="help-text" id="phoneHelpText2">手机号应为11位数字</p>
-##                                            </div>
-##                                            <div class="small-2 columns login-prefix">
-##                                                <span class="prefix"><i class="fi-lock"></i></span>
-##                                            </div>
-##                                            <div class="small-10 columns login-postfix">
-##                                                <input type="password" id="password2" name="password" placeholder="密码，6-12位密码"/>
-##                                                <p class="help-text" id="pwdHelpText2">请使用6-12位数字和字母的组合作为密码</p>
-##                                            </div>
-##                                        </div>
-##                                    </div>
-##                                    <div class="welcome-hide-before-2">
-##                                        <div class="row collapse">
-##                                            <div class="small-2 columns">&nbsp;</div>
-##                                            <div class="small-10 columns left-align">
-##                                                起一个优雅的名字？
-##                                            </div>
-##                                        </div>
-##                                        <div class="row collapse margin-top-small">
-##                                            <div class="small-2 columns login-prefix">
-##                                                <span class="prefix"><i class="fi-torso"></i></span>
-##                                            </div>
-##                                            <div class="small-10 columns login-postfix">
-##                                                <input type="hidden" id="userId" name="userId"/>
-##                                                <input type="text" id="username" name="username" placeholder="用户名"/>
-##                                                <p class="help-text" id="usernameHelpText2">用户名太敏感了</p>
-##                                            </div>
-##                                        </div>
-##                                    </div>
-##                                </div>
-##                                <a href="/cart" target="_blank" class="button register-trigger">点我注册</a>
-##                            </form>
-##                        </div>
-##                    </div>
-##                </div>
-##
-##            </div>
-##
-##            <button class="close-button" data-close aria-label="Close reveal" type="button">
-##                <span aria-hidden="true">&times;</span>
-##            </button>
-##
-##        </div>
-
-##        <div id="animatedModal2" class="reveal" data-reveal data-animation-out="fade-out" data-overlay="false">
-##            <div class="row">
-##                <div class="small-12 medium-6 large-6 columns auth-plain right-border">
-##                    <div class="signup-panel left-solid">
-##                        <p class="welcome">账户登录</p>
-##                        <form id="login-form2">
-##                            <div class="login-inputs">
-##                                <div class="row collapse">
-##                                    <div class="small-2 columns login-prefix">
-##                                        <span class="prefix"><i class="fi-telephone"></i></span>
-##                                    </div>
-##                                    <div class="small-10 columns login-postfix">
-##                                        <input type="text" id="phone3" name="phone"/>
-##                                        <p class="help-text" id="phoneHelpText3">该手机号未注册过</p>
-##                                    </div>
-##                                </div>
-##                                <div class="row collapse">
-##                                    <div class="small-2 columns login-prefix">
-##                                        <span class="prefix"><i class="fi-lock"></i></span>
-##                                    </div>
-##                                    <div class="small-10 columns login-postfix">
-##                                        <input type="password" id="password3" name="password"/>
-##                                        <p class="help-text" id="pwdHelpText3">密码错误</p>
-##                                    </div>
-##                                </div>
-##                            </div>
-##                            <a href="#" class="button shake-slow" id="login-confirm2">登陆 </a>
-##                        </form>
-##                    </div>
-##                </div>
-##            </div>
-##
-##            <button class="close-button" data-close aria-label="Close reveal" type="button">
-##                <span aria-hidden="true">&times;</span>
-##            </button>
-##
-##        </div>
-##
-##        <div id="animatedModal3" class="reveal" data-reveal data-animation-out="fade-out" >
-##            <div class="row">
-##                <div class="small-12 medium-6 large-6 columns auth-plain">
-##                    <div class="signup-panel newusers">
-##                        <p class="welcome"> 新用户?</p>
-##                        <div class="welcome-content">
-##                            <form id="register-form2">
-##                                <div class="register-content">
-##                                    <div class="welcome-hide-after">
-##                                        <div>
-##                                            欢迎您来到桃源网！在这里您可以放心的买到高品质的餐具厨具，为生活增加几抹靓丽的色彩！
-##                                        </div>
-##                                        <div class="margin-top-small">
-##                                            快点击下面的按钮，加入我们！
-##                                        </div>
-##                                    </div>
-##                                    <div class="welcome-hide-before">
-##                                        <div class="row">
-##                                            <div class="small-2 columns login-prefix">
-##                                                <span class="prefix"><i class="fi-telephone"></i></span>
-##                                            </div>
-##                                            <div class="small-10 columns login-postfix">
-##                                                <input type="text" id="phone4" name="phone" placeholder="您的手机号，11位数字"/>
-##                                                <p class="help-text" id="phoneHelpText4">手机号应为11位数字</p>
-##                                            </div>
-##                                            <div class="small-2 columns login-prefix">
-##                                                <span class="prefix"><i class="fi-lock"></i></span>
-##                                            </div>
-##                                            <div class="small-10 columns login-postfix">
-##                                                <input type="password" id="password4" name="password" placeholder="密码，6-12位密码"/>
-##                                                <p class="help-text" id="pwdHelpText4">请使用6-12位数字和字母的组合作为密码</p>
-##                                            </div>
-##                                        </div>
-##                                    </div>
-##                                    <div class="welcome-hide-before-2">
-##                                        <div class="row collapse">
-##                                            <div class="small-2 columns">&nbsp;</div>
-##                                            <div class="small-10 columns left-align">
-##                                                起一个优雅的名字？
-##                                            </div>
-##                                        </div>
-##                                        <div class="row collapse margin-top-small">
-##                                            <div class="small-2 columns login-prefix">
-##                                                <span class="prefix"><i class="fi-torso"></i></span>
-##                                            </div>
-##                                            <div class="small-10 columns login-postfix">
-##                                                <input type="hidden" id="userId2" name="userId"/>
-##                                                <input type="text" id="username2" name="username" placeholder="用户名"/>
-##                                                <p class="help-text" id="usernameHelpText4">用户名太敏感了</p>
-##                                            </div>
-##                                        </div>
-##                                    </div>
-##                                </div>
-##                                <a href="/cart" target="_blank" class="button register-trigger">点我注册</a>
-##                            </form>
-##                        </div>
-##                    </div>
-##                </div>
-##
-##            </div>
-##
-##            <button class="close-button" data-close aria-label="Close reveal" type="button">
-##                <span aria-hidden="true">&times;</span>
-##            </button>
-##
-##        </div>
-
         #include("msgModal.vm")
 
         <div class="sticky-bottom">
-##            <div class="sticky-bottom-btn">
-##                <a href="/cart" target="_blank">
-##                    #if ("$!{cart.goodsCount}" != "")
-##                        <span class="alert badge cart-count">$!{cart.goodsCount}</span>
-##                    #else
-##                        <span class="alert badge cart-count">0</span>
-##                    #end
-##                    <i class="fi-shopping-cart sticky-bottom-content" id="sticky-cart"></i>
-##                </a>
-##            </div>
             <div class="sticky-bottom-btn scroll-to-top">
                 <i class="fi-arrow-up sticky-bottom-content"></i>
             </div>
+        </div>
+
+        <!-- pc login and register modal -->
+        <div id="animatedModal1" class="reveal full" data-reveal data-animation-out="fade-out" data-overlay="false">
+            <div class="row auth-plain-wrapper">
+                <div class="small-12 medium-6 large-6 columns auth-plain right-border">
+                    <div class="signup-panel left-solid">
+                        <p class="welcome">Login</p>
+                        <form id="login-form">
+                            <div class="login-inputs">
+                                <div class="row collapse">
+                                    <div class="small-2 columns login-prefix">
+                                        <span class="prefix"><i class="fi-telephone"></i></span>
+                                    </div>
+                                    <div class="small-10 columns login-postfix">
+                                        <input type="text" id="phone" name="phone"/>
+                                        <p class="help-text" id="phoneHelpText">Unregistered phone number.</p>
+                                    </div>
+                                </div>
+                                <div class="row collapse">
+                                    <div class="small-2 columns login-prefix">
+                                        <span class="prefix"><i class="fi-lock"></i></span>
+                                    </div>
+                                    <div class="small-10 columns login-postfix">
+                                        <input type="password" id="password" name="password"/>
+                                        <p class="help-text" id="pwdHelpText">Wrong password.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="button shake-slow" id="login-confirm">Ok. </a>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="small-12 medium-6 large-6 columns auth-plain">
+                    <div class="signup-panel newusers">
+                        <p class="welcome"> New to IT'Lace?</p>
+                        <div class="welcome-content">
+                            <form id="register-form">
+                                <div class="register-content">
+                                    <div class="welcome-hide-after">
+                                        <div>
+                                            Welcome to World Lace Fashion! Our goal is to create high quality life experience with innovation and beauty.
+                                        </div>
+                                        <div class="margin-top-small">
+                                            Click the button below and Join us!
+                                        </div>
+                                    </div>
+                                    <div class="welcome-hide-before">
+                                        <div class="row">
+                                            <div class="small-2 columns login-prefix">
+                                                <span class="prefix"><i class="fi-telephone"></i></span>
+                                            </div>
+                                            <div class="small-10 columns login-postfix">
+                                                <input type="text" id="phone2" name="phone" placeholder="Your phone number. 11 bit."/>
+                                                <p class="help-text" id="phoneHelpText2">It should be 11 bit number.</p>
+                                            </div>
+                                            <div class="small-2 columns login-prefix">
+                                                <span class="prefix"><i class="fi-lock"></i></span>
+                                            </div>
+                                            <div class="small-10 columns login-postfix">
+                                                <input type="password" id="password2" name="password" placeholder="Password. 6-12 bit."/>
+                                                <p class="help-text" id="pwdHelpText2">Please use 6-12 bit password.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="welcome-hide-before-2">
+                                        <div class="row collapse">
+                                            <div class="small-2 columns">&nbsp;</div>
+                                            <div class="small-10 columns left-align">
+                                                What's your name, Dear？
+                                            </div>
+                                        </div>
+                                        <div class="row collapse margin-top-small">
+                                            <div class="small-2 columns login-prefix">
+                                                <span class="prefix"><i class="fi-torso"></i></span>
+                                            </div>
+                                            <div class="small-10 columns login-postfix">
+                                                <input type="hidden" id="userId" name="userId"/>
+                                                <input type="text" id="username" name="username" placeholder="用户名"/>
+                                                <p class="help-text" id="usernameHelpText2">Too sensative name.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/cart" target="_blank" class="button register-trigger">Go!</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+
+        <div id="animatedModal2" class="reveal" data-reveal data-animation-in="fade-in" data-animation-out="fade-out"
+             data-close-on-click="false" data-close-on-esc="false" data-overlay="false">
+            <div class="row">
+                <div class="small-12 medium-6 large-6 columns auth-plain right-border">
+                    <div class="signup-panel left-solid">
+                        <p class="welcome">账户登录</p>
+                        <form id="login-form2">
+                            <div class="login-inputs">
+                                <div class="row collapse">
+                                    <div class="small-2 columns login-prefix">
+                                        <span class="prefix"><i class="fi-telephone"></i></span>
+                                    </div>
+                                    <div class="small-10 columns login-postfix">
+                                        <input type="text" id="phone3" name="phone" tabindex="2"/>
+                                        <p class="help-text" id="phoneHelpText3">该手机号未注册过</p>
+                                    </div>
+                                </div>
+                                <div class="row collapse">
+                                    <div class="small-2 columns login-prefix">
+                                        <span class="prefix"><i class="fi-lock"></i></span>
+                                    </div>
+                                    <div class="small-10 columns login-postfix">
+                                        <input type="password" id="password3" name="password" tabindex="3"/>
+                                        <p class="help-text" id="pwdHelpText3">密码错误</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="button shake-slow" id="login-confirm2">登陆 </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+
+        <div id="animatedModal3" class="reveal" data-reveal data-animation-in="fade-in" data-animation-out="fade-out"
+             data-close-on-click="false" data-close-on-esc="false" data-overlay="false">
+            <div class="row">
+                <div class="small-12 medium-6 large-6 columns auth-plain">
+                    <div class="signup-panel newusers">
+                        <p class="welcome"> 新用户?</p>
+                        <div class="welcome-content">
+                            <form id="register-form2">
+                                <div class="register-content">
+                                    <div class="welcome-hide-after">
+                                        <div>
+                                            欢迎您来到桃源网！在这里您可以放心的买到高品质的餐具厨具，为生活增加几抹靓丽的色彩！
+                                        </div>
+                                        <div class="margin-top-small">
+                                            快点击下面的按钮，加入我们！
+                                        </div>
+                                    </div>
+                                    <div class="welcome-hide-before">
+                                        <div class="row">
+                                            <div class="small-2 columns login-prefix">
+                                                <span class="prefix"><i class="fi-telephone"></i></span>
+                                            </div>
+                                            <div class="small-10 columns login-postfix">
+                                                <input type="text" id="phone4" name="phone" placeholder="您的手机号，11位数字"/>
+                                                <p class="help-text" id="phoneHelpText4">手机号应为11位数字</p>
+                                            </div>
+                                            <div class="small-2 columns login-prefix">
+                                                <span class="prefix"><i class="fi-lock"></i></span>
+                                            </div>
+                                            <div class="small-10 columns login-postfix">
+                                                <input type="password" id="password4" name="password" placeholder="密码，6-12位密码"/>
+                                                <p class="help-text" id="pwdHelpText4">请使用6-12位数字和字母的组合作为密码</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="welcome-hide-before-2">
+                                        <div class="row collapse">
+                                            <div class="small-2 columns">&nbsp;</div>
+                                            <div class="small-10 columns left-align">
+                                                起一个优雅的名字？
+                                            </div>
+                                        </div>
+                                        <div class="row collapse margin-top-small">
+                                            <div class="small-2 columns login-prefix">
+                                                <span class="prefix"><i class="fi-torso"></i></span>
+                                            </div>
+                                            <div class="small-10 columns login-postfix">
+                                                <input type="hidden" id="userId4" name="userId"/>
+                                                <input type="text" id="username4" name="username" placeholder="用户名"/>
+                                                <p class="help-text" id="usernameHelpText4">用户名太敏感了</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/cart" target="_blank" class="button register-trigger2">点我注册</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
         </div>

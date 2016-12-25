@@ -10,17 +10,11 @@
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">$!{pageType}</div>
+    <div id="is-login">$!{isLogin}</div>
 </div>
 
 <div class="home-center-title">
     <img src="$!{imageUrlPrefix}/images/logo/logo-white-small.png" alt="世界蕾丝时尚"/>
-##    <div class="title-content">
-##        #if ($!{en})
-##            Creators of Women's Science
-##        #else
-##            IT'LACE，女性科技创造者
-##        #end
-##    </div>
 </div>
 
 <div class="home-center-btn">

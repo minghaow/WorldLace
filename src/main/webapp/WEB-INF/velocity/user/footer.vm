@@ -16,35 +16,53 @@
             </ul>
         </div>
 
-        <div class="small-12 medium-6 large-5 columns">
-            <p class="logo"><i class="fi-shield"></i> 世界蕾丝
-                <span class="about subheader">邮箱：service@world-lace.com</span>
-            </p>
-            <p class="footer-links">
-                <a href="/">主页</a>
-                <a href="#" class="unsupported-section">专题</a>
-                <a href="#" class="unsupported-section">常见问题</a>
-                <a href="#">公司介绍</a>
-                <a href="#" class="unsupported-section">加入我们</a>
-                <a href="/contact">联系我们</a>
-            </p>
-            <p class="copywrite">客服热线：400-820-8200</p>
-            <p class="copywrite">世界蕾丝时尚（北京）科技发展有限公司，京ICP备16000451号-1</p>
-            <p class="copywrite">COPYRIGHT © 2015-2019. All rights Reserved.</p>
-        </div>
-##        <div class="small-12 medium-6 large-4 columns">
-##            <ul class="contact">
-##                <li><p><i class="fi-marker"></i>北京市东城区霄云路国航大厦</p></li>
-##                <li><p><i class="fi-telephone"></i>400-820-8200</p></li>
-##                <li><p><i class="fi-mail"></i>service@world-lace.com</p></li>
-##            </ul>
-##        </div>
-        <div class="small-12 medium-12 large-3 columns">
-            <ul class="inline-list social">
-                <p class="about subheader">微信公众号，关注我们：</p>
-                <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
-            </ul>
-        </div>
+
+        #if ($!{en})
+            <div class="small-12 medium-6 large-5 columns">
+                <p class="logo"><i class="fi-shield"></i> World Lace Fashion
+                    <span class="about subheader">Email：service@world-lace.com</span>
+                </p>
+                <p class="footer-links">
+                    <a href="/">Homepage</a>
+                    <a href="#" class="unsupported-section">Topics</a>
+                    <a href="#" class="unsupported-section">Q&As</a>
+                    <a href="#">Company Intro</a>
+                    <a href="/contact">Contact Us</a>
+                </p>
+                <p class="copywrite">Customer Service：400-820-8200</p>
+                <p class="copywrite">世界蕾丝时尚（北京）科技发展有限公司，京ICP备16000451号-1</p>
+                <p class="copywrite">COPYRIGHT © 2015-2019. All rights Reserved.</p>
+            </div>
+            <div class="small-12 medium-12 large-3 columns">
+                <ul class="inline-list social">
+                    <p class="about subheader">Wechat，follow us：</p>
+                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+                </ul>
+            </div>
+        #else
+            <div class="small-12 medium-6 large-5 columns">
+                <p class="logo"><i class="fi-shield"></i> 世界蕾丝时尚
+                    <span class="about subheader">邮箱：service@world-lace.com</span>
+                </p>
+                <p class="footer-links">
+                    <a href="/">主页</a>
+                    <a href="#" class="unsupported-section">专题</a>
+                    <a href="#" class="unsupported-section">常见问题</a>
+                    <a href="#">公司介绍</a>
+                    <a href="/contact">联系我们</a>
+                </p>
+                <p class="copywrite">客服热线：400-820-8200</p>
+                <p class="copywrite">世界蕾丝时尚（北京）科技发展有限公司，京ICP备16000451号-1</p>
+                <p class="copywrite">COPYRIGHT © 2015-2019. All rights Reserved.</p>
+            </div>
+            <div class="small-12 medium-12 large-3 columns">
+                <ul class="inline-list social">
+                    <p class="about subheader">微信公众号，关注我们：</p>
+                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+                </ul>
+            </div>
+        #end
+
     </div>
 </section>
 
@@ -100,17 +118,19 @@
                 }
             ]
         });
+        var verticalHeight = win.width() * 0.58 - 115;
         $('#lightSlider-s').lightSlider({
             gallery: true,
+            verticalHeight:verticalHeight,
+            vertical:true,
             vThumbWidth:80,
             item: 1,
             loop: true,
             slideMargin: 0,
             thumbItem:6,
             enableDrag: true,
-            controls: true,
+            controls: false,
             auto: false,
-            adaptiveHeight:false,
             onBeforeSlide: function (el) {
                 var detailImage = $(".detail-image-wrapper.active .detail-image");
                 var detailImageBig = $(".detail-image-wrapper.active .detail-image-big");

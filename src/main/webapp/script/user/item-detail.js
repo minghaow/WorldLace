@@ -11,22 +11,23 @@ jQuery( document ).ready(function( $ ) {
         var optionId = $(this).data("option-id");
         $(".price-before").html("￥" + originPrice);
         $(".price-after").html("￥" + price);
-        $(".detail-image-wrapper.active .detail-image").attr("src", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-4");
-        $(".detail-image-wrapper.active .detail-image-big").attr("src", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-4");
-        $(".add-to-cart").data("sku-id", skuId).data("url", "http://image-cdn.zaitaoyuan.com/images/item/itemOption/" + itemId + "/" + optionId + ".jpg@!item-head-thumb-1");
+        $(".detail-image-wrapper.active .detail-image").attr("src", "http://static.world-lace.com/images/sku/" + itemId + "/" + optionId + ".jpg?x-oss-process=style/item-detail");
+        $(".detail-image-wrapper.active .detail-image-big").attr("src", "http://static.world-lace.com/images/sku/" + itemId + "/" + optionId + ".jpg?x-oss-process=style/item-detail");
+        $(".add-to-cart").data("sku-id", skuId).data("url", "http://static.world-lace.com/images/sku/" + itemId + "/" + optionId + ".jpg?x-oss-process=style/item-detail");
         $(".option-button-wrapper button").removeClass("checked");
         $(this).addClass("checked");
     });
 
     $(".add-to-cart").on('click', function(event) {
         event.preventDefault();
+        isLogined = $("#is-login").html() == "true";
         if (!isLogined) {
             $('.login-btn').trigger('click');
             return;
         }
         var skuId = $(this).data("sku-id");
         var count = $(this).data("count");
-        var end = $("#sticky-cart").offset();
+        var end = $("#cart").offset();
         var start =  $(".add-to-cart").offset();
         $.ajax({
             url: "/item/addToCart",
@@ -53,9 +54,33 @@ jQuery( document ).ready(function( $ ) {
                             this.destory();
                         }
                     });
-                    notyf.confirm("添加购物车成功!");
+                    notyf.confirm("Add to cart successfully!");
                 } else {
-                    notyf.alert("抱歉，" + data.message);
+                    notyf.alert("Sorry，" + data.message);
+                }
+            }
+        });
+    });
+
+    $(".add-to-wish").on('click', function(event) {
+        event.preventDefault();
+        isLogined = $("#is-login").html() == "true";
+        if (!isLogined) {
+            $('.login-btn').trigger('click');
+            return;
+        }
+        var skuId = $(this).data("sku-id");
+        $.ajax({
+            url: "/item/addToCart",
+            type: "POST",
+            data: {"skuId":skuId, "count": 1},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    $(".heart-red").addClass("active");
+                    notyf.confirm("Add to wishlist successfully!");
+                } else {
+                    notyf.alert("Sorry，" + data.message);
                 }
             }
         });

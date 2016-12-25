@@ -33,9 +33,29 @@ header {
     font-size: 0.7rem;
     display: inline-block;
 }
+.menu-wrapper ul li {
+    height: 3rem;
+}
 .menu-wrapper a {
     padding: 0 3rem 0 1rem;
     color: #f9e4db;
+}
+#body .menu-wrapper img {
+    height: 2rem;
+    position: relative;
+    top: -.1rem;
+    margin-right: .5rem;
+}
+#body .dropdown.menu .submenu {
+    background: #111;
+    border: black;
+    min-width: 300px;
+}
+#body .dropdown.menu .has-submenu.is-down-arrow>a::after {
+    border-color: #f9e4db transparent transparent;
+}
+#body .menu>li>a {
+    padding: .95rem 1.5rem;
 }
 .menu-wrapper-left {
     float: right;
@@ -116,8 +136,17 @@ header {
     margin-top: 4.5rem;
 }
 @media only screen and (min-width: 40.063em) {
+    .auth-plain-wrapper {
+        position: absolute;
+        top: 20%;
+        width: 90%;
+        left: 5%;
+    }
+    #body .close-button {
+        font-size: 3.5rem;
+    }
     .navbar{
-        padding: 45px 0 10px 0;
+        padding: 10px 0 10px 0;
         background-color:#fff;
         transition:padding 0.4s;
     }
@@ -158,7 +187,7 @@ header {
     }
     .sticky-bottom {
         position: fixed;
-        bottom: 5%;
+        bottom: 1%;
         right: 1%;
         z-index: 100;
     }
@@ -175,6 +204,11 @@ header {
         margin-bottom: 5px;
         -webkit-transition: 0.2s ease;
         transition: 1s ease;
+    }
+    .sticky-bottom img {
+        width: 2.9rem;
+        margin-top: .9rem;
+        margin-left: .4rem;
     }
     .sticky-bottom-btn:hover {
         background-color: rgba(0, 0, 0, 0.75);
@@ -825,29 +859,27 @@ header {
 }
 #animatedModal1,
 #animatedModal2 {
-    width: 80%;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 4px solid transparent;
-    border-image: linear-gradient(80deg, #856f5e, white);
-    border-image-slice: 1;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 4px solid #d2917b;
+    border-radius: .1rem;
 }
 #animatedModal1 .welcome,
 #animatedModal2 .welcome {
-    color: #6e5847;
+    color: #d2917b;
 }
 #animatedModal1 .button,
 #animatedModal2 .button {
-    border: 2px solid #A7866A;
+    border: 2px solid #d2917b;
     width: 9rem;
     background: transparent;
-    color: #A7866A;
+    color: #d2917b;
 }
 #animatedModal1 .button:hover,
 #animatedModal2 .button:hover {
-    border: 2px solid #A7866A;
+    border: 2px solid #976858;
     width: 9rem;
     background: transparent;
-    color: #6e5847;
+    color: #976858;
 }
 
 @media only screen and (min-width: 40.063em) {

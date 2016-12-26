@@ -30,7 +30,7 @@ form [type=file], [type=checkbox], [type=radio] {
 }
 #global-step .current {
     color: #fff;
-    background-color: #af8e72;
+    background-color: #d79b84;
 }
 #global-step div {
     position: inherit;
@@ -39,7 +39,7 @@ form [type=file], [type=checkbox], [type=radio] {
     text-align: center;
 }
 #global-step .current .icotips {
-    border-left: 18px solid #af8e72;
+    border-left: 18px solid #d79b84;
 }
 #global-step .icotips, #global-step .icotips-blank, #global-step .icotips-blank2 {
     position: absolute;
@@ -104,13 +104,13 @@ form [type=file], [type=checkbox], [type=radio] {
     font-weight:bold;
 }
 .cart-tbody tr {
-    border-bottom: #d0ac8d solid 1px;
+    border-bottom: #d79b84 solid 1px;
 }
 .cart-tbody tr:nth-child(even) {
     background-color: inherit;
 }
 .cart-thead {
-    border-top: #af8e72 solid 3px;
+    border-top: #d79b84 solid 3px;
 }
 .gwc_tb3{ width:100%; border:1px solid #d2d2d2; background:#e7e7e7; height:46px; margin-top:20px; }
 .gwc_tb3 tr td{font-size:14px;}
@@ -127,12 +127,12 @@ form [type=file], [type=checkbox], [type=radio] {
     text-align:center;
     font-size:18px;
     color:#fff;
-    background:#ee0000;
+    background: #e2a38b;
     display:block;
     float:right;
 }
 .jz2:hover {
-    background: #970000;
+    background: #b1806d;
     color: #fff;
 }
 #body .accordion-title {
@@ -150,15 +150,24 @@ form [type=file], [type=checkbox], [type=radio] {
     line-height: 3rem;
 }
 #body .discount-code-btn {
-    background: #af8e72;
+    background: #d79b84;
 }
 #body .discount-code-btn:hover {
-    background: #8b715b;
+    background: #af7e6b;
 }
 #discount-code,
 .discount-code-btn {
     height: 46px;
 }
 #body .help-text {
-    color: #6e5847;
+    color: #d79b84;
+}
+@media only screen and (min-width: 40.063em) {
+    #cart-page-content {
+        width: 95%;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 40em) {
+
 }

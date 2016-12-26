@@ -80,11 +80,7 @@
                     #foreach ($goods in $!{order.goodsList})
                     <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
                         <td>
-                            #if ("$!{goods.option1}" != "")
-                                <img src="$!{imageUrlPrefix}/images/item/itemOption/$!{goods.itemId}/$!{goods.optionId}.jpg@!item-head-4" alt="" class="detail-image">
-                            #else
-                                <img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head-4" alt="" class="detail-image">
-                            #end
+                            <img src="$!{imageUrlPrefix}/images/sku/$!{goods.itemId}/5.jpg?x-oss-process=style/item-detail-thumb" alt="" class="detail-image">
                         </td>
                         <td>
 

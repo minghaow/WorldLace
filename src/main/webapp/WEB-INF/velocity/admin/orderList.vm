@@ -24,7 +24,7 @@
 
     <!-- breadcrumbs -->
     <ul class="breadcrumbs">
-        <li ><a href="/"><i class="fi-home"></i> 桃源家首页</a></li>
+        <li ><a href="/"><i class="fi-home"></i> 蕾丝时尚首页</a></li>
         <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 订单列表</a></li>
     </ul>
 

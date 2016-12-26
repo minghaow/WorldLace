@@ -79,6 +79,13 @@ jQuery( document ).ready(function( $ ) {
         updateCountAndPrice();
     });
 
+    function initCheckStatus() {
+        $(".checkbox-goods-all").prop("checked", true);
+        $(".checkbox-goods").prop("checked", true);
+        updateCountAndPrice();
+    }
+    initCheckStatus();
+
     function updateCountAndPrice() {
         var totalPriceDiv =  $("#total-price");
         $("#total-count").html(0);

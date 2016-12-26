@@ -131,7 +131,7 @@
                 <div class="navbar-right menustyle hide-for-small-only">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#" class="unsupported-section">
+                            <a href="/cart">
                                 <img src="$!{imageUrlPrefix}/images/icon/cart.png" alt="" id="cart" style="width: 1.9rem"/>
                                 Shopping Cart
                                 #if ("$!{cart.goodsCount}" != "")
@@ -188,7 +188,7 @@
             <div class="menu-wrapper-left">
                 #if ($!{en})
                     #if ("$!{userInfo}" != "")
-                        <a href="/order/list" class="login-btn">
+                        <a href="/order/list" class="">
                             <span id="username-section">$userInfo.getUsername()'s Account</span>
                         </a>
                         <a id="login-decide-url" href="/auth/logout">
@@ -207,7 +207,7 @@
                     </a>
                 #else
                     #if ("$!{userInfo}" != "")
-                        <a href="/order/list" class="login-btn">
+                        <a href="/order/list" class="">
                             <span id="username-section">$userInfo.getUsername()的账号</span>
                         </a>
                         <a id="login-decide-url" href="/auth/logout">

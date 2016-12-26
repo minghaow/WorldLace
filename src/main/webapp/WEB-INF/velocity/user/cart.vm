@@ -14,23 +14,23 @@
 <!-- some hidden infos -->
 <div class="page-info">
     <div id="this-tag">orders</div>
+    <div id="is-login">$!{isLogin}</div>
 </div>
 
+<nav class="breadcrumb-wrapper margin-top-small">
+    <ul class="breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li class="disabled"><a href="/list">BOUTIQUE ONLINE</a></li>
+        <li>My cart</li>
+    </ul>
+</nav>
+
 <!-- page contents -->
-<div class="page-content margin-top-small" id="cart-page-content">
+<div class="page-content" id="cart-page-content">
 
     <div class="row">
 
-        <nav aria-label="You are here:" role="navigation">
-            <ul class="breadcrumbs">
-                <li><a href="/" class="brandColorText">首页列表</a></li>
-                <li>
-                    我的购物车
-                </li>
-            </ul>
-        </nav>
-
-        <div id="global-step" node-type="mod" class="row margin-top">
+        <div id="global-step" node-type="mod" class="row margin-top-small">
             <div class="step1  current small-3 columns clearfix">
                 1. 我的购物车
                 <span class="icotips right"></span>
@@ -80,11 +80,7 @@
                             <input id="checkbox-goods-$!{goods.id}" data-id="$!{goods.id}" type="checkbox" class="checkbox-goods checkbox-goods-item"><label for="checkbox-goods-$!{goods.id}"></label>
                         </td>
                         <td>
-                            #if ("$!{goods.option1}" != "")
-                                <img src="$!{imageUrlPrefix}/images/item/itemOption/$!{goods.itemId}/$!{goods.optionId}.jpg@!item-head-4" alt="" class="detail-image">
-                            #else
-                                <img src="$!{imageUrlPrefix}/images/item/itemHead/$!{goods.itemId}/0.jpg@!item-head-4" alt="" class="detail-image">
-                            #end
+                            <img src="$!{imageUrlPrefix}/images/sku/$!{goods.itemId}/5.jpg?x-oss-process=style/item-detail-thumb" alt="" class="detail-image">
                         </td>
                         <td>
 
@@ -155,7 +151,7 @@
             </div>
         </div>
         <div class="small-2 columns">
-            <a href="#" class="jz2" id="jz2">去结算</a>
+            <button href="#" class="jz2" id="jz2">去结算</button>
         </div>
     </div>
 

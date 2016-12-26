@@ -9,7 +9,7 @@
     <meta name="keywords" content="男神梦工厂" />
     <meta name="description" content="男神梦工厂（www.IamNanShen.com）是由男神梦之队搭建而成，目的是全面提升祖国男性的生活质量。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>桃源管理系统</title>
+    <title>世界蕾丝时尚管理系统</title>
 
     <!-- style stuff -->
     <link type="image/x-icon" href="/images/favicon.ico" rel="shortcut icon">
@@ -34,7 +34,7 @@
         <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
             <div class="title-bar-left">
                 <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
-                <span class="title-bar-title">桃源管理系统</span>
+                <span class="title-bar-title">世界蕾丝时尚管理系统</span>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
         <div id="main-menu" class="top-bar">
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu data-click-open="false" data-responsive-menu="drilldown medium-dropdown">
-                    <li class="menu-text">桃源管理系统</li>
+                    <li class="menu-text">世界蕾丝时尚管理系统</li>
                     <li class="has-submenu">
                         <a href="/admin/orderList">订单列表</a>
                         <ul class="menu vertical">
@@ -81,7 +81,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/">桃源首页</a>
+                        <a href="/">世界蕾丝时尚首页</a>
                     </li>
                 </ul>
             </div>

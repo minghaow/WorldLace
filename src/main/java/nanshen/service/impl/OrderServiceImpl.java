@@ -281,9 +281,9 @@ public class OrderServiceImpl extends ScheduledService implements OrderService {
         sParaTemp.put("anti_phishing_key", AlipayConfig.anti_phishing_key);
         sParaTemp.put("exter_invoke_ip", AlipayConfig.exter_invoke_ip);
         sParaTemp.put("out_trade_no", ((Long)order.getShowOrderId()).toString());
-        sParaTemp.put("subject", "在桃源餐厨用品共" + order.getGoodsCount() + "件");
+        sParaTemp.put("subject", "totally " + order.getGoodsCount());
         sParaTemp.put("total_fee", order.getTotalPriceString());
-        sParaTemp.put("body", "高端品质餐厨用品。");
+        sParaTemp.put("body", "World Lace Fashion");
 
         //建立请求
         return AlipaySubmit.buildRequest(sParaTemp, "get", "确认支付");

@@ -16,19 +16,19 @@ public class AlipayConfig {
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
 	// 合作身份者ID，签约账号，以2088开头由16位纯数字组成的字符串，查看地址：https://b.alipay.com/order/pidAndKey.htm
-	public static String partner = "2088122804912870";
+	public static String partner = "2088521073125622";
 	
 	// 收款支付宝账号，以2088开头由16位纯数字组成的字符串，一般情况下收款账号就是签约账号
 	public static String seller_id = partner;
 
 	// MD5密钥，安全检验码，由数字和字母组成的32位字符串，查看地址：https://b.alipay.com/order/pidAndKey.htm
-    public static String key = "cdnuxwn1oddqw5z0r14heoip9w13clx6";
+    public static String key = "8dyv7xu7lnkflhmgw5xgsbvopbr8h1vb";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://zaitaoyuan.com/order/alipay/notify";
+	public static String notify_url = "http://world-lace.com/order/alipay/notify";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://zaitaoyuan.com/order/alipay/return";
+	public static String return_url = "http://world-lace.com/order/alipay/return";
 
 	// 签名方式
 	public static String sign_type = "MD5";

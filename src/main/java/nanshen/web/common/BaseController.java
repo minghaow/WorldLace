@@ -101,7 +101,7 @@ public abstract class BaseController {
     protected AdminUserInfo prepareLoginUserInfo(HttpServletRequest request, ModelMap model) {
         AdminUserInfo adminUserInfo = getLoginedUser(request);
         model.addAttribute("adminUserInfo", adminUserInfo);
-        model.addAttribute("imageUrlPrefix", "http://image-cdn.zaitaoyuan.com");
+        model.addAttribute("imageUrlPrefix", "http://static.world-lace.com");
         return adminUserInfo;
     }
 

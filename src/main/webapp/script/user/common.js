@@ -368,7 +368,7 @@ jQuery(document).ready(function($) {
         $(".cart-count").html(data.cart.goodsCount);
         $("#is-login").html("true");
         $("#login-decide-url").attr("href", "/auth/logout").removeClass("register-btn");
-        $(".login-btn").attr("href", "/order/list");
+        $(".login-btn").attr("href", "/order/list").removeClass("login-btn");
         notyf.confirm("自动登录成功!");
     }
 

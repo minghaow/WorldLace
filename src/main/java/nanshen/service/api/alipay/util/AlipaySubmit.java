@@ -2,6 +2,7 @@ package nanshen.service.api.alipay.util;
 
 import nanshen.service.api.alipay.config.AlipayConfig;
 import nanshen.service.api.alipay.sign.MD5;
+import nanshen.utils.LogUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
@@ -43,6 +44,7 @@ public class AlipaySubmit {
         if(AlipayConfig.sign_type.equals("MD5") ) {
         	mysign = MD5.sign(prestr, AlipayConfig.key, AlipayConfig.input_charset);
         }
+        LogUtils.info("verify result: " + MD5.verify(prestr, mysign, AlipayConfig.key, AlipayConfig.input_charset));
         return mysign;
     }
 	

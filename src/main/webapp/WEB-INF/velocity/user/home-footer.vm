@@ -57,10 +57,10 @@
         </div>
         <div class="right-align">
             #if ($!{en})
-                <div class="copywrite">©2016 WorldLace Beijing LLC</div>
+                <div class="copywrite">©2016 WorldLace Beijing</div>
                 <div class="copywrite">京ICP备16000451号-1</div>
             #else
-                <div class="copywrite">©2016 世界蕾丝时尚（北京）LLC</div>
+                <div class="copywrite">©2016 世界蕾丝时尚（北京）</div>
                 <div class="copywrite">京ICP备16000451号-1</div>
             #end
         </div>

@@ -8,6 +8,7 @@ import nanshen.data.SystemUtil.PageType;
 import nanshen.data.User.UserInfo;
 import nanshen.service.CartService;
 import nanshen.service.OrderService;
+import nanshen.service.WishService;
 import nanshen.utils.LogUtils;
 import nanshen.utils.ViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class CartCtrl extends BaseCtrl {
 	private CartService cartService;
 
 	@Autowired
+	private WishService wishService;
+
+	@Autowired
 	private OrderService orderService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -49,6 +53,22 @@ public class CartCtrl extends BaseCtrl {
 		ExecResult<Long> execResult = ExecResult.fail("请登陆后再加入购物车，谢谢！");
 		if (userInfo != null) {
 			execResult= cartService.addSku(userInfo.getId(), skuId, count);
+		}
+		model.put("success", execResult.isSucc());
+		model.put("message", execResult.getMsg());
+		model.put("cnt", execResult.getValue());
+		prepareHeaderModel(model, PageType.CART);
+		responseJson(response, model);
+	}
+
+	@RequestMapping(value = "/addToWish", method = RequestMethod.POST)
+	public void addToWish(HttpServletResponse response, ModelMap model,
+						  @RequestParam(defaultValue = "1", required = true) long skuId)
+			throws IOException {
+		UserInfo userInfo = getLoginedUser();
+		ExecResult<Long> execResult = ExecResult.fail("请登陆后再加入购物车，谢谢！");
+		if (userInfo != null) {
+			execResult= wishService.addSku(userInfo.getId(), skuId, 1);
 		}
 		model.put("success", execResult.isSucc());
 		model.put("message", execResult.getMsg());

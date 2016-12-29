@@ -8,7 +8,7 @@
 #* @vtlvariable name="tagIdMap<String, Boolean>" type="java.util.Map<java.lang.String, java.lang.Boolean>" *#
 
 #parse("user/header.vm")
-<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/cart.css"/>
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/wish.css"/>
 <!-- end of header -->
 
 <!-- some hidden infos -->

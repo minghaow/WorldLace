@@ -120,6 +120,7 @@
                     </a>
                 #else
                     <a href="/list">
+                        <img src="$!{imageUrlPrefix}/images/icon/bird.png" alt="IT'LACE"/>
                         商店
                     </a>
                     <a href="/contact">

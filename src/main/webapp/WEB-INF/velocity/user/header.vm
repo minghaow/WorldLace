@@ -89,7 +89,6 @@
         <ul class="off-canvas-list vertical menu">
             <li><label class="first">IT'LACE</label></li>
             <li><a href="/">Home</a></li>
-            <li><a href="#">Topic</a></li>
 
             <li><label class="first margin-top-small">BOUTIQUE ONLINE</label></li>
             <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
@@ -215,7 +214,7 @@
                         </a>
                     #else
                         <a href="#" class="login-btn">
-                            <span id="username-section">Login / Register</span>
+                            <span id="username-section">登陆/注册</span>
                         </a>
                         <a id="login-decide-url" href="/auth/logout">
                             <span id="login-decide-content"></span>

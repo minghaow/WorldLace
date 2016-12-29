@@ -30,4 +30,5 @@ body .menu>li>a {
 }
 body .menu>li>a button {
     background: #af8e72;
+    background: rgba(215, 155, 132, 0.73);
 }

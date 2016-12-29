@@ -180,8 +180,7 @@
     border-radius: 3px;
 }
 .button:hover {
-    border-image: linear-gradient(45deg, #d2917b, white);
-    background: linear-gradient(45deg, #d2917b, white);
+    text-decoration: underline;
 }
 #body .option-button-wrapper button.checked {
     background: #af8e72;

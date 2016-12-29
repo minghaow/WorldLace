@@ -19,6 +19,8 @@ public enum PageType {
 
     CART("购物车", false),
 
+    WISH("心愿单", false),
+
     ORDER_LIST("订单列表", false),
 
     CUSTOMER_REVIEW_LIST("用户评价商品列表", false),

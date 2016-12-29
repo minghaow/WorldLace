@@ -19,10 +19,17 @@
 
 <nav class="breadcrumb-wrapper margin-top-small">
     <ul class="breadcrumbs">
+        #if ($!{en})
         <li><a href="/">Home</a></li>
         <li class="disabled"><a href="/list">BOUTIQUE ONLINE</a></li>
         <li><a href="/list">IT'LACE</a></li>
         <li>$!{skuItem.title}</li>
+        #else
+        <li><a href="/">首页</a></li>
+        <li class="disabled"><a href="/list">线上精品店</a></li>
+        <li><a href="/list">IT'LACE</a></li>
+        <li>$!{skuItem.title}</li>
+        #end
     </ul>
 </nav>
 
@@ -31,8 +38,21 @@
     <div class="row">
 
         <div class="large-7 medium-7 small-12 columns">
-            <div class="item-slider">
-                <ul id="lightSlider-s">
+            <div class="item-slider lightSlider-s hide-for-small-only">
+                <ul id="lightSlider-s" class="hide-for-small-only">
+                    #foreach ($imgId in [1..$skuItem.getImgCount()])
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail-thumb">
+                            <img class="detail-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail"
+                                 src="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail" alt="${skuItem.title}"/>
+                            <img class="detail-image-big" id="detail-image-big-h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail"
+                                 src="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail" alt="${skuItem.title}"/>
+                            <div class="detail-image-cover" data-id="h$imgId" ></div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+            <div class="item-slider lightSlider-sm show-for-small-only">
+                <ul id="lightSlider-sm" class="show-for-small-only">
                     #foreach ($imgId in [1..$skuItem.getImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail-thumb">
                             <img class="detail-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail"
@@ -78,14 +98,25 @@
                 <div class="buy-button-wrapper margin-top clearfix">
                     <div class="center">
                         <button class="add-to-cart button" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}"
-                                data-count="1" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/1.jpg?x-oss-process=style/item-detail-thumb"><i class="fi-shopping-cart"> </i>&nbsp;Add to Cart&nbsp;</button>
+                                data-count="1" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/1.jpg?x-oss-process=style/item-detail-thumb"><i class="fi-shopping-cart"> </i>
+
+                            #if ($!{en})
+                                &nbsp;Add to Cart&nbsp;
+                            #else
+                                加到购物车
+                            #end
+                        </button>
                     </div>
                 </div>
 
                 <div class="wish-button-wrapper clearfix">
                     <div class="center">
                         <button class="add-to-wish button" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}">
-                            &nbsp;&nbsp;Add to My Wishlist&nbsp;
+                            #if ($!{en})
+                                Add to My Wishlist
+                            #else
+                                加入心愿单
+                            #end
                         </button>
                         <img src="$!{imageUrlPrefix}/images/icon/heart-red.png" class="heart-red"/>
                     </div>
@@ -112,10 +143,11 @@
 
                 <div class="margin-top-small clearfix">
                     <span class="float-left">
-                        <i class="fi-check greenText"> </i>Free Shipping（<span data-tooltip aria-haspopup="true" class="has-tip" title="新疆、西藏，以及一些偏远地区需要补交少量运费差价"><i class="fi-alert darkGreyText"> </i>for most part of china</span>）
-                    </span>
-                    <span class="float-right">
-                        Now<span class="redText"> ${skuItem.getMonthlySalesInfo()} </span>In Stock.
+                        #if ($!{en})
+                            <i class="fi-check greenText"> </i>Free Shipping（<span data-tooltip aria-haspopup="true" class="has-tip" title="Except for Xinjiang and Xizang"><i class="fi-alert darkGreyText"> </i>for most part of china</span>）
+                        #else
+                            <i class="fi-check greenText"> </i>全场包邮（<span data-tooltip aria-haspopup="true" class="has-tip" title="新疆、西藏，以及一些偏远地区需要补交少量运费差价"><i class="fi-alert darkGreyText"> </i>除少数地区</span>）
+                        #end
                     </span>
                 </div>
 

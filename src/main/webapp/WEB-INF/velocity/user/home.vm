@@ -28,7 +28,7 @@
         #else
             <a href="/list/" class="shop-now animBtn themeA">
 ##                <i class="fa fa-fw fa-hand-o-right fa-2x"></i>
-                点击查看
+                进入精品店
 ##                <i class="fa fa-fw fa-hand-o-left fa-2x"></i>
             </a>
         #end

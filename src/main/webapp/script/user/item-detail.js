@@ -1,7 +1,7 @@
 jQuery( document ).ready(function( $ ) {
 
     var isLogined = $("#is-login").html() == "true";
-    var notyf = new Notyf({delay:3000});
+    var notyf = new Notyf({delay:8000});
 
     $(".option").on('click', function() {
         var originPrice = $(this).data("origin");
@@ -71,9 +71,9 @@ jQuery( document ).ready(function( $ ) {
         }
         var skuId = $(this).data("sku-id");
         $.ajax({
-            url: "/item/addToCart",
+            url: "/wish/addToWish",
             type: "POST",
-            data: {"skuId":skuId, "count": 1},
+            data: {"skuId":skuId},
             dataType: 'json',
             success: function(data) {
                 if (data.success == true || data.success == "true") {

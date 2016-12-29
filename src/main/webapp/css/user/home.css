@@ -77,11 +77,14 @@ a.shop-now {
     letter-spacing: 1px;
     width: 15rem;
     color: white;
-    border-top: none !important;
-    border-bottom: none !important;
+    border-top: 1px solid transparent !important;;
+    border-bottom: 1px solid transparent !important;
 }
-a.shop-now:hover {
-    color: #e3a28c;
+#body a.shop-now:hover {
+    color: #fcc8a4 !important;
+    border-top: 1px solid #fff !important;
+    border-bottom: 1px solid #fff !important;
+    border: 2px solid #fff;
 }
 a.animBtn:link, a.animBtn:visited {
     font-size: 0.8rem;
@@ -97,38 +100,10 @@ a.animBtn:link, a.animBtn:visited {
     text-transform: uppercase;
     overflow: hidden;
     letter-spacing: .08em;
-    text-shadow:0 1px 1px rgba(0,0,0,0.2);
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
-}
-a.animBtn:link:after, a.animBtn:visited:after {
-    content: "";
-    position: absolute;
-    background: none repeat scroll 0 0 #fff;
-    height: 0%;
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    z-index: -1;
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-    transition: all .3s ease 0s;
-}
-a.animBtn:link:hover, a.animBtn:visited:hover {
-    color: #333;
-    text-shadow: none;
-}
-a.animBtn:link:hover:after, a.animBtn:visited:hover:after {
-    height: 420%;
-}
-a.animBtn.themeA:after {
-    -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-    -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
 }
 .footer {
     z-index: 10;

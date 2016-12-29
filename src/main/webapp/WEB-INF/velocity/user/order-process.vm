@@ -13,41 +13,62 @@
     <div id="orderid">${order.orderId}</div>
 </div>
 
+<nav class="breadcrumb-wrapper margin-top-small">
+    <ul class="breadcrumbs">
+        #if ($!{en})
+            <li><a href="/">Home</a></li>
+            <li class="disabled"><a href="/list">BOUTIQUE ONLINE</a></li>
+            <li>My order</li>
+        #else
+            <li><a href="/">首页</a></li>
+            <li class="disabled"><a href="/list">线上精品店</a></li>
+            <li>我的订单</li>
+        #end
+    </ul>
+</nav>
+
 <!-- page contents -->
 <div class="page-content margin-top-small" id="cart-page-content">
 
     <div class="row">
 
-        <nav aria-label="You are here:" role="navigation">
-            <ul class="breadcrumbs">
-                <li><a href="/" class="brandColorText">首页列表</a></li>
-                <li>
-                    我的购物车
-                </li>
-            </ul>
-        </nav>
-
-        <div id="global-step" node-type="mod" class="row margin-top">
-            <div class="step1 small-3 columns clearfix">
-                1. 我的购物车
+        <div id="global-step" node-type="mod" class="row margin-top-small">
+            <div class="step1  current small-3 columns clearfix">
+                #if ($!{en})
+                    1. My Cart
+                #else
+                    1. 我的购物车
+                #end
                 <span class="icotips right"></span>
                 <span class="icotips-blank right"></span>
                 <span class="icotips-blank2 right"></span>
             </div>
-            <div class="step2 small-3 columns current">
-                2. 修改地址信息
+            <div class="step2 small-3 columns">
+                #if ($!{en})
+                    1. Address Info
+                #else
+                    2. 修改地址信息
+                #end
                 <span class="icotips"></span>
                 <span class="icotips-blank"></span>
                 <span class="icotips-blank2"></span>
             </div>
             <div class="step3 small-3 columns" _hover-ignore="1">
-                3. 选择物流/包装
+                #if ($!{en})
+                    3. Packages
+                #else
+                    3. 选择物流/包装
+                #end
                 <span class="icotips"></span>
                 <span class="icotips-blank"></span>
                 <span class="icotips-blank2"></span>
             </div>
             <div class="step4 small-3 columns">
-                4. 确认订单信息
+                #if ($!{en})
+                    4. Confirm Order
+                #else
+                    4. 确认订单信息
+                #end
             </div>
         </div>
 
@@ -57,20 +78,43 @@
         </form>
         <ul class="accordion" data-accordion data-multi-expand="true">
             <li class="accordion-item is-active" data-accordion-item>
-                <a href="#" class="accordion-title">修改地址信息</a>
+                <a href="#" class="accordion-title">
+                    #if ($!{en})
+                        Confirm Address Info
+                    #else
+                        修改地址信息
+                    #end
+                </a>
                 <div class="accordion-content" data-tab-content>
                     <div class="row margin-top-small">
                         <div class="small-6 columns">
-                            <label>收货人
-                                <input type="text" class="click-select" placeholder="收货人姓名" id="address-name" value="$!{userAddress.name}" aria-describedby="nameHelpText">
+                            <label>
+                                #if ($!{en})
+                                    Receiver
+                                    <input type="text" class="click-select" placeholder="Receiver Name" id="address-name" value="$!{userAddress.name}" aria-describedby="nameHelpText">
+                                #else
+                                    收货人
+                                    <input type="text" class="click-select" placeholder="收货人姓名" id="address-name" value="$!{userAddress.name}" aria-describedby="nameHelpText">
+                                #end
                             </label>
-                            <p class="help-text" id="nameHelpText">收货人是指接收邮寄包裹的那个幸运的人</p>
+                            #if ($!{en})
+                                <p class="help-text" id="nameHelpText">Receiver is the lucky one who receive the package</p>
+                            #else
+                                <p class="help-text" id="nameHelpText">收货人是指接收邮寄包裹的那个幸运的人</p>
+                            #end
                         </div>
                         <div class="small-6 columns">
-                            <label>电话
-                                <input type="text" class="click-select" placeholder="收货人联系方式" id="address-phone" value="$!{userAddress.phone}" aria-describedby="phoneHelpText">
-                            </label>
-                            <p class="help-text" id="phoneHelpText">国内订单一般会在2-4天收货，请保持手机通畅</p>
+                            #if ($!{en})
+                                <label>Phone
+                                    <input type="text" class="click-select" placeholder="Receiver Phone" id="address-phone" value="$!{userAddress.phone}" aria-describedby="phoneHelpText">
+                                </label>
+                                <p class="help-text" id="phoneHelpText">Please make sure the phone can be connected</p>
+                            #else
+                                <label>电话
+                                    <input type="text" class="click-select" placeholder="收货人联系方式" id="address-phone" value="$!{userAddress.phone}" aria-describedby="phoneHelpText">
+                                </label>
+                                <p class="help-text" id="phoneHelpText">国内订单一般会在2-4天收货，请保持手机通畅</p>
+                            #end
                         </div>
                     </div>
                     <div class="row margin-bottom">
@@ -93,31 +137,59 @@
                 </div>
             </li>
             <li class="accordion-item is-active" data-accordion-item>
-                <a href="#" class="accordion-title">选择物流/包装</a>
-                <div class="accordion-content" data-tab-content>
-                    <div class="row margin-top-small margin-bottom">
-                        <div class="small-12 columns">
-                            <h3>桃源网全站包邮</h3>
-                        </div>
-                        <div class="small-12 columns">
-                            <div>江浙沪1-2天；其他主要城市2-4天；偏远地区4-5天</div>
+                #if ($!{en})
+                    <a href="#" class="accordion-title">Packaging</a>
+                    <div class="accordion-content" data-tab-content>
+                        <div class="row margin-top-small margin-bottom">
+                            <div class="small-12 columns">
+                                <h3>Free Shipping.</h3>
+                            </div>
+                            <div class="small-12 columns">
+                                <div>Arrive in 2-5 Days normally.</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                #else
+                    <a href="#" class="accordion-title">选择物流/包装</a>
+                    <div class="accordion-content" data-tab-content>
+                        <div class="row margin-top-small margin-bottom">
+                            <div class="small-12 columns">
+                                <h3>全站包邮</h3>
+                            </div>
+                            <div class="small-12 columns">
+                                <div>江浙沪1-2天；其他主要城市2-4天；偏远地区4-5天</div>
+                            </div>
+                        </div>
+                    </div>
+                #end
             </li>
             <li class="accordion-item is-active" data-accordion-item>
-                <a href="#" class="accordion-title">确认订单信息</a>
+                <a href="#" class="accordion-title">
+                    #if ($!{en})
+                        Confirm Order Info
+                    #else
+                        确认订单信息
+                    #end
+                </a>
                 <div class="accordion-content" data-tab-content>
                     <div class="row margin-top-small">
                         <div class="small-12 columns" id="cart-content">
                             <table cellpadding="0" cellspacing="0" class="scroll">
                                 <thead class="cart-thead center">
                                 <tr>
-                                    <th class="center" scope="col" width="20%">图片</th>
-                                    <th class="center" scope="col" width="30%">商品名称</th>
-                                    <th class="center" scope="col" width="">价格</th>
-                                    <th class="center" scope="col" width="150px">数量</th>
-                                    <th class="center" scope="col" width="">合计</th>
+                                    #if ($!{en})
+                                        <th class="center" scope="col" width="20%">Image</th>
+                                        <th class="center" scope="col" width="30%">Name</th>
+                                        <th class="center" scope="col" width="">Price</th>
+                                        <th class="center" scope="col" width="150px">Amount</th>
+                                        <th class="center" scope="col" width="">Total</th>
+                                    #else
+                                        <th class="center" scope="col" width="20%">图片</th>
+                                        <th class="center" scope="col" width="30%">商品名称</th>
+                                        <th class="center" scope="col" width="">价格</th>
+                                        <th class="center" scope="col" width="150px">数量</th>
+                                        <th class="center" scope="col" width="">合计</th>
+                                    #end
                                 </tr>
                                 </thead>
                                 <tbody class="cart-tbody center">
@@ -152,27 +224,51 @@
 
     <div class="row callout secondary">
         <div class="small-4 columns">&nbsp;</div>
-        <div class="small-2 columns center">
-            共计商品
-            <div>
-                <span id="total-count">$!{order.getGoodsCount()}</span>件
+        #if ($!{en})
+            <div class="small-2 columns center">
+                Amount
+                <div>
+                    <span id="total-count">$!{order.getGoodsCount()}</span>
+                </div>
             </div>
-        </div>
-        <div class="small-2 columns center">
-            折扣
-            <div>
-                <span id="total-discount">-$!{order.getDiscountPriceString()}</span>元
+            <div class="small-2 columns center">
+                Discount
+                <div>
+                    <span id="total-discount">-$!{order.getDiscountPriceString()}</span>RMB
+                </div>
             </div>
-        </div>
-        <div class="small-2 columns center">
-            合计(包邮):
-            <div>
-                <span id="total-price">$!{order.getTotalPriceString()}</span>元
+            <div class="small-2 columns center">
+                Total
+                <div>
+                    <span id="total-price">$!{order.getTotalPriceString()}</span>RMB
+                </div>
             </div>
-        </div>
-        <div class="small-2 columns">
-            <button href="#" class="jz2" id="jz2">提交订单</button>
-        </div>
+            <div class="small-2 columns">
+                <button href="#" class="jz2" id="jz2">Place Order</button>
+            </div>
+        #else
+            <div class="small-2 columns center">
+                共计商品
+                <div>
+                    <span id="total-count">$!{order.getGoodsCount()}</span>件
+                </div>
+            </div>
+            <div class="small-2 columns center">
+                折扣
+                <div>
+                    <span id="total-discount">-$!{order.getDiscountPriceString()}</span>元
+                </div>
+            </div>
+            <div class="small-2 columns center">
+                合计(包邮):
+                <div>
+                    <span id="total-price">$!{order.getTotalPriceString()}</span>元
+                </div>
+            </div>
+            <div class="small-2 columns">
+                <button href="#" class="jz2" id="jz2">提交订单</button>
+            </div>
+        #end
     </div>
 
 </div>

@@ -141,11 +141,31 @@
                 {
                     breakpoint:500,
                     settings: {
-                        controls: false
+                        controls: false,
+                        vertical:false,
+                        verticalHeight: win.width() * 0.97,
                     }
                 }
             ]
-//            addClass: "show-for-small-only"
+        });
+
+        $('#lightSlider-sm').lightSlider({
+            gallery: true,
+            vertical:false,
+            vThumbWidth:80,
+            item: 1,
+            loop: true,
+            slideMargin: 0,
+            thumbItem:6,
+            enableDrag: true,
+            controls: false,
+            auto: false,
+            onBeforeSlide: function (el) {
+                var detailImage = $(".detail-image-wrapper.active .detail-image");
+                var detailImageBig = $(".detail-image-wrapper.active .detail-image-big");
+                detailImage.attr("src", detailImage.data("url"));
+                detailImageBig.attr("src", detailImageBig.data("url"));
+            }
         });
 
         $("#lightSlider-s .detail-image-wrapper .detail-image").show();

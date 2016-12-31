@@ -132,7 +132,11 @@
                         <li>
                             <a href="/cart">
                                 <img src="$!{imageUrlPrefix}/images/icon/cart.png" alt="" id="cart" style="width: 1.9rem"/>
-                                Shopping Cart
+                                #if ($!{en})
+                                    Shopping Cart
+                                #else
+                                    我的购物车
+                                #end
                                 #if ("$!{cart.goodsCount}" != "")
                                     (<span class="cart-count redText">$!{cart.goodsCount}</span>)
                                 #else
@@ -141,9 +145,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="unsupported-section">
+                            <a href="/wish">
                                 <img src="$!{imageUrlPrefix}/images/icon/heart.png" alt=""  id="wishlist" style="width: 1.7rem"/>
-                                My Wishlist
+                                #if ($!{en})
+                                    My Wishlist
+                                #else
+                                    我的心愿单
+                                #end
                             </a>
                         </li>
                     </ul>
@@ -236,101 +244,200 @@
         </div>
 
         <!-- pc login and register modal -->
-        <div id="animatedModal1" class="reveal full" data-reveal data-animation-out="fade-out" data-overlay="false">
-            <div class="row auth-plain-wrapper">
-                <div class="small-12 medium-6 large-6 columns auth-plain right-border">
-                    <div class="signup-panel left-solid">
-                        <p class="welcome">Login</p>
-                        <form id="login-form">
-                            <div class="login-inputs">
-                                <div class="row collapse">
-                                    <div class="small-2 columns login-prefix">
-                                        <span class="prefix"><i class="fi-telephone"></i></span>
-                                    </div>
-                                    <div class="small-10 columns login-postfix">
-                                        <input type="text" id="phone" name="phone"/>
-                                        <p class="help-text" id="phoneHelpText">Unregistered phone number.</p>
-                                    </div>
-                                </div>
-                                <div class="row collapse">
-                                    <div class="small-2 columns login-prefix">
-                                        <span class="prefix"><i class="fi-lock"></i></span>
-                                    </div>
-                                    <div class="small-10 columns login-postfix">
-                                        <input type="password" id="password" name="password"/>
-                                        <p class="help-text" id="pwdHelpText">Wrong password.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="button shake-slow" id="login-confirm">Ok. </a>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="small-12 medium-6 large-6 columns auth-plain">
-                    <div class="signup-panel newusers">
-                        <p class="welcome"> New to IT'Lace?</p>
-                        <div class="welcome-content">
-                            <form id="register-form">
-                                <div class="register-content">
-                                    <div class="welcome-hide-after">
-                                        <div>
-                                            Welcome to World Lace Fashion! Our goal is to create high quality life experience with innovation and beauty.
+        #if ($!{en})
+            <div id="animatedModal1" class="reveal full" data-reveal data-animation-out="fade-out" data-overlay="false">
+                <div class="row auth-plain-wrapper">
+                    <div class="small-12 medium-6 large-6 columns auth-plain right-border">
+                        <div class="signup-panel left-solid">
+                            <p class="welcome">Login</p>
+                            <form id="login-form">
+                                <div class="login-inputs">
+                                    <div class="row collapse">
+                                        <div class="small-2 columns login-prefix">
+                                            <span class="prefix"><i class="fi-telephone"></i></span>
                                         </div>
-                                        <div class="margin-top-small">
-                                            Click the button below and Join us!
+                                        <div class="small-10 columns login-postfix">
+                                            <input type="text" id="phone" name="phone"/>
+                                            <p class="help-text" id="phoneHelpText">Unregistered phone number.</p>
                                         </div>
                                     </div>
-                                    <div class="welcome-hide-before">
-                                        <div class="row">
-                                            <div class="small-2 columns login-prefix">
-                                                <span class="prefix"><i class="fi-telephone"></i></span>
-                                            </div>
-                                            <div class="small-10 columns login-postfix">
-                                                <input type="text" id="phone2" name="phone" placeholder="Your phone number. 11 bit."/>
-                                                <p class="help-text" id="phoneHelpText2">It should be 11 bit number.</p>
-                                            </div>
-                                            <div class="small-2 columns login-prefix">
-                                                <span class="prefix"><i class="fi-lock"></i></span>
-                                            </div>
-                                            <div class="small-10 columns login-postfix">
-                                                <input type="password" id="password2" name="password" placeholder="Password. 6-12 bit."/>
-                                                <p class="help-text" id="pwdHelpText2">Please use 6-12 bit password.</p>
-                                            </div>
+                                    <div class="row collapse">
+                                        <div class="small-2 columns login-prefix">
+                                            <span class="prefix"><i class="fi-lock"></i></span>
                                         </div>
-                                    </div>
-                                    <div class="welcome-hide-before-2">
-                                        <div class="row collapse">
-                                            <div class="small-2 columns">&nbsp;</div>
-                                            <div class="small-10 columns left-align">
-                                                What's your name, Dear？
-                                            </div>
-                                        </div>
-                                        <div class="row collapse margin-top-small">
-                                            <div class="small-2 columns login-prefix">
-                                                <span class="prefix"><i class="fi-torso"></i></span>
-                                            </div>
-                                            <div class="small-10 columns login-postfix">
-                                                <input type="hidden" id="userId" name="userId"/>
-                                                <input type="text" id="username" name="username" placeholder="用户名"/>
-                                                <p class="help-text" id="usernameHelpText2">Too sensative name.</p>
-                                            </div>
+                                        <div class="small-10 columns login-postfix">
+                                            <input type="password" id="password" name="password"/>
+                                            <p class="help-text" id="pwdHelpText">Wrong password.</p>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="/cart" target="_blank" class="button register-trigger">Go!</a>
+                                <a href="#" class="button shake-slow" id="login-confirm">Ok. </a>
                             </form>
                         </div>
                     </div>
+
+                    <div class="small-12 medium-6 large-6 columns auth-plain">
+                        <div class="signup-panel newusers">
+                            <p class="welcome"> New to IT'Lace?</p>
+                            <div class="welcome-content">
+                                <form id="register-form">
+                                    <div class="register-content">
+                                        <div class="welcome-hide-after">
+                                            <div>
+                                                Welcome to World Lace Fashion! Our goal is to create high quality life experience with innovation and beauty.
+                                            </div>
+                                            <div class="margin-top-small">
+                                                Click the button below and Join us!
+                                            </div>
+                                        </div>
+                                        <div class="welcome-hide-before">
+                                            <div class="row">
+                                                <div class="small-2 columns login-prefix">
+                                                    <span class="prefix"><i class="fi-telephone"></i></span>
+                                                </div>
+                                                <div class="small-10 columns login-postfix">
+                                                    <input type="text" id="phone2" name="phone" placeholder="Your phone number. 11 bit."/>
+                                                    <p class="help-text" id="phoneHelpText2">It should be 11 bit number.</p>
+                                                </div>
+                                                <div class="small-2 columns login-prefix">
+                                                    <span class="prefix"><i class="fi-lock"></i></span>
+                                                </div>
+                                                <div class="small-10 columns login-postfix">
+                                                    <input type="password" id="password2" name="password" placeholder="Password. 6-12 bit."/>
+                                                    <p class="help-text" id="pwdHelpText2">Please use 6-12 bit password.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="welcome-hide-before-2">
+                                            <div class="row collapse">
+                                                <div class="small-2 columns">&nbsp;</div>
+                                                <div class="small-10 columns left-align">
+                                                    What's your name, Dear？
+                                                </div>
+                                            </div>
+                                            <div class="row collapse margin-top-small">
+                                                <div class="small-2 columns login-prefix">
+                                                    <span class="prefix"><i class="fi-torso"></i></span>
+                                                </div>
+                                                <div class="small-10 columns login-postfix">
+                                                    <input type="hidden" id="userId" name="userId"/>
+                                                    <input type="text" id="username" name="username" placeholder="Username"/>
+                                                    <p class="help-text" id="usernameHelpText2">Too sensative name.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="/cart" target="_blank" class="button register-trigger">Go!</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
             </div>
+        #else
+            <div id="animatedModal1" class="reveal full" data-reveal data-animation-out="fade-out" data-overlay="false">
+                <div class="row auth-plain-wrapper">
+                    <div class="small-12 medium-6 large-6 columns auth-plain right-border">
+                        <div class="signup-panel left-solid">
+                            <p class="welcome">登陆</p>
+                            <form id="login-form">
+                                <div class="login-inputs">
+                                    <div class="row collapse">
+                                        <div class="small-2 columns login-prefix">
+                                            <span class="prefix"><i class="fi-telephone"></i></span>
+                                        </div>
+                                        <div class="small-10 columns login-postfix">
+                                            <input type="text" id="phone" name="phone"/>
+                                            <p class="help-text" id="phoneHelpText">未注册的手机号</p>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse">
+                                        <div class="small-2 columns login-prefix">
+                                            <span class="prefix"><i class="fi-lock"></i></span>
+                                        </div>
+                                        <div class="small-10 columns login-postfix">
+                                            <input type="password" id="password" name="password"/>
+                                            <p class="help-text" id="pwdHelpText">错误的密码</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="button shake-slow" id="login-confirm">Ok.</a>
+                            </form>
+                        </div>
+                    </div>
 
-            <button class="close-button" data-close aria-label="Close reveal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                    <div class="small-12 medium-6 large-6 columns auth-plain">
+                        <div class="signup-panel newusers">
+                            <p class="welcome"> New to IT'Lace?</p>
+                            <div class="welcome-content">
+                                <form id="register-form">
+                                    <div class="register-content">
+                                        <div class="welcome-hide-after">
+                                            <div>
+                                                欢迎访问世界蕾丝时尚！我们的目标是用创新与美建立高品质的生活体验
+                                            </div>
+                                            <div class="margin-top-small">
+                                                赶快加入我们吧！
+                                            </div>
+                                        </div>
+                                        <div class="welcome-hide-before">
+                                            <div class="row">
+                                                <div class="small-2 columns login-prefix">
+                                                    <span class="prefix"><i class="fi-telephone"></i></span>
+                                                </div>
+                                                <div class="small-10 columns login-postfix">
+                                                    <input type="text" id="phone2" name="phone" placeholder="Your phone number. 11 bit."/>
+                                                    <p class="help-text" id="phoneHelpText2">请输入有效的手机号码</p>
+                                                </div>
+                                                <div class="small-2 columns login-prefix">
+                                                    <span class="prefix"><i class="fi-lock"></i></span>
+                                                </div>
+                                                <div class="small-10 columns login-postfix">
+                                                    <input type="password" id="password2" name="password" placeholder="Password. 6-12 bit."/>
+                                                    <p class="help-text" id="pwdHelpText2">请使用6到12位的密码</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="welcome-hide-before-2">
+                                            <div class="row collapse">
+                                                <div class="small-2 columns">&nbsp;</div>
+                                                <div class="small-10 columns left-align">
+                                                    我们怎么称呼您？
+                                                </div>
+                                            </div>
+                                            <div class="row collapse margin-top-small">
+                                                <div class="small-2 columns login-prefix">
+                                                    <span class="prefix"><i class="fi-torso"></i></span>
+                                                </div>
+                                                <div class="small-10 columns login-postfix">
+                                                    <input type="hidden" id="userId" name="userId"/>
+                                                    <input type="text" id="username" name="username" placeholder="用户名"/>
+                                                    <p class="help-text" id="usernameHelpText2">用户名不合法。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="/cart" target="_blank" class="button register-trigger">Go!</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
+                </div>
+
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+        #end
+
 
         <div id="animatedModal2" class="reveal" data-reveal data-animation-in="fade-in" data-animation-out="fade-out"
              data-close-on-click="false" data-close-on-esc="false" data-overlay="false">

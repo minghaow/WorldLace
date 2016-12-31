@@ -24,7 +24,7 @@ public class WishCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView wish(ModelMap model) {
-		model.addAttribute("wish", getCartInfo());
+		model.addAttribute("wish", getWishInfo());
 		prepareHeaderModel(model, PageType.WISH);
 		return new ModelAndView("user/wish");
 	}

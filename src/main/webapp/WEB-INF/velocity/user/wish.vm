@@ -35,84 +35,24 @@
 <div class="page-content" id="cart-page-content">
 
     <div class="row">
-
-        <div id="global-step" node-type="mod" class="row margin-top-small">
-            <div class="step1  current small-3 columns clearfix">
-                #if ($!{en})
-                    1. My Cart
-                #else
-                    1. 我的购物车
-                #end
-                <span class="icotips right"></span>
-                <span class="icotips-blank right"></span>
-                <span class="icotips-blank2 right"></span>
-            </div>
-            <div class="step2 small-3 columns">
-                #if ($!{en})
-                    1. Address Info
-                #else
-                    2. 修改地址信息
-                #end
-                <span class="icotips"></span>
-                <span class="icotips-blank"></span>
-                <span class="icotips-blank2"></span>
-            </div>
-            <div class="step3 small-3 columns" _hover-ignore="1">
-                #if ($!{en})
-                    3. Packages
-                #else
-                    3. 选择物流/包装
-                #end
-                <span class="icotips"></span>
-                <span class="icotips-blank"></span>
-                <span class="icotips-blank2"></span>
-            </div>
-            <div class="step4 small-3 columns">
-                #if ($!{en})
-                    4. Confirm Order
-                #else
-                    4. 确认订单信息
-                #end
-            </div>
-        </div>
-
-        <br/>
-
-        #if ("$!{cart.goodsList}" != "" && $!{cart.goodsList.size()} > 0)
+        #if ("$!{wish.goodsList}" != "" && $!{wish.goodsList.size()} > 0)
         <div class="small-12 columns margin-top-small" id="cart-content">
             <table cellpadding="0" cellspacing="0" class="scroll">
                 <thead class="cart-thead center">
                 <tr>
                     #if ($!{en})
-                        <th scope="col" width="80px">
-                            <input class="checkbox-goods-all checkbox-goods" type="checkbox"> All
-                        </th>
                         <th class="center" scope="col" width="20%">Images</th>
                         <th class="center" scope="col" width="20%">Name</th>
-                        <th class="center" scope="col" width="">Price</th>
-                        <th class="center" scope="col" width="150px">Amount</th>
-                        <th class="center" scope="col" width="">Total</th>
-                        <th class="center" scope="col" width="">Operation</th>
                     #else
-                        <th scope="col" width="80px">
-                            <input class="checkbox-goods-all checkbox-goods" type="checkbox"> 全选
-                        </th>
                         <th class="center" scope="col" width="20%">图片</th>
                         <th class="center" scope="col" width="20%">商品名称</th>
-                        <th class="center" scope="col" width="">价格</th>
-                        <th class="center" scope="col" width="150px">数量</th>
-                        <th class="center" scope="col" width="">合计</th>
-                        <th class="center" scope="col" width="">操作</th>
                     #end
                 </tr>
                 </thead>
 
                 <tbody class="cart-tbody center">
-                #foreach ($goods in $!{cart.goodsList})
+                #foreach ($goods in $!{wish.goodsList})
                     <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
-                        <td>
-                            <input id="checkbox-goods-$!{goods.id}" data-id="$!{goods.id}" type="checkbox" class="checkbox-goods checkbox-goods-item"><label for="checkbox-goods-$!{goods.id}"></label>
-                        </td>
                         <td>
                             <img src="$!{imageUrlPrefix}/images/sku/$!{goods.itemId}/5.jpg?x-oss-process=style/item-detail-thumb" alt="" class="detail-image">
                         </td>
@@ -129,28 +69,6 @@
                             <div>[ $!{goods.option1} ]</div>
                             #end
                         </td>
-                        <td>
-                            $!{goods.convertedPrice}
-                        </td>
-                        <td>
-                            <div class="row count-selector">
-                                <div class="small-4 columns count-minus count-adjust">
-                                    <i class="fi-minus" data-id="$!{goods.id}"></i>
-                                </div>
-                                <div class="small-4 columns count-wrapper">
-                                    <input class="item-count" id="item-count-$!{goods.id}" type="text" value="$!{goods.count}" data-rest="100" disabled>
-                                </div>
-                                <div class="small-4 columns count-plus count-adjust">
-                                    <i class="fi-plus" data-id="$!{goods.id}"></i>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <span class="item-total" id="item-total-$!{goods.id}" data-step="$!{goods.convertedPriceNo}">$!{goods.convertedTotalPriceNo}</span>元
-                        </td>
-                        <td>
-                            <a href="#" class="item-del" data-id="$!{goods.id}">删除</a>
-                        </td>
                     </tr>
                 #end
                 </tbody>
@@ -161,68 +79,11 @@
             #if ($!{en})
                 Your cart is empty.
             #else
-                抱歉，您的购物车为空，再去逛逛吧！
+                抱歉，您的心愿单为空，再去逛逛吧！
             #end
         </div>
         <div class="margin-top-large">&nbsp;</div>
         #end
-    </div>
-
-    <div class="row callout secondary">
-        <div class="small-2 columns checkbox-goods-wrapper">
-            <input class="checkbox-goods-all checkbox-goods" type="checkbox">
-            #if ($!{en})
-                All(<span id="total-count">0</span>)
-            #else
-                全选(<span id="total-count">0</span>件)
-            #end
-        </div>
-        <div class="small-4 columns">
-            <ul class="menu">
-                #if ($!{en})
-                    <li><input type="text" id="discount-code" placeholder="Coupon"></li>
-                    <li><button type="button" class="button discount-code-btn">Ok</button></li>
-                #else
-                    <li><input type="text" id="discount-code" placeholder="优惠券"></li>
-                    <li><button type="button" class="button discount-code-btn">使用</button></li>
-                #end
-            </ul>
-        </div>
-        <div class="small-2 columns center">
-            #if ($!{en})
-                Discount：
-                <div>
-                    -<span id="discount">0.00</span>RMB
-                </div>
-            #else
-                优惠券折扣：
-                <div>
-                    -<span id="discount">0.00</span>元
-                </div>
-            #end
-        </div>
-        <div class="small-2 columns center">
-            #if ($!{en})
-                Total:
-                <div>
-                    <span id="total-price" data-total="0" data-discount="0">0</span>RMB
-                </div>
-            #else
-                合计(包邮):
-                <div>
-                    <span id="total-price" data-total="0" data-discount="0">0</span>元
-                </div>
-            #end
-        </div>
-        <div class="small-2 columns">
-            <button href="#" class="jz2" id="jz2">
-                #if ($!{en})
-                    Order
-                #else
-                    去结算
-                #end
-            </button>
-        </div>
     </div>
 
 </div>

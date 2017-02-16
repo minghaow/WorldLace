@@ -228,6 +228,9 @@ header {
     }
 }
 @media only screen and (max-width: 40em) {
+    .off-canvas-list.vertical.menu {
+        background: black;
+    }
     .navbar{
         padding: 0;
         background-color:#fff;
@@ -250,8 +253,9 @@ header {
         color: #fefefe;
         padding: .5rem;
     }
-    #body .off-canvas-wrapper {
+    #body .off-canvas-wrapper.home-page {
         background: #222;
+        overflow-x: visible;
     }
     #body .off-canvas {
         background: transparent;

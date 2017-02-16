@@ -59,6 +59,13 @@
             </div>
             <div class="item-slider lightSlider-sm show-for-small-only">
                 <ul id="lightSlider-sm" class="show-for-small-only">
+                    #if ($!{skuItem.hasGif})
+                        <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/0.gif?x-oss-process=style/item-detail">
+                            <img class="detail-image detail-gif-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/0.gif"
+                                 src="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/0.gif" alt="${skuItem.title}"/>
+                            <div class="detail-image-cover" data-id="h$imgId" ></div>
+                        </li>
+                    #end
                     #foreach ($imgId in [1..$skuItem.getImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail-thumb">
                             <img class="detail-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail"
@@ -192,7 +199,7 @@
             <div class="tabs-panel row" id="relate-info">
                 <div class="row large-up-4 medium-up-3 small-up-2">
                     #foreach ($relateSkuItem in $skuItem.getRelateSkuItemList())
-                        <div class="column">
+                        <div class="column relate-sku-column">
                             <a href="/item?itemId=$relateSkuItem.getId()" class="item-image-wrapper" target="_blank">
                                 <img src="$!{imageUrlPrefix}/images/sku/${relateSkuItem.getId()}/1.jpg?x-oss-process=style/item-detail" alt="$relateSkuItem.title"/>
                             </a>

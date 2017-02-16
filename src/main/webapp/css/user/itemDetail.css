@@ -58,6 +58,10 @@
     }
 }
 @media only screen and (max-width: 40em) {
+    .item-detail-title {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+    }
     #look-detail-page-content .row .columns {
         padding: 0;
     }
@@ -70,6 +74,11 @@
     }
     .detail-description .tabs, .tabs-content {
         border-top: 1px solid #d2917b;
+    }
+    .relate-sku-column {
+        padding-left: .375rem;
+        padding-right: .375rem;
+        padding-top: .375rem;
     }
 }
 .detail-description img {

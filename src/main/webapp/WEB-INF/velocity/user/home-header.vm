@@ -68,7 +68,7 @@
 </div>
 
 <!-- top bar start -->
-<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper home-page">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
     <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right">
         <button class="close-button" aria-label="Close menu" type="button" data-close>
@@ -83,11 +83,11 @@
             <li><label class="first margin-top-small">Mine</label></li>
             <li>
                 <a href="#" class="login-btn2">
-                <span id="username-section3">Login [soon]</span></a>
+                <span id="username-section3">Login</span></a>
             </li>
             <li>
                 <a href="#" class="register-btn2">
-                <span id="username-section4">Register [soon]</span></a>
+                <span id="username-section4">Register</span></a>
             </li>
             <li><a href="#">Shopping Cart</a></li>
             <li><a href="#">Wishlist</a></li>

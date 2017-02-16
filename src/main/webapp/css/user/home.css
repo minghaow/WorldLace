@@ -32,29 +32,53 @@
     position: absolute;
     z-index: 10;
 }
-.home-center-title {
-    top: 26%;
-}
-.home-center-btn {
-    top: 68%;
-}
 .home-center-title .title-content {
     color: white;
     font-family: Proxima;
     font-size: 3rem;
     font-weight: 200;
 }
-.home-center-title img {
-    max-height: 13rem;
-}
 @media only screen and (max-width: 40em) {
     .home-center-logo img {
         height: 8rem;
+    }
+    .home-center-title img {
+        max-height: 9rem;
+    }
+    .home-center-title {
+        top: 20%;
+    }
+    .home-center-btn {
+        top: 60%;
+    }
+    a.animBtn:link, a.animBtn:visited {
+         padding: 5px 0px 5px 0px;
+    }
+    a.shop-now {
+        width: 10rem;
+    }
+    #body .boxgallery > nav span {
+        display: none;
     }
 }
 @media only screen and (min-width: 40.063em) {
     .home-center-logo img {
         height: 16rem;
+    }
+    .home-center-title {
+        top: 26%;
+    }
+    .home-center-title img {
+        max-height: 13rem;
+    }
+    .home-center-btn {
+        top: 68%;
+    }
+    a.animBtn:link, a.animBtn:visited {
+        padding: 10px 15px 12px;
+    }
+    a.shop-now {
+        width: 15rem;
     }
 }
 .bg-tile:nth-child(3) .bg-img img,
@@ -75,7 +99,6 @@ a.shop-now {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
-    width: 15rem;
     color: white;
     border-top: 1px solid transparent !important;;
     border-bottom: 1px solid transparent !important;
@@ -91,7 +114,6 @@ a.animBtn:link, a.animBtn:visited {
     position: relative;
     display: block;
     margin: 30px auto 0;
-    padding: 10px 15px 12px;
     border: 2px solid #fff;
     background: rgba(255, 255, 255, 0);
     color: #fff;

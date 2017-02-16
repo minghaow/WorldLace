@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
     var password = "";
     var isValidPhone = false;
     var notyf = new Notyf({delay:3000});
-    presentSuccessModal("注意Attention", "世界蕾丝时尚目前内测中，所有商品均为测试商品，请勿购买，谢谢。<p>All product is in test. Opening soon. Thank you!</p>");
+    notyf.alert("世界蕾丝时尚目前内测中，所有商品均为测试商品，请勿购买，谢谢。");
 
     $(".unsupported-section").click(function(event){
         event.preventDefault();

@@ -14,6 +14,19 @@
 .page-content {
     margin: 10px auto;
 }
+.join-us-btn {
+    border-top: 3px solid #d2917b;
+    vertical-align: middle;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    padding: 3rem .5rem 3.5rem;
+}
+.join-us-btn div:first-child {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
 @media only screen and (max-width: 40em) {
     .item-list ul li {
         padding: 1px;
@@ -112,14 +125,6 @@
         color: #666;
         text-shadow: 1px 1px #d1d1d1;
     }
-}
-
-.page-seperator {
-    height: 1rem;
-    margin: 1rem 0;
-    background: url("/images/logo/background-pattern.png") repeat;
-    background-size: auto;
-    background-position: center;
 }
 .section-title {
     font-size: 1.5rem;
@@ -631,8 +636,8 @@ figcaption h2 {
     padding-top: 30px;
 }
 #parallax_box_3 {
-    background-image: url(http://w-static1.sunnytoo.net/third/upload/stparallax/3d0cc15948dcfa8d73a9980ce349d8ca.jpg);
-    /*background-image: url(/images/banner/banner2.jpg);*/
+    /*background-image: url(http://w-static1.sunnytoo.net/third/upload/stparallax/3d0cc15948dcfa8d73a9980ce349d8ca.jpg);*/
+    background-image: url(/images/banner/banner2.jpg);
 }
 .parallax_box.parallax_box_img {
     background-attachment: fixed;
@@ -658,7 +663,9 @@ figcaption h2 {
     margin-bottom: 14px;
 }
 #company-modal,
-#team-modal {
+#team-modal,
+#lounge-modal,
+#agreement-modal {
     padding: 2rem;
     width: 70%;
 }

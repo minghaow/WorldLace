@@ -43,7 +43,6 @@
     <div class="item-list margin-top-tiny">
         <ul class="row large-up-4 medium-up-3 small-up-2">
             #foreach ($skuInfo in $skuInfoList)
-                #if ($velocityCount <= 4)
                 <li class="column">
                     <a href="/item?itemId=$velocityCount" class="item-image-wrapper" target="_blank">
                         <img src="${imageUrlPrefix}/images/sku/$velocityCount/5.jpg" alt="$skuInfo.title"/>
@@ -59,41 +58,6 @@
                         </div>
                     </div>
                 </li>
-                #elseif ($velocityCount <= 8)
-                    #set ($vc = 9 - $velocityCount)
-                <li class="column">
-                    <a href="/item?itemId=$vc" class="item-image-wrapper" target="_blank">
-                        <img src="${imageUrlPrefix}/images/sku/$vc/1.jpg" alt="$skuInfo.title"/>
-                    </a>
-                    <div class="item-description">
-                        <div class="item-title">$skuInfo.getTitle()</div>
-                        <div class="item-price margin-top-tiny">
-                            <p class="item-price-num-wrapper">
-                            <span class="item-price-num">
-                                <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
-                            </span>
-                            </p>
-                        </div>
-                    </div>
-                </li>
-                #elseif ($velocityCount <= 12)
-                    #set ($vc = $velocityCount - 8)
-                    <li class="column">
-                        <a href="/item?itemId=$vc" class="item-image-wrapper" target="_blank">
-                            <img src="${imageUrlPrefix}/images/sku/$vc/1.jpg" alt="$skuInfo.title"/>
-                        </a>
-                        <div class="item-description">
-                            <div class="item-title">$skuInfo.getTitle()</div>
-                            <div class="item-price margin-top-tiny">
-                                <p class="item-price-num-wrapper">
-                            <span class="item-price-num">
-                                <span class="item-price-num-current">￥$skuInfo.getDisplayPrice()</span>
-                            </span>
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                #end
             #end
         </ul>
     </div>

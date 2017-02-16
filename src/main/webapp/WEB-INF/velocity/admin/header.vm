@@ -67,6 +67,14 @@
                         </ul>
                     </li>
                     <li class="has-submenu">
+                        <a href="/admin/sku/list">商品列表</a>
+                        <ul class="menu submenu vertical" data-submenu>
+                            <li><a href="/admin/sku/list">商品列表</a></li>
+                            <li><a href="/admin/sku">上传商品</a></li>
+                            <li><a href="/admin/sku/detail-upload">上传商品选项</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
                         <a href="#">优惠券</a>
                         <ul class="menu submenu vertical" data-submenu>
                             <li><a href="/admin/discount/create">生成优惠券</a></li>

@@ -7,6 +7,7 @@ import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,39 +29,43 @@ public class SkuItem {
 
     /** title, attractive information */
     @Column
-    private String title;
+    private String title = "";
 
     /** sub title for the sku, explaining the title normally */
     @Column
-    private String subTitle;
+    private String subTitle = "";
 
     /** order notice for the sku */
     @Column
-    private String notice;
+    private String notice = "";
 
     /** warning for the sku */
     @Column
-    private String warning;
+    private String warning = "";
 
     /** sku link for outside domains */
     @Column
-    private String url;
+    private String url = "";
 
     /** description, to be designed */
     @Column
-    private String description;
+    private String description = "";
 
     /** tags */
     @Column
-    private String tags;
+    private String tags = "";
+
+    /** relateItem */
+    @Column
+    private String relateItem = "";
 
     /** price, price unit: RMB */
     @Column
-    private long price;
+    private long price = 0;
 
     /** price, price unit: RMB */
     @Column
-    private long originPrice;
+    private long originPrice = 0;
 
     /** image count, for displaying the image(the first one will be 0 and then 1, etc.) */
     @Column
@@ -72,11 +77,15 @@ public class SkuItem {
 
     /** online status {@code nanshen.data.PublicationStatus} */
     @Column
-    private PublicationStatus status = PublicationStatus.NEW;
+    private PublicationStatus status = PublicationStatus.ONLINE;
 
     /** is gift wrap valid */
     @Column
     private boolean giftWrapValid = false;
+
+    /** is gift wrap valid */
+    @Column
+    private boolean hasGif = false;
 
     /** 0 for no free shipping, 1 for mainly free shipping, 2 for all */
     @Column
@@ -109,6 +118,8 @@ public class SkuItem {
 
     /** sku item describe info */
     private SkuItemDescription skuItemDescription;
+
+    private List<SkuItem> relateSkuItemList = new ArrayList<SkuItem>();
 
     /** create time for this look, will fill when create */
     @Column
@@ -364,5 +375,29 @@ public class SkuItem {
 
     public void setOnlyInTaoyuan(boolean onlyInTaoyuan) {
         this.onlyInTaoyuan = onlyInTaoyuan;
+    }
+
+    public String getRelateItem() {
+        return relateItem;
+    }
+
+    public void setRelateItem(String relateItem) {
+        this.relateItem = relateItem;
+    }
+
+    public List<SkuItem> getRelateSkuItemList() {
+        return relateSkuItemList;
+    }
+
+    public void setRelateSkuItemList(List<SkuItem> relateSkuItemList) {
+        this.relateSkuItemList = relateSkuItemList;
+    }
+
+    public boolean isHasGif() {
+        return hasGif;
+    }
+
+    public void setHasGif(boolean hasGif) {
+        this.hasGif = hasGif;
     }
 }

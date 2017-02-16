@@ -1,4 +1,5 @@
 jQuery( document ).ready(function( $ ) {
+    var notyf = new Notyf({delay:8000});
 
     updateRegionSelectorRecursive('address-level1', 0);
 
@@ -33,21 +34,35 @@ jQuery( document ).ready(function( $ ) {
 
     $(document).on('click', '#jz2', function(event) {
         event.preventDefault();
-        $.post('/order/pay', {
-            orderId: $('#orderid').html(),
-            name: $('#address-name').val(),
-            phone: $('#address-phone').val(),
-            level1: $('#address-level1').find(":selected").val(),
-            level2: $('#address-level2').find(":selected").val(),
-            level3: $('#address-level3').find(":selected").val(),
-            detail: $('#address-detail').val()
-        }, function(result) {
-            if (!result.success) {
-                alert(result.message);
-            } else {
-                $("#alipaysubmit").submit();
-            }
-        });
+        if ($('#address-name').val() == "") {
+            notyf.alert("请填写收货人姓名");
+        } else if ($('#address-phone').val() == "") {
+            notyf.alert("请填写收货人手机号");
+        } else if ($('#address-level1').find(":selected").val() == "") {
+            notyf.alert("请选择收货人所在省");
+        } else if ($('#address-level2').find(":selected").val() == "") {
+            notyf.alert("请选择收货人所在市");
+        } else if ($('#address-level3').find(":selected").val() == "") {
+            notyf.alert("请选择收货人所在地区");
+        } else if ($('#address-detail').val() == "") {
+            notyf.alert("请填写收货人具体地址");
+        } else {
+            $.post('/order/pay', {
+                orderId: $('#orderid').html(),
+                name: $('#address-name').val(),
+                phone: $('#address-phone').val(),
+                level1: $('#address-level1').find(":selected").val(),
+                level2: $('#address-level2').find(":selected").val(),
+                level3: $('#address-level3').find(":selected").val(),
+                detail: $('#address-detail').val()
+            }, function(result) {
+                if (!result.success) {
+                    alert(result.message);
+                } else {
+                    $("#alipaysubmit").submit();
+                }
+            });
+        }
     });
 
     function createRegionOptions(selector, regions) {

@@ -1,0 +1,148 @@
+#* @vtlvariable name="imageUrlPrefix" type="java.lang.String" *#
+#* @vtlvariable name="order" type="nanshen.data.Order.Order" *#
+#* @vtlvariable name="skuItem" type="nanshen.data.Sku.SkuItem" *#
+
+#parse("admin/header.vm")
+<link rel="stylesheet" href="/css/admin/order.css"/>
+<!-- end of header -->
+
+<!-- some hidden infos -->
+<div class="page-info"></div>
+
+<!-- page contents -->
+<div class="page-content margin-top-small">
+
+    <!-- breadcrumbs -->
+    <ul class="breadcrumbs">
+        <li ><a href="/admin/orderList"><i class="fi-home"></i> 运营系统</a></li>
+        <li class="current"><a href="/"><i class="fi-list-thumbnails"></i> 商品详情</a></li>
+    </ul>
+
+    <ul class="accordion margin-top" data-accordion data-multi-expand="true">
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">商品基础信息</a>
+            <div class="accordion-content" data-tab-content>
+                <div class="row margin-top-small">
+                    <div class="medium-6 small-12 columns">
+                        <label>商品标题
+                            <input type="hidden" id="skuItemId" value="$!{skuItem.id}">
+                            <input type="text" class="click-select" placeholder="例：xxx dress" id="title" value="$!{skuItem.title}" aria-describedby="nameHelpText">
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过20个字符</p>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <label>商品副标题
+                            <input type="text" class="click-select" placeholder="例：sandro设计师设计，选填" id="subtitle" value="$!{skuItem.subTitle}" aria-describedby="phoneHelpText">
+                        </label>
+                        <p class="help-text" id="phoneHelpText">简单的描述，不要超过40个字符</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="medium-4 small-12 columns">
+                        <label>价格
+                            <input type="text" class="click-select" placeholder="例：1234.56元请输入123456" id="price" value="$!{skuItem.price}" aria-describedby="nameHelpText">
+                        </label>
+                        <p class="help-text" id="nameHelpText">单位：人民币分</p>
+                    </div>
+                    <div class="medium-4 small-12 columns">
+                        <label>图片数量
+                            <input type="text" class="click-select" placeholder="例：5" id="img-count" value="$!{skuItem.imgCount}" aria-describedby="phoneHelpText">
+                        </label>
+                        <p class="help-text" id="phoneHelpText">最少一张</p>
+                    </div>
+                    <div class="medium-4 small-12 columns">
+                        <label>是否有gif
+                            #if ($!{skuItem.hasGif})
+                                <input type="text" class="click-select" placeholder="例：1是有，0是无" id="has-gif" value="1" aria-describedby="phoneHelpText">
+                            #else
+                                <input type="text" class="click-select" placeholder="例：1是有，0是无" id="has-gif" value="0" aria-describedby="phoneHelpText">
+                            #end
+                        </label>
+                        <p class="help-text" id="phoneHelpText">是否有动图，如果填1，则有</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品右侧描述
+                            <textarea class="click-select" placeholder="例：sandro dress is good..." id="description1" value="$!{skuItem.description}" rows="3">$!{skuItem.description}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过200个字符</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">商品详细信息</a>
+            <div class="accordion-content" data-tab-content>
+
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品特点
+                            <textarea class="click-select" placeholder="请把内容按照<li>内容</li><li>内容</li>排列，上传后会自动变成点式" id="points" value="$!{skuItem.skuItemDescription.points}" rows="5">$!{skuItem.skuItemDescription.points}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过500个字符</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品参数
+                            <textarea class="click-select" placeholder="请把内容按照<li>内容</li><li>内容</li>排列，上传后会自动变成点式" id="infos" value="$!{skuItem.skuItemDescription.infos}" rows="5">$!{skuItem.skuItemDescription.infos}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过500个字符</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品发货速度
+                            <textarea class="click-select" placeholder="例：我们会在48小时内发货" id="ship-speed" value="$!{skuItem.skuItemDescription.shipSpeed}" rows="3">$!{skuItem.skuItemDescription.shipSpeed}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过500个字符</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品购买注意
+                            <textarea class="click-select" placeholder="请把内容按照<li>内容</li><li>内容</li>排列，上传后会自动变成点式" id="notice" value="$!{skuItem.skuItemDescription.notice}" rows="5">$!{skuItem.skuItemDescription.notice}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过500个字符</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品包装信息
+                            <textarea class="click-select" placeholder="请把内容按照<li>内容</li><li>内容</li>排列，上传后会自动变成点式" id="packageInfo" value="$!{skuItem.skuItemDescription.packageInfo}" rows="3">$!{skuItem.skuItemDescription.packageInfo}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过200个字符</p>
+                    </div>
+                </div>
+                <div class="row margin-top-small">
+                    <div class="small-12 columns">
+                        <label>商品下详情
+                            <textarea class="click-select" placeholder="请把内容按照<p>内容</p><p>内容</p>排列，上传后会自动分段" id="description2" value="$!{skuItem.skuItemDescription.description}" rows="5">$!{skuItem.skuItemDescription.description}</textarea>
+                        </label>
+                        <p class="help-text" id="nameHelpText">请不要超过500个字符</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="accordion-item is-active" data-accordion-item>
+            <a href="#" class="accordion-title">操作</a>
+            <div class="accordion-content center" data-tab-content>
+                <div class="row center">
+                    <div class="small-12 columns">
+                        <a class="large hollow button confirm" data-id="$!{order.orderId}">上传商品</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    #include("msgModal.vm")
+
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+<script src="/script/admin/sku.js"></script>
+#parse("admin/footer.vm")

@@ -4,8 +4,10 @@ import nanshen.constant.SystemConstants;
 import nanshen.data.Cart.Cart;
 import nanshen.data.SystemUtil.PageType;
 import nanshen.data.User.UserInfo;
+import nanshen.data.Wish.Wish;
 import nanshen.service.AccountService;
 import nanshen.service.CartService;
+import nanshen.service.WishService;
 import nanshen.utils.JsonUtils;
 import nanshen.utils.RequestUtils;
 import nanshen.utils.ViewUtils;
@@ -53,6 +55,9 @@ public abstract class BaseCtrl {
 
 	@Autowired
 	protected CartService cartService;
+
+	@Autowired
+	protected WishService wishService;
 
 	/**
 	 * 默认对所有的输入字符串进行过滤，防止XSS攻击
@@ -105,6 +110,22 @@ public abstract class BaseCtrl {
 				return null;
 			}
 			return cartService.getByUserId(userId);
+		}
+		return null;
+	}
+
+	/**
+	 * 获取当前登录的用户的购物车信息
+	 *
+	 * @return 用户信息，若未登录返回null
+	 */
+	protected Wish getWishInfo() {
+		if (RequestUtils.isLogined()) {
+			long userId = RequestUtils.loginedUserInfo();
+			if (userId == 0) {
+				return null;
+			}
+			return wishService.getByUserId(userId);
 		}
 		return null;
 	}

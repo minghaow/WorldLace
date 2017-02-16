@@ -7,7 +7,7 @@
     src: url(/css/fonts/ProximaNovaReg.otf);
 }
 #body, #body h1, #body h2, #body h3, #body h4 {
-    font-family: ProximaNovaReg, Arial, "STXihei", "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
+    font-family: ProximaNovaReg, Proxima， Arial, "STXihei", "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
     -webkit-font-smoothing: antialiased;
 }
 #body .brandColor.rose {
@@ -81,11 +81,11 @@ input.labelauty + label {
     display: inline !important;
 }
 .option-button-wrapper .button.option {
-    color: #A7866A;
+    color: #d2917b;
     border: 2px solid transparent;
-    border-image: linear-gradient(135deg, #fcdeb4, #97816e);
+    border-image: linear-gradient(135deg, #fcdeb4, #d2917b);
     border-image-slice: 1;
-    background: linear-gradient(135deg, #fcdeb4, #97816e);
+    background: linear-gradient(135deg, #fcdeb4, #d2917b);
     -webkit-background-clip: text;
     text-fill-color: transparent;
     transition: all 0.5s ease;

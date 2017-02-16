@@ -50,6 +50,7 @@ header {
     background: #111;
     border: black;
     min-width: 300px;
+    z-index: 10000;
 }
 #body .dropdown.menu .has-submenu.is-down-arrow>a::after {
     border-color: #f9e4db transparent transparent;

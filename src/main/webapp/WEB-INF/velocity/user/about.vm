@@ -21,17 +21,17 @@
         <ul id="banner-slider">
             <li>
                 <a href="#">
-                    <img src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
+                    <img src="$!{imageUrlPrefix}/images/banner/banner1-1.jpg" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
+                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1-1.jpg" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1.jpg" alt="">
+                    <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/banner1-1.jpg" alt="">
                 </a>
             </li>
 ##            <li>
@@ -62,7 +62,7 @@
                     <img src="${imageUrlPrefix}/images/list/6.jpg" alt="img06"/>
                     <figcaption>
                         <h2>IT'<span>LACE</span></h2>
-                        <p>成衣礼服、成衣婚纱</p>
+                        <p>IT’LACE is - An overall lace products platform </p>
                         <a href="#" target="_blank" class="company-modal">View more</a>
                     </figcaption>
                 </figure>
@@ -72,7 +72,7 @@
                     <img src="${imageUrlPrefix}/images/list/7.jpg" alt="img06"/>
                     <figcaption>
                         <h2>IT'LACE <span>24/7</span></h2>
-                        <p>日常的蕾丝时尚</p>
+                        <p>7 days 24 hours Non-Stop Lace </p>
                         <a href="#" target="_blank" class="team-modal">View more</a>
                     </figcaption>
                 </figure>
@@ -83,9 +83,9 @@
                 <figure class="effect-bubba">
                     <img src="${imageUrlPrefix}/images/list/6.jpg" alt="img06"/>
                     <figcaption>
-                        <h2>IT'LACE <span>HOME</span></h2>
-                        <p>家居服及睡衣</p>
-                        <a href="#" target="_blank" class="company-modal">View more</a>
+                        <h2>IT'LACE <span>Lounge</span></h2>
+                        <p>Enjoying the feeling, enhancing the wellness</p>
+                        <a href="#" target="_blank" class="lounge-modal">View more</a>
                     </figcaption>
                 </figure>
             </div>
@@ -93,26 +93,26 @@
                 <figure class="effect-bubba">
                     <img src="${imageUrlPrefix}/images/list/7.jpg" alt="img06"/>
                     <figcaption>
-                        <h2>AND <span>MORE</span></h2>
-                        <p>敬请期待</p>
-                        <a href="#" target="_blank" class="team-modal">View more</a>
+                        <h2>LACELEMENTS <span></span></h2>
+                        <p>we guarantee</p>
+                        <a href="#" target="_blank" class="agreement-modal">View more</a>
                     </figcaption>
                 </figure>
             </div>
         </div>
 
-        <div class="grid row">
-            <div class="border-wrapper">
-                <figure class="effect-ruby">
-                    <img src="${imageUrlPrefix}/images/list/8.jpg" alt="img06"/>
-                    <figcaption>
-                        <h2>CORE <span>CULTURE</span></h2>
-                        <p>公司核心文化</p>
-                        <a href="#" target="_blank" class="culture-modal">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
+##        <div class="grid row">
+##            <div class="border-wrapper">
+##                <figure class="effect-ruby">
+##                    <img src="${imageUrlPrefix}/images/list/8.jpg" alt="img06"/>
+##                    <figcaption>
+##                        <h2>CORE <span>CULTURE</span></h2>
+##                        <p>公司核心文化</p>
+##                        <a href="#" target="_blank" class="culture-modal">View more</a>
+##                    </figcaption>
+##                </figure>
+##            </div>
+##        </div>
     </div>
 
     <div class="page-seperator center margin-top"></div>
@@ -144,14 +144,22 @@
             </li>
 
             <li class="column">
-                <a href="/item?itemId=$skuInfo.getId()" class="item-image-wrapper unsupported-section" target="_blank">
-                    <img src="${imageUrlPrefix}/images/list/4.jpg" alt="$skuInfo.title"/>
+                <a href="/contact" class="item-image-wrapper" target="_blank">
+                    <div class="join-us-btn">
+                        #if ($!{en})
+                            <div>Join Us！</div>
+                            <div>IT’LACE will keep looking for independent designers for capsule collection, syncretizing the “it” element into lace</div>
+                        #else
+                            <div>加入我们！</div>
+                            <div>IT’LACE 将持续寻找独立设计师创作胶囊系列，将设计师特有的“it”元素融入蕾丝设计</div>
+                        #end
+                    </div>
                 </a>
             </li>
         </ul>
     </div>
 
-    <div id="parallax_box_3" class="owl_carousel_wrap parallax_box full_container block parallax_box_img " style="background-position: 50% 58px;">
+    <div id="parallax_box_3" class="owl_carousel_wrap parallax_box full_container block parallax_box_img " style="background-position: ;">
         <div class="container">
             <div id="owl-parallax-3" class="">
                 <div id="parallax_text_con_4" class="container parallax_text_con parallax_text_con_4">
@@ -183,6 +191,49 @@
         <p>
             世界蕾丝时尚还将对国外高端服装、布料品牌进行代理，通过网络平台等渠道进行销售。最终, 世界蕾丝时尚将打造信息化, 权威性，商务合作和消费功能互动结合的全球蕾丝主题互联网专业平台，用互联网思维延伸一种新的方便消费者识别的购物方式。
         </p>
+        <p>
+            The meaning of IT’LACE is the creation of new “it” constantly by the chemical reaction between the feminine lace and cutting-edge technology.
+            It’lace 的含义是使女性化的蕾丝与前沿科技产生化学反应，碰撞出新“it ”（潮流）
+        </p>
+    </div>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div id="lounge-modal" class="reveal" data-reveal data-animation-out="fade-out" >
+    <div class="info-modal-title">
+        产品系列 <span class="sub-text">IT'LACE Lounge</>
+    </div>
+    <div class="info-modal-content">
+        <p>
+            IT’LACE Lounge provides an ultra-fancy sleepwear and home collection for young ladies. Contemporary design with the finest lace and silks  draws a luxury appeal and an artisanal detailing, provide you with feminine and confidence inside out.
+            Enjoying the feel while enhancing the wellness is our aim.
+            <br/>
+            IT’LACE Lounge 为年轻女性提供精选的睡衣及居家服。当代设计搭配法式蕾丝及真丝，带来奢侈的触感及手工艺性的的细节。使女性焕发从内而外的性感及自信。享受服装带来的愉悦感的同时促进健康，是我们的一直追求的。
+        </p>
+        <p>
+            The collection targets at single women with a focus on superior home experience and quality of life.
+            <br/>
+            Lounge系列主要针对注重优越的居家感受及品质生活的单身女性。
+        </p>
+    </div>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div id="agreement-modal" class="reveal" data-reveal data-animation-out="fade-out" >
+    <div class="info-modal-title">
+        蕾丝元素 <span class="sub-text">LACELEMENTS</>
+    </div>
+    <div class="info-modal-content">
+        <p>
+            In cooperation with CCFA, IT’LACE establishes lace authorization and authentication system to create industrial standards. It aims to guide consumers to recognize high-quality lace, high-class suppliers, distributors, designers and lace products through professional labeling, IT’LACE Identity, and to set the industrial authority.
+        </p>
+        <p>
+            公司将建蕾丝的授权和认证体系，制定蕾丝业标准。通过专业性标引导消费者认识品质蕾丝，优质蕾丝的品牌供应商, 商家, 设计师和蕾丝产品等，打造“LACELEMENTS”品牌，树 业权威
+        </p>
     </div>
     <button class="close-button" data-close aria-label="Close reveal" type="button">
         <span aria-hidden="true">&times;</span>
@@ -194,72 +245,83 @@
         团队介绍 <span class="sub-text">Team Ambition</span>
     </div>
     <div class="info-modal-content">
-        <div class="row small-up-1 medium-up-3 large-up-3" id="panel2">
-            <div class="column center">
-                <a href="mailto:wq@world-lace.com">
-                    <img src="http://placehold.it/200x200&amp;text=[person]">
-                    <div class="people-name">王琪</div>
-                    <div class="people-desc">
-                        企业家，时尚专业人士，在服装行业10余年工作经验，拥有Meingrace服饰品牌
-                    </div>
-                </a>
-            </div>
-            <div class="column center">
-                <a href="mailto:zy@world-lace.com">
-                    <img src="http://placehold.it/200x200&amp;text=[person]">
-                    <div class="people-name">张艳</div>
-                    <div class="people-desc">
-                        资本运营CEO, 材料系博士，在纺织行业10余年，专注新型面料，功能性纤维开发。
-                    </div>
-                </a>
-            </div>
-            <div class="column center">
-                <a href="mailto:wxx@world-lace.com" >
-                    <img src="http://placehold.it/200x200&amp;text=[person]">
-                    <div class="people-name">王茜璇</div>
-                    <div class="people-desc">
-                        90后，香港理工服装设计专业毕业，对时尚有敏锐嗅觉。后赴法国高商进修时尚管理，曾在巴黎银行负责趋势预测。
-                    </div>
-                </a>
-            </div>
-        </div>
+        <p>
+        Designed for people in love with lace, the 24/7 concept gives the lace lovers a day-to-night dressing with a broad choice of different occasion, For a date, for work, for an event, for the weekends.
+        <br/>
+        为了热爱蕾丝的朋友设计。24/7 的概念为蕾丝lovers提供从早到晚的蕾丝解决方案，一套蕾丝look可以让您轻松handle各种场合。约会、工作、酒会、居家轻松切换。
+        </p>
+        <p>
+        Embedded with classic couture spiritual, our collection is embraced by people with passion, confidence and love, and with a great concerning of fine lace fabric, subtle details, precise tailoring, and the functionality which combined to create 24/7 lace look. Most of our design are pregnant-friendly, the design is made with love and understanding of women.
+        <br/>
+        融合了法式高定精神, 我们的系列被有热情、自信和爱的人所爱。我们十分注重精品蕾丝的选择, 细节的琢磨，精准的剪裁，以及服装的功能性，这些结合在一起构成了我们的24/7蕾丝look。大部分设计都带有孕妇友好属性，设计是出于爱与对女性的了解。
+        </p>
+
+    ##        <div class="row small-up-1 medium-up-3 large-up-3" id="panel2">
+##            <div class="column center">
+##                <a href="mailto:wq@world-lace.com">
+##                    <img src="http://placehold.it/200x200&amp;text=[person]">
+##                    <div class="people-name">王琪</div>
+##                    <div class="people-desc">
+##                        企业家，时尚专业人士，在服装行业10余年工作经验，拥有Meingrace服饰品牌
+##                    </div>
+##                </a>
+##            </div>
+##            <div class="column center">
+##                <a href="mailto:zy@world-lace.com">
+##                    <img src="http://placehold.it/200x200&amp;text=[person]">
+##                    <div class="people-name">张艳</div>
+##                    <div class="people-desc">
+##                        资本运营CEO, 材料系博士，在纺织行业10余年，专注新型面料，功能性纤维开发。
+##                    </div>
+##                </a>
+##            </div>
+##            <div class="column center">
+##                <a href="mailto:wxx@world-lace.com" >
+##                    <img src="http://placehold.it/200x200&amp;text=[person]">
+##                    <div class="people-name">王茜璇</div>
+##                    <div class="people-desc">
+##                        90后，香港理工服装设计专业毕业，对时尚有敏锐嗅觉。后赴法国高商进修时尚管理，曾在巴黎银行负责趋势预测。
+##                    </div>
+##                </a>
+##            </div>
+##        </div>
     </div>
     <button class="close-button" data-close aria-label="Close reveal" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 
-<div id="culture-modal" class="reveal" data-reveal data-animation-out="fade-out" >
-    <div class="info-modal-title">
-        核心文化 <span class="sub-text">Core Culture</span>
-    </div>
-    <div class="info-modal-content">
-        <p>
-            <span style="font-weight: bold">理念：</span>
-            <div style="margin-left:2rem">
-                用创新与美建立高品质的生活体验
-            </div>
-            <div style="margin-left:2rem">
-                Create high quality life experience with innovation and beauty
-            </div>
-        </p>
-        <p>
-            <span style="font-weight: bold">企业文化:</span>
-            <div style="margin-left:2rem">
-                使命－创造由内而外的美，达到人类对美而健康生活的追求
-            </div>
-            <div style="margin-left:5rem">
-                女性科技创造者 Feminism technology creator
-            </div>
-            <div style="margin-left:2rem">
-                价值－开放、诚信、创新、关怀、细节
-            </div>
-        </p>
-    </div>
-    <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+##<div id="culture-modal" class="reveal" data-reveal data-animation-out="fade-out" >
+##    <div class="info-modal-title">
+##        核心文化 <span class="sub-text">Core Culture</span>
+##    </div>
+##    <div class="info-modal-content">
+##        <p>
+##            <span style="font-weight: bold">理念：</span>
+##            <div style="margin-left:2rem">
+##                用创新与美建立高品质的生活体验
+##            </div>
+##            <div style="margin-left:2rem">
+##                Create high quality life experience with innovation and beauty
+##            </div>
+##        </p>
+##        <p>
+##            <span style="font-weight: bold">企业文化:</span>
+##            <div style="margin-left:2rem">
+##                使命－创造由内而外的美，达到人类对美而健康生活的追求
+##            </div>
+##            <div style="margin-left:5rem">
+##                女性科技创造者 Feminism technology creator
+##            </div>
+##            <div style="margin-left:2rem">
+##                价值－开放、诚信、创新、关怀、细节
+##            </div>
+##        </p>
+##    </div>
+##    <button class="close-button" data-close aria-label="Close reveal" type="button">
+##        <span aria-hidden="true">&times;</span>
+##    </button>
+##</div>
 <!-- page contents -->
 ##<div class="page-content">
 ##

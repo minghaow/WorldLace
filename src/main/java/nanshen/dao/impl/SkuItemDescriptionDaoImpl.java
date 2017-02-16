@@ -16,6 +16,16 @@ import org.springframework.stereotype.Repository;
 public class SkuItemDescriptionDaoImpl extends BaseDao implements SkuItemDescriptionDao {
 
     @Override
+    public SkuItemDescription insert(long itemId) {
+        return dao.insert(new SkuItemDescription(itemId));
+    }
+
+    @Override
+    public boolean update(SkuItemDescription skuItemDescription) {
+        return dao.update(skuItemDescription) == 1;
+    }
+
+    @Override
     public SkuItemDescription get(long itemId) {
         Condition cnd = Cnd.where("itemId", "=", itemId);
         return dao.fetch(SkuItemDescription.class, cnd);

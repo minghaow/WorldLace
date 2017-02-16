@@ -91,6 +91,15 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
                                 skuItem.setTotalSalesInfo(totalSalesInfo);
                                 skuItem.setMonthlySalesInfo(monthlySalesInfo);
                                 skuItem.setSkuItemDescription(skuItemDescription);
+                                if (org.apache.commons.lang.StringUtils.isNotBlank(skuItem.getRelateItem())) {
+                                    List<SkuItem> skuItemList = new ArrayList<SkuItem>();
+                                    String[] relateSkuItemIdList = skuItem.getRelateItem().split(",");
+                                    for (String skuItemIdString : relateSkuItemIdList) {
+                                        SkuItem skuItem1 = skuItemDao.get(Long.parseLong(skuItemIdString));
+                                        skuItemList.add(skuItem1);
+                                    }
+                                    skuItem.setRelateSkuItemList(skuItemList);
+                                }
                             }
                             return skuItem;
                         }
@@ -101,8 +110,6 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     public void update() {
         long startTime = System.currentTimeMillis();
 
-        Date startDate = new Date(startTime - 7 * TimeConstants.DAY_IN_MILLISECONDS);
-        updateStatusCntMap(startDate);
         updateSkuInfoList();
 
         long totalTime = System.currentTimeMillis() - startTime;
@@ -149,9 +156,35 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
+    public ExecInfo update(long itemId, String title, String subTitle, long price, boolean hasGif, String description1, String points,
+                           String infos, String shipSpeed, String notice, String description2, String packageInfo) {
+        SkuItem skuItem = skuItemDao.get(itemId);
+        skuItem.setTitle(title);
+        skuItem.setSubTitle(subTitle);
+        skuItem.setPrice(price);
+        skuItem.setDescription(description1);
+        skuItem.setHasGif(hasGif);
+        SkuItemDescription itemDescription = skuItemDescriptionDao.get(itemId);
+        if (update(skuItem)) {
+            itemDescription.setPoints(points);
+            itemDescription.setInfos(infos);
+            itemDescription.setShipSpeed(shipSpeed);
+            itemDescription.setNotice(notice);
+            itemDescription.setDescription(description2);
+            itemDescription.setPackageInfo(packageInfo);
+            skuItemDescriptionDao.update(itemDescription);
+            update();
+            skuItemCache.invalidate(itemId);
+            return ExecInfo.succ();
+        }
+        return ExecInfo.fail("更新失败");
+    }
+
+    @Override
     public boolean remove(long itemId) {
+        boolean isSucc = skuItemDao.remove(itemId);
         updateSkuInfoList();
-        return skuItemDao.remove(itemId);
+        return isSucc;
     }
 
     @Override
@@ -172,6 +205,17 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
             LogUtils.warning("[SkuServiceImpl] Fail to get sku item from skuItemCache!");
         }
         return null;
+    }
+
+    @Override
+    public SkuItem getOrCreateSkuItemInfo(long itemId) {
+        SkuItem skuItem = skuItemDao.get(itemId);
+        if (skuItem != null) {
+            return getSkuItemInfo(itemId);
+        }
+        skuItem = skuItemDao.insert(new SkuItem());
+        skuItemDescriptionDao.insert(skuItem.getId());
+        return skuItem;
     }
 
     @Override

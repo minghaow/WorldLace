@@ -46,6 +46,14 @@ public interface SkuService {
     ExecInfo update(long itemId, String title, String subTitle, String url, SkuDetailType category, String desc, long operatorId);
 
     /**
+     * Update sku info
+     *
+     * @return ExecInfo
+     */
+    ExecInfo update(long itemId, String title, String subTitle, long price, boolean hasGif, String description1, String points,
+                    String infos, String shipSpeed, String notice, String description2, String packageInfo);
+
+    /**
      * Remove sku according to skuId
      *
      * @param itemId itemId
@@ -68,6 +76,14 @@ public interface SkuService {
      * @return
      */
     SkuItem getSkuItemInfo(long itemId);
+
+    /**
+     * Get sku item info by itemId
+     *
+     * @param itemId itemId
+     * @return
+     */
+    SkuItem getOrCreateSkuItemInfo(long itemId);
 
     /**
      * Get sku info by skuId

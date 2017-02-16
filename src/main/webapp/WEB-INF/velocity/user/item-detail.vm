@@ -36,10 +36,16 @@
 <!-- page contents -->
 <div class="page-content margin-top-small" id="look-detail-page-content">
     <div class="row">
-
         <div class="large-7 medium-7 small-12 columns">
             <div class="item-slider lightSlider-s hide-for-small-only">
                 <ul id="lightSlider-s" class="hide-for-small-only">
+                    #if ($!{skuItem.hasGif})
+                    <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/0.gif?x-oss-process=style/item-detail">
+                        <img class="detail-image detail-gif-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/0.gif"
+                             src="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/0.gif" alt="${skuItem.title}"/>
+                        <div class="detail-image-cover" data-id="h$imgId" ></div>
+                    </li>
+                    #end
                     #foreach ($imgId in [1..$skuItem.getImgCount()])
                         <li class="detail-image-wrapper" data-thumb="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail-thumb">
                             <img class="detail-image detail-image-h$imgId" data-id="h$imgId" data-url="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/${imgId}.jpg?x-oss-process=style/item-detail"
@@ -95,6 +101,16 @@
                     </div>
                 </div>
 
+                #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} > 1)
+                    <div class="option-button-wrapper clearfix">
+                        #foreach ($sku in $skuItem.getSkuDetailList())
+                            <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
+                                    data-option-id="$sku.optionId" data-item-id="$skuItem.id" data-sku-id="$sku.id">$sku.option1</button>
+                            <img class="hide" src="http://image-cdn.zaitaoyuan.com/images/item/itemOption/${skuItem.id}/${sku.optionId}.jpg@!item-head-thumb-1" alt=""/>
+                        #end
+                    </div>
+                #end
+
                 <div class="buy-button-wrapper margin-top clearfix">
                     <div class="center">
                         <button class="add-to-cart button" href="#" data-sku-id="$!{skuItem.getSkuDetailList().get(0).id}"
@@ -123,21 +139,8 @@
                 </div>
 
                 <div class="margin-top-small item-description">
-##                    <p>$!{skuItem.description}</p>
-                    <p>
-                        Sandro sleeveless dress with round neckline. Dual fabric. The bodice is in lace with embroidered effects. Frills at the hem of the dress. Fastened with a zip and button at the back. Ideal for evenings out. Model is wearing a size 1.
-                    </p>
+                    <p>$!{skuItem.description}</p>
                 </div>
-
-##                #if ("$!{skuItem.getSkuDetailList()}" != "" && $!{skuItem.getSkuDetailList().size()} > 1)
-##                    <div class="option-button-wrapper clearfix">
-##                        #foreach ($sku in $skuItem.getSkuDetailList())
-##                            <button class="small hollow option button" id="option-$sku.optionId" href="#" data-origin="$sku.displayOriginPrice" data-now="$sku.displayPrice"
-##                                    data-option-id="$sku.optionId" data-item-id="$skuItem.id" data-sku-id="$sku.id">$sku.option1</button>
-##                            <img class="hide" src="http://image-cdn.zaitaoyuan.com/images/item/itemOption/${skuItem.id}/${sku.optionId}.jpg@!item-head-thumb-1" alt=""/>
-##                        #end
-##                    </div>
-##                #end
 
                 <hr/>
 
@@ -161,9 +164,100 @@
                 </div>
             </div>
         </div>
-
     </div>
 
+    <div class="detail-description">
+        <ul class="tabs" data-tabs id="detail-tabs">
+            <li class="tabs-title detail-tab">
+                <a href="#relate-info" aria-selected="true" class="brandColorText">
+                    <i class="fi-star"></i>
+                    <div>搭配推荐</div>
+                </a>
+            </li>
+            <li class="tabs-title detail-tab is-active">
+                <a href="#product-info" class="brandColorText">
+                    <i class="fi-info"></i>
+                    <div>产品信息</div>
+                </a>
+            </li>
+            <li class="tabs-title detail-tab">
+                <a href="#notes" class="brandColorText">
+                    <i class="fi-lightbulb"></i>
+                    <div>购买说明</div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="detail-tabs">
+            <div class="tabs-panel row" id="relate-info">
+                <div class="row large-up-4 medium-up-3 small-up-2">
+                    #foreach ($relateSkuItem in $skuItem.getRelateSkuItemList())
+                        <div class="column">
+                            <a href="/item?itemId=$relateSkuItem.getId()" class="item-image-wrapper" target="_blank">
+                                <img src="$!{imageUrlPrefix}/images/sku/${relateSkuItem.getId()}/1.jpg?x-oss-process=style/item-detail" alt="$relateSkuItem.title"/>
+                            </a>
+                        </div>
+                    #end
+                </div>
+            </div>
+            <div class="tabs-panel is-active row" id="product-info">
+                <div class="small-12 medium-6 column">
+                    <div class="detail-title">特点</div>
+                    <ul>
+                        $!{skuItem.skuItemDescription.points}
+                    </ul>
+                </div>
+                <div class="small-12 medium-6 column">
+                    <div class="detail-title">产品参数</div>
+                    <ul>
+                        $!{skuItem.skuItemDescription.infos}
+                    </ul>
+                </div>
+
+                <div class="small-12 column product-artical">
+                    $!{skuItem.skuItemDescription.description}
+                </div>
+            ##                    #foreach ($imgId in [0..$skuItem.getContentImgCount()])
+            ##                        <img src="$!{imageUrlPrefix}/images/item/itemDetail/${skuItem.getId()}/${imgId}.jpg@!item-detail" alt="${skuItem.title}"/>
+            ##                    #end
+            </div>
+
+            <div class="tabs-panel row" id="notes">
+                <div class="small-12 medium-6 columns">
+                    <div class="detail-title">发货时间</div>
+                    <ul>
+                        #if ("$!{skuItem.skuItemDescription.shipSpeed}" == "")
+                            <li>显示有货时，发货时间24小时之内，极少数时间可能会延长到48小时之内</li>
+                            <li>显示预购时，根据国内库存情况我们会有专人在48小时内通过邮件与你联系，确定交货时间</li>
+                        #else
+                            $!{skuItem.skuItemDescription.shipSpeed}
+                        #end
+                    </ul>
+                </div>
+                <div class="small-12 medium-6 columns">
+                    <div class="detail-title">购买注意</div>
+                    <ul>
+                        #if ("$!{skuItem.skuItemDescription.notice}" != "")
+                            $!{skuItem.skuItemDescription.notice}
+                        #else
+                            无
+                        #end
+                    </ul>
+                </div>
+                <div class="small-12 medium-6 columns end">
+                    <div class="detail-title">包装说明</div>
+                    <ul>
+                        #if ("$!{skuItem.skuItemDescription.packageInfo}" == "")
+                            <li>我们使用精选的环保纸盒包装</li>
+                            <li>可以联系客服，在包装中添加自定义祝福，送给你爱的人</li>
+                        #else
+                            $!{skuItem.skuItemDescription.packageInfo}
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- end of this page contents -->
 

@@ -8,5 +8,4 @@ jQuery( document ).ready(function( $ ) {
         event.preventDefault();
         presentSuccessModal("抱歉！", "本功能仍然处于开发状态，敬请期待！");
     });
-
 });

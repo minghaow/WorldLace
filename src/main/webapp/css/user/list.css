@@ -84,7 +84,7 @@
         font-size: 1.3rem;
         text-align: center;
         margin-top: 1rem;
-        background: url(/images/logo/background-pattern.png) repeat;
+        /*background: url(/images/logo/background-pattern.png) repeat;*/
     }
     .item-description {
         height: 5rem;

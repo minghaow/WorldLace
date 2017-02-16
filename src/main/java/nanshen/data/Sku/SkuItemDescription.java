@@ -22,29 +22,33 @@ public class SkuItemDescription {
 
     /** special points, selling points */
     @Column
-    private String points;
+    private String points = "";
 
     /** size, material.. infos */
     @Column
-    private String infos;
+    private String infos = "";
 
     /** main description */
     @Column
-    private String description;
+    private String description = "";
 
     /** ship speed info */
     @Column
-    private String shipSpeed;
+    private String shipSpeed = "";
 
     /** package info */
     @Column
-    private String packageInfo;
+    private String packageInfo = "";
 
     /** notice info */
     @Column
-    private String notice;
+    private String notice = "";
 
     public SkuItemDescription() {
+    }
+
+    public SkuItemDescription(long itemId) {
+        this.itemId = itemId;
     }
 
     public SkuItemDescription(String description, String infos, String points, long itemId) {

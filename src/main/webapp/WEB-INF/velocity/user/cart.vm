@@ -225,6 +225,24 @@
         </div>
     </div>
 
+    <div class="list-title">
+        <div class="list-title-text">
+            猜你喜欢
+        </div>
+    </div>
+
+    <div class="row large-up-4 medium-up-3 small-up-2 guess-you-like">
+        #foreach ($skuItem in $suggestSkuList)
+            #if ($velocityCount < 5)
+            <div class="column relate-sku-column">
+                <a href="/item?itemId=$skuItem.getId()" class="item-image-wrapper" target="_blank">
+                    <img src="$!{imageUrlPrefix}/images/sku/${skuItem.getId()}/5.jpg?x-oss-process=style/item-detail" alt="$skuItem.title"/>
+                </a>
+            </div>
+            #end
+        #end
+    </div>
+
 </div>
 <!-- end of this page contents -->
 

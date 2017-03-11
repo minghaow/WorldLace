@@ -13,15 +13,6 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-##    #if ($!{pageType} == "ITEM_DETAIL")
-##        <title>$!{skuItem.title} | 桃源网 - 精选品质餐具</title>
-##        <meta name="keywords" content="餐具，餐厨用品，厨具，送父母，送老婆，送朋友，送领导，幸福感，高端餐具，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
-##        <meta name="description" content="桃源网，品质餐厨用品专家。精选品牌餐具厨具，以厂家直销的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。搬家送礼，送父母，选年货，送领导，选品质礼物来桃源，精装餐具，品质感好极了！" />
-##    #else
-##        <title>IT'LACE 世界蕾丝时尚</title>
-##        <meta name="keywords" content="餐具，餐厨用品，厨具，送父母，送老婆，送朋友，送领导，幸福感，高端餐具，厨娘，瓷器，碗，盘子，品质感，优雅，雅致，有面子的礼品，装修，软装，厨房，餐厅，餐桌摆件" />
-##        <meta name="description" content="桃源网，品质餐厨用品专家。精选品牌餐具厨具，以厂家直销的价格将高档的餐具、厨具提供给用户。全站包邮，7天无理由退换货，破件补发，全心全意打造全国最有良心的餐具、厨具销售平台。搬家送礼，送父母，选年货，送领导，选品质礼物来桃源，精装餐具，品质感好极了！" />
-##    #end
     #if ($!{en})
         <title>IT'LACE | World Lace Fashion</title>
         <meta name="keywords" content="Lace, Fashion, italy, IT'LACE" />
@@ -50,7 +41,7 @@
         var _hmt = _hmt || [];
         (function() {
             var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?0046db19a6dddc653c19626e40dcc59b";
+            hm.src = "https://hm.baidu.com/hm.js?4bd6e0ecd20ee2b065dd36db950371b0";
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
@@ -92,8 +83,9 @@
 
             <li><label class="first margin-top-small">BOUTIQUE ONLINE</label></li>
             <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
-            <li><a href="#" class="unsupported-section">IT'LACE 24/7 (TBC)</a></li>
-            <li><a href="#" class="unsupported-section">IT'LACE HOME (TBC)</a></li>
+            <li><a href="/list?type=BOUTIQUE">24/7 boutique</a></li>
+            <li><a href="/list?type=LOUNGE">IT’LACE Lounge</a></li>
+            <li><a href="/list?type=OUTLET">Outlet</a></li>
 
             <li><label class="first margin-top-small">Mine</label></li>
             <li>
@@ -168,10 +160,12 @@
                             <a href="/list" class="$!{ITEM_LIST}">BOUTIQUE ONLINE</a>
                             <ul class="menu">
                                 <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
-                                <li><a href="#" class="unsupported-section">IT'LACE 24/7 (TBC)</a></li>
-                                <li><a href="#" class="unsupported-section">IT'LACE HOME (TBC)</a></li>
+                                <li><a href="/list?type=BOUTIQUE" class="auto-anchor">24/7 boutique</a></li>
+                                <li><a href="/list?type=LOUNGE" class="auto-anchor">IT’LACE Lounge</a></li>
+                                <li><a href="/list?type=OUTLET" class="auto-anchor">Outlet</a></li>
                             </ul>
                         </li>
+                        <li><a href="/brand" class="$!{BRAND}">BRAND</a></li>
                         <li><a href="/about" class="$!{ABOUT}">ABOUT US</a></li>
                         <li><a href="/contact">CONTACT</a></li>
                     </ul>
@@ -182,10 +176,12 @@
                             <a href="/list" class="$!{ITEM_LIST}">线上精品店</a>
                             <ul class="menu">
                                 <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
-                                <li><a href="#" class="unsupported-section">IT'LACE 24/7 (TBC)</a></li>
-                                <li><a href="#" class="unsupported-section">IT'LACE HOME (TBC)</a></li>
+                                <li><a href="/list?type=BOUTIQUE" class="auto-anchor">24/7 boutique</a></li>
+                                <li><a href="/list?type=LOUNGE" class="auto-anchor">IT’LACE Lounge</a></li>
+                                <li><a href="/list?type=OUTLET" class="auto-anchor">Outlet</a></li>
                             </ul>
                         </li>
+                        <li><a href="/brand" class="$!{BRAND}">品牌</a></li>
                         <li><a href="/about" class="$!{ABOUT}">关于我们</a></li>
                         <li><a href="/contact">联系我们</a></li>
                     </ul>

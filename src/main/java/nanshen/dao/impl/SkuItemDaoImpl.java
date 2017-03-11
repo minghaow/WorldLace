@@ -4,6 +4,7 @@ import nanshen.dao.SkuItemDao;
 import nanshen.dao.common.BaseDao;
 import nanshen.data.PublicationStatus;
 import nanshen.data.Sku.SkuItem;
+import nanshen.data.Sku.StoreType;
 import nanshen.data.SystemUtil.PageInfo;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
@@ -77,6 +78,12 @@ public class SkuItemDaoImpl extends BaseDao implements SkuItemDao {
     public List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo) {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01")
                 .and("status", "=", status).desc("sortingId");
+        return dao.query(SkuItem.class, cnd, genaratePager(pageInfo));
+    }
+
+    @Override
+    public List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo) {
+        Condition cnd = Cnd.where("storeType", "=", storeType).desc("sortingId");
         return dao.query(SkuItem.class, cnd, genaratePager(pageInfo));
     }
 

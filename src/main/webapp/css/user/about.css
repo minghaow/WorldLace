@@ -125,11 +125,17 @@
         color: #666;
         text-shadow: 1px 1px #d1d1d1;
     }
+    .brand-content {
+        width: 90%;
+    }
+    .brand-img {
+        margin-top: 3rem;
+    }
 }
 .section-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #d2917b;
+    color: #7d584b;
 }
 .section-subtitle {
     font-size: 1.2rem;
@@ -687,4 +693,11 @@ figcaption h2 {
 .info-modal-content {
     color: #333;
     font-size: 1rem;
+    margin-top: 1.5rem;
+}
+.brand-title {
+    background: #F6D0C1;
+    padding: 1rem;
+    width: 90%;
+    margin-left: 5%;
 }

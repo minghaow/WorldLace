@@ -16,6 +16,10 @@
     position: relative;
     font-weight: 900;
     margin: 2rem 0 1.5rem;
+    text-transform: uppercase;
+}
+.item-image-wrapper img {
+    width: 100%;
 }
 @media only screen and (max-width: 40em) {
     .item-list ul li {

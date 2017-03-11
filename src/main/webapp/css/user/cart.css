@@ -162,10 +162,26 @@ form [type=file], [type=checkbox], [type=radio] {
 #body .help-text {
     color: #d79b84;
 }
+.guess-you-like {
+    border: #eee solid 1px;
+    border-bottom: #d79b84 solid 1px;
+    border-top: #d79b84 solid 3px;
+}
+.list-title-text {
+    position: relative;
+    font-weight: 900;
+    margin: 3rem 0 1rem;
+}
 @media only screen and (min-width: 40.063em) {
     #cart-page-content {
         width: 95%;
         margin: auto;
+    }
+    .list-title {
+        font-size: 1.3rem;
+        text-align: left;
+        margin-top: 1rem;
+        /*background: url(/images/logo/background-pattern.png) repeat;*/
     }
 }
 @media only screen and (max-width: 40em) {

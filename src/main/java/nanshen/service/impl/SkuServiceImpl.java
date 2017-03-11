@@ -264,6 +264,11 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
+    public List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo) {
+        return skuItemDao.getAll(storeType, pageInfo);
+    }
+
+    @Override
     public List<StyleTag> getAllTag() {
         return null;
     }

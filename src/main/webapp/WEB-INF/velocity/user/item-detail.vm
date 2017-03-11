@@ -175,13 +175,13 @@
 
     <div class="detail-description">
         <ul class="tabs" data-tabs id="detail-tabs">
-            <li class="tabs-title detail-tab">
+            <li class="tabs-title detail-tab is-active">
                 <a href="#relate-info" aria-selected="true" class="brandColorText">
                     <i class="fi-star"></i>
                     <div>搭配推荐</div>
                 </a>
             </li>
-            <li class="tabs-title detail-tab is-active">
+            <li class="tabs-title detail-tab">
                 <a href="#product-info" class="brandColorText">
                     <i class="fi-info"></i>
                     <div>产品信息</div>
@@ -196,18 +196,18 @@
         </ul>
 
         <div class="tabs-content" data-tabs-content="detail-tabs">
-            <div class="tabs-panel row" id="relate-info">
+            <div class="tabs-panel is-active row" id="relate-info">
                 <div class="row large-up-4 medium-up-3 small-up-2">
                     #foreach ($relateSkuItem in $skuItem.getRelateSkuItemList())
                         <div class="column relate-sku-column">
                             <a href="/item?itemId=$relateSkuItem.getId()" class="item-image-wrapper" target="_blank">
-                                <img src="$!{imageUrlPrefix}/images/sku/${relateSkuItem.getId()}/1.jpg?x-oss-process=style/item-detail" alt="$relateSkuItem.title"/>
+                                <img src="$!{imageUrlPrefix}/images/sku/${relateSkuItem.getId()}/5.jpg?x-oss-process=style/item-detail" alt="$relateSkuItem.title"/>
                             </a>
                         </div>
                     #end
                 </div>
             </div>
-            <div class="tabs-panel is-active row" id="product-info">
+            <div class="tabs-panel row" id="product-info">
                 <div class="small-12 medium-6 column">
                     <div class="detail-title">特点</div>
                     <ul>

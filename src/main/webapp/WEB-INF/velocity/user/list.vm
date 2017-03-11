@@ -5,6 +5,7 @@
 #* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
 #* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
 #* @vtlvariable name="lookInfoList" type="java.util.List" *#
+#* @vtlvariable name="storeType" type="nanshen.data.Sku.StoreType" *#
 
 #parse("user/header.vm")
 <link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/list.css"/>
@@ -15,9 +16,29 @@
     <div id="is-login">$!{isLogin}</div>
 </div>
 
+<div>
+    <ul id="banner-slider">
+        <li>
+            <a href="#">
+                <img src="$!{imageUrlPrefix}/images/banner/list-banner.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/list-banner.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img class="hide-before-js-ready" src="$!{imageUrlPrefix}/images/banner/list-banner.jpg" alt="">
+            </a>
+        </li>
+    </ul>
+</div>
+
 <div class="list-title">
     <div class="list-title-text">
-        DRESSES ($skuInfoList.size())
+       $storeType.desc ($skuInfoList.size())
     </div>
 </div>
 
@@ -45,7 +66,11 @@
             #foreach ($skuInfo in $skuInfoList)
                 <li class="column">
                     <a href="/item?itemId=$velocityCount" class="item-image-wrapper" target="_blank">
-                        <img src="${imageUrlPrefix}/images/sku/$velocityCount/5.jpg" alt="$skuInfo.title"/>
+                        #if ($!{skuInfo.hasGif})
+                            <img src="${imageUrlPrefix}/images/sku/$velocityCount/0.gif" alt="$skuInfo.title"/>
+                        #else
+                            <img src="${imageUrlPrefix}/images/sku/$velocityCount/5.jpg" alt="$skuInfo.title"/>
+                        #end
                     </a>
                     <div class="item-description">
                         <div class="item-title">$skuInfo.getTitle()</div>

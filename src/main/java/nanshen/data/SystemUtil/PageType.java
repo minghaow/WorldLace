@@ -35,6 +35,8 @@ public enum PageType {
 
     ABOUT("关于", true),
 
+    BRAND("品牌", true),
+
     CONTACT("联系", true),
 
     WOYANG_HOME("首页", false),

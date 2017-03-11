@@ -2,6 +2,7 @@ package nanshen.dao;
 
 import nanshen.data.PublicationStatus;
 import nanshen.data.Sku.SkuItem;
+import nanshen.data.Sku.StoreType;
 import nanshen.data.SystemUtil.PageInfo;
 
 import java.util.Date;
@@ -25,6 +26,8 @@ public interface SkuItemDao {
     List<SkuItem> getAll(PublicationStatus status);
 
     List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo);
+
+    List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo);
 
     boolean remove(long skuId, long operatorId);
 

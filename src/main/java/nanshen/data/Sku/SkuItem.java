@@ -83,6 +83,9 @@ public class SkuItem {
     @Column
     private boolean giftWrapValid = false;
 
+    @Column
+    private StoreType storeType = StoreType.ITLACE;
+
     /** is gift wrap valid */
     @Column
     private boolean hasGif = false;
@@ -399,5 +402,13 @@ public class SkuItem {
 
     public void setHasGif(boolean hasGif) {
         this.hasGif = hasGif;
+    }
+
+    public StoreType getStoreType() {
+        return storeType;
+    }
+
+    public void setStoreType(StoreType storeType) {
+        this.storeType = storeType;
     }
 }

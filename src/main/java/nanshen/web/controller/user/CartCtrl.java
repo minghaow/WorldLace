@@ -3,11 +3,15 @@ package nanshen.web.controller.user;
 import nanshen.dao.DiscountDao;
 import nanshen.data.Discount.Discount;
 import nanshen.data.Order.Order;
+import nanshen.data.PublicationStatus;
+import nanshen.data.Sku.SkuItem;
 import nanshen.data.SystemUtil.ExecResult;
+import nanshen.data.SystemUtil.PageInfo;
 import nanshen.data.SystemUtil.PageType;
 import nanshen.data.User.UserInfo;
 import nanshen.service.CartService;
 import nanshen.service.OrderService;
+import nanshen.service.SkuService;
 import nanshen.service.WishService;
 import nanshen.utils.LogUtils;
 import nanshen.utils.ViewUtils;
@@ -21,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
@@ -38,9 +43,14 @@ public class CartCtrl extends BaseCtrl {
 	@Autowired
 	private OrderService orderService;
 
+	@Autowired
+	private SkuService skuService;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView cart(ModelMap model) {
 		prepareHeaderModel(model, PageType.CART);
+		List<SkuItem> skuItemList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(1));
+		model.put("suggestSkuList", skuItemList);
 		return new ModelAndView("user/cart");
 	}
 

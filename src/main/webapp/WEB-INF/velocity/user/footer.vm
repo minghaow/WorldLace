@@ -12,7 +12,7 @@
     <div class="row">
         <div class="small-12 medium-12 large-4 columns">
             <ul class="foot-logo">
-                <img src="$!{imageUrlPrefix}/images/logo/logo-white-small.png" alt="桃源网公众号">
+                <img src="$!{imageUrlPrefix}/images/logo/logo-white-small.png" alt="世界蕾丝时尚公众号">
             </ul>
         </div>
 
@@ -20,13 +20,11 @@
         #if ($!{en})
             <div class="small-12 medium-6 large-5 columns">
                 <p class="logo"><i class="fi-shield"></i> World Lace Fashion
-                    <span class="about subheader">Email：service@world-lace.com</span>
+                    <span class="about subheader">Email：customercare@world-lace.com</span>
                 </p>
                 <p class="footer-links">
                     <a href="/">Homepage</a>
-                    <a href="#" class="unsupported-section">Topics</a>
-                    <a href="#" class="unsupported-section">Q&As</a>
-                    <a href="#">Company Intro</a>
+                    <a href="/about">Company Intro</a>
                     <a href="/contact">Contact Us</a>
                 </p>
                 <p class="copywrite">世界蕾丝时尚（北京）科技发展有限公司，京ICP备16000451号-1</p>
@@ -35,17 +33,17 @@
             <div class="small-12 medium-12 large-3 columns">
                 <ul class="inline-list social">
                     <p class="about subheader">Wechat，follow us：</p>
-                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="世界蕾丝时尚公众号">
                 </ul>
             </div>
         #else
             <div class="small-12 medium-6 large-5 columns">
                 <p class="logo"><i class="fi-shield"></i> 世界蕾丝时尚
-                    <span class="about subheader">邮箱：service@world-lace.com</span>
+                    <span class="about subheader">邮箱：customercare@world-lace.com</span>
                 </p>
                 <p class="footer-links">
                     <a href="/">主页</a>
-                    <a href="#">公司介绍</a>
+                    <a href="/about">公司介绍</a>
                     <a href="/contact">联系我们</a>
                 </p>
                 <p class="copywrite">世界蕾丝时尚（北京）科技发展有限公司，京ICP备16000451号-1</p>
@@ -54,7 +52,7 @@
             <div class="small-12 medium-12 large-3 columns">
                 <ul class="inline-list social">
                     <p class="about subheader">微信公众号，关注我们：</p>
-                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="桃源网公众号">
+                    <img src="$!{imageUrlPrefix}/images/user/qrcode-gongzhonghao.jpg" alt="世界蕾丝时尚公众号">
                 </ul>
             </div>
         #end
@@ -114,6 +112,25 @@
                 }
             ]
         });
+
+        $('#banner-slider-sm').lightSlider({
+            adaptiveHeight:true,
+            item:0,
+            slideMargin:0,
+            loop:true,
+            controls: false,
+            pager: false,
+            responsive : [
+                {
+                    breakpoint:500,
+                    settings: {
+                        item: 1,
+                        pager: true
+                    }
+                }
+            ]
+        });
+
         var verticalHeight = win.width() * 0.58 - 115;
         $('#lightSlider-s').lightSlider({
             gallery: true,
@@ -239,5 +256,19 @@
 </script>
 <script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/user/common.js"></script>
+<script src="https://qiyukf.com/script/b2c2554cf76bea25580926ed73f65cfb.js" defer async></script>
+<script>
+    ysf.on({
+        'onload': function(){
+            ysf.config({
+                uid: ${userInfo.id},
+                name: ${userInfo.username},
+                email: ${userInfo.email},
+                mobile: ${userInfo.phone},
+                qtype: 13003
+            });
+        }
+    })
+</script>
 </body>
 </html>

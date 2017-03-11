@@ -21,6 +21,15 @@
     <link rel="stylesheet" href="/css/foundation-icons.css">
 
     <!-- js stuff -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4bd6e0ecd20ee2b065dd36db950371b0";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
     <script src="/script/vendor/jquery.js"></script>
 </head>
 

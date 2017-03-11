@@ -1,0 +1,103 @@
+#* @vtlvariable name="skuInfoList" type="java.util.List<nanshen.data.Sku.SkuItem>" *#
+#* @velocityproperties path="/WEB-INF/velocity" *#
+#* @vtlvariable name="pageType" type="nanshen.data.SystemUtil.PageType" *#
+#* @vtlvariable name="AdminUserInfoList" type="java.util.List" *#
+#* @vtlvariable name="adminUserInfo" type="nanshen.data.AdminUserInfo" *#
+#* @vtlvariable name="lookInfo" type="nanshen.data.LookInfo" *#
+#* @vtlvariable name="lookInfoList" type="java.util.List" *#
+
+#parse("user/header.vm")
+<link rel="stylesheet" href="$!{cssUrlPrefix}/css/user/about.css"/>
+
+<!-- some hidden infos -->
+<div class="page-info">
+    <div id="this-tag">$!{pageType}</div>
+    <div id="is-login">$!{isLogin}</div>
+</div>
+
+<div class="banner">
+
+    <div class="page-seperator center"></div>
+
+    <div class="margin-top">
+        <div class="row">
+            <div class="small-12 columns center brand-title">
+                <div class="section-title">24/7 Boutique</div>
+                <div class="section-subtitle">7 days 24 hours Non-Stop Lace</div>
+            </div>
+        </div>
+
+        <div class="row brand-content">
+            <div class="small-9 columns">
+                <div class="info-modal-content">
+                    <p>
+                        Designed for people in love with lace, the 24/7 concept gives the lace lovers a date-night dressing with a broad choice of different occasion, For a date, for work, for an event, for the weekends.
+                        <br/>
+                        为了热爱蕾丝的朋友设计。24/7 的概念为蕾丝lovers提供从早到晚的蕾丝解决方案，一套蕾丝look可以让您轻松handle各种场合。约会、工作、酒会、居家轻松切换。
+                    </p>
+                    <p>
+                        Embedded with classic couture spiritual, our collection is embraced by people with passion, confidence and love, and with a great concerning of fine lace fabric, subtle details, precise tailoring, and the functionality which combined to create 24/7 lace look. Most of our design are pregnant-friendly, the design is made with love and understanding of women.
+                        <br/>
+                        融合了法式高定精神, 我们的系列被有热情、自信和爱的人所爱。我们十分注重精品蕾丝的选择, 细节的琢磨，精准的剪裁，以及服装的功能性，这些结合在一起构成了我们的24/7蕾丝look。大部分设计都带有孕妇友好属性，设计是出于爱与对女性的了解。
+                    </p>
+                </div>
+            </div>
+            <div class="small-3 columns brand-img">
+                <img src="$!{imageUrlPrefix}/images/user/bout.png" alt=""/>
+            </div>
+        </div>
+    </div>
+
+    <div class="margin-top">
+        <div class="row">
+            <div class="small-12 columns center brand-title">
+                <div class="section-title">IT'LACE Lounge</div>
+                <div class="section-subtitle">enjoying the feeling, enhancing the wellness</div>
+            </div>
+        </div>
+
+        <div class="row brand-content">
+            <div class="small-9 columns">
+                <div class="info-modal-content">
+                    <p>
+                        IT’LACE Lounge provides an ultra-fancy sleepwear and home collection for young ladies. Contemporary design with the finest lace and silks  draws a luxury appeal and an artisanal detailing, provide you with feminine and confidence inside out.
+                        Enjoying the feel while enhancing the wellness is our aim.
+                        <br/>
+                        IT’LACE Lounge 为年轻女性提供精选的睡衣及居家服。当代设计搭配法式蕾丝及真丝，带来奢侈的触感及手工艺性的的细节。使女性焕发从内而外的性感及自信。享受服装带来的愉悦感的同时促进健康，是我们的一直追求的。
+                    </p>
+                    <p>
+                        The collection targets at single women with a focus on superior home experience and quality of life.
+                        <br/>
+                        Lounge系列主要针对注重优越的居家感受及品质生活的单身女性。
+                    </p>
+                </div>
+            </div>
+            <div class="small-3 columns brand-img">
+                <img src="$!{imageUrlPrefix}/images/user/nonstop.png" alt=""/>
+            </div>
+        </div>
+    </div>
+
+    <div class="margin-top">
+        <div class="row">
+            <div class="small-12 columns center brand-title">
+                <div class="section-title">LACELEMETS</div>
+                <div class="section-subtitle">we guarantee</div>
+            </div>
+        </div>
+
+        <div class="row brand-content">
+            <div class="info-modal-content">
+                <p>
+                    In cooperation with CCFA, IT’LACE establishes lace authorization and authentication system to create industrial standards. It aims to guide consumers to recognize high-quality lace, high-class suppliers, distributors, designers and lace products through professional labeling, IT’LACE Identity, and to set the industrial authority.
+                    <br/>
+                    公司将建 蕾丝的授权和认证体系，制定蕾丝 业标准。通过专业性标 引导消费者认识 品质蕾丝，优质蕾丝的品牌供应商, 商家, 设计 师和蕾丝产品等，打造“it’lace identity”品牌，树立行业权威。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of this page contents -->
+
+<!-- start of footer-->
+#parse("user/footer.vm")

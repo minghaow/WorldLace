@@ -26,9 +26,13 @@
     <table class="all-list row center" cellpadding=0 cellspacing=0>
         <thead>
         <tr class="center">
-            <th scope="col" width="100px">序号</th>
-            <th scope="col">搭配名称</th>
+            <th scope="col" width="60px">序号</th>
+            <th scope="col" width="60px">产品ID</th>
             <th scope="col" width="10%">主图</th>
+            <th scope="col">产品分类</th>
+            <th scope="col">搭配名称</th>
+            <th scope="col">基础价格</th>
+            <th scope="col">状态</th>
             <th scope="col">操作</th>
         </tr>
         </thead>
@@ -37,14 +41,32 @@
         #foreach ($skuItem in $skuItemList)
             <tr id="order-1">
                 <td>$velocityCount</td>
-                <td>
-                    $skuItem.title
-                    <div class="greyText">$skuItem.subTitle</div>
-                </td>
+                <td>$skuItem.id</td>
                 <td>
                     <img src="http://static.world-lace.com/images/sku/$skuItem.id/1.jpg" alt="主图"/>
                 </td>
                 <td>
+                    $skuItem.storeType.desc
+                    <div class="greyText">$skuItem.subTitle</div>
+                </td>
+                <td>
+                    $skuItem.title
+                    <div class="greyText">$skuItem.subTitle</div>
+                </td>
+                <td>$skuItem.displayPrice元</td>
+                <td>
+                    #if ("$skuItem.status" == "ONLINE")
+                        <div class="greenText">$skuItem.status.desc</div>
+                    #else
+                        <div class="redText">$skuItem.status.desc</div>
+                    #end
+                </td>
+                <td>
+                    #if ("$skuItem.status" == "ONLINE")
+                        <a href="#" data-id="$skuItem.id" class="offline-btn tiny button">下线</a>
+                    #else
+                        <a href="#" data-id="$skuItem.id" class="online-btn tiny button">上线</a>
+                    #end
                     <a href="/admin/sku?id=$skuItem.id" class="tiny button" target="_blank">修改</a>
                     <a href="#" data-id="$skuItem.id" class="tiny button delete">删除</a>
                 </td>

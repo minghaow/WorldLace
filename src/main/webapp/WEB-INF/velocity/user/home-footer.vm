@@ -39,7 +39,7 @@
         <div class="social-wrapper">
             <ul class="social-baloon">
                 <li>
-                    <a href="#" class="fg-weixin unsupported-section"  id="weixin"><i class="fa fa-fw fa-weixin"></i></a>
+                    <a href="#" class="fg-weixin wechat-share" id="weixin"><i class="fa fa-fw fa-weixin"></i></a>
                 </li>
                 <li>
                     <a href="#" class="fg-facebook unsupported-section" id="facebook"><i class="fa fa-fw fa-facebook"></i></a>
@@ -51,7 +51,7 @@
                     <a href="#" class="fg-google-plus unsupported-section"  id="linkedin"><i class="fa fa-fw fa-linkedin-square"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="fg-google-plus unsupported-section"  id="weibo"><i class="fa fa-fw fa-tencent-weibo"></i></a>
+                    <a href="http://weibo.com/ITLACE?refer_flag=1001030201_" class="fg-google-plus" id="weibo" target="_blank"><i class="fa fa-fw fa-tencent-weibo"></i></a>
                 </li>
             </ul>
         </div>
@@ -67,6 +67,20 @@
     </div>
 </section>
 
+<div id="wxShareModal" class="reveal tiny" data-reveal data-animation-in="fade-in" data-animation-out="fade-out"
+     data-close-on-click="false" data-close-on-esc="false">
+    <div class="row">
+        <div class="small-12 columns center">
+            <h3>微信扫一扫分享</h3>
+        </div>
+        <div class="small-12 columns center" id="wx-share-qrcode"></div>
+    </div>
+
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
 <script src="$!{cssUrlPrefix}/script/vendor/foundation.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/lightslider.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/lightgallery.min.js"></script>
@@ -74,6 +88,7 @@
 <script src="$!{cssUrlPrefix}/script/vendor/notyf.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/classie.js"></script>
 <script src="$!{cssUrlPrefix}/script/vendor/boxesFx.js"></script>
+<script src="$!{cssUrlPrefix}/script/vendor/jquery.qrcode.min.js"></script>
 <script>
     new BoxesFx( document.getElementById( 'boxgallery' ) );
     $(document).foundation();

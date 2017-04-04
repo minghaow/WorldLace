@@ -11,13 +11,13 @@ public class Configure {
 	// 每次自己Post数据给API的时候都要用这个key来对所有字段进行签名，生成的签名会放在Sign这个字段，API收到Post数据的时候也会用同样的签名算法对Post过来的数据进行签名和验证
 	// 收到API的返回的时候也要用这个key来对返回的数据算下签名，跟API的Sign数据进行比较，如果值不一致，有可能数据被第三方给篡改
 
-	private static String key = "8344b871299250c8cf32c0372de25dc0";
+	private static String key = "daa02b8da9e52d04657c2c22ea472074";
 
 	//微信分配的公众号ID（开通公众号之后可以获取到）
-	private static String appID = "wxc5dddc853f2de0ac";
+	private static String appID = "wxd6f5e650fdb475c8";
 
 	//微信支付分配的商户号ID（开通公众号的微信支付功能之后可以获取到）
-	private static String mchID = "1395657302";
+	private static String mchID = "1441467402";
 
 	//受理模式下给子商户分配的子商户号
 	private static String subMchID = "";
@@ -60,7 +60,7 @@ public class Configure {
 	public static String UNIFIED_ORDER_API = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 
 	//9) notify url
-	public static String NOTIFY_URL = "http://www.zaitaoyuan.com/order/weixinpay/notify";
+	public static String NOTIFY_URL = "http://www.world-lace.com/order/weixinpay/notify";
 
 	public static String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxc5dddc853f2de0ac" +
 			"&secret=8344b871299250c8cf32c0372de25dc0&code=CODE&grant_type=authorization_code";

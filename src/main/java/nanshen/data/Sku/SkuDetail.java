@@ -68,7 +68,7 @@ public class SkuDetail {
 
     /** optionId */
     @Column
-    private long optionId;
+    private long optionId = 0;
 
     /** option 1 type */
     @Column
@@ -112,6 +112,10 @@ public class SkuDetail {
         this.weight = weight;
         this.originPrice = originPrice;
         this.optionId = optionId;
+    }
+
+    public SkuDetail(long itemId) {
+        this.itemId = itemId;
     }
 
     public SkuDetail() {

@@ -18,6 +18,14 @@ jQuery( document ).ready(function( $ ) {
         $(this).addClass("checked");
     });
 
+    $(".wechat-share").on('click', function(event) {
+        event.preventDefault();
+        jQuery('#wx-share-qrcode').qrcode({
+            text: window.location.href
+        });
+        $("#wxShareModal").foundation("open");
+    });
+
     $(".add-to-cart").on('click', function(event) {
         event.preventDefault();
         isLogined = $("#is-login").html() == "true";

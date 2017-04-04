@@ -60,7 +60,7 @@ public class AdminSkuCtrl extends BaseController {
                                 @RequestParam(defaultValue = "1", required = true) int page){
         prepareLoginUserInfo(request, model);
         String sessionId = request.getSession().getId();
-        List<SkuItem> skuItemList = skuService.getAll(PublicationStatus.ONLINE, new PageInfo(page));
+        List<SkuItem> skuItemList = skuService.getAll(new PageInfo(page));
         model.addAttribute("skuItemList", skuItemList);
         model.addAttribute("sessionId", sessionId);
         model.addAttribute("page", page);
@@ -177,19 +177,19 @@ public class AdminSkuCtrl extends BaseController {
 
     @RequestMapping(value = "/online", method = RequestMethod.GET)
     public void online(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-                       @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
+                       @RequestParam(defaultValue = "0", required = true) long id) throws IOException {
         prepareLoginUserInfo(request, model);
-//        boolean isSucc = skuService.changeStatus(skuId, PublicationStatus.ONLINE);
-//        model.addAttribute("success", isSucc);
+        boolean isSucc = skuService.changeStatus(id, PublicationStatus.ONLINE);
+        model.addAttribute("success", isSucc);
         responseJson(response, model);
     }
 
     @RequestMapping(value = "/offline", method = RequestMethod.GET)
     public void offline(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-                        @RequestParam(defaultValue = "0", required = true) long skuId) throws IOException {
+                        @RequestParam(defaultValue = "0", required = true) long id) throws IOException {
         prepareLoginUserInfo(request, model);
-//        boolean isSucc = skuService.changeStatus(skuId, PublicationStatus.OFFLINE);
-//        model.addAttribute("success", isSucc);
+        boolean isSucc = skuService.changeStatus(id, PublicationStatus.OFFLINE);
+        model.addAttribute("success", isSucc);
         responseJson(response, model);
     }
 

@@ -134,6 +134,7 @@
                             <input type="text" class="click-select" placeholder="详细街道地址" id="address-detail" value="$!{userAddress.address}">
                         </div>
                     </div>
+                    <input type="hidden" class="click-select" id="pay-method" value="wx">
                 </div>
             </li>
             <li class="accordion-item is-active" data-accordion-item>
@@ -142,7 +143,7 @@
                     <div class="accordion-content" data-tab-content>
                         <div class="row margin-top-small margin-bottom">
                             <div class="small-12 columns">
-                                <h3>Free Shipping.</h3>
+                                <h3>Free Shipping & Return Availble in 7 Days.</h3>
                             </div>
                             <div class="small-12 columns">
                                 <div>Arrive in 2-5 Days normally.</div>
@@ -154,7 +155,7 @@
                     <div class="accordion-content" data-tab-content>
                         <div class="row margin-top-small margin-bottom">
                             <div class="small-12 columns">
-                                <h3>全站包邮</h3>
+                                <h3>全站包邮 & 7天免费退换货</h3>
                             </div>
                             <div class="small-12 columns">
                                 <div>江浙沪1-2天；其他主要城市2-4天；偏远地区4-5天</div>
@@ -219,6 +220,37 @@
                     </div>
                 </div>
             </li>
+            <li class="accordion-item is-active" data-accordion-item>
+                #if ($!{en})
+                    <a href="#" class="accordion-title">Payment Method</a>
+                    <div class="accordion-content" data-tab-content>
+                        <div class="row margin-top-small margin-bottom">
+                            <div class="small-6 columns payment-method-wrapper center selected" data-method="wx">
+                                <img src="$!{imageUrlPrefix}/images/icon/wx.png" alt="" class="payment-method"/>
+                                微信支付
+                            </div>
+                            <div class="small-6 columns payment-method-wrapper center" data-method="ali">
+                                <img src="$!{imageUrlPrefix}/images/icon/ali.png" alt="" class="payment-method ali-method"/>
+                                支付宝
+                            </div>
+                        </div>
+                    </div>
+                #else
+                    <a href="#" class="accordion-title">支付方式</a>
+                    <div class="accordion-content" data-tab-content>
+                        <div class="row margin-top-small margin-bottom">
+                            <div class="small-6 columns payment-method-wrapper center selected">
+                                <img src="$!{imageUrlPrefix}/images/icon/wx.png" alt="" class="payment-method" data-method="wx"/>
+                                微信支付
+                            </div>
+                            <div class="small-6 columns payment-method-wrapper center">
+                                <img src="$!{imageUrlPrefix}/images/icon/ali.png" alt="" class="payment-method ali-method" data-method="ali"/>
+                                支付宝
+                            </div>
+                        </div>
+                    </div>
+                #end
+            </li>
         </ul>
     </div>
 
@@ -272,18 +304,28 @@
     </div>
 
 </div>
+
+<div id="wxpayModal" class="reveal tiny" data-reveal data-animation-in="fade-in" data-animation-out="fade-out"
+     data-close-on-click="false" data-close-on-esc="false">
+    <div class="row">
+        <div class="small-12 columns center">
+            <h3>微信扫码支付</h3>
+        </div>
+        <div class="small-12 columns center" id="wx-qrcode"></div>
+        <div class="small-12 columns center">
+            <img src="$!{imageUrlPrefix}/images/icon/wxpay-info.png" alt="请使用微信扫一扫支付"/>
+        </div>
+    </div>
+
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <!-- end of this page contents -->
 
 <!-- start of footer-->
-<script type="text/javascript">
-    var jiathis_config = {
-        summary:"",
-        shortUrl:false,
-        hideMore:false,
-        data_track_clickback:'true'
-    }
-</script>
 <script type="text/javascript" src="$!{cssUrlPrefix}/script/user/order-process.js"></script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/jquery.qrcode.min.js"></script>
+</script>
 <!-- JiaThis Button END -->
 #parse("user/footer.vm")

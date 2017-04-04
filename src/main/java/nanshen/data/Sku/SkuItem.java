@@ -86,6 +86,9 @@ public class SkuItem {
     @Column
     private StoreType storeType = StoreType.ITLACE;
 
+    @Column
+    private StoreType situdationType = StoreType.ITLACE;
+
     /** is gift wrap valid */
     @Column
     private boolean hasGif = false;
@@ -410,5 +413,13 @@ public class SkuItem {
 
     public void setStoreType(StoreType storeType) {
         this.storeType = storeType;
+    }
+
+    public StoreType getSitudationType() {
+        return situdationType;
+    }
+
+    public void setSitudationType(StoreType situdationType) {
+        this.situdationType = situdationType;
     }
 }

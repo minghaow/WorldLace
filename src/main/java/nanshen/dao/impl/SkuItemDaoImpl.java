@@ -3,6 +3,7 @@ package nanshen.dao.impl;
 import nanshen.dao.SkuItemDao;
 import nanshen.dao.common.BaseDao;
 import nanshen.data.PublicationStatus;
+import nanshen.data.Sku.SituationType;
 import nanshen.data.Sku.SkuItem;
 import nanshen.data.Sku.StoreType;
 import nanshen.data.SystemUtil.PageInfo;
@@ -75,6 +76,14 @@ public class SkuItemDaoImpl extends BaseDao implements SkuItemDao {
     }
 
     @Override
+    public List<SkuItem> getAll(PageInfo pageInfo) {
+        Condition cnd = Cnd.where("createTime", ">", "2015-06-01")
+                .and("status", "=", PublicationStatus.ONLINE)
+                .desc("sortingId");
+        return dao.query(SkuItem.class, cnd, genaratePager(pageInfo));
+    }
+
+    @Override
     public List<SkuItem> getAll(PublicationStatus status, PageInfo pageInfo) {
         Condition cnd = Cnd.where("createTime", ">", "2015-06-01")
                 .and("status", "=", status).desc("sortingId");
@@ -83,7 +92,20 @@ public class SkuItemDaoImpl extends BaseDao implements SkuItemDao {
 
     @Override
     public List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo) {
-        Condition cnd = Cnd.where("storeType", "=", storeType).desc("sortingId");
+        Condition cnd = Cnd
+                .where("storeType", "=", storeType)
+                .and("status", "=", PublicationStatus.ONLINE)
+                .desc("sortingId");
+        return dao.query(SkuItem.class, cnd, genaratePager(pageInfo));
+    }
+
+    @Override
+    public List<SkuItem> getAll(StoreType storeType, SituationType situationType, PageInfo pageInfo) {
+        Condition cnd = Cnd
+                .where("storeType", "=", storeType)
+                .and("situationType", "=", situationType)
+                .and("status", "=", PublicationStatus.ONLINE)
+                .desc("sortingId");
         return dao.query(SkuItem.class, cnd, genaratePager(pageInfo));
     }
 

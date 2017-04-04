@@ -95,7 +95,7 @@ public class Util {
         }
         String result = sb.toString();
 //        result += "key=" + Configure.getKey();
-        result += "key=8344b871299250c8cf32c0372de25dc0";
+        result += "key=daa02b8da9e52d04657c2c22ea472074";
         Util.log("Sign Before MD5:" + result);
         result = MD5.MD5Encode(result).toUpperCase();
         Util.log("Sign Result:" + result);

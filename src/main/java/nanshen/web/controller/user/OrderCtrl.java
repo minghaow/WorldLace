@@ -10,7 +10,12 @@ import nanshen.service.CartService;
 import nanshen.service.OrderService;
 import nanshen.service.UserAddressService;
 import nanshen.service.api.alipay.util.AlipayNotify;
+import nanshen.service.api.weixinpay.common.Configure;
+import nanshen.service.api.weixinpay.common.RandomStringGenerator;
+import nanshen.service.api.weixinpay.common.Util;
 import nanshen.utils.LogUtils;
+import nanshen.utils.RequestUtils;
+import org.nutz.json.Json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -89,12 +94,52 @@ public class OrderCtrl extends BaseCtrl {
 								 @RequestParam(defaultValue = "0", required = true) long orderId,
 								 @RequestParam(defaultValue = "0", required = true) String name,
 								 @RequestParam(defaultValue = "0", required = true) String phone,
+								 @RequestParam(defaultValue = "ali", required = true) String method,
 								 @RequestParam(defaultValue = "0", required = true) long level1,
 								 @RequestParam(defaultValue = "0", required = true) long level2,
 								 @RequestParam(defaultValue = "0", required = true) long level3,
 									@RequestParam(defaultValue = "0", required = true) String detail) throws IOException {
 		UserInfo userInfo = getLoginedUser();
 		if (userInfo != null) {
+			if ("wx".equals(method)) {
+				Order order = orderService.getByOrderId(orderId);
+				Map<String, String> packageParams = new HashMap<String, String>();
+				packageParams.put("appid", Configure.getAppid());
+				packageParams.put("mch_id", Configure.getMchid());
+				packageParams.put("nonce_str", RandomStringGenerator.getRandomStringByLength(32));
+				packageParams.put("notify_url", Configure.NOTIFY_URL);
+				packageParams.put("body", "WorldLace Totally " + order.getGoodsCount() + " Piece");
+				packageParams.put("out_trade_no", "" + order.getShowOrderId());
+				packageParams.put("spbill_create_ip", RequestUtils.getRequestIp());
+				packageParams.put("total_fee", "" + order.getTotalPrice());
+				packageParams.put("trade_type", "NATIVE");
+                LogUtils.info("packageParams: " + Util.getSign(packageParams));
+                packageParams.put("sign", Util.getSign(packageParams));
+				String requestXML = Util.getRequestXml(packageParams);
+                LogUtils.info(requestXML);
+
+				String responseXML;
+				try {
+					//创建微信订单返回结果
+					responseXML = Util.post(Configure.UNIFIED_ORDER_API, Configure.getMchid(), requestXML);
+                    LogUtils.info(responseXML);
+					Map<String,String> resultMap = Util.getMapFromXML(responseXML);
+					String return_code = resultMap.get("return_code").toString();
+                    LogUtils.info("Result: " + Json.toJson(resultMap));
+					if(return_code.equals("SUCCESS")){
+						String code_url = (String) resultMap.get("code_url");
+						LogUtils.info("code_url: " + code_url);
+						model.put("qrcode_url", code_url);
+					} else{
+						LogUtils.info("订单" + orderId + "统一支付接口获取预支付订单出错");
+						model.put("success", false);
+						model.put("msg", "订单" + orderId + "统一支付接口获取预支付订单出错");
+					}
+				}catch (Exception e) {
+					e.printStackTrace();
+					LogUtils.info(e.getMessage());
+				}
+			}
 			orderService.updateOrderToPaying(orderId, new UserAddress(detail, (int)level1, (int)level2, (int)level3, name, phone,
 					userInfo.getId()));
 			model.put("success", true);
@@ -145,6 +190,19 @@ public class OrderCtrl extends BaseCtrl {
 			response.getWriter().print("fail");
 		}
 	}
+
+    @RequestMapping(value = "/weixinpay/notify", method = RequestMethod.POST)
+    public void weixinpayNotify(HttpServletResponse response, HttpServletRequest request, ModelMap model) throws Exception {
+        Map<String,String> resultMap = Util.parseXml(request);
+        String return_code = resultMap.get("return_code");
+        String transaction_id = resultMap.get("transaction_id");
+        String out_trade_no = resultMap.get("out_trade_no");
+        String result_code = resultMap.get("result_code");
+        if("SUCCESS".equals(return_code) && "SUCCESS".equals(result_code)){
+            orderService.updateOrderToPayed(out_trade_no, transaction_id, resultMap);
+        }
+        response.getWriter().print("<xml><return_code><![CDATA[SUCCESS]]></return_code></xml>");
+    }
 
 	/**
 	 * 上传评论配图功能

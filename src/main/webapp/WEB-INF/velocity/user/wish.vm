@@ -54,10 +54,11 @@
                 #foreach ($goods in $!{wish.goodsList})
                     <tr id="cart-goods-$!{goods.id}" class="-cart-goods-$!{goods.id}">
                         <td>
-                            <img src="$!{imageUrlPrefix}/images/sku/$!{goods.itemId}/5.jpg?x-oss-process=style/item-detail-thumb" alt="" class="detail-image">
+                            <a href="/item?itemId=$!{goods.skuId}" target="_blank" class="demo">
+                                <img src="$!{imageUrlPrefix}/images/sku/$!{goods.itemId}/5.jpg?x-oss-process=style/item-detail-thumb" alt="" class="detail-image">
+                            </a>
                         </td>
                         <td>
-
                             <div class="link-1">
                                 <a href="/item?itemId=$!{goods.skuId}" target="_blank" class="demo">
                                     <span class="thin">$!{goods.title}</span>

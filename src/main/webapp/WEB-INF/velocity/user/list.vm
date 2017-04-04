@@ -38,7 +38,9 @@
 
 <div class="list-title">
     <div class="list-title-text">
-       $storeType.desc ($skuInfoList.size())
+        #if ("$!{storeType}" != "")
+            $storeType.desc ($skuInfoList.size())
+        #end
     </div>
 </div>
 
@@ -46,7 +48,9 @@
     <ul class="breadcrumbs">
         <li><a href="/">Home</a></li>
         <li class="disabled"><a href="/list">BOUTIQUE ONLINE</a></li>
-        <li>IT'LACE</li>
+        #if ("$!{situationType}" != "")
+            <li>$situationType.desc</li>
+        #end
     </ul>
 </nav>
 
@@ -62,14 +66,24 @@
 ##    </div>
 
     <div class="item-list margin-top-tiny">
+        #if ($!{skuInfoList.size()} == 0)
+            <div class="row margin-top greyText center">
+                <div class="margin-top">
+                    抱歉，该类别暂时没有可选商品。
+                </div>
+                <div>
+                    Sorry, there is no available product for this option.
+                </div>
+            </div>
+        #end
         <ul class="row large-up-4 medium-up-3 small-up-2">
             #foreach ($skuInfo in $skuInfoList)
                 <li class="column">
                     <a href="/item?itemId=$velocityCount" class="item-image-wrapper" target="_blank">
                         #if ($!{skuInfo.hasGif})
-                            <img src="${imageUrlPrefix}/images/sku/$velocityCount/0.gif" alt="$skuInfo.title"/>
+                            <img src="${imageUrlPrefix}/images/sku/$skuInfo.id/0.gif" alt="$skuInfo.title"/>
                         #else
-                            <img src="${imageUrlPrefix}/images/sku/$velocityCount/5.jpg" alt="$skuInfo.title"/>
+                            <img src="${imageUrlPrefix}/images/sku/$skuInfo.id/5.jpg" alt="$skuInfo.title"/>
                         #end
                     </a>
                     <div class="item-description">

@@ -77,5 +77,45 @@ jQuery( document ).ready(function( $ ) {
         });
     });
 
+    $(".online-btn").on('click', function() {
+        event.preventDefault();
+        var id = $(this).data("id");
+        $.ajax({
+            url: "/admin/sku/online",
+            type: "GET",
+            data: {"id":id},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    alert("上线成功！即将为您刷新页面...");
+                    setTimeout(function(){location.reload();}, 1300);
+                } else {
+                    alert("上线失败！即将为您刷新页面...");
+                    setTimeout(function(){location.reload();}, 1300);
+                }
+            }
+        });
+    });
+
+    $(".offline-btn").on('click', function() {
+        event.preventDefault();
+        var id = $(this).data("id");
+        $.ajax({
+            url: "/admin/sku/offline",
+            type: "GET",
+            data: {"id":id},
+            dataType: 'json',
+            success: function(data) {
+                if (data.success == true || data.success == "true") {
+                    alert("下线成功！即将为您刷新页面...");
+                    setTimeout(function(){location.reload();}, 1300);
+                } else {
+                    alert("下线失败！即将为您刷新页面...");
+                    setTimeout(function(){location.reload();}, 1300);
+                }
+            }
+        });
+    });
+
 });
 

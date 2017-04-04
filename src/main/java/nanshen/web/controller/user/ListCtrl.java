@@ -1,5 +1,6 @@
 package nanshen.web.controller.user;
 
+import nanshen.data.Sku.SituationType;
 import nanshen.data.Sku.SkuItem;
 import nanshen.data.Sku.StoreType;
 import nanshen.data.SystemUtil.PageInfo;
@@ -24,15 +25,14 @@ public class ListCtrl extends BaseCtrl {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView listPage(ModelMap model,
-								 @RequestParam(defaultValue = "ITLACE", required = true) StoreType type,
+								 @RequestParam(defaultValue = "", required = false) StoreType type,
+								 @RequestParam(defaultValue = "", required = false) SituationType situationType,
 								 @RequestParam(defaultValue = "1", required = true) int page) {
-		if (type == null) {
-			type = StoreType.ITLACE;
-		}
-		List<SkuItem> skuInfoList = skuService.getAll(type, new PageInfo(page));
+		List<SkuItem> skuInfoList = skuService.getAll(type, situationType, new PageInfo(page));
 		prepareHeaderModel(model, PageType.ITEM_LIST);
 		model.addAttribute("skuInfoList", skuInfoList);
 		model.addAttribute("storeType", type);
+		model.addAttribute("situationType", situationType);
 		return new ModelAndView("user/list");
 	}
 

@@ -215,6 +215,7 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
         }
         skuItem = skuItemDao.insert(new SkuItem());
         skuItemDescriptionDao.insert(skuItem.getId());
+        skuDetailDao.insert(new SkuDetail(skuItem.getId()));
         return skuItem;
     }
 
@@ -264,8 +265,24 @@ public class SkuServiceImpl extends ScheduledService implements SkuService {
     }
 
     @Override
+    public List<SkuItem> getAll(PageInfo pageInfo) {
+        return skuItemDao.getAll(pageInfo);
+    }
+
+    @Override
     public List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo) {
         return skuItemDao.getAll(storeType, pageInfo);
+    }
+
+    @Override
+    public List<SkuItem> getAll(StoreType type, SituationType situationType, PageInfo pageInfo) {
+        if (type == null || type == StoreType.UNKNOWN) {
+            return skuItemDao.getAll(pageInfo);
+        }
+        if (situationType == null || situationType == SituationType.UNKNOWN) {
+            return skuItemDao.getAll(type, pageInfo);
+        }
+        return skuItemDao.getAll(type, situationType, pageInfo);
     }
 
     @Override

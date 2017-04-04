@@ -47,6 +47,7 @@ jQuery( document ).ready(function( $ ) {
         } else if ($('#address-detail').val() == "") {
             notyf.alert("请填写收货人具体地址");
         } else {
+            var method = $('#pay-method').val();
             $.post('/order/pay', {
                 orderId: $('#orderid').html(),
                 name: $('#address-name').val(),
@@ -54,15 +55,30 @@ jQuery( document ).ready(function( $ ) {
                 level1: $('#address-level1').find(":selected").val(),
                 level2: $('#address-level2').find(":selected").val(),
                 level3: $('#address-level3').find(":selected").val(),
-                detail: $('#address-detail').val()
+                detail: $('#address-detail').val(),
+                method: method
             }, function(result) {
                 if (!result.success) {
                     alert(result.message);
                 } else {
-                    $("#alipaysubmit").submit();
+                    if (method == "wx") {
+                        jQuery('#wx-qrcode').qrcode({
+                            text: result.qrcode_url
+                        });
+                        $("#wxpayModal").foundation("open");
+                    } else {
+                        $("#alipaysubmit").submit();
+                    }
                 }
             });
         }
+    });
+
+    $(document).on('click', '.payment-method-wrapper', function(event) {
+        event.preventDefault();
+        $(".payment-method-wrapper").removeClass("selected");
+        $(this).addClass("selected");
+        $("#pay-method").val($(this).data("method"));
     });
 
     function createRegionOptions(selector, regions) {

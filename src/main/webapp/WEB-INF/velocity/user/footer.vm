@@ -215,7 +215,7 @@
     })();
     window._bd_share_config = {
         common : {
-            bdText : '桃源网 - $!{skuItem.title}',
+            bdText : 'Worldlace - $!{skuItem.title}',
             bdDesc : '$!{skuItem.subTitle}',
             bdUrl : window.location.href,
             bdPic : '$!{imageUrlPrefix}/images/item/itemHead/${skuItem.getId()}/0.jpg@!item-head'
@@ -257,18 +257,18 @@
 <script src="$!{cssUrlPrefix}/script/vendor/what-input.min.js"></script>
 <script src="$!{cssUrlPrefix}/script/user/common.js"></script>
 <script src="https://qiyukf.com/script/b2c2554cf76bea25580926ed73f65cfb.js" defer async></script>
-<script>
-    ysf.on({
-        'onload': function(){
-            ysf.config({
-                uid: ${userInfo.id},
-                name: ${userInfo.username},
-                email: ${userInfo.email},
-                mobile: ${userInfo.phone},
-                qtype: 13003
-            });
-        }
-    })
-</script>
+##<script>
+##    ysf.on({
+##        'onload': function(){
+##            ysf.config({
+##                uid: ${userInfo.id},
+##                name: ${userInfo.username},
+##                email: ${userInfo.email},
+##                mobile: ${userInfo.phone},
+##                qtype: 13003
+##            });
+##        }
+##    })
+##</script>
 </body>
 </html>

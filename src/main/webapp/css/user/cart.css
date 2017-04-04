@@ -177,6 +177,22 @@ form [type=file], [type=checkbox], [type=radio] {
         width: 95%;
         margin: auto;
     }
+    img.payment-method {
+        height: 2rem;
+        margin-right: .1rem;
+    }
+    img.ali-method {
+        margin-left: .1rem;
+        margin-right: .3rem;
+    }
+    .payment-method-wrapper {
+        padding: .6rem 1rem;
+        background: #f3f3f3;
+        border: 1px solid #f3f3f3;
+    }
+    .payment-method-wrapper.selected {
+        border: 1px solid #d79b84;
+    }
     .list-title {
         font-size: 1.3rem;
         text-align: left;

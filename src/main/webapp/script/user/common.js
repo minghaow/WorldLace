@@ -10,6 +10,20 @@ jQuery(document).ready(function($) {
     var password = "";
     var isValidPhone = false;
     var notyf = new Notyf({delay:3000});
+
+    $(".dropdown li a").click(function(event){
+        event.preventDefault();
+        window.location.href = $(this).attr("href");
+    });
+
+    $(".wechat-share").on('click', function(event) {
+        event.preventDefault();
+        jQuery('#wx-share-qrcode').qrcode({
+            text: window.location.href
+        });
+        $("#wxShareModal").foundation("open");
+    });
+
     notyf.alert("世界蕾丝时尚目前内测中，所有商品均为测试商品，请勿购买，谢谢。");
 
     $(".unsupported-section").click(function(event){
@@ -32,34 +46,34 @@ jQuery(document).ready(function($) {
     $('.login-btn').on('click', function() {
         $("#animatedModal1").foundation("open");
         setTimeout(function(){
-            $('#login-form .button').addClass("shake-crazy shake-constant");
+            $('#login-form .button').addClass("shake-slow shake-constant");
             $('#body').attr("onmousewheel", "return false;");
         }, 300);
         setTimeout(function(){
-            $('#login-form .button').removeClass("shake-crazy shake-constant");
-        }, 1000);
+            $('#login-form .button').removeClass("shake-slow shake-constant");
+        }, 1500);
     });
 
     $('.register-btn2').on('click', function() {
         $('#offCanvas').foundation('close', function(){});
         setTimeout(function(){
             $("#animatedModal3").foundation("open");
-            $('#login-form2 .button').addClass("shake-crazy shake-constant");
+            $('#login-form2 .button').addClass("shake-slow shake-constant");
         }, 500);
         setTimeout(function(){
-            $('#login-form2 .button').removeClass("shake-crazy shake-constant");
-        }, 1000);
+            $('#login-form2 .button').removeClass("shake-slow shake-constant");
+        }, 1500);
     });
 
     $('.login-btn2').on('click', function() {
         $('#offCanvas').foundation('close', function(){});
         setTimeout(function(){
             $("#animatedModal2").foundation("open").css("left", "0");
-            $('#login-form2 .button').addClass("shake-crazy shake-constant");
+            $('#login-form2 .button').addClass("shake-slow shake-constant");
         }, 500);
         setTimeout(function(){
-            $('#login-form2 .button').removeClass("shake-crazy shake-constant");
-        }, 1000);
+            $('#login-form2 .button').removeClass("shake-slow shake-constant");
+        }, 1500);
     });
 
     $('#animatedModal1').on('closed.zf.reveal', function() {

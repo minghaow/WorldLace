@@ -40,7 +40,7 @@ public class SkuDetailDaoImpl extends BaseDao implements SkuDetailDao {
 
     @Override
     public boolean update(SkuItem skuItem) {
-        return dao.delete(SkuDetail.class, skuItem.getId()) == 1;
+        return dao.update(SkuDetail.class, "") == 1;
     }
 
     @Override

@@ -83,7 +83,7 @@
 
             <li><label class="first margin-top-small">BOUTIQUE ONLINE</label></li>
             <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
-            <li><a href="/list?type=BOUTIQUE">24/7 boutique</a></li>
+            <li><a href="/list?type=BOUTIQUE">24/7 Boutique</a></li>
             <li><a href="/list?type=LOUNGE">IT’LACE Lounge</a></li>
             <li><a href="/list?type=OUTLET">Outlet</a></li>
 
@@ -159,8 +159,32 @@
                         <li>
                             <a href="/list" class="$!{ITEM_LIST}">BOUTIQUE ONLINE</a>
                             <ul class="menu">
-                                <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
-                                <li><a href="/list?type=BOUTIQUE" class="auto-anchor">24/7 boutique</a></li>
+                                <li class="has-dropdown">
+                                    <a href="/list?type=ITLACE">IT'LACE</a>
+                                    <ul class="dropdown">
+                                        <li><label>Situation</label></li>
+                                        <li><a href="/list?type=ITLACE&situationType=WORK">go to work</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=CONFERENCE">attend a conference</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=SPORTS">have some sports</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=NIGHT">Ladies’ night</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=PARTY">party Friday</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=DATING">dating out</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=HOME">stay at home</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="/list?type=BOUTIQUE">24/7 Boutique</a>
+                                    <ul class="dropdown">
+                                        <li><label>Situation</label></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=WORK">go to work</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=CONFERENCE">attend a conference</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=SPORTS">have some sports</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=NIGHT">Ladies’ night</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=PARTY">party Friday</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=DATING">dating out</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=HOME">stay at home</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="/list?type=LOUNGE" class="auto-anchor">IT’LACE Lounge</a></li>
                                 <li><a href="/list?type=OUTLET" class="auto-anchor">Outlet</a></li>
                             </ul>
@@ -175,8 +199,32 @@
                         <li>
                             <a href="/list" class="$!{ITEM_LIST}">线上精品店</a>
                             <ul class="menu">
-                                <li><a href="/list" class="auto-anchor">IT'LACE</a></li>
-                                <li><a href="/list?type=BOUTIQUE" class="auto-anchor">24/7 boutique</a></li>
+                                <li class="has-dropdown">
+                                    <a href="/list?type=ITLACE">IT'LACE</a>
+                                    <ul class="dropdown">
+                                        <li><label>场景</label></li>
+                                        <li><a href="/list?type=ITLACE&situationType=WORK">干练白领</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=CONFERENCE">摩登职场</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=SPORTS">休闲运动</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=NIGHT">闺蜜小酌</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=PARTY">魅惑派对</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=DATING">浪漫约会</a></li>
+                                        <li><a href="/list?type=ITLACE&situationType=HOME">悠闲周末</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="/list?type=BOUTIQUE">24/7 Boutique</a>
+                                    <ul class="dropdown">
+                                        <li><label>场景</label></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=WORK">干练白领</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=CONFERENCE">摩登职场</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=SPORTS">休闲运动</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=NIGHT">闺蜜小酌</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=PARTY">魅惑派对</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=DATING">浪漫约会</a></li>
+                                        <li><a href="/list?type=BOUTIQUE&situationType=HOME">悠闲周末</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="/list?type=LOUNGE" class="auto-anchor">IT’LACE Lounge</a></li>
                                 <li><a href="/list?type=OUTLET" class="auto-anchor">Outlet</a></li>
                             </ul>
@@ -266,6 +314,9 @@
                                             <p class="help-text" id="pwdHelpText">Wrong password.</p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="right-align forget-pwd">
+                                    <a href="#" class="forget-pwd-btn">Forget Password?</a>
                                 </div>
                                 <a href="#" class="button shake-slow" id="login-confirm">Ok. </a>
                             </form>
@@ -362,6 +413,9 @@
                                             <p class="help-text" id="pwdHelpText">错误的密码</p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="right-align forget-pwd">
+                                    <a href="#" class="forget-pwd-btn">Forget Password?</a>
                                 </div>
                                 <a href="#" class="button shake-slow" id="login-confirm">Ok.</a>
                             </form>
@@ -540,4 +594,18 @@
                 <span aria-hidden="true">&times;</span>
             </button>
 
+        </div>
+
+        <div id="wxShareModal" class="reveal tiny" data-reveal data-animation-in="fade-in" data-animation-out="fade-out"
+             data-close-on-click="false" data-close-on-esc="false">
+            <div class="row">
+                <div class="small-12 columns center">
+                    <h3>微信扫一扫分享</h3>
+                </div>
+                <div class="small-12 columns center" id="wx-share-qrcode"></div>
+            </div>
+
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>

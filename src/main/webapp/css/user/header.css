@@ -210,7 +210,6 @@ header {
         border-radius: 5px;
         box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.25);
     }
-}
     .sticky-bottom img {
         width: 2.9rem;
         margin-top: .9rem;
@@ -230,6 +229,14 @@ header {
         position: absolute;
         right: -10px;
         top: -10px;
+    }
+    .is-submenu-item label{
+        text-align: center;
+        background: #3c3c3c;
+        color: white;
+    }
+    .dropdown.menu .dropdown.submenu {
+        left: 93.2%;
     }
 }
 @media only screen and (max-width: 40em) {
@@ -859,7 +866,7 @@ header {
     padding-top: 16px;
     height: 170px;
     width: 100%;
-    color: #666;
+    color: #999;
 }
 .signup-panel .welcome-hide-before {
     top: 170px;
@@ -937,4 +944,7 @@ header {
 #animatedModal1 .login-postfix,
 #animatedModal2 .login-postfix {
     padding-left: 0;
+}
+.forget-pwd a {
+    color: #777;
 }

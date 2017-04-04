@@ -1,6 +1,7 @@
 package nanshen.dao;
 
 import nanshen.data.PublicationStatus;
+import nanshen.data.Sku.SituationType;
 import nanshen.data.Sku.SkuItem;
 import nanshen.data.Sku.StoreType;
 import nanshen.data.SystemUtil.PageInfo;
@@ -29,6 +30,8 @@ public interface SkuItemDao {
 
     List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo);
 
+    List<SkuItem> getAll(StoreType type, SituationType situationType, PageInfo pageInfo);
+
     boolean remove(long skuId, long operatorId);
 
     long getCnt(PublicationStatus status);
@@ -36,4 +39,7 @@ public interface SkuItemDao {
     long getCnt(PublicationStatus status, Date startDate);
 
     List<SkuItem> getByLookId(long itemId);
+
+    List<SkuItem> getAll(PageInfo pageInfo);
+
 }

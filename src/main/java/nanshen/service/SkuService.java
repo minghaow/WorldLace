@@ -2,10 +2,7 @@ package nanshen.service;
 
 import nanshen.data.AdminUserInfo;
 import nanshen.data.PublicationStatus;
-import nanshen.data.Sku.SkuDetail;
-import nanshen.data.Sku.SkuDetailType;
-import nanshen.data.Sku.SkuItem;
-import nanshen.data.Sku.StoreType;
+import nanshen.data.Sku.*;
 import nanshen.data.StyleTag;
 import nanshen.data.SystemUtil.ExecInfo;
 import nanshen.data.SystemUtil.ExecResult;
@@ -137,11 +134,23 @@ public interface SkuService {
      *
      * <strong>Note:<strong/> already paged.
      *
+     * @param pageInfo page number
+     * @return List<LookInfo>
+     */
+    List<SkuItem> getAll(PageInfo pageInfo);
+
+    /**
+     * Get all of the skus for specified publication status
+     *
+     * <strong>Note:<strong/> already paged.
+     *
      * @param storeType StoreType
      * @param pageInfo page number
      * @return List<LookInfo>
      */
     List<SkuItem> getAll(StoreType storeType, PageInfo pageInfo);
+
+    List<SkuItem> getAll(StoreType type, SituationType situationType, PageInfo pageInfo);
 
     /**
      * Get the all of the tags in a list

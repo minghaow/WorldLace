@@ -163,7 +163,7 @@
 
                 <div class="margin-top-small clearfix">
                     <span class="float-right">
-                        <a href="#" class="unsupported-section"><img src="/images/icon/wechat.png" alt="IT'LACE" style="width: 3rem"/></a>
+                        <a href="#" class="wechat-share"><img src="/images/icon/wechat.png" alt="IT'LACE" style="width: 3rem"/></a>
                         <a href="#" class="unsupported-section"><img src="/images/icon/google.png" alt="IT'LACE" style="width: 3rem"/></a>
                         <a href="#" class="unsupported-section"><img src="/images/icon/twitter.png" alt="IT'LACE" style="width: 3rem"/></a>
                         <a href="#" class="unsupported-section"><img src="/images/icon/facebook.png" alt="IT'LACE" style="width: 3rem"/></a>
@@ -280,5 +280,6 @@
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2070144" charset="utf-8"></script>
 <script type="text/javascript" src="$!{cssUrlPrefix}/script/user/item-detail.js" charset="utf-8"></script>
 <script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/jquery.fly.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="$!{cssUrlPrefix}/script/vendor/jquery.qrcode.min.js"></script>
 <!-- JiaThis Button END -->
 #parse("user/footer.vm")
